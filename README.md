@@ -77,6 +77,30 @@ can issue a certificate. The product is the refusal, and the ability to show pre
 
 ---
 
+## Who hires the fleet
+
+Witness is bought by the person standing behind the claim — the one who needs it to hold
+up.
+
+A creator running a challenge stream hires agents to watch it. A tournament organiser
+hires them for the duration of an event. A programme director hires them for the sessions
+their participants submit. Nobody is buying software here; they are **hiring attention by
+the minute**, for exactly as long as the thing they care about is happening, and stopping
+when it stops.
+
+That is the whole reason metering is the business model rather than a billing detail. A
+referee is hired by the hour and so is this. The difference is that a referee costs more
+than most of these events can raise, and cannot watch four streams at once.
+
+**The customer is almost never a corporation.** It is the person running a twelve-hour
+charity marathon, the volunteer organising a local derby, the coach certifying a remote
+cohort, the creator whose entire format depends on the audience believing the attempt was
+real. They have genuine stakes, a real fraud problem, and no institution behind them — and
+they are currently choosing between paying for officials they cannot afford and trusting
+claims they cannot check.
+
+---
+
 ## What makes something verified
 
 Verification is not a score and it is not a clip. **It is an elimination.**
@@ -87,6 +111,8 @@ checkable by anyone. A record that says this is:
 
 | The fleet establishes | Class |
 |---|---|
+| The capture chain was live throughout — a hardware device, not a media file | **measured** |
+| No scene switch, playback-rate filter, or source substitution occurred | **measured** |
 | The stream was continuous — no cut, no splice, no rate change | **measured** |
 | The same subject was present throughout | **measured**, then the means of knowing is discarded |
 | The environment stayed consistent — light, shadow, background | **measured** |
@@ -162,6 +188,56 @@ public, people stop opening sessions, and a system that gets no evidence verifie
 
 ---
 
+## The capture chain
+
+The hardest problem in verifying a live stream is that **looking at the video cannot tell
+you where the pixels came from.**
+
+A pre-recorded file, played out through broadcast software as a media source, produces a
+stream that is frame-for-frame indistinguishable from a live camera. It has the right
+compression artefacts, the right frame timing, the right everything — because it *is* a
+real recording. It is simply a recording of a different moment. No amount of analysing the
+picture separates the two reliably, and any model that claims otherwise is guessing.
+
+The broadcast software, however, knows exactly.
+
+Witness ships a small plugin that attaches to OBS over its websocket API and reports the
+shape of the capture chain continuously, for the whole session:
+
+- which sources are active, and **what type each one is** — a hardware capture device, or a
+  media file being played back
+- every scene switch, with its timestamp
+- filters applied to any source, including anything that alters playback rate
+- encoder statistics, dropped frames, render lag
+- when the stream started, and whether it ever stopped
+
+This is the difference between *"the video looks continuous"* and *"the capture chain was
+continuous."* The first is an inference. The second is a measurement, and it moves several
+rows of the verification table out of the model's judgement and into fact.
+
+It also produces a second, structurally different data stream running alongside the video —
+telemetry rather than pixels — which the Corroborator reconciles against what the Watcher
+saw. Two independent accounts of the same session that have to agree.
+
+### What this does not solve
+
+**A virtual camera defeats it.** Software that presents a file to the operating system as
+though it were a webcam will appear to OBS as a legitimate capture device, and the plugin
+will report it as one. We say so plainly rather than claiming a guarantee we do not have.
+
+What the capture chain buys is not certainty — it is **simultaneity of forgery**. An
+attacker must now defeat the video analysis, the capture telemetry, the timing
+corroboration, and the third-party host record *at the same time, consistently, for the
+entire session*. Each layer is individually beatable. Beating all of them together, live,
+without a single inconsistency, is a substantially different undertaking than editing a
+video.
+
+The Skeptic's job includes hunting for the signatures of that attempt — known virtual
+camera device names, implausibly perfect encoder statistics, telemetry that is too clean
+for a real room.
+
+---
+
 ## How it works
 
 ```
@@ -209,7 +285,7 @@ what wakes the next.
 | **Warden** | Opens and closes sessions, holds the live connection, enforces the spend ceiling |
 | **Watcher** | Gemini on the live stream. Emits a timestamped account of what occurred |
 | **Adjudicator** | Compares the declared claim against the observed account |
-| **Corroborator** | Cross-checks independent evidence — device sensors, a second angle, host timestamps |
+| **Corroborator** | Reconciles the video against independent channels — capture-chain telemetry, device sensors, a second angle, host timestamps |
 | **Skeptic** | Hunts fabrication: loops, splices, playback-rate anomalies, substitution off-frame |
 | **Registrar** | Attests, refuses, or escalates. Signs the record. Records the reason |
 | **Herald** | Selects the moments that matter, assembles the public artifact, publishes on request |
@@ -305,6 +381,7 @@ Witness runs on Google Cloud.
 | Telemetry | **Agent Observability** — OpenTelemetry traces and audit logs |
 | Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
 | Session custody and publication | **YouTube Live** — third-party recording and timestamps |
+| Capture-chain telemetry | **OBS websocket** — source provenance, scene and filter events |
 | Session index | Vector search over observed events |
 | High-volume frame classification | **Gemma** — the cheap pass the Treasurer routes to |
 | Adversarial test material | **Veo** — synthetic fraud clips, generated to attack our own Skeptic |
