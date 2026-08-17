@@ -1,70 +1,78 @@
-# Rotation
+# Witness
 
-**The filter between the people who make music and the people who can play it.**
+**A fleet of agents that watches something happen and refuses to say it did.**
 
-> **Working name.** `Rotation` is the industry term for a record being played
-> repeatedly — and it describes the loop this system runs. Change it before submission
-> if something better lands.
+> **Working name.** `Witness` describes the job precisely — an agent present at an event
+> whose account of it can be relied on. Change it before submission if something better
+> lands.
 
-Rotation is an agentic operating system for music distribution. A fleet of eleven
-agents reads a record, works out who in the world should hear it, and does the work of
-getting it in front of them — continuously, unattended, and within a budget you set.
+Witness is an attestation layer for live activity. Someone declares a claim, opens a
+session, and streams the evidence. A fleet of eight agents attaches to that session for
+its duration, watches it happen, and produces a signed, searchable record of what was
+actually observed — or refuses to produce one.
 
-**Every note of music in this system was made by a human being.** Rotation does not
-generate music. It generates the work of getting human music heard.
-
----
-
-## The problem, from both sides
-
-Distribution is solved. Anyone can put a song on every streaming service in an
-afternoon. What is not solved is that a song on a service is a song nobody has heard
-of, and closing that gap is a letter-writing job — thousands of individual
-conversations with the people who program radio shows, curate playlists, run podcasts,
-and choose music for film and television.
-
-That job breaks down at both ends.
-
-**For an artist or a small label,** the work is measured in weeks per release and it
-never ends, because there is another release next month. Nobody with three people on
-staff has weeks. So it does not get done, the record disappears, and everyone blames
-the algorithm.
-
-**For a curator,** the problem is the exact opposite. A community radio programmer with
-a two-hour weekly show receives hundreds of submissions a month. Almost none of them
-fit. The good record is in there somewhere, underneath everything that isn't, and
-finding it is unpaid work on top of a show they already make for free.
-
-These look like two problems. They are one problem with no filter in the middle.
+**The refusal is the product.** Anything can generate a certificate. The value is in the
+sessions that don't get one, and in being able to show why.
 
 ---
 
-## What Rotation actually does
+## The problem
 
-**It is the filter.**
+There is an enormous class of claims that are true, consequential, and impossible to
+prove cheaply.
 
-Rotation holds a continuously-updated index of the people who can carry a record —
-stations, shows, curators, programmers, supervisors — and what each one actually plays.
-When a new record arrives, the system listens to it, compares it against that index,
-and then does the thing every other tool in this market refuses to do:
+A tournament angler says the fish was nineteen inches. A field technician says the
+install was completed to spec. A remote student says they sat the exam alone. Someone
+running a charity challenge says the hundred reps happened. In every case the claim
+matters — money, standing, or trust depends on it — and in every case the only way to
+verify it today is for a human being to have been there, or for a human being to sit and
+watch the footage afterwards.
 
-**It throws almost all of them away.**
+So one of three things happens. An organisation pays for officials, which most cannot
+afford. It trusts the claim and absorbs the fraud. Or it demands so much evidence that
+honest people give up and stop participating.
 
-A typical run considers tens of thousands of candidates and passes through a few dozen.
-The curator receives a short, ranked, evidenced list of records that genuinely fit
-their show — not a flood. The artist reaches the people most likely to say yes,
-without writing a word.
+**The person this hurts most is not an enterprise.** It's whoever is running a
+competition, a program, or a certification with no budget for officials and no
+institution standing behind them — and who is therefore forced to choose between being
+cheated and being unreasonable.
 
-That refusal is the product. Anyone can send more email. The value is in what does not
-get sent.
+Verification has been a labour problem. It stopped being one when models learned to
+watch.
 
-### What each side gets
+---
 
-| | **Artists and labels** | **Curators and programmers** |
-|---|---|---|
-| **The pain today** | Nobody hears the record. Pitching costs weeks per release. | Drowning in submissions. Most are irrelevant. Filtering is unpaid work. |
-| **What Rotation gives** | Placement in front of the right people, without writing a pitch | Fewer, better, ranked, with the reasoning attached |
-| **Why it holds up** | It works, and it costs less than the time it replaces | It shrinks the inbox instead of adding to it |
+## What Witness does
+
+A claim is declared up front. A session opens. Agents attach over a websocket and watch
+in real time. When the session closes, one of three things exists:
+
+| Outcome | Meaning |
+|---|---|
+| **Attested** | Independently corroborated, with the observations and their timestamps attached |
+| **Refused** | The evidence does not support the claim, and the record says exactly which part failed |
+| **Escalated** | Genuinely ambiguous — routed to a human, with the specific question isolated |
+
+The record is signed, permanent, and semantically searchable. Not searchable by title or
+tag — searchable by **what the agents saw**. "Every attested session where the last ten
+reps degraded below depth." "Every refusal caused by a discontinuity in the stream."
+
+### What it does not do
+
+Stated plainly, because a system that adjudicates other people's claims should be
+legible about its limits.
+
+- **It does not certify.** Agents assemble evidence, score confidence, and refuse. A human
+  holds the stamp. An automated system that issues final verdicts on contested facts is a
+  liability, not a product.
+- **It does not infer what it did not observe.** If the camera was pointed away, the record
+  says the camera was pointed away.
+- **It does not watch anything it was not invited to watch.** A session is opened
+  deliberately by its subject, and it ends when they end it.
+- **It does not retain biometric identity.** It confirms continuity within a session — that
+  the same person is present throughout — and discards the means of doing so afterwards.
+- **It does not exceed its budget.** The Treasurer holds a hard ceiling per session and
+  refuses past it rather than asking forgiveness.
 
 ---
 
@@ -73,150 +81,206 @@ get sent.
 ```
    ┌──────────────────────────────────────────────────────────────┐
    │                                                              │
-   │   a record arrives                                           │
+   │   a claim is declared                                        │
    │        │                                                     │
    │        ▼                                                     │
-   │   LISTENER  ── Gemini hears the actual audio and derives      │
-   │        │       what it is, who it is for, where the hook is  │
+   │   WARDEN ──── opens the session, holds the socket,           │
+   │        │      enforces the ceiling, closes it                │
    │        ▼                                                     │
-   │   MATCHMAKER ── ranks the index against this specific record │
-   │        │                                                     │
+   │   WATCHER ─── Gemini sees the live stream and emits a        │
+   │        │      timestamped account of what occurred           │
    │        ▼                                                     │
-   │   FILTER ──── refuses everything below threshold,            │
-   │        │      and records why it refused                     │
+   │   ADJUDICATOR + CORROBORATOR + SKEPTIC                       │
+   │        │      does the account support the claim;            │
+   │        │      do independent sources agree;                  │
+   │        │      is anyone trying to fake it                    │
    │        ▼                                                     │
-   │   MAKER + CORRESPONDENT ── assets and a pitch, per recipient │
-   │        │                                                     │
+   │   REGISTRAR ── attests, refuses, or escalates —              │
+   │        │       and records the reason either way             │
    │        ▼                                                     │
-   │   PUBLISHER + READER ── it goes out; replies come back       │
-   │        │                                                     │
+   │   INDEXER ──── the session becomes searchable by what        │
+   │        │       was seen inside it                            │
    │        ▼                                                     │
-   │   what happened re-ranks everything ──────────────────┘      │
+   │   what happened updates the subject's standing ────────┘     │
    │                                                              │
    └──────────────────────────────────────────────────────────────┘
 ```
 
-The loop is the point. Every reply, every polite no, every *"too long for daytime
-rotation,"* every *"not for us but send the next one"* is retained and changes what the
-system does next. Most campaigns start from zero every time, because the knowledge
-lived in somebody's sent folder and left when they did.
+The loop is the point. A refusal is not the end of a transaction — it changes how closely
+the next session by the same subject is watched, which is what makes attention affordable
+at scale.
 
 ### The fleet
 
-Eleven agents. None of them calls another; each does one narrow job and the work it
-finishes is what wakes the next one.
+Eight agents. None calls another; each does one narrow job, and the work it finishes is
+what wakes the next.
 
 | Agent | What it does |
 |---|---|
-| **Listener** | Listens to the record. Derives mood, era, reference points, and the hook window |
-| **Scout** | Continuously finds new curators from public registers |
-| **Profiler** | Learns what each one actually plays, and embeds it |
-| **Classifier** | Assigns role and format across the whole index |
-| **Matchmaker** | Ranks the index against one specific record |
-| **Filter** | Refuses what does not fit, and records the reason |
-| **Maker** | Produces promo assets aimed at the hook window — **never music** |
-| **Publisher** | Posts to the artist's own channels on a schedule it chooses |
-| **Correspondent** | Writes and sends the pitch, one recipient at a time |
-| **Reader** | Reads replies, updates the relationship, re-wakes the Matchmaker |
-| **Treasurer** | Meters every agent's spend against a ceiling and stops at it |
+| **Warden** | Opens and closes sessions, holds the live connection, enforces the spend ceiling |
+| **Watcher** | Gemini on the live stream. Emits a timestamped account of what occurred |
+| **Adjudicator** | Compares the declared claim against the observed account |
+| **Corroborator** | Cross-checks independent evidence — device sensors, a second angle, timing |
+| **Skeptic** | Actively hunts fabrication: loops, splices, playback-rate anomalies, substitution off-frame |
+| **Registrar** | Attests, refuses or escalates. Signs the record. Records the reason |
+| **Indexer** | Embeds observed events so sessions are searchable by content, not metadata |
+| **Treasurer** | Meters agent-minutes, allocates attention by stakes, stops at the ceiling |
 
-A twelfth process, the **Chronicler**, writes everything the fleet does to a public log
-so that any claim in this README can be checked by a stranger.
+A ninth process, the **Chronicler**, writes everything the fleet does to a public log, so
+that any claim in this document can be checked by a stranger.
+
+**Why the Skeptic exists as its own agent.** A model asked to both evaluate and doubt a
+claim tends to do the first and neglect the second. Separating the adversary into its own
+agent, with its own prompt and its own incentive, is the difference between a system that
+validates and a system that verifies.
 
 ---
 
-## What it will not do
+## Three classes of fact, kept apart on purpose
 
-Stated plainly, because a system that spends money and contacts people on your behalf
-should be legible about its limits.
+Witness produces claims about the world, so it has to be honest about where each one came
+from.
 
-- **It does not generate music.** Not a note, not a bed, not a stem. The records are
-  made by people.
-- **It does not invent contact details.** A route either came from a public source or
-  it does not exist.
-- **It does not exceed its budget.** The Treasurer holds a hard ceiling and refuses
-  past it rather than asking forgiveness.
-- **It does not resurrect an opt-out.** Once someone asks not to be contacted, that is
-  terminal.
-- **It does not claim attribution.** It can show what it did and what changed. It does
-  not claim the first caused the second.
+| Fact | Where it comes from | Class |
+|---|---|---|
+| Duration, frame continuity, stream integrity | Signal analysis | **measured** |
+| What happened, whether it satisfies the claim | The model, from the video | **inferred** |
+| The claim itself, the stakes, the rules of the activity | A human being | **asserted** |
+
+An inferred value may never overwrite a measured one, and the interface renders the three
+differently. The model is allowed an opinion about whether the rep reached depth. It is
+not allowed an opinion about whether the video was continuous.
+
+This distinction is also the honest answer to "how accurate is it?" — accuracy is a
+property of the inferred column only, and we report it there.
+
+---
+
+## Attention is the unit, and it is metered
+
+The expensive thing about watching is watching. Witness bills **per agent-minute of
+attention**, and the Treasurer decides how much attention a session earns.
+
+A high-stakes claim gets continuous multi-agent observation. A routine one gets sampled
+frames and a single pass. Below threshold, the fleet declines to spend anything at all and
+says so. Attention is allocated the way an editor allocates a reporter's time, not the way
+a cron job allocates compute.
+
+This matters beyond our own economics. **The open question for anyone deploying agents in
+production is what it costs to have one paying attention continuously, and nobody has
+published a real number.** Witness publishes an itemised ledger: cost per session, per
+agent-minute, per refusal. If the number is bad we will say it is bad.
+
+The target we are building against is **a fully attested session for under a dollar.**
+
+---
+
+## Proof domain
+
+**Bodyweight repetitions.** Someone declares a count, streams the attempt, and the fleet
+attests or refuses.
+
+This is deliberately the least glamorous option available, and it was chosen for three
+reasons.
+
+**It is the hardest case.** A rep count is a claim with no external record, made in real
+time, by someone with an obvious incentive to inflate it, verifiable only from the stream
+itself. There is no database to check against, no receipt, no third party. If attestation
+holds here it holds where corroborating records exist.
+
+**The evidence is self-generating.** The system can be exercised hundreds of times a day
+without recruiting anyone, without a marketplace to cold-start, and without waiting on a
+stranger to reply. Every competing approach to proving this system works depends on other
+people showing up. This one does not.
+
+**The fraud can be staged.** Half-reps, a looped clip, a video played at 0.8×, a different
+pair of arms entering frame — every failure mode can be manufactured deliberately, on
+demand, and used to test the Skeptic. A verifier that has never been attacked is a
+verifier with an unknown false-negative rate.
+
+The domain is the test, not the identity. Witness is not a fitness product. The adapter
+that turns a stream into a claim is roughly two hundred lines; the fleet behind it does not
+know or care what activity it is watching.
+
+### Where this goes
+
+The same fleet, different adapter: remote inspection and field-service sign-off, claims
+adjudication from a walkaround video, laboratory protocol compliance, chain of custody,
+practical examination and proctoring, and competitive events of every kind — which is the
+one where somebody is currently paying human officials to do exactly this.
+
+We will demonstrate exactly one second adapter, late, rather than claim the list.
 
 ---
 
 ## Architecture
 
-Rotation runs entirely on Google Cloud.
+Witness runs on Google Cloud.
 
 | Layer | Service |
 |---|---|
-| Agent runtime | **Agent Engine** — long-running ADK agents with pause/resume |
-| Reasoning | **Gemini 3.5** via Vertex AI, including native audio understanding |
-| Volume classification | **Gemma** |
-| Asset generation | **Veo** |
-| Matching | **AlloyDB for PostgreSQL** with the ScaNN vector index |
-| Agent discovery | **Agent Registry** |
-| Long-term context | **Memory Bank** |
-| Access control | **Agent Identity** |
-| Tool and policy enforcement | **Agent Gateway** |
+| Reasoning and live video understanding | **Gemini 3.5** via Vertex AI |
+| Agent framework | **Agent Development Kit (ADK)** |
+| Agent runtime | **Agent Engine** — long-running agents with pause and resume |
+| Discovery and lifecycle | **Agent Registry** |
+| Cross-session context | **Memory Bank** — per-subject standing, held across weeks |
+| Access control | **Agent Identity** — zero-trust, per-agent |
+| Routing and policy | **Agent Gateway** |
 | Inline guardrails | **Model Armor** |
-| Telemetry | **Cloud Logging** and **Cloud Trace** |
-| Services and scheduling | **Cloud Run**, **Pub/Sub**, **Cloud Scheduler** |
+| Telemetry | **Agent Observability** — OpenTelemetry traces and audit logs |
+| Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
+| Session index | Vector search over observed events |
+| High-volume frame classification | **Gemma** — the cheap pass the Treasurer routes to |
+| Adversarial test material | **Veo** — synthetic fraud clips, generated to attack our own Skeptic |
 
 Full diagram: [`docs/architecture.md`](docs/architecture.md)
 
-### Why the model listens to the record
+**Why the governance components are load-bearing rather than decorative.** A system that
+adjudicates other people's claims is worthless if it cannot prove who decided what, under
+which policy, with which model version, at which moment. Identity, Gateway, Model Armor and
+Observability are not compliance decoration here — they are the reason a refusal means
+anything. An attestation you cannot audit is an assertion.
 
-Most tools in this market match on metadata — genre tags, BPM fields, whatever the
-distributor typed in. Rotation matches on the record itself, because Gemini can take
-the audio directly.
-
-That produces two different classes of fact, and Rotation keeps them apart on purpose:
-
-| Fact | Where it comes from | Class |
-|---|---|---|
-| BPM, key, section boundaries | Signal analysis | **measured** |
-| Mood, era, reference artists, where it lifts | The model, from the audio | **inferred** |
-| Rights, splits, clearances | A human being | **asserted** |
-
-An inferred value may never overwrite a measured one, and the interface renders the
-three differently. The model is allowed to have an opinion about what the record *is*.
-It is not allowed to have an opinion about the tempo.
+**Why Veo generates attacks rather than assets.** The most useful thing a video model can
+do for a verification system is produce material designed to fool it. Every synthetic clip
+Veo generates that the Skeptic fails to catch is a bug found before a user finds it.
 
 ---
 
 ## For agents: the MCP surface
 
-Rotation exposes its index over the Model Context Protocol, so a curator's own AI
-assistant can query it directly instead of reading email.
+Witness exposes its index over the Model Context Protocol, so another system — or a
+person's own assistant — can query attestations directly.
 
 ```
-search_submissions   what came in that fits my show
-explain_match        why this record was matched to me
-get_record           the audio, the facts, the rights
-decline              remove this record, and tell the system why
+search_sessions      find sessions by what was observed inside them
+explain_outcome      why this session was attested, refused, or escalated
+get_record           the signed record, its evidence, and its provenance classes
+open_session         declare a claim and begin
 ```
 
-A programmer who lives in an assistant never has to open our product at all. That is
-the intended end state: the filter becomes infrastructure, not another dashboard.
+The intended end state is that Witness is infrastructure rather than a destination. The
+best version of this product is one nobody logs into.
 
 ---
 
 ## Evidence
 
-Every number here is produced by the running system and is checkable against the
-public log.
+Every number here is produced by the running system and is checkable against the public
+log.
 
 <!-- FILL FROM THE RUNNING SYSTEM BEFORE SUBMISSION -->
 | | |
 |---|---|
-| Curators indexed | _pending_ |
-| Records processed | _pending_ |
-| Candidates considered | _pending_ |
-| **Candidates passed by the Filter** | _pending_ |
-| Pitches sent | _pending_ |
-| Replies received | _pending_ |
-| Placements confirmed | _pending_ |
+| Sessions watched | _pending_ |
+| Agent-minutes of attention | _pending_ |
+| **Sessions attested** | _pending_ |
+| **Sessions refused** | _pending_ |
+| Sessions escalated to a human | _pending_ |
+| Staged frauds attempted | _pending_ |
+| **Staged frauds caught** | _pending_ |
 | Days run unattended | _pending_ |
+| Cost per attested session | _pending_ |
 | **Total spend** | _pending_ |
 
 Public decision log: <!-- URL --> _pending_
@@ -228,27 +292,27 @@ Public decision log: <!-- URL --> _pending_
 ### Prerequisites
 
 - A Google Cloud project with billing enabled
-- `gcloud` authenticated, and the Vertex AI, Agent Engine, AlloyDB, Cloud Run,
-  Pub/Sub and Cloud Scheduler APIs enabled
+- `gcloud` authenticated, with Vertex AI, Agent Engine, Cloud Run and Pub/Sub enabled
 - Python 3.12+
+- A camera and something to point it at
 
 ### Setup
 
 ```bash
-git clone <repo> && cd rotation
-cp .env.example .env          # fill in project, region, and credentials
-./scripts/bootstrap.sh        # AlloyDB instance, schema, vector index
+git clone <repo> && cd witness
+cp .env.example .env          # project, region, credentials
+./scripts/bootstrap.sh        # session store, vector index, registry entries
 ./scripts/deploy.sh           # agents to Agent Engine, services to Cloud Run
 ```
 
 ### Verify
 
 ```bash
-./scripts/smoke.sh            # end-to-end: ingest a record, match, and dry-run a pitch
+./scripts/smoke.sh            # opens a session against a recorded clip, end to end
 ```
 
-The smoke test runs the full loop with sending disabled, so it is safe to run against a
-live project without contacting anyone.
+The smoke test runs the full fleet against a fixture rather than a live camera, so it is
+safe to run on a fresh project without streaming anything.
 
 <!-- Expand with exact commands once the build lands. -->
 
@@ -256,20 +320,24 @@ live project without contacting anyone.
 
 ## Disclosure
 
-Rotation was built during the All Things Agentic submission period (3–31 August 2026).
+Witness was built during the All Things Agentic submission period (3–31 August 2026), in a
+repository created inside that window.
 
-Two earlier projects by the same author informed its design and are named here because
-the rules require pre-existing work to be disclosed:
+Earlier projects by the same author informed its design and are named here because the
+rules require pre-existing work to be disclosed:
 
-- **TollRoad** (`~/Code/tollroadmusic`, first commit 12 June 2026) — a metered-billing
-  music platform. Its payment rails, catalogue model and MCP surface informed
-  Rotation's design. No source is carried over.
-- **Spindle** (`~/Code/spindle`, first commit 26 July 2026) — a counterparty index and
-  outreach fleet built for a different hackathon. Its matching approach informed
-  Rotation's design. No source is carried over.
+- **Nucleus Brain** (`~/Code/enterprise-ai`) — a multi-agent operations platform whose
+  approve/reject governance, trust scoring and immutable audit trail directly informed
+  Witness's separation of agent judgement from human authority. No source is carried over.
+- **DerbyFish** (`~/Code/derbyfish`) — a catch-verification platform. Its
+  session-as-timeline model and the principle that evidence richness determines confidence
+  informed Witness's session design. No source is carried over.
+- **Spindle** (`~/Code/spindle`) and **TollRoad** (`~/Code/tollroadmusic`) — an agentic
+  outreach fleet and a metered-billing platform. Their fleet topology and per-unit metering
+  informed the Treasurer. No source is carried over.
 
-The counterparty data Rotation uses is harvested fresh from public registers by code in
-this repository. Nothing was copied from either predecessor.
+Every line of Witness was written during the submission period. The predecessors supplied
+concepts, not code.
 
 ---
 
