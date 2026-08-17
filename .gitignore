@@ -1,0 +1,26 @@
+# Internal strategy — analyses the judging panel and the competitive field.
+# If a judge reads this, it costs us the prize. Never commit it.
+STRATEGY.md
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*-key.json
+service-account*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# Build and local
+dist/
+build/
+.DS_Store
+*.log
