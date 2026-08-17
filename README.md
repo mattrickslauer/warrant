@@ -150,8 +150,15 @@ skeptic can check in five minutes.
 
 ## Custody: why the recording does not live here
 
-A session is streamed to a live video platform — YouTube in the reference deployment —
-and Witness watches that stream rather than hosting it.
+The subject's encoder sends the session to **two destinations at once** — an ordinary
+thing for broadcast software to do. One copy goes to Witness for analysis. One goes to a
+public platform, YouTube in the reference deployment, purely as a witness of record.
+
+Witness never ingests the platform's copy. YouTube's developer policies are explicit that
+third parties may not *"download, import, backup, cache, or store copies of YouTube
+audiovisual content"*, and we do not. We ask their API one question — when did this
+broadcast start, and is it live — which is ordinary metadata use, and that answer becomes
+a corroborating timestamp.
 
 This is not a convenience. It is the point.
 
@@ -370,7 +377,9 @@ Witness runs on Google Cloud.
 
 | Layer | Service |
 |---|---|
-| Reasoning and live video understanding | **Gemini 3.5** via Vertex AI |
+| Judgement on flagged segments | **Gemini 3.5** via Vertex AI, standard multimodal |
+| The agent that joins the session | **Gemini 3.5 Live API** — conversational presence, no authority over the outcome |
+| Continuous feature extraction | **Witness Kit** — a local OBS plugin and extractor, full frame rate |
 | Agent framework | **Agent Development Kit (ADK)** |
 | Agent runtime | **Agent Engine** — long-running agents with pause and resume |
 | Discovery and lifecycle | **Agent Registry** |
@@ -380,13 +389,21 @@ Witness runs on Google Cloud.
 | Inline guardrails | **Model Armor** |
 | Telemetry | **Agent Observability** — OpenTelemetry traces and audit logs |
 | Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
-| Session custody and publication | **YouTube Live** — third-party recording and timestamps |
+| Independent record | **YouTube Live** — a second encoder output we reference but never ingest |
 | Capture-chain telemetry | **OBS websocket** — source provenance, scene and filter events |
 | Session index | Vector search over observed events |
 | High-volume frame classification | **Gemma** — the cheap pass the Treasurer routes to |
 | Adversarial test material | **Veo** — synthetic fraud clips, generated to attack our own Skeptic |
 
-Full diagram: [`docs/architecture.md`](docs/architecture.md)
+Full design, the verified constraints behind it, and the verification ladder:
+[`docs/architecture.md`](docs/architecture.md)
+
+**Why the heavy work happens at the edge.** The Live API accepts video at a maximum of one
+frame per second — enough to hold a conversation, not enough to count a repetition or catch
+a splice hidden between samples. So full-rate analysis runs on the client, a compact
+per-slice embedding streams continuously, and frontier-model attention is spent only where
+the cheap layer flags something. The constraint produced a better architecture than the one
+we would have designed without it.
 
 **Why the governance components are load-bearing rather than decorative.** A system that
 adjudicates other people's claims is worthless if it cannot prove who decided what, under
