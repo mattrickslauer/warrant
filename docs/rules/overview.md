@@ -24,7 +24,6 @@ Follow these steps to go from sign-up to submission in a weekend and lean on the
   4. **Build on Gemini + Google Cloud.** Keep your spend low with the cost-saving tips in Resources.
   5. **Submit before the deadline:** a demo video, your code repo, an architecture diagram, and a short write-up. Full checklist below under "What to Submit."
 
-
 Everything you need is one click away — hit View Resources to explore the guides, credits, and track deep-dives.
 
 [](https://allthingsagentichackathon.devpost.com/resources)
@@ -55,7 +54,6 @@ Projects must be built within **one** of these three categories:
 
      * Recommended Tech to use (Gemini Enterprise Agent Platform):
 
-
 [](https://allthingsagentichackathon.devpost.com/resources#:~:text=managed%20cloud%20memory.-,EXPLORE%20THE%20TRACKS,-The%20Taskmaster%20%E2%80%94%20in "https://allthingsagentichackathon.devpost.com/resources#:~:text=managed%20cloud%20memory.-,EXPLORE%20THE%20TRACKS,-The%20Taskmaster%20%E2%80%94%20in")
 
 **Every project, in every track, must use:**
@@ -65,7 +63,6 @@ Projects must be built within **one** of these three categories:
   2. At least one Google Agent Framework: Google ADK, GenAI SDK, Antigravity SDK or GenKit
 
   3. At least one Google Cloud infrastructure service (such as Cloud Run, Cloud SQL, Firestore, GKE, Pub/Sub).
-
 
 **Note on cost & deployment**: Your app does not need to be publicly accessible or live at the exact moment of submission or judging (so you don't rack up unnecessary costs). You just need to provide clear proof that it was built and deployed on Google Cloud — for example, shown in your demo video and code repository. See [Resources](https://allthingsagentichackathon.devpost.com/resources) for tips on keeping your costs near zero.
 
@@ -103,13 +100,11 @@ Projects must be built within **one** of these three categories:
 
     * Must demonstrate the backend is running on Google Cloud (ie: Google Cloud Console, Cloud Run dashboard, Vertex AI logs, URL of .run, etc)
 
-
 For **Bonus Points** , optionally you can do one or both of the following:
 
   * Publish a piece of content (blog, podcast, video): Covering how the project was built on any public platform (e.g., medium.com, [dev.to](http://dev.to), YouTube, etc.). The content must be public (not unlisted). You must include language that says you created the piece of content for the purposes of entering this hackathon.
   * Publish a social media post: Highlight or promote your project on social media post on X, LinkedIn, Instagram, or Facebook. For any social media posts on platforms such as X or LinkedIn, include the hashtag #AllThingsAgenticHackathon.
   * Successfully integrate Google AI models such as Gemma, Veo or Lyria.
-
 
 ---
 
@@ -250,12 +245,10 @@ How sound are your engineering choices? We look at how you decouple systems, man
   * **Demo & Production Readiness- 30%**
 How clearly do your video and repo prove it works? We want a live, unedited demo, a clean architecture diagram, reproducible setup, and visible proof it runs on Google Cloud.
 
-
 Questions? [Email the hackathon manager](mailto:shawni@devpost.com)
 
 **Invite others to compete**
 
   *   *   *
-
 
 This site is protected by reCAPTCHA and the Google [Privacy Policy](https://policies.google.com/privacy) and [Terms of Service](https://policies.google.com/terms) apply.

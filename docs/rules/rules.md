@@ -60,7 +60,6 @@ NO PURCHASE NECESSARY TO ENTER OR WIN. To enter the Contest, visit the Contest w
 
   * Submit Your project to the Contest Site. Make sure to complete and enter all of the required fields on the “Enter a Submission” or similar worded page of the Contest Site (each a “Submission”) during the Contest Period.
 
-
 ****
 
 ##### 6\. Submission Requirements:
@@ -90,7 +89,6 @@ Projects must be built within one of these three categories:
      4. **Telemetry: **Agent Observability (OpenTelemetry-compliant audit logs and end-to-end reasoning chain traces).
 
      1. **Recommended Tech to use (Gemini Enterprise Agent Platform): **
-
 
 **Project Team:** You may submit your Project as an individual, a team, or on behalf of an organization. A Team must consist of only Eligible Individuals, have all team members added as members of the Project on Devpost. If a team or Organization is entering the Submission, one individual must be appointed and authorized (the “Representative”) to represent, act, and enter the Submission, on the team’s behalf.
 
@@ -150,7 +148,6 @@ If the Project includes software that runs on proprietary or third-party hardwar
 
   * It cannot contain any content, element, or material that violates a third party’s publicity, privacy or intellectual property rights.
 
-
 ****
 
   * **Optional Developer Contributions:** Submit the following optional components to positively impact the score the submission receives from the Judges.
@@ -160,7 +157,6 @@ If the Project includes software that runs on proprietary or third-party hardwar
     * Publish a **social media post:** Highlight or promote your project on social media post on X, LinkedIn, Instagram, or Facebook. For any social media posts on platforms such as X or LinkedIn, include the hashtag #AllThingsAgentic Hackathon.
 
     * Successfully integrate Google AI models such as Gemma, Veo or Lyria.
-
 
 ****
 
@@ -184,9 +180,7 @@ The Submissions will be evaluated by the Judges in the following Stages:
 
   * **Stage One:** The first stage will determine via pass/fail whether the Submission meets a baseline level of viability, in that the Submission includes all Submission requirements, reasonably addresses a Challenge, and reasonably applies the requirements.
 
-
   * **Stage Two:** All Submissions that pass Stage One will be evaluated in Stage Two by the Judges based on the following weighted criteria, and according to the sole and absolute discretion of the Judges. Each Submission will receive a score from 1 to 5 per criterion and those criterion scores will be averaged per Submission.
-
 
 **Innovation & Operational Utility (40%)**
 
@@ -198,7 +192,6 @@ Does the system eliminate real-world friction? Is the "Twist" present? We are lo
 
   * For Fortified Enterprise Fleet: Is the task complex enough to warrant a multi-agents system? Does the system intelligently delegate tasks to specialized sub-agents? Did they build this for an "Unlikely Hero" outside of standard corporate roles?
 
-
 **Architectural Discipline & Tech Stack (30%)**
 
 We are evaluating your engineering decisions, not just your ability to call an API. How well did your team decouple systems, manage state, and design robust, failure-tolerant agentic systems?
@@ -209,7 +202,6 @@ We are evaluating your engineering decisions, not just your ability to call an A
 
   * For The Multi-Agent Nexus: Judges are looking for good use of agent workflows. Is there a clear, strictly enforced separation of concerns between agents? Is the inter-agent routing logic failure-tolerant (e.g., how does the system recover if a worker agent loops or returns a hallucination)?
 
-
 **Demo & Production Readiness (30%)**
 
 The clarity of the technical documentation and the undeniable proof of execution in the video pitch. Does the 4-minute video clearly define the friction being solved and explain the architecture?
@@ -218,11 +210,9 @@ The clarity of the technical documentation and the undeniable proof of execution
 
   * The Documentation: Does the public GitHub repository feature a clean architecture diagram and reproducible setup instructions? Is there visual proof of Google Cloud deployment in the video?
 
-
 ****
 
   * **Stage Three:** The Submissions that pass Stage One and Two will be evaluated based on Bonus Contributions outlined in Section 6:
-
 
   * **Optional Developer Contributions:** Submit the following optional components to positively impact the score the submission receives from the Judges.
 
@@ -232,9 +222,7 @@ The clarity of the technical documentation and the undeniable proof of execution
 
     * Earn 0.2 bonus points for each additional Google AI model successfully integrated (such as Gemma, Veo, or Lyria), up to a maximum of 0.6 total bonus points
 
-
 Each Submission will receive a Final score from 1 to 6, with the highest possible Final score being 6.
-
 
 The highest-scoring Submission for each category will be selected as the potential winner(s). The highest-scoring Submission across all categories will win the Grand Prize. Ties will be broken by comparing scores on each criterion in the order listed, and if a tie remains, judges will vote. If a potential winner is disqualified, the Submission with the next highest score will become the potential winner. Determinations of judges are final and binding.
 
@@ -261,7 +249,6 @@ Best Multimodal UX |  • $5,000 in USD • $1000 in Google Cloud Credits for us
 Honorable Mentions |  • $2,000 in USD • $500 in Google Cloud Credits for use with a Cloud Billing Account |  5 |  Runners up from all eligible submissions
 
   * Each Project is eligible for up to one (1) Prize.
-
 
 **C. Terms Applicable to All Prizes.**
 

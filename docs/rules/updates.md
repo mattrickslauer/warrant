@@ -30,7 +30,6 @@ Google's running **four live, hands-on workshops** through the submission period
   * **Aug 13 —[Build a Long-Running Agent](https://cloudonair.withgoogle.com/events/build-long-running-agent-persistent-workflows-google-adk):** persistent workflows with ADK — crash recovery, human approval, and the idempotency trap. _(9:00 AM or 9:00 PM PT)_
   * …
 
-
 [Read more](/updates/45780-4-live-workshops-are-here-and-the-first-one-s-tomorrow)
 
 * * *
@@ -72,6 +71,5 @@ A little planning goes a long way. Here's a rough timeline that leaves room for 
   * 🧰 **Start building** — Aug 10
 
   * ✍️…
-
 
 [Read more](/updates/45652-how-to-plan-your-project)

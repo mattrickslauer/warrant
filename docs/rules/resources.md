@@ -10,7 +10,6 @@
 
   * $150 in Google Cloud credits for this hackathon — request via the [credit form](https://forms.gle/5PtXmw1dSbDnpYke9).
 
-
 ####
 
 ####  GET HELP
@@ -58,19 +57,16 @@ Aug 27, 2026
   * **The focus:** An event-driven workflow with autonomous routing. Your system acts like a smart coordinator — watching for a change, figuring out what needs to happen next, and interacting with different apps to get the job done, from start to finish, without you guiding each step.
   * **Examples:** An "Automated Product Manager" that reads meeting transcripts, extracts action items, creates Jira tasks, and posts a summary to Slack. A "Freelance Pipeline" agent that watches your inbox for new inquiries, checks your calendar, drafts a proposal from your past work, and saves it for review.
 
-
 ##### The Collaborative Partner — in depth
 
   * **The focus:** Stateful, multi-turn dialogue with real-time context retrieval (RAG) and persistent memory, so your agent adapts and personalizes based on past interactions instead of starting over each time.
   * **Examples:** An expert guide that helps you understand a dense legal document, quizzes you as you go, learns which concepts you struggle with, and adapts future explanations. A UI/UX helper for non-designers that turns a vague idea into a wireframe and learns your brand preferences from your corrections.
-
 
 ##### The Fortified Enterprise Fleet — in depth
 
   * **The focus:** Corporate agent discovery, multi-agent orchestration at scale, long-term state persistence, runtime observability, and security posture enforcement. Show how an organization can discover your agents, audit their reasoning, trust their data handling, and scale them safely. Open to everyone — not just startups or enterprises.
   * **Recommended tech** **(Gemini Enterprise Agent Platform)** : Agent Registry (discovery/versioning); Agent Runtime (long-running async execution) + Memory Bank (persistent cross-session context); Agent Identity (zero-trust access), Agent Gateway (routing + policy), Model Armor (guardrails against prompt injection, tool poisoning, PII leaks); Agent Observability (audit logs + reasoning-chain traces).
   * **Example:** An "Enterprise Supply Chain Orchestrator" that a procurement manager finds in the internal Agent Registry to run a multi-week vendor onboarding cycle — monitoring delivery webhooks, remembering negotiation data via Memory Bank, securely querying private ERP inventory with Agent Identity, coordinating with a logistics sub-agent through Agent Gateway, and screening all external email with Model Armor.
-
 
 ####  START WITH GEAR (Gemini Enterprise Agent Ready)
 
@@ -87,7 +83,6 @@ Gemini Enterprise Agent Ready (GEAR) is Google's skilling program for learning t
   * Where do I begin? Start with the [Introduction to Agents](https://www.skills.google/paths/3546) path, then move on to the Build and Deploy paths.
 
   * Questions? The [GEAR FAQ](https://developers.google.com/profile/help/gear) covers the details.
-
 
 Different from GEAP tools listed for Fortified Enterprise Fleet category
 
@@ -107,7 +102,6 @@ The Gemini Enterprise Agent Platform is Google Cloud's managed platform for buil
 
   * [Announcement blog](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)
 
-
 #####
 
 #####
@@ -125,7 +119,6 @@ The Gemini Enterprise Agent Platform is Google Cloud's managed platform for buil
   * [Cloud Run](https://cloud.google.com/run) — deploy your agent with a URL; scales to zero when idle
 
   * [Firestore](https://cloud.google.com/firestore) — simple NoSQL datastore for agent state/memory
-
 
 #####
 
