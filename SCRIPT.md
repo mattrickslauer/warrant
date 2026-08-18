@@ -27,6 +27,7 @@ Screen time is budgeted deliberately:
 | Cold open | 0:18 | 8% |
 | Problem and framing | 0:40 | 17% |
 | **The product working** | **1:57** | **49%** |
+| *(+ Wright, if it works)* | *+0:12* | *see note* |
 | Google Cloud proof | 0:23 | 10% |
 | Ledger and close | 0:22 | 9% |
 
@@ -117,6 +118,17 @@ Unchanged. It is the strongest asset in the film.
 > This is the centre of the film. It is the moment the claim stops being a promise. Shoot the
 > click on the α7 at high frame rate and let it breathe — it is the one place slow motion earns
 > its place.
+
+### WRIGHT — optional, 12s, only if it works (2:20–2:32)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 23e | 2:20 | A different, unfamiliar BLE device set on the bench. Screen: Wright enumerating its services and characteristics, live. | VO: *"It had never seen this one."* |
+| 23f | 2:26 | Code being written on screen. Then a reading appears from the device — a real number, from a driver that did not exist ninety seconds ago. | VO: *"So it read the device, worked out how it talks, and wrote the driver itself."* |
+
+> **Include only if Wright genuinely works.** It is the most striking twelve seconds available
+> and it is also the first thing to cut. To make room, drop shot 9 and tighten shot 22 —
+> **do not** take the time out of shot 24, which is scored directly.
 
 ### THE CHAIN — unedited, one take (2:20–2:55)
 

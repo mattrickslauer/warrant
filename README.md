@@ -130,6 +130,7 @@ Warrant pairs with the tools that already produce numbers, and takes their readi
 | Instrument | What it settles |
 |---|---|
 | **Bluetooth torque wrench** | Fastener tightened to specification, at a timestamp, on this job |
+| A sensor you built yourself | Clearance, slack, level, travel — anything a cheap probe can measure |
 | Digital calipers / micrometer | Wear limits, disc thickness, clearances |
 | Tyre pressure and tread gauges | Condition against a threshold |
 | OBD / CAN reader | Fault codes cleared, odometer at service |
@@ -216,7 +217,7 @@ that never happened.
 
 ## The fleet
 
-Eight agents. Each does one narrow job; the work it finishes is what wakes the next.
+Nine agents. Each does one narrow job; the work it finishes is what wakes the next.
 
 | Agent | What it does |
 |---|---|
@@ -228,6 +229,7 @@ Eight agents. Each does one narrow job; the work it finishes is what wakes the n
 | **Buyer** | Purchase orders, reorder points, lead times, supplier follow-up |
 | **Registrar** | Seals and signs the record. The logbook nobody can quietly edit |
 | **Gatekeeper** | Refuses to release the machine. Overdue, unverified, or out of tolerance |
+| **Wright** | Meets an instrument it has never seen, works out how it speaks, and writes the driver |
 
 The **Treasurer** meters what the fleet spends and stops at a ceiling. The **Chronicler**
 writes every decision to a public log, so any claim in this document can be checked by a
@@ -241,6 +243,13 @@ different bike, a reading from yesterday, a session with a gap in it.
 **Why the Gatekeeper is the point.** Every other agent produces a record. The Gatekeeper is
 the one that stops a machine going out to somebody, and it is the only part of this system
 that protects a person who has no idea it exists.
+
+**Why Wright exists at all.** Every instrument speaks its own dialect, and writing a driver
+per tool is the long-tail work that stops a platform like this from ever generalising. Wright
+enumerates an unfamiliar device, infers how it encodes its readings, writes the driver, and
+then **runs it against the live device to see whether the number that comes back makes
+sense.** Generated code that talks to hardware has ground truth available for free, which is
+why this works where generated code usually does not.
 
 ---
 
@@ -272,7 +281,8 @@ Warrant runs on Google Cloud.
 | Inline guardrails | **Model Armor** — faces, plates and customer data redacted before anything leaves the device |
 | Telemetry | **Agent Observability** — OpenTelemetry traces, end-to-end reasoning chains |
 | Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
-| Instruments | BLE pairing on the technician's phone — torque wrenches, gauges, readers |
+| The technician's client | **Android, native, Expo** — capture, BLE pairing, offline queue, on-device redaction |
+| Instruments | BLE, behind a driver contract that the rest of the system is indifferent to |
 | Where the business works | **Google Workspace** — Sheets for the parts ledger, Docs for procedures, Gmail for orders and requests, Drive for sealed records |
 | Machine-to-machine surface | **MCP server** on Cloud Run — inventory, purchase orders, cross-department requests |
 | Volume classification | **Gemma** — the cheap pass over routine evidence |

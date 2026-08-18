@@ -173,7 +173,80 @@ change to the fleet**, and that is the test of whether the abstraction is real.
 
 ---
 
-## 6. Where each model is spent
+## 6. The client
+
+**Android, native, built with Expo.**
+
+Native rather than web because the client pairs Bluetooth instruments, and **Web Bluetooth
+does not exist on iOS Safari** — a browser client would rule out half of any future
+deployment. Android-only for now because iOS device deployment needs a paid developer
+account, Android BLE is materially easier to debug, and one platform halves the test surface
+in a short build. Expo keeps iOS available later at near-zero cost.
+
+**Expo Go will not work.** BLE requires native modules, so the client runs as a development
+build (`expo prebuild` + dev client). One hour of setup, then a fast reload loop on a
+physical handset for everything after.
+
+What the client owns:
+
+| Responsibility | Why it lives on the device |
+|---|---|
+| Capture — photo, video, audio, scan | Full fidelity exists nowhere else |
+| BLE pairing and instrument reads | The only place the instrument is reachable |
+| Field validation — focus, exposure, presence of a reading | Instant, free, no round trip |
+| Offline queue | Workshops have bad signal and jobs cannot stop |
+| PII redaction before upload | Faces and plates should never leave the device unmasked |
+
+The client is **untrusted**. Everything it reports is a claim to be corroborated, which is
+why capture integrity — contiguity, timing, device attestation — is itself a measured field
+rather than an assumption.
+
+---
+
+## 7. Drivers, and the agent that writes them
+
+Every instrument speaks its own dialect. Writing a driver per tool is the long-tail
+integration work that stops platforms from generalising, so it is the part worth automating.
+
+### The driver contract
+
+Deliberately small, because everything above it must be indifferent to which tool it is:
+
+```
+Driver
+  matches     scan filter — service UUID, name prefix, manufacturer data
+  produces    kind: measurement · unit: "mm" · range: [0, 4000]
+  read()      raw bytes → { value, unit, tool_id, timestamp, raw }
+```
+
+A `measurement` field does not know or care whether the number came from a commercial torque
+wrench or an ESP32 with an ultrasonic sensor. It knows the reading arrived from a paired tool
+without passing through a human, which is the only property that makes it **measured**.
+
+### Wright — the driver author
+
+**Wright** is pointed at a device it has never seen and writes the driver.
+
+1. Enumerate the device's advertised GATT services and characteristics
+2. Read the public specifications for any standard services it finds
+3. Probe unknown characteristics and infer the encoding from the bytes
+4. Emit a driver against the contract above
+5. **Run it against the live device and check the reading is plausible**
+6. On failure, feed the error back and try again
+
+Step 5 is the reason this works. Generated code that talks to hardware has ground truth
+available at no cost — the device either produces a sensible number or it does not. Both the
+prior winners that leaned on code generation cited a generate → validate → feed-back loop as
+the thing that made it reliable, and hardware is a stricter validator than a linter.
+
+**Scope honestly.** One hand-written ESP32 driver is the floor and it is enough for the
+system to work. Wright is the thing that turns one instrument into any instrument, and its
+demo — an agent enumerating an unknown device, inferring its protocol, writing code, and
+pulling a live reading — is the most striking thing in the fleet.
+
+---
+
+## 8. Where each model is spent
 
 | Layer | Model | When | Why |
 |---|---|---|---|
@@ -188,7 +261,7 @@ never reach a frontier model, which is what makes a job cost cents instead of do
 
 ---
 
-## 7. Assumptions we bake in, and publish
+## 9. Assumptions we bake in, and publish
 
 1. **A model's judgement is inferred, never measured.** Nothing Gemini concludes can overwrite
    an instrument reading.
@@ -206,7 +279,7 @@ false-accept rate is asking to be trusted on exactly the question it exists to s
 
 ---
 
-## 8. Google Cloud mapping
+## 10. Google Cloud mapping
 
 | Concern | Service |
 |---|---|
@@ -227,14 +300,17 @@ false-accept rate is asking to be trusted on exactly the question it exists to s
 
 ---
 
-## 9. Still unverified
+## 11. Still unverified
 
+- **Whether the ESP32 pairs cleanly to an Expo development build** over BLE. This is the
+  hello-world for the entire client and should be proved before any other code is written.
 - **Which BLE instrument is available.** An ESP32 with an ultrasonic sensor is a genuine
   measuring device and is on hand; a commercial torque wrench is not. The `measurement` field
   kind is indifferent to which — but at least one real instrument must exist, or the measured
   class is empty and the central claim is unsupported.
-- **Web Bluetooth is unavailable on iOS Safari.** On Android a PWA pairs directly. On iOS this
-  forces a native client. This decides the entire client architecture and is unanswered.
+- **Wright's inference quality on genuinely unknown devices.** Standard GATT services are
+  documented and reliably inferable; a proprietary characteristic may not be. The floor is a
+  hand-written driver, so this is upside rather than risk.
 - **Whether Agent Registry, Memory Bank, Agent Identity, Agent Gateway and Model Armor are
   enabled and reachable** in our project and region. Five of the seven Fortified Enterprise
   Fleet components are named as load-bearing and none has been confirmed against our own
