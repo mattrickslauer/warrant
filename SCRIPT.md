@@ -104,15 +104,24 @@ Unchanged. It is the strongest asset in the film.
 | 19 | 1:30 | Step 2. Removed pad photographed in a tray. Overlay: `wear consistent with 4,100 km — pass` | Ratchet, room tone. No music. |
 | 20 | 1:38 | Step 3. Part held to camera. Overlay flags: `reads 45022-K · work order expects 45022-KA` | Beat. |
 | 21 | 1:44 | The flow **branches** — a supersession question appears that wasn't in the original seven steps. Technician answers. | VO: *"It isn't a checklist. When reality disagrees with the plan, it opens the step it needs."* |
-| 22 | 1:53 | Quick beat: the technician asks a question out loud, hands still busy. The agent answers. | VO: *"Nothing gets typed in. Evidence is captured, not entered."* |
+| 22 | 1:53 | Thumb holds a button. A question asked out loud, hands still busy. An answer comes back. | VO: *"There's help on a held button if you want it. Most jobs use it twice. Nothing gets typed in — evidence is captured, not entered."* |
+
+### THE CHECK THAT NEEDS NO MODEL (1:58–2:00)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 22b | 1:58 | Flash of a rejected job on screen: `step 4 · elapsed 41s · minimum 12 min · REFUSED` | Two seconds. Hard in, hard out. |
+
+> Two seconds, and worth them. This refusal involves no camera and no model — it is arithmetic
+> on a clock. It tells a judge the system is not a pile of vision calls in a trenchcoat.
 
 ### THE INSTRUMENT — the hero shot (2:00–2:20)
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 23a | 2:00 | Macro. The torque wrench on the caliper bolt. Slow. | Music out entirely. Room tone. |
-| 23b | 2:07 | **The wrench clicks.** | **CLICK.** Nothing else. |
-| 23c | 2:09 | Cut to the phone: `28.4 Nm · 14:32:07 · tool #A19 · MEASURED` lands in the record on its own. | Single soft confirmation tone. |
+| 23a | 2:00 | Macro. The tool on the caliper bolt, phone paired and waiting. Slow. | Music out entirely. Room tone. |
+| 23b | 2:07 | **The tool reaches spec — the click, or the angle completing.** | **CLICK.** Nothing else. |
+| 23c | 2:09 | Cut to the phone: `90.4° · 14:32:07 · tool #A19 · MEASURED` lands in the record on its own. Nobody typed it. | Single soft confirmation tone. |
 | 23d | 2:14 | Three-row overlay: **measured** / **inferred** / **asserted**, with this reading filed under measured. | VO: *"A photo says the job was done. A torque wrench says it was done right. Warrant never confuses the two."* |
 
 > This is the centre of the film. It is the moment the claim stops being a promise. Shoot the
@@ -134,7 +143,7 @@ Unchanged. It is the strongest asset in the film.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 24 | 2:20 | **UNEDITED. ONE TAKE. NO CUTS. 35 seconds.** Final step passes → work order closes → the parts sheet in Google Sheets decrements live → stock drops below floor → a purchase order drafts itself in Gmail → a request goes to accounts → Cloud Trace shows the four agents that did it. | VO for the first 12s: *"One step passing. Four agents. Nobody typed anything."* Then **let it run silent.** |
+| 24 | 2:20 | **UNEDITED. ONE TAKE. NO CUTS. 35 seconds.** Final step passes → the record seals → stock decrements → the shelf drops below its floor → a purchase order **drafts and waits for approval** → the ledger updates → Cloud Trace shows the four agents that did it. | VO for the first 12s: *"One step passing. Four agents. Nobody typed anything — and nothing was sent until I said so."* Then **let it run silent.** |
 
 > Scored directly by the Demo criterion. Rehearse until it runs clean, then record in one
 > pass. If it errors, record it again — do not cut around a failure.
@@ -143,9 +152,9 @@ Unchanged. It is the strongest asset in the film.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 25 | 2:55 | Different bike. Customer waiting, helmet in hand. You reach for the keys. | Room tone. |
-| 26 | 3:00 | Phone: `BIKE 07 — HELD · step 4 torque not recorded · procedure v3` | One flat low tone. |
-| 27 | 3:05 | You put the keys back. Hand the customer a different set. | VO: *"Someone ticked the box. The wrench never reported a number, so the bike doesn't go out."* |
+| 25 | 2:55 | Different bike. Customer waiting, helmet in hand. You go to the key safe. | Room tone. |
+| 26 | 3:00 | **The safe does not open.** Phone: `BIKE 07 — HELD · step 4 no instrument reading · procedure v3` | The lock does not click. One flat low tone. |
+| 27 | 3:07 | You take a different set of keys instead. | VO: *"Someone ticked the box. No tool ever reported a number — so the drawer stays shut. It isn't a warning I can dismiss."* |
 | 28 | 3:11 | Customer rides off on the other bike. Two seconds, no lingering. | VO: *"That's the only part of this that protects a person who doesn't know it exists."* |
 
 ### GOOGLE CLOUD — required (3:15–3:38)

@@ -2,8 +2,7 @@
 
 **Maintenance records that are evidence, not paperwork.**
 
-> **Working name.** A warrant is a guarantee that a thing is as represented. Change it
-> before submission if something better lands.
+> **Working name.** A warrant is a guarantee that a thing is as represented.
 
 ---
 
@@ -11,245 +10,246 @@
 
 Somewhere right now, a technician is ticking a box that says *brake pads replaced*.
 
-Maybe they replaced the brake pads. Probably they did. The record says so either way,
-because the record is a tick in a box, and a tick in a box is not evidence of anything. It
-is a claim by an interested party, stored in a system designed to accept it.
+Maybe they replaced the brake pads. Probably they did. The record says so either way, because
+the record is a tick in a box — a claim by an interested party, stored in a system designed to
+accept it.
 
 This is the trust model for maintenance across almost every industry on earth. It is why
-skipped servicing is endemic, why falsified maintenance records are a recognised category
-of fraud, and why the person who *did* do the work correctly still cannot prove it when a
-dispute arrives eight months later.
+skipped servicing is endemic, why falsified maintenance records are a recognised category of
+fraud, and why the technician who *did* do the job right still cannot prove it when a dispute
+arrives eight months later.
 
-There is one industry that solved this.
+Two industries already solved this. Neither solution has ever reached the people who need it
+most.
 
-## What aviation did, and why you can't afford it
+## What aviation did, and what delivery did
 
-An aircraft's maintenance logbook is legally binding. Every life-limited part carries a
-traceable certificate. Every task is signed by a licensed engineer against a published
-procedure. Nothing flies until the paperwork says it can, and the paperwork means something
-because falsifying it is a criminal act with a name.
+An aircraft's logbook is legally binding. Every life-limited part carries a traceable
+certificate. Every task is signed by a licensed engineer against a published procedure.
+Nothing flies until the paperwork says it can, and the paperwork means something because
+falsifying it is a crime with a name. **It works — and it is affordable only because the
+airframe underneath it is worth tens of millions.**
 
-**It works.** It is also one of the most expensive administrative regimes ever built, and it
-is affordable only because the airframe underneath it is worth tens of millions of dollars.
+Meanwhile, every time a courier drops a parcel, a stranger performs an unsupervised task and
+proves it in about four seconds. Arrived — GPS confirms it. Right address — confirmed. Gate
+code needed? Only then are you asked. Left at the door — photograph, timestamped, attached.
+**It costs pennies**, and it works for three reasons:
 
-Everyone else — the rental fleet, the plant floor, the equipment hire yard, the marine
-operator, the contractor with nine machines — gets the tick in the box. Not because their
-failures are less consequential to the person standing next to the machine, but because
-assurance has always been priced as human attention, and human attention does not scale down.
+- The worker never decides what evidence to capture. The app asks, one step at a time.
+- The proof is a **gate**, not a form field at the end.
+- The flow branches. Steps appear only when the situation calls for them.
 
-**Warrant is the aviation regime at a price a nine-machine operator can pay.**
+Maintenance has neither. It has a clipboard, a tick, and a signature at the bottom.
 
-## And one industry already worked out how
-
-Every time a courier drops a parcel, a stranger performs an unsupervised task and proves it
-in about four seconds. Arrived — GPS confirms it. Right address — confirmed. Gate code
-needed? Only then are you asked. Left at the door — photograph, timestamped, attached.
-
-Nobody calls that verification infrastructure, but that is exactly what it is, and it is the
-most successful deployment of it in history. It works because of three choices:
-
-- **The worker never decides what evidence to capture.** The app asks, one step at a time.
-- **It will not advance without it.** The proof is a gate, not a form field at the end.
-- **The flow branches.** Steps appear only when the situation calls for them.
-
-Maintenance has none of that. It has a clipboard, a tick, and a signature at the bottom.
-
-**Aviation set the standard. Delivery worked out the price.** Warrant is the first and the
-second at the same time, pointed at any procedure you can write down.
+**Aviation set the standard. Delivery worked out the price. Warrant is the first at the
+second's price.**
 
 ---
 
-## What Warrant is
+## How it works
 
-A platform for building maintenance procedures that **prove themselves as they are performed.**
+### 1. Describe the job once
 
-You define a procedure once. Each step declares what would count as evidence that it
-happened. A technician works through it on their phone. A fleet of agents verifies each step
-against its own standard, and the moment a step passes, whatever should happen next happens
-on its own — parts are consumed, stock is reordered, the work order advances, the asset is
-released.
-
-Nothing about that requires anyone to remember anything, and nothing in the finished record
-rests on someone's word.
-
-### 1. Define the procedure
-
-You describe the job in plain language. An agent interviews you until the ambiguity is gone —
-*what counts as done, what disqualifies it, what has to be measured, what a technician is
-allowed to decide on their own* — and compiles the answers into a versioned, machine-checkable
-procedure.
+You say what the work is in plain language. An agent interviews you until the ambiguity is
+gone — *what counts as done, what disqualifies it, what has to be measured, what a technician
+may decide alone* — and compiles the answers into a versioned, machine-checkable procedure.
 
 ```
 procedure: front-brake-service · v3
-  step 1  remove wheel            evidence: photo, wheel off, caliper visible
-  step 2  identify old pad        evidence: photo of removed pad — wear must be consistent
-                                            with the logged service interval
-  step 3  present new part        evidence: photo of part and label before fitting
-  step 4  fit and torque          evidence: TORQUE READING 28 Nm ±2 from a paired tool
-  step 5  function check          evidence: video, lever travel and return
-  disqualifies: elapsed time under 12 minutes · non-contiguous session ·
-                part number not matching the work order
-  releases: bike returns to service · consume 1× pad set · reorder if stock < 2
+  step 1  remove wheel          photo — wheel off, caliper visible
+  step 2  identify old pad      photo — wear consistent with logged interval
+  step 3  present new part      photo — label legible, matches work order
+  step 4  fit and torque        MEASUREMENT — 90° ±5 past snug, from a paired tool
+  step 5  function check        video — lever travel and return
+  disqualifies: step elapsed under 12 min · part number mismatch
+  releases: return to service · consume 1× pad set · reorder below 2
 ```
 
-That document is the product. Everything downstream is machinery.
+That document is the product. Everything else is machinery.
 
-### 2. Perform it, one step at a time
+### 2. Work through it, one step at a time
 
-The technician opens the job on their phone and is walked through it exactly the way a
-courier is walked through a drop. One step on screen. Capture the thing. Next.
+The technician opens the job on their phone and is walked through it the way a courier is
+walked through a drop. One step on screen. Capture. Next. **The step does not advance until
+its evidence exists**, and nothing is typed in.
 
-```
-  STEP 3 OF 7 — present the new part
+When reality disagrees with the plan — a part number that doesn't match, wear inconsistent
+with the interval — the flow **branches** and opens the step it needs.
 
-  Photograph the part and its label before fitting.
-  ────────────────────────────────────────────────
-  [ camera ]                          ● recording
+An **Instructor** is there the whole time on a held button. Press it, ask a question out loud,
+get an answer. It knows the procedure, the step, and the machine's history. Optional, and
+most jobs use it twice.
 
-  ✓ label legible
-  ✗ part number reads 45022-K —  work order expects 45022-KA
+### 3. Let the instruments speak
 
-  → Is this a supersession?   [ yes, and why ]   [ no, wrong part ]
-```
+A photograph tells you a job was done. **An instrument tells you it was done right.**
 
-The step does not advance until its evidence exists, and the agent watching is doing more
-than checking a box. It sees what the technician sees, and it **branches the flow when
-reality disagrees with the plan** — a part number that does not match, wear that is
-inconsistent with the service interval, a reading outside tolerance. Each of those opens the
-step it needs and closes it again.
+Warrant reads directly from paired tools — a torque wrench, a gauge, a caliper, a reader, or
+a sensor you built yourself. The number arrives with a tool identity and a timestamp, having
+passed through no human hands. That is the only property that makes a value **measured**
+rather than typed, and it is the difference between a system that watches work and one that
+**measures** it.
 
-That is where a procedure stops being a checklist and starts being a conversation with a
-record attached. **Nothing is typed in.** Evidence is captured, not entered.
+Every instrument sits behind the same small driver contract, so the rest of the system is
+indifferent to which tool it is. When it meets one it doesn't know, **Wright** works out how
+the device talks and writes the driver itself.
 
-### 3. Connect the instruments
+### 4. Verified steps act
 
-A photograph tells you a job was done. **A torque wrench tells you it was done right.**
+A passed step is not a green tick. It is a trigger. Stock decrements. A reorder is raised
+below its floor. The work order advances. The asset's history updates.
 
-Warrant pairs with the tools that already produce numbers, and takes their readings directly:
-
-| Instrument | What it settles |
-|---|---|
-| **Bluetooth torque wrench** | Fastener tightened to specification, at a timestamp, on this job |
-| A sensor you built yourself | Clearance, slack, level, travel — anything a cheap probe can measure |
-| Digital calipers / micrometer | Wear limits, disc thickness, clearances |
-| Tyre pressure and tread gauges | Condition against a threshold |
-| OBD / CAN reader | Fault codes cleared, odometer at service |
-| Multimeter, thermal camera, borescope | Electrical, thermal, and internal states a camera outside the housing cannot reach |
-
-This is the difference between a system that observes work and one that **measures** it, and
-it is the reason Warrant can make claims that a camera alone never could.
-
-### 4. Let the verified step act
-
-A passed step is not a green tick. It is a trigger.
-
-Parts come out of stock. A reorder is raised if the shelf drops below its floor. The work
-order advances. The asset's service history updates. When the last step passes, the machine
-is released — and until then, **it is not.**
-
-### 5. It lives where the business already lives
-
-Small operators do not run on dashboards. They run on a spreadsheet, an inbox, and a folder
-of photographs. Asking them to adopt another system is how good tools die.
-
-**Warrant works inside Google Workspace.** Procedures are documents. The parts ledger is a
-sheet, updated as steps consume stock. Purchase orders are drafted and sent from the
-operator's own mail. Signed records land in Drive, shareable with a customer or an insurer as
-an ordinary link. A request to another department is an email a person can simply reply to.
-
-The agents do the work in the tools that were already open. Nobody has to log in to anything
-to find out what happened.
-
-### 6. Other systems can drive it
-
-Warrant exposes itself over the **Model Context Protocol**, so the fleet is infrastructure
-rather than a destination:
-
-```
-list_procedures       what this shop knows how to do, and at which version
-open_job              start a procedure against an asset
-step_status           what evidence a job is waiting on
-get_record            the sealed record, its evidence, and its provenance classes
-inventory             what is on the shelf, what a job will consume
-raise_po              draft a purchase order against a shortage
-request               send a task to another department, and track the reply
-```
-
-An operator's own assistant can ask what is overdue and start the job. A finance system can
-pull the ledger. Another agent can raise the order. The best version of this product is one
-nobody has to open.
+And when the last step passes, the machine is released. **Until then, it isn't.**
 
 ---
 
 ## What "verified" actually means
 
 Warrant never claims a job was good. It closes off the ways the record could be false, and
-it states exactly which ways it closed. Every piece of evidence is filed into one of three
-classes, and they are never allowed to blur:
+states exactly which ways it closed. Every piece of evidence is filed into one of three
+classes, and they never blur:
 
-| Evidence | Class | Example |
-|---|---|---|
-| An instrument reading, taken by a paired tool | **measured** | `28.4 Nm · 14:32:07 · tool #A19` |
-| Capture integrity — contiguous session, device attestation, timing | **measured** | no gap between step 3 and step 4 |
-| What the media appears to show | **inferred** | the pad looks correctly seated |
-| Craft quality and judgement | **asserted** | the technician signs their name to it |
+| Evidence | Class |
+|---|---|
+| A reading from a paired instrument · `90.4° · 14:32:07 · tool #A19` | **measured** |
+| Capture integrity — the chain, the clock, the elapsed time | **measured** |
+| A part number matching the work order | **measured** |
+| What a photograph appears to show | **inferred** |
+| Craft quality and judgement | **asserted** — signed, by name |
 
-**An inferred value may never overwrite a measured one**, and the record renders the three
-differently. The model is allowed an opinion about whether a pad looks seated. It is not
-allowed an opinion about the torque, because a tool already answered that and tools do not
-have opinions.
+**An inferred value may never overwrite a measured one.** The model is allowed an opinion
+about whether a pad looks seated. It is not allowed an opinion about the angle, because a tool
+already answered that, and tools do not have opinions.
+
+### Where capture integrity comes from
+
+There is no continuous recording, so contiguity is **constructed rather than assumed.** Each
+capture is hashed together with the one before it, a server-issued nonce, and a monotonic
+clock, and travels with GPS and a device attestation. The server checks the chain is unbroken,
+that time only moves forward, and that each step took a plausible amount of time.
+
+What that establishes: these captures came from this device, in this order, inside this
+window, with nothing removed or reordered afterwards. **A twelve-minute job completed in forty
+seconds fails on elapsed time alone**, before anyone looks at a picture.
+
+What it does not establish: that the camera was pointed at the right thing. That stays
+inference, and is filed as inference.
 
 ### What Warrant will not tell you
 
 It does not judge workmanship from a photograph. It cannot see whether a bolt was
-cross-threaded, whether a caliper seated properly, or whether a fluid is the right grade.
-Any system claiming to assess craft quality from video is guessing, and guessing is worse
-than nothing in a record people will rely on years later.
+cross-threaded, whether a caliper seated correctly, or whether a fluid is the right grade. Any
+system claiming to assess craft from video is guessing, and guessing is worse than nothing in
+a record people will rely on years later.
 
 **What it establishes is that the work happened, with these parts, on this machine, at this
-time, to these measured values — and it refuses when it cannot establish that.**
+time, to these measured values — and it refuses when it cannot.** That is narrower than
+"we verify maintenance," and it is the one that is true. It also addresses the failure that
+actually occurs, which is not bad work. **It is work that never happened.**
 
-That is a narrower claim than "we verify maintenance," and it is the one that is true. It
-also happens to address the failure that actually occurs, which is not bad work. It is work
-that never happened.
+---
+
+## Buy the assurance you need
+
+Strictness is one dial, and the same procedure runs at every setting.
+
+| | **log** | **standard** | **assured** | **regulated** |
+|---|---|---|---|---|
+| Evidence required | Core only | Core + measurements | Everything declared | Everything, plus corroboration |
+| When unclear | Accepts | Asks again | Asks for a second source | Requires measured where measurable |
+| Cost per job | cents | | | dollars |
+
+A rental yard runs at standard. The same procedure on an asset carrying passengers runs at
+regulated. Nothing is rewritten — the bar moves, and the meter moves with it.
+
+**That is aviation-grade assurance made purchasable.** You decide how much you are buying, and
+you can see what it cost.
 
 ---
 
 ## The fleet
 
-Nine agents. Each does one narrow job; the work it finishes is what wakes the next.
+Nine agents. Each does one narrow job; the work it finishes wakes the next.
 
 | Agent | What it does |
 |---|---|
 | **Scoper** | Interviews you until a procedure is unambiguous, then compiles and versions it |
-| **Instructor** | Walks the technician through the job in real time, seeing what they see |
-| **Inspector** | Verifies each step's evidence against that step's own standard |
-| **Skeptic** | Adversarial. Is this evidence from this job, this machine, this moment |
-| **Quartermaster** | Parts. What the step consumed, what is on the shelf, what a shortage blocks |
-| **Buyer** | Purchase orders, reorder points, lead times, supplier follow-up |
-| **Registrar** | Seals and signs the record. The logbook nobody can quietly edit |
-| **Gatekeeper** | Refuses to release the machine. Overdue, unverified, or out of tolerance |
-| **Wright** | Meets an instrument it has never seen, works out how it speaks, and writes the driver |
+| **Instructor** | Renders each step; answers questions on a held button; branches the flow |
+| **Inspector** | Passes the step, asks for more evidence, or escalates to a person |
+| **Skeptic** | Adversarial. Does this evidence belong to this job, this machine, this moment |
+| **Quartermaster** | Parts, stock, and what a shortage blocks downstream |
+| **Buyer** | Drafts purchase orders against shortages — **drafts, never sends** |
+| **Registrar** | Seals the record and enforces the provenance classes |
+| **Gatekeeper** | Holds the machine out of service |
+| **Wright** | Meets an unfamiliar instrument, works out how it speaks, writes the driver |
 
 The **Treasurer** meters what the fleet spends and stops at a ceiling. The **Chronicler**
-writes every decision to a public log, so any claim in this document can be checked by a
-stranger.
+writes every decision to a public log, so any claim here can be checked by a stranger.
 
 **Why the Skeptic is separate from the Inspector.** A model asked to both evaluate evidence
 and doubt it will do the first and neglect the second. The Skeptic gets its own prompt, its
-own incentive, and no sight of the Inspector's conclusion — it is looking for a photo from a
-different bike, a reading from yesterday, a session with a gap in it.
+own incentive, and no sight of the Inspector's conclusion.
 
-**Why the Gatekeeper is the point.** Every other agent produces a record. The Gatekeeper is
-the one that stops a machine going out to somebody, and it is the only part of this system
-that protects a person who has no idea it exists.
+**Why the Inspector can ask for more.** Verification is rarely pass or fail — usually it is
+*not yet*. So the Inspector can append a field to the live form and hand it back: *"the label
+is out of focus, photograph it again."* Every step caps how often it may do this; on exhausting
+that budget it escalates to a person with the specific unresolved question, never silently.
 
-**Why Wright exists at all.** Every instrument speaks its own dialect, and writing a driver
-per tool is the long-tail work that stops a platform like this from ever generalising. Wright
-enumerates an unfamiliar device, infers how it encodes its readings, writes the driver, and
-then **runs it against the live device to see whether the number that comes back makes
-sense.** Generated code that talks to hardware has ground truth available for free, which is
-why this works where generated code usually does not.
+**Why the Gatekeeper is the point.** Every other agent produces a record. The Gatekeeper stops
+a machine going out to somebody — and its hold is physical, not a notification. The keys are
+in a safe the relay controls. A held machine is a drawer that does not open.
+
+**Why Wright exists.** Every instrument speaks its own dialect, and writing a driver per tool
+is the long-tail work that stops a platform like this from generalising. Wright enumerates an
+unfamiliar device, infers how it encodes readings, writes the driver, and **runs it against
+the live device to see whether the number makes sense.** Generated code that talks to hardware
+has ground truth for free.
+
+---
+
+## Architecture
+
+| Layer | Service |
+|---|---|
+| Reasoning | **Gemini 3.5 Flash** via Vertex AI |
+| Volume classification | **Gemma** |
+| Framework | **Agent Development Kit** |
+| Long-running jobs spanning days | **Agent Engine** |
+| Publishing and versioning agents | **Agent Registry** |
+| Asset history across services | **Memory Bank** |
+| Per-agent zero-trust access | **Agent Identity** |
+| Routing and policy | **Agent Gateway** |
+| Guardrails on model input and output | **Model Armor** |
+| Traces and audit logs | **Agent Observability** |
+| Services and transport | **Cloud Run**, **Pub/Sub** |
+| Source of truth | **Firestore** |
+| Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |
+| Machine-to-machine | **MCP server** on Cloud Run |
+| The technician's client | **Android, native, Expo** — capture, BLE, offline queue, on-device redaction |
+| Adversarial corpus | **Veo** — synthetic fraudulent evidence, to attack our own Skeptic |
+
+Full design, including the evidence chain and the strictness parameters:
+[`docs/architecture.md`](docs/architecture.md)
+
+**Why the governance components are load-bearing rather than decorative.** This system holds
+real customer data, real financial records, and photographs containing faces and number
+plates, and it produces records people will rely on in disputes. If it cannot prove who
+decided what, under which procedure version, with which model, at which moment, then it has
+produced paperwork again. **A record you cannot audit is a tick in a box with extra steps.**
+
+### For other systems
+
+```
+list_procedures    what this shop knows how to do, and at which version
+open_job           start a procedure against an asset
+step_status        what evidence a job is waiting on
+get_record         the sealed record, its evidence, its provenance classes
+inventory          what is on the shelf, what a job will consume
+raise_po           draft a purchase order against a shortage
+request            send a task to another department, and track the reply
+```
+
+The best version of this product is one nobody has to open.
 
 ---
 
@@ -257,83 +257,29 @@ why this works where generated code usually does not.
 
 - **It does not certify workmanship.** A human signs for that, by name.
 - **It does not infer what it did not observe.** Blocked view, missing reading, unusable framing — the record says so and the step does not pass.
-- **It does not withhold quietly.** Every failure escalates to a person the same day, because wrongly blocking a technician who did the work is a worse harm than the one this exists to prevent.
-- **It does not charge anybody automatically.** It can propose. A human approves.
-- **It does not surveil technicians.** It watches a procedure, not a person. The technician is the beneficiary of proof, never its subject — this is the system that finally lets them prove they did it right.
+- **It does not claim an unbroken recording.** It claims an unbroken *chain of captures*, which is a smaller and more defensible thing.
+- **It does not withhold quietly.** Every failure escalates to a person the same day. Wrongly blocking a technician who did the work is a worse harm than the one this exists to prevent.
+- **It does not move money.** It drafts charges and orders. A human approves them.
+- **It does not surveil technicians.** It watches a procedure, not a person. This is the system that finally lets them prove they did it right.
 - **It does not exceed its budget.** The Treasurer holds a hard ceiling and refuses past it rather than asking forgiveness.
-
----
-
-## Architecture
-
-Warrant runs on Google Cloud.
-
-| Layer | Service |
-|---|---|
-| Verification and reasoning | **Gemini 3.5 Flash** via Vertex AI |
-| The agent at the technician's shoulder | **Gemini 3.5 Live API** — real-time, sees what they see |
-| Agent framework | **Agent Development Kit (ADK)** |
-| Runtime | **Agent Engine** — long-running, pause and resume across a job that spans days |
-| Discovery and lifecycle | **Agent Registry** — where compiled procedures are published and versioned |
-| Cross-job context | **Memory Bank** — asset history held across weeks and services |
-| Access control | **Agent Identity** — zero-trust, per agent |
-| Routing and policy | **Agent Gateway** |
-| Inline guardrails | **Model Armor** — faces, plates and customer data redacted before anything leaves the device |
-| Telemetry | **Agent Observability** — OpenTelemetry traces, end-to-end reasoning chains |
-| Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
-| The technician's client | **Android, native, Expo** — capture, BLE pairing, offline queue, on-device redaction |
-| Instruments | BLE, behind a driver contract that the rest of the system is indifferent to |
-| Where the business works | **Google Workspace** — Sheets for the parts ledger, Docs for procedures, Gmail for orders and requests, Drive for sealed records |
-| Machine-to-machine surface | **MCP server** on Cloud Run — inventory, purchase orders, cross-department requests |
-| Volume classification | **Gemma** — the cheap pass over routine evidence |
-| Adversarial corpus | **Veo** — synthetic fraudulent evidence, generated to attack our own Skeptic |
-
-Full design: [`docs/architecture.md`](docs/architecture.md)
-
-**Why the governance components are load-bearing rather than decorative.** This system holds
-real customer data, real financial records, and photographs containing faces and number
-plates, and it produces records that people will rely on in disputes. If it cannot prove who
-decided what, under which procedure version, with which model, at which moment, then it has
-produced paperwork again. **A record you cannot audit is just a tick in a box with extra
-steps.**
-
-**Why procedures live in Agent Registry.** A compiled procedure is a versioned, discoverable
-artifact — exactly what the Registry exists to hold. A shop that writes a good brake service
-publishes it; the next shop adopts v3 rather than starting from nothing. That is a
-marketplace we do not have to build, because it is a capability we already have.
-
----
-
-## Attention is metered
-
-Verification costs money, so Warrant bills **per agent-minute** and the Treasurer decides
-what each step earns. A torque-critical step gets full attention. A visual tidy-up gets a
-cheap pass. Below threshold the fleet declines to spend and says so.
-
-Nobody has published what it costs to keep an agent watching work in progress. Warrant ships
-an itemised ledger — per procedure, per step, per refusal. If the number is bad, we will say
-it is bad.
 
 ---
 
 ## Proven on
 
-A working motorcycle rental fleet, with real machines, real customers, and real money.
+A working motorcycle rental fleet — real machines, real customers, real money.
 
-Every service and every handover runs through Warrant: condition captured before a bike goes
-out and after it returns, damage found and charged only with a human's approval, servicing
-performed against published procedures, parts consumed and reordered automatically, and
-machines withheld when the record does not hold up.
+Servicing runs against published procedures with instrument readings attached. Condition is
+captured before a bike goes out and after it returns. Parts are consumed and reordered.
+Machines are held when the record does not hold up.
 
 It was chosen because it is a real business with a real liability problem — a bike with
 unserviced brakes goes out to a stranger — and because the evidence generates itself daily
-without anyone having to be recruited.
+without anyone needing to be recruited.
 
-### Where this goes
-
-The same fleet with a different procedure: plant and machinery, equipment hire, marine,
-agriculture, commercial vehicle fleets, facilities, and eventually the regulated industries
-that already do this by hand at enormous cost.
+**Where this goes:** the same fleet with different procedures — plant and machinery, equipment
+hire, marine, agriculture, commercial vehicles, facilities, and eventually the regulated
+industries already doing this by hand at enormous cost.
 
 Warrant is not a maintenance app for motorcycles. It is the assurance layer for anyone whose
 records are currently a tick in a box.
@@ -348,14 +294,15 @@ Every number here is produced by the running system and checkable against the pu
 | | |
 |---|---|
 | Procedures published | _pending_ |
-| Jobs performed through Warrant | _pending_ |
-| Steps **verified** | _pending_ |
-| Steps **refused** | _pending_ |
-| Instrument readings captured | _pending_ |
-| Machines withheld from service | _pending_ |
-| Purchase orders raised without a human | _pending_ |
+| Jobs performed | _pending_ |
+| Steps verified | _pending_ |
+| Steps that asked for more evidence | _pending_ |
+| Steps refused | _pending_ |
+| **Instrument readings captured** | _pending_ |
+| **Machines held out of service** | _pending_ |
+| Purchase orders drafted | _pending_ |
 | Days run unattended | _pending_ |
-| Cost per verified procedure | _pending_ |
+| Cost per job, by strictness | _pending_ |
 | **Total spend** | _pending_ |
 
 Public decision log: <!-- URL --> _pending_
@@ -366,9 +313,9 @@ Public decision log: <!-- URL --> _pending_
 
 ### Prerequisites
 
-- A Google Cloud project with billing enabled; Vertex AI, Agent Engine, Cloud Run and Pub/Sub enabled
-- Python 3.12+
-- A phone
+- A Google Cloud project with billing enabled; Vertex AI, Agent Engine, Cloud Run, Pub/Sub and Firestore enabled
+- Python 3.12+, Node 20+
+- An Android device
 - Optionally, any BLE instrument you want readings from
 
 ### Setup
@@ -376,8 +323,9 @@ Public decision log: <!-- URL --> _pending_
 ```bash
 git clone <repo> && cd warrant
 cp .env.example .env          # project, region, credentials
-./scripts/bootstrap.sh        # datastore, procedure registry, vector index
+./scripts/bootstrap.sh        # Firestore, procedure store, registry entries
 ./scripts/deploy.sh           # agents to Agent Engine, services to Cloud Run
+cd client && npx expo run:android
 ```
 
 ### Verify

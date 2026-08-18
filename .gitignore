@@ -24,6 +24,3 @@ dist/
 build/
 .DS_Store
 *.log
-
-# Pre-submission audit — rubric analysis, does not ship.
-AUDIT.md
