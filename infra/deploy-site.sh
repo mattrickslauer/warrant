@@ -16,6 +16,15 @@ IMAGE="${REGION}-docker.pkg.dev/${PROJECT}/warrant/site:$(date -u +%Y%m%d-%H%M%S
 
 [ -n "$PROJECT" ] || { echo "error: no project set — gcloud config set project <id>" >&2; exit 1; }
 
+for api in cloudbuild run artifactregistry; do
+  gcloud services list --enabled --project="$PROJECT" --format='value(config.name)' 2>/dev/null \
+    | grep -q "^${api}.googleapis.com$" || {
+      echo "error: ${api}.googleapis.com is not enabled on $PROJECT" >&2
+      echo "       run ./infra/bootstrap.sh first" >&2
+      exit 1
+    }
+done
+
 echo "project  $PROJECT"
 echo "region   $REGION"
 echo "image    $IMAGE"

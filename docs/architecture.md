@@ -293,19 +293,32 @@ becomes *"bring the checklist you already have."*
 
 ## 10. The fleet, and where each model runs
 
-| Agent | Job |
-|---|---|
-| **Scoper** | Interviews until a procedure is unambiguous; compiles and versions it |
-| **Instructor** | Renders steps, answers questions on a held button, branches the flow |
-| **Inspector** | PASS / ADD FIELD / ESCALATE against each field's acceptance rule |
-| **Skeptic** | Adversarial. Does this evidence belong to this job and this machine |
-| **Quartermaster** | Parts, stock, the parts graph, what a shortage blocks |
-| **Buyer** | Drafts purchase orders — drafts, never sends |
-| **Registrar** | Seals the record, enforces provenance classes |
-| **Gatekeeper** | Holds the machine out of service until the job seals |
-| **Wright** | Writes a driver for an unfamiliar instrument |
+| Agent | Job | Why a model is required |
+|---|---|---|
+| **Scoper** | Interviews until a procedure is unambiguous; compiles and versions it | Open-ended natural language; it must know what it has not yet asked |
+| **Instructor** | Runs the step; answers questions out loud on a held button | Unbounded spoken questions against the procedure in context |
+| **Inspector** | PASS / ADD FIELD / ESCALATE on the **inferred** rules; composes the ADD FIELD request | Reading media, and generating the specific next request |
+| **Skeptic** | Adversarial. Does this evidence belong to this job and this machine | Perceptual identity — is this the same asset, does the wear match the history |
+| **Wright** | Writes a driver for an unfamiliar instrument | Code generation with a live test-and-retry loop |
 
-Plus the **Treasurer** (meters spend, hard ceiling) and the **Chronicler** (public log).
+### The deterministic core
+
+Everything below runs as ordinary code, and every item is deterministic **because it must
+be**, not because we ran out of time.
+
+| Service | Job | Why not a model |
+|---|---|---|
+| **Seal** | Closes the record; stamps each field's provenance class | §1: the class is a property of the *rule*. A lookup, not a judgement |
+| **Gate** | Holds the machine until the job seals | `if (!job.sealed) deny()`. A gate you can argue with is not a gate |
+| **Ledger** | Meters spend to a hard ceiling; writes the public log | A budget that can be talked out of enforcing is not a ceiling |
+| **Measured rules** | `within(min,max,unit)` and `matches(record.field)` | A numeric comparison and an equality. §1 already classes these as **measured** |
+| **Stock and ordering** | Parts graph, shortage propagation, drafted POs | A query, a traversal and reorder arithmetic. Exposed to the agents as **MCP tools**, not agents |
+| **Circuit breaker** | Detects the ADD FIELD pathology and escalates (§3) | The loop-recovery path `rules.md:203` asks about should not itself be a model that can loop |
+
+> **The fleet is five because five things need a model.** The criterion rewards *"a clear,
+> strictly enforced separation of concerns"* — not a headcount. A fleet padded with agents that
+> are switch statements in costume fails that test the moment a judge opens one.
+
 
 | Layer | Model | When |
 |---|---|---|

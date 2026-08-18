@@ -192,22 +192,37 @@ you can see what it cost.
 
 ## The fleet
 
-Nine agents. Each does one narrow job; the work it finishes wakes the next.
+**Five agents over a deterministic core.** Each agent does one narrow job that genuinely
+requires a model; everything that must be trustworthy rather than clever is ordinary code.
 
 | Agent | What it does |
 |---|---|
 | **Scoper** | Interviews you until a procedure is unambiguous, then compiles and versions it |
-| **Instructor** | Renders each step; answers questions on a held button; branches the flow |
+| **Instructor** | Runs the step and answers questions out loud on a held button |
 | **Inspector** | Passes the step, asks for more evidence, or escalates to a person |
 | **Skeptic** | Adversarial. Does this evidence belong to this job, this machine, this moment |
-| **Quartermaster** | Parts, stock, and what a shortage blocks downstream |
-| **Buyer** | Drafts purchase orders against shortages — **drafts, never sends** |
-| **Registrar** | Seals the record and enforces the provenance classes |
-| **Gatekeeper** | Holds the machine out of service |
 | **Wright** | Meets an unfamiliar instrument, works out how it speaks, writes the driver |
 
-The **Treasurer** meters what the fleet spends and stops at a ceiling. The **Chronicler**
-writes every decision to a public log, so any claim here can be checked by a stranger.
+**And the core, which contains no model at all:**
+
+| Service | What it does |
+|---|---|
+| **The seal** | Closes a record once every step passes, and stamps each field's provenance class |
+| **The gate** | Holds the machine out of service until the job seals |
+| **The ledger** | Meters spend against a hard ceiling, and writes every decision to the public log |
+| **Stock and ordering** | Parts, shortages, and drafted purchase orders — exposed to the agents as MCP tools |
+
+**Why the core is not agents, and why that is the point.** The three things this system does
+that actually protect somebody — sealing a record, refusing to release a machine, refusing to
+overspend — are deterministic. A gate you can argue with is not a gate. Nobody should trust a
+language model to hold a key safe shut, and we do not ask them to: the Gatekeeper is a
+condition on `job.sealed`, and it is four lines long. Provenance classes are likewise a
+property of the acceptance *rule*, not of any model's confidence, so classification is a
+lookup rather than a judgement.
+
+That line is drawn in exactly one place and drawn honestly. Where a decision needs perception,
+language, or an open-world judgement, a model makes it. Where a decision needs to be the same
+every time, code makes it.
 
 **Why the Skeptic is separate from the Inspector.** A model asked to both evaluate evidence
 and doubt it will do the first and neglect the second. The Skeptic gets its own prompt, its
@@ -218,7 +233,7 @@ own incentive, and no sight of the Inspector's conclusion.
 is out of focus, photograph it again."* Every step caps how often it may do this; on exhausting
 that budget it escalates to a person with the specific unresolved question, never silently.
 
-**Why the Gatekeeper is the point.** Every other agent produces a record. The Gatekeeper stops
+**Why the gate is the point.** Every agent above produces a record. The gate stops
 a machine going out to somebody — and its hold is physical, not a notification. The keys are
 in a safe the relay controls. A held machine is a drawer that does not open.
 
