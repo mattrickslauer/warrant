@@ -70,8 +70,13 @@ That document is the product. Everything else is machinery.
 ### 2. Work through it, one step at a time
 
 The technician opens the job on their phone and is walked through it the way a courier is
-walked through a drop. One step on screen. Capture. Next. **The step does not advance until
-its evidence exists**, and nothing is typed in.
+walked through a drop. One step on screen. Capture. Next. Nothing is typed in.
+
+**Capture never waits.** Verification happens behind them, so nobody stands in a workshop
+holding a phone with dirty hands watching a spinner. If a step turns out to need more, an
+alert appears on the job and can be fixed from wherever they are — including three steps
+later. **The gate is the seal, not the step:** a job cannot seal until every step passes, and
+the machine is not released until the job seals.
 
 When reality disagrees with the plan — a part number that doesn't match, wear inconsistent
 with the interval — the flow **branches** and opens the step it needs.
@@ -85,7 +90,7 @@ most jobs use it twice.
 A photograph tells you a job was done. **An instrument tells you it was done right.**
 
 Warrant reads directly from paired tools — a torque wrench, a gauge, a caliper, a reader, or
-a sensor you built yourself. The number arrives with a tool identity and a timestamp, having
+a sensor you build yourself out of an ESP32 and a probe. The number arrives with a tool identity and a timestamp, having
 passed through no human hands. That is the only property that makes a value **measured**
 rather than typed, and it is the difference between a system that watches work and one that
 **measures** it.
@@ -105,13 +110,17 @@ And when the last step passes, the machine is released. **Until then, it isn't.*
 
 ## Who uses it, and how they get in
 
-**An enterprise's Workspace domain is its account.** A technician signs in with Google, and
-the domain on their work email puts them in their employer's tenant. There is no
-organisation-creation wizard, no invite email, no seat management — the company directory
-already knows who works there, and somebody whose job that is already keeps it current.
+**Sign in with Google, and your account decides the shape of the tenant.**
 
-It also means offboarding works without anyone thinking about it. A technician leaves, their
-employer disables the account, and their access ends the same instant.
+A **Workspace** account puts you in your employer's enterprise — everyone at `acme.com` shares
+procedures, jobs, parts and records. A **personal** Google account is a tenant of one: your
+procedures, your jobs. The boundary is a natural one — **multiple technicians require
+Workspace**, because a company with a crew already has a directory, and that directory is the
+membership list.
+
+There is no organisation wizard, no invite email, no seat management. And offboarding works
+without anyone thinking about it: a technician leaves, their employer disables the account,
+their access ends the same instant.
 
 Three surfaces, with different jobs:
 
@@ -140,7 +149,7 @@ classes, and they never blur:
 | Evidence | Class |
 |---|---|
 | A reading from a paired instrument · `90.4° · 14:32:07 · tool #A19` | **measured** |
-| Capture integrity — the chain, the clock, the elapsed time | **measured** |
+
 | A part number matching the work order | **measured** |
 | What a photograph appears to show | **inferred** |
 | Craft quality and judgement | **asserted** — signed, by name |
@@ -148,20 +157,6 @@ classes, and they never blur:
 **An inferred value may never overwrite a measured one.** The model is allowed an opinion
 about whether a pad looks seated. It is not allowed an opinion about the angle, because a tool
 already answered that, and tools do not have opinions.
-
-### Where capture integrity comes from
-
-There is no continuous recording, so contiguity is **constructed rather than assumed.** Each
-capture is hashed together with the one before it, a server-issued nonce, and a monotonic
-clock, and travels with GPS and a device attestation. The server checks the chain is unbroken,
-that time only moves forward, and that each step took a plausible amount of time.
-
-What that establishes: these captures came from this device, in this order, inside this
-window, with nothing removed or reordered afterwards. **A twelve-minute job completed in forty
-seconds fails on elapsed time alone**, before anyone looks at a picture.
-
-What it does not establish: that the camera was pointed at the right thing. That stays
-inference, and is filed as inference.
 
 ### What Warrant will not tell you
 
@@ -253,7 +248,7 @@ has ground truth for free.
 | Source of truth | **Firestore** |
 | Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |
 | Machine-to-machine | **MCP server** on Cloud Run |
-| The technician's client | **Android, native, Expo** — capture, BLE, offline queue, on-device redaction |
+| The technician's client | **Android, native** — Kotlin, CameraX, platform BLE, offline queue, on-device redaction |
 | Identity and tenancy | **Google Sign-In** — a Workspace domain is an enterprise |
 | Landing page and dashboard | **Cloud Run** |
 | Adversarial corpus | **Veo** — synthetic fraudulent evidence, to attack our own Skeptic |
@@ -279,7 +274,9 @@ raise_po           draft a purchase order against a shortage
 request            send a task to another department, and track the reply
 ```
 
-The best version of this product is one nobody has to open.
+**Our own dashboard is an MCP client** — it reads and acts through the same surface any
+external caller uses, so this is load-bearing rather than aspirational. The best version of
+this product is one nobody has to open.
 
 ---
 
@@ -287,7 +284,7 @@ The best version of this product is one nobody has to open.
 
 - **It does not certify workmanship.** A human signs for that, by name.
 - **It does not infer what it did not observe.** Blocked view, missing reading, unusable framing — the record says so and the step does not pass.
-- **It does not claim an unbroken recording.** It claims an unbroken *chain of captures*, which is a smaller and more defensible thing.
+- **It does not claim tamper-proof evidence.** Captures are timestamped and attributed. A determined faker with time is not the threat model; a record that never got made is.
 - **It does not withhold quietly.** Every failure escalates to a person the same day. Wrongly blocking a technician who did the work is a worse harm than the one this exists to prevent.
 - **It does not move money.** It drafts charges and orders. A human approves them.
 - **It does not surveil technicians.** It watches a procedure, not a person. This is the system that finally lets them prove they did it right.
