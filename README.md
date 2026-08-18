@@ -252,7 +252,7 @@ has ground truth for free.
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI |
 | Volume classification | **Gemma** |
 | Framework | **Agent Development Kit** |
-| Long-running jobs spanning days | **Agent Engine** |
+| Long-running jobs spanning days | **Agent Runtime** — up to 7 days of continuous execution |
 | Publishing and versioning agents | **Agent Registry** |
 | Asset history across services | **Memory Bank** |
 | Per-agent zero-trust access | **Agent Identity** |
@@ -355,7 +355,7 @@ Public decision log: <!-- URL --> _pending_
 
 ### Prerequisites
 
-- A Google Cloud project with billing enabled; Vertex AI, Agent Engine, Cloud Run, Pub/Sub and Firestore enabled
+- A Google Cloud project with billing enabled; Vertex AI, Agent Runtime, Cloud Run, Pub/Sub and Firestore enabled
 - Python 3.12+, Node 20+
 - An Android device
 - Optionally, any BLE instrument you want readings from
@@ -366,7 +366,7 @@ Public decision log: <!-- URL --> _pending_
 git clone <repo> && cd warrant
 cp .env.example .env          # project, region, credentials
 ./scripts/bootstrap.sh        # Firestore, procedure store, registry entries
-./scripts/deploy.sh           # agents to Agent Engine, services to Cloud Run
+./scripts/deploy.sh           # agents to Agent Runtime, services to Cloud Run
 cd client && npx expo run:android
 ```
 

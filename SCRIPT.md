@@ -215,15 +215,22 @@ You, on camera, attempting to defeat your own system. Play it deadpan.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 29 | 3:19 | Real screen recording: Cloud Console → Agent Engine deployments, with the **eight** agents listed. Whatever the Registry actually holds is what appears here. | VO: *"Eight agents on Agent Engine. One compiles the procedure, one runs the step, one decides whether the evidence is enough, one holds the machine — each registered, identified and gated by Google's own platform."* |
+| 29 | 3:19 | Real screen recording: Cloud Console → Agent Runtime deployments, with the **five** agents listed, then the Cloud Run services beside them. | VO: *"Five agents, because five things need a model. Procedure, step, evidence — and one that tries to catch it lying. What holds the machine is not an agent. It is four lines of code."* |
 | 30 | 3:28 | Cloud Run services, Pub/Sub topics firing, a live `.run` URL in the bar. Cloud Trace expands one reasoning chain across four agents. | VO: *"Firestore is the record. Every decision traceable to the model version that made it."* |
 
 > **Shot 29 is now the architecture beat**, which `rules.md:207` requires and the previous draft
 > had nowhere. Naming four agents and what each does, over a real console, satisfies "explains
 > the architecture" in nine seconds.
 >
-> **The count is eight**, not nine — the Skeptic is dropped from the fleet. Check it against
-> `README.md` on the day you shoot and film whichever number is true.
+> **The count is five**, and the Skeptic stays — it is one of the five that genuinely needs a
+> model. What left the fleet is the six that never needed one: seal, gate, ledger, log, stock
+> and ordering. Check it against `README.md` on the day you shoot and film whichever number is
+> true. **Do not inflate the count** — `rules.md:203` scores separation of concerns, not
+> headcount, and a judge who opens one agent and finds a switch statement discounts all of them.
+>
+> **The second half of the VO is the point**, not a hedge. Every other entry will claim more
+> agents. Being the one submission that says *the part that protects someone contains no model
+> at all* is worth more than three extra names on a console screen.
 >
 > **Do not claim procedures are published in Agent Registry** until the console hour confirms
 > the Registry can hold them; it publishes agents, not documents. If procedures live in

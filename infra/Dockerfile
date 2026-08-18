@@ -1,4 +1,4 @@
-# Static landing page on Cloud Run. ~12MB image, sub-second cold start,
+# Static landing page on Cloud Run. Small image, sub-second cold start,
 # scales to zero — no request, no container, no charge.
 # Build context is the repo root.
 FROM nginx:1.27-alpine
