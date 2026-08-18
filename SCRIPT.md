@@ -8,7 +8,6 @@ directly and it sets the judge's impression of the other 70%.
 - **Must** show the backend running on Google Cloud — Console, Cloud Run dashboard, Vertex logs, or a `.run` URL on screen
 - **One segment must be an unedited, live execution** — "via terminal logs, database updates, or UI changes." Shot 24 is that segment and it is not cut
 - English, or English subtitles
-- **No third-party trademarks, logos or slogans.** Motorcycle tank badges, tool brands, and app icons all count. Frame them out or mask them
 
 ---
 
@@ -80,9 +79,9 @@ Unchanged. It is the strongest asset in the film.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 11 | 0:35 | Insert: an aviation logbook, an engineer's signature, a part tag. *(Own or licensed footage, no logos.)* | VO: *"Aviation fixed this. Every part traceable, every task signed against a published procedure, the logbook legally binding."* |
+| 11 | 0:35 | Insert: an aviation logbook, an engineer's signature, a part tag. | VO: *"Aviation fixed this. Every part traceable, every task signed against a published procedure, the logbook legally binding."* |
 | 12 | 0:43 | Cut back to your biro tick. Same framing as shot 8. | VO: *"It works. It also costs more than the motorcycle."* |
-| 13 | 0:47 | **Split screen.** Left: a courier flow — arrived, address confirmed, gate code, photo of the drop. Right: your paper sheet, unchanged. | VO: *"Meanwhile a stranger proves they delivered a parcel in four seconds, for pennies."* |
+| 13 | 0:47 | **Split screen.** Left: a stylised courier flow, steps appearing one at a time — arrived, address confirmed, gate code, photo of the drop. Right: your paper sheet, unchanged. | VO: *"Meanwhile a stranger proves they delivered a parcel in four seconds, for pennies."* |
 | 14 | 0:54 | Left side keeps advancing. Right side stays a tick. | VO: *"Aviation set the standard. Delivery worked out the price."* |
 
 > Shot 13 is the most efficient explanation in the film. Everyone already understands the
@@ -173,9 +172,6 @@ by skipping the reading — and say nothing in the cut that implies otherwise.
 
 **Everything except shot 24 is shot in segments** with clean heads and tails, so the cut
 assembles from beats. Shot 24 is continuous by requirement.
-
-**Watch the badges.** Tank logos, tool brands, and the app icons in shot 13 are all
-third-party trademarks. Mask, reframe, or use generic stand-ins.
 
 ---
 
