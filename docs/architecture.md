@@ -363,7 +363,83 @@ orders and release machines needs a guardrail on what arrives.
 
 ---
 
-## 11. Google Cloud mapping
+## 11. Identity, and why there is no sign-up flow
+
+**The Workspace domain is the tenant.**
+
+A technician signs in with Google. The `hd` (hosted domain) claim on their token says
+`acme.com`, so they are in Acme's enterprise. That is the entire membership model.
+
+There is no organisation-creation wizard, no invite email, no seat management, no membership
+table to keep consistent with reality. The company's own directory is already the source of
+truth about who works there, and it is maintained by someone whose job that is.
+
+| Concern | How it resolves |
+|---|---|
+| Which enterprise is this person in | The `hd` claim on their Google token |
+| Are they still an employee | They stopped being able to sign in |
+| Who can author procedures | A role claim, or a group membership in the customer's own directory |
+| Consumer `gmail.com` accounts | No `hd` claim — rejected, or treated as a single-user tenant |
+
+Every record is scoped to the domain, and a sealed record carries the domain, the signing
+identity, and the procedure version it was produced against.
+
+The security property worth noting: **offboarding is somebody else's problem, and it already
+works.** When a technician leaves, their employer disables the account and their Warrant
+access ends the same instant, without anyone remembering to tell us.
+
+---
+
+## 12. The surfaces
+
+Three, with sharply different jobs.
+
+### The landing page
+
+Static, deployed, public. It exists so the project has an address and so somebody who has
+never heard of this can understand it in ninety seconds without installing anything.
+
+### The dashboard — five screens, deliberately
+
+Web, behind Google sign-in. **There is no form builder**, because the Scoper is the authoring
+interface: a conversation that produces a procedure is both less to build and a better
+demonstration than a drag-and-drop editor.
+
+| Screen | What it is for |
+|---|---|
+| **Procedures** | The list, their versions, and the Scoper conversation that creates one |
+| **Jobs** | What is open, what is waiting on evidence, what is held |
+| **The record** | One job's sealed evidence, its provenance classes, its chain — *the artifact a stranger can check* |
+| **Technicians** | Read-only, derived from who has signed in under this domain |
+| **Sign-in** | Google, and nothing else |
+
+No permissions matrix, no settings pages, no CRUD editors. Anything an operator needs to
+*read* rather than *do* belongs in Workspace, where they already are.
+
+### The technician's app
+
+Android, native, Expo. Capture, BLE, the hash chain, the offline queue, on-device redaction.
+This is where evidence is made and it is the only surface that cannot be substituted.
+
+> **Build order matters here.** The phone comes first, because evidence is the one asset that
+> cannot be produced late. A dashboard built before the capture loop works is a week spent on
+> the half of the system that can be rebuilt in two days.
+
+### Why not Google Forms
+
+Worth stating, because it is the obvious question. Forms cannot gate a step — it submits at
+the end, and the whole thesis is that proof gates progress. It cannot have a field appended
+at runtime, which is the Inspector's central mechanism. It cannot read a paired instrument,
+which is what makes a value *measured*. And it cannot build the capture chain, because it has
+no access to a monotonic clock or device attestation.
+
+**Where it does belong is the way in.** Most shops already have their checklist in a Form or a
+sheet. Pointing the Scoper at an existing Form and having it compile that into a procedure
+turns "adopt our system" into "bring the checklist you already have."
+
+---
+
+## 13. Google Cloud mapping
 
 | Concern | Service |
 |---|---|
@@ -383,7 +459,7 @@ orders and release machines needs a guardrail on what arrives.
 
 ---
 
-## 12. What we deliberately do not claim
+## 14. What we deliberately do not claim
 
 - **We do not judge workmanship.** No craft assessment from a photograph. A named human signs for that.
 - **We do not claim an unbroken recording.** We claim an unbroken *chain* of captures, which is a different and smaller thing.
@@ -394,7 +470,7 @@ orders and release machines needs a guardrail on what arrives.
 
 ---
 
-## 13. Scope — the floor, and everything else
+## 15. Scope — the floor, and everything else
 
 **The floor, which must exist:**
 1. The form engine — procedures compile, steps render, fields validate
@@ -404,12 +480,18 @@ orders and release machines needs a guardrail on what arrives.
 
 Those four, working on real jobs, are a complete submission.
 
-**Stretch, in cut order (last to first):** Wright · the MCP surface · a second procedure ·
-Buyer merged into Quartermaster · Registrar merged into Inspector.
+Plus a **static landing page**, which is half a day, blocks nothing, and gives the project an
+address on day one.
+
+**Stretch, in cut order (last to first):** Wright · Forms import · the MCP surface · a second
+procedure · the technicians screen · the jobs list · **the dashboard entirely**, with the
+Scoper conversation moving onto the phone.
+
+The product survives losing the dashboard. It does not survive having no captured jobs.
 
 ---
 
-## 14. Still unverified
+## 16. Still unverified
 
 - **Are Agent Registry, Memory Bank, Agent Identity, Agent Gateway and Model Armor enabled and reachable** in our project and region? Five of the seven named components. Never checked against our own console. **This is the console hour and it is today.**
 - **Can procedures be modelled in Agent Registry at all?** It publishes agents, not documents. Fallback: procedures live in Firestore with versioning; the Registry holds the verifier agents.

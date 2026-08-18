@@ -103,6 +103,34 @@ And when the last step passes, the machine is released. **Until then, it isn't.*
 
 ---
 
+## Who uses it, and how they get in
+
+**An enterprise's Workspace domain is its account.** A technician signs in with Google, and
+the domain on their work email puts them in their employer's tenant. There is no
+organisation-creation wizard, no invite email, no seat management — the company directory
+already knows who works there, and somebody whose job that is already keeps it current.
+
+It also means offboarding works without anyone thinking about it. A technician leaves, their
+employer disables the account, and their access ends the same instant.
+
+Three surfaces, with different jobs:
+
+| Surface | Who | What it is for |
+|---|---|---|
+| **The dashboard** | The people who run the work | Author procedures with the Scoper, watch jobs, open a sealed record |
+| **The app** | Technicians | Perform the job. Capture, instruments, offline. Android, native |
+| **Workspace** | Everyone | Where the answers turn up — the ledger, the records, the drafted orders |
+
+**There is no form builder.** Procedures are authored by talking to the Scoper, which is both
+less to learn and more precise than a drag-and-drop editor, because a conversation can ask
+*"what happens if the subfloor is rotten underneath?"* and a form cannot.
+
+**And if you already have a checklist**, Warrant will read it. Point the Scoper at the Google
+Form or the spreadsheet your shop already uses and it compiles that into a procedure. Adoption
+is bringing what you have, not replacing it.
+
+---
+
 ## What "verified" actually means
 
 Warrant never claims a job was good. It closes off the ways the record could be false, and
@@ -226,6 +254,8 @@ has ground truth for free.
 | Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |
 | Machine-to-machine | **MCP server** on Cloud Run |
 | The technician's client | **Android, native, Expo** — capture, BLE, offline queue, on-device redaction |
+| Identity and tenancy | **Google Sign-In** — a Workspace domain is an enterprise |
+| Landing page and dashboard | **Cloud Run** |
 | Adversarial corpus | **Veo** — synthetic fraudulent evidence, to attack our own Skeptic |
 
 Full design, including the evidence chain and the strictness parameters:
