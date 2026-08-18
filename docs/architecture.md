@@ -1,281 +1,282 @@
 # Warrant — Architecture
 
-The system is a **dynamic form engine with agents attached.** A procedure compiles to a form,
-a technician fills it by capturing rather than typing, and an agent decides at each step
-whether what it received is enough — or asks for more.
+A **procedure compiles to a form. A technician fills it by capturing, not typing. An agent
+decides at each step whether what arrived is enough — or asks for more.**
 
-Everything else is consequence.
-
----
-
-## 1. Constraints we verified first
-
-Two assumptions were checked against the documentation before anything was designed, and both
-came back differently than assumed.
-
-**Gemini Live API.** Video input is capped at **1 frame per second**, audio+video sessions are
-limited to **2 minutes** without context compression, and video runs ~258 tokens/second against
-a 32k context on non-native-audio models.
-([capabilities](https://ai.google.dev/gemini-api/docs/live-api/capabilities))
-
-That rules out holding an open video session for the length of a job, and it is why the
-Instructor is **push-to-talk** rather than always-watching. Short bursts, bounded cost, no
-session to keep alive across a forty-minute brake service.
-
-**YouTube.** Developer policies prohibit third parties downloading, caching or storing
-audiovisual content, with no pathway for processing stream content. Any external record is a
-second encoder output we reference, never something we ingest.
-
-Both findings point the same way: **capture and hold evidence at the edge, spend the model
-deliberately.**
+Everything below is consequence.
 
 ---
 
-## 2. The core abstraction
-
-A procedure is a **form that knows what counts as an answer.**
+## 1. The procedure model
 
 ```
 Procedure
-  id                       front-brake-service
-  version                  v3
-  strictness               0..3          (default for this deployment)
+  id                 front-brake-service
+  version            v3
+  strictness         0..3
   Steps[]
-    id, title, condition                 (show only if …)
+    id, title, condition                    show only if …
+    max_add_fields                          hard cap, see §4
     Fields[]
-      key                                pad_torque
-      kind                               measurement | photo | video | scan |
-                                         choice | text | signature | location | timer
-      prompt                             "Torque the caliper bolts"
-      acceptance                         within(26, 30, "Nm")
-      required_at                        strictness >= 1
-      source                             paired_tool | camera | human
+      key            pad_torque_angle
+      kind           measurement | photo | video | scan | choice |
+                     text | signature | location | timer
+      prompt         "Turn 90° past snug"
+      acceptance     within(85, 95, "deg")
+      required_at    strictness >= 1
+      source         instrument | camera | human
 ```
 
-**Field kinds are the extensibility surface.** Adding a new instrument means adding a kind and
-a driver; nothing above it changes. Adding a new industry means writing procedures, not code.
-
-**Acceptance rules** are the second surface:
+**Field kinds are the instrument surface.** A new tool is a driver, not a schema change.
+**Acceptance rules are the verification surface**, and the rule determines the evidence class:
 
 | Rule | Resolves against | Class |
 |---|---|---|
 | `within(min, max, unit)` | An instrument reading | **measured** |
 | `matches(work_order.part_number)` | Another record in the system | **measured** |
-| `must_show(description)` | The model's reading of the media | **inferred** |
-| `consistent_with(asset.history)` | Memory Bank, across previous services | **inferred** |
+| `elapsed_between(min, max)` | The session clock | **measured** |
+| `must_show(description)` | The model reading the media | **inferred** |
+| `consistent_with(asset.history)` | Memory Bank across prior services | **inferred** |
 | `signed_by(role)` | A named human | **asserted** |
 
-The class is a property of the rule, not of the confidence. That is what keeps the three
-categories from blurring under pressure.
+The class is a property of the **rule**, not of the model's confidence. That is what stops
+the categories blurring when someone is under pressure to ship.
+
+---
+
+## 2. Evidence integrity — what "measured" actually rests on
+
+A step-by-step capture flow has no continuous recording, so contiguity cannot be assumed. It
+has to be constructed, and this is the mechanism that does it.
+
+**When a job opens**, the server issues a session token and a nonce.
+
+**Every capture on the device computes:**
+
+```
+h(n) = SHA256( media_bytes ‖ nonce ‖ h(n-1) ‖ monotonic_ms ‖ field_key )
+```
+
+and is transmitted with wall clock, monotonic clock, GPS, device identity, and a **Play
+Integrity** verdict.
+
+**The server validates** that the chain is unbroken, that monotonic time strictly increases,
+that nothing was removed or reordered, and that elapsed time per step falls inside the
+procedure's declared bounds.
+
+**What this establishes — genuinely measured:**
+- These captures came from this device, in this order, inside this window
+- None was removed, reordered, or substituted after the fact
+- The device was not obviously compromised at capture time
+- The job took a plausible amount of time for the work claimed
+
+**What it does not establish:** that the camera was pointed at the right thing. That is
+inference, filed as inference, always.
+
+This is weaker than an unbroken video record and stronger than a folder of photographs, and
+being precise about which is the point. **A twelve-minute job completed in forty seconds
+fails on elapsed time alone, without anyone looking at a picture.**
 
 ---
 
 ## 3. The runtime loop
 
 ```
-   ┌──────────────────────────────────────────────────────────────────┐
-   │                                                                  │
-   │   SCOPER ──── plain language in, compiled form out,              │
-   │      │        versioned and published to Agent Registry          │
-   │      ▼                                                           │
-   │   ┌────────────────── per step ──────────────────┐               │
-   │   │                                              │               │
-   │   │  INSTRUCTOR ── renders the step; answers     │               │
-   │   │      │         questions on a held button    │               │
-   │   │      ▼                                       │               │
-   │   │  technician captures ──► INSPECTOR           │               │
-   │   │                              │               │               │
-   │   │            ┌─────────────────┼─────────┐     │               │
-   │   │            ▼                 ▼         ▼     │               │
-   │   │          PASS          ADD FIELD    ESCALATE │               │
-   │   │            │                │         │      │               │
-   │   │            │                └──► back to the │               │
-   │   │            │                     technician  │               │
-   │   └────────────┼──────────────────────────────────┘              │
-   │                ▼                                                 │
-   │   SKEPTIC ──── is this evidence from this job, this machine,     │
-   │      │         this moment?                                      │
-   │      ▼                                                           │
-   │   actions fire ── consume stock · advance order · raise PO ·     │
-   │      │            request another department · release or hold    │
-   │      ▼                                                           │
-   │   REGISTRAR ── seals the record                                  │
-   │                                                                  │
-   └──────────────────────────────────────────────────────────────────┘
+   SCOPER ──── plain language in → compiled, versioned form out
+      │
+      ▼
+   ┌──────────────── per step ────────────────┐
+   │  INSTRUCTOR renders the step             │
+   │  answers questions on a held button      │
+   │            │                             │
+   │            ▼                             │
+   │  technician captures ──► INSPECTOR       │
+   │                              │           │
+   │        ┌─────────────────────┼────────┐  │
+   │        ▼                     ▼        ▼  │
+   │      PASS              ADD FIELD  ESCALATE
+   │        │                     │        │  │
+   │        │        (bounded — see §4)    │  │
+   │        │                     └────────┘  │
+   └────────┼─────────────────────────────────┘
+            ▼
+   SKEPTIC ─── sampled by strictness: does this evidence
+      │        belong to this job, machine and moment?
+      ▼
+   actions ─── consume stock · advance order · draft PO (held for approval)
+      │        · request another department · release or HOLD
+      ▼
+   REGISTRAR ── seals the record
 ```
-
-### The Instructor: push-to-talk, not always-on
-
-The technician holds a button, asks a question out loud, releases. Audio goes up with the
-current step, the procedure, the asset's history, and optionally the last captured frame as
-context. An answer comes back as text and speech.
-
-This is bounded in every dimension that matters — cost, latency, session lifetime — and it
-matches how the job actually goes. Nobody wants to be narrated at for forty minutes. They want
-an answer twice.
-
-### The Inspector: three outcomes, not two
-
-The important one is the middle.
-
-- **PASS** — the evidence satisfies the field's acceptance rule at the configured strictness.
-- **ADD FIELD** — it does not, but it might with more. The Inspector **appends a field to the
-  live form** and the technician keeps working. *"The label is out of focus — photograph it
-  again."* *"That pad looks worn beyond the interval — photograph the disc as well."*
-- **ESCALATE** — genuinely ambiguous, or a disqualifier fired. A human is asked the specific
-  question, and only that question.
-
-There is no silent FAIL. A step that cannot pass either grows or goes to a person.
-
-**This is why the engine generalises.** A fixed form encodes one shop's idea of enough. A form
-that can grow at runtime encodes *how much is enough here* — and that is the only thing that
-actually differs between a rental yard and an airline.
 
 ---
 
-## 4. Strictness is a dial, and it costs money
+## 4. ADD FIELD, and why it is bounded
 
-Strictness is a single configured value that changes three things at once:
+The Inspector's third outcome is what makes the engine general: when evidence is insufficient
+but recoverable, it **appends a field to the live form** and hands it back. *"The label is out
+of focus — photograph it again."* *"That pad is worn past the interval — photograph the disc
+as well."*
+
+Left unbounded this is a trap. An agent can ask forever, and a technician stuck in an evidence
+loop abandons the job.
+
+**Every step carries `max_add_fields`.** On exhausting it the step escalates to a human with
+the specific unresolved question attached — never a silent failure, never another request.
+
+The Skeptic and the Instructor are separately watched for the same pathology: repeated
+near-identical requests, or a step whose field count grows without its evidence improving,
+trips a circuit breaker that escalates and logs the loop.
+
+> This is deliberate. The Architecture criterion asks *"how does the system recover if a
+> worker agent loops or returns a hallucination?"* — so the recovery path is a designed,
+> demonstrable feature rather than an afterthought.
+
+---
+
+## 5. Strictness is a real parameter, not a mood
+
+One configured value moves five knobs together:
 
 | | **0 — log** | **1 — standard** | **2 — assured** | **3 — regulated** |
 |---|---|---|---|---|
-| Fields required | Core only | Core + measurements | Everything declared | Everything, plus corroboration |
-| Inspector threshold | Accepts plausible evidence | Requires the specific thing | Requires a second source | Requires measured where measurable |
-| Willingness to ADD FIELD | Rarely | When unclear | Whenever inference is doing the work | Aggressively |
-| Skeptic passes | Sampled | Every step | Every step, full suite | Every step, plus cross-job comparison |
-| Cost | Cents | | | Dollars |
+| `min_confidence` | 0.50 | 0.70 | 0.85 | 0.95 |
+| `corroboration_required` | 0 | 0 | 1 | 2 |
+| `max_add_fields` per step | 0 | 2 | 3 | 4 |
+| `skeptic_sample_rate` | 0.1 | 1.0 | 1.0 | 1.0 |
+| `measured_where_possible` | false | false | true | true |
+| Cost per job | cents | | | dollars |
 
-**The same procedure runs at any level.** A brake service in a yard runs at 1. The same
-procedure on an asset carrying passengers runs at 3. Nothing is rewritten — the dial moves and
-the evidence bar moves with it.
+**The same procedure runs at every level.** A yard runs at 1. An asset carrying passengers
+runs at 3. Nothing is rewritten; the bar moves and the cost moves with it, metered by the
+Treasurer so the operator sees exactly what assurance costs.
 
-This is the whole pitch made mechanical: aviation-grade assurance is *available* at a price,
-and you choose what you are buying. The Treasurer meters it, so the operator sees exactly what
-strictness costs per job and can decide.
-
----
-
-## 5. Why this scales to any process
-
-The engine has no opinion about maintenance. Four unrelated procedures, one schema:
-
-| Procedure | Step | Field | Kind | Acceptance | Class |
-|---|---|---|---|---|---|
-| Brake service | Torque caliper | `bolt_torque` | measurement | `within(26,30,"Nm")` | measured |
-| Parcel delivery | Drop | `drop_photo` | photo | `must_show("parcel at door")` | inferred |
-| | | `gps` | location | `within(30, "m", of=address)` | measured |
-| Food safety | Cook temp | `core_temp` | measurement | `within(75,100,"C")` | measured |
-| Lab protocol | Reagent | `lot_scan` | scan | `matches(run.lot_number)` | measured |
-| Site milestone | Pour | `slump` | measurement | `within(75,125,"mm")` | measured |
-
-A new industry is a set of procedure documents. A new instrument is a driver. **Neither is a
-change to the fleet**, and that is the test of whether the abstraction is real.
+That is the pitch made mechanical: aviation-grade assurance is *purchasable*, and you choose
+how much you are buying.
 
 ---
 
-## 6. The client
+## 6. Instruments and drivers
 
-**Android, native, built with Expo.**
-
-Native rather than web because the client pairs Bluetooth instruments, and **Web Bluetooth
-does not exist on iOS Safari** — a browser client would rule out half of any future
-deployment. Android-only for now because iOS device deployment needs a paid developer
-account, Android BLE is materially easier to debug, and one platform halves the test surface
-in a short build. Expo keeps iOS available later at near-zero cost.
-
-**Expo Go will not work.** BLE requires native modules, so the client runs as a development
-build (`expo prebuild` + dev client). One hour of setup, then a fast reload loop on a
-physical handset for everything after.
-
-What the client owns:
-
-| Responsibility | Why it lives on the device |
-|---|---|
-| Capture — photo, video, audio, scan | Full fidelity exists nowhere else |
-| BLE pairing and instrument reads | The only place the instrument is reachable |
-| Field validation — focus, exposure, presence of a reading | Instant, free, no round trip |
-| Offline queue | Workshops have bad signal and jobs cannot stop |
-| PII redaction before upload | Faces and plates should never leave the device unmasked |
-
-The client is **untrusted**. Everything it reports is a claim to be corroborated, which is
-why capture integrity — contiguity, timing, device attestation — is itself a measured field
-rather than an assumption.
-
----
-
-## 7. Drivers, and the agent that writes them
-
-Every instrument speaks its own dialect. Writing a driver per tool is the long-tail
-integration work that stops platforms from generalising, so it is the part worth automating.
-
-### The driver contract
-
-Deliberately small, because everything above it must be indifferent to which tool it is:
+### The contract
 
 ```
 Driver
   matches     scan filter — service UUID, name prefix, manufacturer data
-  produces    kind: measurement · unit: "mm" · range: [0, 4000]
+  produces    kind: measurement · unit · range
   read()      raw bytes → { value, unit, tool_id, timestamp, raw }
 ```
 
-A `measurement` field does not know or care whether the number came from a commercial torque
-wrench or an ESP32 with an ultrasonic sensor. It knows the reading arrived from a paired tool
-without passing through a human, which is the only property that makes it **measured**.
+Nothing above this cares which tool it is. A `measurement` field knows only that the number
+**arrived from a paired device without passing through a human**, which is the sole property
+that makes it measured rather than typed.
 
-### Wright — the driver author
+### Two drivers at launch
 
-**Wright** is pointed at a device it has never seen and writes the driver.
+**The ESP32 reference instrument.** An ESP32 advertising a simple GATT characteristic. It
+exists to prove the path end to end and to make the abstraction concrete — *any* device that
+speaks the contract works, and here is one built for a few dollars. **It is labelled as a
+reference instrument, not presented as a maintenance gauge**, because what it measures is
+irrelevant to the claim being demonstrated.
 
-1. Enumerate the device's advertised GATT services and characteristics
-2. Read the public specifications for any standard services it finds
-3. Probe unknown characteristics and infer the encoding from the bytes
-4. Emit a driver against the contract above
-5. **Run it against the live device and check the reading is plausible**
-6. On failure, feed the error back and try again
+**The phone's own IMU.** Torque-angle tightening is a standard method — snug to a low torque,
+then turn a specified additional angle. The handset's gyroscope measuring that rotation is a
+genuine instrument reading, costs nothing, and produces a measurement that a mechanic
+recognises.
 
-Step 5 is the reason this works. Generated code that talks to hardware has ground truth
-available at no cost — the device either produces a sensible number or it does not. Both the
-prior winners that leaned on code generation cited a generate → validate → feed-back loop as
-the thing that made it reliable, and hardware is a stricter validator than a linter.
+### Wright, the driver author — honestly scoped
 
-**Scope honestly.** One hand-written ESP32 driver is the floor and it is enough for the
-system to work. Wright is the thing that turns one instrument into any instrument, and its
-demo — an agent enumerating an unknown device, inferring its protocol, writing code, and
-pulling a live reading — is the most striking thing in the fleet.
+Wright is pointed at an unfamiliar device and writes a driver: enumerate its GATT services
+and characteristics, read the public specification for any standard ones, infer the encoding,
+emit a driver, **run it against the live device, and check the reading is plausible.** On
+failure, feed the error back and retry.
 
----
+Hardware is the validator, which is why this can work where generated code usually does not.
 
-## 8. Where each model is spent
-
-| Layer | Model | When | Why |
-|---|---|---|---|
-| Field validation | local + rules | every capture | Focus, exposure, presence of a reading — free, instant |
-| Routine evidence | **Gemma** | every step | Cheap pass over ordinary photos at volume |
-| Judgement | **Gemini 3.5 Flash** | contested or high-strictness steps | Where inference is actually doing work |
-| Questions | **Gemini 3.5 Live API** | on the held button | Short bursts, bounded |
-| Adversarial corpus | **Veo** | offline | Synthetic fraudulent evidence, generated to attack our own Skeptic |
-
-The Treasurer routes between them by strictness and by the value of the asset. Most captures
-never reach a frontier model, which is what makes a job cost cents instead of dollars.
+**Where it genuinely works:** standard, documented GATT services — battery, device
+information, environmental sensing, heart rate. **Where it will usually fail:** proprietary
+vendor characteristics, which many commercial tools use and some obfuscate. The floor is a
+hand-written driver; Wright is upside, and it is first on the cut list.
 
 ---
 
-## 9. Assumptions we bake in, and publish
+## 7. The client
 
-1. **A model's judgement is inferred, never measured.** Nothing Gemini concludes can overwrite
-   an instrument reading.
-2. **The model cannot verify what it cannot see.** Occlusion, bad framing, darkness — these
-   produce ADD FIELD, never a guess.
-3. **Every decision records model version, prompt version, procedure version, and strictness.**
-   A decision that cannot be reproduced cannot be appealed.
-4. **The Skeptic is only as good as its current attack suite**, which is versioned and
-   published. "Passed" means "survived suite v4", not "unfakeable".
-5. **We publish our own error rates**, measured against a staged-fraud corpus where we know
-   the ground truth because we rigged it.
+**Android, native, Expo development build.** Native because it pairs Bluetooth and Web
+Bluetooth does not exist on iOS Safari. Android-only because iOS deployment needs a paid
+developer account, Android BLE is far easier to debug, and one platform halves the test
+surface. Expo Go will not work — BLE needs native modules.
 
-Point 5 is the one that matters. A verification product that will not publish its own
-false-accept rate is asking to be trusted on exactly the question it exists to settle.
+| The client owns | Why there |
+|---|---|
+| Capture — photo, video, audio, scan | Full fidelity exists nowhere else |
+| BLE pairing and instrument reads | The only place the instrument is reachable |
+| The hash chain and session clock | Integrity has to be constructed at the source |
+| Cheap field validation — focus, exposure, a reading present | Instant, free, no round trip |
+| Offline queue | Workshops have bad signal; jobs cannot stop |
+| **On-device face and plate redaction — ML Kit** | Raw media should never leave unmasked |
+
+**The client is untrusted.** Everything it reports is a claim to be corroborated, which is
+exactly why the hash chain and Play Integrity exist.
+
+> **Correction from an earlier draft:** on-device redaction is ML Kit, not Model Armor. Model
+> Armor is a cloud-side guardrail over model input and output — prompt injection, tool
+> poisoning, PII reaching or leaving the model. Both are used; they are not the same thing
+> and the earlier documents conflated them.
+
+---
+
+## 8. Data, and what is authoritative
+
+**Firestore is the single source of truth.** Procedures, jobs, captures, evidence chains,
+parts, orders, and sealed records. Everything else is a projection.
+
+| Surface | Role |
+|---|---|
+| **Firestore** | Authoritative. Every write goes here first |
+| **Google Workspace** | A **published view**, written on a schedule — the parts ledger as a Sheet, procedures as Docs, sealed records in Drive, purchase orders drafted in Gmail |
+| **MCP server** on Cloud Run | Machine-to-machine reads and actions |
+| **The Android client** | A cache with an outbox |
+
+Sheets is a projection deliberately. It is a poor primary store — rate limits, no
+transactions, races under concurrent writes — but it is where the operator already works, so
+it is where the answers should appear.
+
+**Purchase orders are drafted, never sent.** Same gate as customer charges: an agent prepares,
+a human approves. Autonomy stops where money leaves the business.
+
+---
+
+## 9. The fleet, and where each model runs
+
+| Agent | Job |
+|---|---|
+| **Scoper** | Interviews until a procedure is unambiguous; compiles and versions it |
+| **Instructor** | Renders steps, answers questions on a held button, branches the flow |
+| **Inspector** | PASS / ADD FIELD / ESCALATE against each field's acceptance rule |
+| **Skeptic** | Adversarial. Does this evidence belong to this job, machine and moment |
+| **Quartermaster** | Parts, stock, the parts graph, what a shortage blocks |
+| **Buyer** | Drafts purchase orders, reorder points, lead times |
+| **Registrar** | Seals the record, enforces provenance classes |
+| **Gatekeeper** | Holds the asset out of service |
+| **Wright** | Writes a driver for an unfamiliar instrument |
+
+Plus the **Treasurer** (meters agent-minutes, hard ceiling) and the **Chronicler** (public log).
+
+| Layer | Model | When |
+|---|---|---|
+| Field validation | local rules | every capture — free |
+| Routine evidence | **Gemma** | every step at strictness ≥ 1 |
+| Judgement | **Gemini 3.5 Flash** | contested steps, and everything at high strictness |
+| Questions on the button | STT → **Gemini 3.5 Flash** → TTS | when held |
+| Adversarial corpus | **Veo** | offline, generating synthetic fraudulent evidence |
+
+> Push-to-talk is speech-to-text plus a text model, **not** the Live API. The Live API is for
+> continuous bidirectional sessions; a held button asking one question does not need a session
+> held open, and does not need to inherit the 2-minute audio+video cap.
+
+**The Gatekeeper's refusal is physical.** A relay drives a key safe. A held machine is a
+drawer that does not open, not a notification that can be dismissed.
 
 ---
 
@@ -284,36 +285,51 @@ false-accept rate is asking to be trusted on exactly the question it exists to s
 | Concern | Service |
 |---|---|
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI |
-| Questions on the button | **Gemini 3.5 Live API** |
+| Volume classification | **Gemma** |
 | Framework | **ADK** |
 | Long-running jobs spanning days | **Agent Engine** |
-| Published, versioned procedures | **Agent Registry** |
+| Publishing and versioning the verifier agents | **Agent Registry** |
 | Asset history across services | **Memory Bank** |
 | Per-agent zero-trust access | **Agent Identity** |
 | Routing and policy | **Agent Gateway** |
-| Face, plate and PII redaction at capture | **Model Armor** |
+| Guardrails on model input and output | **Model Armor** |
 | Traces and audit logs | **Agent Observability** |
-| Services and transport | **Cloud Run**, **Pub/Sub** |
-| Ledger, procedures, orders, records | **Google Workspace** — Sheets, Docs, Gmail, Drive |
-| Machine-to-machine | **MCP server** on Cloud Run |
-| Instruments | BLE on the technician's device |
+| Services, transport | **Cloud Run**, **Pub/Sub** |
+| Source of truth | **Firestore** |
+| Operator-facing surfaces | **Google Workspace** |
 
 ---
 
-## 11. Still unverified
+## 11. What we deliberately do not claim
 
-- **Whether the ESP32 pairs cleanly to an Expo development build** over BLE. This is the
-  hello-world for the entire client and should be proved before any other code is written.
-- **Which BLE instrument is available.** An ESP32 with an ultrasonic sensor is a genuine
-  measuring device and is on hand; a commercial torque wrench is not. The `measurement` field
-  kind is indifferent to which — but at least one real instrument must exist, or the measured
-  class is empty and the central claim is unsupported.
-- **Wright's inference quality on genuinely unknown devices.** Standard GATT services are
-  documented and reliably inferable; a proprietary characteristic may not be. The floor is a
-  hand-written driver, so this is upside rather than risk.
-- **Whether Agent Registry, Memory Bank, Agent Identity, Agent Gateway and Model Armor are
-  enabled and reachable** in our project and region. Five of the seven Fortified Enterprise
-  Fleet components are named as load-bearing and none has been confirmed against our own
-  console.
-- **Cost per job in practice.** The routing model should make it cents. That is arithmetic
-  until a real job has been metered end to end.
+- **We do not judge workmanship.** No craft assessment from a photograph. A named human signs for that.
+- **We do not claim an unbroken recording.** We claim an unbroken *chain* of captures, which is a different and smaller thing.
+- **We do not claim the ESP32 measures anything useful.** It demonstrates the driver path.
+- **We do not claim Wright handles proprietary protocols.** Documented services, honestly scoped.
+- **We do not publish an error rate we cannot support.** With a small sample we publish the counts and the sample size, not a percentage dressed as a rate.
+- **The operator currently controls the standard.** In this deployment the owner authors the procedures and sets strictness. That is a real limitation of a single-party demonstration; the answer in production is that the party relying on the record — insurer, customer, regulator — sets the strictness floor, and the procedure version is pinned in the sealed record so it cannot be lowered retroactively.
+
+---
+
+## 12. Scope — the floor, and everything else
+
+**The floor, which must exist:**
+1. The form engine — procedures compile, steps render, fields validate
+2. The Android client — capture, the hash chain, one working instrument driver
+3. The Inspector — PASS / ADD FIELD / ESCALATE, bounded
+4. The Gatekeeper — a hold, with the relay
+
+Those four, working on real jobs, are a complete submission.
+
+**Stretch, in cut order (last to first):** Wright · the MCP surface · a second procedure ·
+Buyer merged into Quartermaster · Registrar merged into Inspector.
+
+---
+
+## 13. Still unverified
+
+- **Are Agent Registry, Memory Bank, Agent Identity, Agent Gateway and Model Armor enabled and reachable** in our project and region? Five of the seven named components. Never checked against our own console. **This is the console hour and it is today.**
+- **Can procedures be modelled in Agent Registry at all?** It publishes agents, not documents. Fallback: procedures live in Firestore with versioning; the Registry holds the verifier agents.
+- **Does the ESP32 pair cleanly to an Expo development build?** The hello-world for the entire client. Nothing else should be written first.
+- **Does Play Integrity give us a usable attestation** on the handset, and how does it behave offline?
+- **Cost per job in practice.** The routing should make it cents. That is arithmetic until a real job has been metered end to end.
