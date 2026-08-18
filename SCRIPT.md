@@ -1,45 +1,52 @@
 # SCRIPT.md — the demo video
 
 **4:00 hard cap.** Only the first four minutes are evaluated. The video is 30% of the score
-directly and it forms the judge's impression of the other 70%, so treat it as the primary
-deliverable and the software as the thing that makes it possible.
+directly and it sets the judge's impression of the other 70%.
 
 **Rules the cut must satisfy** (from `docs/rules/BIBLE.md`):
 - Problem overview, value proposition, and a demo of the app in action
-- **Must** demonstrate the backend running on Google Cloud — Console, Cloud Run dashboard, Vertex logs, or a `.run` URL on screen
-- **One segment must be an unedited, live execution** — "via terminal logs, database updates, or UI changes." This is scored explicitly. Shot 22 is that segment and it is not cut.
+- **Must** show the backend running on Google Cloud — Console, Cloud Run dashboard, Vertex logs, or a `.run` URL on screen
+- **One segment must be an unedited, live execution** — "via terminal logs, database updates, or UI changes." Shot 24 is that segment and it is not cut
 - English, or English subtitles
-- **No third-party trademarks, logos or slogans.** Motorcycle tank badges count. Frame them out, mask them, or shoot angles that avoid them. This is the easiest way to lose on a technicality.
+- **No third-party trademarks, logos or slogans.** Motorcycle tank badges, tool brands, and app icons all count. Frame them out or mask them
 
 ---
 
-## Tone
+## Tone — read this before shooting
 
-Dry, fast, confident. The joke opens the door; the stakes walk through it.
+The previous draft played like a trailer. This one does not. **It is a demonstration with a
+good opening.**
 
-Reference feel: the cold open of a good product film crossed with a workshop documentary.
-Kinetic but not frantic. Every cut lands on a beat. No corporate warmth, no stock-music
-uplift, no "in today's fast-paced world."
+The rule: after the cold open, **every second either shows the product working or explains
+why it has to exist.** No mood shots. No hold-on-your-face. No dramatic silence for its own
+sake. If a shot does not advance understanding, it is cut.
 
-**The rule for the whole piece:** never say a thing the picture can show. The voice-over
-carries argument only. The screen carries evidence.
+Screen time is budgeted deliberately:
 
-### Sound design
+| Section | Time | Share |
+|---|---|---|
+| Cold open | 0:18 | 8% |
+| Problem and framing | 0:40 | 17% |
+| **The product working** | **1:57** | **49%** |
+| Google Cloud proof | 0:23 | 10% |
+| Ledger and close | 0:22 | 9% |
 
-The motif is **mechanical**. Build the score out of workshop sounds — ratchet clicks, an
-impact driver, a chain, a bike turning over — quantised into rhythm. Then:
+Half the film is the thing running. That is the correct ratio and it is where the previous
+draft went wrong.
 
-- **The relay click** is the signature sound. Establish it early, use it as the punctuation
-  on every verified milestone, and let it land alone in the final beat.
-- **The refusal** gets the opposite: everything drops out. Silence, then one flat tone.
-- Music: minimal, percussive, sub-heavy. Something modern and slightly cold. It should feel
-  like a system working, not like a company advertising.
+### Sound
+
+Workshop sounds, used sparingly and diegetically — a ratchet, a chain, an impact driver.
+Music is low and percussive, and it **drops out entirely** for the whole demo section so the
+interface and the voice carry it.
+
+**The torque wrench click is the only sound effect that matters.** It is the moment the
+thesis becomes literal. Give it silence on either side.
 
 ### On-screen text
 
-Agent reasoning appears as clean monospace overlays anchored in the real space — the
-timelapse-with-thoughts idea. Keep them short enough to read in one pass. They do the
-explaining so the voice-over doesn't have to.
+Real UI wherever possible. Where you need to annotate, use clean monospace anchored to the
+screen element it describes. Never narrate what the text already says.
 
 ---
 
@@ -47,134 +54,138 @@ explaining so the voice-over doesn't have to.
 
 ### COLD OPEN — the departments (0:00–0:18)
 
+Unchanged. It is the strongest asset in the film.
+
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 1 | 0:00 | Hard cut in. Tight on a desk phone ringing. Hand answers. **You**, in a hi-vis vest: "Maintenance." | Phone ring. Room tone. |
-| 2 | 0:03 | Whip-pan to the same desk, different angle. **You**, glasses, cardigan: "Purchasing." | Ring cuts off mid-tone. |
-| 3 | 0:05 | Same. **You**, apron, oil on hands: "Parts." | Ring. |
+| 1 | 0:00 | Tight on a desk phone ringing. Hand answers. **You**, hi-vis vest: "Maintenance." | Ring. Room tone. |
+| 2 | 0:03 | Same desk, same lens, same mark. **You**, glasses and cardigan: "Purchasing." | Ring cuts mid-tone. |
+| 3 | 0:05 | Same. **You**, apron, oily hands: "Parts." | Ring. |
 | 4 | 0:07 | Same. **You**, reading glasses, calculator: "Accounts." | Ring. |
 | 5 | 0:09 | Same. **You**, blazer: "Insurance." | Ring. |
-| 6 | 0:11 | Wide, finally revealing the whole workshop. One desk. Five phones. All ringing. You, in the middle, in a plain t-shirt. | All five ring at once, then **cut to silence.** |
-| 7 | 0:14 | You look directly at camera. Beat. | VO: *"It's a twelve-bike rental company. I'm all of it."* |
+| 6 | 0:11 | Wide. One desk. Five phones. All ringing. You in the middle, plain t-shirt. | All five at once, then **hard cut to silence.** |
+| 7 | 0:14 | You, to camera. Flat delivery. | VO: *"It's a twelve-bike rental company. I'm all of it."* |
 
-> **Note:** shoot 1–5 identically — same lens, same mark, same framing — so the only thing
-> that changes is you. The cut does the joke. Do not act it; play it flat.
+> Shoot 1–5 identically so the only variable is you. The cut does the joke. Do not act it.
 
-### THE TURN — what's actually at stake (0:18–0:45)
-
-| # | Time | Visual | Audio / VO |
-|---|---|---|---|
-| 8 | 0:18 | Slow push on a maintenance logbook. A biro tick in a box. | VO: *"So when a bike goes out, somebody checked the brakes."* |
-| 9 | 0:23 | Cut to a customer riding away. Beautiful. Wide, low sun. | VO: *"Me. Probably. I think."* |
-| 10 | 0:27 | Hold on the empty road after they've gone. Let it sit a second too long. | Music drops out. Wind only. |
-| 11 | 0:31 | Archive-feel insert: an aircraft maintenance logbook, a technician's signature, a part tag. *(Use own footage or licensed material — no logos.)* | VO: *"Airlines never have this problem. Every part has a paper trail. Every job has a signature. The logbook is legally binding — and it works."* |
-| 12 | 0:40 | Cut back to your biro tick. Same framing as shot 8. | VO: *"It also costs more than my motorcycle."* |
-
-### THE SYSTEM (0:45–1:05)
+### THE PROBLEM (0:18–0:35)
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 13 | 0:45 | Hands mount the 360 camera to a tripod in the middle of the workshop. Click. | **First relay-click motif.** Music re-enters, percussive. |
-| 14 | 0:49 | 360 footage: the "tiny planet" reframe, then whip into a normal view. The whole workshop, one shot, nothing off-frame. | VO: *"So I built the airline's system. For a dollar."* |
-| 15 | 0:54 | Fast cutaways: ESP32 node on the door, sensor on the bench, the Pi's LED. | VO: *"Eight agents. One camera that can't be pointed away from anything."* |
-| 16 | 0:59 | Clean graphic: the eight agents as a fleet, each with its one job. Hold 4s — long enough to read, not to study. | Beat drop on the graphic. |
+| 8 | 0:18 | Macro push on a paper service sheet. A biro tick goes in a box. | VO: *"When a bike goes out, the record says someone checked the brakes."* |
+| 9 | 0:24 | Same sheet, pull back — a whole column of identical ticks. | VO: *"The record always says that. It's a tick in a box. It isn't evidence of anything."* |
+| 10 | 0:30 | Customer rides away. One clean shot, no montage. | VO: *"And it's the only thing standing between a service I might have skipped and a stranger doing 60."* |
 
-### THE LOOP — a bike goes out and comes back (1:05–2:05)
-
-| # | Time | Visual | Audio / VO |
-|---|---|---|---|
-| 17 | 1:05 | Customer arrives. 360 capture spins around the bike. Overlay: `PRE-RENTAL — condition baseline captured — 14 surfaces` | VO: *"Every bike gets photographed before it leaves. Not by me — I'd forget."* |
-| 18 | 1:14 | Riding footage. Give it 6 seconds and make it gorgeous. This is the breath before the work. | Music opens up. |
-| 19 | 1:20 | Bike returns, dusty. 360 capture again. | Music tightens. |
-| 20 | 1:25 | **The diff.** Split screen, before and after, the system pushing in on one panel. Overlay: `NEW — right fairing, 40mm — not present at handover` | Single sharp hit on the find. |
-| 21 | 1:33 | The proposed charge appears. Your finger hovers. **You approve it.** Overlay: `PROPOSED $180 · REQUIRES HUMAN APPROVAL` | VO: *"It finds the damage. It doesn't get to charge anyone. That's mine."* |
-
-### THE CHAIN — unedited, live (2:05–2:35)
+### THE TWO FRAMES (0:35–0:58)
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 22 | 2:05 | **UNEDITED. ONE TAKE. NO CUTS. 30 seconds.** Screen recording: the damage closes into a work order → the parts graph lights the four components the job consumes → two in stock, one on 21-day lead → the purchase order drafts itself → the service date moves to when the part lands. Terminal or trace visible alongside. | VO, over the top, unhurried: *"One damage report. Four agents. Nobody typed anything."* Then **let it play with no VO for the last 12 seconds.** |
+| 11 | 0:35 | Insert: an aviation logbook, an engineer's signature, a part tag. *(Own or licensed footage, no logos.)* | VO: *"Aviation fixed this. Every part traceable, every task signed against a published procedure, the logbook legally binding."* |
+| 12 | 0:43 | Cut back to your biro tick. Same framing as shot 8. | VO: *"It works. It also costs more than the motorcycle."* |
+| 13 | 0:47 | **Split screen.** Left: a courier flow — arrived, address confirmed, gate code, photo of the drop. Right: your paper sheet, unchanged. | VO: *"Meanwhile a stranger proves they delivered a parcel in four seconds, for pennies."* |
+| 14 | 0:54 | Left side keeps advancing. Right side stays a tick. | VO: *"Aviation set the standard. Delivery worked out the price."* |
 
-> **This shot is scored directly** — "does the video show an unedited, live execution."
-> Rehearse it until it runs clean, then record it in one pass. If it errors, record it again;
-> do not cut around a failure.
+> Shot 13 is the most efficient explanation in the film. Everyone already understands the
+> left side, which means the right side explains itself.
 
-### THE REFUSAL — the climax (2:35–3:00)
-
-| # | Time | Visual | Audio / VO |
-|---|---|---|---|
-| 23 | 2:35 | Different bike. A customer waiting, helmet in hand. You reach for the keys. | Music at full. |
-| 24 | 2:40 | Screen: `BIKE 07 — SERVICE LOGGED, NOT VERIFIED — WITHHELD` | **Everything cuts to silence.** One flat low tone. |
-| 25 | 2:45 | Hold on your face. Then you put the keys back. | Silence. |
-| 26 | 2:49 | Cut to the workshop 360 record, scrubbing back: the bay is empty for the whole window the service was supposedly performed in. | VO, quiet: *"The record said it was serviced. The room said nobody was in it."* |
-| 27 | 2:55 | Customer gets a different bike. Small, human beat — a nod, a thumbs up. | Music returns, softer. |
-
-> **This is the emotional centre of the film.** Not the verification — the refusal. It is the
-> only beat in the whole piece where the system protects somebody who has no idea it exists.
-
-### GOOGLE CLOUD — required, 30% (3:00–3:25)
+### DEFINE A PROCEDURE (0:58–1:20)
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 28 | 3:00 | Real screen recording, moving with purpose: Cloud Console → Agent Engine deployments → the eight agents listed in Agent Registry. | VO: *"Every agent is registered, identified, gated and armoured by Google's own platform."* |
-| 29 | 3:09 | Cloud Run services. Pub/Sub topics firing. A live `.run` URL in the address bar. | Percussive stabs on each cut. |
-| 30 | 3:15 | Cloud Trace: an end-to-end reasoning chain across four agents, expanding. | VO: *"Every decision it made is traceable to the model version that made it."* |
-| 31 | 3:20 | Model Armor redacting a face and a plate in the inspection footage, live. | VO: *"Including the ones about your face."* |
+| 15 | 0:58 | Screen: you type *"front brake service"* in plain language. The Scoper starts asking. | VO: *"You describe the job once."* |
+| 16 | 1:04 | Real exchange, readable: *"Does the pad wear need to match the service interval?"* · *"What torque, and what tolerance?"* · *"Who's allowed to override this?"* | VO: *"And it asks until there's nothing left to interpret."* |
+| 17 | 1:12 | The compiled procedure renders — seven steps, evidence declared per step, disqualifiers, what it releases. Version stamp `v3`. | VO: *"What comes out is a procedure a machine can check. That document is the product."* |
 
-### THE LEDGER (3:25–3:45)
-
-| # | Time | Visual | Audio / VO |
-|---|---|---|---|
-| 32 | 3:25 | Timelapse: the workshop over thirteen days. Bikes in, bikes out, light cycling. Agent overlays flickering past too fast to read individually. | Music builds. |
-| 33 | 3:35 | Numbers land one at a time, hard cuts: `NN inspections` · `NN verified` · `NN refused` · `NN days unattended` · **`$X.XX total`** | Each number lands on a beat. |
-
-> Fill from the running system. The spend figure is the detail that gets retold — if it is
-> genuinely small, give it its own beat and let it hang.
-
-### CLOSE (3:45–4:00)
+### PERFORM IT (1:20–2:00)
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 34 | 3:45 | Back to the five phones from shot 6. Silent now. | VO: *"I'm still every department."* |
-| 35 | 3:50 | You walk out of the workshop. The 360 camera keeps running behind you. | VO: *"I'm just not the only one paying attention."* |
-| 36 | 3:55 | Black. Title. One line: what it is, and where the public log lives. | **One relay click. Out.** |
+| 18 | 1:20 | Phone in a gloved hand in the workshop. Step 1 of 7 on screen. Wheel comes off, photo captured, step advances. | VO: *"Then it works like the delivery app. One step. Capture. Next."* |
+| 19 | 1:30 | Step 2. Removed pad photographed in a tray. Overlay: `wear consistent with 4,100 km — pass` | Ratchet, room tone. No music. |
+| 20 | 1:38 | Step 3. Part held to camera. Overlay flags: `reads 45022-K · work order expects 45022-KA` | Beat. |
+| 21 | 1:44 | The flow **branches** — a supersession question appears that wasn't in the original seven steps. Technician answers. | VO: *"It isn't a checklist. When reality disagrees with the plan, it opens the step it needs."* |
+| 22 | 1:53 | Quick beat: the technician asks a question out loud, hands still busy. The agent answers. | VO: *"Nothing gets typed in. Evidence is captured, not entered."* |
+
+### THE INSTRUMENT — the hero shot (2:00–2:20)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 23a | 2:00 | Macro. The torque wrench on the caliper bolt. Slow. | Music out entirely. Room tone. |
+| 23b | 2:07 | **The wrench clicks.** | **CLICK.** Nothing else. |
+| 23c | 2:09 | Cut to the phone: `28.4 Nm · 14:32:07 · tool #A19 · MEASURED` lands in the record on its own. | Single soft confirmation tone. |
+| 23d | 2:14 | Three-row overlay: **measured** / **inferred** / **asserted**, with this reading filed under measured. | VO: *"A photo says the job was done. A torque wrench says it was done right. Warrant never confuses the two."* |
+
+> This is the centre of the film. It is the moment the claim stops being a promise. Shoot the
+> click on the α7 at high frame rate and let it breathe — it is the one place slow motion earns
+> its place.
+
+### THE CHAIN — unedited, one take (2:20–2:55)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 24 | 2:20 | **UNEDITED. ONE TAKE. NO CUTS. 35 seconds.** Final step passes → work order closes → the parts sheet in Google Sheets decrements live → stock drops below floor → a purchase order drafts itself in Gmail → a request goes to accounts → Cloud Trace shows the four agents that did it. | VO for the first 12s: *"One step passing. Four agents. Nobody typed anything."* Then **let it run silent.** |
+
+> Scored directly by the Demo criterion. Rehearse until it runs clean, then record in one
+> pass. If it errors, record it again — do not cut around a failure.
+
+### THE REFUSAL (2:55–3:15)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 25 | 2:55 | Different bike. Customer waiting, helmet in hand. You reach for the keys. | Room tone. |
+| 26 | 3:00 | Phone: `BIKE 07 — HELD · step 4 torque not recorded · procedure v3` | One flat low tone. |
+| 27 | 3:05 | You put the keys back. Hand the customer a different set. | VO: *"Someone ticked the box. The wrench never reported a number, so the bike doesn't go out."* |
+| 28 | 3:11 | Customer rides off on the other bike. Two seconds, no lingering. | VO: *"That's the only part of this that protects a person who doesn't know it exists."* |
+
+### GOOGLE CLOUD — required (3:15–3:38)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 29 | 3:15 | Real screen recording: Cloud Console → Agent Engine deployments → the eight agents listed in Agent Registry, with procedure `v3` published beside them. | VO: *"Every agent registered, identified, gated and armoured by Google's own platform."* |
+| 30 | 3:24 | Cloud Run services, Pub/Sub topics firing, a live `.run` URL in the bar. Cloud Trace expands one reasoning chain across four agents. | VO: *"Every decision traceable to the model version that made it."* |
+| 31 | 3:32 | Model Armor redacting a face and a plate out of captured evidence, in real time. | VO: *"Including the ones about your face."* |
+
+### LEDGER AND CLOSE (3:38–4:00)
+
+| # | Time | Visual | Audio / VO |
+|---|---|---|---|
+| 32 | 3:38 | Numbers land one at a time on hard cuts: `NN jobs` · `NN steps verified` · `NN refused` · `NN readings measured` · `NN machines held` · `NN days unattended` · **`$X.XX`** | Music returns, minimal. |
+| 33 | 3:48 | The five phones from shot 6. Silent. | VO: *"I'm still every department."* |
+| 34 | 3:53 | You close the workshop door. Through the window, a phone on the bench lights up with the next job. | VO: *"I'm just not the only one paying attention any more."* |
+| 35 | 3:57 | Black. Name, one line, and the public log URL. | **One torque-wrench click. Out.** |
 
 ---
 
 ## Production notes
 
-**Shoot while it runs, not after.** The 25–29 window is when real inspections happen. Every
-one is footage you cannot recreate on the 30th. Roll on all of them, even the boring ones.
+**Shoot while it runs.** Real jobs happen once. Roll on every service and every handover
+between now and the 30th, including the dull ones — that footage cannot be recreated on the
+final day.
 
-**Capture in segments with clean heads and tails.** A four-minute cut assembles from beats.
-The exception is shot 22, which is continuous by requirement.
+**Bank these three early**, since none depends on the system being finished:
+1. Cold open, shots 1–7
+2. The riding shots, 10 and 28
+3. The macro wrench sequence, 23a–23b — the click is a real click whether or not the software works yet
 
-**The refusal has to be real.** Do not stage bike 07. Let a genuine unverified service sit,
-and film what the system does. If it never happens naturally, create the condition honestly —
-skip a verification — and say nothing that implies otherwise.
+**The refusal must be real.** Do not stage bike 07. Let a genuine missing torque reading sit
+and film what the system does. If it never happens naturally, create the condition honestly
+by skipping the reading — and say nothing in the cut that implies otherwise.
 
-**Three things to bank early, in case the last week goes wrong:**
-1. The cold open (shots 1–7) — shootable any time, entirely under your control
-2. The riding footage (18) — needs good light more than it needs the system working
-3. The Cloud Console sequence (28–31) — needs deployment, not evidence
+**Everything except shot 24 is shot in segments** with clean heads and tails, so the cut
+assembles from beats. Shot 24 is continuous by requirement.
 
-**What you already own that most entrants don't:** an α7 III, a 360 rig, a real workshop,
-real customers, and the ability to actually direct this. Use the production values. A judge
-watching their fortieth submission of the day will notice within five seconds.
+**Watch the badges.** Tank logos, tool brands, and the app icons in shot 13 are all
+third-party trademarks. Mask, reframe, or use generic stand-ins.
 
 ---
 
-## Alternative cold opens, if the department joke doesn't land in the edit
+## Alternative cold opens
 
-**A. The tick.** Open tight on the biro ticking the box. Hold. Then reveal nobody was in the
-workshop that day. Colder, faster to stakes, loses the charm.
+**A. The wrench.** Open on the click and the number landing, then rewind to explain it.
+Fastest to the thesis, spends the hero shot in the first ten seconds.
 
-**B. The keys.** Open on the refusal — keys going back in the drawer, customer waiting. Then
-rewind the whole film to explain it. Strongest hook, but it spends the climax in the first
-ten seconds.
+**B. The tick.** Open on the biro, hold, then reveal the workshop was empty that day. Colder,
+more serious, less memorable.
 
-**C. Aircraft first.** Open on the aviation logbook and the part tag, then hard cut to your
-biro. Makes the thesis explicit immediately. Most serious, least memorable.
-
-The department joke is the recommendation. It is the only one of the four that a judge will
-still be able to describe to a colleague a week later.
+The department joke stays the recommendation. It is the only opening a judge will still be
+able to describe to a colleague a week later.
