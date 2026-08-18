@@ -1,0 +1,9 @@
+# Build the landing page image. Context is the repo root so the Dockerfile
+# can reach both infra/nginx.conf and site/.
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-f", "infra/Dockerfile", "-t", "${_IMAGE}", "."]
+images:
+  - "${_IMAGE}"
+options:
+  logging: CLOUD_LOGGING_ONLY
