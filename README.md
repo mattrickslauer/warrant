@@ -39,6 +39,24 @@ assurance has always been priced as human attention, and human attention does no
 
 **Warrant is the aviation regime at a price a nine-machine operator can pay.**
 
+## And one industry already worked out how
+
+Every time a courier drops a parcel, a stranger performs an unsupervised task and proves it
+in about four seconds. Arrived — GPS confirms it. Right address — confirmed. Gate code
+needed? Only then are you asked. Left at the door — photograph, timestamped, attached.
+
+Nobody calls that verification infrastructure, but that is exactly what it is, and it is the
+most successful deployment of it in history. It works because of three choices:
+
+- **The worker never decides what evidence to capture.** The app asks, one step at a time.
+- **It will not advance without it.** The proof is a gate, not a form field at the end.
+- **The flow branches.** Steps appear only when the situation calls for them.
+
+Maintenance has none of that. It has a clipboard, a tick, and a signature at the bottom.
+
+**Aviation set the standard. Delivery worked out the price.** Warrant is the first and the
+second at the same time, pointed at any procedure you can write down.
+
 ---
 
 ## What Warrant is
@@ -76,14 +94,32 @@ procedure: front-brake-service · v3
 
 That document is the product. Everything downstream is machinery.
 
-### 2. Perform it
+### 2. Perform it, one step at a time
 
-The technician opens the job on their phone and is walked through it, step by step, by an
-agent that can see what they see and answer questions while their hands are busy. It tells
-them when the framing is unusable, when a reading is out of tolerance, and when they have
-skipped something.
+The technician opens the job on their phone and is walked through it exactly the way a
+courier is walked through a drop. One step on screen. Capture the thing. Next.
 
-**Nothing is typed in.** Evidence is captured, not entered.
+```
+  STEP 3 OF 7 — present the new part
+
+  Photograph the part and its label before fitting.
+  ────────────────────────────────────────────────
+  [ camera ]                          ● recording
+
+  ✓ label legible
+  ✗ part number reads 45022-K —  work order expects 45022-KA
+
+  → Is this a supersession?   [ yes, and why ]   [ no, wrong part ]
+```
+
+The step does not advance until its evidence exists, and the agent watching is doing more
+than checking a box. It sees what the technician sees, and it **branches the flow when
+reality disagrees with the plan** — a part number that does not match, wear that is
+inconsistent with the service interval, a reading outside tolerance. Each of those opens the
+step it needs and closes it again.
+
+That is where a procedure stops being a checklist and starts being a conversation with a
+record attached. **Nothing is typed in.** Evidence is captured, not entered.
 
 ### 3. Connect the instruments
 
@@ -109,6 +145,38 @@ A passed step is not a green tick. It is a trigger.
 Parts come out of stock. A reorder is raised if the shelf drops below its floor. The work
 order advances. The asset's service history updates. When the last step passes, the machine
 is released — and until then, **it is not.**
+
+### 5. It lives where the business already lives
+
+Small operators do not run on dashboards. They run on a spreadsheet, an inbox, and a folder
+of photographs. Asking them to adopt another system is how good tools die.
+
+**Warrant works inside Google Workspace.** Procedures are documents. The parts ledger is a
+sheet, updated as steps consume stock. Purchase orders are drafted and sent from the
+operator's own mail. Signed records land in Drive, shareable with a customer or an insurer as
+an ordinary link. A request to another department is an email a person can simply reply to.
+
+The agents do the work in the tools that were already open. Nobody has to log in to anything
+to find out what happened.
+
+### 6. Other systems can drive it
+
+Warrant exposes itself over the **Model Context Protocol**, so the fleet is infrastructure
+rather than a destination:
+
+```
+list_procedures       what this shop knows how to do, and at which version
+open_job              start a procedure against an asset
+step_status           what evidence a job is waiting on
+get_record            the sealed record, its evidence, and its provenance classes
+inventory             what is on the shelf, what a job will consume
+raise_po              draft a purchase order against a shortage
+request               send a task to another department, and track the reply
+```
+
+An operator's own assistant can ask what is overdue and start the job. A finance system can
+pull the ledger. Another agent can raise the order. The best version of this product is one
+nobody has to open.
 
 ---
 
@@ -205,6 +273,8 @@ Warrant runs on Google Cloud.
 | Telemetry | **Agent Observability** — OpenTelemetry traces, end-to-end reasoning chains |
 | Services, transport, scheduling | **Cloud Run**, **Pub/Sub** |
 | Instruments | BLE pairing on the technician's phone — torque wrenches, gauges, readers |
+| Where the business works | **Google Workspace** — Sheets for the parts ledger, Docs for procedures, Gmail for orders and requests, Drive for sealed records |
+| Machine-to-machine surface | **MCP server** on Cloud Run — inventory, purchase orders, cross-department requests |
 | Volume classification | **Gemma** — the cheap pass over routine evidence |
 | Adversarial corpus | **Veo** — synthetic fraudulent evidence, generated to attack our own Skeptic |
 
