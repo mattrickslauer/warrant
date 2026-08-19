@@ -1,0 +1,33 @@
+{
+  "$id": "record",
+  "title": "SealedRecord",
+  "type": "object",
+  "description": "Written once by the Seal, never updated. This is what /r/<id> renders and what a stranger checks.",
+  "properties": {
+    "id":        { "type": "string", "description": "Opaque and unguessable. It is a public URL." },
+    "job_id":    { "type": "string" },
+    "tenant_id": { "type": "string" },
+    "public":    { "type": "boolean", "description": "True only for anon and demo tenants. Real tenant records are private with an explicit share action." },
+    "sealed_at": { "type": "string" },
+
+    "ceiling_tier":        { "type": "string", "enum": ["open", "attested", "instrumented"] },
+    "ceiling_reachable":   { "type": "array", "items": { "type": "string", "enum": ["measured", "specified", "inferred", "asserted"] } },
+    "ceiling_unreachable": { "type": "array", "description": "Each with the one-line reason it is out of reach at this tier. This is the call to action, and it is honest.",
+      "items": { "type": "object", "properties": {
+        "class":  { "type": "string", "enum": ["measured", "specified", "inferred", "asserted"] },
+        "reason": { "type": "string" }
+      }, "required": ["class", "reason"] } },
+
+    "deficiencies": { "type": "array", "description": "What the Gate reads. A deficiency against a field required at this strictness holds the machine.",
+      "items": { "type": "object", "properties": {
+        "step_id": { "type": "string" },
+        "status":  { "type": "string", "enum": ["deferred", "waived", "impossible"] },
+        "reason":  { "type": "string" }
+      }, "required": ["step_id", "status", "reason"] } },
+
+    "machine_released": { "type": "boolean", "description": "The Gate's answer. Deterministic, from deficiencies and strictness." },
+    "steps":     { "type": "array", "items": { "$ref": "step-outcome" } },
+    "decisions": { "type": "array", "items": { "$ref": "decision" } }
+  },
+  "required": ["id", "job_id", "tenant_id", "public", "sealed_at", "ceiling_tier", "ceiling_reachable", "ceiling_unreachable", "deficiencies", "machine_released", "steps", "decisions"]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "ForemanDisposition",
+  "type": "object",
+  "description": "You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here.",
+  "properties": {
+    "status": { "type": "string", "enum": ["deferred", "waived", "impossible"],
+                "description": "deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect." },
+    "action": { "type": "string", "enum": ["chase", "reorder", "escalate", "revise"] },
+    "rationale": { "type": "string", "description": "Why this disposition and not the others. This is read by a person in a dispute months later." },
+    "chase_after":   { "type": "string", "nullable": true, "description": "ISO 8601 UTC. When to wake and check. Required when action is chase." },
+    "reorder_part":  { "type": "string", "nullable": true, "description": "Required when action is reorder. A purchase order is DRAFTED, never sent." },
+    "escalate_to_role": { "type": "string", "nullable": true, "description": "Required when action is escalate. The role that must decide, not a person's name." },
+    "hold_machine":  { "type": "boolean", "description": "Your recommendation. The Gate decides deterministically from the record; you do not hold anything yourself." }
+  },
+  "required": ["status", "action", "rationale", "hold_machine"]
+}

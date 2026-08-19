@@ -1,0 +1,21 @@
+{
+  "$id": "job",
+  "title": "Job",
+  "type": "object",
+  "description": "One run of one procedure version against one asset.",
+  "properties": {
+    "id":        { "type": "string" },
+    "tenant_id": { "type": "string" },
+    "procedure_id":      { "type": "string" },
+    "procedure_version": { "type": "integer", "description": "The version that ran, not the current one." },
+    "asset_urn":     { "type": "string", "nullable": true },
+    "technician_id": { "type": "string", "nullable": true },
+    "status":     { "type": "string", "enum": ["open", "waiting", "held", "sealed"] },
+    "strictness": { "type": "integer" },
+    "tier":       { "type": "string", "enum": ["open", "attested", "instrumented"], "description": "What the surface performing this job can actually supply." },
+    "started_at": { "type": "string" },
+    "sealed_at":  { "type": "string", "nullable": true },
+    "steps": { "type": "array", "items": { "$ref": "step-outcome" } }
+  },
+  "required": ["id", "tenant_id", "procedure_id", "procedure_version", "status", "strictness", "tier", "started_at", "steps"]
+}

@@ -1,0 +1,30 @@
+/* GENERATED from design/tokens.json — do not edit. */
+:root{
+  --work: #0E1719;
+  --work-2: #152225;
+  --work-3: #1D2E31;
+  --rec: #EDEFEA;
+  --rec-2: #E3E7E0;
+  --rule: #C6CDC5;
+  --ink: #101718;
+  --ink-2: #4A5654;
+  --ink-3: #77837F;
+  --paper-ink: #0B1112;
+  --measured: #0F7A63;
+  --measured-lift: #3FBFA0;
+  --specified: #2A6F97;
+  --specified-lift: #6BA9CE;
+  --inferred: #C07818;
+  --inferred-lift: #E8A94E;
+  --asserted: #6A5AA0;
+  --asserted-lift: #9C8BD4;
+  --open: #77837F;
+  --waiting: #C07818;
+  --held: #B4463C;
+  --sealed: #0F7A63;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --maxw: 1180px;
+  --radius: 3px;
+  --gap: 1px;
+}

@@ -1,0 +1,14 @@
+{
+  "title": "SkepticVerdict",
+  "type": "object",
+  "description": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.",
+  "properties": {
+    "belongs":    { "type": "boolean", "description": "False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day." },
+    "confidence": { "type": "number", "description": "0 to 1." },
+    "rationale":  { "type": "string", "description": "What in the image, the asset history or the embedding distance decided it." },
+    "mismatch_kind": { "type": "string", "enum": ["asset", "time", "reuse", "scene", "none"], "nullable": true,
+                       "description": "reuse means this evidence appears to have been submitted before." },
+    "prior_capture_ref": { "type": "string", "nullable": true, "description": "When mismatch_kind is reuse, the earlier capture this resembles." }
+  },
+  "required": ["belongs", "confidence", "rationale"]
+}

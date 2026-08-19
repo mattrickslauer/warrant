@@ -1,0 +1,19 @@
+{
+  "$id": "decision",
+  "title": "Decision",
+  "type": "object",
+  "description": "One agent doing one thing. This is the row AgentTrace renders and the line the public decision log carries.",
+  "properties": {
+    "id":     { "type": "string" },
+    "job_id": { "type": "string" },
+    "step_id":{ "type": "string", "nullable": true },
+    "agent":  { "type": "string", "enum": ["scoper", "foreman", "inspector", "skeptic", "auditor", "instructor", "wright"] },
+    "agent_version": { "type": "string", "description": "From Agent Registry. The sealed record stamps WHICH agent version decided." },
+    "model":  { "type": "string", "nullable": true, "description": "Null for deterministic core decisions." },
+    "verdict":{ "type": "string" },
+    "rationale": { "type": "string" },
+    "cost_usd":  { "type": "number", "nullable": true, "description": "Estimated from token counts. The Ledger meters against a hard ceiling." },
+    "at": { "type": "string" }
+  },
+  "required": ["id", "job_id", "agent", "agent_version", "verdict", "rationale", "at"]
+}

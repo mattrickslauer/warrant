@@ -1,0 +1,25 @@
+{
+  "$id": "field-def",
+  "title": "FieldDef",
+  "type": "object",
+  "description": "What a procedure DECLARES a step must produce. The filled version is Field.",
+  "properties": {
+    "key":    { "type": "string", "description": "Stable within the step. e.g. pad_torque." },
+    "kind":   { "type": "string", "enum": ["measurement", "photo", "video", "scan", "choice", "text", "signature", "location"],
+                "description": "The discriminator. Decides which value slot on Field is meaningful." },
+    "prompt": { "type": "string", "description": "What to do. Shown as the instruction." },
+    "source": { "type": "string", "enum": ["instrument", "camera", "human"],
+                "description": "instrument is the only source that can yield the measured class." },
+    "required_at_strictness": { "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated. The field is required at or above this." },
+    "choices": { "type": "array", "items": { "type": "string" }, "description": "Only meaningful when kind is choice." },
+    "acceptance_rule": { "type": "string", "enum": ["within", "matches", "must_show", "consistent_with", "per_spec", "signed_by"],
+                         "description": "Decides the provenance class. within/matches/per_spec resolve without a model." },
+    "acceptance_min":  { "type": "number", "nullable": true },
+    "acceptance_max":  { "type": "number", "nullable": true },
+    "acceptance_unit": { "type": "string", "nullable": true },
+    "acceptance_target": { "type": "string", "nullable": true, "description": "For matches/consistent_with/signed_by: what it resolves against." },
+    "acceptance_description": { "type": "string", "nullable": true, "description": "For must_show: what the media has to show." },
+    "guidance": { "type": "string", "description": "What good looks like, in plain language. Shown to the human BEFORE the capture — the same rule the Inspector applies after it." }
+  },
+  "required": ["key", "kind", "prompt", "source", "required_at_strictness", "acceptance_rule", "guidance"]
+}

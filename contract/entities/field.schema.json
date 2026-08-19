@@ -1,0 +1,28 @@
+{
+  "$id": "field",
+  "title": "Field",
+  "type": "object",
+  "description": "A FieldDef once it has been filled. Flat with a discriminator: kind decides which value slot is meaningful, the rest are null.",
+  "properties": {
+    "id":      { "type": "string" },
+    "step_id": { "type": "string" },
+    "key":     { "type": "string" },
+    "kind":    { "type": "string", "enum": ["measurement", "photo", "video", "scan", "choice", "text", "signature", "location"] },
+
+    "value_number": { "type": "number", "nullable": true, "description": "measurement only." },
+    "value_text":   { "type": "string", "nullable": true, "description": "text, scan, signature." },
+    "value_choice": { "type": "string", "nullable": true, "description": "choice only." },
+    "unit":         { "type": "string", "nullable": true, "description": "measurement only." },
+    "media_ref":    { "type": "string", "nullable": true, "description": "photo, video. A Capture id." },
+    "tool_id":      { "type": "string", "nullable": true, "description": "Set only when the value arrived from a paired instrument. Its presence is what makes the class measured." },
+    "captured_at":  { "type": "string", "nullable": true },
+
+    "provenance_class": { "type": "string", "enum": ["measured", "specified", "inferred", "asserted"], "nullable": true,
+                          "description": "Stamped by the Seal from the acceptance rule and the capture surface. Never asserted by a model. Null until sealed." },
+    "resolved_from_order": { "type": "string", "enum": ["override_instance", "override_type", "spec", "asked"], "nullable": true,
+                             "description": "Which resolution step supplied the bound. See data-model.md section 5." },
+    "resolved_from_cite":  { "type": "string", "nullable": true, "description": "doc/section/page when the order is spec." },
+    "component_ref": { "type": "string", "nullable": true, "description": "Evidence attaches to the component, not the position, so it survives the part moving machines." }
+  },
+  "required": ["id", "step_id", "key", "kind"]
+}

@@ -1,0 +1,16 @@
+{
+  "$id": "step",
+  "title": "Step",
+  "type": "object",
+  "description": "One card in a procedure. Always has two exits: capture, or state why not.",
+  "properties": {
+    "id":    { "type": "string" },
+    "index": { "type": "integer" },
+    "title": { "type": "string" },
+    "condition": { "type": "string", "nullable": true, "description": "Show only if. Null means always." },
+    "explanation": { "type": "string", "description": "WHY this step exists and what goes wrong without it. Authored by the Scoper during the interview." },
+    "max_add_fields": { "type": "integer", "description": "Hard cap on Inspector ADD FIELD. On exhaustion the step escalates with the unresolved question." },
+    "fields": { "type": "array", "items": { "$ref": "field-def" } }
+  },
+  "required": ["id", "index", "title", "explanation", "max_add_fields", "fields"]
+}

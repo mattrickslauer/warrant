@@ -1,0 +1,31 @@
+{
+  "$id": "step-outcome",
+  "title": "StepOutcome",
+  "type": "object",
+  "description": "One per step, ALWAYS written, never absent. A step can be satisfied or explained; it can never be silently abandoned.",
+  "properties": {
+    "id":      { "type": "string" },
+    "job_id":  { "type": "string" },
+    "step_id": { "type": "string" },
+    "status":  { "type": "string", "enum": ["pending", "performed", "deferred", "waived", "impossible"],
+                 "description": "There is no skip. deferred keeps the job open and the machine held; waived seals with a signed waiver and releases; impossible seals deficient and files a procedure defect." },
+
+    "reason_kind":       { "type": "string", "enum": ["voice", "text"], "nullable": true },
+    "reason_transcript": { "type": "string", "nullable": true, "description": "What the technician said, in their words." },
+    "reason_audio_ref":  { "type": "string", "nullable": true },
+    "reason_by":         { "type": "string", "nullable": true, "description": "Named human, or the warrant_uid on the open tier." },
+    "reason_at":         { "type": "string", "nullable": true },
+
+    "recommendation_text":  { "type": "string", "nullable": true, "description": "The Instructor's next action for the person standing there now." },
+    "recommendation_model": { "type": "string", "nullable": true },
+
+    "disposition_action": { "type": "string", "enum": ["chase", "reorder", "escalate", "revise"], "nullable": true,
+                            "description": "The Foreman's call on what happens to the job, the machine, the booking and the parts order." },
+    "disposition_at":     { "type": "string", "nullable": true },
+
+    "waived_by": { "type": "string", "nullable": true, "description": "Required when status is waived. A named person with the standing to waive." },
+    "provenance_class": { "type": "string", "enum": ["asserted"], "nullable": true, "description": "A stated reason is always asserted — a named human said it, at this time." },
+    "fields": { "type": "array", "items": { "$ref": "field" } }
+  },
+  "required": ["id", "job_id", "step_id", "status", "fields"]
+}

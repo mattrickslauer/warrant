@@ -1,0 +1,15 @@
+{
+  "title": "InstructorRecommendation",
+  "type": "object",
+  "description": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.",
+  "properties": {
+    "reason_summary": { "type": "string", "description": "Their reason in one clause, in their terms. Do not sanitise it." },
+    "blocker_kind":   { "type": "string", "enum": ["part_missing", "tool_missing", "access", "seized_or_damaged", "unsafe", "machine_absent", "procedure_wrong", "other"] },
+    "recommended_action": { "type": "string", "description": "What to do next. Concrete and doable now, or explicitly 'stop and hand off'." },
+    "proposed_status": { "type": "string", "enum": ["deferred", "waived", "impossible"],
+                         "description": "A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip." },
+    "blocking_part":  { "type": "string", "nullable": true, "description": "Part number or description when blocker_kind is part_missing." },
+    "safety_flag":    { "type": "boolean", "description": "True if continuing would put someone at risk. Overrides everything else." }
+  },
+  "required": ["reason_summary", "blocker_kind", "recommended_action", "proposed_status", "safety_flag"]
+}

@@ -1,0 +1,22 @@
+{
+  "$id": "capture",
+  "title": "Capture",
+  "type": "object",
+  "description": "A piece of media. capture_surface is what decides the tier ceiling, so it is recorded here and nowhere else.",
+  "properties": {
+    "id":       { "type": "string" },
+    "field_id": { "type": "string" },
+    "kind":     { "type": "string", "enum": ["photo", "video", "audio", "scan"] },
+    "media_ref":{ "type": "string" },
+    "capture_mode": { "type": "string", "enum": ["live", "upload"],
+                      "description": "live means the frame was grabbed from an active camera stream on this device. An uploaded file says nothing about when or where it was made, so it can never support a stronger class than a claim." },
+    "capture_surface": { "type": "string", "enum": ["browser", "app", "app_instrument"],
+                         "description": "browser cannot reach the measured class: no pairing, no attestation, and its sensors are supplied by the person being verified." },
+    "attestation_device_id":     { "type": "string", "nullable": true, "description": "Null on browser." },
+    "attestation_play_integrity":{ "type": "string", "nullable": true, "description": "Null on browser." },
+    "redacted": { "type": "boolean", "description": "On-device ML Kit face and plate redaction has run. A record is not readable until this is true." },
+    "armor_verdict": { "type": "string", "enum": ["NO_MATCH_FOUND", "MATCH_FOUND"], "nullable": true, "description": "Model Armor pi_and_jailbreak on the image." },
+    "created_at": { "type": "string" }
+  },
+  "required": ["id", "field_id", "kind", "media_ref", "capture_mode", "capture_surface", "redacted", "created_at"]
+}

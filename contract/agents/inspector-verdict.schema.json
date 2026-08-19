@@ -1,0 +1,15 @@
+{
+  "title": "InspectorVerdict",
+  "type": "object",
+  "description": "Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. ADD_FIELD when the evidence is insufficient but recoverable. ESCALATE when a person must decide.",
+  "properties": {
+    "verdict":   { "type": "string", "enum": ["PASS", "ADD_FIELD", "ESCALATE"] },
+    "confidence":{ "type": "number", "description": "0 to 1. Below the strictness threshold you must not return PASS." },
+    "rationale": { "type": "string", "description": "One or two sentences citing what in the evidence decided it. Never restate the prompt." },
+    "add_field_key":    { "type": "string", "nullable": true, "description": "Required when verdict is ADD_FIELD. A new key, not an existing one." },
+    "add_field_kind":   { "type": "string", "enum": ["measurement", "photo", "video", "scan", "choice", "text", "signature", "location"], "nullable": true },
+    "add_field_prompt": { "type": "string", "nullable": true, "description": "The specific next ask, e.g. 'the label is out of focus, photograph it again'. Never a generic retry." },
+    "escalation_question": { "type": "string", "nullable": true, "description": "Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary." }
+  },
+  "required": ["verdict", "confidence", "rationale"]
+}

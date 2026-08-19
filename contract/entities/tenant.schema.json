@@ -1,0 +1,14 @@
+{
+  "$id": "tenant",
+  "title": "Tenant",
+  "type": "object",
+  "description": "A Workspace domain is an enterprise; a consumer account is a tenant of one; an anonymous visitor is a tenant of one that has not been claimed.",
+  "properties": {
+    "id":     { "type": "string", "description": "Workspace domain, or u:<sub>, or anon:<warrant_uid>." },
+    "kind":   { "type": "string", "enum": ["workspace", "solo", "anon"] },
+    "hd":     { "type": "string", "nullable": true, "description": "Google Sign-In hd claim. Null unless kind is workspace." },
+    "region": { "type": "string", "enum": ["us", "eu"], "description": "Sovereignty. Evidence and memory never leave it." },
+    "claimed_at": { "type": "string", "nullable": true, "description": "ISO 8601 UTC. Null while anonymous." }
+  },
+  "required": ["id", "kind", "region"]
+}
