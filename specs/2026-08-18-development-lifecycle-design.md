@@ -671,7 +671,8 @@ the measured instrument reading · the Gate's refusal.
 
 ## 11. Document reconciliation
 
-Defects found in the audit of 2026-08-18, to be fixed before submission.
+Defects found in the audit of 2026-08-18. **Everything below marked ✅ was fixed on 19 Aug;
+the rest is still outstanding.**
 
 **`README.md`**
 - "Running it" references `scripts/bootstrap.sh`, `scripts/deploy.sh`, `scripts/smoke.sh` and

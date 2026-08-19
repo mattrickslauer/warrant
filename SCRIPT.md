@@ -194,7 +194,7 @@ You, on camera, attempting to defeat your own system. Play it deadpan.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 24 | 2:26 | **UNEDITED. ONE TAKE. NO CUTS. 35 seconds.** Final step passes → the record seals → stock decrements → the shelf drops below its floor → a purchase order **drafts and waits for approval** → the ledger updates → Cloud Trace shows the agents that did it. | VO for the first 12s: *"One step passing. Four agents. Nobody typed anything — and nothing was sent until I said so."* Then **let it run silent.** |
+| 24 | 2:26 | **UNEDITED. ONE TAKE. NO CUTS. 35 seconds.** Final step passes → the record seals → stock decrements → the shelf drops below its floor → a purchase order **drafts and waits for approval** → the ledger updates → Cloud Trace shows the agents that did it. | VO for the first 12s: *"One step passing. Four of the seven, in sequence. Nobody typed anything — and nothing was sent until I said so."* Then **let it run silent.** |
 
 > Scored directly by the Demo criterion. Rehearse until it runs clean, then record in one pass.
 > If it errors, record it again — do not cut around a failure. **Never take time out of this
@@ -215,14 +215,14 @@ You, on camera, attempting to defeat your own system. Play it deadpan.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 29 | 3:19 | Real screen recording: Cloud Console → Agent Runtime deployments, with the **five** agents listed, then the Cloud Run services beside them. | VO: *"Five agents, because five things need a model. Procedure, step, evidence — and one that tries to catch it lying. What holds the machine is not an agent. It is four lines of code."* |
+| 29 | 3:19 | Real screen recording: Cloud Console → Agent Runtime deployments, with the **seven** agents listed, then the Cloud Run services beside them. | VO: *"Seven agents, because seven things need a model. I cut two more that would have been switch statements in costume. What holds the machine is not an agent at all — it is four lines of code."* |
 | 30 | 3:28 | Cloud Run services, Pub/Sub topics firing, a live `.run` URL in the bar. Cloud Trace expands one reasoning chain across four agents. | VO: *"Firestore is the record. Every decision traceable to the model version that made it."* |
 
 > **Shot 29 is now the architecture beat**, which `rules.md:207` requires and the previous draft
 > had nowhere. Naming four agents and what each does, over a real console, satisfies "explains
 > the architecture" in nine seconds.
 >
-> **The count is five**, and the Skeptic stays — it is one of the five that genuinely needs a
+> **The count is seven**, and the Skeptic stays — it is one of the seven that genuinely needs a
 > model. What left the fleet is the six that never needed one: seal, gate, ledger, log, stock
 > and ordering. Check it against `README.md` on the day you shoot and film whichever number is
 > true. **Do not inflate the count** — `rules.md:203` scores separation of concerns, not
@@ -296,3 +296,22 @@ more serious, less memorable.
 
 The department joke stays the recommendation. It is the only opening a judge will still be
 able to describe to a colleague a week later.
+
+---
+
+## Two beats this script does not yet have
+
+Both are now the public product, and both are stronger than shots already budgeted.
+
+**The verification ceiling.** The sealed record states what it could prove *and what it could
+not, and why* — `measured` struck through, reading "requires a paired instrument". It teaches
+the whole taxonomy in one frame without a word of voiceover, and it is the honest version of
+a call to action.
+
+**The second exit.** A technician says *"I can't torque this, the bleed nipple is rounded
+off"* out loud. The Instructor reads the intent, the Foreman disposes, the machine stays
+held, a part is drafted, and the technician's own voice goes onto the record. A paper
+checklist cannot produce that sentence, which is the whole argument in thirty seconds.
+
+Fit them by trimming the cold open, which is currently 18 seconds of a joke the Devpost text
+already tells.

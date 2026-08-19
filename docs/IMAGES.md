@@ -58,7 +58,7 @@ A worn pad or filter in a parts tray, dirty, next to its clean replacement.
 **Where:** the how-it-works step 3, or the evidence section.
 
 ### 9. Keys and the safe
-Keys in a hand, or the board they hang on. The Gatekeeper's beat.
+Keys in a hand, or the board they hang on. The Gate's beat.
 **Where:** a "held" state illustration, if you add one.
 
 ### 10. The machine leaving
@@ -85,17 +85,21 @@ control the pacing, and it does not depend on someone else's UI.
 
 ---
 
-## Logos
+## Logos — do not use any
 
-| Logo | Where to get it | Used for |
-|---|---|---|
-| **Google Cloud** | `cloud.google.com` brand/partner assets | Platform band, hero trustline, footer |
-| **Gemini** | Google brand resources | Platform band |
-| **Vertex AI, Cloud Run, Firestore, Pub/Sub** | Google Cloud icon set (official SVGs) | Product chips — currently text, would look sharper as icons |
-| **Google Workspace** (Drive, Sheets, Gmail) | Workspace brand assets | The "where you already work" card |
-| **DoorDash** *(or another courier brand)* | Their press/brand page | The delivery half of the comparison |
+**The contest rules bar third-party advertising, slogans, logos and trademarks from a
+submission, at the Sponsor's sole discretion, and the hosted page *is* the submission.** An
+earlier draft of this file asked for a courier brand's logo and the Google product marks.
+Both are out.
 
-Prefer **SVG** for every logo — they stay crisp, they are tiny, and they inline cleanly.
+| Was | Now |
+|---|---|
+| A courier brand for the delivery half of the comparison | A stylised original flow — arrived, address confirmed, gate code, photo of the drop. The point is the *shape* of the interaction, and the shape is not anyone's trademark |
+| Google Cloud / Gemini / Vertex / Workspace marks | Set the names as text. Naming the services you built on is a statement of fact; reproducing their marks is a licensing question nobody needs on submission day |
+
+Imagery in the product is generated for this project — see `scripts/gen_task_images.py`,
+whose prompt explicitly bars text, lettering, logos, brand names and packaging, and whose
+output was reviewed image by image before it shipped.
 
 ---
 

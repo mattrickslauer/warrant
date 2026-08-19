@@ -2,7 +2,9 @@
 .gitignore
 .claude/
 docs/
-scripts/
+seed/
+specs/
 STRATEGY.md
 SCRIPT.md
 node_modules/
+.next/

@@ -1,0 +1,31 @@
+# The Warrant web app on Cloud Run.
+#
+# Next's `output: standalone` emits a self-contained server plus only the node_modules it
+# actually reaches, so the runtime image carries no build toolchain and no dev dependencies.
+# Build context is the repo root, because the app generates its types and tokens from
+# contract/ and design/ which live above web/.
+
+FROM node:22-alpine AS build
+WORKDIR /app
+
+# Dependencies first, so a source-only change does not re-resolve the tree.
+COPY web/package.json web/package-lock.json* ./web/
+RUN cd web && npm ci --no-audit --no-fund
+
+# The generators run at build time — the image can never drift from the contract.
+COPY contract ./contract
+COPY design ./design
+COPY web ./web
+RUN cd web && npm run build
+
+FROM node:22-alpine AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=8080
+# Cloud Run terminates TLS; the app only ever speaks plain HTTP behind it.
+COPY --from=build /app/web/.next/standalone ./
+COPY --from=build /app/web/.next/static ./.next/static
+COPY --from=build /app/web/public ./public
+
+EXPOSE 8080
+CMD ["node", "server.js"]

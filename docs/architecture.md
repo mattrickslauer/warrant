@@ -32,12 +32,21 @@ Procedure
 |---|---|---|
 | `within(min, max, unit)` | A reading from a paired instrument | **measured** |
 | `matches(work_order.part_number)` | Another record in the system | **measured** |
+| `per_spec(document.section)` | The manufacturer's published figure, cited | **specified** |
 | `must_show(description)` | The model reading the media | **inferred** |
-| `consistent_with(asset.history)` | Memory Bank, across prior services | **inferred** |
+| `consistent_with(asset.history)` | The `readings` series on the component | **inferred** |
 | `signed_by(role)` | A named human | **asserted** |
 
 The class is a property of the **rule**, not of the model's confidence. That is what keeps
 the categories from blurring under pressure.
+
+> **`consistent_with` reads the readings series, not Memory Bank.** Memory Bank consolidation
+> is LLM-judged and treats two readings of one field as a contradiction to reconcile, which
+> destroys exactly the series wear rate is computed from. See `docs/data-model.md` §4.
+
+> **`per_spec` is the fourth class, `specified`.** A bound is no longer invented in a Scoper
+> conversation — it is cited, carrying document, section and page, and the sealed record
+> carries the citation. See `docs/data-model.md` §3.
 
 ---
 
@@ -64,7 +73,7 @@ the categories from blurring under pressure.
    actions ─── consume stock · advance order · draft PO (held for approval)
       │        · release the machine
       ▼
-   REGISTRAR ── seals the record · GATEKEEPER releases or holds
+   SEAL ─────── seals the record · GATE releases or holds
 ```
 
 **Capture never waits on a model.** The technician photographs, the step advances, and
@@ -73,7 +82,7 @@ from wherever they are, including three steps later — rather than a spinner wh
 are dirty.
 
 **The gate is the seal, not the step.** A job cannot seal until every step passes, and the
-Gatekeeper does not release the machine until the job seals. The guarantee lands in the same
+Gate does not release the machine until the job seals. The guarantee lands in the same
 place; the friction does not.
 
 Only trivial local checks run inline — is there a photo, did the instrument report a value.
@@ -296,7 +305,9 @@ becomes *"bring the checklist you already have."*
 | Agent | Job | Why a model is required |
 |---|---|---|
 | **Scoper** | Interviews until a procedure is unambiguous; compiles and versions it | Open-ended natural language; it must know what it has not yet asked |
-| **Instructor** | Runs the step; answers questions out loud on a held button | Unbounded spoken questions against the procedure in context |
+| **Foreman** | Owns one job for its whole life; delegates; disposes of a step nobody could do | Long-horizon state and delegation under ambiguity |
+| **Auditor** | Sweeps sealed records across weeks; finds procedure defects | Pattern-finding over unstructured evidence, and reading blocked-step reasons as defect reports |
+| **Instructor** | Answers questions out loud on a held button, and can amend the job | Unbounded spoken questions against the procedure in context |
 | **Inspector** | PASS / ADD FIELD / ESCALATE on the **inferred** rules; composes the ADD FIELD request | Reading media, and generating the specific next request |
 | **Skeptic** | Adversarial. Does this evidence belong to this job and this machine | Perceptual identity — is this the same asset, does the wear match the history |
 | **Wright** | Writes a driver for an unfamiliar instrument | Code generation with a live test-and-retry loop |
@@ -315,9 +326,12 @@ be**, not because we ran out of time.
 | **Stock and ordering** | Parts graph, shortage propagation, drafted POs | A query, a traversal and reorder arithmetic. Exposed to the agents as **MCP tools**, not agents |
 | **Circuit breaker** | Detects the ADD FIELD pathology and escalates (§3) | The loop-recovery path `rules.md:203` asks about should not itself be a model that can loop |
 
-> **The fleet is five because five things need a model.** The criterion rewards *"a clear,
-> strictly enforced separation of concerns"* — not a headcount. A fleet padded with agents that
-> are switch statements in costume fails that test the moment a judge opens one.
+> **The fleet is seven because seven things need a model, and two candidates were cut.** The
+> criterion rewards *"a clear, strictly enforced separation of concerns"* — not a headcount. A
+> fleet padded with agents that are switch statements in costume fails that test the moment a
+> judge opens one, so a **Planner** and a **Quartermaster** were rejected: scheduling is
+> arithmetic and reorder logic is a traversal, and their judgement halves fold into the
+> Foreman. The subtraction is the argument, not the total.
 
 
 | Layer | Model | When |
@@ -373,7 +387,7 @@ stops where money leaves the business.
 1. The form engine — procedures compile, steps render, fields validate
 2. The Android client — capture, one working ESP32 driver filling a `measurement` field
 3. The Inspector — PASS / ADD FIELD / ESCALATE, asynchronous, bounded
-4. The Gatekeeper — a hold that stops a machine being released
+4. The Gate — a hold that stops a machine being released
 
 Plus a static landing page: half a day, blocks nothing, gives the project an address.
 

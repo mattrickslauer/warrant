@@ -143,14 +143,14 @@ is bringing what you have, not replacing it.
 ## What "verified" actually means
 
 Warrant never claims a job was good. It closes off the ways the record could be false, and
-states exactly which ways it closed. Every piece of evidence is filed into one of three
+states exactly which ways it closed. Every piece of evidence is filed into one of four
 classes, and they never blur:
 
 | Evidence | Class |
 |---|---|
 | A reading from a paired instrument · `90.4° · 14:32:07 · tool #A19` | **measured** |
-
 | A part number matching the work order | **measured** |
+| A torque figure cited from the manufacturer's manual, with document and page | **specified** |
 | What a photograph appears to show | **inferred** |
 | Craft quality and judgement | **asserted** — signed, by name |
 
@@ -192,16 +192,22 @@ you can see what it cost.
 
 ## The fleet
 
-**Five agents over a deterministic core.** Each agent does one narrow job that genuinely
+**Seven agents over a deterministic core.** Each agent does one narrow job that genuinely
 requires a model; everything that must be trustworthy rather than clever is ordinary code.
 
 | Agent | What it does |
 |---|---|
 | **Scoper** | Interviews you until a procedure is unambiguous, then compiles and versions it |
-| **Instructor** | Runs the step and answers questions out loud on a held button |
+| **Foreman** | Owns one job for its whole life. Delegates, chases, re-opens, escalates — and decides what happens when a step cannot be done at all |
 | **Inspector** | Passes the step, asks for more evidence, or escalates to a person |
 | **Skeptic** | Adversarial. Does this evidence belong to this job, this machine, this moment |
+| **Auditor** | Sweeps sealed records across weeks and finds the procedure defects hiding in them |
+| **Instructor** | Answers questions out loud on a held button, and can amend the job |
 | **Wright** | Meets an unfamiliar instrument, works out how it speaks, writes the driver |
+
+**Rejected as agents: a Planner and a Quartermaster.** Scheduling is arithmetic and reorder
+logic is a traversal. Both would have been switch statements in costume, and their judgement
+halves fold into the Foreman. The count is seven because seven things need a model.
 
 **And the core, which contains no model at all:**
 
@@ -215,7 +221,7 @@ requires a model; everything that must be trustworthy rather than clever is ordi
 **Why the core is not agents, and why that is the point.** The three things this system does
 that actually protect somebody — sealing a record, refusing to release a machine, refusing to
 overspend — are deterministic. A gate you can argue with is not a gate. Nobody should trust a
-language model to hold a key safe shut, and we do not ask them to: the Gatekeeper is a
+language model to hold a key safe shut, and we do not ask them to: the Gate is a
 condition on `job.sealed`, and it is four lines long. Provenance classes are likewise a
 property of the acceptance *rule*, not of any model's confidence, so classification is a
 lookup rather than a judgement.
@@ -265,8 +271,9 @@ has ground truth for free.
 | Machine-to-machine | **MCP server** on Cloud Run |
 | The technician's client | **Android, native** — Kotlin, CameraX, platform BLE, offline queue, on-device redaction |
 | Identity and tenancy | **Google Sign-In** — a Workspace domain is an enterprise |
-| Landing page and dashboard | **Cloud Run** |
+| Web surfaces | **Next.js** App Router, server-rendered, on **Cloud Run** |
 | Adversarial corpus | **Veo** — synthetic fraudulent evidence, to attack our own Skeptic |
+| Task imagery | **Gemini image generation** on Vertex AI — generated for this project, no third-party marks |
 
 Full design, including the evidence chain and the strictness parameters:
 [`docs/architecture.md`](docs/architecture.md)
@@ -353,31 +360,45 @@ Public decision log: <!-- URL --> _pending_
 
 ## Running it
 
-### Prerequisites
+### Run the whole thing with no cloud account at all
 
-- A Google Cloud project with billing enabled; Vertex AI, Agent Runtime, Cloud Run, Pub/Sub and Firestore enabled
-- Python 3.12+, Node 20+
-- An Android device
-- Optionally, any BLE instrument you want readings from
-
-### Setup
+Every surface reads and writes through one `DataSource` interface with two implementations,
+so the product runs end to end against recorded fixtures with **no Google Cloud project, no
+credentials and no hardware.** This is the fastest way to see what it does.
 
 ```bash
-git clone <repo> && cd warrant
-cp .env.example .env          # project, region, credentials
-./scripts/bootstrap.sh        # Firestore, procedure store, registry entries
-./scripts/deploy.sh           # agents to Agent Runtime, services to Cloud Run
-cd client && npx expo run:android
+git clone https://github.com/mattrickslauer/warrant && cd warrant
+cd web && npm install && npm run dev      # http://localhost:3000
 ```
+
+Pick a task, work through it, and you land on a sealed record. Requires **Node 20+** and a
+camera — capture is a live camera view, never a file picker, because an uploaded image says
+nothing about when or where it was made.
 
 ### Verify
 
 ```bash
-./scripts/smoke.sh            # runs a full procedure against recorded fixtures
+./scripts/smoke.sh
 ```
 
-The smoke test uses fixtures rather than a live job, so it is safe to run on a fresh project
-with no hardware, no machines, and nothing at risk.
+Runs a full procedure end to end against recorded fixtures: the agent schemas are checked
+against the subset Vertex accepts, the tokens generate for both stacks, every fixture
+typechecks against the contract, every surface builds from `FixtureSource` alone, and — if
+Playwright is installed — a real browser drives a procedure to a sealed record with a
+synthetic camera. Nothing runs against a project and nothing is at risk.
+
+### Connecting it to Google Cloud
+
+```bash
+cp .env.example .env                # project, region, models
+./infra/bootstrap.sh                # enables every API this needs, once
+gcloud firestore databases create --location=nam5
+./infra/deploy-web.sh               # the app to Cloud Run
+```
+
+The Android client is **native Kotlin and Jetpack Compose** — CameraX and the platform BLE
+stack, no bridge — and it is where the instrument path lives. It consumes the same generated
+contract as the web surfaces.
 
 ---
 
