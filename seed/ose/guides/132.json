@@ -1,0 +1,882 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.440x330",
+   "guid": "VRyRrmHfUbWIQsSX",
+   "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.huge",
+   "id": 2871,
+   "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.large",
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.thumbnail"
+  },
+  "join_date": 1392527400,
+  "reputation": 197,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/82/Andrew+Graham",
+  "userid": 82,
+  "username": "Andrew Graham"
+ },
+ "body_url_path": "/Guide/Installing+Soil+Mixer+-+Module+-+Hinge+and+Hydraulic+Cylinder+Mechanism/132",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Soil Mixer - Module - Hinge",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396044503,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3008,
+ "guideid": 132,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.440x330",
+  "guid": "L1bdohn1lMCuVkFN",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.huge",
+  "id": 3361,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396280742,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396200597,
+ "revisionid": 2813,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "threading the rod back into the hinge, ensure the following list of parts are threaded onto the rod in order",
+     "text_rendered": "threading the rod back into the hinge, ensure the following list of parts are threaded onto the rod in order"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "P31 (end already welded on), P33, a washer, P31, P11 , a washer, Cylinder base, a washer, P11, P31, a washer P33, P31 (end already welded on)",
+     "text_rendered": "P31 (end already welded on), P33, a washer, P31, P11 , a washer, Cylinder base, a washer, P11, P31, a washer P33, P31 (end already welded on)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is a temporary arrangement to get the hinge in place and centred. Later we will remove the cylinder, P11 parts, and the 2 washers between them.",
+     "text_rendered": "This is a temporary arrangement to get the hinge in place and centred. Later we will remove the cylinder, P11 parts, and the 2 washers between them."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.440x330",
+      "guid": "L1bdohn1lMCuVkFN",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.huge",
+      "id": 3361,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L1bdohn1lMCuVkFN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4485,
+   "stepid": 886,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Measure to centre the 2x P11 and 2x P31 parts along the QA Lip. the 2x P31 centre hinges should be aligned with the 2x P31 outer hinges along the QA Lip P10",
+     "text_rendered": "Measure to centre the 2x P11 and 2x P31 parts along the QA Lip. the 2x P31 centre hinges should be aligned with the 2x P31 outer hinges along the QA Lip P10"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Be careful in this stage not to weld any of the other parts as they need to be removed. only Tack (dont finish weld yet) the outer seams of the 2x P31 hinges onto the QA lip.",
+     "text_rendered": "Be careful in this stage not to weld any of the other parts as they need to be removed. only Tack (dont finish weld yet) the outer seams of the 2x P31 hinges onto the QA lip."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.440x330",
+      "guid": "C23f2SFitlW5BWDD",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.huge",
+      "id": 3363,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C23f2SFitlW5BWDD.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.440x330",
+      "guid": "gJTfgnMNDOxYVhVo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.huge",
+      "id": 3366,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gJTfgnMNDOxYVhVo.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.440x330",
+      "guid": "UyYLBDt5ax2YvIQo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.huge",
+      "id": 3367,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UyYLBDt5ax2YvIQo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4487,
+   "stepid": 887,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Carefully take out the shaft and remove the cylinder, P11 supports, and the 2 on the Cylinder. Place the shaft back in with the other parts still loose as they were before.",
+     "text_rendered": "Carefully take out the shaft and remove the cylinder, P11 supports, and the 2 on the Cylinder. Place the shaft back in with the other parts still loose as they were before."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.440x330",
+      "guid": "1MDggVCCXkPHSiZo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.huge",
+      "id": 3369,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1MDggVCCXkPHSiZo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4497,
+   "stepid": 888,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take the Hydraulic Cylinder Base and bolt inside the 2x P11 Cylinder supports. Use a washer between the cylinder and both P11 parts as before.",
+     "text_rendered": "Take the Hydraulic Cylinder Base and bolt inside the 2x P11 Cylinder supports. Use a washer between the cylinder and both P11 parts as before."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Get someone to hold the cylinder base so the the very bottom edges of the P11 supports are aligned with the bottom edges of the P31 hinges and clamp them together (use 2x G-clamps) . leave enough clearance with the clamp to later weld on the seams.",
+     "text_rendered": "Get someone to hold the cylinder base so the the very bottom edges of the P11 supports are aligned with the bottom edges of the P31 hinges and clamp them together (use 2x G-clamps) . leave enough clearance with the clamp to later weld on the seams."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.440x330",
+      "guid": "FamRBnTFLpMtJYVe",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.huge",
+      "id": 3372,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FamRBnTFLpMtJYVe.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.440x330",
+      "guid": "OHfX4cGkFWMtcJQp",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.huge",
+      "id": 3373,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OHfX4cGkFWMtcJQp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4492,
+   "stepid": 889,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use a set square to ensure P11 and P31 are perpendicular to P10.",
+     "text_rendered": "Use a set square to ensure P11 and P31 are perpendicular to P10."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack all seams between P11, P10, and P31.",
+     "text_rendered": "Tack all seams between P11, P10, and P31."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finish the welding the seams on these parts and remove the clamps",
+     "text_rendered": "Finish the welding the seams on these parts and remove the clamps"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.440x330",
+      "guid": "2OVIQ15gnRaXOfVX",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.huge",
+      "id": 3375,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2OVIQ15gnRaXOfVX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4494,
+   "stepid": 890,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lightly clamp P33 onto P31 maintaining the 90 degree angle in the joint as in the diagram. Since there is a washer in between on the shaft, 2 clamps may be required to keep everything flat.",
+     "text_rendered": "Lightly clamp P33 onto P31 maintaining the 90 degree angle in the joint as in the diagram. Since there is a washer in between on the shaft, 2 clamps may be required to keep everything flat."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take one of the P33 parts and clamp to the middle p26 shaped piece. Place P26 Strut against the lid, ensure it is parallel with P33, and weld in place.",
+     "text_rendered": "Take one of the P33 parts and clamp to the middle p26 shaped piece. Place P26 Strut against the lid, ensure it is parallel with P33, and weld in place."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.440x330",
+      "guid": "qHilKQgr3Ba3TM4R",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.huge",
+      "id": 3395,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qHilKQgr3Ba3TM4R.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.440x330",
+      "guid": "GsirOmemCPCiILEf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.huge",
+      "id": 3398,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GsirOmemCPCiILEf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4515,
+   "stepid": 894,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ensuring the Hydraulic cylinder is about 1/4\" back from full extension (to ensure the lid can fully close, but we don't want it to continue to extend much after full closure), bolt 2x P14 cylinder struts on to the cylinder, along with the spacers and washers. There are washers on both sides of P14 Parts.",
+     "text_rendered": "Ensuring the Hydraulic cylinder is about 1/4&quot; back from full extension (to ensure the lid can fully close, but we don't want it to continue to extend much after full closure), bolt 2x P14 cylinder struts on to the cylinder, along with the spacers and washers. There are washers on both sides of P14 Parts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Rotate the cylinder about the base etc to get the first P14 strut in position. it should be flat against the inside of P33. tack in place, ensure it is perpendicular to the lid with a set square and finish welding",
+     "text_rendered": "Rotate the cylinder about the base etc to get the first P14 strut in position. it should be flat against the inside of P33. tack in place, ensure it is perpendicular to the lid with a set square and finish welding"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.440x330",
+      "guid": "NNRkTpXptIXSlbyp",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.huge",
+      "id": 3408,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNRkTpXptIXSlbyp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.440x330",
+      "guid": "5HPQhMa33scJaNB6",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.huge",
+      "id": 3409,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5HPQhMa33scJaNB6.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.440x330",
+      "guid": "ocBdbZpxbKq2YTQF",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.huge",
+      "id": 3413,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ocBdbZpxbKq2YTQF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 4526,
+   "stepid": 896,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 132,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat this process with the right side.",
+     "text_rendered": "Repeat this process with the right side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the 2x P27 Gussets in place against P14 and the P2 Lid.",
+     "text_rendered": "Weld the 2x P27 Gussets in place against P14 and the P2 Lid."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The 2x P29 pieces can now be tacked and welded onto the lid between the P26 Lid Struts and P33 Hinges.",
+     "text_rendered": "The 2x P29 pieces can now be tacked and welded onto the lid between the P26 Lid Struts and P33 Hinges."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.440x330",
+      "guid": "Fl26jMDSulpELBeU",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.huge",
+      "id": 3424,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fl26jMDSulpELBeU.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.440x330",
+      "guid": "ZaByZwHQp4NEDNWG",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.huge",
+      "id": 3432,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZaByZwHQp4NEDNWG.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.440x330",
+      "guid": "jodSHgBWVtNRnt1i",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.huge",
+      "id": 3433,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jodSHgBWVtNRnt1i.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 4545,
+   "stepid": 898,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Hinge and Hydraulic Cylinder Mechanism",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Soil Mixer - Module - Hinge and Hydraulic Cylinder Mechanism",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Soil+Mixer+-+Module+-+Hinge+and+Hydraulic+Cylinder+Mechanism/132",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/132"
+}

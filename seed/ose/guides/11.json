@@ -1,0 +1,804 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": false,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161645,
+  "reputation": 121,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/5/Tim+Asp",
+  "userid": 5,
+  "username": "Tim Asp"
+ },
+ "body_url_path": "/Guide/Adjusting+the+Drawer/11",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041443,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3907,
+ "guideid": 11,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.440x330",
+  "guid": "gZCRjvW6AKAYu43i",
+  "id": 92,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZCRjvW6AKAYu43i.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "attrs": {
+     "align": "center",
+     "caption": "",
+     "formats": [],
+     "poster": "",
+     "rule": "Video",
+     "service": "youtube",
+     "size": "large",
+     "url": "http://www.youtube.com/watch?v=xzoen7x46qI&feature=plcp&context=C25a19UDOEgsToPDskIAkvoB_CvbQhwcyvcZWDp5"
+    },
+    "content": [
+     {
+      "text": "[video|http://www.youtube.com/watch?v=xzoen7x46qI&feature=plcp&context=C25a19UDOEgsToPDskIAkvoB_CvbQhwcyvcZWDp5]",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[video|http://www.youtube.com/watch?v=xzoen7x46qI&feature=plcp&context=C25a19UDOEgsToPDskIAkvoB_CvbQhwcyvcZWDp5]",
+ "introduction_rendered": "<div class=\"large videoFrame videoBox_center\" style=\"width:570px\"><div class=\"videoBox\"><div videoid=xzoen7x46qI class='youtube-player' src=\"https://www.youtube-nocookie.com/embed/xzoen7x46qI?wmode=opaque\" style='background-image:url(\"https://i.ytimg.com/vi/xzoen7x46qI/hqdefault.jpg\")' width=\"560\" height=\"315\" ></div></div></div>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1487779123,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041443,
+ "revisionid": 24,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 11,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the drawer into the chamber as shown, in the fully retracted position. Its important that it be in the right orientation.",
+     "text_rendered": "Insert the drawer into the chamber as shown, in the fully retracted position. Its important that it be in the right orientation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The adjustment bolts should be lowered so that the roller guides are below the rails.",
+     "text_rendered": "The adjustment bolts should be lowered so that the roller guides are below the rails."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.440x330",
+      "guid": "XsJt1Ow6KDWiTpAB",
+      "id": 96,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XsJt1Ow6KDWiTpAB.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.440x330",
+      "guid": "H1mDAaO5hiRbLRMT",
+      "id": 98,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H1mDAaO5hiRbLRMT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 58,
+   "stepid": 28,
+   "time_estimate": 0,
+   "title": "Put the drawer in"
+  },
+  {
+   "comments": [],
+   "guideid": 11,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If for some reason the rails and the rollers aren't spaced properly (the guides need to be closer or further apart) remove one of the guides and switch out the spacer on it to one that will space them properly.",
+     "text_rendered": "If for some reason the rails and the rollers aren't spaced properly (the guides need to be closer or further apart) remove one of the guides and switch out the spacer on it to one that will space them properly."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If only one roller of the four is off, the guide is not parallel with the drawer.",
+     "text_rendered": "If only one roller of the four is off, the guide is not parallel with the drawer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "Try tightening the nut that attaches the rollers to the frame.",
+     "text_rendered": "Try tightening the nut that attaches the rollers to the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "If that doesn't work, you might have welding spatter or something between the guide and the frame. Remove it and check.",
+     "text_rendered": "If that doesn't work, you might have welding spatter or something between the guide and the frame. Remove it and check."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If none of the above steps make all the rollers align, your drawer is likely flawed.",
+     "text_rendered": "If none of the above steps make all the rollers align, your drawer is likely flawed."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The rails are probably not parallel. Take the drawer out and double check by measuring the separation of the rails.",
+     "text_rendered": "The rails are probably not parallel. Take the drawer out and double check by measuring the separation of the rails."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If they aren't parallel, see http://opensourceecology.org/wiki/CEB_Press/Manufacturing_Instructions/Soil_loading_drawer#Step_8:_Check_the_Rails",
+     "text_rendered": "If they aren't parallel, see <a href=\"http://opensourceecology.org/wiki/CEB_Press/Manufacturing_Instructions/Soil_loading_drawer#Step_8:_Check_the_Rails\" rel=\"nofollow noopener noreferrer\" title=\"http://opensourceecology.org/wiki/CEB_Press/Manufacturing_Instructions/Soil_loading_drawer#Step_8:_Check_the_Rails\">http://opensourceecology.org/wiki/CEB_Pr...</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.440x330",
+      "guid": "UVPlA1uSwTA4ewYn",
+      "id": 101,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UVPlA1uSwTA4ewYn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.440x330",
+      "guid": "YBYfT5t5HYuX2XdE",
+      "id": 105,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YBYfT5t5HYuX2XdE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2070,
+   "stepid": 30,
+   "time_estimate": 0,
+   "title": "Align the rails with the center of the v's in the rollers."
+  },
+  {
+   "comments": [],
+   "guideid": 11,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the adjustment bolts so they push the rollers up to the rail, so all of the rollers are contacting the rails.",
+     "text_rendered": "Tighten the adjustment bolts so they push the rollers up to the rail, so all of the rollers are contacting the rails."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The two should be touching snugly, but not forcefully.",
+     "text_rendered": "The two should be touching snugly, but not forcefully."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.440x330",
+      "guid": "sUinT41kcu5W1HXm",
+      "id": 109,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sUinT41kcu5W1HXm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 64,
+   "stepid": 31,
+   "time_estimate": 0,
+   "title": "Tighten the rollers against the rails"
+  },
+  {
+   "comments": [],
+   "guideid": 11,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Move the drawer to the fully extended position.",
+     "text_rendered": "Move the drawer to the fully extended position."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The drawer will likely get stuck along some points of its travel. Its OK to hit it with a hammer. Remember the secondary cylinder will be applying tons of force to move it.",
+     "text_rendered": "The drawer will likely get stuck along some points of its travel. Its OK to hit it with a hammer. Remember the secondary cylinder will be applying tons of force to move it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If you need to hammer it REALLY hard, either your drawer is hitting something, or the rollers are too tight on the rails. Investigate the cause.",
+     "text_rendered": "If you need to hammer it REALLY hard, either your drawer is hitting something, or the rollers are too tight on the rails. Investigate the cause."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "When the drawer is in position, check the rollers again. They should all still be touching the rails.",
+     "text_rendered": "When the drawer is in position, check the rollers again. They should all still be touching the rails."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If one is below the rail, tighten the bolt so the rail and roller are touching.",
+     "text_rendered": "If one is below the rail, tighten the bolt so the rail and roller are touching."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.440x330",
+      "guid": "e5MYNOcUqGUyEhVB",
+      "id": 113,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e5MYNOcUqGUyEhVB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 68,
+   "stepid": 33,
+   "time_estimate": 0,
+   "title": "Move the drawer and re-adjust bolts"
+  },
+  {
+   "comments": [],
+   "guideid": 11,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You will likely need to try sliding it in and out a few times before you can find the perfect amount of adjustment.",
+     "text_rendered": "You will likely need to try sliding it in and out a few times before you can find the perfect amount of adjustment."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Keep checking the contact as you slide it out.",
+     "text_rendered": "Keep checking the contact as you slide it out."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Your work is done when you can slide the drawer in and out and the rails stay on the roller the whole time.",
+     "text_rendered": "Your work is done when you can slide the drawer in and out and the rails stay on the roller the whole time."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Using a hammer is OK, but if you have to use too much force something is wrong.",
+     "text_rendered": "Using a hammer is OK, but if you have to use too much force something is wrong."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.440x330",
+      "guid": "DgBNlLqvdgXrWan3",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.huge",
+      "id": 115,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DgBNlLqvdgXrWan3.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.440x330",
+      "guid": "OvZKrKQyETKbpwiy",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.huge",
+      "id": 116,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OvZKrKQyETKbpwiy.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.440x330",
+      "guid": "1EglHsLdfVxUXshI",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.huge",
+      "id": 118,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1EglHsLdfVxUXshI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 70,
+   "stepid": 34,
+   "time_estimate": 0,
+   "title": "Slide the drawer in and out"
+  }
+ ],
+ "subject": "Drawer",
+ "summary": "This step just covers the drawer adjustment and troubleshooting surrounding it. You can adjust the drawer before assembling the structural components, but it is easier to insert the drawer with them installed.",
+ "time_required": "30 minutes",
+ "time_required_max": 1800,
+ "time_required_min": 1800,
+ "title": "Adjusting the Drawer",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Mallet",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Mallet"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Adjusting+the+Drawer/11",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/11"
+}

@@ -1,0 +1,175 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Making+CEBs-CSEBs+(Compressed+Stabilized+Earth+Bricks)+with+The+Liberator/147",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Walls",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1397013928,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3415,
+ "guideid": 147,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.440x330",
+  "guid": "QDjRQvTSineR5iL3",
+  "id": 3746,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397054169,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1397015892,
+ "revisionid": 295,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 147,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Create pile of soil.",
+     "text_rendered": "Create pile of soil."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD MORE STEPS WILL DETAILS ABOUT SOIL MIXER PROCESS AND USING THE CEB PRESS.",
+     "text_rendered": "ADD MORE STEPS WILL DETAILS ABOUT SOIL MIXER PROCESS AND USING THE CEB PRESS."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.440x330",
+      "guid": "QDjRQvTSineR5iL3",
+      "id": 3746,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QDjRQvTSineR5iL3.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5035,
+   "stepid": 977,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Part 1: CEBs",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Making CEBs/CSEBs (Compressed Stabilized Earth Bricks) with The Liberator",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Making+CEBs-CSEBs+(Compressed+Stabilized+Earth+Bricks)+with+The+Liberator/147",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/147"
+}

@@ -1,0 +1,485 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Shaker+Hydraulics+Assembly/44",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041594,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3932,
+ "guideid": 44,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.440x330",
+  "guid": "gKyLUW52XFFDdjyi",
+  "id": 455,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKyLUW52XFFDdjyi.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Additional Materials Required:* Thread tape* Shaker motor ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=9-7077-50&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/2\" NPT Needle Valve (1) ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://www.surpluscenter.com/item.asp?item=9-7960-8&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/4\"x12\" NPTM Hydraulic hose (1)",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=916-1412&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/2\"x36\" NPTM Hydraulic hoses (2)* SAE 4M to 1/4\" NPTF Swivel (1)",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=9-6900-4-4-S&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/2\" NPT Hex Nipple (2) ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=9-5404-8-8&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/2\" NPTF Tee (1) ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=9-5605-8-8-8&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     },
+     {
+      "text": "* 1/2\" NPTM to 1/4\" NPTF bushing ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "https://www.surpluscenter.com/item.asp?item=9-5406-8-4&catname=hydraulic",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Buy",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Additional Materials Required:* Thread tape* Shaker motor [https://www.surpluscenter.com/item.asp?item=9-7077-50&catname=hydraulic|Buy]* 1/2\" NPT Needle Valve (1) [http://www.surpluscenter.com/item.asp?item=9-7960-8&catname=hydraulic|Buy]* 1/4\"x12\" NPTM Hydraulic hose (1)[https://www.surpluscenter.com/item.asp?item=916-1412&catname=hydraulic|Buy]* 1/2\"x36\" NPTM Hydraulic hoses (2)* SAE 4M to 1/4\" NPTF Swivel (1)[https://www.surpluscenter.com/item.asp?item=9-6900-4-4-S&catname=hydraulic|Buy]* 1/2\" NPT Hex Nipple (2) [https://www.surpluscenter.com/item.asp?item=9-5404-8-8&catname=hydraulic|Buy]* 1/2\" NPTF Tee (1) [https://www.surpluscenter.com/item.asp?item=9-5605-8-8-8&catname=hydraulic|Buy]* 1/2\" NPTM to 1/4\" NPTF bushing [https://www.surpluscenter.com/item.asp?item=9-5406-8-4&catname=hydraulic|Buy]",
+ "introduction_rendered": "<p>Additional Materials Required:* Thread tape* Shaker motor <a href=\"https://www.surpluscenter.com/item.asp?item=9-7077-50&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/2&quot; NPT Needle Valve (1) <a href=\"http://www.surpluscenter.com/item.asp?item=9-7960-8&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/4&quot;x12&quot; NPTM Hydraulic hose (1)<a href=\"https://www.surpluscenter.com/item.asp?item=916-1412&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/2&quot;x36&quot; NPTM Hydraulic hoses (2)* SAE 4M to 1/4&quot; NPTF Swivel (1)<a href=\"https://www.surpluscenter.com/item.asp?item=9-6900-4-4-S&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/2&quot; NPT Hex Nipple (2) <a href=\"https://www.surpluscenter.com/item.asp?item=9-5404-8-8&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/2&quot; NPTF Tee (1) <a href=\"https://www.surpluscenter.com/item.asp?item=9-5605-8-8-8&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a>* 1/2&quot; NPTM to 1/4&quot; NPTF bushing <a href=\"https://www.surpluscenter.com/item.asp?item=9-5406-8-4&amp;catname=hydraulic\" rel=\"nofollow noopener noreferrer\">Buy</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134844,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041594,
+ "revisionid": 174,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 44,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Thread tape is necessary between each connection unless otherwise stated.",
+     "text_rendered": "Thread tape is necessary between each connection unless otherwise stated."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Always wrap thread tape clockwise when facing the threaded portion.",
+     "text_rendered": "Always wrap thread tape clockwise when facing the threaded portion."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Always keep the end caps on hoses and fittings until you need to take them off. They need to stay protected inside.",
+     "text_rendered": "Always keep the end caps on hoses and fittings until you need to take them off. They need to stay protected inside."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 281,
+   "stepid": 140,
+   "time_estimate": 0,
+   "title": "Things to know about working with hydraulics:"
+  },
+  {
+   "comments": [],
+   "guideid": 44,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach all of the fittings and the 2 hoses  to the Tee, except the small swivel.",
+     "text_rendered": "Attach all of the fittings and the 2 hoses  to the Tee, except the small swivel."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the tee assembly into the correct port (see the photo)",
+     "text_rendered": "Tighten the tee assembly into the correct port (see the photo)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the swivel and tighten the small hose to it.",
+     "text_rendered": "Install the swivel and tighten the small hose to it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The swivel doesn't need thread tape.",
+     "text_rendered": "The swivel doesn't need thread tape."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the other 36\" hose into the remaining port on the motor.",
+     "text_rendered": "Put the other 36&quot; hose into the remaining port on the motor."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.440x330",
+      "guid": "Y1igSMyZkefEbKuK",
+      "id": 457,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1igSMyZkefEbKuK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.440x330",
+      "guid": "ndVNXVtFmMJyuNet",
+      "id": 459,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ndVNXVtFmMJyuNet.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 283,
+   "stepid": 141,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Shaker Hydraulics Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Vise",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Vise"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Shaker+Hydraulics+Assembly/44",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/44"
+}

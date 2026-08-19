@@ -1,0 +1,376 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Leg+Holders/15",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041466,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3910,
+ "guideid": 15,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.440x330",
+  "guid": "cCCR13sWU3As2TeB",
+  "id": 141,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cCCR13sWU3As2TeB.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "We suggest you prepare all leg holders at once, doing each step for all leg holders before moving on.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "We suggest you prepare all leg holders at once, doing each step for all leg holders before moving on.",
+ "introduction_rendered": "<p>We suggest you prepare all leg holders at once, doing each step for all leg holders before moving on.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134836,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": "1 for each leg holder",
+   "quantity": 1,
+   "text": "Steel tubing",
+   "thumbnail": null,
+   "type": "2.5\"\u00d72.5\"\u00d73/16\" wall, 6\" cut",
+   "url": "/Item/Steel_tubing"
+  },
+  {
+   "notes": "1 for each leg holder",
+   "quantity": 1,
+   "text": "Nut",
+   "thumbnail": null,
+   "type": "steel, \u00be\"",
+   "url": "/Item/Nut"
+  },
+  {
+   "notes": "1 for each leg holder",
+   "quantity": 1,
+   "text": "Bolt",
+   "thumbnail": null,
+   "type": "\u00be\", 1\u00bd\" long",
+   "url": "/Item/Bolt"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041466,
+ "revisionid": 32,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 15,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You will need 14 Leg Holders for the CEB. 12 will be used in this step. Save the remaining ones for later. Make all leg holders at once to save time.",
+     "text_rendered": "You will need 14 Leg Holders for the CEB. 12 will be used in this step. Save the remaining ones for later. Make all leg holders at once to save time."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch a 3/4\u201d hole in the center of one of the faces of the tubing; make sure it's large enough for a 3/4\u201d bolt.",
+     "text_rendered": "Torch a 3/4\u201d hole in the center of one of the faces of the tubing; make sure it's large enough for a 3/4\u201d bolt."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "It's not crucial that the hole be centered. It just needs to be somewhere close to the center.",
+     "text_rendered": "It's not crucial that the hole be centered. It just needs to be somewhere close to the center."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.440x330",
+      "guid": "4ReRp2CBAL5aWmrK",
+      "id": 142,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ReRp2CBAL5aWmrK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.440x330",
+      "guid": "1hUEJaVQsfAxXERY",
+      "id": 144,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1hUEJaVQsfAxXERY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 92,
+   "stepid": 45,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 15,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the nut over the hole, ensuring the nut is level, and the hole is clear.",
+     "text_rendered": "Weld the nut over the hole, ensuring the nut is level, and the hole is clear."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure no spatter goes into the threads by covering the top of the nut.",
+     "text_rendered": "Make sure no spatter goes into the threads by covering the top of the nut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread the bolt onto the nut.",
+     "text_rendered": "Thread the bolt onto the nut."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.440x330",
+      "guid": "xHQYqYpILk2aIWcM",
+      "id": 148,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xHQYqYpILk2aIWcM.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.440x330",
+      "guid": "lrrSKSOLYc6ZtCx2",
+      "id": 149,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lrrSKSOLYc6ZtCx2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 96,
+   "stepid": 47,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Make versatile leg holders compatible with many Open Source Ecology machines.",
+ "time_required": "30 minutes",
+ "time_required_max": 1800,
+ "time_required_min": 1800,
+ "title": "CEB Leg Holders",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Leg+Holders/15",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/15"
+}

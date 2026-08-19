@@ -1,0 +1,571 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.thumbnail"
+  },
+  "join_date": 1395531688,
+  "reputation": 101,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/108/Christopher+Reinhart",
+  "userid": 108,
+  "username": "Christopher Reinhart"
+ },
+ "body_url_path": "/Guide/Measuring+an+Angle+in+Sketchup/154",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Finishing",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1398821589,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3558,
+ "guideid": 154,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.440x330",
+  "guid": "EFDTWMlxsoSNhNwH",
+  "id": 3889,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1398822352,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1398822343,
+ "revisionid": 309,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 154,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "We are going to measure the angle between the tilted board and the ground plane.",
+     "text_rendered": "We are going to measure the angle between the tilted board and the ground plane."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.440x330",
+      "guid": "EFDTWMlxsoSNhNwH",
+      "id": 3889,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EFDTWMlxsoSNhNwH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5193,
+   "stepid": 1011,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 154,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Begin by drawing a horizontal line across the ground plane.",
+     "text_rendered": "Begin by drawing a horizontal line across the ground plane."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This line should be directly under the board you are measuring. A fancy way of saying this is that the lines must be co-planar.",
+     "text_rendered": "This line should be directly under the board you are measuring. A fancy way of saying this is that the lines must be co-planar."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "It does not matter how long this line is.",
+     "text_rendered": "It does not matter how long this line is."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.440x330",
+      "guid": "HRf3AIS2tdDdgSmN",
+      "id": 3890,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRf3AIS2tdDdgSmN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5195,
+   "stepid": 1012,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 154,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Select this line.",
+     "text_rendered": "Select this line."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The keyboard shortcut for the selection tool, on both Mac and PC, is [spacebar].",
+     "text_rendered": "The keyboard shortcut for the selection tool, on both Mac and PC, is [spacebar]."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Press [spacebar] and then click once on the line. It will turn blue to show you that you have selected it.",
+     "text_rendered": "Press [spacebar] and then click once on the line. It will turn blue to show you that you have selected it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.440x330",
+      "guid": "jlaFaLTfgXHZyITN",
+      "id": 3891,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jlaFaLTfgXHZyITN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5197,
+   "stepid": 1013,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 154,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Engage the rotate tool. The keyboard shortcut for this on Mac is [q].",
+     "text_rendered": "Engage the rotate tool. The keyboard shortcut for this on Mac is [q]."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Hover over the face of the board that is in the same plane as the line that you made. You will notice that as you move the cursor around, the rotate tool will orient itself differently. You want it to be oriented so that you can rotate the line up to meet the board.",
+     "text_rendered": "Hover over the face of the board that is in the same plane as the line that you made. You will notice that as you move the cursor around, the rotate tool will orient itself differently. You want it to be oriented so that you can rotate the line up to meet the board."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you are hovering over the appropriate surface, hold [shift] down to keep the rotate tool locked in that orientation.",
+     "text_rendered": "Once you are hovering over the appropriate surface, hold [shift] down to keep the rotate tool locked in that orientation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Click once at the point where the line and the board meet. Once you have set the rotate tool to that point, you can let go of the [shift] key.",
+     "text_rendered": "Click once at the point where the line and the board meet. Once you have set the rotate tool to that point, you can let go of the [shift] key."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Now click a second time at the other end of the line. You will now be able to rotate the line.",
+     "text_rendered": "Now click a second time at the other end of the line. You will now be able to rotate the line."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.440x330",
+      "guid": "VnlgNjB2LPQMZdhT",
+      "id": 3892,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VnlgNjB2LPQMZdhT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5199,
+   "stepid": 1014,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 154,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Rotate your line up until it snaps into alignment with the edge of the board. Sometimes placing your cursor over the endpoint of the board helps the line snap into place.",
+     "text_rendered": "Rotate your line up until it snaps into alignment with the edge of the board. Sometimes placing your cursor over the endpoint of the board helps the line snap into place."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The angle between the ground plane and the board will be displayed in the angle measurement box at the bottom right of your window.",
+     "text_rendered": "The angle between the ground plane and the board will be displayed in the angle measurement box at the bottom right of your window."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.440x330",
+      "guid": "bAhHEOIuNnMh1jVO",
+      "id": 3893,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAhHEOIuNnMh1jVO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5201,
+   "stepid": 1015,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Measuring Angles",
+ "summary": "This guide shows how one can measure an angle in Sketchup.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Measuring an Angle in Sketchup",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Measuring+an+Angle+in+Sketchup/154",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/154"
+}

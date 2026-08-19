@@ -1,0 +1,761 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Shaker+Hammer+and+Shaft/5",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368040321,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3902,
+ "guideid": 5,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.440x330",
+  "guid": "G3bKa6deoI6Id5QJ",
+  "id": 42,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G3bKa6deoI6Id5QJ.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=a1af76b0b849ac2e1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* 1\" Keyed Coupler* 1/4\"x 2\" Bolt",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=a1af76b0b849ac2e1211da1f85706ccd|Sketchup Model]Additional Materials Required:* 1\" Keyed Coupler* 1/4\"x 2\" Bolt",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=a1af76b0b849ac2e1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* 1&quot; Keyed Coupler* 1/4&quot;x 2&quot; Bolt</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134832,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Drill press",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Drill_press"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Chalk or something to mark steel with",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Chalk_or_something_to_mark_steel_with"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368040321,
+ "revisionid": 10,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 5,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Drill or punch the hole in the flatbar.",
+     "text_rendered": "Drill or punch the hole in the flatbar."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the two pieces of flatbar together.",
+     "text_rendered": "Weld the two pieces of flatbar together."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "This needs to be a really strong weld! The hammer will be under a lot of stress, and if it's not a solid weld, it could fly off! (This is why the guard is there.)",
+     "text_rendered": "This needs to be a really strong weld! The hammer will be under a lot of stress, and if it's not a solid weld, it could fly off! (This is why the guard is there.)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the shaft into the hole so there's about a 1/4\" distance between the end of the shaft and the opposite side of the hammer.",
+     "text_rendered": "Tack the shaft into the hole so there's about a 1/4&quot; distance between the end of the shaft and the opposite side of the hammer."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.440x330",
+      "guid": "LBDuWxap2V1WqGNK",
+      "id": 46,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LBDuWxap2V1WqGNK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.440x330",
+      "guid": "NqCqIuNWWCRSpNfx",
+      "id": 48,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NqCqIuNWWCRSpNfx.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2004,
+   "stepid": 10,
+   "time_estimate": 0,
+   "title": "Prepare the hammer"
+  },
+  {
+   "comments": [],
+   "guideid": 5,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the coupler down so it's 2\" long. It doesn't matter from which side you cut it.",
+     "text_rendered": "Cut the coupler down so it's 2&quot; long. It doesn't matter from which side you cut it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Get the shaker motor, the mount you made, the shaft/hammer, and the coupler.",
+     "text_rendered": "Get the shaker motor, the mount you made, the shaft/hammer, and the coupler."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the shaker motor onto the mount and couple the shaft to it. Mark where the shaft enters the coupler.",
+     "text_rendered": "Put the shaker motor onto the mount and couple the shaft to it. Mark where the shaft enters the coupler."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure the coupler won't be rubbing on the mount while it spins.",
+     "text_rendered": "Make sure the coupler won't be rubbing on the mount while it spins."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure the hammer has about 5/8\" clearance from the mount.",
+     "text_rendered": "Make sure the hammer has about 5/8&quot; clearance from the mount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If not, you can pull it out of the coupler a little, but make sure the bolt won't be too close to the edge.",
+     "text_rendered": "If not, you can pull it out of the coupler a little, but make sure the bolt won't be too close to the edge."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Otherwise, you can grind away the tacks on the hammer and tack it properly.",
+     "text_rendered": "Otherwise, you can grind away the tacks on the hammer and tack it properly."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.440x330",
+      "guid": "OJpuMP5gdJBqlFeZ",
+      "id": 50,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OJpuMP5gdJBqlFeZ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.440x330",
+      "guid": "VjLCMeYF6PL5HMbm",
+      "id": 52,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VjLCMeYF6PL5HMbm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 24,
+   "stepid": 11,
+   "time_estimate": 0,
+   "title": "Couple the shaft"
+  },
+  {
+   "comments": [],
+   "guideid": 5,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the motor and shaft from the mount.",
+     "text_rendered": "Remove the motor and shaft from the mount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the coupler back onto the shaft.",
+     "text_rendered": "Put the coupler back onto the shaft."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Drill the 1/4\" hole thru the coupler and rod, using the mark you made to make sure the rod is inside the coupler by the proper amount.",
+     "text_rendered": "Drill the 1/4&quot; hole thru the coupler and rod, using the mark you made to make sure the rod is inside the coupler by the proper amount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The hole should be 3/8\" away from the edge of the coupler.",
+     "text_rendered": "The hole should be 3/8&quot; away from the edge of the coupler."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Drill thru both at the same time. You will need some sort of vise to hold it down while you drill.",
+     "text_rendered": "Drill thru both at the same time. You will need some sort of vise to hold it down while you drill."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Double-check that your bolt will fit thru. If not, either re-drill it with a slightly bigger bit, or do another set of holes.",
+     "text_rendered": "Double-check that your bolt will fit thru. If not, either re-drill it with a slightly bigger bit, or do another set of holes."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.440x330",
+      "guid": "YiGm4ZkUqbNQnIbl",
+      "id": 54,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YiGm4ZkUqbNQnIbl.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.440x330",
+      "guid": "hWaLygrnPUGJDm6T",
+      "id": 56,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hWaLygrnPUGJDm6T.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2010,
+   "stepid": 12,
+   "time_estimate": 0,
+   "title": "Drill hole for bolt in coupler"
+  },
+  {
+   "comments": [],
+   "guideid": 5,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the coupler.",
+     "text_rendered": "Remove the coupler."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fully weld the hammer to the shaft, plug-welding the back side, and welding around the shaft on the other side.",
+     "text_rendered": "Fully weld the hammer to the shaft, plug-welding the back side, and welding around the shaft on the other side."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure this weld is SOLID.",
+     "text_rendered": "Make sure this weld is SOLID."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 28,
+   "stepid": 13,
+   "time_estimate": 0,
+   "title": "Weld the shaft to the hammer"
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Shaker Hammer and Shaft",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Shaker+Hammer+and+Shaft/5",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/5"
+}

@@ -1,0 +1,775 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Shaker+Mount/22",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041477,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3911,
+ "guideid": 22,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.440x330",
+  "guid": "5hRu2kcMYPuHdqGy",
+  "id": 162,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5hRu2kcMYPuHdqGy.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=6949a828e592eac51211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=6949a828e592eac51211da1f85706ccd|Sketchup Model]",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=6949a828e592eac51211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134836,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": "Motor attachment",
+   "quantity": 1,
+   "text": "4\"x4\"x1/2\"  Angle Steel",
+   "thumbnail": null,
+   "type": "8\"",
+   "url": "/Item/4%22x4%22x1_2%22_Angle_Steel"
+  },
+  {
+   "notes": "Hopper Attachment",
+   "quantity": 1,
+   "text": "4\"x4\"x1/2\"  Angle Steel",
+   "thumbnail": null,
+   "type": "21\"",
+   "url": "/Item/4%22x4%22x1_2%22_Angle_Steel"
+  },
+  {
+   "notes": "Guard top and bottom",
+   "quantity": 2,
+   "text": "2\"x2\"x1/4\" Angle Steel",
+   "thumbnail": null,
+   "type": "16\"",
+   "url": "/Item/2%22x2%22x1_4%22_Angle_Steel"
+  },
+  {
+   "notes": "Guard sides",
+   "quantity": 2,
+   "text": "2\"x2\"x1/4\" Angle Steel",
+   "thumbnail": null,
+   "type": "10\"",
+   "url": "/Item/2%22x2%22x1_4%22_Angle_Steel"
+  },
+  {
+   "notes": "Braces",
+   "quantity": 2,
+   "text": "1\" rebar",
+   "thumbnail": null,
+   "type": "7\"",
+   "url": "/Item/1%22_rebar"
+  },
+  {
+   "notes": "guard",
+   "quantity": 1,
+   "text": "1/8\" Sheet Steel",
+   "thumbnail": null,
+   "type": "10\"x19\"",
+   "url": "/Item/1_8%22_Sheet_Steel"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041477,
+ "revisionid": 46,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 22,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the guard sheet metal as in the image. It doesn't need to be exact.",
+     "text_rendered": "Torch the guard sheet metal as in the image. It doesn't need to be exact."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Note: the shape shown is centered.",
+     "text_rendered": "Note: the shape shown is centered."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the top and side 2x2 angle pieces to it as shown.",
+     "text_rendered": "Weld the top and side 2x2 angle pieces to it as shown."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.440x330",
+      "guid": "I4NW1dUxrUROu4Hr",
+      "id": 166,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/I4NW1dUxrUROu4Hr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.440x330",
+      "guid": "iBiogLxVDgvsZrNf",
+      "id": 169,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iBiogLxVDgvsZrNf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 228,
+   "stepid": 54,
+   "time_estimate": 0,
+   "title": "Make the guard"
+  },
+  {
+   "comments": [],
+   "guideid": 22,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Not all holes will be accessible with a punch. Torch the rest.",
+     "text_rendered": "Not all holes will be accessible with a punch. Torch the rest."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.440x330",
+      "guid": "DQGCloUiWHbaJokJ",
+      "id": 173,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DQGCloUiWHbaJokJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.440x330",
+      "guid": "qxBumPsg1SgXYafK",
+      "id": 176,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qxBumPsg1SgXYafK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.440x330",
+      "guid": "rHwEf5Oprm5N6mCI",
+      "id": 180,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rHwEf5Oprm5N6mCI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 113,
+   "stepid": 56,
+   "time_estimate": 0,
+   "title": "Punch the holes in the 4x4 angle"
+  },
+  {
+   "comments": [],
+   "guideid": 22,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the hole for mounting the motor in the 8\" piece of 4x4 angle. Grind off the slag.",
+     "text_rendered": "Torch the hole for mounting the motor in the 8&quot; piece of 4x4 angle. Grind off the slag."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Double check that the hole is large enough by putting on the motor and making sure the raised portion in the center goes all the way thru.",
+     "text_rendered": "Double check that the hole is large enough by putting on the motor and making sure the raised portion in the center goes all the way thru."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You can torch separate holes for the bolts, or do one large, odd shaped one like is pictured.",
+     "text_rendered": "You can torch separate holes for the bolts, or do one large, odd shaped one like is pictured."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch whichever holes you couldn't access with the punch",
+     "text_rendered": "Torch whichever holes you couldn't access with the punch"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.440x330",
+      "guid": "HxFMqnQWCBWZo2uM",
+      "id": 183,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HxFMqnQWCBWZo2uM.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.440x330",
+      "guid": "IGan2wNWSScoewrH",
+      "id": 185,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IGan2wNWSScoewrH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 119,
+   "stepid": 59,
+   "time_estimate": 0,
+   "title": "Torch the Remaining Holes"
+  },
+  {
+   "comments": [],
+   "guideid": 22,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the bottom 2x2 to the 21\" 4x4.",
+     "text_rendered": "Weld the bottom 2x2 to the 21&quot; 4x4."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the two 4x4 angle pieces together as pictured, ensuring they are perfectly flush and square.",
+     "text_rendered": "Weld the two 4x4 angle pieces together as pictured, ensuring they are perfectly flush and square."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Skip around while welding so it doesn't warp one way or another.",
+     "text_rendered": "Skip around while welding so it doesn't warp one way or another."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind off the top weld linking the 4x4's so the bearing will be able to sit flush on  it",
+     "text_rendered": "Grind off the top weld linking the 4x4's so the bearing will be able to sit flush on  it"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Also grind off near the bolt holes on the bottom.",
+     "text_rendered": "Also grind off near the bolt holes on the bottom."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.440x330",
+      "guid": "mBtIHJOESrWHByDk",
+      "id": 187,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mBtIHJOESrWHByDk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.440x330",
+      "guid": "SFMxQ3XVQZOPae2N",
+      "id": 189,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SFMxQ3XVQZOPae2N.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.440x330",
+      "guid": "6wBdxlJZV2p2G1YW",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.huge",
+      "id": 191,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6wBdxlJZV2p2G1YW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 121,
+   "stepid": 60,
+   "time_estimate": 0,
+   "title": "Weld it together"
+  },
+  {
+   "comments": [],
+   "guideid": 22,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the rebars onto the underside of the mount.",
+     "text_rendered": "Weld the rebars onto the underside of the mount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the guard to the top side of the mount.",
+     "text_rendered": "Weld the guard to the top side of the mount."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.440x330",
+      "guid": "oUegkDqF2naJcMRr",
+      "id": 196,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oUegkDqF2naJcMRr.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 125,
+   "stepid": 62,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "This guide will show how to build the mount which attaches the shaker motor and hammer to the hopper supports.",
+ "time_required": "1 hour",
+ "time_required_max": 5400,
+ "time_required_min": 5400,
+ "title": "CEB Shaker Mount",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Shaker+Mount/22",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/22"
+}

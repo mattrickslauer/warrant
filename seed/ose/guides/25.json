@@ -1,0 +1,764 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Hopper+Supports+and+Grate+Supports/25",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041499,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3914,
+ "guideid": 25,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.440x330",
+  "guid": "MpqbHpEVEeMNYtjU",
+  "id": 216,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MpqbHpEVEeMNYtjU.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "attrs": [],
+    "content": [
+     {
+      "content": [
+       {
+        "content": [
+         {
+          "marks": [
+           {
+            "attrs": {
+             "href": "http://sketchup.google.com/3dwarehouse/details?mid=e4c762d16d8f60401211da1f85706ccd",
+             "target": null
+            },
+            "type": "link"
+           }
+          ],
+          "text": "Hopper Support Model",
+          "type": "text"
+         },
+         {
+          "text": "* ",
+          "type": "text"
+         },
+         {
+          "marks": [
+           {
+            "attrs": {
+             "href": "http://sketchup.google.com/3dwarehouse/details?mid=692395798fa885f71211da1f85706ccd",
+             "target": null
+            },
+            "type": "link"
+           }
+          ],
+          "text": "Grate Support Model",
+          "type": "text"
+         },
+         {
+          "text": "Additional Materials Required:* 3/4\"x1.5\" Bolts (2)* 3/4\" Nuts (2)* ",
+          "type": "text"
+         },
+         {
+          "text": "[guide|1717|Shaker Mount]",
+          "type": "text"
+         }
+        ],
+        "type": "paragraph"
+       }
+      ],
+      "type": "listItem"
+     }
+    ],
+    "type": "bulletList"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "* [http://sketchup.google.com/3dwarehouse/details?mid=e4c762d16d8f60401211da1f85706ccd|Hopper Support Model]* [http://sketchup.google.com/3dwarehouse/details?mid=692395798fa885f71211da1f85706ccd|Grate Support Model]Additional Materials Required:* 3/4\"x1.5\" Bolts (2)* 3/4\" Nuts (2)* [guide|1717|Shaker Mount]",
+ "introduction_rendered": "<ul><li><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=e4c762d16d8f60401211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Hopper Support Model</a>* <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=692395798fa885f71211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Grate Support Model</a>Additional Materials Required:* 3/4&quot;x1.5&quot; Bolts (2)* 3/4&quot; Nuts (2)* [invalid guide link]</li></ul>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134837,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041499,
+ "revisionid": 52,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 25,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch away the necessary areas. See diagrams.",
+     "text_rendered": "Torch away the necessary areas. See diagrams."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The holes for the hopper mounting need to be 28\" away from the bottom side. Mark 28\" on the opposite tubing walls and torch 1/2\" holes. Insure a 1/2\" bolt goes all the way thru.",
+     "text_rendered": "The holes for the hopper mounting need to be 28&quot; away from the bottom side. Mark 28&quot; on the opposite tubing walls and torch 1/2&quot; holes. Insure a 1/2&quot; bolt goes all the way thru."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Torch the cutaway at the top and the slot.",
+     "text_rendered": "Torch the cutaway at the top and the slot."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away any slag.",
+     "text_rendered": "Grind away any slag."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.440x330",
+      "guid": "us5eLIhMRYxYsnWn",
+      "id": 219,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/us5eLIhMRYxYsnWn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.440x330",
+      "guid": "HALjnZTwEYkKZNAm",
+      "id": 223,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HALjnZTwEYkKZNAm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 333,
+   "stepid": 70,
+   "time_estimate": 0,
+   "title": "Make the Hopper Supports"
+  },
+  {
+   "comments": [],
+   "guideid": 25,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay one support on the table, with the grate mount slot touching the table.",
+     "text_rendered": "Lay one support on the table, with the grate mount slot touching the table."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Get the Shaker Mount and tighten 3/4\" bolts with nuts to the Soil Shaker so the bolt head is where the hammer will be.",
+     "text_rendered": "Get the Shaker Mount and tighten 3/4&quot; bolts with nuts to the Soil Shaker so the bolt head is where the hammer will be."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Prop this up on the hopper support, so the first bolt is about 2\" above the 28\" hole and both bolts are touching the support.",
+     "text_rendered": "Prop this up on the hopper support, so the first bolt is about 2&quot; above the 28&quot; hole and both bolts are touching the support."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark which side of the shaker you are welding the bolts for.",
+     "text_rendered": "Mark which side of the shaker you are welding the bolts for."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.440x330",
+      "guid": "Mi6nWAFTuBSlDhyN",
+      "id": 224,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mi6nWAFTuBSlDhyN.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.440x330",
+      "guid": "gveH13AHe32AlXfL",
+      "id": 226,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gveH13AHe32AlXfL.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.440x330",
+      "guid": "nuFERWdu6hBvQaJL",
+      "id": 229,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nuFERWdu6hBvQaJL.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 145,
+   "stepid": 72,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 25,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the bolts in place, remove the nuts and dismount the shaker.",
+     "text_rendered": "Tack the bolts in place, remove the nuts and dismount the shaker."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Protect the threads, and finish welding the bolts to the support.",
+     "text_rendered": "Protect the threads, and finish welding the bolts to the support."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You are only doing this on one of the supports, the other side, you will do in place, so the spacing is correct.",
+     "text_rendered": "You are only doing this on one of the supports, the other side, you will do in place, so the spacing is correct."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.440x330",
+      "guid": "WGBmqd2votRWMbhc",
+      "id": 233,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WGBmqd2votRWMbhc.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 147,
+   "stepid": 73,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 25,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch the hole on the bottom of the supports for each.",
+     "text_rendered": "Punch the hole on the bottom of the supports for each."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch away a 4\" section on the top of each grate to make it like the model shown.",
+     "text_rendered": "Torch away a 4&quot; section on the top of each grate to make it like the model shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Remember that the two are mirrored.",
+     "text_rendered": "Remember that the two are mirrored."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Cut away the corner so the hopper wont hit it, about a 1\" 45 degree triangle.",
+     "text_rendered": "Cut away the corner so the hopper wont hit it, about a 1&quot; 45 degree triangle."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Torch a slot for a 3/4\" bolt at the top of the mount, as shown.",
+     "text_rendered": "Torch a slot for a 3/4&quot; bolt at the top of the mount, as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away all the slag.",
+     "text_rendered": "Grind away all the slag."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.440x330",
+      "guid": "jhHHOKRlXQEqoREo",
+      "id": 236,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jhHHOKRlXQEqoREo.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.440x330",
+      "guid": "GBQNUAgklQeJDRmB",
+      "id": 240,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GBQNUAgklQeJDRmB.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.440x330",
+      "guid": "hXgoffd2JhBEjRZ3",
+      "id": 244,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hXgoffd2JhBEjRZ3.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 151,
+   "stepid": 75,
+   "time_estimate": 0,
+   "title": "Make the Grate Supports."
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Hopper Supports and Grate Supports",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Punch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Punch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Hopper+Supports+and+Grate+Supports/25",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/25"
+}

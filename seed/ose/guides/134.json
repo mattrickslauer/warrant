@@ -1,0 +1,395 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.thumbnail"
+  },
+  "join_date": 1394639123,
+  "reputation": 101,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/101/Anthony+Douglas",
+  "userid": 101,
+  "username": "Anthony Douglas"
+ },
+ "body_url_path": "/Guide/Tine+module+fabrication/134",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Rotor",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396279932,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  },
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3220,
+ "guideid": 134,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.440x330",
+  "guid": "oSRAgaTWRLlZZGQN",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.huge",
+  "id": 3620,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oSRAgaTWRLlZZGQN.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396626802,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396284910,
+ "revisionid": 3058,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 134,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay 4x P22 pieces on top of some scrap/spare 1/4\" thick steel (these are used as guides).",
+     "text_rendered": "Lay 4x P22 pieces on top of some scrap/spare 1/4&quot; thick steel (these are used as guides)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack them onto the tubes.",
+     "text_rendered": "Tack them onto the tubes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finish the welds and fill the spaces.",
+     "text_rendered": "Finish the welds and fill the spaces."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.440x330",
+      "guid": "pSMZb2piSMOdATOo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.huge",
+      "id": 3622,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pSMZb2piSMOdATOo.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.440x330",
+      "guid": "W4N6QQ43SEpWUQQb",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.huge",
+      "id": 3624,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W4N6QQ43SEpWUQQb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4805,
+   "stepid": 897,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 134,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the 3\" pipe section in a vice, clamping along the length of the tube.  Twist each plate about 35 degrees with a large monkey wrench, alternating the direction for each one",
+     "text_rendered": "Put the 3&quot; pipe section in a vice, clamping along the length of the tube.  Twist each plate about 35 degrees with a large monkey wrench, alternating the direction for each one"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.440x330",
+      "guid": "KZbalA1dYKvW6tFt",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.huge",
+      "id": 3626,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZbalA1dYKvW6tFt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4807,
+   "stepid": 899,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 134,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Note here there are two variations in the  tine modules.  Cut the hole in the side of the pipe for the bolt to pass through with an oxy acetylene torch, ensuring that at least 9 of the 18 tine modules will have a hole offset by 45 degrees to the other 9 modules.",
+     "text_rendered": "Note here there are two variations in the  tine modules.  Cut the hole in the side of the pipe for the bolt to pass through with an oxy acetylene torch, ensuring that at least 9 of the 18 tine modules will have a hole offset by 45 degrees to the other 9 modules."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld a nut for the 3/4\" bolts here.",
+     "text_rendered": "Weld a nut for the 3/4&quot; bolts here."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread the bolt through.  This completes the build one tine module.  After creating one or 2 many can be made at once.",
+     "text_rendered": "Thread the bolt through.  This completes the build one tine module.  After creating one or 2 many can be made at once."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.440x330",
+      "guid": "wV2Oy2VlN2bfRG3r",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.huge",
+      "id": 3628,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wV2Oy2VlN2bfRG3r.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.440x330",
+      "guid": "BLgJQVIwY3nHSWYM",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.huge",
+      "id": 3630,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BLgJQVIwY3nHSWYM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4816,
+   "stepid": 900,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Tine module fabrication",
+ "summary": "Fabrication of the tine modules, which are then added to the main shaft.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Tine module fabrication",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Tine+module+fabrication/134",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/134"
+}

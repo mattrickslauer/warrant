@@ -1,0 +1,175 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.440x330",
+   "guid": "gXUSadxgwylWHrRv",
+   "id": 4431,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.thumbnail"
+  },
+  "join_date": 1373132434,
+  "reputation": 578,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/15/Marcin",
+  "userid": 15,
+  "username": "Marcin"
+ },
+ "body_url_path": "/Guide/Installing+CAD+Extracting+CAD+Parts/195",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CAD",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1429392896,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 3972,
+ "guideid": 195,
+ "image": null,
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Outline what you are going to teach someone how to do.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Outline what you are going to teach someone how to do.",
+ "introduction_rendered": "<p>Outline what you are going to teach someone how to do.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1429393400,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 0,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1429392907,
+ "revisionid": 390,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 195,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Search OSE Warehouse - http://opensourceecology.org/wiki/Warehouse",
+     "text_rendered": "Search OSE Warehouse - <a href=\"http://opensourceecology.org/wiki/Warehouse\" rel=\"nofollow noopener noreferrer\" title=\"http://opensourceecology.org/wiki/Warehouse\">http://opensourceecology.org/wiki/Wareho...</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Search Google Warehouse - https://3dwarehouse.sketchup.com/",
+     "text_rendered": "Search Google Warehouse - <a href=\"https://3dwarehouse.sketchup.com/\" rel=\"nofollow noopener noreferrer\">https://3dwarehouse.sketchup.com/</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.440x330",
+      "guid": "mhut5LZmp6Cqj4Wq",
+      "id": 4355,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mhut5LZmp6Cqj4Wq.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5634,
+   "stepid": 1094,
+   "time_estimate": 0,
+   "title": "Find a file that has the part you need."
+  }
+ ],
+ "subject": "Extracting CAD Parts",
+ "summary": "How to Extract Parts from CAD Files",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing CAD Extracting CAD Parts",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+CAD+Extracting+CAD+Parts/195",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/195"
+}

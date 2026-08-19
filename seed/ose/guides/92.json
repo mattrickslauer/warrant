@@ -1,0 +1,1554 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Installing+Microhouse+2+Foundation+Module/92",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Foundation Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383181366,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3459,
+ "guideid": 92,
+ "image": null,
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397142903,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383250053,
+ "revisionid": 185,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Clear vegetation from the site.''' We used the OSE pulverizer on the Life Trac 6.",
+     "text_rendered": "<strong>Clear vegetation from the site.</strong> We used the OSE pulverizer on the Life Trac 6."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''You can strip off the topsoil, as well, or otherwise change the grade at this point.''' In our case, we had little topsoil and we liked the way the grade worked out by raising the building up on the gravel.",
+     "text_rendered": "<strong>You can strip off the topsoil, as well, or otherwise change the grade at this point.</strong> In our case, we had little topsoil and we liked the way the grade worked out by raising the building up on the gravel."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Cut down vegetation in a wide area around your building site, as well.''' 20' beyond where the gravel will be should be adequate. You will need room for the brick press and rollers, and to stage other materials, too. You will also need room for people to move around and work.",
+     "text_rendered": "<strong>Cut down vegetation in a wide area around your building site, as well.</strong> 20' beyond where the gravel will be should be adequate. You will need room for the brick press and rollers, and to stage other materials, too. You will also need room for people to move around and work."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.440x330",
+      "guid": "VudKLGkRIJ5MPY5y",
+      "id": 3778,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VudKLGkRIJ5MPY5y.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.440x330",
+      "guid": "LhqLWeiGgXQ4Upec",
+      "id": 3779,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LhqLWeiGgXQ4Upec.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.440x330",
+      "guid": "LQdRP2edEeNUemES",
+      "id": 3785,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LQdRP2edEeNUemES.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5022,
+   "stepid": 952,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Have 15 tons of gravel delivered.''' Make sure the truck has access to the site and has room to back up and drop the load where you want it.",
+     "text_rendered": "<strong>Have 15 tons of gravel delivered.</strong> Make sure the truck has access to the site and has room to back up and drop the load where you want it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.440x330",
+      "guid": "6WobkDyKBollu1HD",
+      "id": 3780,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6WobkDyKBollu1HD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5020,
+   "stepid": 953,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Flatten gravel into a level pad.''' The foundation formwork will be built on top of this pad.",
+     "text_rendered": "<strong>Flatten gravel into a level pad.</strong> The foundation formwork will be built on top of this pad."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.440x330",
+      "guid": "2UVEJYVhWOEPHepB",
+      "id": 3782,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2UVEJYVhWOEPHepB.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.440x330",
+      "guid": "aFwP5EfTRmY6SoIM",
+      "id": 3781,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aFwP5EfTRmY6SoIM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5020,
+   "stepid": 954,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The foundation from our first module has rebar projecting in all four directions to accommodate expanding in any direction that we wanted to.",
+     "text_rendered": "The foundation from our first module has rebar projecting in all four directions to accommodate expanding in any direction that we wanted to."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Our next additions will not have rebar projecting in all directions because the design for the total build-out has been determined.",
+     "text_rendered": "Our next additions will not have rebar projecting in all directions because the design for the total build-out has been determined."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If one was to add on to a side of a foundation without rebar projections, one could use a long masonry bit and a hammer drill to create holes into the existing foundation. Then, rebar can be inserted into the holes and construction adhesive can be used to secure the rebar into place.",
+     "text_rendered": "If one was to add on to a side of a foundation without rebar projections, one could use a long masonry bit and a hammer drill to create holes into the existing foundation. Then, rebar can be inserted into the holes and construction adhesive can be used to secure the rebar into place."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.440x330",
+      "guid": "PJGc2VvhcUVceXlT",
+      "id": 3658,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PJGc2VvhcUVceXlT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4843,
+   "stepid": 942,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Review the drawing at left for an overview of what you are about to build.",
+     "text_rendered": "Review the drawing at left for an overview of what you are about to build."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use [https://docs.google.com/a/opensourceecology.org/spreadsheet/ccc?key=0ArNBTd6xfT7MdGhhRVdVeVR0UHp3c25pZThqOTVUcWc#gid=0|cut list] to order all the wood, rebar, and threaded rod. Order the lumber in the appropriate size sections.",
+     "text_rendered": "Use <a href=\"https://docs.google.com/a/opensourceecology.org/spreadsheet/ccc?key=0ArNBTd6xfT7MdGhhRVdVeVR0UHp3c25pZThqOTVUcWc#gid=0\" rel=\"nofollow noopener noreferrer\">cut list</a> to order all the wood, rebar, and threaded rod. Order the lumber in the appropriate size sections."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut required, and number of pieces in brackets - for 2\"x10\" lumber:",
+     "text_rendered": "Cut required, and number of pieces in brackets - for 2&quot;x10&quot; lumber:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "[2]  11' - 10 1/2\" from 12' lumber",
+     "text_rendered": "[2]  11' - 10 1/2&quot; from 12' lumber"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "[2] 11' - 9\" from 12' lumber",
+     "text_rendered": "[2] 11' - 9&quot; from 12' lumber"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "[2] 6' - 5\" from 8' lumber",
+     "text_rendered": "[2] 6' - 5&quot; from 8' lumber"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut list for 1/2' rebar stakes (option in lieu of wood stakes and allthread):",
+     "text_rendered": "Cut list for 1/2' rebar stakes (option in lieu of wood stakes and allthread):"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "[42] 30\" long, [12] 14\" long",
+     "text_rendered": "[42] 30&quot; long, [12] 14&quot; long"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.440x330",
+      "guid": "OEWkKKYYVj5FElGP",
+      "id": 3611,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OEWkKKYYVj5FElGP.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4940,
+   "stepid": 939,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Start by building the external frame. Toe-nail the boards together to create the long sides.",
+     "text_rendered": "Start by building the external frame. Toe-nail the boards together to create the long sides."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The 14' long board is placed between the two long sides, as shown in the close-up of the corner in the second image.",
+     "text_rendered": "The 14' long board is placed between the two long sides, as shown in the close-up of the corner in the second image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once the external frame is built, measure the two long diagonals and adjust the frame until they are equal to square the assembly. Also make sure that the length from the existing foundation to the inner edge of the end is 26'.",
+     "text_rendered": "Once the external frame is built, measure the two long diagonals and adjust the frame until they are equal to square the assembly. Also make sure that the length from the existing foundation to the inner edge of the end is 26'."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.440x330",
+      "guid": "NH2AAJMMmBQFwOA2",
+      "id": 3689,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NH2AAJMMmBQFwOA2.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.440x330",
+      "guid": "15WowPtdAyQHTRlA",
+      "id": 3691,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/15WowPtdAyQHTRlA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4944,
+   "stepid": 950,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The image shows the cut list for the foundation module. You can also link to it and print it out [https://docs.google.com/a/opensourceecology.org/spreadsheet/ccc?key=0ArNBTd6xfT7MdGhhRVdVeVR0UHp3c25pZThqOTVUcWc#gid=0|here]",
+     "text_rendered": "The image shows the cut list for the foundation module. You can also link to it and print it out <a href=\"https://docs.google.com/a/opensourceecology.org/spreadsheet/ccc?key=0ArNBTd6xfT7MdGhhRVdVeVR0UHp3c25pZThqOTVUcWc#gid=0\" rel=\"nofollow noopener noreferrer\">here</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the 2x10 boards to the lengths shown in Image 1 or on the cut list in the link above.",
+     "text_rendered": "Cut the 2x10 boards to the lengths shown in Image 1 or on the cut list in the link above."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Also cut 12 pieces of all-thread to 18\" in length. These will be positioned through the forms as shown in Image 2. The all-thread will go at the 1/3 points on each side of the module. This means at the 4' and 8' points along each wall, you will drill 5/8\" holes halfway up the height of your form boards to feed the all-thread through.",
+     "text_rendered": "Also cut 12 pieces of all-thread to 18&quot; in length. These will be positioned through the forms as shown in Image 2. The all-thread will go at the 1/3 points on each side of the module. This means at the 4' and 8' points along each wall, you will drill 5/8&quot; holes halfway up the height of your form boards to feed the all-thread through."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "''All-thread will be slipped through these holes and have washers and nuts added from the outside. This will keep the form boards from spreading when the concrete is poured into the forms. It also provides a convenient support for the long lengths of rebar that reinforce the concrete.''",
+     "text_rendered": "<em>All-thread will be slipped through these holes and have washers and nuts added from the outside. This will keep the form boards from spreading when the concrete is poured into the forms. It also provides a convenient support for the long lengths of rebar that reinforce the concrete.</em>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make 14 wooden stakes about 20\" long - this is a great way to put your scrap end cuts from other projects to good use! You can also use metal stakes that are specifically made for retaining concrete forms.",
+     "text_rendered": "Make 14 wooden stakes about 20&quot; long - this is a great way to put your scrap end cuts from other projects to good use! You can also use metal stakes that are specifically made for retaining concrete forms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''NOTE! If your overlap of the outside form board on the foundation module you are connecting to is not exactly 3 1/2\", then the 6' 5\" board will not come out to the right length.'''",
+     "text_rendered": "<strong>NOTE! If your overlap of the outside form board on the foundation module you are connecting to is not exactly 3 1/2&quot;, then the 6' 5&quot; board will not come out to the right length.</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.440x330",
+      "guid": "wDlS3iODIIxbsShg",
+      "id": 3652,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wDlS3iODIIxbsShg.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.440x330",
+      "guid": "hk4DoFiXNQV3HrFE",
+      "id": 3655,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hk4DoFiXNQV3HrFE.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.440x330",
+      "guid": "RM5CfALhNNqs31de",
+      "id": 3656,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RM5CfALhNNqs31de.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 4889,
+   "stepid": 941,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you have the forms staked and the all-thread in place, you can lay the long pieces of rebar into the forms. These pieces rest on the all-thread which holds them halfway up the thickness of the foundation.",
+     "text_rendered": "Once you have the forms staked and the all-thread in place, you can lay the long pieces of rebar into the forms. These pieces rest on the all-thread which holds them halfway up the thickness of the foundation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The rebar should be placed at the 1/3 points side-to-side of the foundation. Since the foundation is 12\" wide, this means that the rebar is located 4\" in from each side.",
+     "text_rendered": "The rebar should be placed at the 1/3 points side-to-side of the foundation. Since the foundation is 12&quot; wide, this means that the rebar is located 4&quot; in from each side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tying the rebar to the all-thread with metal wire will hold it in place and make sure it does not get moved around as the concrete is poured. Also, use metal wire to tie the rebar to the stubs coming off of the module you are adding on to.",
+     "text_rendered": "Tying the rebar to the all-thread with metal wire will hold it in place and make sure it does not get moved around as the concrete is poured. Also, use metal wire to tie the rebar to the stubs coming off of the module you are adding on to."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add electrical chases made of 1\" or larger PVC pipe. Tape the ends of the pipe so that debris does not clog them before they need to be used. Locations are shown in Image 2 - chases are highlighted in red.",
+     "text_rendered": "Add electrical chases made of 1&quot; or larger PVC pipe. Tape the ends of the pipe so that debris does not clog them before they need to be used. Locations are shown in Image 2 - chases are highlighted in red."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.440x330",
+      "guid": "swJRjc2EqTDU24Pn",
+      "id": 3683,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/swJRjc2EqTDU24Pn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.440x330",
+      "guid": "4OWBXZHKiaALSCCD",
+      "id": 3693,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OWBXZHKiaALSCCD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 4957,
+   "stepid": 943,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert two electrical chases as shown in red in the image. These go underneath the foundation to allow electrical wires to be pulled through later.",
+     "text_rendered": "Insert two electrical chases as shown in red in the image. These go underneath the foundation to allow electrical wires to be pulled through later."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''NOTE: Chases should be minimum of 1\" diameter pipe.'''",
+     "text_rendered": "<strong>NOTE: Chases should be minimum of 1&quot; diameter pipe.</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''NOTE: Make sure to tape off the ends of the pipes so that they do not get clogged with debris before you need to use them.'''",
+     "text_rendered": "<strong>NOTE: Make sure to tape off the ends of the pipes so that they do not get clogged with debris before you need to use them.</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.440x330",
+      "guid": "1YTUYutF5HUiX1D1",
+      "id": 3699,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1YTUYutF5HUiX1D1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 4963,
+   "stepid": 956,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "We need to create a recess in the foundation where the door module will go. This allows the finish floor level to be slightly lower than the foundation, which keeps the CEBs elevated above the finish floor. This also will match the finish floor level of the MH 1 module.",
+     "text_rendered": "We need to create a recess in the foundation where the door module will go. This allows the finish floor level to be slightly lower than the foundation, which keeps the CEBs elevated above the finish floor. This also will match the finish floor level of the MH 1 module."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Image 1 shows the recess made for the door in the MH 1 foundation module.",
+     "text_rendered": "Image 1 shows the recess made for the door in the MH 1 foundation module."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Image 2 shows the dimension for the location of the door recesses in the foundation.",
+     "text_rendered": "Image 2 shows the dimension for the location of the door recesses in the foundation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "See to next step for how to create the caps for this purpose.",
+     "text_rendered": "See to next step for how to create the caps for this purpose."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.440x330",
+      "guid": "fy6AVcbxmhdlIagS",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.huge",
+      "id": 3618,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fy6AVcbxmhdlIagS.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.440x330",
+      "guid": "OVOwQFMEyMEep1ui",
+      "id": 3674,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OVOwQFMEyMEep1ui.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 4893,
+   "stepid": 940,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Create three \"caps\" using one of the methods shown in the image.",
+     "text_rendered": "Create three &quot;caps&quot; using one of the methods shown in the image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut one piece of OSB to size, then reinforce with 2 long 2x4s laying flat on the outer edges. The 2x4 pieces should be 3' 9 1/2\" long. Fill in blocks in between the long 2x4s. Screw in two more 2x4, 15\" long, on top of the long edge 2x4s -  to create effective handles.  The project past the edge and come to rest on the foundation forms.",
+     "text_rendered": "Cut one piece of OSB to size, then reinforce with 2 long 2x4s laying flat on the outer edges. The 2x4 pieces should be 3' 9 1/2&quot; long. Fill in blocks in between the long 2x4s. Screw in two more 2x4, 15&quot; long, on top of the long edge 2x4s -  to create effective handles.  The project past the edge and come to rest on the foundation forms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Alternative method is to layer up three sheets of 1/2\" OSB or plywood.",
+     "text_rendered": "Alternative method is to layer up three sheets of 1/2&quot; OSB or plywood."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.440x330",
+      "guid": "ESRXSjvxKcddTZqs",
+      "id": 3676,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ESRXSjvxKcddTZqs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 4976,
+   "stepid": 944,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 92,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Pour the concrete into the forms. Then, place your caps for the door recesses into place and level the top of the concrete using a board to screed off the excess.",
+     "text_rendered": "Pour the concrete into the forms. Then, place your caps for the door recesses into place and level the top of the concrete using a board to screed off the excess."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The image shows what you will have created once the concrete is poured into the forms.",
+     "text_rendered": "The image shows what you will have created once the concrete is poured into the forms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You may have chosen to place additional stub-outs of rebar as shown in the second image or in other places. If you do, the holes for these pieces of rebar will be located like the other stub-outs: 4\" apart from each other and 4\" in from each edge of the foundation formwork.",
+     "text_rendered": "You may have chosen to place additional stub-outs of rebar as shown in the second image or in other places. If you do, the holes for these pieces of rebar will be located like the other stub-outs: 4&quot; apart from each other and 4&quot; in from each edge of the foundation formwork."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''NOTE: For our build, we'll be using stub-outs from the north-east corner only.'''",
+     "text_rendered": "<strong>NOTE: For our build, we'll be using stub-outs from the north-east corner only.</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.440x330",
+      "guid": "2ADa4y4Zy64AnTRC",
+      "id": 3667,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ADa4y4Zy64AnTRC.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.440x330",
+      "guid": "ZiKobGXxaZkdYHOD",
+      "id": 3669,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZiKobGXxaZkdYHOD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 4899,
+   "stepid": 945,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Foundation",
+ "summary": "This foundation will be adding on to the MH 1 foundation module, using the rebar stubs that were put in place to make this possible.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Microhouse 2 Foundation Module",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Microhouse+2+Foundation+Module/92",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/92"
+}

@@ -1,0 +1,325 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB:+Hopper+Mounting+Plate/33",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041543,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3921,
+ "guideid": 33,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.440x330",
+  "guid": "GPJEVEmJKkHtwf2F",
+  "id": 327,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GPJEVEmJKkHtwf2F.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=1951330c482561411211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup model",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=1951330c482561411211da1f85706ccd|Sketchup model]",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=1951330c482561411211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup model</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134840,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041543,
+ "revisionid": 68,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 33,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch the holes in the 15\" pieces. They are both the same.",
+     "text_rendered": "Punch the holes in the 15&quot; pieces. They are both the same."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the pieces together, insuring everything is square.",
+     "text_rendered": "Weld the pieces together, insuring everything is square."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "There should be a 6\" space between the 15\" pieces.",
+     "text_rendered": "There should be a 6&quot; space between the 15&quot; pieces."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Skip around so the plate doesnt warp.",
+     "text_rendered": "Skip around so the plate doesnt warp."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Weld both sides on all seams",
+     "text_rendered": "Weld both sides on all seams"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away the welds on one side of the plate.",
+     "text_rendered": "Grind away the welds on one side of the plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.440x330",
+      "guid": "lLmSYP3MfmpB3Yty",
+      "id": 330,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lLmSYP3MfmpB3Yty.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.440x330",
+      "guid": "45SfMKEnnWOIIieI",
+      "id": 333,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/45SfMKEnnWOIIieI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 201,
+   "stepid": 100,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB: Hopper Mounting Plate",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB:+Hopper+Mounting+Plate/33",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/33"
+}

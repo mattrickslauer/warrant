@@ -1,0 +1,645 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "guid": "aShEvNH1w2qDOnhd",
+   "id": 873,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.full",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.thumbnail"
+  },
+  "join_date": 1381776278,
+  "reputation": 213,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/34/Dan+Benamy",
+  "userid": 34,
+  "username": "Dan Benamy"
+ },
+ "body_url_path": "/Guide/How+to+assemble+the+shears/88",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module- Sheer",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1382971336,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 1451,
+ "guideid": 88,
+ "image": null,
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1382975512,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1382975457,
+ "revisionid": 1087,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "First we'll make the bottom blade.",
+     "text_rendered": "First we'll make the bottom blade."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2185,
+   "stepid": 411,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 2 hole x 4 hole plates",
+     "text_rendered": "2 2 hole x 4 hole plates"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1 hole x 4 hole plates",
+     "text_rendered": "2 1 hole x 4 hole plates"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Drill holes through all 4 plates to mount blade. TODO  size position, tools.",
+     "text_rendered": "Drill holes through all 4 plates to mount blade. TODO  size position, tools."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2166,
+   "stepid": 406,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "5 TODO size bolts",
+     "text_rendered": "5 TODO size bolts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the bolts through the 2 bigger plates, the 2 smaller plates, and into the blade. Tighten.",
+     "text_rendered": "Put the bolts through the 2 bigger plates, the 2 smaller plates, and into the blade. Tighten."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The picture shows the middle plates being shorter but that's a amistake! All the plates should be the same length.",
+     "text_rendered": "The picture shows the middle plates being shorter but that's a amistake! All the plates should be the same length."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2169,
+   "stepid": 407,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch a new row of 4 holes with the centers 1\" from the edge. The holes should be 1 1/6\". The should be every 2 inches.",
+     "text_rendered": "Punch a new row of 4 holes with the centers 1&quot; from the edge. The holes should be 1 1/6&quot;. The should be every 2 inches."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use a straight edge to draw a line 1\" from one side.",
+     "text_rendered": "Use a straight edge to draw a line 1&quot; from one side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use a tape measure, punch, and hammer to make dents along that line at 2\", 6\" 10\" and 14\". Measure all the dents from the same side in case the plate isn't exactly 16\" long.",
+     "text_rendered": "Use a tape measure, punch, and hammer to make dents along that line at 2&quot;, 6&quot; 10&quot; and 14&quot;. Measure all the dents from the same side in case the plate isn't exactly 16&quot; long."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Measure each dent from the side and the end after you make it, so you catch mistakes right away.",
+     "text_rendered": "Measure each dent from the side and the end after you make it, so you catch mistakes right away."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Punch out the holes.",
+     "text_rendered": "Punch out the holes."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 2174,
+   "stepid": 408,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "5 TODO\" x 3\" bolts",
+     "text_rendered": "5 TODO&quot; x 3&quot; bolts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 14.75\" x 2\" x 1\" shearing blade (TODO details?)",
+     "text_rendered": "1 14.75&quot; x 2&quot; x 1&quot; shearing blade (TODO details?)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the bolts through the 2 larger plates, the 2 smaller plates, and into the blade. Make this very tight.",
+     "text_rendered": "Put the bolts through the 2 larger plates, the 2 smaller plates, and into the blade. Make this very tight."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Again, all 4 plates should be the same length. The picture shows the middle ones as shorter which is wrong.",
+     "text_rendered": "Again, all 4 plates should be the same length. The picture shows the middle ones as shorter which is wrong."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 2180,
+   "stepid": 409,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 88,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Now we'll make the top blade.",
+     "text_rendered": "Now we'll make the top blade."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 2185,
+   "stepid": 410,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Shears",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to assemble the shears",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+assemble+the+shears/88",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/88"
+}

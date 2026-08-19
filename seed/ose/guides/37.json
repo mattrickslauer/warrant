@@ -1,0 +1,435 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB:+Feet/37",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041558,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3925,
+ "guideid": 37,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.440x330",
+  "guid": "ZyunmGOEbp2BlrEH",
+  "id": 364,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZyunmGOEbp2BlrEH.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=c191f7e6d624554a1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=c191f7e6d624554a1211da1f85706ccd|Sketchup Model]",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=c191f7e6d624554a1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134842,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041558,
+ "revisionid": 76,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 37,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark and magdrill or punch the holes (13/16\")  in the lower press foot.",
+     "text_rendered": "Mark and magdrill or punch the holes (13/16&quot;)  in the lower press foot."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place this centered on the upper press plate and transfer punch the hole locations.",
+     "text_rendered": "Place this centered on the upper press plate and transfer punch the hole locations."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mag-drill these holes.",
+     "text_rendered": "Mag-drill these holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch out the hole in the center of the lower press plate.",
+     "text_rendered": "Torch out the hole in the center of the lower press plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind it smooth.",
+     "text_rendered": "Grind it smooth."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.440x330",
+      "guid": "cr3vycYx5VwN4LSp",
+      "id": 368,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cr3vycYx5VwN4LSp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.440x330",
+      "guid": "WvIsLRbD41V66rAA",
+      "id": 370,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WvIsLRbD41V66rAA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 219,
+   "stepid": 109,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 37,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Plug weld the threaded rod into the upper press plate, so that the threaded rod is about 1/4\" deep in the plate.",
+     "text_rendered": "Plug weld the threaded rod into the upper press plate, so that the threaded rod is about 1/4&quot; deep in the plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fill the hole with weld, then grind it flush.",
+     "text_rendered": "Fill the hole with weld, then grind it flush."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The upper press foot NEEDS to be 12\" exactly across at the top of it (the side without the bolts sticking up) or there will be \"fuzzy edges\" on your bricks. See the [http://www.youtube.com/watch?feature=player_embedded&v=mh7XqmTbA0g|video] for more info.",
+     "text_rendered": "The upper press foot NEEDS to be 12&quot; exactly across at the top of it (the side without the bolts sticking up) or there will be &quot;fuzzy edges&quot; on your bricks. See the <a href=\"http://www.youtube.com/watch?feature=player_embedded&amp;v=mh7XqmTbA0g\">video</a> for more info."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.440x330",
+      "guid": "pZbpqCKAXYdvHjBH",
+      "id": 375,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pZbpqCKAXYdvHjBH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.440x330",
+      "guid": "3UYV2CwCiDUVGWUm",
+      "id": 378,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3UYV2CwCiDUVGWUm.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.440x330",
+      "guid": "ffdEGxJsaawNOOBy",
+      "id": 380,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ffdEGxJsaawNOOBy.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 223,
+   "stepid": 111,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Add the feet to your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB: Feet",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Drill or Mag-drill with 13/16\" bit",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Drill_or_Mag-drill_with_13_16%22_bit"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB:+Feet/37",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/37"
+}

@@ -1,0 +1,526 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Prepare+the+Hopper+Sheet+Metal/26",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041504,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3915,
+ "guideid": 26,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.440x330",
+  "guid": "4dF6kMbvcUjDYsVf",
+  "id": 230,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4dF6kMbvcUjDYsVf.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=4b2a714d7ad6bbe01211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* Hinges (12)* 1/2\"x1\" Bolts (12)* 1/2\" Nuts (12)* 1/2\" Washers (12)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=4b2a714d7ad6bbe01211da1f85706ccd|Sketchup Model]Additional Materials Required:* Hinges (12)* 1/2\"x1\" Bolts (12)* 1/2\" Nuts (12)* 1/2\" Washers (12)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=4b2a714d7ad6bbe01211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* Hinges (12)* 1/2&quot;x1&quot; Bolts (12)* 1/2&quot; Nuts (12)* 1/2&quot; Washers (12)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134838,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041504,
+ "revisionid": 107,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 26,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch holes in 4 of the hinge plates as shown with a 7/8\" or 1\" punch.",
+     "text_rendered": "Punch holes in 4 of the hinge plates as shown with a 7/8&quot; or 1&quot; punch."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld one plate with holes, one without holes, and 3 hinges together as shown, with the plates 1 1/8\" apart and the hinge centered.",
+     "text_rendered": "Weld one plate with holes, one without holes, and 3 hinges together as shown, with the plates 1 1/8&quot; apart and the hinge centered."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure the side of the hinge that sticks out most is on the top; this way it won't interfere with the hopper metal below when installing the hopper.",
+     "text_rendered": "Make sure the side of the hinge that sticks out most is on the top; this way it won't interfere with the hopper metal below when installing the hopper."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make 3 more of these.",
+     "text_rendered": "Make 3 more of these."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.440x330",
+      "guid": "vu62dWGTJf4lrwfL",
+      "id": 234,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vu62dWGTJf4lrwfL.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.440x330",
+      "guid": "nDQSbSbwQQCAreCU",
+      "id": 237,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nDQSbSbwQQCAreCU.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.440x330",
+      "guid": "QAMcbuTYjpmISwQL",
+      "id": 242,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QAMcbuTYjpmISwQL.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 149,
+   "stepid": 74,
+   "time_estimate": 0,
+   "title": "Prepare the hinge plates"
+  },
+  {
+   "comments": [],
+   "guideid": 26,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the holes shown in the front piece.",
+     "text_rendered": "Torch the holes shown in the front piece."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch all of the holes shown in the side pieces and dirt deflector plate.",
+     "text_rendered": "Punch all of the holes shown in the side pieces and dirt deflector plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.440x330",
+      "guid": "mKjZxxgvRKTYKd5h",
+      "id": 245,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mKjZxxgvRKTYKd5h.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.440x330",
+      "guid": "5PvyH1kjDl55FCpp",
+      "id": 247,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5PvyH1kjDl55FCpp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.440x330",
+      "guid": "eSjcf6fxvaeeID11",
+      "id": 251,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eSjcf6fxvaeeID11.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 153,
+   "stepid": 76,
+   "time_estimate": 0,
+   "title": "Attaching the hinge plates to the hopper metal"
+  },
+  {
+   "comments": [],
+   "guideid": 26,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place 1/2\" bolts thru the side pieces and weld them.",
+     "text_rendered": "Place 1/2&quot; bolts thru the side pieces and weld them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure you are making them mirror images of eachother.",
+     "text_rendered": "Make sure you are making them mirror images of eachother."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the hinge plate assemblies to the side pieces using a washer, lock washer, and nut on each bolt",
+     "text_rendered": "Bolt the hinge plate assemblies to the side pieces using a washer, lock washer, and nut on each bolt"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.440x330",
+      "guid": "qRyLPCEenECEFOAC",
+      "id": 254,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qRyLPCEenECEFOAC.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.440x330",
+      "guid": "Gp6xLIDP1JqlJbED",
+      "id": 258,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Gp6xLIDP1JqlJbED.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 637,
+   "stepid": 78,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Prepare the Hopper Sheet Metal",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Wrenches or sockets",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Wrenches_or_sockets"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Prepare+the+Hopper+Sheet+Metal/26",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/26"
+}

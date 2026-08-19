@@ -1,0 +1,567 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Cutting+the+MicroHouse+2+Floor+Decking+Pieces/142",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Floor",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396370965,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3388,
+ "guideid": 142,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.440x330",
+  "guid": "A1l1X2haQjMqqSgQ",
+  "id": 3548,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396982593,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 5,
+   "text": "1/2\" plywood 4'X8' sheet",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22_plywood_4%27X8%27_sheet"
+  },
+  {
+   "notes": null,
+   "quantity": 100,
+   "text": "1.5\" screws",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1.5%22_screws"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396371302,
+ "revisionid": 3265,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You can see in the color-coded picture that the floor modules use a total of 5 sheets of 4'X8' plywood.",
+     "text_rendered": "You can see in the color-coded picture that the floor modules use a total of 5 sheets of 4'X8' plywood."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Three of the sheets will be used in their full 4' width (red, yellow, and brown).",
+     "text_rendered": "Three of the sheets will be used in their full 4' width (red, yellow, and brown)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Two of the sheets (orange and green) are ripped into narrower strips.",
+     "text_rendered": "Two of the sheets (orange and green) are ripped into narrower strips."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the plywood sheets to the dimensions based on dimensions shown in the drawing.",
+     "text_rendered": "Cut the plywood sheets to the dimensions based on dimensions shown in the drawing."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.440x330",
+      "guid": "A1l1X2haQjMqqSgQ",
+      "id": 3548,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A1l1X2haQjMqqSgQ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4753,
+   "stepid": 933,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Before screwing on the floor decking on to your frame, make sure the frame is square by checking the two diagonals and adjusting the frame until both are the same measurement.",
+     "text_rendered": "Before screwing on the floor decking on to your frame, make sure the frame is square by checking the two diagonals and adjusting the frame until both are the same measurement."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.440x330",
+      "guid": "5R5WLAFrMO1hW2uX",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.huge",
+      "id": 3557,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5R5WLAFrMO1hW2uX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4840,
+   "stepid": 937,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the 4' wide sheet(s) first. Use one 1 1/2\" screw every 12\" one the edge and every 16\" in the field. You do not need to pre-drill holes for these.",
+     "text_rendered": "Attach the 4' wide sheet(s) first. Use one 1 1/2&quot; screw every 12&quot; one the edge and every 16&quot; in the field. You do not need to pre-drill holes for these."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Three edges will be flush with the exterior of the frame.",
+     "text_rendered": "Three edges will be flush with the exterior of the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''One edge will break halfway on a joist. This is essential to have an attachment surface for the next sheet(s).'''",
+     "text_rendered": "<strong>One edge will break halfway on a joist. This is essential to have an attachment surface for the next sheet(s).</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.440x330",
+      "guid": "FOEuqOeTUAop1Lxg",
+      "id": 3559,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FOEuqOeTUAop1Lxg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4857,
+   "stepid": 938,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Two of your floor modules will look like this.",
+     "text_rendered": "Two of your floor modules will look like this."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.440x330",
+      "guid": "oPIgXDBqiemKQSgj",
+      "id": 3554,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oPIgXDBqiemKQSgj.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4757,
+   "stepid": 934,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "One of your floor modules will look like this.",
+     "text_rendered": "One of your floor modules will look like this."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.440x330",
+      "guid": "huGSD323InZqSeDP",
+      "id": 3555,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/huGSD323InZqSeDP.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4759,
+   "stepid": 935,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 142,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Another of your floor modules will look like this.",
+     "text_rendered": "Another of your floor modules will look like this."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.440x330",
+      "guid": "cdhavxZlfJuPZbyO",
+      "id": 3556,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cdhavxZlfJuPZbyO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4761,
+   "stepid": 936,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Part 2: MicroHouse 2 Floor Decking",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Cutting the MicroHouse 2 Floor Decking Pieces",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Circular Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/circular_saw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Table Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/table_saw"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Cutting+the+MicroHouse+2+Floor+Decking+Pieces/142",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/142"
+}

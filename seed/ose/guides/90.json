@@ -1,0 +1,838 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.440x330",
+   "guid": "gXUSadxgwylWHrRv",
+   "id": 4431,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.thumbnail"
+  },
+  "join_date": 1373132434,
+  "reputation": 578,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/15/Marcin",
+  "userid": 15,
+  "username": "Marcin"
+ },
+ "body_url_path": "/Guide/Installing+Module-+Sheer+Shear+tightening/90",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module- Sheer",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1382988174,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 1517,
+ "guideid": 90,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.440x330",
+  "guid": "ZtEK2XOQ1CT2vjg6",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.huge",
+  "id": 1607,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1383103563,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383015864,
+ "revisionid": 181,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take a solid helper bar and push down on the blade spacer assembly by wedging the bar in between the upper and lower blades",
+     "text_rendered": "Take a solid helper bar and push down on the blade spacer assembly by wedging the bar in between the upper and lower blades"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.440x330",
+      "guid": "ZtEK2XOQ1CT2vjg6",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.huge",
+      "id": 1607,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZtEK2XOQ1CT2vjg6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2218,
+   "stepid": 416,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the upper blade holder plate bolts down so that the metal is firm against one another but still able to move. Do this on the side of the ironworker opposite of the table",
+     "text_rendered": "Tighten the upper blade holder plate bolts down so that the metal is firm against one another but still able to move. Do this on the side of the ironworker opposite of the table"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.440x330",
+      "guid": "PDfPIYSZp1Fxh3Cc",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.huge",
+      "id": 1608,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PDfPIYSZp1Fxh3Cc.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2222,
+   "stepid": 417,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat the same for the lower blade holder bolts",
+     "text_rendered": "Repeat the same for the lower blade holder bolts"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.440x330",
+      "guid": "3QFKFTjMM6BgtF2y",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.huge",
+      "id": 1609,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QFKFTjMM6BgtF2y.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2226,
+   "stepid": 418,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut Out a blade spacer plate as necessary",
+     "text_rendered": "Cut Out a blade spacer plate as necessary"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.440x330",
+      "guid": "GTNX2apxnZtn42L4",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.huge",
+      "id": 1611,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GTNX2apxnZtn42L4.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 2232,
+   "stepid": 419,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "take off the blade to insert blade spacers as needed.",
+     "text_rendered": "take off the blade to insert blade spacers as needed."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.440x330",
+      "guid": "ugC6LxpalqIuJ1Il",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.huge",
+      "id": 1613,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ugC6LxpalqIuJ1Il.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.440x330",
+      "guid": "ERiUBsFHRiMaa1qN",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.huge",
+      "id": 1616,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ERiUBsFHRiMaa1qN.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.440x330",
+      "guid": "QnNTSCPCB6ABrcuA",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.huge",
+      "id": 1621,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QnNTSCPCB6ABrcuA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 2239,
+   "stepid": 420,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take a blade you need to take off the entire blade mounting plate.",
+     "text_rendered": "Take a blade you need to take off the entire blade mounting plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.440x330",
+      "guid": "ybdLRrnbGMkX2tGy",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.huge",
+      "id": 1622,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ybdLRrnbGMkX2tGy.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.440x330",
+      "guid": "5DrARMQMh1PtX5C4",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.huge",
+      "id": 1623,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5DrARMQMh1PtX5C4.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 2244,
+   "stepid": 421,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the spacer plate in the blade assembly. Mount blade assembly back on the ironworker.",
+     "text_rendered": "Mount the spacer plate in the blade assembly. Mount blade assembly back on the ironworker."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.440x330",
+      "guid": "LGy4M6MOOLwxiteu",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.huge",
+      "id": 1626,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LGy4M6MOOLwxiteu.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.440x330",
+      "guid": "Bl2wdHkRJ1PsY4HU",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.huge",
+      "id": 1627,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bl2wdHkRJ1PsY4HU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 2250,
+   "stepid": 422,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place a spacer between the top blade and the bottom blade so that the spacer presses down on the blade to tension it into position.",
+     "text_rendered": "Place a spacer between the top blade and the bottom blade so that the spacer presses down on the blade to tension it into position."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.440x330",
+      "guid": "2oLKncyoL21fxHtM",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.huge",
+      "id": 1629,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2oLKncyoL21fxHtM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 2253,
+   "stepid": 423,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "To finalize the spacing between the blades use paper is the final spacer adjustment. Do this for the top blade where access to blade mounting is easier",
+     "text_rendered": "To finalize the spacing between the blades use paper is the final spacer adjustment. Do this for the top blade where access to blade mounting is easier"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.440x330",
+      "guid": "n1F4ZvBgU23Y5gEi",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.huge",
+      "id": 1631,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/n1F4ZvBgU23Y5gEi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 2256,
+   "stepid": 424,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert The paper spacer under the blade mount plate",
+     "text_rendered": "Insert The paper spacer under the blade mount plate"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.440x330",
+      "guid": "DBIEvUrdWCOvCfd5",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.huge",
+      "id": 1633,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DBIEvUrdWCOvCfd5.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.440x330",
+      "guid": "OlsXwKKUGslQgaXH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.huge",
+      "id": 1636,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OlsXwKKUGslQgaXH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 2263,
+   "stepid": 425,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Test blade gap - 2-4 sheets thicknesses (printer paper). And you are ready to cut up to 1\"x8\" steel.",
+     "text_rendered": "Test blade gap - 2-4 sheets thicknesses (printer paper). And you are ready to cut up to 1&quot;x8&quot; steel."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.440x330",
+      "guid": "wesTbA6TtSsxeUYn",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.huge",
+      "id": 1638,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wesTbA6TtSsxeUYn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 2269,
+   "stepid": 426,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 90,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If blade gap varies more than 2 thousandths of an inch throughout, use spacers - sheets of paper, where each sheet is about 2 thousandths wide.",
+     "text_rendered": "If blade gap varies more than 2 thousandths of an inch throughout, use spacers - sheets of paper, where each sheet is about 2 thousandths wide."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.440x330",
+      "guid": "LUC2wDVHDOu1gl5x",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.huge",
+      "id": 1645,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LUC2wDVHDOu1gl5x.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.440x330",
+      "guid": "Np2NXaBIagGTLVnM",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.huge",
+      "id": 1646,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Np2NXaBIagGTLVnM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 2286,
+   "stepid": 429,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Shear tightening",
+ "summary": "We are using a prybar to tighten the blade assembly while loosening and tightening bolts to make this happen.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module- Sheer Shear tightening",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module-+Sheer+Shear+tightening/90",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/90"
+}

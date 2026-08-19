@@ -1,0 +1,933 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/How+to+build+the+OSE+Lasersaur+Frame+Gantry/102",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "OSE Lasersaur Frame Development Board",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383747080,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2435,
+ "guideid": 102,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.440x330",
+  "guid": "ALDvXytcbla52fiU",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.huge",
+  "id": 2168,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALDvXytcbla52fiU.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1384923878,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383898447,
+ "revisionid": 205,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take the 4x8 cm extrusions and 4x4 extrusions and make a box.",
+     "text_rendered": "Take the 4x8 cm extrusions and 4x4 extrusions and make a box."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take a FreeCAD image snapshot here and throughout.",
+     "text_rendered": "Take a FreeCAD image snapshot here and throughout."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.440x330",
+      "guid": "TbF45h5sZJtWJUxf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.huge",
+      "id": 2139,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TbF45h5sZJtWJUxf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 3196,
+   "stepid": 629,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Start by taking the 4080 extrusions - the short sides - and mounting the corner brackets to them.",
+     "text_rendered": "Start by taking the 4080 extrusions - the short sides - and mounting the corner brackets to them."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.440x330",
+      "guid": "qqlgAqLgoF1EZTRS",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.huge",
+      "id": 2141,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqlgAqLgoF1EZTRS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 3198,
+   "stepid": 630,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take a corner bracket. Use the corner bracket with the ridge in the middle.",
+     "text_rendered": "Take a corner bracket. Use the corner bracket with the ridge in the middle."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.440x330",
+      "guid": "JR5FTY41EgvKXXrC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.huge",
+      "id": 2143,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JR5FTY41EgvKXXrC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 3200,
+   "stepid": 631,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put in 4 spring nuts. Note that these may be inserted from the top of the rail, not necessarily from the side. Use 4 of these per corner bracket.",
+     "text_rendered": "Put in 4 spring nuts. Note that these may be inserted from the top of the rail, not necessarily from the side. Use 4 of these per corner bracket."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.440x330",
+      "guid": "iTXAdwJuRUtdOIPW",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.huge",
+      "id": 2145,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iTXAdwJuRUtdOIPW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 3202,
+   "stepid": 632,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Detail of spring nut. it has a sprung ball on the back side.",
+     "text_rendered": "Detail of spring nut. it has a sprung ball on the back side."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.440x330",
+      "guid": "5tHGShdfxwLqel3a",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.huge",
+      "id": 2147,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5tHGShdfxwLqel3a.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 3204,
+   "stepid": 633,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the first bracket on a corner. Put the short side of the bracket on the short frame side, and the long side of the bracket on the long side. Do not tighten yet.",
+     "text_rendered": "Mount the first bracket on a corner. Put the short side of the bracket on the short frame side, and the long side of the bracket on the long side. Do not tighten yet."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.440x330",
+      "guid": "gn6QNIUZovuFSdKi",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.huge",
+      "id": 2149,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gn6QNIUZovuFSdKi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 3206,
+   "stepid": 634,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the next 4 spring nuts. When inserting these, have the bolt holes near each other. Use a screwdriver to roll the spring nuts into the slot.",
+     "text_rendered": "Insert the next 4 spring nuts. When inserting these, have the bolt holes near each other. Use a screwdriver to roll the spring nuts into the slot."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.440x330",
+      "guid": "XdfXaV4lri1HWTIf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.huge",
+      "id": 2152,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdfXaV4lri1HWTIf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 3208,
+   "stepid": 635,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "To install the corner brackets, put in the 4 screws in first.",
+     "text_rendered": "To install the corner brackets, put in the 4 screws in first."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.440x330",
+      "guid": "owM4LEX6P4MdMGqp",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.huge",
+      "id": 2153,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/owM4LEX6P4MdMGqp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 3210,
+   "stepid": 636,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use the 10 mm long, 5 mm diameter screws here.",
+     "text_rendered": "Use the 10 mm long, 5 mm diameter screws here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.440x330",
+      "guid": "yKHNTYGSDtOLIAP6",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.huge",
+      "id": 2155,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yKHNTYGSDtOLIAP6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 3212,
+   "stepid": 637,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Do the second short side 4080 extrusion - use short side of bracket. Do not tighten yet. Then put the frame in a position to connect the 4 sides together at the corners. Adjust location of corner brackets as needed.",
+     "text_rendered": "Do the second short side 4080 extrusion - use short side of bracket. Do not tighten yet. Then put the frame in a position to connect the 4 sides together at the corners. Adjust location of corner brackets as needed."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.440x330",
+      "guid": "A6rXr6tVIr563lZV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.huge",
+      "id": 2157,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6rXr6tVIr563lZV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 3214,
+   "stepid": 638,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the spring nuts on all corners, then bolt the 4 sides together.",
+     "text_rendered": "Insert the spring nuts on all corners, then bolt the 4 sides together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.440x330",
+      "guid": "b3xCKjco3P5ptx5Q",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.huge",
+      "id": 2159,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b3xCKjco3P5ptx5Q.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 3216,
+   "stepid": 639,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "With corners loosely in place, now fit the 4040 member next to the short edges of the frame. Do the same on the other side.",
+     "text_rendered": "With corners loosely in place, now fit the 4040 member next to the short edges of the frame. Do the same on the other side."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.440x330",
+      "guid": "LB32EurfMJYobyCn",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.huge",
+      "id": 2161,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LB32EurfMJYobyCn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 3218,
+   "stepid": 640,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put 4 spring nuts in each corner to mount the 4040 member",
+     "text_rendered": "Put 4 spring nuts in each corner to mount the 4040 member"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.440x330",
+      "guid": "2M6T6g2HuofDQ21c",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.huge",
+      "id": 2163,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2M6T6g2HuofDQ21c.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 13,
+   "revisionid": 3220,
+   "stepid": 641,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use a flat bracket.",
+     "text_rendered": "Use a flat bracket."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.440x330",
+      "guid": "KhitSMEMUIdCSCDj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.huge",
+      "id": 2165,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KhitSMEMUIdCSCDj.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 14,
+   "revisionid": 3222,
+   "stepid": 642,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 102,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use 4 screws, now 8 mm long. Start screws on all sides. Do not tighten yet.",
+     "text_rendered": "Use 4 screws, now 8 mm long. Start screws on all sides. Do not tighten yet."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.440x330",
+      "guid": "wTPoARnKfFPoVrHj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.huge",
+      "id": 2167,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wTPoARnKfFPoVrHj.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 15,
+   "revisionid": 3224,
+   "stepid": 643,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to build the OSE Lasersaur Frame Gantry",
+ "tools": [],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+build+the+OSE+Lasersaur+Frame+Gantry/102",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/102"
+}

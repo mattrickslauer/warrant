@@ -1,0 +1,165 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-04.thumbnail"
+  },
+  "join_date": 1619441845,
+  "reputation": 1,
+  "teams": [],
+  "unique_username": "ferchavezg",
+  "url": "https://opensourceecology.dozuki.com/User/848/Fernanda+Chavez",
+  "userid": 848,
+  "username": "Fernanda Chavez"
+ },
+ "body_url_path": "/Guide/%C3%81rbol+de+la+Vida++++++++x+Rufino+Tamayo/254",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "\u00c1rbol de la Vida",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1619442741,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  },
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 4081,
+ "guideid": 254,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.440x330",
+  "guid": "F6YRHxOSRCiExhLZ",
+  "id": 4433,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1619442924,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1619442869,
+ "revisionid": 596,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 254,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.440x330",
+      "guid": "F6YRHxOSRCiExhLZ",
+      "id": 4433,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F6YRHxOSRCiExhLZ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5679,
+   "stepid": 1111,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Atractivo Visual",
+ "summary": "Atractivo Visual con el fin de crear una experiencia nueva para los usuarios del parque Rufino Tamayo.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "\u00c1rbol de la Vida        x Rufino Tamayo",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/%C3%81rbol+de+la+Vida++++++++x+Rufino+Tamayo/254",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/254"
+}

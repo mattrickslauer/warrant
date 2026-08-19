@@ -1,0 +1,475 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-17.thumbnail"
+  },
+  "join_date": 1394639123,
+  "reputation": 101,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/101/Anthony+Douglas",
+  "userid": 101,
+  "username": "Anthony Douglas"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Hydraulics+Assembly+and+checking+of+the+hydraulics/136",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Hydraulics",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396286500,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  },
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3112,
+ "guideid": 136,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.440x330",
+  "guid": "r6toOkW5gCpP15Pl",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.huge",
+  "id": 3466,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396314018,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396287748,
+ "revisionid": 2870,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 136,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The latest version of the hydraulic diagram is shown at left.  The paged linked to from the dev board linked to on dozuki is the primary source for this.",
+     "text_rendered": "The latest version of the hydraulic diagram is shown at left.  The paged linked to from the dev board linked to on dozuki is the primary source for this."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.440x330",
+      "guid": "r6toOkW5gCpP15Pl",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.huge",
+      "id": 3466,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r6toOkW5gCpP15Pl.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.440x330",
+      "guid": "L2AVTMjEOZTkmI6w",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.huge",
+      "id": 3467,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/L2AVTMjEOZTkmI6w.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4587,
+   "stepid": 909,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 136,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay each cable and all the adapters for the cables out on the floor of the workshop, along a line, in the order to which they are to be assembled, according to the diagram.",
+     "text_rendered": "Lay each cable and all the adapters for the cables out on the floor of the workshop, along a line, in the order to which they are to be assembled, according to the diagram."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "There are 6 hoses in the diagram, but you probably already have 2 assembled, as they will be running from the powercube to the lifetrac cabin.",
+     "text_rendered": "There are 6 hoses in the diagram, but you probably already have 2 assembled, as they will be running from the powercube to the lifetrac cabin."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4638,
+   "stepid": 910,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 136,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "take some teflon tape to seal the tapered threads with.",
+     "text_rendered": "take some teflon tape to seal the tapered threads with."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remember to wrap the tape only clockwise, such that the end of the tape is dragged along, rather than push along, during the rotation that occurs during tightening, to prevent bunching up of the  tape.",
+     "text_rendered": "Remember to wrap the tape only clockwise, such that the end of the tape is dragged along, rather than push along, during the rotation that occurs during tightening, to prevent bunching up of the  tape."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Assemble the parts, starting from one end and moving towards another.  With each part, check to make sure the threads are free of dirt, wiping them with a rag if you need to.",
+     "text_rendered": "Assemble the parts, starting from one end and moving towards another.  With each part, check to make sure the threads are free of dirt, wiping them with a rag if you need to."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4597,
+   "stepid": 911,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 136,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the hose + coupler + adapter assemblies through the firehoses in pairs.",
+     "text_rendered": "Put the hose + coupler + adapter assemblies through the firehoses in pairs."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the adapters and couplers to all end equipment.",
+     "text_rendered": "Attach the adapters and couplers to all end equipment."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ports marked A go to other ports marked A and ports marked B on valves and powercube connect to ports marked B on the motors, cylinder, etc.",
+     "text_rendered": "Ports marked A go to other ports marked A and ports marked B on valves and powercube connect to ports marked B on the motors, cylinder, etc."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4643,
+   "stepid": 912,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 136,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ensure all valves are in position",
+     "text_rendered": "Ensure all valves are in position"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Turn on a powercube and test the operation of the system.",
+     "text_rendered": "Turn on a powercube and test the operation of the system."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4599,
+   "stepid": 913,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Assembly and checking of the hydraulics",
+ "summary": "Assemble and briefly check the hydraulics.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Hydraulics Assembly and checking of the hydraulics",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Hydraulics+Assembly+and+checking+of+the+hydraulics/136",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/136"
+}

@@ -1,0 +1,220 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "guid": "aShEvNH1w2qDOnhd",
+   "id": 873,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.full",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aShEvNH1w2qDOnhd.thumbnail"
+  },
+  "join_date": 1381776278,
+  "reputation": 213,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/34/Dan+Benamy",
+  "userid": 34,
+  "username": "Dan Benamy"
+ },
+ "body_url_path": "/Guide/How+to+Build+the+Controller+Module/91",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Controller Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383098218,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 1518,
+ "guideid": 91,
+ "image": null,
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1383156388,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383098225,
+ "revisionid": 183,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 91,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This isn't a guide yet, just a placeholder for stuff that will eventually go into the guide.",
+     "text_rendered": "This isn't a guide yet, just a placeholder for stuff that will eventually go into the guide."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2279,
+   "stepid": 427,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 91,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "When wiring the motors to the motor controller (RAMPS as of Oct 2013), it can be confusing if you're using different motors than us because different motors have different numbers of wires and different colored wires. There's a good guide on figuring out the wiring at http://reprap.org/wiki/Stepper_wiring",
+     "text_rendered": "When wiring the motors to the motor controller (RAMPS as of Oct 2013), it can be confusing if you're using different motors than us because different motors have different numbers of wires and different colored wires. There's a good guide on figuring out the wiring at <a href=\"http://reprap.org/wiki/Stepper_wiring\" rel=\"nofollow noopener noreferrer\">http://reprap.org/wiki/Stepper_wiring</a>"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2281,
+   "stepid": 428,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 91,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.440x330",
+      "guid": "lKpaGHHy1dZU1jRg",
+      "id": 1650,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lKpaGHHy1dZU1jRg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2289,
+   "stepid": 430,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to Build the Controller Module",
+ "tools": [],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+Build+the+Controller+Module/91",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/91"
+}

@@ -1,0 +1,3726 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/How+to+build+the+OSE+Lasersaur+Outer+Frame/103",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "OSE Lasersaur Frame Development Board",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383830966,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2453,
+ "guideid": 103,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.440x330",
+  "guid": "eVQZjeLNRHeA2466",
+  "id": 2190,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1386422036,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383898332,
+ "revisionid": 207,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Review Free CAD image",
+     "text_rendered": "Review Free CAD image"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.440x330",
+      "guid": "eVQZjeLNRHeA2466",
+      "id": 2190,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eVQZjeLNRHeA2466.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 3302,
+   "stepid": 644,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay out materials for outer frame from http://labs.nortd.com/lasersaur/bom-subsystems-eur",
+     "text_rendered": "Lay out materials for outer frame from <a href=\"http://labs.nortd.com/lasersaur/bom-subsystems-eur\" rel=\"nofollow noopener noreferrer\" title=\"http://labs.nortd.com/lasersaur/bom-subsystems-eur\">http://labs.nortd.com/lasersaur/bom-subs...</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.440x330",
+      "guid": "XZctyPb1yyHQ1mdS",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.huge",
+      "id": 2192,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XZctyPb1yyHQ1mdS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 3304,
+   "stepid": 645,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Preassemble corner pieces, 2 mirror images Use 3 double brackets. Until the very end, leave all connections loose.",
+     "text_rendered": "Preassemble corner pieces, 2 mirror images Use 3 double brackets. Until the very end, leave all connections loose."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.440x330",
+      "guid": "FUTTEy1Pkkw1SNpv",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.huge",
+      "id": 2194,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUTTEy1Pkkw1SNpv.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 3306,
+   "stepid": 646,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build second corner bracket for front of frame",
+     "text_rendered": "Build second corner bracket for front of frame"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.440x330",
+      "guid": "NnIqotysJ2nrkOKE",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.huge",
+      "id": 2196,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NnIqotysJ2nrkOKE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 3308,
+   "stepid": 647,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build middle vertical column, front, use 2 brackets.",
+     "text_rendered": "Build middle vertical column, front, use 2 brackets."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.440x330",
+      "guid": "CVTZkvcgEXwVq1Hw",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.huge",
+      "id": 2198,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CVTZkvcgEXwVq1Hw.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 3310,
+   "stepid": 648,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build middle rear vertical column.",
+     "text_rendered": "Build middle rear vertical column."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.440x330",
+      "guid": "aYQNVqJqD6FED5oY",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.huge",
+      "id": 2202,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aYQNVqJqD6FED5oY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.440x330",
+      "guid": "xMCIOxDYtrWYDiwt",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.huge",
+      "id": 2201,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xMCIOxDYtrWYDiwt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 3312,
+   "stepid": 649,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build rear 3rd corner vertical. Use 2 double and one single bracket. (note later time)",
+     "text_rendered": "Build rear 3rd corner vertical. Use 2 double and one single bracket. (note later time)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.440x330",
+      "guid": "xNHiBJ4gNHWJtVgm",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.huge",
+      "id": 2211,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xNHiBJ4gNHWJtVgm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 3317,
+   "stepid": 650,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build 4th rear corner vertical. (second pix at same time as last)",
+     "text_rendered": "Build 4th rear corner vertical. (second pix at same time as last)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.440x330",
+      "guid": "VfojVPHAy3ZoGHHF",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.huge",
+      "id": 2214,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VfojVPHAy3ZoGHHF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 3319,
+   "stepid": 651,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Build rear corner horizontal using a single bracket.",
+     "text_rendered": "Build rear corner horizontal using a single bracket."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.440x330",
+      "guid": "KZWWpB2yjfvxHOps",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.huge",
+      "id": 2210,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KZWWpB2yjfvxHOps.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 3318,
+   "stepid": 652,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Do the same on the rear left corner.",
+     "text_rendered": "Do the same on the rear left corner."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.440x330",
+      "guid": "e6QLYNtoIaKOYWvH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.huge",
+      "id": 2209,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e6QLYNtoIaKOYWvH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 3318,
+   "stepid": 653,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install rear vertical of overall frame",
+     "text_rendered": "Install rear vertical of overall frame"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.440x330",
+      "guid": "QR664W4UttZFdm65",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.huge",
+      "id": 2208,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QR664W4UttZFdm65.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 3318,
+   "stepid": 654,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install single bracket for rear left vertical, and rear right vertical.",
+     "text_rendered": "Install single bracket for rear left vertical, and rear right vertical."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.440x330",
+      "guid": "bl4tVgweMTH6lHPN",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.huge",
+      "id": 2217,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bl4tVgweMTH6lHPN.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.440x330",
+      "guid": "G51VP3yo2NfqNTc4",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.huge",
+      "id": 2219,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G51VP3yo2NfqNTc4.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 3324,
+   "stepid": 655,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install single bracket on right front cutting chamber horizontals.",
+     "text_rendered": "Install single bracket on right front cutting chamber horizontals."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.440x330",
+      "guid": "cqZnD2CmNDqPFmkV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.huge",
+      "id": 2222,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cqZnD2CmNDqPFmkV.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.440x330",
+      "guid": "ZD1GCEeuxA6qwEPC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.huge",
+      "id": 2223,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZD1GCEeuxA6qwEPC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 13,
+   "revisionid": 3640,
+   "stepid": 656,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install middle black supports on the floor of the frame, using single black brackets, 1 per meeting point",
+     "text_rendered": "Install middle black supports on the floor of the frame, using single black brackets, 1 per meeting point"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.440x330",
+      "guid": "PSDpxwNUB6xCCCTj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.huge",
+      "id": 2227,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PSDpxwNUB6xCCCTj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.440x330",
+      "guid": "LNmDCje3BqVnBBKd",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.huge",
+      "id": 2230,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LNmDCje3BqVnBBKd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 14,
+   "revisionid": 3328,
+   "stepid": 657,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install 3 short 2040 extrusions on the rear base of the frame.",
+     "text_rendered": "Install 3 short 2040 extrusions on the rear base of the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.440x330",
+      "guid": "4FKGWOVg2rhNfAQt",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.huge",
+      "id": 2233,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FKGWOVg2rhNfAQt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 15,
+   "revisionid": 3330,
+   "stepid": 658,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten down all joints. Insert spring nuts as needed.",
+     "text_rendered": "Tighten down all joints. Insert spring nuts as needed."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.440x330",
+      "guid": "W1RQlJAV5kFEQVTe",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.huge",
+      "id": 2235,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1RQlJAV5kFEQVTe.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 16,
+   "revisionid": 3332,
+   "stepid": 659,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Inner distance between extrusions for the front compartment should be 86 cm.",
+     "text_rendered": "Inner distance between extrusions for the front compartment should be 86 cm."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.440x330",
+      "guid": "dXXKTUt2sP1vsChg",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.huge",
+      "id": 2237,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dXXKTUt2sP1vsChg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 17,
+   "revisionid": 3334,
+   "stepid": 660,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Space between front horizontal and mid horizontal should be 41 cm on the inside.",
+     "text_rendered": "Space between front horizontal and mid horizontal should be 41 cm on the inside."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.440x330",
+      "guid": "SQUdLDPFIIjZLr4y",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.huge",
+      "id": 2239,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQUdLDPFIIjZLr4y.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 18,
+   "revisionid": 3336,
+   "stepid": 661,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use the small polycarbonate separation panel - mark a .6x.6 cm corner cut out.",
+     "text_rendered": "Use the small polycarbonate separation panel - mark a .6x.6 cm corner cut out."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.440x330",
+      "guid": "B5VJx6I24Y5NcGyw",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.huge",
+      "id": 2241,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B5VJx6I24Y5NcGyw.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 19,
+   "revisionid": 3338,
+   "stepid": 662,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the corner out with a dremel tool. The corner cutout allows the panel to fit against the walls of the frame.",
+     "text_rendered": "Cut the corner out with a dremel tool. The corner cutout allows the panel to fit against the walls of the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.440x330",
+      "guid": "HSGMIpQsXJST3Wyt",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.huge",
+      "id": 2243,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HSGMIpQsXJST3Wyt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 20,
+   "revisionid": 3340,
+   "stepid": 663,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Do the same for the second of the same panel.",
+     "text_rendered": "Do the same for the second of the same panel."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.440x330",
+      "guid": "Ch1hWFro23tRbymj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.huge",
+      "id": 2245,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Ch1hWFro23tRbymj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.440x330",
+      "guid": "UvivxNtlsne5k2Cw",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.huge",
+      "id": 2249,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UvivxNtlsne5k2Cw.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 21,
+   "revisionid": 3420,
+   "stepid": 664,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Peel the protective covering from the small panel, and insert.",
+     "text_rendered": "Peel the protective covering from the small panel, and insert."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.440x330",
+      "guid": "d1RdjqC1eQpxkSLQ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.huge",
+      "id": 2250,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d1RdjqC1eQpxkSLQ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.440x330",
+      "guid": "UNmkTtdRpeUZoOni",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.huge",
+      "id": 2251,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UNmkTtdRpeUZoOni.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 22,
+   "revisionid": 3392,
+   "stepid": 665,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Peel the protective covering from the long panel, and insert.",
+     "text_rendered": "Peel the protective covering from the long panel, and insert."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.440x330",
+      "guid": "JmoDxBPYEBbdt4qX",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.huge",
+      "id": 2300,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmoDxBPYEBbdt4qX.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.440x330",
+      "guid": "gQxQ1RQWGVNdSr1w",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.huge",
+      "id": 2253,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQxQ1RQWGVNdSr1w.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 23,
+   "revisionid": 3394,
+   "stepid": 666,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take out the panels, insert the table frame.",
+     "text_rendered": "Take out the panels, insert the table frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.440x330",
+      "guid": "ups3MyRpsPMTewIC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.huge",
+      "id": 2365,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ups3MyRpsPMTewIC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 24,
+   "revisionid": 3436,
+   "stepid": 667,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the small separation panels",
+     "text_rendered": "Insert the small separation panels"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.440x330",
+      "guid": "tLHPh1EF5eHrddRV",
+      "id": 2301,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tLHPh1EF5eHrddRV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 25,
+   "revisionid": 3458,
+   "stepid": 668,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the large separation panels",
+     "text_rendered": "Insert the large separation panels"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.440x330",
+      "guid": "j5FkiRvC2X2oDugn",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.huge",
+      "id": 2369,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j5FkiRvC2X2oDugn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.440x330",
+      "guid": "pJ6F2LyWqPPPXsVV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.huge",
+      "id": 2302,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pJ6F2LyWqPPPXsVV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 26,
+   "revisionid": 3442,
+   "stepid": 669,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Measure for parallel of the front and back. Also measure the diagonals to check that they are within 2 mm.",
+     "text_rendered": "Measure for parallel of the front and back. Also measure the diagonals to check that they are within 2 mm."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.440x330",
+      "guid": "SxMjFqlKRURW1H6Z",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.huge",
+      "id": 2372,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SxMjFqlKRURW1H6Z.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 27,
+   "revisionid": 3445,
+   "stepid": 670,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the base brackets of table to the outer frame - both for the front and back side of the table.",
+     "text_rendered": "Mount the base brackets of table to the outer frame - both for the front and back side of the table."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 28,
+   "revisionid": 3447,
+   "stepid": 671,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "CHECK Mount the middle rear vertical to the outer frame.",
+     "text_rendered": "CHECK Mount the middle rear vertical to the outer frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.440x330",
+      "guid": "HTUOufAyFGx1HG6s",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.huge",
+      "id": 2270,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HTUOufAyFGx1HG6s.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.440x330",
+      "guid": "qNDpgQCFAMbudMsk",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.huge",
+      "id": 2271,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qNDpgQCFAMbudMsk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.440x330",
+      "guid": "ZHYQfaedO262vQ2v",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.huge",
+      "id": 2273,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZHYQfaedO262vQ2v.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 29,
+   "revisionid": 3517,
+   "stepid": 672,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the gantry frame on top of the table.",
+     "text_rendered": "Place the gantry frame on top of the table."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.440x330",
+      "guid": "pXVqhMHvTLVT1gjg",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.huge",
+      "id": 2279,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXVqhMHvTLVT1gjg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 30,
+   "revisionid": 3535,
+   "stepid": 674,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut out the upper corner of the small separation panel, for both panels.",
+     "text_rendered": "Cut out the upper corner of the small separation panel, for both panels."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.440x330",
+      "guid": "xU5H16imbTQ4LCgH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.huge",
+      "id": 2281,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xU5H16imbTQ4LCgH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 31,
+   "revisionid": 3537,
+   "stepid": 675,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the separation panels in the frame.",
+     "text_rendered": "Place the separation panels in the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.440x330",
+      "guid": "OGi2Er5BehZbKsn5",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.huge",
+      "id": 2284,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OGi2Er5BehZbKsn5.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.440x330",
+      "guid": "BIbOFxTKFZQ6psJJ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.huge",
+      "id": 2286,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BIbOFxTKFZQ6psJJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 32,
+   "revisionid": 3539,
+   "stepid": 676,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Measure the diagonal of the gantry frame to see that it's square.",
+     "text_rendered": "Measure the diagonal of the gantry frame to see that it's square."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.440x330",
+      "guid": "WxvFFyAWyHWEDgnB",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.huge",
+      "id": 2288,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WxvFFyAWyHWEDgnB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 33,
+   "revisionid": 3541,
+   "stepid": 677,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "xxxThen tighten down the 3 more single brackets in the front and in the rear.",
+     "text_rendered": "xxxThen tighten down the 3 more single brackets in the front and in the rear."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten down the gantry frame to the bottom outer frame. Start with the 4 corners.",
+     "text_rendered": "Tighten down the gantry frame to the bottom outer frame. Start with the 4 corners."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.440x330",
+      "guid": "yXTdGuwC2YGvarH1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.huge",
+      "id": 2292,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yXTdGuwC2YGvarH1.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.440x330",
+      "guid": "ZAJ1TnUfn2TciSlT",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.huge",
+      "id": 2291,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZAJ1TnUfn2TciSlT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 34,
+   "revisionid": 3534,
+   "stepid": 678,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten down the gantry frame to the bottom outer frame. Start with the 4 corners.",
+     "text_rendered": "Tighten down the gantry frame to the bottom outer frame. Start with the 4 corners."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.440x330",
+      "guid": "lUvmxCuKYyVs1J2w",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.huge",
+      "id": 2294,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lUvmxCuKYyVs1J2w.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 35,
+   "revisionid": 3544,
+   "stepid": 679,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut rubber gasket to size for the long separator windows - 2 seams on top and bottom horizontals. See example of how the rubber gasket fits in the grooves of the aluminum extrusion.",
+     "text_rendered": "Cut rubber gasket to size for the long separator windows - 2 seams on top and bottom horizontals. See example of how the rubber gasket fits in the grooves of the aluminum extrusion."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 36,
+   "revisionid": 3607,
+   "stepid": 728,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert rubber gasket in the bottom window edge. Poke in with the blunt end of a pen or some other object that helps the rubber to be pushed in the groove to create a tight seal.",
+     "text_rendered": "Insert rubber gasket in the bottom window edge. Poke in with the blunt end of a pen or some other object that helps the rubber to be pushed in the groove to create a tight seal."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.440x330",
+      "guid": "SbaLTCKGYKI5PNRF",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.huge",
+      "id": 2297,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbaLTCKGYKI5PNRF.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.440x330",
+      "guid": "HqU1wW6ORACZIvQV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.huge",
+      "id": 2298,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HqU1wW6ORACZIvQV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 37,
+   "revisionid": 3401,
+   "stepid": 680,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert rubber gasket in the top window edge.",
+     "text_rendered": "Insert rubber gasket in the top window edge."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 38,
+   "revisionid": 3333,
+   "stepid": 681,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert small vertical support, a 4080 extrusion - rear post for the door.",
+     "text_rendered": "Insert small vertical support, a 4080 extrusion - rear post for the door."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 39,
+   "revisionid": 3335,
+   "stepid": 682,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Start with the spring nuts",
+     "text_rendered": "Start with the spring nuts"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 40,
+   "revisionid": 3337,
+   "stepid": 683,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put in bracket and 2 screws.",
+     "text_rendered": "Put in bracket and 2 screws."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 41,
+   "revisionid": 3339,
+   "stepid": 684,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put in 2 remaining screws. Repeat for the second vertical support.",
+     "text_rendered": "Put in 2 remaining screws. Repeat for the second vertical support."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 42,
+   "revisionid": 3341,
+   "stepid": 685,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Continue to the 4040 extrusion for the front post of the door.",
+     "text_rendered": "Continue to the 4040 extrusion for the front post of the door."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 43,
+   "revisionid": 3343,
+   "stepid": 686,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "(These steps should be done before corner post being put in)",
+     "text_rendered": "(These steps should be done before corner post being put in)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take off protective foil from External Connection Panel.",
+     "text_rendered": "Take off protective foil from External Connection Panel."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 44,
+   "revisionid": 3417,
+   "stepid": 687,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take out corner post.",
+     "text_rendered": "Take out corner post."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 45,
+   "revisionid": 3419,
+   "stepid": 688,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount corner post, after putting in the panel.",
+     "text_rendered": "Mount corner post, after putting in the panel."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 46,
+   "revisionid": 3421,
+   "stepid": 689,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the 2 front corner posts on top of the gantry frame.",
+     "text_rendered": "Mount the 2 front corner posts on top of the gantry frame."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 47,
+   "revisionid": 3423,
+   "stepid": 690,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the middle rear support on top of the gantry frame, using a flat bracket (10:43)",
+     "text_rendered": "Mount the middle rear support on top of the gantry frame, using a flat bracket (10:43)"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 48,
+   "revisionid": 3425,
+   "stepid": 691,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount side extrusion above the External Connection Panel, using 2 single brackets.",
+     "text_rendered": "Mount side extrusion above the External Connection Panel, using 2 single brackets."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.440x330",
+      "guid": "2nWUDLSlsVyebPdA",
+      "id": 2362,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2nWUDLSlsVyebPdA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 49,
+   "revisionid": 3514,
+   "stepid": 692,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount double brackket on top of 2 corner posts.",
+     "text_rendered": "Mount double brackket on top of 2 corner posts."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.440x330",
+      "guid": "AVji53WRGiNLM5k2",
+      "id": 2359,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AVji53WRGiNLM5k2.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.440x330",
+      "guid": "4EceNr3anjFkhSRX",
+      "id": 2360,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4EceNr3anjFkhSRX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 50,
+   "revisionid": 3470,
+   "stepid": 693,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount top flat bracket on top of middle rear surrport above the gantry frame.",
+     "text_rendered": "Mount top flat bracket on top of middle rear surrport above the gantry frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.440x330",
+      "guid": "kDpnXTbw2gmViVPD",
+      "id": 2356,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kDpnXTbw2gmViVPD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 51,
+   "revisionid": 3470,
+   "stepid": 694,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount rear horizontal, 2040 extrusion with 2 double brackets, and then mount the midpoint with a single bracket.",
+     "text_rendered": "Mount rear horizontal, 2040 extrusion with 2 double brackets, and then mount the midpoint with a single bracket."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.440x330",
+      "guid": "TKEXoguB4euH5xhV",
+      "id": 2352,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKEXoguB4euH5xhV.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.440x330",
+      "guid": "RyusvR2fVialtqSv",
+      "id": 2353,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RyusvR2fVialtqSv.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.440x330",
+      "guid": "e2g6bQInn3LwM4JK",
+      "id": 2354,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2g6bQInn3LwM4JK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 52,
+   "revisionid": 3470,
+   "stepid": 695,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the side 4040 extrusions.",
+     "text_rendered": "Mount the side 4040 extrusions."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.440x330",
+      "guid": "hgBEUydOMCKFRHve",
+      "id": 2346,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgBEUydOMCKFRHve.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.440x330",
+      "guid": "OObGYAynqaaUr1PN",
+      "id": 2347,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OObGYAynqaaUr1PN.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.440x330",
+      "guid": "QeHc4LjpY6Da6vSd",
+      "id": 2348,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QeHc4LjpY6Da6vSd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 53,
+   "revisionid": 3470,
+   "stepid": 696,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Side 4040 extrusions done.",
+     "text_rendered": "Side 4040 extrusions done."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.440x330",
+      "guid": "UJPWrmxpbTj4hn3M",
+      "id": 2342,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UJPWrmxpbTj4hn3M.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 54,
+   "revisionid": 3470,
+   "stepid": 697,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount 2040 extrusion - the mid support at the rear of the frame.",
+     "text_rendered": "Mount 2040 extrusion - the mid support at the rear of the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.440x330",
+      "guid": "VVeTDXkmY3e1QbVS",
+      "id": 2339,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VVeTDXkmY3e1QbVS.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.440x330",
+      "guid": "lCkuGmJNPEdhBg2u",
+      "id": 2340,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lCkuGmJNPEdhBg2u.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 55,
+   "revisionid": 3470,
+   "stepid": 698,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount 4040 extrusion for the rear of the cutting chamber - using 2 double brackets at the sides and a double planar bracket in the middle.",
+     "text_rendered": "Mount 4040 extrusion for the rear of the cutting chamber - using 2 double brackets at the sides and a double planar bracket in the middle."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.440x330",
+      "guid": "ScplPtkkoEjJeQFd",
+      "id": 2336,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ScplPtkkoEjJeQFd.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.440x330",
+      "guid": "lfNMwSbCLb6ngjSx",
+      "id": 2335,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lfNMwSbCLb6ngjSx.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.440x330",
+      "guid": "JhRu5hdRYAlEDGlE",
+      "id": 2334,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JhRu5hdRYAlEDGlE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 56,
+   "revisionid": 3470,
+   "stepid": 699,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use small bolts (8 mm long) and a washer for the flat double bracket. Before fixing this rear post in place, we need to install the back separator window.",
+     "text_rendered": "Use small bolts (8 mm long) and a washer for the flat double bracket. Before fixing this rear post in place, we need to install the back separator window."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.440x330",
+      "guid": "rBVpNaL1I3EPfQ34",
+      "id": 2330,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rBVpNaL1I3EPfQ34.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 57,
+   "revisionid": 3470,
+   "stepid": 700,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take the rear window and peel the protective cover.",
+     "text_rendered": "Take the rear window and peel the protective cover."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.440x330",
+      "guid": "42ATDvdnuxaguEGG",
+      "id": 2327,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/42ATDvdnuxaguEGG.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.440x330",
+      "guid": "jFuOInUWbmGOgREw",
+      "id": 2328,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jFuOInUWbmGOgREw.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 58,
+   "revisionid": 3470,
+   "stepid": 701,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut edges out with a dremel tool.",
+     "text_rendered": "Cut edges out with a dremel tool."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.440x330",
+      "guid": "QaeOHMQZUtn1YNWl",
+      "id": 2323,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QaeOHMQZUtn1YNWl.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 59,
+   "revisionid": 3470,
+   "stepid": 702,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install on the right hand side.",
+     "text_rendered": "Install on the right hand side."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.440x330",
+      "guid": "JeVCALGd55aPNDsR",
+      "id": 2321,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JeVCALGd55aPNDsR.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 60,
+   "revisionid": 3469,
+   "stepid": 703,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "For the second panel, cut edges with dremel tool and then drill out a 16 mm hole, in location as shown.",
+     "text_rendered": "For the second panel, cut edges with dremel tool and then drill out a 16 mm hole, in location as shown."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.440x330",
+      "guid": "kwSHPvOVAxaAO2Co",
+      "id": 2316,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kwSHPvOVAxaAO2Co.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.440x330",
+      "guid": "5wCZe45P2YJ6mtSm",
+      "id": 2317,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wCZe45P2YJ6mtSm.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.440x330",
+      "guid": "wgmUyhQwRyRGlqQY",
+      "id": 2315,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wgmUyhQwRyRGlqQY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 61,
+   "revisionid": 3466,
+   "stepid": 704,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put in upper rear windows and close off with 4040 extrusion on top.",
+     "text_rendered": "Put in upper rear windows and close off with 4040 extrusion on top."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.440x330",
+      "guid": "q4FJUQXVCWkGjAfB",
+      "id": 2310,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/q4FJUQXVCWkGjAfB.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.440x330",
+      "guid": "uX1txHIKWYSs133C",
+      "id": 2311,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uX1txHIKWYSs133C.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 62,
+   "revisionid": 3466,
+   "stepid": 705,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut rubber gaskets and put them in the side external connection window.",
+     "text_rendered": "Cut rubber gaskets and put them in the side external connection window."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.440x330",
+      "guid": "EDTRRcntAoHxLwYM",
+      "id": 2309,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EDTRRcntAoHxLwYM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 63,
+   "revisionid": 3466,
+   "stepid": 706,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 103,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finish putting in rubber gaskets - on the 2 horizontals in each window - for the 2 upper windows.",
+     "text_rendered": "Finish putting in rubber gaskets - on the 2 horizontals in each window - for the 2 upper windows."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.440x330",
+      "guid": "TyudIMXSOdLdRh42",
+      "id": 2305,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TyudIMXSOdLdRh42.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 64,
+   "revisionid": 3474,
+   "stepid": 707,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to build the OSE Lasersaur Outer Frame",
+ "tools": [],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+build+the+OSE+Lasersaur+Outer+Frame/103",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/103"
+}

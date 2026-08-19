@@ -1,0 +1,1316 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Soil+Loading+Drawer/27",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041512,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3916,
+ "guideid": 27,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.440x330",
+  "guid": "MODUbA2MDxsABnJU",
+  "id": 248,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MODUbA2MDxsABnJU.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=c9c911041cdbdaad1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=c9c911041cdbdaad1211da1f85706ccd|Sketchup Model]",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=c9c911041cdbdaad1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134838,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041512,
+ "revisionid": 113,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay the spacer tube on top of the press plate, align the sides and make the back edge flush.",
+     "text_rendered": "Lay the spacer tube on top of the press plate, align the sides and make the back edge flush."
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure all edges are tight and squared; this piece is critical, it must be a uniform height throughout the entire item. Grind off any imperfections.",
+     "text_rendered": "Insure all edges are tight and squared; this piece is critical, it must be a uniform height throughout the entire item. Grind off any imperfections."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack weld the two together in many places (at least 3 on each seam).",
+     "text_rendered": "Tack weld the two together in many places (at least 3 on each seam)."
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Double check everything for squareness!!",
+     "text_rendered": "Double check everything for squareness!!"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the two together on all edges where they touch",
+     "text_rendered": "Weld the two together on all edges where they touch"
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "It is a good idea to weld in 1\u201d or 2\u201d increments, skipping around to different places to prevent warpage. You will need to weld multiple layers where the tubing is rounded.",
+     "text_rendered": "It is a good idea to weld in 1\u201d or 2\u201d increments, skipping around to different places to prevent warpage. You will need to weld multiple layers where the tubing is rounded."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.440x330",
+      "guid": "YB5QLXAkWFXJePPY",
+      "id": 252,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YB5QLXAkWFXJePPY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.440x330",
+      "guid": "FEcxZUu3TJa5iRa3",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.huge",
+      "id": 255,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FEcxZUu3TJa5iRa3.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 155,
+   "stepid": 77,
+   "time_estimate": 0,
+   "title": "Weld Press Plate to Spacer"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the vertical support and tack it in multiple places",
+     "text_rendered": "Place the vertical support and tack it in multiple places"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the vertical support to the press plate and spacer tube assembly.",
+     "text_rendered": "Weld the vertical support to the press plate and spacer tube assembly."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind down the welds on the open end of the tube so they are flush with the rest of the tube",
+     "text_rendered": "Grind down the welds on the open end of the tube so they are flush with the rest of the tube"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.440x330",
+      "guid": "SceTtcZyLvr1yJDM",
+      "id": 259,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SceTtcZyLvr1yJDM.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.440x330",
+      "guid": "LEWKMRTWVBKG4CRS",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.huge",
+      "id": 265,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LEWKMRTWVBKG4CRS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 159,
+   "stepid": 79,
+   "time_estimate": 0,
+   "title": "Weld the vertical support"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay the spacer/press plate assembly down so the press plate is touching the table.",
+     "text_rendered": "Lay the spacer/press plate assembly down so the press plate is touching the table."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Align side pieces with spacer and press plate assembly.",
+     "text_rendered": "Align side pieces with spacer and press plate assembly."
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the two are square vertically and horizontally with the spacer, that they are parallel, and that everything is touching the table.",
+     "text_rendered": "Insure the two are square vertically and horizontally with the spacer, that they are parallel, and that everything is touching the table."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "It helps to use angle iron tacked to your table and the sides, so it insures they are vertically square. This also makes it a bit easier to align everything else. [http://www.youtube.com/watch?v=HnFXzrwzsjg&list=UUjvBN1r7UXXqmIbx_u7bIAw&index=339&feature=plpp_video|Video Help]",
+     "text_rendered": "It helps to use angle iron tacked to your table and the sides, so it insures they are vertically square. This also makes it a bit easier to align everything else. <a href=\"http://www.youtube.com/watch?v=HnFXzrwzsjg&amp;list=UUjvBN1r7UXXqmIbx_u7bIAw&amp;index=339&amp;feature=plpp_video\">Video Help</a>"
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Also, it may help to use paper shims (see between the sides and the tube to properly space them. [http://www.youtube.com/watch?v=bahhYtxy4Zg&list=UUjvBN1r7UXXqmIbx_u7bIAw&index=203&feature=plpp_video|Video Help]",
+     "text_rendered": "Also, it may help to use paper shims (see between the sides and the tube to properly space them. <a href=\"http://www.youtube.com/watch?v=bahhYtxy4Zg&amp;list=UUjvBN1r7UXXqmIbx_u7bIAw&amp;index=203&amp;feature=plpp_video\">Video Help</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the sides to the tube on all sides in multiple places except where it is touching the table. Add a few 1\" seams to prohibit them from moving.",
+     "text_rendered": "Tack the sides to the tube on all sides in multiple places except where it is touching the table. Add a few 1&quot; seams to prohibit them from moving."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Do a few light tacks first, and double check it's still square. If not, grind off the tacks and start over.",
+     "text_rendered": "Do a few light tacks first, and double check it's still square. If not, grind off the tacks and start over."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.440x330",
+      "guid": "GSe4JYf3xleHkiBe",
+      "id": 269,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GSe4JYf3xleHkiBe.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.440x330",
+      "guid": "YctVWKPJCFpcrJ2P",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.huge",
+      "id": 271,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YctVWKPJCFpcrJ2P.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.440x330",
+      "guid": "QJGldHaZIQbuiqQP",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.huge",
+      "id": 274,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QJGldHaZIQbuiqQP.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 165,
+   "stepid": 82,
+   "time_estimate": 0,
+   "title": "Tack Sides"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the back piece in a few spots, with a 1\" seam on each side.",
+     "text_rendered": "Tack the back piece in a few spots, with a 1&quot; seam on each side."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.440x330",
+      "guid": "kah3qDCxXmcQaDpR",
+      "id": 278,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kah3qDCxXmcQaDpR.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.440x330",
+      "guid": "MAeBNZpDPXFoyLOl",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.huge",
+      "id": 281,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MAeBNZpDPXFoyLOl.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 171,
+   "stepid": 85,
+   "time_estimate": 0,
+   "title": "Tack the back"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind off the welds for the back and side pieces so that the entire drawer is flush.",
+     "text_rendered": "Grind off the welds for the back and side pieces so that the entire drawer is flush."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Flip the drawer over and tack the sides from the top.",
+     "text_rendered": "Flip the drawer over and tack the sides from the top."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the roof and inner rails in their respective places. See Diagram.",
+     "text_rendered": "Place the roof and inner rails in their respective places. See Diagram."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure inner rails are perfectly parallel (varying no more than a 16th of an inch) and square throughout the entire length.",
+     "text_rendered": "Insure inner rails are perfectly parallel (varying no more than a 16th of an inch) and square throughout the entire length."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack them in multiple places except where they are touching the table.",
+     "text_rendered": "Tack them in multiple places except where they are touching the table."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.440x330",
+      "guid": "AGrDU6meaAsB2xiJ",
+      "id": 284,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AGrDU6meaAsB2xiJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.440x330",
+      "guid": "ycIasv5XKfPJXnGI",
+      "id": 287,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ycIasv5XKfPJXnGI.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.440x330",
+      "guid": "cgx35MPT51YJSWm2",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.huge",
+      "id": 290,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgx35MPT51YJSWm2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 173,
+   "stepid": 86,
+   "time_estimate": 0,
+   "title": "Tack Roof, Inner Rails"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.mini",
+   "lines": [
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure they are perfectly parallel; otherwise they will leave the roller guides. Insure they vary no more than 1/16\" over the entire length.",
+     "text_rendered": "Insure they are perfectly parallel; otherwise they will leave the roller guides. Insure they vary no more than 1/16&quot; over the entire length."
+    },
+    {
+     "bullet": "icon_reminder",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 11,
+      "char": "\\e600",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Reminder",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 11,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Hint: Use paper shims for this",
+     "text_rendered": "Hint: Use paper shims for this"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.440x330",
+      "guid": "VDXPjiNruxPlBu4o",
+      "id": 294,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VDXPjiNruxPlBu4o.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.440x330",
+      "guid": "aRv1XGHLl3A2xZ4I",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.huge",
+      "id": 296,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aRv1XGHLl3A2xZ4I.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 1087,
+   "stepid": 88,
+   "time_estimate": 0,
+   "title": "Tack Outer Rails"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "All the seams should be completely welded except the difficult to reach places between the inner and outer rails, those can be welded about 50%.",
+     "text_rendered": "All the seams should be completely welded except the difficult to reach places between the inner and outer rails, those can be welded about 50%."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld short lengths at a time and jump around a lot to minimize warping.",
+     "text_rendered": "Weld short lengths at a time and jump around a lot to minimize warping."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You may want to grind off the welds in between passes around the drawer to allow it to cool.",
+     "text_rendered": "You may want to grind off the welds in between passes around the drawer to allow it to cool."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.440x330",
+      "guid": "ooeZfPphWJ4ddAtE",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.huge",
+      "id": 299,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ooeZfPphWJ4ddAtE.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.440x330",
+      "guid": "qdAqUXpG2ucHwLpO",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.huge",
+      "id": 301,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qdAqUXpG2ucHwLpO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 179,
+   "stepid": 89,
+   "time_estimate": 0,
+   "title": "Weld Entire Drawer"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "There cannot be any outstanding bumps or welds anywhere; the drawer will be sliding in and out of a tight spot and bumps will catch on the frame crossmembers.",
+     "text_rendered": "There cannot be any outstanding bumps or welds anywhere; the drawer will be sliding in and out of a tight spot and bumps will catch on the frame crossmembers."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure there's no welding spatter where the rollers will be rolling. Grind any off with a small grinder",
+     "text_rendered": "Make sure there's no welding spatter where the rollers will be rolling. Grind any off with a small grinder"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 181,
+   "stepid": 90,
+   "time_estimate": 0,
+   "title": "Grind the entire drawer flush"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The rails likely got warped outwards on the side with the back while you were welding.",
+     "text_rendered": "The rails likely got warped outwards on the side with the back while you were welding."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If they are not still parallel, you will need to pinch them inwards so that they are. You can do so using two C-Clamps.",
+     "text_rendered": "If they are not still parallel, you will need to pinch them inwards so that they are. You can do so using two C-Clamps."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.440x330",
+      "guid": "SfoRsTYYNvglENRB",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.huge",
+      "id": 303,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SfoRsTYYNvglENRB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 183,
+   "stepid": 91,
+   "time_estimate": 0,
+   "title": "Check the Rails"
+  },
+  {
+   "comments": [],
+   "guideid": 27,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Prepare as shown in the diagram",
+     "text_rendered": "Prepare as shown in the diagram"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld it to the back of the drawer, insuring it is square and centered",
+     "text_rendered": "Weld it to the back of the drawer, insuring it is square and centered"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.440x330",
+      "guid": "WDvTKOSMvN1HQRlJ",
+      "id": 307,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WDvTKOSMvN1HQRlJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 187,
+   "stepid": 93,
+   "time_estimate": 0,
+   "title": "Weld Tongue In place"
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Soil Loading Drawer",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Soil+Loading+Drawer/27",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/27"
+}

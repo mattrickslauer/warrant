@@ -1,0 +1,507 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Main+Frame:+Small+Components/35",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041548,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3923,
+ "guideid": 35,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.440x330",
+  "guid": "RYcV5IhWDYKeVSUP",
+  "id": 339,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RYcV5IhWDYKeVSUP.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=c94fa5ac3a7bcccd1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* 3/4\" Galvanized Nuts (3)* 3/4\" Steel Nuts (2)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=c94fa5ac3a7bcccd1211da1f85706ccd|Sketchup Model]Additional Materials Required:* 3/4\" Galvanized Nuts (3)* 3/4\" Steel Nuts (2)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=c94fa5ac3a7bcccd1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* 3/4&quot; Galvanized Nuts (3)* 3/4&quot; Steel Nuts (2)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134841,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041548,
+ "revisionid": 72,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 35,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "One is for the main frame, and one goes in the primary arms.",
+     "text_rendered": "One is for the main frame, and one goes in the primary arms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the rebar to the threaded rod at a right angle.",
+     "text_rendered": "Weld the rebar to the threaded rod at a right angle."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Protect the threads on the threaded rod by welding. (A small pipe works well)",
+     "text_rendered": "Protect the threads on the threaded rod by welding. (A small pipe works well)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread a nut onto it.",
+     "text_rendered": "Thread a nut onto it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.440x330",
+      "guid": "ta3nOdoahEUDgBTv",
+      "id": 343,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ta3nOdoahEUDgBTv.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.440x330",
+      "guid": "qjDScNUoulSV2eB1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.huge",
+      "id": 345,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qjDScNUoulSV2eB1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 207,
+   "stepid": 103,
+   "time_estimate": 0,
+   "title": "Make the sensor holders"
+  },
+  {
+   "comments": [],
+   "guideid": 35,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the 1\" pipe to the 3\" U-channel, in the center. 4-8 good tacks is sufficient.",
+     "text_rendered": "Weld the 1&quot; pipe to the 3&quot; U-channel, in the center. 4-8 good tacks is sufficient."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make (2) 6\" long 3/4\" bolts, by using a nut and 6.25\" of threaded rod. See [http://opensourceecology.org/wiki/Making_Bolts|Making Bolts.]",
+     "text_rendered": "Make (2) 6&quot; long 3/4&quot; bolts, by using a nut and 6.25&quot; of threaded rod. See <a href=\"http://opensourceecology.org/wiki/Making_Bolts\" rel=\"nofollow noopener noreferrer\">Making Bolts.</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.440x330",
+      "guid": "1BPgOnLofdBdpJna",
+      "id": 349,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BPgOnLofdBdpJna.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.440x330",
+      "guid": "6AGqljaw2d1a1QZ1",
+      "id": 352,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6AGqljaw2d1a1QZ1.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.440x330",
+      "guid": "Bfx3TxcDaKGXOEGj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.huge",
+      "id": 355,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Bfx3TxcDaKGXOEGj.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 211,
+   "stepid": 105,
+   "time_estimate": 0,
+   "title": "Make the Thin Cylinder Supports"
+  },
+  {
+   "comments": [],
+   "guideid": 35,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the flatbar to the 1.25\" piece of threaded rod.",
+     "text_rendered": "Weld the flatbar to the 1.25&quot; piece of threaded rod."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Protect the threads.",
+     "text_rendered": "Protect the threads."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure they are perfectly paralell!",
+     "text_rendered": "Make sure they are perfectly paralell!"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread a nut onto the threaded rod.",
+     "text_rendered": "Thread a nut onto the threaded rod."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.440x330",
+      "guid": "hrlBIUMFYa6AEIdw",
+      "id": 357,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hrlBIUMFYa6AEIdw.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.440x330",
+      "guid": "bLXuUQVEjBeLVUKd",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.huge",
+      "id": 359,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bLXuUQVEjBeLVUKd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 213,
+   "stepid": 106,
+   "time_estimate": 0,
+   "title": "Make the Magnet Holder"
+  }
+ ],
+ "subject": "",
+ "summary": "Add small components to your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Main Frame: Small Components",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Main+Frame:+Small+Components/35",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/35"
+}

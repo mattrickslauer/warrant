@@ -1,0 +1,4361 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "guid": "M2gUTaEKYSIHTPZh",
+   "id": 554,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/M2gUTaEKYSIHTPZh.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/M2gUTaEKYSIHTPZh.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/M2gUTaEKYSIHTPZh.full",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/M2gUTaEKYSIHTPZh.thumbnail"
+  },
+  "join_date": 1371515629,
+  "reputation": 113,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/10/jeanbaptiste",
+  "userid": 10,
+  "username": "jeanbaptiste"
+ },
+ "body_url_path": "/Guide/How+to+assemble+all+the+pieces+of+the+Ironworker+(in+progress)/84",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Ironworker Machine - Overall Machine",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1382815319,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 1542,
+ "guideid": 84,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.440x330",
+  "guid": "hQuwFFsF5eW2JMiU",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.huge",
+  "id": 1600,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hQuwFFsF5eW2JMiU.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Before you start this guide, you should have followed all the other ironworker guides to build the different modules.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "This guide will walk you through putting them all together into a complete machine.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Before you start this guide, you should have followed all the other ironworker guides to build the different modules.\n\nThis guide will walk you through putting them all together into a complete machine.",
+ "introduction_rendered": "<p>Before you start this guide, you should have followed all the other ironworker guides to build the different modules.</p>\n\n<p>This guide will walk you through putting them all together into a complete machine.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1383197800,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1382815788,
+ "revisionid": 169,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO I don't think this video should be in the guide. It more about the process of documenting it and talks about disassembling which may be confusing to people. It doesn't add any info.",
+     "text_rendered": "TODO I don't think this video should be in the guide. It more about the process of documenting it and talks about disassembling which may be confusing to people. It doesn't add any info."
+    }
+   ],
+   "media": {
+    "data": {
+     "duration": 26360,
+     "encodings": [
+      {
+       "always_generate": true,
+       "codecs": "avc1.4D401E, mp4a.40.2",
+       "column": "MP4_720",
+       "ffmpeg_args": "-vcodec libx264 -profile:v main -level 3.1 -crf 23 -acodec aac -max_muxing_queue_size 1024 -vf format=yuv420p",
+       "format": "mp4",
+       "height": 480,
+       "label": "480p",
+       "mime": "video/mp4",
+       "url": "https://dozuki-prod-us-east-1-guide-objects.s3.amazonaws.com/igo/video/opensourceecology/Swmxa3Bpl5OfEXaU_MP4_720.mp4",
+       "width": 720
+      }
+     ],
+     "filename": "Sequence 03.mov",
+     "height": 480,
+     "image": {
+      "encoding": "jpeg",
+      "exif": [],
+      "height": 480,
+      "image": {
+       "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.140x105",
+       "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.200x150",
+       "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.440x330",
+       "guid": "IPOBWXpPj1oAi2SE",
+       "id": 1326,
+       "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.medium",
+       "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.mini",
+       "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.full",
+       "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.standard",
+       "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IPOBWXpPj1oAi2SE.thumbnail"
+      },
+      "markup": null,
+      "markupState": null,
+      "ratio": "VARIABLE",
+      "srcid": null,
+      "width": 720
+     },
+     "meta": {
+      "audio_bitrate_in_kbps": 96,
+      "audio_codec": "aac",
+      "audio_sample_rate": 48000,
+      "channels": "2",
+      "duration_in_ms": 26360,
+      "file_size_in_bytes": 9636099,
+      "format": "mpeg4",
+      "frame_rate": 29.97,
+      "height": 480,
+      "id": 63003844,
+      "md5_checksum": null,
+      "state": "finished",
+      "total_bitrate_in_kbps": 2912,
+      "video_bitrate_in_kbps": 2816,
+      "video_codec": "h264",
+      "width": 720
+     },
+     "objectid": 2,
+     "srcid": null,
+     "videoid": 2,
+     "width": 720
+    },
+    "type": "video"
+   },
+   "orderby": 1,
+   "revisionid": 1794,
+   "stepid": 376,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use the hoist to lift the upper frame into place, making sure the pivot plate holes roughly align.",
+     "text_rendered": "Use the hoist to lift the upper frame into place, making sure the pivot plate holes roughly align."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.440x330",
+      "guid": "UUOahxEjCGdNkQ4u",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.huge",
+      "id": 1278,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UUOahxEjCGdNkQ4u.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.440x330",
+      "guid": "LtFjqV6iglbAPwRc",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.huge",
+      "id": 1279,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LtFjqV6iglbAPwRc.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 1642,
+   "stepid": 365,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" nuts",
+     "text_rendered": "4 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Dill out the threads of each nut using a 1\" drill bit.",
+     "text_rendered": "Dill out the threads of each nut using a 1&quot; drill bit."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO pic",
+     "text_rendered": "TODO pic"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2093,
+   "stepid": 401,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 10\" x 1\" hardened bolt",
+     "text_rendered": "1 10&quot; x 1&quot; hardened bolt"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 1\" nut",
+     "text_rendered": "1 1&quot; nut"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" washers (spacers)",
+     "text_rendered": "4 1&quot; washers (spacers)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a bolt through a drilled out nut, the bottom hole of the plates on the frame, 2 washers, the piston side of the cylinder, 2 more washers, the other plates, and another drilled out nut. Make sure the hose connectors on the hydraulic cylinder face away from the rest of the ironworker.",
+     "text_rendered": "Put a bolt through a drilled out nut, the bottom hole of the plates on the frame, 2 washers, the piston side of the cylinder, 2 more washers, the other plates, and another drilled out nut. Make sure the hose connectors on the hydraulic cylinder face away from the rest of the ironworker."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO better 1st pic",
+     "text_rendered": "TODO better 1st pic"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a nut on the bolt but don't tighten all the way.",
+     "text_rendered": "Put a nut on the bolt but don't tighten all the way."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If you have trouble getting the bolt through, try using an impact wrench to drive it through. If that doesn't work, it may help to loosen the plates with the welded nuts. Make sure not to put in too many spacers while they're loose and to tighten them when you're done.",
+     "text_rendered": "If you have trouble getting the bolt through, try using an impact wrench to drive it through. If that doesn't work, it may help to loosen the plates with the welded nuts. Make sure not to put in too many spacers while they're loose and to tighten them when you're done."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.440x330",
+      "guid": "ebUtZORXLnMj2vyj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.huge",
+      "id": 1273,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ebUtZORXLnMj2vyj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.440x330",
+      "guid": "aIfkRtOWTdDEWBiY",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.huge",
+      "id": 1274,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aIfkRtOWTdDEWBiY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 1715,
+   "stepid": 364,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 10\" x 1\" hardened bolt",
+     "text_rendered": "1 10&quot; x 1&quot; hardened bolt"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 1\" washers",
+     "text_rendered": "3 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 1\" nut",
+     "text_rendered": "1 1&quot; nut"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a bolt through a drilled out nut, the bottom hole of the plates on the frame, 2 washers, the base side of the cylinder, 1 more washer (on ours there was only room for 3 spacer washers), the other plates, and the last drilled out nut. Make sure the hose connectors on the hydraulic cylinder face away from the rest of the ironworker.",
+     "text_rendered": "Put a bolt through a drilled out nut, the bottom hole of the plates on the frame, 2 washers, the base side of the cylinder, 1 more washer (on ours there was only room for 3 spacer washers), the other plates, and the last drilled out nut. Make sure the hose connectors on the hydraulic cylinder face away from the rest of the ironworker."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a nut on the bolt and tighten it and the top one.",
+     "text_rendered": "Put a nut on the bolt and tighten it and the top one."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.440x330",
+      "guid": "vViAOHsxGSRabugr",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.huge",
+      "id": 1267,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vViAOHsxGSRabugr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.440x330",
+      "guid": "WJNupwggInWmK2aU",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.huge",
+      "id": 1275,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WJNupwggInWmK2aU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 1717,
+   "stepid": 363,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld each of the 4 drilled out nuts to the pivot plates.",
+     "text_rendered": "Weld each of the 4 drilled out nuts to the pivot plates."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.440x330",
+      "guid": "PR1uWVvENXssaWYV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.huge",
+      "id": 1554,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PR1uWVvENXssaWYV.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.440x330",
+      "guid": "PbLoyrXxQQvTwYVn",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.huge",
+      "id": 1556,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLoyrXxQQvTwYVn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 2089,
+   "stepid": 400,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Adjust the hoist so that the pivot plate holes line up perfectly.",
+     "text_rendered": "Adjust the hoist so that the pivot plate holes line up perfectly."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the 8 nuts that hold on the pivot plates. They should be tight enough to hold the pivot plates flat, but not so tight that the plates can't wiggle slightly.",
+     "text_rendered": "Tighten the 8 nuts that hold on the pivot plates. They should be tight enough to hold the pivot plates flat, but not so tight that the plates can't wiggle slightly."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.440x330",
+      "guid": "iPCeUqJrO2FlVyGV",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.huge",
+      "id": 1269,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iPCeUqJrO2FlVyGV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 1649,
+   "stepid": 362,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 3\" x 8\" solid shaft (cut a length if you've got a longer piece)",
+     "text_rendered": "1 3&quot; x 8&quot; solid shaft (cut a length if you've got a longer piece)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" nuts",
+     "text_rendered": "2 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld a 1\" nut to each end of the shaft.",
+     "text_rendered": "Weld a 1&quot; nut to each end of the shaft."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "In the picture we put a bolt into the nut temporarily to hold it in place while welding.",
+     "text_rendered": "In the picture we put a bolt into the nut temporarily to hold it in place while welding."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.440x330",
+      "guid": "vXUlMNxImDNEl5dg",
+      "id": 1547,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vXUlMNxImDNEl5dg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 2037,
+   "stepid": 393,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 oz grease",
+     "text_rendered": "1 oz grease"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put grease on the shaft and push it through the pivot plate holes using an impact wrench on the nut welded to the shaft. Each end of the shaft should line up with the outermost pivot plate with a bushing which is the 3rd plate in from each side.",
+     "text_rendered": "Put grease on the shaft and push it through the pivot plate holes using an impact wrench on the nut welded to the shaft. Each end of the shaft should line up with the outermost pivot plate with a bushing which is the 3rd plate in from each side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If you're having trouble getting it all the way through, here are some things to try:",
+     "text_rendered": "If you're having trouble getting it all the way through, here are some things to try:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Add or remove weight on the shaft by raising or lowering the hoist.",
+     "text_rendered": "Add or remove weight on the shaft by raising or lowering the hoist."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Tighten or loosen the bolts holding the pivot plates.",
+     "text_rendered": "Tighten or loosen the bolts holding the pivot plates."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure all the pivot plates are lined up properly.",
+     "text_rendered": "Make sure all the pivot plates are lined up properly."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If you still can't get it quite all the way through leave it for now. As long as it's close, you'll be able to pull it the rest of the way through with the pinch plates in a couple of steps.",
+     "text_rendered": "If you still can't get it quite all the way through leave it for now. As long as it's close, you'll be able to pull it the rest of the way through with the pinch plates in a couple of steps."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.440x330",
+      "guid": "EZW5sHtUSLPqiUZk",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.huge",
+      "id": 1265,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EZW5sHtUSLPqiUZk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 1672,
+   "stepid": 361,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1 hole 1/2\" tube",
+     "text_rendered": "2 1 hole 1/2&quot; tube"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the cubes in between the pivot plates on either side of the shaft. Rest them on little pieces of wood temporarily so that they're bout 1/2\" above the tube below them.",
+     "text_rendered": "Put the cubes in between the pivot plates on either side of the shaft. Rest them on little pieces of wood temporarily so that they're bout 1/2&quot; above the tube below them."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.440x330",
+      "guid": "G6AVBa2UH3MYEVns",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.huge",
+      "id": 1260,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G6AVBa2UH3MYEVns.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.440x330",
+      "guid": "x3xHqNDbQG3lKCob",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.huge",
+      "id": 1261,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x3xHqNDbQG3lKCob.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.440x330",
+      "guid": "mixdQCmlIPKFSqwT",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.huge",
+      "id": 1262,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mixdQCmlIPKFSqwT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 1634,
+   "stepid": 346,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the 8 pivot plate bolts.",
+     "text_rendered": "Tighten the 8 pivot plate bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "They should be tightened with about 150 ft-lbs of force since they're critical for keeping the blades perfectly aligned during cutting.",
+     "text_rendered": "They should be tightened with about 150 ft-lbs of force since they're critical for keeping the blades perfectly aligned during cutting."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.440x330",
+      "guid": "JgWbLsQFs4HTpFIk",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.huge",
+      "id": 1252,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JgWbLsQFs4HTpFIk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 1734,
+   "stepid": 345,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 1\" x 8\" x 16\" plate (it can be longer than 16\")",
+     "text_rendered": "1 1&quot; x 8&quot; x 16&quot; plate (it can be longer than 16&quot;)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut 2 8\"x8\"x1\" plates.",
+     "text_rendered": "Cut 2 8&quot;x8&quot;x1&quot; plates."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The picture shows 7\"x7\" plates because we had 7\" stock handy. They do the job, but we recommend 8\".",
+     "text_rendered": "The picture shows 7&quot;x7&quot; plates because we had 7&quot; stock handy. They do the job, but we recommend 8&quot;."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.440x330",
+      "guid": "iIIDAHOD25xu3tEh",
+      "id": 1544,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iIIDAHOD25xu3tEh.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.440x330",
+      "guid": "btGuVHmBO2ZHLQOY",
+      "id": 1545,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/btGuVHmBO2ZHLQOY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 2029,
+   "stepid": 391,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make holes in the center of each 8\"x8\" plate big enough for 1\" bolts. We drilled starter holes and then used an acetylene torch to widen them.",
+     "text_rendered": "Make holes in the center of each 8&quot;x8&quot; plate big enough for 1&quot; bolts. We drilled starter holes and then used an acetylene torch to widen them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO picture of torching",
+     "text_rendered": "TODO picture of torching"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.440x330",
+      "guid": "2ypZXLLvMW5G3XpP",
+      "id": 1546,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ypZXLLvMW5G3XpP.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 13,
+   "revisionid": 2031,
+   "stepid": 392,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" x 2\" bolts",
+     "text_rendered": "2 1&quot; x 2&quot; bolts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" washers",
+     "text_rendered": "2 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take a 2\"x1\" bolt, put a washer on it, put it through the 8\"x8\" plate, and screw it loosely into the bolt at the end of the shaft. Then repeat on the other side.",
+     "text_rendered": "Take a 2&quot;x1&quot; bolt, put a washer on it, put it through the 8&quot;x8&quot; plate, and screw it loosely into the bolt at the end of the shaft. Then repeat on the other side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If the shaft isn't centered, first put on the plate on the side where the shaft isn't far enough through. Tighten the plate until you see on the other side that the shaft is centered.",
+     "text_rendered": "If the shaft isn't centered, first put on the plate on the side where the shaft isn't far enough through. Tighten the plate until you see on the other side that the shaft is centered."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The point of these bolts and plates is to pinch the pivot joint as tightly together as possible. They should be tightened with about 150 ft-lbs of force.",
+     "text_rendered": "The point of these bolts and plates is to pinch the pivot joint as tightly together as possible. They should be tightened with about 150 ft-lbs of force."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You want the bolt to be most of the way through the shaft nut when fully tightened. If it looks like the bolt will be too long for the nut and will bottom out against the shaft, add more washers. If it looks like the bolt won't get almost all the way through the nut, take out the washer.",
+     "text_rendered": "You want the bolt to be most of the way through the shaft nut when fully tightened. If it looks like the bolt will be too long for the nut and will bottom out against the shaft, add more washers. If it looks like the bolt won't get almost all the way through the nut, take out the washer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the wooden supports holding up the 2 cubes in the pivot if they're still there. The pressure from the pivot plates should hold them in place.",
+     "text_rendered": "Remove the wooden supports holding up the 2 cubes in the pivot if they're still there. The pressure from the pivot plates should hold them in place."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.440x330",
+      "guid": "K5raKUHwss1XtFcJ",
+      "id": 1301,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K5raKUHwss1XtFcJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.440x330",
+      "guid": "gipJ245JpBV3qcAu",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.huge",
+      "id": 1302,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gipJ245JpBV3qcAu.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.440x330",
+      "guid": "vkStFibsmEQoKXYI",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.huge",
+      "id": 1548,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vkStFibsmEQoKXYI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 14,
+   "revisionid": 2044,
+   "stepid": 344,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the hoist.",
+     "text_rendered": "Remove the hoist."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.440x330",
+      "guid": "5rcdg5ARZqoHW4so",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.huge",
+      "id": 1264,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5rcdg5ARZqoHW4so.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 15,
+   "revisionid": 1643,
+   "stepid": 347,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "6 1 hole x 5 hole plates",
+     "text_rendered": "6 1 hole x 5 hole plates"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay the 6 plates on the lower frame in the middle.",
+     "text_rendered": "Lay the 6 plates on the lower frame in the middle."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The picture show 3 of the plates shorter. That's a mistake! They should all be 5 holes (20\" long).",
+     "text_rendered": "The picture show 3 of the plates shorter. That's a mistake! They should all be 5 holes (20&quot; long)."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 16,
+   "revisionid": 2189,
+   "stepid": 412,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the lower blade assembly in place so it's hanging off the 6 plates with the blade face up.",
+     "text_rendered": "Put the lower blade assembly in place so it's hanging off the 6 plates with the blade face up."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Adjust the blade assembly and the riser plates so the row of hole closest to the edge of the 2 x 4 hole plate lines up with the holes in the lower frame tube, and the riser plates extend about 1\" past the left edge of the blade towards the pivot.",
+     "text_rendered": "Adjust the blade assembly and the riser plates so the row of hole closest to the edge of the 2 x 4 hole plate lines up with the holes in the lower frame tube, and the riser plates extend about 1&quot; past the left edge of the blade towards the pivot."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 17,
+   "revisionid": 2191,
+   "stepid": 413,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" x 7\" bolts",
+     "text_rendered": "4 1&quot; x 7&quot; bolts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "8 1\" washers",
+     "text_rendered": "8 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" nuts",
+     "text_rendered": "4 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the bolts through washers, the lower blade mount plate, the lower frame, another set of washers, and put on the nuts. Hand tighten them.",
+     "text_rendered": "Put the bolts through washers, the lower blade mount plate, the lower frame, another set of washers, and put on the nuts. Hand tighten them."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.440x330",
+      "guid": "dqDWJYblR5kjXU2n",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.huge",
+      "id": 1603,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dqDWJYblR5kjXU2n.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 18,
+   "revisionid": 2197,
+   "stepid": 414,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" nuts",
+     "text_rendered": "2 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 1\" washer",
+     "text_rendered": "1 1&quot; washer"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 16.5\" x 1\" threaded rod (TODO link to guide on cutting threaded rod)",
+     "text_rendered": "1 16.5&quot; x 1&quot; threaded rod (TODO link to guide on cutting threaded rod)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a piece of plywood or some other spacer on the lower blade and rest the four plates on it.",
+     "text_rendered": "Put a piece of plywood or some other spacer on the lower blade and rest the four plates on it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a nut and washer on on end of the threaded rod and put it through from the top of the upper frame down through the plates.",
+     "text_rendered": "Put a nut and washer on on end of the threaded rod and put it through from the top of the upper frame down through the plates."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a nut below the plates without a washer. Hand tighten.",
+     "text_rendered": "Put a nut below the plates without a washer. Hand tighten."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the wooden support.",
+     "text_rendered": "Remove the wooden support."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.440x330",
+      "guid": "NS1NeK3lay6HSwRg",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.huge",
+      "id": 1222,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NS1NeK3lay6HSwRg.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.440x330",
+      "guid": "kkoVclIBMxCBGxuj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.huge",
+      "id": 1295,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kkoVclIBMxCBGxuj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.440x330",
+      "guid": "6qiy3if3dHMEckfJ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.huge",
+      "id": 1296,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6qiy3if3dHMEckfJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 19,
+   "revisionid": 1797,
+   "stepid": 339,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 7\" x 1\" bolts",
+     "text_rendered": "4 7&quot; x 1&quot; bolts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" washers",
+     "text_rendered": "4 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the four bolts with washers through the upper frame. The bolts should go through the washers, then through the frame from the side where the hydraulic cylinder is on the right.",
+     "text_rendered": "Put the four bolts with washers through the upper frame. The bolts should go through the washers, then through the frame from the side where the hydraulic cylinder is on the right."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO pics",
+     "text_rendered": "TODO pics"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 20,
+   "revisionid": 1399,
+   "stepid": 369,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the upper blade support over the bolts from the side where the cylinder is on the left.",
+     "text_rendered": "Put the upper blade support over the bolts from the side where the cylinder is on the left."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 21,
+   "revisionid": 1396,
+   "stepid": 338,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" nuts",
+     "text_rendered": "4 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "4 1\" washers",
+     "text_rendered": "4 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put washers and nuts on the top blade support bolts and hand tighten.",
+     "text_rendered": "Put washers and nuts on the top blade support bolts and hand tighten."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO pics",
+     "text_rendered": "TODO pics"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO press and tighten blades in new steps",
+     "text_rendered": "TODO press and tighten blades in new steps"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 22,
+   "revisionid": 1607,
+   "stepid": 337,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the table assembly threaded rods through the frame from the side with the lower blade. They should go through the holes on either side of the lower blade plate.",
+     "text_rendered": "Put the table assembly threaded rods through the frame from the side with the lower blade. They should go through the holes on either side of the lower blade plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO from mon- reorg this to have threaded rods in this guide. 17\" rods. 5 washers. clamp structure and work surface struture separately. clamp bolts 13\"",
+     "text_rendered": "TODO from mon- reorg this to have threaded rods in this guide. 17&quot; rods. 5 washers. clamp structure and work surface struture separately. clamp bolts 13&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO fix bot mid plate everywhere i took pics on mon",
+     "text_rendered": "TODO fix bot mid plate everywhere i took pics on mon"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.440x330",
+      "guid": "WYRCKNdNHOsXTlIM",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.huge",
+      "id": 1589,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WYRCKNdNHOsXTlIM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 23,
+   "revisionid": 2185,
+   "stepid": 403,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" washers",
+     "text_rendered": "2 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 1\" nuts",
+     "text_rendered": "2 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put a washer and nut on the end of each rod holding the table.",
+     "text_rendered": "Put a washer and nut on the end of each rod holding the table."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.440x330",
+      "guid": "VTqkvhr2gZbfCr6w",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.huge",
+      "id": 1598,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VTqkvhr2gZbfCr6w.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.440x330",
+      "guid": "Mn2KmtRgLLQTYld1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.huge",
+      "id": 1599,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Mn2KmtRgLLQTYld1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 24,
+   "revisionid": 2162,
+   "stepid": 405,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 ounces of grease (I made up 2 oz, Marcin should verify)",
+     "text_rendered": "2 ounces of grease (I made up 2 oz, Marcin should verify)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Apply grease to both sides of the top part of the frame as shown in the picture. Squeeze some out using the gun and then smear it around.",
+     "text_rendered": "Apply grease to both sides of the top part of the frame as shown in the picture. Squeeze some out using the gun and then smear it around."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.440x330",
+      "guid": "nZimRSjMtmtwSKyF",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.huge",
+      "id": 1288,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nZimRSjMtmtwSKyF.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.440x330",
+      "guid": "UymDSfMB1gyN5pCe",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.huge",
+      "id": 1290,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UymDSfMB1gyN5pCe.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 25,
+   "revisionid": 1603,
+   "stepid": 331,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 15\" x 1\" threaded rod",
+     "text_rendered": "3 15&quot; x 1&quot; threaded rod"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 1\" washers",
+     "text_rendered": "3 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 1\" nuts",
+     "text_rendered": "3 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "put the washer onto threaded rod and screw the nut onto one end",
+     "text_rendered": "put the washer onto threaded rod and screw the nut onto one end"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "repeat twice",
+     "text_rendered": "repeat twice"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.440x330",
+      "guid": "kQShNj2xQoTnJPFK",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.huge",
+      "id": 1191,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kQShNj2xQoTnJPFK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 26,
+   "revisionid": 1130,
+   "stepid": 330,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 1/2\" 12 hole tube",
+     "text_rendered": "1 1/2&quot; 12 hole tube"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put three threaded rods through the uprights and tubes on the bottom hole, fourth hole up, and top hole of the uprights.",
+     "text_rendered": "Put three threaded rods through the uprights and tubes on the bottom hole, fourth hole up, and top hole of the uprights."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TODO better picture",
+     "text_rendered": "TODO better picture"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.440x330",
+      "guid": "2jWDOEVQgFuHkqyf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.huge",
+      "id": 1194,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2jWDOEVQgFuHkqyf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 27,
+   "revisionid": 1601,
+   "stepid": 329,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts:",
+     "text_rendered": "Parts:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 12 hole 1/2\" tubes",
+     "text_rendered": "2 12 hole 1/2&quot; tubes"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 1\" x 16\" threaded rod",
+     "text_rendered": "3 1&quot; x 16&quot; threaded rod"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "6 1\" washers",
+     "text_rendered": "6 1&quot; washers"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "6 1\" nuts",
+     "text_rendered": "6 1&quot; nuts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the two upright on either side of the frame near the cylinder as shown.",
+     "text_rendered": "Put the two upright on either side of the frame near the cylinder as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put threaded rods through the bottom hole, 4th from the bottom hole, and top hole of the uprights. Do NOT put any through the top part of the frame since it needs to be able to move up and down.",
+     "text_rendered": "Put threaded rods through the bottom hole, 4th from the bottom hole, and top hole of the uprights. Do NOT put any through the top part of the frame since it needs to be able to move up and down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The uprights make sure the bottom and top stay in perfect alignment so the nuts have to be very tight. Use a hydraulic system to open the ironworker all the way and then use 150 ft-lbs of force when tightening these 3 bolts.",
+     "text_rendered": "The uprights make sure the bottom and top stay in perfect alignment so the nuts have to be very tight. Use a hydraulic system to open the ironworker all the way and then use 150 ft-lbs of force when tightening these 3 bolts."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.440x330",
+      "guid": "y5Y3wkM3AQGLO1rR",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.huge",
+      "id": 1230,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/y5Y3wkM3AQGLO1rR.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.440x330",
+      "guid": "ULt4C5EAokM3tSRc",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.huge",
+      "id": 1520,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ULt4C5EAokM3tSRc.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 28,
+   "revisionid": 2114,
+   "stepid": 328,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Adjusted the table so that both surface of the table is at the same height as the edge of the blade.",
+     "text_rendered": "Adjusted the table so that both surface of the table is at the same height as the edge of the blade."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "To do this, raise the table with the floor jack after loosening table-holding bolts and raise the table level to match the blade edge level.",
+     "text_rendered": "To do this, raise the table with the floor jack after loosening table-holding bolts and raise the table level to match the blade edge level."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once the table level is set than retighten the table-holding bolts.",
+     "text_rendered": "Once the table level is set than retighten the table-holding bolts."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.440x330",
+      "guid": "gKQjFJuphdXdiGYA",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.huge",
+      "id": 1641,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gKQjFJuphdXdiGYA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 29,
+   "revisionid": 2274,
+   "stepid": 327,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add the legs.",
+     "text_rendered": "Add the legs."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use 9 hole tubes, quarter inch wall.",
+     "text_rendered": "Use 9 hole tubes, quarter inch wall."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt rear legs to the stabilizer tubes using a 23\" length of threaded rod",
+     "text_rendered": "Bolt rear legs to the stabilizer tubes using a 23&quot; length of threaded rod"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.440x330",
+      "guid": "rZVnDc45lCaxWRlW",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.huge",
+      "id": 1654,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rZVnDc45lCaxWRlW.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.440x330",
+      "guid": "uFGdrylQCdNtJS2U",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.huge",
+      "id": 1657,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/uFGdrylQCdNtJS2U.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.440x330",
+      "guid": "mEqdoVMRr15dk34g",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.huge",
+      "id": 1658,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mEqdoVMRr15dk34g.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 30,
+   "revisionid": 2308,
+   "stepid": 433,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the leg and feet tubes to size",
+     "text_rendered": "Cut the leg and feet tubes to size"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.440x330",
+      "guid": "LTQOtnkTE66rs42C",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.huge",
+      "id": 1656,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LTQOtnkTE66rs42C.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 31,
+   "revisionid": 2308,
+   "stepid": 434,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use the hoist to lay the machine on its side",
+     "text_rendered": "Use the hoist to lay the machine on its side"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take off the temporary legs to facilitate moving the machine outside",
+     "text_rendered": "Take off the temporary legs to facilitate moving the machine outside"
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 32,
+   "revisionid": 2314,
+   "stepid": 435,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Hoist the machine up to stand on the rear legs",
+     "text_rendered": "Hoist the machine up to stand on the rear legs"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.440x330",
+      "guid": "UaUBKNgwL2cPbhYB",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.huge",
+      "id": 1660,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UaUBKNgwL2cPbhYB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 33,
+   "revisionid": 2318,
+   "stepid": 436,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Raise the front of the machine after it stands on the rear legs",
+     "text_rendered": "Raise the front of the machine after it stands on the rear legs"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add the front legs",
+     "text_rendered": "Add the front legs"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.440x330",
+      "guid": "JmatOpEqVe6sF3sG",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.huge",
+      "id": 1662,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JmatOpEqVe6sF3sG.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 34,
+   "revisionid": 2326,
+   "stepid": 437,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut bolts for the legs",
+     "text_rendered": "Cut bolts for the legs"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.440x330",
+      "guid": "1whMa4TcIIMAGSTB",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.huge",
+      "id": 1664,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1whMa4TcIIMAGSTB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 35,
+   "revisionid": 2330,
+   "stepid": 438,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 84,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finished!",
+     "text_rendered": "Finished!"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.440x330",
+      "guid": "yjLPmiy2UDYGfbwE",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.huge",
+      "id": 1666,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yjLPmiy2UDYGfbwE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 36,
+   "revisionid": 2334,
+   "stepid": 439,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Step by step instructions for assembling the Ironworker machine.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to assemble all the pieces of the Ironworker (in progress)",
+ "tools": [],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+assemble+all+the+pieces+of+the+Ironworker+(in+progress)/84",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/84"
+}

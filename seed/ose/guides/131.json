@@ -1,0 +1,645 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.440x330",
+   "guid": "VRyRrmHfUbWIQsSX",
+   "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.huge",
+   "id": 2871,
+   "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.large",
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.thumbnail"
+  },
+  "join_date": 1392527400,
+  "reputation": 197,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/82/Andrew+Graham",
+  "userid": 82,
+  "username": "Andrew Graham"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Lid/131",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Cover",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396038479,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3013,
+ "guideid": 131,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.440x330",
+  "guid": "WIZypKThPTAMUxSo",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.huge",
+  "id": 3350,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WIZypKThPTAMUxSo.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396282085,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396044301,
+ "revisionid": 263,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 131,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack P25 at a 90 degree angle along the length of the bottom of the lid.",
+     "text_rendered": "Tack P25 at a 90 degree angle along the length of the bottom of the lid."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack 2x P26 Lid Struts onto the ends of the Lid at a 90 degree angle. Ensure a 1/4\" space for 2x P29 to fit later (after the hinge and hydraulics are complete)",
+     "text_rendered": "Tack 2x P26 Lid Struts onto the ends of the Lid at a 90 degree angle. Ensure a 1/4&quot; space for 2x P29 to fit later (after the hinge and hydraulics are complete)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.440x330",
+      "guid": "W1KI6eetQLbv565X",
+      "id": 3343,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/W1KI6eetQLbv565X.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.440x330",
+      "guid": "AwdskZRDhpPnGvHm",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.huge",
+      "id": 3349,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AwdskZRDhpPnGvHm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4463,
+   "stepid": 883,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 131,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the lid into the seal, so that it rests with equal clearance on the left and right side (should be 1/4\" each side). ensure the top and bottom edges are flush with the top and bottom of the seal edges. you may need to position something at the base to keep it from sliding out of place. this will be used as a guide for the hinges.",
+     "text_rendered": "Place the lid into the seal, so that it rests with equal clearance on the left and right side (should be 1/4&quot; each side). ensure the top and bottom edges are flush with the top and bottom of the seal edges. you may need to position something at the base to keep it from sliding out of place. this will be used as a guide for the hinges."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.440x330",
+      "guid": "1VTctAwokZwxHw2D",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.huge",
+      "id": 3352,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1VTctAwokZwxHw2D.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.440x330",
+      "guid": "FZLQSqfHKDL5DToo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.huge",
+      "id": 3445,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FZLQSqfHKDL5DToo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4515,
+   "stepid": 884,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 131,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack 2x P31 hinge pieces in position - Ensure after placing a washer on the outside face of the hinges that it is aligned with lid struts (P26) on the ends.",
+     "text_rendered": "Tack 2x P31 hinge pieces in position - Ensure after placing a washer on the outside face of the hinges that it is aligned with lid struts (P26) on the ends."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Check for fit by passing the hinge rod through the holes in the P31 pieces.",
+     "text_rendered": "Check for fit by passing the hinge rod through the holes in the P31 pieces."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finish the welds.",
+     "text_rendered": "Finish the welds."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.440x330",
+      "guid": "RBGpkFfYSAIXElYj",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.huge",
+      "id": 3353,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RBGpkFfYSAIXElYj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.440x330",
+      "guid": "5VYQrAcRIWfAp2F1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.huge",
+      "id": 3354,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5VYQrAcRIWfAp2F1.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.440x330",
+      "guid": "skSgjjs4lWSXy1vN",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.huge",
+      "id": 3355,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/skSgjjs4lWSXy1vN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4472,
+   "stepid": 885,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 131,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ensuring the lid is correctly positioned still, thread on 2x P33 parts.",
+     "text_rendered": "Ensuring the lid is correctly positioned still, thread on 2x P33 parts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Align the P33 hinge parts to be parallel with   the P26 lid struts and tack them together.",
+     "text_rendered": "Align the P33 hinge parts to be parallel with   the P26 lid struts and tack them together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.440x330",
+      "guid": "x4kCConUO3Xcxvks",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.huge",
+      "id": 3357,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4kCConUO3Xcxvks.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.440x330",
+      "guid": "cMxWUqKOvvSQJvHC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.huge",
+      "id": 3359,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cMxWUqKOvvSQJvHC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4490,
+   "stepid": 891,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 131,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take out the shaft enough to give some clearance on the left end (End nearest to motor). Weld one of the end washers on, staying clear of the second washer.",
+     "text_rendered": "Take out the shaft enough to give some clearance on the left end (End nearest to motor). Weld one of the end washers on, staying clear of the second washer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Push the shaft back in and measure and mark a distance on the other side of the shaft to put a cotter pin through.",
+     "text_rendered": "Push the shaft back in and measure and mark a distance on the other side of the shaft to put a cotter pin through."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Carefully take out the shaft all the way and drill the hole for the cotter pin.",
+     "text_rendered": "Carefully take out the shaft all the way and drill the hole for the cotter pin."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fit the shaft back with all washers and lid in places, ensure the cotter pin fits.",
+     "text_rendered": "Fit the shaft back with all washers and lid in places, ensure the cotter pin fits."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Check the motion in the hinge by lifting it up and closing again.",
+     "text_rendered": "Check the motion in the hinge by lifting it up and closing again."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.440x330",
+      "guid": "sTqVU3Q3pPCFxR6r",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.huge",
+      "id": 3439,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sTqVU3Q3pPCFxR6r.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.440x330",
+      "guid": "GEpeMGqbvw1oA3vp",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.huge",
+      "id": 3443,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GEpeMGqbvw1oA3vp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4559,
+   "stepid": 904,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Lid",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Lid",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Lid/131",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/131"
+}

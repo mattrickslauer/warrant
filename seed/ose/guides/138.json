@@ -1,0 +1,161 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Building+the+MH+1+window+module./138",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Doors and Windows",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396296939,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 3069,
+ "guideid": 138,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.440x330",
+  "guid": "AgXHkP4uLdd16oTb",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.huge",
+  "id": 3499,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396297130,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396297129,
+ "revisionid": 277,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 138,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gather materials as shown in materials list on left.",
+     "text_rendered": "Gather materials as shown in materials list on left."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.440x330",
+      "guid": "AgXHkP4uLdd16oTb",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.huge",
+      "id": 3499,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AgXHkP4uLdd16oTb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4623,
+   "stepid": 917,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "window module",
+ "summary": "This guide will lead you through the construction of the window module, which is installed on the foundation before the CEB walls are stacked.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Building the MH 1 window module.",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Building+the+MH+1+window+module./138",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/138"
+}

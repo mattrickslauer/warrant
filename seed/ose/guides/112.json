@@ -1,0 +1,419 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Case+Fan+Assembly/112",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Case Fan Assembly",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1389214555,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2909,
+ "guideid": 112,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.440x330",
+  "guid": "Sir4itYLSTnEtPoS",
+  "id": 2747,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Sir4itYLSTnEtPoS.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395958167,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Electronics case cover",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Electronics_case_cover"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Fan with connector",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Fan_with_connector"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 x 25 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_25_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Washer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 Nut - Zinc Plated",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Nut_-_Zinc_Plated"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1392226631,
+ "revisionid": 225,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 112,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gather parts and tools for assembling the case fan.",
+     "text_rendered": "Gather parts and tools for assembling the case fan."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - 2.5mm Allen Driver",
+     "text_rendered": "Photo 1 - 2.5mm Allen Driver"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This entire component was already assembled. This step will not be necessary with the kits we have.",
+     "text_rendered": "This entire component was already assembled. This step will not be necessary with the kits we have."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.440x330",
+      "guid": "JMOxdfPgMDcnILCb",
+      "id": 2740,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JMOxdfPgMDcnILCb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4171,
+   "stepid": 802,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 112,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install Fan onto electronics cover using M3 Washers and M3 Nuts.",
+     "text_rendered": "Install Fan onto electronics cover using M3 Washers and M3 Nuts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Be sure to have the direction of air flow blowing away from the cover",
+     "text_rendered": "Be sure to have the direction of air flow blowing away from the cover"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - Parts of the fan assembly",
+     "text_rendered": "Photo 1 - Parts of the fan assembly"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Top View",
+     "text_rendered": "Photo 2 - Top View"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 3 - Fan assembled onto cover",
+     "text_rendered": "Photo 3 - Fan assembled onto cover"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.440x330",
+      "guid": "LvfOQKKWLQMULTuT",
+      "id": 2745,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LvfOQKKWLQMULTuT.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.440x330",
+      "guid": "LKVSSYCBldEMhH16",
+      "id": 2746,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LKVSSYCBldEMhH16.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.440x330",
+      "guid": "KXOeTMusNW2KNsNb",
+      "id": 2744,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KXOeTMusNW2KNsNb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 3951,
+   "stepid": 803,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Attaching the case fan onto the cover.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Case Fan Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "2.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2.5mm_Allen_Driver"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Case+Fan+Assembly/112",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/112"
+}

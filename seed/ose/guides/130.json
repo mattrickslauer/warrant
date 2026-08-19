@@ -1,0 +1,744 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.440x330",
+   "guid": "VRyRrmHfUbWIQsSX",
+   "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.huge",
+   "id": 2871,
+   "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.large",
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.thumbnail"
+  },
+  "join_date": 1392527400,
+  "reputation": 197,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/82/Andrew+Graham",
+  "userid": 82,
+  "username": "Andrew Graham"
+ },
+ "body_url_path": "/Guide/Installing+Soil+Mixer+-+Module+-+Toothbar+Teeth/130",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Soil Mixer - Module - Toothbar",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1395871533,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3195,
+ "guideid": 130,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.440x330",
+  "guid": "sbVEOBRuvabkRdIU",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.huge",
+  "id": 3457,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sbVEOBRuvabkRdIU.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Outline what you are going to teach someone how to do.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Outline what you are going to teach someone how to do.",
+ "introduction_rendered": "<p>Outline what you are going to teach someone how to do.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396490628,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395871937,
+ "revisionid": 2821,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take P18 Rebar",
+     "text_rendered": "Take P18 Rebar"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay P19 flat",
+     "text_rendered": "Lay P19 flat"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld P18 with 1\" overlap onto center of P19",
+     "text_rendered": "Weld P18 with 1&quot; overlap onto center of P19"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.440x330",
+      "guid": "KbAn4V4gWIiZLfFP",
+      "id": 3306,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KbAn4V4gWIiZLfFP.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.440x330",
+      "guid": "BaJkVU6yLIjuMpGn",
+      "id": 3308,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BaJkVU6yLIjuMpGn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4556,
+   "stepid": 875,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld P20 to make 1/2\" of P19 (cutting knife) exposed at the cutting edge",
+     "text_rendered": "Weld P20 to make 1/2&quot; of P19 (cutting knife) exposed at the cutting edge"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat for the total 12 teeth",
+     "text_rendered": "Repeat for the total 12 teeth"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.440x330",
+      "guid": "RUKwX1WnRpZombmH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.huge",
+      "id": 3310,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RUKwX1WnRpZombmH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.440x330",
+      "guid": "SWjdTDXEjYEDfnWL",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.huge",
+      "id": 3312,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SWjdTDXEjYEDfnWL.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4560,
+   "stepid": 876,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld 4 teeth at the proper spacing (4\" from the left to rebar centre and 2\" from the right edge to rebar center) to part 15 (tooth bar bolt bar), with 3 inches overlap between P18 and P15 The teeth go on the side farthest from the bolt holes.",
+     "text_rendered": "Weld 4 teeth at the proper spacing (4&quot; from the left to rebar centre and 2&quot; from the right edge to rebar center) to part 15 (tooth bar bolt bar), with 3 inches overlap between P18 and P15 The teeth go on the side farthest from the bolt holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat for the 2 other P15 parts",
+     "text_rendered": "Repeat for the 2 other P15 parts"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.440x330",
+      "guid": "tJkcZGHupofwxFWp",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.huge",
+      "id": 3578,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tJkcZGHupofwxFWp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.440x330",
+      "guid": "IrhkiKJQYcRwB4Dk",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.huge",
+      "id": 3302,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IrhkiKJQYcRwB4Dk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.440x330",
+      "guid": "MssuKvhN4Y5wGI3m",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.huge",
+      "id": 3304,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MssuKvhN4Y5wGI3m.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4782,
+   "stepid": 877,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind teeth at 45 degree angle with tooth bar weldment in a vice",
+     "text_rendered": "Grind teeth at 45 degree angle with tooth bar weldment in a vice"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Water harden or air harden the teeth by heating to red hot with acetylene torch and then dunking in water",
+     "text_rendered": "Water harden or air harden the teeth by heating to red hot with acetylene torch and then dunking in water"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.440x330",
+      "guid": "ImfodNDNKIvWSHde",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.huge",
+      "id": 3294,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ImfodNDNKIvWSHde.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4415,
+   "stepid": 878,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Quality control Checklist'''",
+     "text_rendered": "<strong>Quality control Checklist</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure that P18 and P19 overlap by 1\"",
+     "text_rendered": "Make sure that P18 and P19 overlap by 1&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure that P18 and P19 are centered with respect to one another",
+     "text_rendered": "Make sure that P18 and P19 are centered with respect to one another"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure that at least about 1/2\" of cutting knife is exposed after grinding",
+     "text_rendered": "Make sure that at least about 1/2&quot; of cutting knife is exposed after grinding"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure that P15 is oriented with the side closest the holes on the side farthest away from the teeth",
+     "text_rendered": "Make sure that P15 is oriented with the side closest the holes on the side farthest away from the teeth"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure that the angle between the long leading edge of P15 and P18 is 90 degrees i.e. those teeth are pointing straight outwards.",
+     "text_rendered": "Make sure that the angle between the long leading edge of P15 and P18 is 90 degrees i.e. those teeth are pointing straight outwards."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4559,
+   "stepid": 879,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 130,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Open the lid after testing hydraulics, place a support underneath the lid for safety, and lift the bucket off the ground using the Lifetrac arms, or tilt the entire contraption and support with blocks.",
+     "text_rendered": "Open the lid after testing hydraulics, place a support underneath the lid for safety, and lift the bucket off the ground using the Lifetrac arms, or tilt the entire contraption and support with blocks."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fit the 3x P15 Digging Teeth Plates with 1\" bolts to the Bucket, keeping the nuts on the topside.",
+     "text_rendered": "Fit the 3x P15 Digging Teeth Plates with 1&quot; bolts to the Bucket, keeping the nuts on the topside."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.440x330",
+      "guid": "obnOsgU2hg1JT6lo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.huge",
+      "id": 3453,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/obnOsgU2hg1JT6lo.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.440x330",
+      "guid": "hgLQrk6EBuZPIHSI",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.huge",
+      "id": 3455,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hgLQrk6EBuZPIHSI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4577,
+   "stepid": 906,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Teeth",
+ "summary": "Fabrication process for teeth",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Soil Mixer - Module - Toothbar Teeth",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Soil+Mixer+-+Module+-+Toothbar+Teeth/130",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/130"
+}

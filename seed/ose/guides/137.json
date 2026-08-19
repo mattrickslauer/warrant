@@ -1,0 +1,412 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.440x330",
+   "guid": "VRyRrmHfUbWIQsSX",
+   "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.huge",
+   "id": 2871,
+   "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.large",
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.thumbnail"
+  },
+  "join_date": 1392527400,
+  "reputation": 197,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/82/Andrew+Graham",
+  "userid": 82,
+  "username": "Andrew Graham"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Drive+Hydraulic+Motor+and+Drive/137",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Drive",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396292758,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 3151,
+ "guideid": 137,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.440x330",
+  "guid": "MoE4uuhPQcwPhmr3",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.huge",
+  "id": 3475,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MoE4uuhPQcwPhmr3.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396367288,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396294626,
+ "revisionid": 275,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 137,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the coupler on the motor to the drive shaft with the 1/2\" x 4\"bolt.",
+     "text_rendered": "Attach the coupler on the motor to the drive shaft with the 1/2&quot; x 4&quot;bolt."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fit the motor and coupler to the main rotor shaft, P21",
+     "text_rendered": "Fit the motor and coupler to the main rotor shaft, P21"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.440x330",
+      "guid": "gPI4GUupQObDKfug",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.huge",
+      "id": 3477,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gPI4GUupQObDKfug.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.440x330",
+      "guid": "gAelZRaYrxsyRCE2",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.huge",
+      "id": 3479,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gAelZRaYrxsyRCE2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4606,
+   "stepid": 914,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 137,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Pass the 12\" long, 1\" threaded rods through p24 then through the tubes ], through p23 and thread them through the nuts welded to the far side of P4.",
+     "text_rendered": "Pass the 12&quot; long, 1&quot; threaded rods through p24 then through the tubes ], through p23 and thread them through the nuts welded to the far side of P4."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the 4 further nuts to clamp the motor to the tubes, and the tubes against p23, in a sandwich",
+     "text_rendered": "Attach the 4 further nuts to clamp the motor to the tubes, and the tubes against p23, in a sandwich"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the 2 screws in the collars of both bearings to the shaft (should be separated by 120 degrees).",
+     "text_rendered": "Tighten the 2 screws in the collars of both bearings to the shaft (should be separated by 120 degrees)."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.440x330",
+      "guid": "xKqkhPjEX3yJKK2t",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.huge",
+      "id": 3481,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xKqkhPjEX3yJKK2t.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.440x330",
+      "guid": "2ANZ6BhFGSUMKshK",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.huge",
+      "id": 3485,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2ANZ6BhFGSUMKshK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.440x330",
+      "guid": "bvEyAMCAmGI3F2St",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.huge",
+      "id": 3483,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bvEyAMCAmGI3F2St.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4712,
+   "stepid": 915,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 137,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Quality Control Checklist'''",
+     "text_rendered": "<strong>Quality Control Checklist</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ensure the system rotates freely 360 degrees. If the coupler, motor and shaft are not on the same axis, it may lock up.",
+     "text_rendered": "Ensure the system rotates freely 360 degrees. If the coupler, motor and shaft are not on the same axis, it may lock up."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Check that when torque is applied to the motor, in either direction, there is no excessive twisting.",
+     "text_rendered": "Check that when torque is applied to the motor, in either direction, there is no excessive twisting."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4612,
+   "stepid": 916,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Hydraulic Motor and Drive",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Drive Hydraulic Motor and Drive",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Drive+Hydraulic+Motor+and+Drive/137",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/137"
+}

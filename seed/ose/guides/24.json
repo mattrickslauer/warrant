@@ -1,0 +1,587 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Simple+Plates/24",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041493,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3913,
+ "guideid": 24,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.440x330",
+  "guid": "NjOJD2tpI1AVvCkN",
+  "id": 201,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NjOJD2tpI1AVvCkN.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Materials Needed:Steel:* .25x2 Flat: 12\u201d (1) \u2013 Controller Mount* .25x3 Flat: 6\u201d(1) Controller Mount Bottom Piece* .25x6 Flat: 12\u201d (1) Valve Mount* .25x6 Flat: 15\u201d (1) Controller Mount* .125x29x13.5 Sheet (1) Dirt Keeper Plate* .125x29x17.5 Sheet (1) Brick Holder Plate",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=9ec434feec67ccb71211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Materials Needed:Steel:* .25x2 Flat: 12\u201d (1) \u2013 Controller Mount* .25x3 Flat: 6\u201d(1) Controller Mount Bottom Piece* .25x6 Flat: 12\u201d (1) Valve Mount* .25x6 Flat: 15\u201d (1) Controller Mount* .125x29x13.5 Sheet (1) Dirt Keeper Plate* .125x29x17.5 Sheet (1) Brick Holder Plate[http://sketchup.google.com/3dwarehouse/details?mid=9ec434feec67ccb71211da1f85706ccd|Sketchup Model]",
+ "introduction_rendered": "<p>Materials Needed:Steel:* .25x2 Flat: 12\u201d (1) \u2013 Controller Mount* .25x3 Flat: 6\u201d(1) Controller Mount Bottom Piece* .25x6 Flat: 12\u201d (1) Valve Mount* .25x6 Flat: 15\u201d (1) Controller Mount* .125x29x13.5 Sheet (1) Dirt Keeper Plate* .125x29x17.5 Sheet (1) Brick Holder Plate<a href=\"http://sketchup.google.com/3dwarehouse/details?mid=9ec434feec67ccb71211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a></p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134837,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041493,
+ "revisionid": 50,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 24,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch all holes.",
+     "text_rendered": "Punch all holes."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.440x330",
+      "guid": "1Dic4gAa3rV6pIpJ",
+      "id": 205,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Dic4gAa3rV6pIpJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.440x330",
+      "guid": "QntrHuiLgJZchf4R",
+      "id": 209,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QntrHuiLgJZchf4R.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 131,
+   "stepid": 65,
+   "time_estimate": 0,
+   "title": "Make Brickholder Plate"
+  },
+  {
+   "comments": [],
+   "guideid": 24,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch all holes",
+     "text_rendered": "Punch all holes"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.440x330",
+      "guid": "PNFlukZVB3Yi4vfn",
+      "id": 212,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PNFlukZVB3Yi4vfn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 133,
+   "stepid": 66,
+   "time_estimate": 0,
+   "title": "Make Dirt-Keeper Plate"
+  },
+  {
+   "comments": [],
+   "guideid": 24,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch all holes, or drill if necessary.",
+     "text_rendered": "Punch all holes, or drill if necessary."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.440x330",
+      "guid": "gBG5uCJP3CWE3TB6",
+      "id": 218,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gBG5uCJP3CWE3TB6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 312,
+   "stepid": 68,
+   "time_estimate": 0,
+   "title": "Make Valve Mount"
+  },
+  {
+   "comments": [],
+   "guideid": 24,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Find your controller box and locate its mounting holes on the back.",
+     "text_rendered": "Find your controller box and locate its mounting holes on the back."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place it on top of the 6x15 plate so it is square and the top hole is about \u00bd\u201d away from the top. Transfer punch the holes on the controller box to the plate.",
+     "text_rendered": "Place it on top of the 6x15 plate so it is square and the top hole is about \u00bd\u201d away from the top. Transfer punch the holes on the controller box to the plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Drill those 1/4\" holes.",
+     "text_rendered": "Drill those 1/4&quot; holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You can drill them a little bigger (up to 5/16\") if you'd like, as it's difficult to get the holes perfectly aligned.",
+     "text_rendered": "You can drill them a little bigger (up to 5/16&quot;) if you'd like, as it's difficult to get the holes perfectly aligned."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch the holes in the bottom piece.",
+     "text_rendered": "Punch the holes in the bottom piece."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.440x330",
+      "guid": "cT1s3WAqKIMmmcPJ",
+      "id": 222,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cT1s3WAqKIMmmcPJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 316,
+   "stepid": 69,
+   "time_estimate": 0,
+   "title": "Make Controller Plate"
+  },
+  {
+   "comments": [],
+   "guideid": 24,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the bottom piece to the large plate.",
+     "text_rendered": "Weld the bottom piece to the large plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure it's square",
+     "text_rendered": "Make sure it's square"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the flatbar on the back.",
+     "text_rendered": "Weld the flatbar on the back."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure it's square.",
+     "text_rendered": "Make sure it's square."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.440x330",
+      "guid": "x2CTOnUUZrHRpCw3",
+      "id": 225,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x2CTOnUUZrHRpCw3.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 143,
+   "stepid": 71,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Give a short summary.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Simple Plates",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Drill press",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Drill_press"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Simple+Plates/24",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/24"
+}

@@ -1,0 +1,819 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Installing+Microhouse+2+CEB+Walls/145",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Walls",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1396981301,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 3544,
+ "guideid": 145,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.440x330",
+  "guid": "JrYtS22A3JBZyc3N",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.huge",
+  "id": 3862,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JrYtS22A3JBZyc3N.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "1. Sweep rocks and loose materials off the cement foundation",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "2. Take sill seal foam gasket (2 rolls approx. 4in wide each) and set each roll side by side starting at one corner",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "3. Place bricks or weighty material on top of the seal foam gaskets as you roll them out along the foundation",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "4. Use a sharp knife to cut the material at the end of each corner and restart the above process along the next wall until complete the loop",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "5. done!",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "1. Sweep rocks and loose materials off the cement foundation\n\n2. Take sill seal foam gasket (2 rolls approx. 4in wide each) and set each roll side by side starting at one corner\n\n3. Place bricks or weighty material on top of the seal foam gaskets as you roll them out along the foundation\n\n4. Use a sharp knife to cut the material at the end of each corner and restart the above process along the next wall until complete the loop\n\n5. done!",
+ "introduction_rendered": "<p>1. Sweep rocks and loose materials off the cement foundation</p>\n\n<p>2. Take sill seal foam gasket (2 rolls approx. 4in wide each) and set each roll side by side starting at one corner</p>\n\n<p>3. Place bricks or weighty material on top of the seal foam gaskets as you roll them out along the foundation</p>\n\n<p>4. Use a sharp knife to cut the material at the end of each corner and restart the above process along the next wall until complete the loop</p>\n\n<p>5. done!</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397937600,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396983171,
+ "revisionid": 3476,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD STEP FOR USING SLURRY.",
+     "text_rendered": "ADD STEP FOR USING SLURRY."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.440x330",
+      "guid": "RZpC1XCKaxkxysWs",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.huge",
+      "id": 3864,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RZpC1XCKaxkxysWs.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.440x330",
+      "guid": "DKxBBBPdZXim3ron",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.huge",
+      "id": 3860,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DKxBBBPdZXim3ron.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5105,
+   "stepid": 975,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place your first two bricks on each corner.",
+     "text_rendered": "Place your first two bricks on each corner."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''NOTE: The image does not show the sill seal foam gasket. In MH 2, we will be using a sill seal gasket between the foundation and the CEBs.'''",
+     "text_rendered": "<strong>NOTE: The image does not show the sill seal foam gasket. In MH 2, we will be using a sill seal gasket between the foundation and the CEBs.</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.440x330",
+      "guid": "EKYw6VPQZqOfbaBT",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.huge",
+      "id": 3734,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EKYw6VPQZqOfbaBT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5005,
+   "stepid": 970,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''ABSOLUTELY CRITICAL QUALITY CONTROL STEP.'''",
+     "text_rendered": "<strong>ABSOLUTELY CRITICAL QUALITY CONTROL STEP.</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Measure the diagonals between outside corners of the CEBs. The measurement should be 19' - 9 1/2\". For quality control, you can be no more than 1/4\" off from this measurement.",
+     "text_rendered": "Measure the diagonals between outside corners of the CEBs. The measurement should be 19' - 9 1/2&quot;. For quality control, you can be no more than 1/4&quot; off from this measurement."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "As you start each course, you will measure both diagonals, as shown in Image 1. You will also measure the outside-to-outside length of the straight sides, as shown in Image 2. The length of each side must remain at 14' every course, with a tolerance of 1/4\" or less.",
+     "text_rendered": "As you start each course, you will measure both diagonals, as shown in Image 1. You will also measure the outside-to-outside length of the straight sides, as shown in Image 2. The length of each side must remain at 14' every course, with a tolerance of 1/4&quot; or less."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "NEED PHOTO HERE OF CHECKING DIAGONALS ON FIRST COURSE TO REPLACE THIS PHOTO.",
+     "text_rendered": "NEED PHOTO HERE OF CHECKING DIAGONALS ON FIRST COURSE TO REPLACE THIS PHOTO."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.440x330",
+      "guid": "bS1feUyU625bJqGr",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.huge",
+      "id": 3735,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bS1feUyU625bJqGr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.440x330",
+      "guid": "ewPMUKBHGQYAalHx",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.huge",
+      "id": 3738,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ewPMUKBHGQYAalHx.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5023,
+   "stepid": 972,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you have the corner blocks positioned precisely as described in the previous step, you are ready to attach the mason's blocks with strings, which will help you keep the walls straight as they go up.",
+     "text_rendered": "Once you have the corner blocks positioned precisely as described in the previous step, you are ready to attach the mason's blocks with strings, which will help you keep the walls straight as they go up."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "NEED TO TAKE PHOTO OF PLACING MASON'S BLOCKS, along with close-up of how they are used, how the string relates to the CEB wall, and how to sight along them.",
+     "text_rendered": "NEED TO TAKE PHOTO OF PLACING MASON'S BLOCKS, along with close-up of how they are used, how the string relates to the CEB wall, and how to sight along them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You can see the small mason's blocks that hold the yellow string on the corner.",
+     "text_rendered": "You can see the small mason's blocks that hold the yellow string on the corner."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "In Image 2, you can see that the CEBs are being laid from the corners and from any frames towards the middle. This prevents a skinny block from ending up on the end. It also allows more people to lay blocks.",
+     "text_rendered": "In Image 2, you can see that the CEBs are being laid from the corners and from any frames towards the middle. This prevents a skinny block from ending up on the end. It also allows more people to lay blocks."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.440x330",
+      "guid": "LVwTATTiCSHXKXRQ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.huge",
+      "id": 3740,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LVwTATTiCSHXKXRQ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.440x330",
+      "guid": "DSYIKeJSGuNJh1lD",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.huge",
+      "id": 3739,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DSYIKeJSGuNJh1lD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5020,
+   "stepid": 973,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you have completed a course, begin the process again by placing blocks on each corner.",
+     "text_rendered": "Once you have completed a course, begin the process again by placing blocks on each corner."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''QUALITY CONTROL: Make sure that you run each course the opposite direction as the course below it, as shown in the picture. This creates a stronger corner.'''",
+     "text_rendered": "<strong>QUALITY CONTROL: Make sure that you run each course the opposite direction as the course below it, as shown in the picture. This creates a stronger corner.</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat the steps for checking the length of the sides and the diagonals so that the building stays square and the sides stay the proper length.",
+     "text_rendered": "Repeat the steps for checking the length of the sides and the diagonals so that the building stays square and the sides stay the proper length."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "In the first photo you can see us starting the next course and preparing to measure the sides and diagonals. Once we have our bricks adjusted, we will move the mason's blocks up and start laying the next course.",
+     "text_rendered": "In the first photo you can see us starting the next course and preparing to measure the sides and diagonals. Once we have our bricks adjusted, we will move the mason's blocks up and start laying the next course."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.440x330",
+      "guid": "yhh3nJbyHc34OfLG",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.huge",
+      "id": 3742,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhh3nJbyHc34OfLG.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5022,
+   "stepid": 974,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 145,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Make sure that as you lay the bricks, you are breaking the vertical joints. This means that bricks do not rest directly over the brick below them. One bricks rests on top of two bricks.'''",
+     "text_rendered": "<strong>Make sure that as you lay the bricks, you are breaking the vertical joints. This means that bricks do not rest directly over the brick below them. One bricks rests on top of two bricks.</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Image 2: People outside the wall feed bricks to people inside the wall. The feeders' job is to make sure that the layers are never waiting for bricks and that they are not laying the bricks in the way of where they need to be stacked.",
+     "text_rendered": "Image 2: People outside the wall feed bricks to people inside the wall. The feeders' job is to make sure that the layers are never waiting for bricks and that they are not laying the bricks in the way of where they need to be stacked."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Image 3: Check each row for straightness using the mason's string and make any adjustments before moving on to start the next row. Also double check your sides and diagonals.",
+     "text_rendered": "Image 3: Check each row for straightness using the mason's string and make any adjustments before moving on to start the next row. Also double check your sides and diagonals."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.440x330",
+      "guid": "UFSxXAPqdwVhkW2f",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.huge",
+      "id": 3744,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UFSxXAPqdwVhkW2f.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.440x330",
+      "guid": "gusn6j3p6W2uF2ed",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.huge",
+      "id": 3745,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gusn6j3p6W2uF2ed.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.440x330",
+      "guid": "jDgMRseUWlYwHdYX",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.huge",
+      "id": 3743,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jDgMRseUWlYwHdYX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 5031,
+   "stepid": 976,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Part 2: CEB Walls",
+ "summary": "Laying the sill seal foam gasket on the foundation. This will be the barrier between the foundation and the CEB.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Microhouse 2 CEB Walls",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Microhouse+2+CEB+Walls/145",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/145"
+}

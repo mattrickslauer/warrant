@@ -1,0 +1,1177 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Step+1+-+Building+the+MicroHouse+2+Loft+Module+Framing/148",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "MicroHouse 2 Loft Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1397063148,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3545,
+ "guideid": 148,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.440x330",
+  "guid": "Xv5EBLvrnKxIqZh3",
+  "id": 3752,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397959348,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1397063151,
+ "revisionid": 297,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Review the images in this step to get an overview of what you are building. The first image shows the framing with dimensions. The second image gives you the context for how the modules look when the decking has been added and the modules are set next each other.",
+     "text_rendered": "Review the images in this step to get an overview of what you are building. The first image shows the framing with dimensions. The second image gives you the context for how the modules look when the decking has been added and the modules are set next each other."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Note, the \"notch\" in the module on the right. It provides the place where people come up the ladder/stairs into the loft.",
+     "text_rendered": "Note, the &quot;notch&quot; in the module on the right. It provides the place where people come up the ladder/stairs into the loft."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.440x330",
+      "guid": "Xv5EBLvrnKxIqZh3",
+      "id": 3752,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xv5EBLvrnKxIqZh3.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.440x330",
+      "guid": "XIgRqeNsPagUEDTd",
+      "id": 3750,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XIgRqeNsPagUEDTd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5045,
+   "stepid": 978,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the 2x4 pieces for the left module. Stack these together as they are cut.",
+     "text_rendered": "Cut the 2x4 pieces for the left module. Stack these together as they are cut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "CHANGE LAYOUT TO 1' O.C. IF YOU USE 1/2\" PLYWOOD. IF YOU USE 16\" O.C. SPACING, USE MIN. 5/8\" or 3/4\" PLYWOOD.",
+     "text_rendered": "CHANGE LAYOUT TO 1' O.C. IF YOU USE 1/2&quot; PLYWOOD. IF YOU USE 16&quot; O.C. SPACING, USE MIN. 5/8&quot; or 3/4&quot; PLYWOOD."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "CUT LIST:",
+     "text_rendered": "CUT LIST:"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "6 @ 6' - 9\"",
+     "text_rendered": "6 @ 6' - 9&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "2 @ 5' - 11 1/4\"",
+     "text_rendered": "2 @ 5' - 11 1/4&quot;"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.440x330",
+      "guid": "Af34SgUE4CZpcvIg",
+      "id": 3756,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Af34SgUE4CZpcvIg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5118,
+   "stepid": 979,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Next, cut the pieces for the frame with the notch, and stack these separately from the pieces from the previous step.",
+     "text_rendered": "Next, cut the pieces for the frame with the notch, and stack these separately from the pieces from the previous step."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "CUT LIST",
+     "text_rendered": "CUT LIST"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 @ 6' - 9\"",
+     "text_rendered": "3 @ 6' - 9&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 @ 5' - 11 1/4\"",
+     "text_rendered": "1 @ 5' - 11 1/4&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "3 @ 5' - 7\"",
+     "text_rendered": "3 @ 5' - 7&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 @ 3' - 5 1/4\"",
+     "text_rendered": "1 @ 3' - 5 1/4&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 @ 3' - 2 1/2\"",
+     "text_rendered": "1 @ 3' - 2 1/2&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "1 @ 1' - 1/2\"",
+     "text_rendered": "1 @ 1' - 1/2&quot;"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.440x330",
+      "guid": "2QKbJj1jaNAqxmaE",
+      "id": 3758,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2QKbJj1jaNAqxmaE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5051,
+   "stepid": 980,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Next, we are creating the \"rim joists.\" Two of these are used for the module w/o the notch, and one is used for the module with the notch.",
+     "text_rendered": "Next, we are creating the &quot;rim joists.&quot; Two of these are used for the module w/o the notch, and one is used for the module with the notch."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gather all three of your 5' - 11 1/4\" boards together. Mark all three of them as you see in the image on the left.",
+     "text_rendered": "Gather all three of your 5' - 11 1/4&quot; boards together. Mark all three of them as you see in the image on the left."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD PICTURES SHOWING PROPER PROCEDURE FOR LAYOUT WITH A SPEED SQUARE AND TAPE MEASURE.",
+     "text_rendered": "ADD PICTURES SHOWING PROPER PROCEDURE FOR LAYOUT WITH A SPEED SQUARE AND TAPE MEASURE."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put one of these back with the stack of pieces for the notched module. Keep the other two available for the next step.",
+     "text_rendered": "Put one of these back with the stack of pieces for the notched module. Keep the other two available for the next step."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.440x330",
+      "guid": "WSPuLcqZoTxlIChw",
+      "id": 3754,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WSPuLcqZoTxlIChw.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5054,
+   "stepid": 981,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take your two boards with the layout marks on them and set them across from each other so that the marks line up.",
+     "text_rendered": "Take your two boards with the layout marks on them and set them across from each other so that the marks line up."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay your two pieces with the layout marks on them facing each other and lay your six 6' - 9\" pieces in between, roughly in the position of the marks.",
+     "text_rendered": "Lay your two pieces with the layout marks on them facing each other and lay your six 6' - 9&quot; pieces in between, roughly in the position of the marks."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Pre-drill two holes from the outside at the ends of the board to avoid splitting''' as shown on the second photo of this step. (The pre-drilling is only necessary at the ends of the board, not in the middle.) Screw (or nail, if you choose) the pieces into position.",
+     "text_rendered": "<strong>Pre-drill two holes from the outside at the ends of the board to avoid splitting</strong> as shown on the second photo of this step. (The pre-drilling is only necessary at the ends of the board, not in the middle.) Screw (or nail, if you choose) the pieces into position."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD IMAGE SHOWING THE DRILLING AT THE ENDS. THE SECOND IMAGE SHOWS SCREWING IN THE MIDDLE, SO THE LANGUAGE AND THE PICTURE DON\"T LINE UP RIGHT NOW.",
+     "text_rendered": "ADD IMAGE SHOWING THE DRILLING AT THE ENDS. THE SECOND IMAGE SHOWS SCREWING IN THE MIDDLE, SO THE LANGUAGE AND THE PICTURE DON&quot;T LINE UP RIGHT NOW."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.440x330",
+      "guid": "j2J1TVDMa6R3HI4u",
+      "id": 3760,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/j2J1TVDMa6R3HI4u.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.440x330",
+      "guid": "MuubAor5A1flIZMb",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.huge",
+      "id": 3761,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MuubAor5A1flIZMb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5061,
+   "stepid": 982,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "For the module with the notch, one of the rim joists was laid out identically to the two that you just used. This one is shown in position in the first image.",
+     "text_rendered": "For the module with the notch, one of the rim joists was laid out identically to the two that you just used. This one is shown in position in the first image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "For the other side, we need to create layout marks on the two shorter rim joists. These are shown in the second image.",
+     "text_rendered": "For the other side, we need to create layout marks on the two shorter rim joists. These are shown in the second image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The third image shows the dimensions for the layout marks. Mark up your 3' - 5 1/4\" piece and your 3' - 2 1/2\" piece as shown in the drawing.",
+     "text_rendered": "The third image shows the dimensions for the layout marks. Mark up your 3' - 5 1/4&quot; piece and your 3' - 2 1/2&quot; piece as shown in the drawing."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.440x330",
+      "guid": "CbXqXWwM22GCaTB4",
+      "id": 3765,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CbXqXWwM22GCaTB4.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.440x330",
+      "guid": "xarXShktKGecgrLO",
+      "id": 3766,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xarXShktKGecgrLO.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.440x330",
+      "guid": "cFECkKJlUQBC6KgW",
+      "id": 3767,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cFECkKJlUQBC6KgW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 5065,
+   "stepid": 983,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "First, you will attach the three 6' - 9\" pieces and the three, shorter 5' - 7\" pieces to the rim joist as shown in the first image.",
+     "text_rendered": "First, you will attach the three 6' - 9&quot; pieces and the three, shorter 5' - 7&quot; pieces to the rim joist as shown in the first image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Then, attach the 3' - 2 1/2\" rim piece as shown in the second image.",
+     "text_rendered": "Then, attach the 3' - 2 1/2&quot; rim piece as shown in the second image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Next, attach the 3' - 5 1/4\" rim piece as shown in the third image.",
+     "text_rendered": "Next, attach the 3' - 5 1/4&quot; rim piece as shown in the third image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Now all that remains to finish this framing is to add the little piece!",
+     "text_rendered": "Now all that remains to finish this framing is to add the little piece!"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.440x330",
+      "guid": "fHag2LFjCgYXl1fp",
+      "id": 3771,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fHag2LFjCgYXl1fp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.440x330",
+      "guid": "D6PmFGyGXabrMY2q",
+      "id": 3772,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D6PmFGyGXabrMY2q.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.440x330",
+      "guid": "3iHlPmOthtFhWAFS",
+      "id": 3774,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3iHlPmOthtFhWAFS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 5067,
+   "stepid": 984,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 148,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the small piece into the rim framing. The 7\" dimension in the drawing shows how far away from the next joist the small block is. Use this measurement to ensure that you attach the small block properly.",
+     "text_rendered": "Attach the small piece into the rim framing. The 7&quot; dimension in the drawing shows how far away from the next joist the small block is. Use this measurement to ensure that you attach the small block properly."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "SHOW IMAGE THAT CALLS OUT TWO SCREWS THROUGH THE RAFTER AND INTO THE SHORT RIM PIECE ON THE RIGHT.",
+     "text_rendered": "SHOW IMAGE THAT CALLS OUT TWO SCREWS THROUGH THE RAFTER AND INTO THE SHORT RIM PIECE ON THE RIGHT."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You're ready to move on to the Loft Module Decking Guide!",
+     "text_rendered": "You're ready to move on to the Loft Module Decking Guide!"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.440x330",
+      "guid": "eEAwRYxJfSpJDN4P",
+      "id": 3775,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eEAwRYxJfSpJDN4P.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 5070,
+   "stepid": 985,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Step 1 - Building the MicroHouse 2 Loft Module Framing",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Step 1 - Building the MicroHouse 2 Loft Module Framing",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Step+1+-+Building+the+MicroHouse+2+Loft+Module+Framing/148",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/148"
+}

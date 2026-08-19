@@ -1,0 +1,919 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-15.thumbnail"
+  },
+  "join_date": 1407467584,
+  "reputation": 1,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/194/chuytoscano",
+  "userid": 194,
+  "username": "chuytoscano"
+ },
+ "body_url_path": "/Guide/Module+6a+b/168",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "MicroHouse 3 Walls",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1407505323,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3783,
+ "guideid": 168,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.440x330",
+  "guid": "AyYwwIXNI1jryDkg",
+  "id": 4130,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AyYwwIXNI1jryDkg.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "We are going to break down the framing into 11 framing modules that will be assembled on the ground in parallel with other construction processes.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "This is the how-to for the modules of the 2nd floor. Starting from the south, they are labeled 4-9 with an \"a\" and \"b\" distinction referencing their location on either west or east respectively.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "We are going to break down the framing into 11 framing modules that will be assembled on the ground in parallel with other construction processes.\n\nThis is the how-to for the modules of the 2nd floor. Starting from the south, they are labeled 4-9 with an \"a\" and \"b\" distinction referencing their location on either west or east respectively.",
+ "introduction_rendered": "<p>We are going to break down the framing into 11 framing modules that will be assembled on the ground in parallel with other construction processes.</p>\n\n<p>This is the how-to for the modules of the 2nd floor. Starting from the south, they are labeled 4-9 with an &quot;a&quot; and &quot;b&quot; distinction referencing their location on either west or east respectively.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1407522204,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1407509400,
+ "revisionid": 3698,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Gather materials for Mod. 6a+b'''",
+     "text_rendered": "<strong>Gather materials for Mod. 6a+b</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "2: 2x4x6'",
+     "text_rendered": "2: 2x4x6'"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "4: 2x4x8'",
+     "text_rendered": "4: 2x4x8'"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "2: 1/2\"x4'x8' Plywood",
+     "text_rendered": "2: 1/2&quot;x4'x8' Plywood"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "2: 3/4\"x4'x8' OSB",
+     "text_rendered": "2: 3/4&quot;x4'x8' OSB"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "~50: 3-1/8\" construction screw",
+     "text_rendered": "~50: 3-1/8&quot; construction screw"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "~50: 1-5/8\" coated deck screw",
+     "text_rendered": "~50: 1-5/8&quot; coated deck screw"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.440x330",
+      "guid": "Hul3PhrrX2PPBRWN",
+      "id": 4054,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Hul3PhrrX2PPBRWN.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.440x330",
+      "guid": "vaBb1VoMXh2G5f2K",
+      "id": 4056,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vaBb1VoMXh2G5f2K.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5426,
+   "stepid": 1047,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use two people to make the proper cuts at the dimensions in the graphic at a 17 degree angle on the miter saw.",
+     "text_rendered": "Use two people to make the proper cuts at the dimensions in the graphic at a 17 degree angle on the miter saw."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Simultaneously, use the other two people in your group to assemble the framing pieces using two 3-1/8\" construction screws per connection, screwing perpendicular to the bottom plate and top diagonal pieces.",
+     "text_rendered": "Simultaneously, use the other two people in your group to assemble the framing pieces using two 3-1/8&quot; construction screws per connection, screwing perpendicular to the bottom plate and top diagonal pieces."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.440x330",
+      "guid": "SbFCyxluflMDTYJh",
+      "id": 4058,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SbFCyxluflMDTYJh.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.440x330",
+      "guid": "dht16aKQDeqNDrA4",
+      "id": 4060,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dht16aKQDeqNDrA4.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5429,
+   "stepid": 1048,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Exterior Sheathing for Module 6a'''",
+     "text_rendered": "<strong>Exterior Sheathing for Module 6a</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the 17 degree angle on the piece by marking the two vertical distances and snapping a guide chalk line to connect the two. Use a 7-1/4\"circular saw to make the cut.",
+     "text_rendered": "Cut the 17 degree angle on the piece by marking the two vertical distances and snapping a guide chalk line to connect the two. Use a 7-1/4&quot;circular saw to make the cut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Align the sheathing with a 1/4\" overhang on the left and a 6\" overhang from the bottom plate. The offset will create 1/4\" gap on the right side for the previous module to attach to. The top overhang should be 1.5\" to cover the top plate that will unify the modules during installation. The bottom overhang will cover the width of the bond beam.",
+     "text_rendered": "Align the sheathing with a 1/4&quot; overhang on the left and a 6&quot; overhang from the bottom plate. The offset will create 1/4&quot; gap on the right side for the previous module to attach to. The top overhang should be 1.5&quot; to cover the top plate that will unify the modules during installation. The bottom overhang will cover the width of the bond beam."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fasten the 3/4\" OSB to the framing using 1-5/8\" coated deck screws around the perimeter and interior studs @ approximately 16\" spacing.",
+     "text_rendered": "Fasten the 3/4&quot; OSB to the framing using 1-5/8&quot; coated deck screws around the perimeter and interior studs @ approximately 16&quot; spacing."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.440x330",
+      "guid": "l3jSEFII3PLEWqqO",
+      "id": 4062,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/l3jSEFII3PLEWqqO.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.440x330",
+      "guid": "AKqXxqPBJO1Ucw5t",
+      "id": 4064,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AKqXxqPBJO1Ucw5t.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.440x330",
+      "guid": "hMo6EHTKKB6h5kJZ",
+      "id": 4066,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hMo6EHTKKB6h5kJZ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5431,
+   "stepid": 1049,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Insert R13 fiberglass insulation batts'''",
+     "text_rendered": "<strong>Insert R13 fiberglass insulation batts</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut to size the 15\" wide R13 insulation and install them into the stud cavities with the paper faced side closest to the interior",
+     "text_rendered": "Cut to size the 15&quot; wide R13 insulation and install them into the stud cavities with the paper faced side closest to the interior"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.440x330",
+      "guid": "fTltbXGGIVGSaanu",
+      "id": 4068,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fTltbXGGIVGSaanu.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5433,
+   "stepid": 1050,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Interior sheathing for module 6a.'''",
+     "text_rendered": "<strong>Interior sheathing for module 6a.</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the 17 degree angle on the piece by marking the two vertical distances and snapping a guide chalk line to connect the two. Use a 7-1/4\"circular saw to make the cut.  (horizontal dimension is 4')",
+     "text_rendered": "Cut the 17 degree angle on the piece by marking the two vertical distances and snapping a guide chalk line to connect the two. Use a 7-1/4&quot;circular saw to make the cut.  (horizontal dimension is 4')"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Align the sheathing with a 1/4\" overhang on the left flush with the bottom plate. The offset will create 1/4\" gap on the right side for the previous module to attach to. The top overhang should be 1.5\" to cover the top plate that will unify the modules during installation.",
+     "text_rendered": "Align the sheathing with a 1/4&quot; overhang on the left flush with the bottom plate. The offset will create 1/4&quot; gap on the right side for the previous module to attach to. The top overhang should be 1.5&quot; to cover the top plate that will unify the modules during installation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fasten the 1/2\" plywood to the framing using 1-5/8\" coated deck screws around the perimeter and interior studs @ approximately 16\" spacing.",
+     "text_rendered": "Fasten the 1/2&quot; plywood to the framing using 1-5/8&quot; coated deck screws around the perimeter and interior studs @ approximately 16&quot; spacing."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.440x330",
+      "guid": "dRM5YrTFSD6RKDrj",
+      "id": 4070,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dRM5YrTFSD6RKDrj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.440x330",
+      "guid": "hKn52wItZHRpueMj",
+      "id": 4072,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hKn52wItZHRpueMj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.440x330",
+      "guid": "Qw6QV1WYYCbNIqXM",
+      "id": 4074,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qw6QV1WYYCbNIqXM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5459,
+   "stepid": 1051,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 168,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Module 6b has the same assembly instructions as Module 6a except that the interior and exterior sheathing are inverted because they are mirror images of one another.",
+     "text_rendered": "Module 6b has the same assembly instructions as Module 6a except that the interior and exterior sheathing are inverted because they are mirror images of one another."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Follow module 6a steps 1-5 for module 6b, but reverse the sides of the sheathing so that module 6b has the exterior sheathing on the opposite side as module 6a.",
+     "text_rendered": "Follow module 6a steps 1-5 for module 6b, but reverse the sides of the sheathing so that module 6b has the exterior sheathing on the opposite side as module 6a."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.440x330",
+      "guid": "qcRhKYeREgaYPdyi",
+      "id": 4076,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qcRhKYeREgaYPdyi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 5441,
+   "stepid": 1052,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "This guide will explain how to construct the 2x4 modules of the walls that sit atop the masonry and provide the 17 degree slope of the roof.",
+ "time_required": "1 minute",
+ "time_required_max": 90,
+ "time_required_min": 90,
+ "title": "Module 6a+b",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Circular Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/circular_saw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Table Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/table_saw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Tape Measure",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/tape_measure"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Chalk Line",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Chalk_Line"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Carpenter's Pencil",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Carpenter%27s_Pencil"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Cordless Drill / Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/cordless_drill_driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Module+6a+b/168",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/168"
+}

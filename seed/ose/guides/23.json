@@ -1,0 +1,711 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Support+System/23",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041489,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3912,
+ "guideid": 23,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.440x330",
+  "guid": "qqWtSVULtWh2mh1L",
+  "id": 190,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qqWtSVULtWh2mh1L.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "This guide explains the steps for:* Leg Holders-",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=9ede5ca4cc4cd2301211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Model",
+      "type": "text"
+     },
+     {
+      "text": "* Feet- ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=9cd8c14e87d341971211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Model",
+      "type": "text"
+     },
+     {
+      "text": "* Legs- ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=46674851ee0302a11211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Model",
+      "type": "text"
+     },
+     {
+      "text": "* Secondary Arms- ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=4c317c20fdb7bac61211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Model",
+      "type": "text"
+     },
+     {
+      "text": "* Primary Arms- ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=e9575044ab22492a1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Left Primary Arm Model",
+      "type": "text"
+     },
+     {
+      "text": ", ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=c3bd225ffa19896e1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Right Primary Arm Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* 3/4\" Steel Nuts (14)* 3/4\"x1.5\" Bolts (14)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "This guide explains the steps for:* Leg Holders-[http://sketchup.google.com/3dwarehouse/details?mid=9ede5ca4cc4cd2301211da1f85706ccd|Model]* Feet- [http://sketchup.google.com/3dwarehouse/details?mid=9cd8c14e87d341971211da1f85706ccd|Model]* Legs- [http://sketchup.google.com/3dwarehouse/details?mid=46674851ee0302a11211da1f85706ccd|Model]* Secondary Arms- [http://sketchup.google.com/3dwarehouse/details?mid=4c317c20fdb7bac61211da1f85706ccd|Model]* Primary Arms- [http://sketchup.google.com/3dwarehouse/details?mid=e9575044ab22492a1211da1f85706ccd|Left Primary Arm Model], [http://sketchup.google.com/3dwarehouse/details?mid=c3bd225ffa19896e1211da1f85706ccd|Right Primary Arm Model]Additional Materials Required:* 3/4\" Steel Nuts (14)* 3/4\"x1.5\" Bolts (14)",
+ "introduction_rendered": "<p>This guide explains the steps for:* Leg Holders-<a href=\"http://sketchup.google.com/3dwarehouse/details?mid=9ede5ca4cc4cd2301211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Model</a>* Feet- <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=9cd8c14e87d341971211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Model</a>* Legs- <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=46674851ee0302a11211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Model</a>* Secondary Arms- <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=4c317c20fdb7bac61211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Model</a>* Primary Arms- <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=e9575044ab22492a1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Left Primary Arm Model</a>, <a href=\"http://sketchup.google.com/3dwarehouse/details?mid=c3bd225ffa19896e1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Right Primary Arm Model</a>Additional Materials Required:* 3/4&quot; Steel Nuts (14)* 3/4&quot;x1.5&quot; Bolts (14)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134837,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041489,
+ "revisionid": 48,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 23,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You need to make 4 of these.",
+     "text_rendered": "You need to make 4 of these."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Center a leg holder on the 1/4x8x8 plate, ensuring it is square in all directions.",
+     "text_rendered": "Center a leg holder on the 1/4x8x8 plate, ensuring it is square in all directions."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld it 100% to the plate.",
+     "text_rendered": "Weld it 100% to the plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.440x330",
+      "guid": "kbRJ6HK5CqObOvcP",
+      "id": 193,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kbRJ6HK5CqObOvcP.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 123,
+   "stepid": 61,
+   "time_estimate": 0,
+   "title": "Make the feet"
+  },
+  {
+   "comments": [],
+   "guideid": 23,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You need two and they are exactly the same.",
+     "text_rendered": "You need two and they are exactly the same."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch the 3/4\" holes",
+     "text_rendered": "Punch the 3/4&quot; holes"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the leg holders in their proper locations.",
+     "text_rendered": "Place the leg holders in their proper locations."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "They go on the 4\" side of the angle.",
+     "text_rendered": "They go on the 4&quot; side of the angle."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure they are square with the angle iron and centered vertically.",
+     "text_rendered": "Make sure they are square with the angle iron and centered vertically."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld them to the angle.",
+     "text_rendered": "Weld them to the angle."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.440x330",
+      "guid": "GHtkVMFXeNWLn1SZ",
+      "id": 197,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GHtkVMFXeNWLn1SZ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.440x330",
+      "guid": "lMxECxBOtWDMfU3Z",
+      "id": 200,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMxECxBOtWDMfU3Z.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 127,
+   "stepid": 63,
+   "time_estimate": 0,
+   "title": "Make the Secondary Arms"
+  },
+  {
+   "comments": [],
+   "guideid": 23,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark all holes",
+     "text_rendered": "Mark all holes"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch all holes.",
+     "text_rendered": "Punch all holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Label each arm with either \"right\" or \"left\"",
+     "text_rendered": "Label each arm with either &quot;right&quot; or &quot;left&quot;"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.440x330",
+      "guid": "65u1sPoe4oGuTeZM",
+      "id": 202,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/65u1sPoe4oGuTeZM.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.440x330",
+      "guid": "G2ZPxWu5h6DEwBJ2",
+      "id": 204,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/G2ZPxWu5h6DEwBJ2.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.440x330",
+      "guid": "4SSl2DwLO1OT6EVR",
+      "id": 208,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4SSl2DwLO1OT6EVR.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 129,
+   "stepid": 64,
+   "time_estimate": 0,
+   "title": "Make the primary arms"
+  },
+  {
+   "comments": [],
+   "guideid": 23,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "There are no steps for the legs, just cut them.",
+     "text_rendered": "There are no steps for the legs, just cut them."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.440x330",
+      "guid": "4B3tM5WwUhYtF1qF",
+      "id": 213,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4B3tM5WwUhYtF1qF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 135,
+   "stepid": 67,
+   "time_estimate": 0,
+   "title": "Legs"
+  }
+ ],
+ "subject": "",
+ "summary": "This page tells how to prepare the components which make up the support system.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Support System",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Support+System/23",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/23"
+}

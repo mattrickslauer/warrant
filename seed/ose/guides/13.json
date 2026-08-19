@@ -1,0 +1,769 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Installing+the+Secondary+Cylinder/13",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041457,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3909,
+ "guideid": 13,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.440x330",
+  "guid": "YTkbYGdUkULNMXhG",
+  "id": 122,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YTkbYGdUkULNMXhG.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134836,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "1/2\"x3\"x3\" steel plate",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22x3%22x3%22_steel_plate"
+  },
+  {
+   "notes": null,
+   "quantity": 2,
+   "text": "1\" washers",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1%22_washers"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Secondary Cylinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Secondary_Cylinder"
+  },
+  {
+   "notes": "See [http://opensourceecology.org/wiki/CEB_Press/Manufacturing_Instructions/Hoses_-_Secondary_cylinder_hose_unit|Secondary Cylinder Hose Unit]]",
+   "quantity": 1,
+   "text": "Secondary cylinder hose unit",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Secondary_cylinder_hose_unit"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041457,
+ "revisionid": 28,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "This is on the opposite side of the CEB of the brickholder plate.",
+     "text_rendered": "This is on the opposite side of the CEB of the brickholder plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.440x330",
+      "guid": "ySPXNoJT4RUWEanh",
+      "id": 124,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ySPXNoJT4RUWEanh.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 1171,
+   "stepid": 36,
+   "time_estimate": 0,
+   "title": "Mark the center between the primary arms on the secondary arm."
+  },
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The drawer needs to be in the fully retracted position.",
+     "text_rendered": "The drawer needs to be in the fully retracted position."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "This is when the drawer is about to eject the brick, the press plate will be back 1/4\" from the inside of the compression chamber.",
+     "text_rendered": "This is when the drawer is about to eject the brick, the press plate will be back 1/4&quot; from the inside of the compression chamber."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.440x330",
+      "guid": "PyPGoYgVUuTlWAQg",
+      "id": 128,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PyPGoYgVUuTlWAQg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 76,
+   "stepid": 37,
+   "time_estimate": 0,
+   "title": "Position the drawer"
+  },
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch a 1\" hole in the center of a 3\"x3\" piece of 1/2\" thick steel.",
+     "text_rendered": "Punch a 1&quot; hole in the center of a 3&quot;x3&quot; piece of 1/2&quot; thick steel."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.440x330",
+      "guid": "fDebwObqUPvRXHML",
+      "id": 129,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fDebwObqUPvRXHML.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 152,
+   "stepid": 38,
+   "time_estimate": 0,
+   "title": "Prepare the cylinder mount."
+  },
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "On the side which attaches to the secondary arm, put the pin through the mount, a 1\" washer, and the cylinder.",
+     "text_rendered": "On the side which attaches to the secondary arm, put the pin through the mount, a 1&quot; washer, and the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The side of the cylinder with the rod attaches to the drawer.",
+     "text_rendered": "The side of the cylinder with the rod attaches to the drawer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Both sides will need a 1\" washer to act as a spacer so the cylinder can't slide back and forth.",
+     "text_rendered": "Both sides will need a 1&quot; washer to act as a spacer so the cylinder can't slide back and forth."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "When the cylinder is attached to the drawer, place the mount on your center mark.",
+     "text_rendered": "When the cylinder is attached to the drawer, place the mount on your center mark."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Square the mount in all directions.",
+     "text_rendered": "Square the mount in all directions."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.440x330",
+      "guid": "pWTCRf2Djd1ODZFp",
+      "id": 131,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWTCRf2Djd1ODZFp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 82,
+   "stepid": 40,
+   "time_estimate": 0,
+   "title": "Place the cylinder"
+  },
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the mount in a few places.",
+     "text_rendered": "Tack the mount in a few places."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the pin and move the cylinder out of the way of the mount.",
+     "text_rendered": "Remove the pin and move the cylinder out of the way of the mount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You can slide the drawer away so you don't need to remove that side.",
+     "text_rendered": "You can slide the drawer away so you don't need to remove that side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the mount solid, all the way around. Make sure it stays square.",
+     "text_rendered": "Weld the mount solid, all the way around. Make sure it stays square."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.440x330",
+      "guid": "1XCPGITydcWccUVC",
+      "id": 135,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1XCPGITydcWccUVC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 84,
+   "stepid": 41,
+   "time_estimate": 0,
+   "title": "Weld the mount in place"
+  },
+  {
+   "comments": [],
+   "guideid": 13,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Return the secondary cylinder and re-mount it. Don't forget the washer.",
+     "text_rendered": "Return the secondary cylinder and re-mount it. Don't forget the washer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the plug from the port on top of the cylinder.",
+     "text_rendered": "Remove the plug from the port on top of the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The cylinder may have fluid in it, so keep a jar handy to catch any that spills.",
+     "text_rendered": "The cylinder may have fluid in it, so keep a jar handy to catch any that spills."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install Assembly #2 into this port.",
+     "text_rendered": "Install Assembly #2 into this port."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Couple the remaining assemblies and hoses in place.",
+     "text_rendered": "Couple the remaining assemblies and hoses in place."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.440x330",
+      "guid": "CEKybeLDFakGDqge",
+      "id": 137,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CEKybeLDFakGDqge.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.440x330",
+      "guid": "bAmwPuMxiIJF1CyV",
+      "id": 138,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bAmwPuMxiIJF1CyV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 86,
+   "stepid": 42,
+   "time_estimate": 0,
+   "title": "Install hoses"
+  }
+ ],
+ "subject": "",
+ "summary": "This guide explains installing the secondary cylinder. This is to be done after you have assembled the structural components. It is recommended that this be the last part of assembly, as it could get damaged if its not.",
+ "time_required": "45 minutes",
+ "time_required_max": 2700,
+ "time_required_min": 2700,
+ "title": "Installing the Secondary Cylinder",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+the+Secondary+Cylinder/13",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/13"
+}

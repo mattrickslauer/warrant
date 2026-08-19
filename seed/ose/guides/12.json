@@ -1,0 +1,1906 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Soil+Loading+System/12",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041453,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3908,
+ "guideid": 12,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.440x330",
+  "guid": "h5onpn1UBREEXUt2",
+  "id": 114,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/h5onpn1UBREEXUt2.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "You must have finished assembling the main frame before you install the soil loading system.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "You must have finished assembling the main frame before you install the soil loading system.",
+ "introduction_rendered": "<p>You must have finished assembling the main frame before you install the soil loading system.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134835,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": "4 for hopper mount 4 for mounting the shaker, 2 for the bottom on grate supports",
+   "quantity": 10,
+   "text": "3/4\" galvanized nuts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22_galvanized_nuts"
+  },
+  {
+   "notes": "for the grate to hopper supports",
+   "quantity": 2,
+   "text": "1/2\" lock nuts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22_lock_nuts"
+  },
+  {
+   "notes": "for the hopper to hopper supports",
+   "quantity": 2,
+   "text": "1/2\" nuts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22_nuts"
+  },
+  {
+   "notes": "4 for hopper  mounting plate, 2 for shaker mount, 2 for grate supports",
+   "quantity": 8,
+   "text": "3/4\"x1.5\" bolts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22x1.5%22_bolts"
+  },
+  {
+   "notes": "for top of grate supports to grate",
+   "quantity": 2,
+   "text": "3/4\"x2.5\" bolts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22x2.5%22_bolts"
+  },
+  {
+   "notes": "for grate to hopper supports",
+   "quantity": 2,
+   "text": "1/2\"x2.5\" bolts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22x2.5%22_bolts"
+  },
+  {
+   "notes": "for hopper to hopper supports",
+   "quantity": 2,
+   "text": "1/2\"x3\" bolt",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22x3%22_bolt"
+  },
+  {
+   "notes": "4 for hopper to hopper supports, 4 for grate to hopper supports",
+   "quantity": 8,
+   "text": "1/2\" washers",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22_washers"
+  },
+  {
+   "notes": "4 for grate to hopper supports, 2 for grate to grate supports",
+   "quantity": 6,
+   "text": "3/4\" washers",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22_washers"
+  },
+  {
+   "notes": "For dirt deflector to grate",
+   "quantity": 4,
+   "text": "1/2\"x1\" Bolts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22x1%22_Bolts"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041453,
+ "revisionid": 2010,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Clamp the hopper mounting plate to the top of the main frame, positioned as shown, with the cutaways positioned by the leg holders.",
+     "text_rendered": "Clamp the hopper mounting plate to the top of the main frame, positioned as shown, with the cutaways positioned by the leg holders."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Clamp it so that the side you grinded down the welds on is touching the main frame.",
+     "text_rendered": "Clamp it so that the side you grinded down the welds on is touching the main frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the holes thru to the main frame.",
+     "text_rendered": "Torch the holes thru to the main frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Check that the fit is good by putting bolts in all the holes.",
+     "text_rendered": "Check that the fit is good by putting bolts in all the holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away all the slag.",
+     "text_rendered": "Grind away all the slag."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the mount to the frame.",
+     "text_rendered": "Bolt the mount to the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.440x330",
+      "guid": "WBfja4eJZpAlUa2A",
+      "id": 119,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/WBfja4eJZpAlUa2A.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 72,
+   "stepid": 35,
+   "time_estimate": 0,
+   "title": "Torch the holes for the hopper mounting plate"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the hopper supports into the leg holders.",
+     "text_rendered": "Install the hopper supports into the leg holders."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure you put the support with bolts on it on the correct side (refer to your shaker motor and look where you marked it.)",
+     "text_rendered": "Make sure you put the support with bolts on it on the correct side (refer to your shaker motor and look where you marked it.)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Their bottom side should be flush with the bottom of the leg holders on the frame.",
+     "text_rendered": "Their bottom side should be flush with the bottom of the leg holders on the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure they are orientated correctly. See photo.",
+     "text_rendered": "Make sure they are orientated correctly. See photo."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "On the side of the shaker motor that you didn't weld bolts for, put a bolt (3/4\"x1.5\") thru both holes and tighten nuts onto them.",
+     "text_rendered": "On the side of the shaker motor that you didn't weld bolts for, put a bolt (3/4&quot;x1.5&quot;) thru both holes and tighten nuts onto them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The nut should be on the side of the mount that the motor will be installed to. (see photo)",
+     "text_rendered": "The nut should be on the side of the mount that the motor will be installed to. (see photo)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.440x330",
+      "guid": "jOiKgWLKaSpNfxrQ",
+      "id": 125,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOiKgWLKaSpNfxrQ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.440x330",
+      "guid": "yhawD1cdHdRIMd3B",
+      "id": 130,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yhawD1cdHdRIMd3B.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 80,
+   "stepid": 39,
+   "time_estimate": 0,
+   "title": "Install hopper supports and prepare shaker mount."
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the shaker onto the bolts already welded to the hopper supports.",
+     "text_rendered": "Place the shaker onto the bolts already welded to the hopper supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Clamp the other side to the hopper support.",
+     "text_rendered": "Clamp the other side to the hopper support."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use a square to make sure the shaker mount is square with the hopper supports.",
+     "text_rendered": "Use a square to make sure the shaker mount is square with the hopper supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten nuts onto the side with the welded bolts.",
+     "text_rendered": "Tighten nuts onto the side with the welded bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the bolts to the hopper support.",
+     "text_rendered": "Tack the bolts to the hopper support."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure you tack them to the hopper support, NOT the shaker mount.",
+     "text_rendered": "Make sure you tack them to the hopper support, NOT the shaker mount."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Tack as much as you can from this position.",
+     "text_rendered": "Tack as much as you can from this position."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.440x330",
+      "guid": "GjQUu6hXj3KePG5p",
+      "id": 134,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GjQUu6hXj3KePG5p.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.440x330",
+      "guid": "jOBYGfdRTWKMS4sR",
+      "id": 139,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jOBYGfdRTWKMS4sR.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 173,
+   "stepid": 43,
+   "time_estimate": 0,
+   "title": "Tack shaker bolts to hopper support"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosen all the nuts and remove the shaker.",
+     "text_rendered": "Loosen all the nuts and remove the shaker."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Protect the threads on the bolts.",
+     "text_rendered": "Protect the threads on the bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld all the way around the bolt to the hopper supports.",
+     "text_rendered": "Weld all the way around the bolt to the hopper supports."
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Don't remount the shaker yet.",
+     "text_rendered": "Don't remount the shaker yet."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.440x330",
+      "guid": "OYUHVvIWDUvVcsTI",
+      "id": 145,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OYUHVvIWDUvVcsTI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 94,
+   "stepid": 46,
+   "time_estimate": 0,
+   "title": "Weld shaker bolts."
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Clamp the 34\" tall hopper back to the hopper supports.",
+     "text_rendered": "Clamp the 34&quot; tall hopper back to the hopper supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "It should be centered horizontally between them, and touching the supports all the way down to the hopper mounting plate.",
+     "text_rendered": "It should be centered horizontally between them, and touching the supports all the way down to the hopper mounting plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch through the holes circled in the diagram, so you torch through the hopper sheet metal.",
+     "text_rendered": "Torch through the holes circled in the diagram, so you torch through the hopper sheet metal."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Torch through it on each side, just enough so you have 2 small holes.",
+     "text_rendered": "Torch through it on each side, just enough so you have 2 small holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Un-clamp the sheet metal and torch 1/2\" holes for the bolt.",
+     "text_rendered": "Un-clamp the sheet metal and torch 1/2&quot; holes for the bolt."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.440x330",
+      "guid": "3kPspgbmLuIqCC1t",
+      "id": 150,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kPspgbmLuIqCC1t.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.440x330",
+      "guid": "MrYOxWICrRfnY56Q",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.huge",
+      "id": 152,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MrYOxWICrRfnY56Q.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 98,
+   "stepid": 48,
+   "time_estimate": 0,
+   "title": "Clamp the hopper back to supports and torch holes"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind off the slag from the torching.",
+     "text_rendered": "Grind off the slag from the torching."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mount the first plate back to the hopper supports.",
+     "text_rendered": "Mount the first plate back to the hopper supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use a 1/2\"x3\" bolt and a nut with washers on each side.",
+     "text_rendered": "Use a 1/2&quot;x3&quot; bolt and a nut with washers on each side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lift the side pieces and clamp them to the first plate via the hinge plates.",
+     "text_rendered": "Lift the side pieces and clamp them to the first plate via the hinge plates."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Minimize the gap between them as much as you can by pushing them together tightly.",
+     "text_rendered": "Minimize the gap between them as much as you can by pushing them together tightly."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.440x330",
+      "guid": "YtuQPkqWBPxv1MeY",
+      "id": 156,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YtuQPkqWBPxv1MeY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.440x330",
+      "guid": "UpdZPp3ZHuCJYwTd",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.huge",
+      "id": 158,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpdZPp3ZHuCJYwTd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 101,
+   "stepid": 50,
+   "time_estimate": 0,
+   "title": "Remount the first plate, and prepare to weld"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld it about 50%, as no more is necessary.",
+     "text_rendered": "Weld it about 50%, as no more is necessary."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Weld in 3-4 inch sections.",
+     "text_rendered": "Weld in 3-4 inch sections."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.440x330",
+      "guid": "C5AEKQdGNOufXCPI",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.huge",
+      "id": 161,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C5AEKQdGNOufXCPI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 103,
+   "stepid": 51,
+   "time_estimate": 0,
+   "title": "Weld the hinge plates to the back piece"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Clamp the final piece in place to the other side of the side pieces.",
+     "text_rendered": "Clamp the final piece in place to the other side of the side pieces."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Yet again, minimize the gap between the two.",
+     "text_rendered": "Yet again, minimize the gap between the two."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You may need somebody to get inside of the hopper and push out so you can clamp it well.",
+     "text_rendered": "You may need somebody to get inside of the hopper and push out so you can clamp it well."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the last piece like you welded the first one.",
+     "text_rendered": "Weld the last piece like you welded the first one."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.440x330",
+      "guid": "ZUX1B6QocmmUpDpt",
+      "id": 165,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZUX1B6QocmmUpDpt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 105,
+   "stepid": 52,
+   "time_estimate": 0,
+   "title": "Clamp and weld the front piece"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Get a friend or two and lift the grate on top of the hopper.",
+     "text_rendered": "Get a friend or two and lift the grate on top of the hopper."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The front end (with the slots) should be as shown, and the grate should be inside of the hopper on the other side (the side with the nuts).",
+     "text_rendered": "The front end (with the slots) should be as shown, and the grate should be inside of the hopper on the other side (the side with the nuts)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Have your friend hold the grate in place for the next step, or use C-Clamps to clamp the grate to the supports.",
+     "text_rendered": "Have your friend hold the grate in place for the next step, or use C-Clamps to clamp the grate to the supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the grate to the hopper supports (1/2\"x 2.5\" bolt and lock nut). Bolt both loosely, and then tighten them.",
+     "text_rendered": "Bolt the grate to the hopper supports (1/2&quot;x 2.5&quot; bolt and lock nut). Bolt both loosely, and then tighten them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You'll need 2 washers on each side, as the holes are slots and a 1/2\" washer will be too small to prevent the washer from warping. Use a 3/4\" washer as the other one.",
+     "text_rendered": "You'll need 2 washers on each side, as the holes are slots and a 1/2&quot; washer will be too small to prevent the washer from warping. Use a 3/4&quot; washer as the other one."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You may want to use a large nut in place of a washer on the hopper support side. (see photo)",
+     "text_rendered": "You may want to use a large nut in place of a washer on the hopper support side. (see photo)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.440x330",
+      "guid": "AjCZQGl3GCXjE4Kt",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.huge",
+      "id": 168,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AjCZQGl3GCXjE4Kt.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 107,
+   "stepid": 53,
+   "time_estimate": 0,
+   "title": "Place the grate and bolt it to the hopper supports"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosely bolt the grate supports to the primary arms",
+     "text_rendered": "Loosely bolt the grate supports to the primary arms"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt (3/4\"x2.5\" bolt)  The grate mounts through the hopper to the grate.",
+     "text_rendered": "Bolt (3/4&quot;x2.5&quot; bolt)  The grate mounts through the hopper to the grate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use a 3/4\" washer where the bolt goes thru the grate support.",
+     "text_rendered": "Use a 3/4&quot; washer where the bolt goes thru the grate support."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten all bolts",
+     "text_rendered": "Tighten all bolts"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.440x330",
+      "guid": "UU6N2sxnqUwT6QZ6",
+      "id": 172,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UU6N2sxnqUwT6QZ6.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.440x330",
+      "guid": "NNG2ZPIO6xVukGCs",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.huge",
+      "id": 177,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NNG2ZPIO6xVukGCs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 111,
+   "stepid": 55,
+   "time_estimate": 0,
+   "title": "Install the grate supports"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "[guide|1728|Install the motor] on the shaker motor mount if you haven't already.",
+     "text_rendered": "[invalid guide link] on the shaker motor mount if you haven't already."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place it on the bolts on the hopper supports.",
+     "text_rendered": "Place it on the bolts on the hopper supports."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If for some reason it doesn't fit, torch away whatever metal is preventing it.",
+     "text_rendered": "If for some reason it doesn't fit, torch away whatever metal is preventing it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten nuts onto it.",
+     "text_rendered": "Tighten nuts onto it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.440x330",
+      "guid": "qQKp2dJ1IgHba6AI",
+      "id": 181,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qQKp2dJ1IgHba6AI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 115,
+   "stepid": 57,
+   "time_estimate": 0,
+   "title": "Re-install the shaker"
+  },
+  {
+   "comments": [],
+   "guideid": 12,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt it to the grate.",
+     "text_rendered": "Bolt it to the grate."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 117,
+   "stepid": 58,
+   "time_estimate": 0,
+   "title": "Install the Dirt Deflector Plate"
+  }
+ ],
+ "subject": "",
+ "summary": "This guide covers the installation of the hopper, shaker, and grate to the assembled main frame.",
+ "time_required": "2 hours",
+ "time_required_max": 7200,
+ "time_required_min": 7200,
+ "title": "Soil Loading System",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "c clamps",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/c_clamps"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Spray paint",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Spray_paint"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Vise clamps",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Vise_clamps"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Soil+Loading+System/12",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/12"
+}

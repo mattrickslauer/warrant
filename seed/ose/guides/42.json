@@ -1,0 +1,539 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Main+Frame:+Install+Small+Components/42",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041585,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3930,
+ "guideid": 42,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.440x330",
+  "guid": "B3YYMt5sIErkrK5d",
+  "id": 432,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/B3YYMt5sIErkrK5d.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=578643debbf3ea461211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* Thin Cylinder Supports* Magnet Holder* Sensor Holder* Leg Holders (2)* 3/4\" Galvanized Nuts (3)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=578643debbf3ea461211da1f85706ccd|Sketchup Model]Additional Materials Required:* Thin Cylinder Supports* Magnet Holder* Sensor Holder* Leg Holders (2)* 3/4\" Galvanized Nuts (3)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=578643debbf3ea461211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* Thin Cylinder Supports* Magnet Holder* Sensor Holder* Leg Holders (2)* 3/4&quot; Galvanized Nuts (3)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134844,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041585,
+ "revisionid": 86,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 42,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the thin cylinder supports by screwing the bolt in with an extra nut on it as shown, and placing the u-channel against the cylinder.",
+     "text_rendered": "Install the thin cylinder supports by screwing the bolt in with an extra nut on it as shown, and placing the u-channel against the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Get both of them snug so the cylinder is centered with pressure on each side.",
+     "text_rendered": "Get both of them snug so the cylinder is centered with pressure on each side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten down the nut to lock it.",
+     "text_rendered": "Tighten down the nut to lock it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.440x330",
+      "guid": "MLXiBsllmE6dZqiY",
+      "id": 436,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MLXiBsllmE6dZqiY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.440x330",
+      "guid": "JYJlVcQEp6tfDN4G",
+      "id": 438,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JYJlVcQEp6tfDN4G.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 267,
+   "stepid": 133,
+   "time_estimate": 0,
+   "title": "Install the thin Cylinder Supports"
+  },
+  {
+   "comments": [],
+   "guideid": 42,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the magnet holder onto the press foot.",
+     "text_rendered": "Install the magnet holder onto the press foot."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The flatbar needs to be parallel with the verticals.",
+     "text_rendered": "The flatbar needs to be parallel with the verticals."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lock it down with the nut.",
+     "text_rendered": "Lock it down with the nut."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.440x330",
+      "guid": "gFnPJ5OXvjw6cAnB",
+      "id": 442,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFnPJ5OXvjw6cAnB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 3058,
+   "stepid": 134,
+   "time_estimate": 0,
+   "title": "Install the magnet holder"
+  },
+  {
+   "comments": [],
+   "guideid": 42,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the 6\" sensor holder so the end of it  is overlapping the path of the magnet  holder as shown. The other sensor holder will be installed later.",
+     "text_rendered": "Install the 6&quot; sensor holder so the end of it  is overlapping the path of the magnet  holder as shown. The other sensor holder will be installed later."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.440x330",
+      "guid": "UqWWXoNQdQxbKUUd",
+      "id": 446,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UqWWXoNQdQxbKUUd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 271,
+   "stepid": 135,
+   "time_estimate": 0,
+   "title": "Install the Sensor Holder"
+  },
+  {
+   "comments": [],
+   "guideid": 42,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Position them on the upper horizontal members as shown.",
+     "text_rendered": "Position them on the upper horizontal members as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Use the location of the roller guides to insure you attach them to the right side.",
+     "text_rendered": "Use the location of the roller guides to insure you attach them to the right side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Insure they are square in all directions",
+     "text_rendered": "Insure they are square in all directions"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld them to the horizontal members fully.",
+     "text_rendered": "Weld them to the horizontal members fully."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.440x330",
+      "guid": "KN66GlCCgkD5BxnH",
+      "id": 450,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KN66GlCCgkD5BxnH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.440x330",
+      "guid": "asotRYJas2dYLyVv",
+      "id": 452,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/asotRYJas2dYLyVv.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 277,
+   "stepid": 138,
+   "time_estimate": 0,
+   "title": "Weld the Leg Holders"
+  }
+ ],
+ "subject": "",
+ "summary": "Install small components on your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Main Frame: Install Small Components",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "1 1/8\" Wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_1_8%22_Wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Main+Frame:+Install+Small+Components/42",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/42"
+}

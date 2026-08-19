@@ -1,0 +1,713 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Building+the+Microhouse+Utility+Module+Frame/96",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Utility Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383323569,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 3135,
+ "guideid": 96,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.440x330",
+  "guid": "ofttidlGmCYG1D6S",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.huge",
+  "id": 3515,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396363289,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 7,
+   "text": "2X6 8'",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2X6_8%27"
+  },
+  {
+   "notes": null,
+   "quantity": 3,
+   "text": "1/2\" plywood 4'X8' sheet",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_2%22_plywood_4%27X8%27_sheet"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "3\" screws",
+   "thumbnail": null,
+   "type": "(~30)",
+   "url": "/Item/3%22_screws"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "1.5\" screws",
+   "thumbnail": null,
+   "type": "(~60)",
+   "url": "/Item/1.5%22_screws"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383323625,
+ "revisionid": 193,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is what the utility module will look like from the kitchen and from the bathroom sides.",
+     "text_rendered": "This is what the utility module will look like from the kitchen and from the bathroom sides."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.440x330",
+      "guid": "ofttidlGmCYG1D6S",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.huge",
+      "id": 3515,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ofttidlGmCYG1D6S.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4639,
+   "stepid": 449,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This image shows the frame and lists the materials counts to construct the frame, including the sheathing material.",
+     "text_rendered": "This image shows the frame and lists the materials counts to construct the frame, including the sheathing material."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Note that the image shows a duplicate entry for number number of 2x6s needed. The number needed is 7. Refer to the materials list at the top of this guide.'''",
+     "text_rendered": "<strong>Note that the image shows a duplicate entry for number number of 2x6s needed. The number needed is 7. Refer to the materials list at the top of this guide.</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.440x330",
+      "guid": "JpIbKSoBUdYSNYge",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.huge",
+      "id": 3517,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/JpIbKSoBUdYSNYge.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4674,
+   "stepid": 920,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use these dimensions to layout and make the bottom plate - it contains the openings for the pipes that come up and connect into the utility module.",
+     "text_rendered": "Use these dimensions to layout and make the bottom plate - it contains the openings for the pipes that come up and connect into the utility module."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The large slots are for 2\" pipes, so it is best to make them 3\" wide. The small slot is for a 1\" pipe, so it is best to make it 2\" wide.",
+     "text_rendered": "The large slots are for 2&quot; pipes, so it is best to make them 3&quot; wide. The small slot is for a 1&quot; pipe, so it is best to make it 2&quot; wide."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.440x330",
+      "guid": "2GNSTSxWJPNvGc36",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.huge",
+      "id": 3512,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GNSTSxWJPNvGc36.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4676,
+   "stepid": 921,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "These images show the layout pattern for the studs of the utility module.",
+     "text_rendered": "These images show the layout pattern for the studs of the utility module."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.440x330",
+      "guid": "whS1E5tqDjA1FK45",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.huge",
+      "id": 3513,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/whS1E5tqDjA1FK45.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4647,
+   "stepid": 922,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is what the utility module frame will look like when you have it assembled. It is now ready for adding the sheathing to the bathroom side.",
+     "text_rendered": "This is what the utility module frame will look like when you have it assembled. It is now ready for adding the sheathing to the bathroom side."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.440x330",
+      "guid": "5ATHDJP6lFGwnMPl",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.huge",
+      "id": 3528,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5ATHDJP6lFGwnMPl.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4709,
+   "stepid": 924,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Before screwing down the sheathing, double-check to make sure that frame is square by measuring the diagonals.",
+     "text_rendered": "Before screwing down the sheathing, double-check to make sure that frame is square by measuring the diagonals."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once the diagonals measure the same, screw on the sheathing. Then, check the diagonal measurements one more time to make sure that the frame did not shift while you were screwing on the sheathing.",
+     "text_rendered": "Once the diagonals measure the same, screw on the sheathing. Then, check the diagonal measurements one more time to make sure that the frame did not shift while you were screwing on the sheathing."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.440x330",
+      "guid": "Xh43JRexbjmqT2Od",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.huge",
+      "id": 3529,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Xh43JRexbjmqT2Od.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4712,
+   "stepid": 925,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "We left two openings on the bathroom side (as shown in the 3d model image in the beginning of this guide). These openings allow for the connection of drain pipes and the shower faucet.",
+     "text_rendered": "We left two openings on the bathroom side (as shown in the 3d model image in the beginning of this guide). These openings allow for the connection of drain pipes and the shower faucet."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.440x330",
+      "guid": "cgGCiWId6JYwyuJN",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.huge",
+      "id": 3531,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cgGCiWId6JYwyuJN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 4715,
+   "stepid": 926,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 96,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you have completed the frame and added the bathroom side sheathing, flip the utility module over so that you have access to the inside.",
+     "text_rendered": "Once you have completed the frame and added the bathroom side sheathing, flip the utility module over so that you have access to the inside."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The next step is to add the drain and vent (DWV) plumbing, contained in the next guide.",
+     "text_rendered": "The next step is to add the drain and vent (DWV) plumbing, contained in the next guide."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.440x330",
+      "guid": "mpgaxNtt4oWTNqgY",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.huge",
+      "id": 3534,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mpgaxNtt4oWTNqgY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 4718,
+   "stepid": 927,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Utility",
+ "summary": "The Utility Module is heart of the Microhouse electrical and plumbing systems. It contains the basic infrastructure for all of these connections within the house. You will build it in the shop, and install it in the Microhouse once the walls are up.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Building the Microhouse Utility Module Frame",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Circular Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/circular_saw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Tape Measure",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/tape_measure"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Cordless Drill / Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/cordless_drill_driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Jigsaw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/jigsaw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "safety glasses",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/safety_glasses"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "ear plugs",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/ear_plugs"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Building+the+Microhouse+Utility+Module+Frame/96",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/96"
+}

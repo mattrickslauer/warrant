@@ -1,0 +1,480 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Print+Head+Assembly/119",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Print Head Assembly",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1392785283,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2928,
+ "guideid": 119,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.440x330",
+  "guid": "eQWZuUY2ZuYYbpGB",
+  "id": 3105,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395959493,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Extruder Assembly",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Extruder_Assembly"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Extruder Mount",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Extruder_Mount"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Budaschnozzle 2.0c with 0.35 nozzle.",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Budaschnozzle_2.0c_with_0.35_nozzle."
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M4 x 20 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M4_x_20_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M4 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M4_Washer"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395958394,
+ "revisionid": 239,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 119,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "GATHER THE PARTS FOR THE PRINT HEAD ASSEMBLY",
+     "text_rendered": "GATHER THE PARTS FOR THE PRINT HEAD ASSEMBLY"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Parts: Extruder Assembly Extruder Mount Budaschnozzle 2.0c with 0.35 nozzle. M4 x 20 SHCS M4 Washer",
+     "text_rendered": "Parts: Extruder Assembly Extruder Mount Budaschnozzle 2.0c with 0.35 nozzle. M4 x 20 SHCS M4 Washer"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tools: 3mm Allen Driver Short piece of 3mm filament",
+     "text_rendered": "Tools: 3mm Allen Driver Short piece of 3mm filament"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.440x330",
+      "guid": "eQWZuUY2ZuYYbpGB",
+      "id": 3105,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eQWZuUY2ZuYYbpGB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4297,
+   "stepid": 857,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 119,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ASSEMBLE PRINT HEAD",
+     "text_rendered": "ASSEMBLE PRINT HEAD"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Slide the piece of filament through the extruder and into the Budaschnozzle.",
+     "text_rendered": "Slide the piece of filament through the extruder and into the Budaschnozzle."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert 2x M4 nuts into the mounting flange of the extruder body.",
+     "text_rendered": "Insert 2x M4 nuts into the mounting flange of the extruder body."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.440x330",
+      "guid": "QCOqpROmcMUByUmn",
+      "id": 3108,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QCOqpROmcMUByUmn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.440x330",
+      "guid": "CyJaFHLVQfQB2iMM",
+      "id": 3109,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CyJaFHLVQfQB2iMM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4300,
+   "stepid": 858,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 119,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ASSEMBLE PRINT HEAD (continued)",
+     "text_rendered": "ASSEMBLE PRINT HEAD (continued)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Using 2x M4 x 20 SHCS and M4 washers, assemble the Budaschnozzle, extruder and extruder mount together.",
+     "text_rendered": "Using 2x M4 x 20 SHCS and M4 washers, assemble the Budaschnozzle, extruder and extruder mount together."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Verify the gear does not rub the mount.",
+     "text_rendered": "Verify the gear does not rub the mount."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.440x330",
+      "guid": "cUQsJhnZubpZaUld",
+      "id": 3107,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cUQsJhnZubpZaUld.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.440x330",
+      "guid": "aNgAmO1XTAowPNEY",
+      "id": 3110,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aNgAmO1XTAowPNEY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4305,
+   "stepid": 859,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Print Head Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "3mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Short piece of 3mm filament",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Short_piece_of_3mm_filament"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Print+Head+Assembly/119",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/119"
+}

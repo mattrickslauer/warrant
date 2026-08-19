@@ -1,0 +1,618 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/How+to+Module+-+X+Carriage+Assembly/114",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - X Carriage Assembly",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1391917619,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2922,
+ "guideid": 114,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.440x330",
+  "guid": "YGIr6AepxmnLUpUA",
+  "id": 2840,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YGIr6AepxmnLUpUA.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395958636,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "X carriage with inserts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/X_carriage_with_inserts"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "X carriage guide",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/X_carriage_guide"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Double bearing holder with bearings",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Double_bearing_holder_with_bearings"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Single bearing holder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Single_bearing_holder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 x 12 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_12_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Washer"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395958577,
+ "revisionid": 229,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 114,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "GATHER PART AND TOOLS FOR X CARRIAGE ASSEMBLY",
+     "text_rendered": "GATHER PART AND TOOLS FOR X CARRIAGE ASSEMBLY"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - 2.5mm Allen Driver",
+     "text_rendered": "Photo 1 - 2.5mm Allen Driver"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.440x330",
+      "guid": "gFlnqGfY3LZ1KNMU",
+      "id": 2831,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gFlnqGfY3LZ1KNMU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4017,
+   "stepid": 816,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 114,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL BEARING HOLDERS",
+     "text_rendered": "INSTALL BEARING HOLDERS"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the double bearing holder and single bearing holder using M3 x 12 SHCS and M3 Washers.",
+     "text_rendered": "Install the double bearing holder and single bearing holder using M3 x 12 SHCS and M3 Washers."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take note of the double bearing holder orientation.",
+     "text_rendered": "Take note of the double bearing holder orientation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The end with the step must be in the correct location.",
+     "text_rendered": "The end with the step must be in the correct location."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Do not tighten the screws all the way down. The bearings will be adjusted later and must wiggle at this step.",
+     "text_rendered": "Do not tighten the screws all the way down. The bearings will be adjusted later and must wiggle at this step."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - Bearing holders and parts",
+     "text_rendered": "Photo 1 - Bearing holders and parts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Bearing holders assembled",
+     "text_rendered": "Photo 2 - Bearing holders assembled"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.440x330",
+      "guid": "kIjqUibaJrUGSPSP",
+      "id": 2836,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kIjqUibaJrUGSPSP.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.440x330",
+      "guid": "pXOEyyBZXAtl5GVW",
+      "id": 2837,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pXOEyyBZXAtl5GVW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4019,
+   "stepid": 817,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 114,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL X CARRIAGE GUIDE",
+     "text_rendered": "INSTALL X CARRIAGE GUIDE"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Using 4x M3 x 12 SHCS and M3 Washers. Install the X carriage guide as shown.",
+     "text_rendered": "Using 4x M3 x 12 SHCS and M3 Washers. Install the X carriage guide as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten bolts all the way down.",
+     "text_rendered": "Tighten bolts all the way down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Verify Assembly is complete.",
+     "text_rendered": "Verify Assembly is complete."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - X Carriage guide with parts",
+     "text_rendered": "Photo 1 - X Carriage guide with parts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - X Carriage guide installed",
+     "text_rendered": "Photo 2 - X Carriage guide installed"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.440x330",
+      "guid": "5wAGGxiXoJ3VuKIk",
+      "id": 2838,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wAGGxiXoJ3VuKIk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.440x330",
+      "guid": "LZtjrK6Xx3WyC5KS",
+      "id": 2839,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LZtjrK6Xx3WyC5KS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4023,
+   "stepid": 818,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "X Carriage Assembly",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to Module - X Carriage Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "2.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2.5mm_Allen_Driver"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+Module+-+X+Carriage+Assembly/114",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/114"
+}

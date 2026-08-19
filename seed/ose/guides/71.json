@@ -1,0 +1,1316 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-05.thumbnail"
+  },
+  "join_date": 1373138339,
+  "reputation": 1,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/16/Brian+Peters",
+  "userid": 16,
+  "username": "Brian Peters"
+ },
+ "body_url_path": "/Guide/Contructing+the+Backhoe+Bucket/71",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Bucket",
+ "comments": [
+  {
+   "author": {
+    "banned": null,
+    "enabled": true,
+    "image": {
+     "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.140x105",
+     "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.200x150",
+     "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.440x330",
+     "guid": "gXUSadxgwylWHrRv",
+     "id": 4431,
+     "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.medium",
+     "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.mini",
+     "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.full",
+     "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.standard",
+     "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gXUSadxgwylWHrRv.thumbnail"
+    },
+    "join_date": 1373132434,
+    "reputation": 578,
+    "teams": [],
+    "unique_username": null,
+    "url": "https://opensourceecology.dozuki.com/User/15/Marcin",
+    "userid": 15,
+    "username": "Marcin"
+   },
+   "commentid": 1,
+   "context": "guide",
+   "contextid": 71,
+   "date": 1373727888,
+   "locale": "en",
+   "modified_date": 0,
+   "numberOfReplies": 0,
+   "parentid": null,
+   "rating": 0,
+   "replies": [],
+   "status": "resolved",
+   "status_reason": "manual",
+   "text_raw": "Great start. Brian Peters and Cory Shenk are responsible for the design.",
+   "text_rendered": "<p>Great start. Brian Peters and Cory Shenk are responsible for the design.</p>",
+   "title": "How to Construct the Bucket"
+  }
+ ],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1373665162,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 658,
+ "guideid": 71,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.440x330",
+  "guid": "1wj6mPaxkIucWr4C",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.huge",
+  "id": 890,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1wj6mPaxkIucWr4C.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "All plates are 1/2\" low carbon steel plates type ASTM A36 or similar.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "All plates are 1/2\" low carbon steel plates type ASTM A36 or similar.",
+ "introduction_rendered": "<p>All plates are 1/2&quot; low carbon steel plates type ASTM A36 or similar.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1382317315,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "17\"x23-11/16\"x1/2\" steel plate (bucket side plate - left)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/17%22x23-11_16%22x1_2%22_steel_plate_%28bucket_side_plate_-_left%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "17\"x23-11/16\"x1/2\" steel plate (bucket side plate - right)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/17%22x23-11_16%22x1_2%22_steel_plate_%28bucket_side_plate_-_right%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "16\"x16\"x1/2\" steel plate (bucket bottom)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/16%22x16%22x1_2%22_steel_plate_%28bucket_bottom%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "4\"x16\"x1/2\" steel plate (bucket top)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/4%22x16%22x1_2%22_steel_plate_%28bucket_top%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "8\"x16\"x1/2\" steel plate (bucket back-1)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/8%22x16%22x1_2%22_steel_plate_%28bucket_back-1%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "8\"x16x1/2\" staal plate (bucket back-2)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/8%22x16x1_2%22_staal_plate_%28bucket_back-2%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "8\"x16\"x1/2\" steel plate (bucket back-3)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/8%22x16%22x1_2%22_steel_plate_%28bucket_back-3%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "4\"x6\"x1/2\" steel plate (bucket teeth)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/4%22x6%22x1_2%22_steel_plate_%28bucket_teeth%29"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "16\"x2-1/2\"x2-1/2\"x1/2\" steel angle (tooth adapter)",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/16%22x2-1_2%22x2-1_2%22x1_2%22_steel_angle_%28tooth_adapter%29"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1373665231,
+ "revisionid": 143,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Start with two plates cut according to the dimensions in the Fig.  The large piece in the center is called a \u201cBucket Side Plate\u201d.  Two are required to complete the Bucket.  The two smaller triangles at the bottom were designed to be 30/60/90 triangles.  The 30/60/90 triangles should control/drive the linear dimensions.",
+     "text_rendered": "Start with two plates cut according to the dimensions in the Fig.  The large piece in the center is called a \u201cBucket Side Plate\u201d.  Two are required to complete the Bucket.  The two smaller triangles at the bottom were designed to be 30/60/90 triangles.  The 30/60/90 triangles should control/drive the linear dimensions."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.440x330",
+      "guid": "DvC1odLqC6lAGUOS",
+      "id": 688,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DvC1odLqC6lAGUOS.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 498,
+   "stepid": 218,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut a single 8\"x16\" plate according to the dimensions in the Fig. below.",
+     "text_rendered": "Cut a single 8&quot;x16&quot; plate according to the dimensions in the Fig. below."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Note: that the holes are centered horizontally but are not centered vertically.",
+     "text_rendered": "Note: that the holes are centered horizontally but are not centered vertically."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If a tolerance is built in on Step 9 and 11 than a tolerance must also be built into the hole placement to ensure proper mounting.",
+     "text_rendered": "If a tolerance is built in on Step 9 and 11 than a tolerance must also be built into the hole placement to ensure proper mounting."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.440x330",
+      "guid": "RMt4lJtK2GEU2vYa",
+      "id": 689,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RMt4lJtK2GEU2vYa.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 520,
+   "stepid": 219,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Acquire two \u00bd\u201d thick steel plates that are 8\u201dx16\u201d, one plate that is 4\u201dx16\u201d, and one plate that is a 16\u201d square.",
+     "text_rendered": "Acquire two \u00bd\u201d thick steel plates that are 8\u201dx16\u201d, one plate that is 4\u201dx16\u201d, and one plate that is a 16\u201d square."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The plates will be welded together as shown in the Figs. below.  The angles of the plates are symmetrical.",
+     "text_rendered": "The plates will be welded together as shown in the Figs. below.  The angles of the plates are symmetrical."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "From the square plate to the adjacent plate (the plate without holes) the angle is 150 degrees.  From the 4\u201d plate to its adjacent plate (the plate with holes) is also 150 degrees.  From the remaining 8\u201dx16\u201d plate to the two adjacent plates the two angles are 120 degrees.",
+     "text_rendered": "From the square plate to the adjacent plate (the plate without holes) the angle is 150 degrees.  From the 4\u201d plate to its adjacent plate (the plate with holes) is also 150 degrees.  From the remaining 8\u201dx16\u201d plate to the two adjacent plates the two angles are 120 degrees."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The plate with the holes must be oriented properly. The side with of the plate with two holes must be attached to the 8\u201d plate.  The side of the plate with one hole must be attached to the 4\u201d plate.",
+     "text_rendered": "The plate with the holes must be oriented properly. The side with of the plate with two holes must be attached to the 8\u201d plate.  The side of the plate with one hole must be attached to the 4\u201d plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once all the plates are welded together the component is called the \u201cBucket Body\u201d.",
+     "text_rendered": "Once all the plates are welded together the component is called the \u201cBucket Body\u201d."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.440x330",
+      "guid": "CY4XapOg42ykZAEV",
+      "id": 648,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CY4XapOg42ykZAEV.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.440x330",
+      "guid": "tcdXLPEcGhoGfIBb",
+      "id": 649,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tcdXLPEcGhoGfIBb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 473,
+   "stepid": 220,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Assemble and weld the two Bucket Side Plates onto both sides of the Bucket Body.  Optionally the corners may be ground smooth.  Once welded together the component is called the \u201cBucket\u201d.",
+     "text_rendered": "Assemble and weld the two Bucket Side Plates onto both sides of the Bucket Body.  Optionally the corners may be ground smooth.  Once welded together the component is called the \u201cBucket\u201d."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Don't forget to cut the holes to match the Tooth SubAssembly as shown in Step 5.  See note on Step 13.",
+     "text_rendered": "Don't forget to cut the holes to match the Tooth SubAssembly as shown in Step 5.  See note on Step 13."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.440x330",
+      "guid": "YNZYcmppnPHeBrXo",
+      "id": 650,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YNZYcmppnPHeBrXo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 497,
+   "stepid": 221,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut an piece of angle iron according to the dimensions shown.",
+     "text_rendered": "Cut an piece of angle iron according to the dimensions shown."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.440x330",
+      "guid": "4FxCvQDowEpqqvBW",
+      "id": 665,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4FxCvQDowEpqqvBW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 485,
+   "stepid": 222,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut out five teeth.  The 4\" dimension of the tooth is NOT critical.  The tooth may have any desired length.  The 1\" inch height dimension is set to match the height of the angle iron of the previous step.",
+     "text_rendered": "Cut out five teeth.  The 4&quot; dimension of the tooth is NOT critical.  The tooth may have any desired length.  The 1&quot; inch height dimension is set to match the height of the angle iron of the previous step."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.440x330",
+      "guid": "r1dlQejbDfCkOhNm",
+      "id": 670,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r1dlQejbDfCkOhNm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 489,
+   "stepid": 223,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld teeth onto the angle iron as shown.  The dimensions are on center.",
+     "text_rendered": "Weld teeth onto the angle iron as shown.  The dimensions are on center."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.440x330",
+      "guid": "qvxVCwj1woGgGCVr",
+      "id": 671,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qvxVCwj1woGgGCVr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.440x330",
+      "guid": "H3HVs2nUtkowx1Mb",
+      "id": 672,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3HVs2nUtkowx1Mb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 491,
+   "stepid": 224,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut a Quick Assembly Bracket according to the dimensions shown.",
+     "text_rendered": "Cut a Quick Assembly Bracket according to the dimensions shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Two Quick Assembly Brackets are required.",
+     "text_rendered": "Two Quick Assembly Brackets are required."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.440x330",
+      "guid": "Fac6krWukGEBWBfV",
+      "id": 673,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Fac6krWukGEBWBfV.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.440x330",
+      "guid": "PIqGLhyIMeHWQcMT",
+      "id": 660,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PIqGLhyIMeHWQcMT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 493,
+   "stepid": 225,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut out a \"Quick Attachment Bracket B\" according to the dimensions shown.",
+     "text_rendered": "Cut out a &quot;Quick Attachment Bracket B&quot; according to the dimensions shown."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The 6 inch length may be extended slightly (approx. 1/8\") to allow for easier insertion and removal of the Quick Attachment Mounting Plate.",
+     "text_rendered": "The 6 inch length may be extended slightly (approx. 1/8&quot;) to allow for easier insertion and removal of the Quick Attachment Mounting Plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.440x330",
+      "guid": "MdqygKGeCbxPU1ZH",
+      "id": 675,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MdqygKGeCbxPU1ZH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 502,
+   "stepid": 226,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut out the \"Quick Attachment Bar\" according to the dimensions shown.",
+     "text_rendered": "Cut out the &quot;Quick Attachment Bar&quot; according to the dimensions shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Two Quick Attachment Bars are required.",
+     "text_rendered": "Two Quick Attachment Bars are required."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.440x330",
+      "guid": "T5IHgLQRCAg1A6RT",
+      "id": 677,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/T5IHgLQRCAg1A6RT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 497,
+   "stepid": 227,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Assemble the brackets as shown and weld together.",
+     "text_rendered": "Assemble the brackets as shown and weld together."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The interior must be square.  Avoid welding the interior joints.  If welding of the interior joints is necessary then be sure to grind down the interior surfaces to be flat and square.",
+     "text_rendered": "The interior must be square.  Avoid welding the interior joints.  If welding of the interior joints is necessary then be sure to grind down the interior surfaces to be flat and square."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The 5 inch dimension is minimum clearance.  For easy insertion and removal a tolerance should be included.  Any tolerance built in would affect Step 2 and Step 9.",
+     "text_rendered": "The 5 inch dimension is minimum clearance.  For easy insertion and removal a tolerance should be included.  Any tolerance built in would affect Step 2 and Step 9."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.440x330",
+      "guid": "g1LvhLWoTUWunpFZ",
+      "id": 679,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/g1LvhLWoTUWunpFZ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.440x330",
+      "guid": "3kEQbft2vQaoW2vs",
+      "id": 682,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kEQbft2vQaoW2vs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 512,
+   "stepid": 228,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the Quick Attachment Bars as indicated in the figure.  Weld as necessary, keeping the interior surfaces smooth and square.",
+     "text_rendered": "Attach the Quick Attachment Bars as indicated in the figure.  Weld as necessary, keeping the interior surfaces smooth and square."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.440x330",
+      "guid": "MPW2pglFUI6JcFUL",
+      "id": 684,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MPW2pglFUI6JcFUL.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 512,
+   "stepid": 229,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 71,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Assemble individual subassemblies together as shown.",
+     "text_rendered": "Assemble individual subassemblies together as shown."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If the bolt holes are to be drilled, it may be desirable to postpone drilling them until the final assembly to insure proper alignment.",
+     "text_rendered": "If the bolt holes are to be drilled, it may be desirable to postpone drilling them until the final assembly to insure proper alignment."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.440x330",
+      "guid": "a4oCoUVVCN1F1Ccs",
+      "id": 686,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/a4oCoUVVCN1F1Ccs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 13,
+   "revisionid": 515,
+   "stepid": 230,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "This Guide will give step-by-step instructions on how to construct the Bucket for the Backhoe.",
+ "time_required": "2 - 3 hours",
+ "time_required_max": 10800,
+ "time_required_min": 7200,
+ "title": "Contructing the Backhoe Bucket",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Tape Measure",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/tape_measure"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Cutting Torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Cutting_Torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "MIG, TIG, or Gas welder with bench and material holding clamps",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/MIG_TIG_or_Gas_welder_with_bench_and_material_holding_clamps"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Hand Grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Hand_Grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Drill press with 17/32\" dill",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Drill_press_with_17_32%22_dill"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Band saw or reciprocating saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Band_saw_or_reciprocating_saw"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Contructing+the+Backhoe+Bucket/71",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/71"
+}

@@ -1,0 +1,415 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Primary+Arms/9",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041430,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 43,
+ "guideid": 9,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.440x330",
+  "guid": "XjN1Q3UycCpaVSwc",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.huge",
+  "id": 61,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XjN1Q3UycCpaVSwc.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "The primary arms attach the cylinder/frame assembly to the secondary arms, which support it. They also attach to the Brickholder plate, the Dirt-keeper plate, the Controller Mount, and the Valve Mount.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "The primary arms attach the cylinder/frame assembly to the secondary arms, which support it. They also attach to the Brickholder plate, the Dirt-keeper plate, the Controller Mount, and the Valve Mount.",
+ "introduction_rendered": "<p>The primary arms attach the cylinder/frame assembly to the secondary arms, which support it. They also attach to the Brickholder plate, the Dirt-keeper plate, the Controller Mount, and the Valve Mount.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1368041437,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041430,
+ "revisionid": 47,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 9,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "On one piece, mark holes on the 4\" side, all 1.25\" away from the edge for:",
+     "text_rendered": "On one piece, mark holes on the 4&quot; side, all 1.25&quot; away from the edge for:"
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Two total 3/4\u201d diameter holes at 2\u201d and 70.\u201d",
+     "text_rendered": "Two total 3/4\u201d diameter holes at 2\u201d and 70.\u201d"
+    },
+    {
+     "bullet": "blue",
+     "bullet_style": {
+      "bullet_color": "#2343e8",
+      "bullet_styleid": 7,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 7,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Six total 13/16\u201d diameter holes at 27\", 37\", 39 3/4\", 48 1/4\", 51\", and 63 1/2\".",
+     "text_rendered": "Six total 13/16\u201d diameter holes at 27&quot;, 37&quot;, 39 3/4&quot;, 48 1/4&quot;, 51&quot;, and 63 1/2&quot;."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.440x330",
+      "guid": "1Aet1IeW6RSKV2BL",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.huge",
+      "id": 65,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1Aet1IeW6RSKV2BL.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.440x330",
+      "guid": "GardhpN2RqBW1ZBn",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.huge",
+      "id": 69,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GardhpN2RqBW1ZBn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.440x330",
+      "guid": "eHVvQSDF2CFt1sJ2",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.huge",
+      "id": 73,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eHVvQSDF2CFt1sJ2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 36,
+   "stepid": 17,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 9,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use this piece to mark the locations on the other side. They are to be mirrored, so make sure they aren't in the same exact orientation.",
+     "text_rendered": "Use this piece to mark the locations on the other side. They are to be mirrored, so make sure they aren't in the same exact orientation."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.440x330",
+      "guid": "kfuY5HoUMNbVbEMY",
+      "id": 74,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kfuY5HoUMNbVbEMY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 38,
+   "stepid": 18,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 9,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Determine which one is arm A and which is arm B by looking at the diagrams. Label them.",
+     "text_rendered": "Determine which one is arm A and which is arm B by looking at the diagrams. Label them."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "On arm A, punch the following holes on the 6\u201d side of the angle iron, measured from the left, each centered 1 3/4\u201d from the long edge: Also, torch the hole for adjusting the rollers at 45\". Its shape is shown in the diagrams.",
+     "text_rendered": "On arm A, punch the following holes on the 6\u201d side of the angle iron, measured from the left, each centered 1 3/4\u201d from the long edge: Also, torch the hole for adjusting the rollers at 45&quot;. Its shape is shown in the diagrams."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Five total 13/16\u201d diameter holes at 9\u201d, 13\u201d, 18\u201d, 28\u201d, and 30\" inches.",
+     "text_rendered": "Five total 13/16\u201d diameter holes at 9\u201d, 13\u201d, 18\u201d, 28\u201d, and 30&quot; inches."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the roller adjustor hole in arm B, 45\" from the right, so the holes will be at the same frame location.",
+     "text_rendered": "Torch the roller adjustor hole in arm B, 45&quot; from the right, so the holes will be at the same frame location."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.440x330",
+      "guid": "Yt5DhmyULunoAtrJ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.huge",
+      "id": 77,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Yt5DhmyULunoAtrJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 42,
+   "stepid": 20,
+   "time_estimate": 0,
+   "title": "Punch the Holes"
+  }
+ ],
+ "subject": "",
+ "summary": "Assembling the Primary Arms: the main component for connecting the center column of the CEB Press to its support system.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Primary Arms",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Primary+Arms/9",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/9"
+}

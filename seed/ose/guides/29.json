@@ -1,0 +1,637 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Shaker+Assembly/29",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041526,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3918,
+ "guideid": 29,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.440x330",
+  "guid": "XUZoRgmUFObuy5nk",
+  "id": 285,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XUZoRgmUFObuy5nk.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=98e197d560307fe81211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* Shaker Mount* Shaker Motor* Shaker Hammer and coupler* 1\" Pillow Block Bearings(2)* 1/4\"x2\" Bolt (1)* 3/8\"x2\" Bolts (4)* 1/2\"x2\" Bolts (2)* 3/8\" Lock Nuts (4)* 1/2\" Lock Nuts (2)* 3/8\" Washers (8)* 3/8\" Lock Washers (4)* 1/2\" Washers (4)* 1/2\" Lock Washers (4)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=98e197d560307fe81211da1f85706ccd|Sketchup Model]Additional Materials Required:* Shaker Mount* Shaker Motor* Shaker Hammer and coupler* 1\" Pillow Block Bearings(2)* 1/4\"x2\" Bolt (1)* 3/8\"x2\" Bolts (4)* 1/2\"x2\" Bolts (2)* 3/8\" Lock Nuts (4)* 1/2\" Lock Nuts (2)* 3/8\" Washers (8)* 3/8\" Lock Washers (4)* 1/2\" Washers (4)* 1/2\" Lock Washers (4)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=98e197d560307fe81211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* Shaker Mount* Shaker Motor* Shaker Hammer and coupler* 1&quot; Pillow Block Bearings(2)* 1/4&quot;x2&quot; Bolt (1)* 3/8&quot;x2&quot; Bolts (4)* 1/2&quot;x2&quot; Bolts (2)* 3/8&quot; Lock Nuts (4)* 1/2&quot; Lock Nuts (2)* 3/8&quot; Washers (8)* 3/8&quot; Lock Washers (4)* 1/2&quot; Washers (4)* 1/2&quot; Lock Washers (4)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134839,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041526,
+ "revisionid": 118,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 29,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosely bolt the assembled motor to the mount, as shown,  using washers on both sides, and a lock washer touching the nut.",
+     "text_rendered": "Loosely bolt the assembled motor to the mount, as shown,  using washers on both sides, and a lock washer touching the nut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the bearings onto the shaft, ensuring that the eccentric side is facing inwards.",
+     "text_rendered": "Put the bearings onto the shaft, ensuring that the eccentric side is facing inwards."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Remember to put the eccentrics in between the two bearings.",
+     "text_rendered": "Remember to put the eccentrics in between the two bearings."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The eccentrics are little collars with lopsided circles inside of them. This makes it so they can lock into the bearings.",
+     "text_rendered": "The eccentrics are little collars with lopsided circles inside of them. This makes it so they can lock into the bearings."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Ensure that both collars are facing the right direction (so they will lock onto the lip) and that the bearings are also.",
+     "text_rendered": "Ensure that both collars are facing the right direction (so they will lock onto the lip) and that the bearings are also."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.440x330",
+      "guid": "3kIfRlJjIg6GUQPy",
+      "id": 289,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3kIfRlJjIg6GUQPy.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.440x330",
+      "guid": "d6blVvFtGrQAn4FM",
+      "id": 293,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d6blVvFtGrQAn4FM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 1045,
+   "stepid": 87,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 29,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the coupler onto the shaft.",
+     "text_rendered": "Put the coupler onto the shaft."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure you can see thru the holes (it could be off 180 degrees and a little crooked), then put on the bolt, lock washer, and lock nut. Tighten.",
+     "text_rendered": "Make sure you can see thru the holes (it could be off 180 degrees and a little crooked), then put on the bolt, lock washer, and lock nut. Tighten."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Couple it to the motor, tightening down the set screw.",
+     "text_rendered": "Couple it to the motor, tightening down the set screw."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the motor mount bolts.",
+     "text_rendered": "Tighten the motor mount bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the bearing closest to the motor to the mount with a washer, a lock washer, and a lock nut. Tighten these down.",
+     "text_rendered": "Bolt the bearing closest to the motor to the mount with a washer, a lock washer, and a lock nut. Tighten these down."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.440x330",
+      "guid": "vDIlQnKX4bcQYIIk",
+      "id": 297,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vDIlQnKX4bcQYIIk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.440x330",
+      "guid": "sNum6EpRIGTGDxoh",
+      "id": 300,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sNum6EpRIGTGDxoh.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.440x330",
+      "guid": "HjYHuvjHQ4Cpygup",
+      "id": 304,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjYHuvjHQ4Cpygup.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 185,
+   "stepid": 92,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 29,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Ensure that the hammer rotates freely still.",
+     "text_rendered": "Ensure that the hammer rotates freely still."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "It may require some force, but shouldn't need much.",
+     "text_rendered": "It may require some force, but shouldn't need much."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If the hammer won't rotate, loosen the motor mount bolts, retighten them, and recheck it.",
+     "text_rendered": "If the hammer won't rotate, loosen the motor mount bolts, retighten them, and recheck it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Position the other bearing and tighten it down, still ensuring that it will rotate without much force.",
+     "text_rendered": "Position the other bearing and tighten it down, still ensuring that it will rotate without much force."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lock the eccentrics by pushing them towards the lip on the bearing and twisting it.",
+     "text_rendered": "Lock the eccentrics by pushing them towards the lip on the bearing and twisting it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the set screw on the eccentrics.",
+     "text_rendered": "Tighten the set screw on the eccentrics."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.440x330",
+      "guid": "TYBy3gp4eSAoOpgO",
+      "id": 308,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TYBy3gp4eSAoOpgO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 189,
+   "stepid": 94,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Shaker Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Allen wrench",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Allen_wrench"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Shaker+Assembly/29",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/29"
+}

@@ -1,0 +1,603 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.200x150",
+   "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.440x330",
+   "guid": "VRyRrmHfUbWIQsSX",
+   "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.huge",
+   "id": 2871,
+   "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.large",
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VRyRrmHfUbWIQsSX.thumbnail"
+  },
+  "join_date": 1392527400,
+  "reputation": 197,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/82/Andrew+Graham",
+  "userid": 82,
+  "username": "Andrew Graham"
+ },
+ "body_url_path": "/Guide/Fabrication+Instructions+-+Overall+Soil+Mixer/129",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Overall Soil Pulverizer",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1395861862,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  },
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3192,
+ "guideid": 129,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.440x330",
+  "guid": "pUYkeZjGO15nbbSD",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.huge",
+  "id": 3504,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pUYkeZjGO15nbbSD.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396466470,
+ "number_of_dependent_guides": 1,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395861869,
+ "revisionid": 259,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 129,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Exploded parts diagram'''",
+     "text_rendered": "<strong>Exploded parts diagram</strong>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.440x330",
+      "guid": "EQIlhssXW6aqJyfo",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.huge",
+      "id": 3315,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EQIlhssXW6aqJyfo.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.440x330",
+      "guid": "tDAsUqMPnI5AqB5r",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.huge",
+      "id": 3491,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tDAsUqMPnI5AqB5r.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4630,
+   "stepid": 874,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 129,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''BOM'''",
+     "text_rendered": "<strong>BOM</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_Bill_of_Materials",
+     "text_rendered": "<a href=\"http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_Bill_of_Materials\" rel=\"nofollow noopener noreferrer\" title=\"http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_Bill_of_Materials\">http://opensourceecology.org/wiki/Soil_M...</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Acquire all parts required in the BOM",
+     "text_rendered": "Acquire all parts required in the BOM"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.440x330",
+      "guid": "AigCuLXTTR5bAZBE",
+      "id": 3507,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AigCuLXTTR5bAZBE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4643,
+   "stepid": 918,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 129,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''CAM Files for Plasma Cutting/CNC'''",
+     "text_rendered": "<strong>CAM Files for Plasma Cutting/CNC</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "[http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_CAM|Latest DXF files on the OSE Wiki]",
+     "text_rendered": "<a href=\"http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_CAM\" rel=\"nofollow noopener noreferrer\">Latest DXF files on the OSE Wiki</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Send the 2 DXF files to a CNC cutter.  The smaller sheet is 32\" x 48\" @ 1/2\" thick.  The second larger sheet if 48\" x 72\" @ 1/4\" thick.  The third file can be cut from standard stock.  All of these parts are produced from mild steel.",
+     "text_rendered": "Send the 2 DXF files to a CNC cutter.  The smaller sheet is 32&quot; x 48&quot; @ 1/2&quot; thick.  The second larger sheet if 48&quot; x 72&quot; @ 1/4&quot; thick.  The third file can be cut from standard stock.  All of these parts are produced from mild steel."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.440x330",
+      "guid": "nTFKeyKjsN32EIbF",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.huge",
+      "id": 3576,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nTFKeyKjsN32EIbF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4728,
+   "stepid": 923,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 129,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''CAD MODEL'''",
+     "text_rendered": "<strong>CAD MODEL</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "[http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_3D_CAD|Latest Sketchup file on the OSE Wiki]",
+     "text_rendered": "<a href=\"http://opensourceecology.org/wiki/Soil_Mixer_-_Overall_Machine_-_3D_CAD\" rel=\"nofollow noopener noreferrer\">Latest Sketchup file on the OSE Wiki</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Familiarise yourself with the sketchup model to see how it all fits together.",
+     "text_rendered": "Familiarise yourself with the sketchup model to see how it all fits together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.440x330",
+      "guid": "heudk5w2RdOrfSHV",
+      "id": 3509,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/heudk5w2RdOrfSHV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4677,
+   "stepid": 919,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 129,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Parallel workflow'''",
+     "text_rendered": "<strong>Parallel workflow</strong>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Work through each of the modules designated in the [https://docs.google.com/drawings/d/1IMUu0otp7BRCflIRYKZ1JqR3lF3VF8OBjkPQXPQbV3A/view|workflow diagram]",
+     "text_rendered": "Work through each of the modules designated in the <a href=\"https://docs.google.com/drawings/d/1IMUu0otp7BRCflIRYKZ1JqR3lF3VF8OBjkPQXPQbV3A/view\" rel=\"nofollow noopener noreferrer\">workflow diagram</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "It is possible to have up to 5 groups working in parallel to produce the machine more rapidly.  The google drawing contains links to each module to order module completion.",
+     "text_rendered": "It is possible to have up to 5 groups working in parallel to produce the machine more rapidly.  The google drawing contains links to each module to order module completion."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "[https://docs.google.com/drawings/d/1Qj1aT5C7Ia0hwAOjKtA7V6phuWxvU01jYyhVI-bHlXk/view|Fabrication Diagram]",
+     "text_rendered": "<a href=\"https://docs.google.com/drawings/d/1Qj1aT5C7Ia0hwAOjKtA7V6phuWxvU01jYyhVI-bHlXk/view\" rel=\"nofollow noopener noreferrer\">Fabrication Diagram</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.440x330",
+      "guid": "b2JW2tapXIVub6GC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.huge",
+      "id": 3501,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/b2JW2tapXIVub6GC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4698,
+   "stepid": 873,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Soil Mixer Overview",
+ "summary": "Step by step instructions for fabricating the Soil Mixer",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Fabrication Instructions - Overall Soil Mixer",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Fabrication+Instructions+-+Overall+Soil+Mixer/129",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/129"
+}

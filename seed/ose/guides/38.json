@@ -1,0 +1,1132 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB:+Main+Cylinder+Prep/38",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041564,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3926,
+ "guideid": 38,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.440x330",
+  "guid": "iSywJlorbweYNXSR",
+  "id": 379,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iSywJlorbweYNXSR.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=47b29a6164503891211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* The Press Feet* 1/4\" to 1/2\" Bushing (2)* 1/2\" NPTM to 1/2\" NPTF Elbow (2)* 1/2\" Hex Nipple (2)* 1/2\" Quick Coupler Set (1)* 3/4\" Galvanized Nuts (2)* 3/4\" Steel Nuts (1)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=47b29a6164503891211da1f85706ccd|Sketchup Model]Additional Materials Required:* The Press Feet* 1/4\" to 1/2\" Bushing (2)* 1/2\" NPTM to 1/2\" NPTF Elbow (2)* 1/2\" Hex Nipple (2)* 1/2\" Quick Coupler Set (1)* 3/4\" Galvanized Nuts (2)* 3/4\" Steel Nuts (1)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=47b29a6164503891211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* The Press Feet* 1/4&quot; to 1/2&quot; Bushing (2)* 1/2&quot; NPTM to 1/2&quot; NPTF Elbow (2)* 1/2&quot; Hex Nipple (2)* 1/2&quot; Quick Coupler Set (1)* 3/4&quot; Galvanized Nuts (2)* 3/4&quot; Steel Nuts (1)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134842,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041564,
+ "revisionid": 152,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.mini",
+   "lines": [
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread tape is necessary between each connection. Always wrap thread tape clockwise when facing the threaded portion.",
+     "text_rendered": "Thread tape is necessary between each connection. Always wrap thread tape clockwise when facing the threaded portion."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You will need to make 2 of these, one with male quick couplers and one with a female.",
+     "text_rendered": "You will need to make 2 of these, one with male quick couplers and one with a female."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the hex nipple in the vise and tighten the quick coupler onto it. Put the elbow in the vise, male side up, and tighten the bushing onto it.",
+     "text_rendered": "Put the hex nipple in the vise and tighten the quick coupler onto it. Put the elbow in the vise, male side up, and tighten the bushing onto it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Rotate the elbow in the vise and tighten the quick coupler/ nipple onto it.",
+     "text_rendered": "Rotate the elbow in the vise and tighten the quick coupler/ nipple onto it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.440x330",
+      "guid": "gwAMNxV2DlaqusM2",
+      "id": 381,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gwAMNxV2DlaqusM2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 225,
+   "stepid": 112,
+   "time_estimate": 0,
+   "title": "Prepare the Hydraulic Couplers"
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the plugs on the cylinder.",
+     "text_rendered": "Remove the plugs on the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The Prince brand cylinder uses a really large allen wrench for their plugs. If you can't find one, you can make one like we did.",
+     "text_rendered": "The Prince brand cylinder uses a really large allen wrench for their plugs. If you can't find one, you can make one like we did."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure the ports are facing up as there might be fluid in the cylinder and you don't want it to leak.",
+     "text_rendered": "Make sure the ports are facing up as there might be fluid in the cylinder and you don't want it to leak."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the coupler assembly into the holes, so that when the cylinder is lying on its side, niether one will hit the table.",
+     "text_rendered": "Tighten the coupler assembly into the holes, so that when the cylinder is lying on its side, niether one will hit the table."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.440x330",
+      "guid": "KKDELaFYhtH6YMQC",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.huge",
+      "id": 384,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KKDELaFYhtH6YMQC.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.440x330",
+      "guid": "1GIbls2fDStPXEMO",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.huge",
+      "id": 388,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1GIbls2fDStPXEMO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 229,
+   "stepid": 114,
+   "time_estimate": 0,
+   "title": "Install the Couplers"
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Expand the cylinder so the shaft is fully extended, using a hydraulic pump.",
+     "text_rendered": "Expand the cylinder so the shaft is fully extended, using a hydraulic pump."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld a 3.5\" piece of 1.5\" DOM roundstock inside of the tubing at the end of the shaft",
+     "text_rendered": "Weld a 3.5&quot; piece of 1.5&quot; DOM roundstock inside of the tubing at the end of the shaft"
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take care that the top of the shaft doesn't get hot; there is a rubber seal between that and the cylinder that will melt and cause leaking if you're not careful. If it starts getting warm, dunk the shaft in water to cool it down.",
+     "text_rendered": "Take care that the top of the shaft doesn't get hot; there is a rubber seal between that and the cylinder that will melt and cause leaking if you're not careful. If it starts getting warm, dunk the shaft in water to cool it down."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.440x330",
+      "guid": "bIw6WhdGur2PLPL1",
+      "id": 392,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bIw6WhdGur2PLPL1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 233,
+   "stepid": 116,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Stand the cylinder up vertically and prop it up using some sort stand so it is as close to square vertically as possible. Another option is to support it using some sort of rope.",
+     "text_rendered": "Stand the cylinder up vertically and prop it up using some sort stand so it is as close to square vertically as possible. Another option is to support it using some sort of rope."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the tubing at the end of the shaft inside of the hole in the lower press foot.",
+     "text_rendered": "Place the tubing at the end of the shaft inside of the hole in the lower press foot."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the cylinder is square to the plate in all directions. [http://www.youtube.com/watch?feature=player_embedded&v=_pICqVpcZ8E|See video.]",
+     "text_rendered": "Insure the cylinder is square to the plate in all directions. <a href=\"http://www.youtube.com/watch?feature=player_embedded&amp;v=_pICqVpcZ8E\">See video.</a>"
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Since there is a lip on the cylinder, its hard to tell if it's square unless you use two squares, one on the lip and against the other one which rests on the table.",
+     "text_rendered": "Since there is a lip on the cylinder, its hard to tell if it's square unless you use two squares, one on the lip and against the other one which rests on the table."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack the lower press foot from all accessible dimensions.",
+     "text_rendered": "Tack the lower press foot from all accessible dimensions."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the cylinder is still square with it, if not, remove the tacks and fix it.",
+     "text_rendered": "Insure the cylinder is still square with it, if not, remove the tacks and fix it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.440x330",
+      "guid": "dlgquRqATaOpoHOo",
+      "id": 395,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dlgquRqATaOpoHOo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 237,
+   "stepid": 118,
+   "time_estimate": 0,
+   "title": "Tack the Lower Press Foot to the Cylinder"
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the two together on the top. There will need to be at least 2 layers of weld.",
+     "text_rendered": "Weld the two together on the top. There will need to be at least 2 layers of weld."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Warning: Dunk this frequently, even if the shaft is not getting hot! The plate will warp upwards and cause you lots of woe if you do not.",
+     "text_rendered": "Warning: Dunk this frequently, even if the shaft is not getting hot! The plate will warp upwards and cause you lots of woe if you do not."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the press foot support pieces as close as you can to the tubing and the press plate.",
+     "text_rendered": "Weld the press foot support pieces as close as you can to the tubing and the press plate."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.440x330",
+      "guid": "hyKNkqVXfoSJO1lX",
+      "id": 399,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hyKNkqVXfoSJO1lX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 239,
+   "stepid": 119,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lower the  cylinder and flip it upside down.",
+     "text_rendered": "Lower the  cylinder and flip it upside down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fill in the bottom side of it with welds.",
+     "text_rendered": "Fill in the bottom side of it with welds."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "This will require many layers of welds and many dunks to cool it.",
+     "text_rendered": "This will require many layers of welds and many dunks to cool it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind it flush with the rest of the plate. A few spots where the welds are below the surface is OK, but the majority of the surface should be level.",
+     "text_rendered": "Grind it flush with the rest of the plate. A few spots where the welds are below the surface is OK, but the majority of the surface should be level."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.440x330",
+      "guid": "XOHNiCWXHrTHZvK1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.huge",
+      "id": 402,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XOHNiCWXHrTHZvK1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 245,
+   "stepid": 122,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the upper press foot into the lower one and tighten nuts onto the threaded rod.",
+     "text_rendered": "Put the upper press foot into the lower one and tighten nuts onto the threaded rod."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Stand the cylinder up again and insure the press plate is still square with the cylinder. [http://www.youtube.com/watch?v=_pICqVpcZ8E&list=UUjvBN1r7UXXqmIbx_u7bIAw&index=326&feature=plpp_video|See video.]",
+     "text_rendered": "Stand the cylinder up again and insure the press plate is still square with the cylinder. <a href=\"http://www.youtube.com/watch?v=_pICqVpcZ8E&amp;list=UUjvBN1r7UXXqmIbx_u7bIAw&amp;index=326&amp;feature=plpp_video\">See video.</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If its not, you'll need to add shims between the two press plates until they are square with the cylinder.",
+     "text_rendered": "If its not, you'll need to add shims between the two press plates until they are square with the cylinder."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.440x330",
+      "guid": "kxNkBYYbhW4bscUv",
+      "id": 403,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kxNkBYYbhW4bscUv.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 247,
+   "stepid": 123,
+   "time_estimate": 0,
+   "title": "Install the Upper Press Plate"
+  },
+  {
+   "comments": [],
+   "guideid": 38,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the nut in the corner of the lower press plate, as shown. This should be on the opposite side of the ports of the cylinder, flush with the press foot, and as near to the corner as you can get it. It can even hang off a bit.",
+     "text_rendered": "Weld the nut in the corner of the lower press plate, as shown. This should be on the opposite side of the ports of the cylinder, flush with the press foot, and as near to the corner as you can get it. It can even hang off a bit."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure you protect the threads.",
+     "text_rendered": "Make sure you protect the threads."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.440x330",
+      "guid": "3EDDwCdDDr3O14yt",
+      "id": 407,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3EDDwCdDDr3O14yt.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.440x330",
+      "guid": "HRiMCWUR5a5kDjWy",
+      "id": 410,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HRiMCWUR5a5kDjWy.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 253,
+   "stepid": 126,
+   "time_estimate": 0,
+   "title": "Weld the magnet holder nut"
+  }
+ ],
+ "subject": "",
+ "summary": "Prep the main cylinder on your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB: Main Cylinder Prep",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "3/8\" Allen Wrench",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_8%22_Allen_Wrench"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Bucket and Water for cooling cylinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Bucket_and_Water_for_cooling_cylinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Hydraulic Pump",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Hydraulic_Pump"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Large Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Large_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Thread Tape",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Thread_Tape"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Vise",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Vise"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB:+Main+Cylinder+Prep/38",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/38"
+}

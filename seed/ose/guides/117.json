@@ -1,0 +1,493 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+Electronics+Case+Assembly/117",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - Electronics Case Assembly",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1392739080,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2927,
+ "guideid": 117,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.440x330",
+  "guid": "bcO2Wx4HohSESGjH",
+  "id": 2969,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/bcO2Wx4HohSESGjH.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395959450,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Electronics Case",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Electronics_Case"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "RAMBo 1.1b board",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/RAMBo_1.1b_board"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Inner strain relief with inserts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Inner_strain_relief_with_inserts"
+  },
+  {
+   "notes": null,
+   "quantity": 3,
+   "text": "M3 x 12 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_12_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 4,
+   "text": "M3 x 5 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_5_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 3,
+   "text": "M3 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Washer"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395958241,
+ "revisionid": 235,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 117,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "GATHER PARTS AND TOOLS TO BUILD THE ELECTRONICS CASE ASSEMBLY",
+     "text_rendered": "GATHER PARTS AND TOOLS TO BUILD THE ELECTRONICS CASE ASSEMBLY"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "2.5mm Allen Driver",
+     "text_rendered": "2.5mm Allen Driver"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Electronics case RAMBo 1.1b board Inner strain relief with inserts M3 x 12 SHCS M3 x 5 SHCS M3 washer",
+     "text_rendered": "Electronics case RAMBo 1.1b board Inner strain relief with inserts M3 x 12 SHCS M3 x 5 SHCS M3 washer"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.440x330",
+      "guid": "2EHKCMLveq51QYGi",
+      "id": 2962,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2EHKCMLveq51QYGi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4171,
+   "stepid": 839,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 117,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL THE INNER STRAIN RELIEF",
+     "text_rendered": "INSTALL THE INNER STRAIN RELIEF"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the Inner strain relief using 3x M3 x 12 SHCS and M3 washers.",
+     "text_rendered": "Install the Inner strain relief using 3x M3 x 12 SHCS and M3 washers."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.440x330",
+      "guid": "yginkJMPZ3vbeguf",
+      "id": 2965,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yginkJMPZ3vbeguf.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.440x330",
+      "guid": "Tph2mssGlZExGDW6",
+      "id": 2966,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Tph2mssGlZExGDW6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4177,
+   "stepid": 840,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 117,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL THE RAMBO BOARD",
+     "text_rendered": "INSTALL THE RAMBO BOARD"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Using 4x M3 x 5 SHCS, install the RAMBo board into the electronics case.",
+     "text_rendered": "Using 4x M3 x 5 SHCS, install the RAMBo board into the electronics case."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure the USB plug lines up with the hole in the case.",
+     "text_rendered": "Make sure the USB plug lines up with the hole in the case."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Does the USB plug line up with the case?",
+     "text_rendered": "Does the USB plug line up with the case?"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.440x330",
+      "guid": "p6aubohpnAEHYAKb",
+      "id": 2968,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/p6aubohpnAEHYAKb.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.440x330",
+      "guid": "ZDBpeEFZl2wDZuj3",
+      "id": 2967,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ZDBpeEFZl2wDZuj3.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.440x330",
+      "guid": "gQweGD3dLcNhoLdC",
+      "id": 2964,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gQweGD3dLcNhoLdC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4184,
+   "stepid": 841,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - Electronics Case Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "2.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2.5mm_Allen_Driver"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+Electronics+Case+Assembly/117",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/117"
+}

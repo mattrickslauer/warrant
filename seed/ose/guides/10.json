@@ -1,0 +1,913 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Press:+Structural+Components+Assembly/10",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041438,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3906,
+ "guideid": 10,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.440x330",
+  "guid": "r61tXmtGOdZbGRyP",
+  "id": 79,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/r61tXmtGOdZbGRyP.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134835,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": "Primary arms to frame: 4, secondary arms to primary: 4, dirt keeper plate to primary arms: 4, Brickholder plate to primary arms: 4",
+   "quantity": 16,
+   "text": "3/4\"x1.5\" bolt",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22x1.5%22_bolt"
+  },
+  {
+   "notes": "Primary arms to frame: 4, secondary arms to primary: 4, dirt keeper plate to primary arms: 4, Brickholder plate to primary arms: 4",
+   "quantity": 17,
+   "text": "3/4\" nuts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22_nuts"
+  },
+  {
+   "notes": null,
+   "quantity": 16,
+   "text": "3/4\" washers",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3_4%22_washers"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041438,
+ "revisionid": 2004,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Set the main frame somewhere on level ground where you have access to a welder and torch and where you have at least an 8' radius of empty space. The CEB takes up a lot of room!",
+     "text_rendered": "Set the main frame somewhere on level ground where you have access to a welder and torch and where you have at least an 8' radius of empty space. The CEB takes up a lot of room!"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Set it so the cylinder pin is near the ground.",
+     "text_rendered": "Set it so the cylinder pin is near the ground."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.440x330",
+      "guid": "fD316UkWbW1k1EMH",
+      "id": 82,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fD316UkWbW1k1EMH.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 46,
+   "stepid": 22,
+   "time_estimate": 0,
+   "title": "Position the main frame"
+  },
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gather the secondary arms, the legs and the feet.",
+     "text_rendered": "Gather the secondary arms, the legs and the feet."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Onto the end of each leg, tighten a foot to one of its ends. Get the bolt tight enough so it won't fall off.",
+     "text_rendered": "Onto the end of each leg, tighten a foot to one of its ends. Get the bolt tight enough so it won't fall off."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert one leg/foot into each of the outside leg holders on the secondary arms.",
+     "text_rendered": "Insert one leg/foot into each of the outside leg holders on the secondary arms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Adjust the height so that the top of the secondary arms will be very close to the height at the bottom of the primary arms.",
+     "text_rendered": "Adjust the height so that the top of the secondary arms will be very close to the height at the bottom of the primary arms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the bolts in the leg holders so they are snug, but not too tight.",
+     "text_rendered": "Tighten the bolts in the leg holders so they are snug, but not too tight."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.440x330",
+      "guid": "RWPMF5lBwv2JeUwp",
+      "id": 86,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/RWPMF5lBwv2JeUwp.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.440x330",
+      "guid": "gZ3EgtJZfDVvKZeU",
+      "id": 89,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gZ3EgtJZfDVvKZeU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 52,
+   "stepid": 25,
+   "time_estimate": 0,
+   "title": "Assemble the Secondary Arms"
+  },
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Clamp them on the drawer members on the frame so that they are in the proper orientation. See image.",
+     "text_rendered": "Clamp them on the drawer members on the frame so that they are in the proper orientation. See image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If the machine is going to tip over, have a friend move the assembled secondary arms to support it so it doesn't tip.",
+     "text_rendered": "If the machine is going to tip over, have a friend move the assembled secondary arms to support it so it doesn't tip."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.440x330",
+      "guid": "UpXlC1wLWoeIYq5S",
+      "id": 93,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UpXlC1wLWoeIYq5S.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 107,
+   "stepid": 26,
+   "time_estimate": 0,
+   "title": "Place the Primary Arms"
+  },
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosely bolt the 2 sets of arms together.",
+     "text_rendered": "Loosely bolt the 2 sets of arms together."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You may need to loosen the clamps on the primary arms. This is OK.",
+     "text_rendered": "You may need to loosen the clamps on the primary arms. This is OK."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure the arms are all square to eachother.",
+     "text_rendered": "Make sure the arms are all square to eachother."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten all bolts.",
+     "text_rendered": "Tighten all bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosen the clamps attaching primary arms to the frame.",
+     "text_rendered": "Loosen the clamps attaching primary arms to the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Square the arms to the frame.",
+     "text_rendered": "Square the arms to the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.440x330",
+      "guid": "rGp1pP2llCFYia5R",
+      "id": 97,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/rGp1pP2llCFYia5R.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 113,
+   "stepid": 27,
+   "time_estimate": 0,
+   "title": "Attach the secondary arms to the primary arms"
+  },
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the holes in the frame through the holes in the primary arms.",
+     "text_rendered": "Torch the holes in the frame through the holes in the primary arms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure bolts go through all holes",
+     "text_rendered": "Make sure bolts go through all holes"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the clamps and grind away any slag",
+     "text_rendered": "Remove the clamps and grind away any slag"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the primary arms to the frame.",
+     "text_rendered": "Bolt the primary arms to the frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.440x330",
+      "guid": "aN4FgiNJdbBXARHA",
+      "id": 102,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aN4FgiNJdbBXARHA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 118,
+   "stepid": 29,
+   "time_estimate": 0,
+   "title": "Attach the primary arms to the frame"
+  },
+  {
+   "comments": [],
+   "guideid": 10,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The plates go on the bottom side of the primary arms.",
+     "text_rendered": "The plates go on the bottom side of the primary arms."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If not all the bolts go through, torch away whatever is preventing it.",
+     "text_rendered": "If not all the bolts go through, torch away whatever is preventing it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt them down so the bolt head is on the top. Tighten the nuts snug.",
+     "text_rendered": "Bolt them down so the bolt head is on the top. Tighten the nuts snug."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the sensor on the right primary arm. Its location is circled in the diagram.",
+     "text_rendered": "Install the sensor on the right primary arm. Its location is circled in the diagram."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.440x330",
+      "guid": "eMcGHntZogOAY3uw",
+      "id": 106,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/eMcGHntZogOAY3uw.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.440x330",
+      "guid": "hC1PxETREvhaBflF",
+      "id": 110,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hC1PxETREvhaBflF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 126,
+   "stepid": 32,
+   "time_estimate": 0,
+   "title": "Install Brick Holder plate, Dirt keeper plate, and sensor holder"
+  }
+ ],
+ "subject": "",
+ "summary": "This guide explains how to install the primary and secondary arms, the feet, the legs, the brick-holder plate, and the dirt-keeper plate to the main frame. This is to be done after you have finished all of the steps in the fabrication section on the wiki.",
+ "time_required": "2 hours",
+ "time_required_max": 7200,
+ "time_required_min": 7200,
+ "title": "CEB Press: Structural Components Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "C-Clamps",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/C-Clamps"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "MIG welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/MIG_welder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Socket set and ratchet, or various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Socket_set_and_ratchet_or_various_wrenches"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Vise clamps",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Vise_clamps"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Press:+Structural+Components+Assembly/10",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/10"
+}

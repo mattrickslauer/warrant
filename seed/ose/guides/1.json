@@ -1,0 +1,771 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": false,
+  "image": {
+   "guid": "R3tNDBuP1bQ3aLE6",
+   "id": 1,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/R3tNDBuP1bQ3aLE6.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/R3tNDBuP1bQ3aLE6.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/R3tNDBuP1bQ3aLE6.full",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/R3tNDBuP1bQ3aLE6.thumbnail"
+  },
+  "join_date": 1340756670,
+  "reputation": 1,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/2/Eric+Doster",
+  "userid": 2,
+  "username": "Eric Doster"
+ },
+ "body_url_path": "/Guide/How+to+use+a+Dozuki/1",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Examples",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "To reassemble your device, follow these instructions in reverse order.",
+ "conclusion_rendered": "<p>To reassemble your device, follow these instructions in reverse order.</p>",
+ "created_date": 1340756690,
+ "difficulty": "Easy",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3973,
+ "guideid": 1,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.440x330",
+  "guid": "slIx6pp1uy4ZZWDe",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.huge",
+  "id": 4,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/slIx6pp1uy4ZZWDe.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "A dozuki is a saw used to make fine cuts into softer woods. Originating in Japan, it allows the user to create a narrow, precise cut due to its thin blade construction.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "It is also unique in its design as it only cuts on the pull stroke, as opposed to the European standard (where the saw cuts on the push stroke). Accordingly, the woodworker can use gravity to their advantage when cutting with the saw, but they cannot put their weight into the cut like one could with the European saws.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "This guide will show you how to properly make a notch into a wood workpiece using a dozuki. All you need is the saw itself and a piece of soft wood for making test cuts.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "You might also be interested in Mr. WoodMan's ",
+      "type": "text"
+     },
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://www.youtube.com/watch?v=Qa5wIpfhGcY",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "wonderful video",
+      "type": "text"
+     },
+     {
+      "text": " on how to use a variety of Japanese saws, including a dozuki.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "A dozuki is a saw used to make fine cuts into softer woods. Originating in Japan, it allows the user to create a narrow, precise cut due to its thin blade construction.\n\nIt is also unique in its design as it only cuts on the pull stroke, as opposed to the European standard (where the saw cuts on the push stroke). Accordingly, the woodworker can use gravity to their advantage when cutting with the saw, but they cannot put their weight into the cut like one could with the European saws.\n\nThis guide will show you how to properly make a notch into a wood workpiece using a dozuki. All you need is the saw itself and a piece of soft wood for making test cuts.\n\nYou might also be interested in Mr. WoodMan's [http://www.youtube.com/watch?v=Qa5wIpfhGcY|wonderful video] on how to use a variety of Japanese saws, including a dozuki.",
+ "introduction_rendered": "<p>A dozuki is a saw used to make fine cuts into softer woods. Originating in Japan, it allows the user to create a narrow, precise cut due to its thin blade construction.</p>\n\n<p>It is also unique in its design as it only cuts on the pull stroke, as opposed to the European standard (where the saw cuts on the push stroke). Accordingly, the woodworker can use gravity to their advantage when cutting with the saw, but they cannot put their weight into the cut like one could with the European saws.</p>\n\n<p>This guide will show you how to properly make a notch into a wood workpiece using a dozuki. All you need is the saw itself and a piece of soft wood for making test cuts.</p>\n\n<p>You might also be interested in Mr. WoodMan's <a href=\"http://www.youtube.com/watch?v=Qa5wIpfhGcY\">wonderful video</a> on how to use a variety of Japanese saws, including a dozuki.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1340757303,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": "Scrap",
+   "quantity": 1,
+   "text": "Wood",
+   "thumbnail": null,
+   "type": "2x2",
+   "url": "/Item/Wood"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1340756690,
+ "revisionid": 12,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 1,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.mini",
+   "lines": [
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "A dozuki cuts only in one direction -- on the pull stroke. You can push the saw through your workpiece, but only apply pressure when pulling towards you.",
+     "text_rendered": "A dozuki cuts only in one direction -- on the pull stroke. You can push the saw through your workpiece, but only apply pressure when pulling towards you."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Begin your cut by placing the bottom edge of the saw on the corner edge of the workpiece. Make sure the saw blade lines up with any markings you made on the workpiece for this cut.",
+     "text_rendered": "Begin your cut by placing the bottom edge of the saw on the corner edge of the workpiece. Make sure the saw blade lines up with any markings you made on the workpiece for this cut."
+    },
+    {
+     "bullet": "red",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 2,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 2,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gently pull the saw down and towards you.",
+     "text_rendered": "Gently pull the saw down and towards you."
+    },
+    {
+     "bullet": "yellow",
+     "bullet_style": {
+      "bullet_color": "#f3e00e",
+      "bullet_styleid": 4,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 4,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "here is a new point",
+     "text_rendered": "here is a new point"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Repeat the above steps for a couple of more pulls, ensuring you take the saw out of the workpiece after each pull. This will allow you to start a neat and precise cut into your workpiece.",
+     "text_rendered": "Repeat the above steps for a couple of more pulls, ensuring you take the saw out of the workpiece after each pull. This will allow you to start a neat and precise cut into your workpiece."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.440x330",
+      "guid": "kS5mUKKYThYZpPnL",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.huge",
+      "id": 5,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kS5mUKKYThYZpPnL.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.440x330",
+      "guid": "pMlBowdbtqJNdiUx",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.huge",
+      "id": 15,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pMlBowdbtqJNdiUx.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.440x330",
+      "guid": "HsppwU5iyJqBJl5S",
+      "id": 17,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HsppwU5iyJqBJl5S.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 12,
+   "stepid": 1,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 1,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once you've started the cut, you can proceed to delve into the workpiece as deep as necessary.",
+     "text_rendered": "Once you've started the cut, you can proceed to delve into the workpiece as deep as necessary."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "For these cuts, you can pass the saw through the workpiece in both directions, but just make sure to apply downward pressure only on the pull stroke.",
+     "text_rendered": "For these cuts, you can pass the saw through the workpiece in both directions, but just make sure to apply downward pressure only on the pull stroke."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "After you're satisfied with the depth of cut, it will look something like the second picture on this step.",
+     "text_rendered": "After you're satisfied with the depth of cut, it will look something like the second picture on this step."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.440x330",
+      "guid": "QRtUgZrbyycnSypJ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.huge",
+      "id": 8,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QRtUgZrbyycnSypJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.440x330",
+      "guid": "5Hwt1NrK51EYfBgk",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.huge",
+      "id": 9,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5Hwt1NrK51EYfBgk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4,
+   "stepid": 2,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 1,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.mini",
+   "lines": [
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The depth of the notch was not critical for the purpose of this guide. However, you should use a ruler to mark where to cut out the notch.",
+     "text_rendered": "The depth of the notch was not critical for the purpose of this guide. However, you should use a ruler to mark where to cut out the notch."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "First reposition the workpiece so that able to cut out the notch.",
+     "text_rendered": "First reposition the workpiece so that able to cut out the notch."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make the first mark on the workpiece by aligning the ruler against the depth of the cut, then drawing a straight line to the top of the workpiece.",
+     "text_rendered": "Make the first mark on the workpiece by aligning the ruler against the depth of the cut, then drawing a straight line to the top of the workpiece."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Draw another line to the across the top of the workpiece. This will be the line you'll follow with the dozuki in order to create the notch in the workpiece.",
+     "text_rendered": "Draw another line to the across the top of the workpiece. This will be the line you'll follow with the dozuki in order to create the notch in the workpiece."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.440x330",
+      "guid": "FcopFlXeOawKROWr",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.huge",
+      "id": 10,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcopFlXeOawKROWr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.440x330",
+      "guid": "EyfVMNFsKsNtNAP1",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.huge",
+      "id": 11,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EyfVMNFsKsNtNAP1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 6,
+   "stepid": 3,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 1,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Just as before, align the dozuki blade to the edge of the workpiece and make a couple of preliminary cuts to ensure you're on the right path.",
+     "text_rendered": "Just as before, align the dozuki blade to the edge of the workpiece and make a couple of preliminary cuts to ensure you're on the right path."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Keep cutting into the workpiece until the notch is created.",
+     "text_rendered": "Keep cutting into the workpiece until the notch is created."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.440x330",
+      "guid": "hON1MWALWCXTNJwm",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.huge",
+      "id": 12,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hON1MWALWCXTNJwm.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.440x330",
+      "guid": "qOPRagJaFToTYMGW",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.huge",
+      "id": 13,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qOPRagJaFToTYMGW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 8,
+   "stepid": 4,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 1,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "That's how you create a notch in your workpiece using a dozuki. If all went according to plan, all its teeth should still be intact, and you should have a rectangular section of wood missing from the workpiece.",
+     "text_rendered": "That's how you create a notch in your workpiece using a dozuki. If all went according to plan, all its teeth should still be intact, and you should have a rectangular section of wood missing from the workpiece."
+    },
+    {
+     "bullet": "icon_note",
+     "bullet_style": {
+      "bullet_color": "#666666",
+      "bullet_styleid": 10,
+      "char": "\\e601",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Note",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "char",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 10,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remember: the dozuki blades are replaceable. There's no reason to throw away a dozuki if the teeth snap off. In fact, you can grind them off and use the old blade as a scraper! (Thanks [http://www.youtube.com/watch?v=Qa5wIpfhGcY|Mr. WoodMan]!)",
+     "text_rendered": "Remember: the dozuki blades are replaceable. There's no reason to throw away a dozuki if the teeth snap off. In fact, you can grind them off and use the old blade as a scraper! (Thanks <a href=\"http://www.youtube.com/watch?v=Qa5wIpfhGcY\">Mr. WoodMan</a>!)"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.440x330",
+      "guid": "ff1cpgBcfFOERbZq",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.huge",
+      "id": 14,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ff1cpgBcfFOERbZq.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 10,
+   "stepid": 5,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Figure out how to use a dozuki properly using this guide.",
+ "time_required": "10 minutes",
+ "time_required_max": 600,
+ "time_required_min": 600,
+ "title": "How to use a Dozuki",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "back hoe",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/back_hoe"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Dozuki",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Dozuki"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Vise",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Vise"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+use+a+Dozuki/1",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/1"
+}

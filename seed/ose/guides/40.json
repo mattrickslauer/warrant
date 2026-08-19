@@ -1,0 +1,562 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB:+Stretching+the+Frame/40",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041578,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3928,
+ "guideid": 40,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.440x330",
+  "guid": "lMQFLxclbKQg4uMX",
+  "id": 415,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lMQFLxclbKQg4uMX.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "attrs": {
+     "align": "center",
+     "caption": "",
+     "formats": [],
+     "poster": "",
+     "rule": "Video",
+     "service": "youtube",
+     "size": "large",
+     "url": "http://www.youtube.com/watch?v=ZpZ0OUmGFIA&feature=related"
+    },
+    "content": [
+     {
+      "text": "[video|http://www.youtube.com/watch?v=ZpZ0OUmGFIA&feature=related]",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "text": "Additional Materials Required:* Soil Loading Drawer* Wide Cylinder Supports* 3/4\"x2\" Bolts (8)* 3/4\" Galvanized Nuts (8)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[video|http://www.youtube.com/watch?v=ZpZ0OUmGFIA&feature=related]\n\nAdditional Materials Required:* Soil Loading Drawer* Wide Cylinder Supports* 3/4\"x2\" Bolts (8)* 3/4\" Galvanized Nuts (8)",
+ "introduction_rendered": "<div class=\"large videoFrame videoBox_center\" style=\"width:570px\"><div class=\"videoBox\"><div videoid=ZpZ0OUmGFIA class='youtube-player' src=\"https://www.youtube-nocookie.com/embed/ZpZ0OUmGFIA?wmode=opaque\" style='background-image:url(\"https://i.ytimg.com/vi/ZpZ0OUmGFIA/hqdefault.jpg\")' width=\"560\" height=\"315\" ></div></div></div>\n\n<p>Additional Materials Required:* Soil Loading Drawer* Wide Cylinder Supports* 3/4&quot;x2&quot; Bolts (8)* 3/4&quot; Galvanized Nuts (8)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134843,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041578,
+ "revisionid": 82,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 40,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the cylinder to a hydraulic pump or power cube and contract the cylinder at least 1\".",
+     "text_rendered": "Attach the cylinder to a hydraulic pump or power cube and contract the cylinder at least 1&quot;."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Stand up the frame so the press feet are facing down.",
+     "text_rendered": "Stand up the frame so the press feet are facing down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert the Soil loading drawer on top of the horizontal members so that the press plate is facing the press feet.",
+     "text_rendered": "Insert the Soil loading drawer on top of the horizontal members so that the press plate is facing the press feet."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If the drawer doesn't fit because of the spacers, you welded them too close. Grind off the tacks and tack them a little higher.",
+     "text_rendered": "If the drawer doesn't fit because of the spacers, you welded them too close. Grind off the tacks and tack them a little higher."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Position the drawer so that the press plate will be fully contacted by the press feet.",
+     "text_rendered": "Position the drawer so that the press plate will be fully contacted by the press feet."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Bolt the drawer members on snugly.",
+     "text_rendered": "Bolt the drawer members on snugly."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.440x330",
+      "guid": "FcqsAQYsu1Jf4liL",
+      "id": 419,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FcqsAQYsu1Jf4liL.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.440x330",
+      "guid": "6FYpb4Y1POPgyeZk",
+      "id": 422,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6FYpb4Y1POPgyeZk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.440x330",
+      "guid": "K6ieyXh5en1aKdWg",
+      "id": 424,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/K6ieyXh5en1aKdWg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 259,
+   "stepid": 129,
+   "time_estimate": 0,
+   "title": "Stretch the frame"
+  },
+  {
+   "comments": [],
+   "guideid": 40,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use the pump to expand the cylinder as much as possible. The pump will likely stall out.",
+     "text_rendered": "Use the pump to expand the cylinder as much as possible. The pump will likely stall out."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If the pump stalls, turn it back on and expand it fully once more.",
+     "text_rendered": "If the pump stalls, turn it back on and expand it fully once more."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Expand at least 3 times.",
+     "text_rendered": "Expand at least 3 times."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Contract it, so you can weld the spacers in. Then detach from the pump.",
+     "text_rendered": "Contract it, so you can weld the spacers in. Then detach from the pump."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2821,
+   "stepid": 130,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 40,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the drawer members.",
+     "text_rendered": "Remove the drawer members."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Look where the spacers are near the drawer.",
+     "text_rendered": "Look where the spacers are near the drawer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The spacers should be very close to the drawer (less than 1/32\") See [http://www.youtube.com/watch?feature=player_embedded&v=mh7XqmTbA0g|quality control video] if you wonder why.",
+     "text_rendered": "The spacers should be very close to the drawer (less than 1/32&quot;) See <a href=\"http://www.youtube.com/watch?feature=player_embedded&amp;v=mh7XqmTbA0g\">quality control video</a> if you wonder why."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "If they are too far, grind off the welds and re-tack them so they are lightly contacting the drawer. Yet again, make sure they are perfectly square with the verticals.",
+     "text_rendered": "If they are too far, grind off the welds and re-tack them so they are lightly contacting the drawer. Yet again, make sure they are perfectly square with the verticals."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.440x330",
+      "guid": "2HWZexmyHPifj4Nf",
+      "id": 428,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2HWZexmyHPifj4Nf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 263,
+   "stepid": 131,
+   "time_estimate": 0,
+   "title": "Observations"
+  }
+ ],
+ "subject": "",
+ "summary": "Stretch the frame on your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB: Stretching the Frame",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Hydraulic Pump",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Hydraulic_Pump"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB:+Stretching+the+Frame/40",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/40"
+}

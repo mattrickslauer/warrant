@@ -1,0 +1,712 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB+Main+Frame:+U-Channel+Prep/36",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041551,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3924,
+ "guideid": 36,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.440x330",
+  "guid": "PnQNuDsRB33FRCMn",
+  "id": 348,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PnQNuDsRB33FRCMn.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=3fbeaaff733e760f1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* 3/4\" Galvanized Nuts (4)* 3/4\" Steel Nuts (10)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=3fbeaaff733e760f1211da1f85706ccd|Sketchup Model]Additional Materials Required:* 3/4\" Galvanized Nuts (4)* 3/4\" Steel Nuts (10)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=3fbeaaff733e760f1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* 3/4&quot; Galvanized Nuts (4)* 3/4&quot; Steel Nuts (10)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134841,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041551,
+ "revisionid": 1171,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 36,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark the holes in the horizontal members as shown in the diagram. Center punch them.",
+     "text_rendered": "Mark the holes in the horizontal members as shown in the diagram. Center punch them."
+    },
+    {
+     "bullet": "icon_caution",
+     "bullet_style": {
+      "bullet_color": "#c1280b",
+      "bullet_styleid": 9,
+      "char": "\\e602",
+      "color_locked": 0,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": "Caution",
+      "last_modified": 1702940598,
+      "size": "medium",
+      "type": "caution",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 9,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "DON'T PUNCH THEM! They will be mag-drilled in a later guide.",
+     "text_rendered": "DON'T PUNCH THEM! They will be mag-drilled in a later guide."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.440x330",
+      "guid": "LpjyR4hBnsW44FSk",
+      "id": 353,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LpjyR4hBnsW44FSk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2014,
+   "stepid": 104,
+   "time_estimate": 0,
+   "title": "Prepare the horizontal members"
+  },
+  {
+   "comments": [],
+   "guideid": 36,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark and center punch the 4 holes on the face of the U-channel.",
+     "text_rendered": "Mark and center punch the 4 holes on the face of the U-channel."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "DON'T PUNCH THEM! They will be mag-drilled later",
+     "text_rendered": "DON'T PUNCH THEM! They will be mag-drilled later"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch holes for 3/4\" drawer adjustment bolts as shown in the diagram.",
+     "text_rendered": "Torch holes for 3/4&quot; drawer adjustment bolts as shown in the diagram."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away the slag.",
+     "text_rendered": "Grind away the slag."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.440x330",
+      "guid": "5b2HHnRVKcVKtulj",
+      "id": 356,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5b2HHnRVKcVKtulj.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.440x330",
+      "guid": "nNGEVYBfMcsBmlmn",
+      "id": 360,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/nNGEVYBfMcsBmlmn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.440x330",
+      "guid": "idwHYbkZ5peaLQ4d",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.huge",
+      "id": 361,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/idwHYbkZ5peaLQ4d.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2017,
+   "stepid": 107,
+   "time_estimate": 0,
+   "title": "Prepare the drawer members."
+  },
+  {
+   "comments": [],
+   "guideid": 36,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld 3/4\" nuts to the outside of the U channel where the holes are torched.",
+     "text_rendered": "Weld 3/4&quot; nuts to the outside of the U channel where the holes are torched."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Weld it with a bolt coming thru the other side so it protects the threads and so you know the nut won't get off center.",
+     "text_rendered": "Weld it with a bolt coming thru the other side so it protects the threads and so you know the nut won't get off center."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away any spatter between the bolts.",
+     "text_rendered": "Grind away any spatter between the bolts."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make (4) 3/4\" x 3.5\" bolts using 3.75\" threaded rod and steel nuts. See [http://opensourceecology.org/wiki/Making_Bolts|Making Bolts.]",
+     "text_rendered": "Make (4) 3/4&quot; x 3.5&quot; bolts using 3.75&quot; threaded rod and steel nuts. See <a href=\"http://opensourceecology.org/wiki/Making_Bolts\" rel=\"nofollow noopener noreferrer\">Making Bolts.</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Thread the bolts through the nuts and thread another nut on top as shown.",
+     "text_rendered": "Thread the bolts through the nuts and thread another nut on top as shown."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.440x330",
+      "guid": "aZXrINCT1nMPWEiH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.huge",
+      "id": 363,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aZXrINCT1nMPWEiH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.440x330",
+      "guid": "4KTZ2WFG6BFBX2Ee",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.huge",
+      "id": 365,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4KTZ2WFG6BFBX2Ee.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.440x330",
+      "guid": "tYeXHbPITGK5Xjoi",
+      "id": 369,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYeXHbPITGK5Xjoi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 217,
+   "stepid": 108,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 36,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Punch the holes as shown. The diameters are 3/4\".",
+     "text_rendered": "Punch the holes as shown. The diameters are 3/4&quot;."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch the roller slots as shown.",
+     "text_rendered": "Torch the roller slots as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Insure a 1/2\" bolt goes thru it.",
+     "text_rendered": "Insure a 1/2&quot; bolt goes thru it."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Grind away the slag.",
+     "text_rendered": "Grind away the slag."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Weld the the thin cylinder support nuts, taking care to protect the threads.",
+     "text_rendered": "Weld the the thin cylinder support nuts, taking care to protect the threads."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.440x330",
+      "guid": "YfCcCNxUJKxsCAgK",
+      "id": 372,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfCcCNxUJKxsCAgK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.440x330",
+      "guid": "SksFjJt2VZukRlCr",
+      "id": 376,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SksFjJt2VZukRlCr.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 221,
+   "stepid": 110,
+   "time_estimate": 0,
+   "title": "Prepare the vertical members."
+  }
+ ],
+ "subject": "",
+ "summary": "Prep the U-channel for the Compressed Earth Brick Press main frame.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB Main Frame: U-Channel Prep",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "hole puncher",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/hole_puncher"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Welder"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB+Main+Frame:+U-Channel+Prep/36",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/36"
+}

@@ -1,0 +1,588 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Building+the+MH+2+Floor+Modules/140",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Microhouse 2 Floor",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "Note that above parts list is for all four floor modules.",
+ "conclusion_rendered": "<p>Note that above parts list is for all four floor modules.</p>",
+ "created_date": 1396364818,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3387,
+ "guideid": 140,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.440x330",
+  "guid": "pYHBjEVvh4oedBW2",
+  "id": 3536,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "Note that the parts list is for all four floor modules.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "Note that the parts list is for all four floor modules.",
+ "introduction_rendered": "<p>Note that the parts list is for all four floor modules.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1396982574,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 32,
+   "text": "2X6, 6' long",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2X6_6%27_long"
+  },
+  {
+   "notes": null,
+   "quantity": 100,
+   "text": "3\" screws",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/3%22_screws"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1396365409,
+ "revisionid": 281,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 140,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Gather your parts and tools, as listed above.",
+     "text_rendered": "Gather your parts and tools, as listed above."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Review the image at left to understand what you are building.",
+     "text_rendered": "Review the image at left to understand what you are building."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut 2 of your 6' long 2X6s to 5' - 11 1/4\". These make up the two long sides of your frame.",
+     "text_rendered": "Cut 2 of your 6' long 2X6s to 5' - 11 1/4&quot;. These make up the two long sides of your frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the other 6 of your 6' long 2X6s to 5' - 8 1/4\". These make up the floor joists of the frame.",
+     "text_rendered": "Cut the other 6 of your 6' long 2X6s to 5' - 8 1/4&quot;. These make up the floor joists of the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "''Since you are building a total of 4 of these modules, you will need to create 4 sets of the pieces listed above.''",
+     "text_rendered": "<em>Since you are building a total of 4 of these modules, you will need to create 4 sets of the pieces listed above.</em>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.440x330",
+      "guid": "pYHBjEVvh4oedBW2",
+      "id": 3536,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pYHBjEVvh4oedBW2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4729,
+   "stepid": 928,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 140,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Create layout marks as shown in the image on your two longer 2X6s.",
+     "text_rendered": "Create layout marks as shown in the image on your two longer 2X6s."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You only need to measure and mark one of your long 2X6s. You can then use this one as a template to mark your others.",
+     "text_rendered": "You only need to measure and mark one of your long 2X6s. You can then use this one as a template to mark your others."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Since you will need to build 4 of these modules, you need to mark a total of 8 2X6s as shown in the image on the left.",
+     "text_rendered": "Since you will need to build 4 of these modules, you need to mark a total of 8 2X6s as shown in the image on the left."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.440x330",
+      "guid": "X5BOrbCfXgMsjjYg",
+      "id": 3540,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/X5BOrbCfXgMsjjYg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4733,
+   "stepid": 929,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 140,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Layout your pieces on a flat surface like a concrete slab or wooden floor deck. It helps a lot if this surface is completely level.",
+     "text_rendered": "Layout your pieces on a flat surface like a concrete slab or wooden floor deck. It helps a lot if this surface is completely level."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay your two longer pieces with the layout marks on them facing each other and lay your 6 shorter pieces in between, roughly in the position of the marks.",
+     "text_rendered": "Lay your two longer pieces with the layout marks on them facing each other and lay your 6 shorter pieces in between, roughly in the position of the marks."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Pre-drill two holes from the outside at the ends of the board to avoid splitting''' as shown on the second photo of this step. (The pre-drilling is only necessary at the ends of the board, not in the middle.) Screw (or nail, if you choose) the pieces into position.",
+     "text_rendered": "<strong>Pre-drill two holes from the outside at the ends of the board to avoid splitting</strong> as shown on the second photo of this step. (The pre-drilling is only necessary at the ends of the board, not in the middle.) Screw (or nail, if you choose) the pieces into position."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.440x330",
+      "guid": "2GuQxTOXPY4JfGmq",
+      "id": 3542,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2GuQxTOXPY4JfGmq.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.440x330",
+      "guid": "4OYXQSLw1G1XoHTI",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.huge",
+      "id": 3545,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4OYXQSLw1G1XoHTI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4839,
+   "stepid": 930,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 140,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You have now completed four frames!",
+     "text_rendered": "You have now completed four frames!"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "It is time to make [http://opensourceecology.dozuki.com/Guide/Cutting+the+MicroHouse+2+Floor+Decking+Pieces/142|MH 2 Floor Module Decking] and attach it to these frames.",
+     "text_rendered": "It is time to make <a href=\"https://opensourceecology.dozuki.com/Guide/Cutting+the+MicroHouse+2+Floor+Decking+Pieces/142\">MH 2 Floor Module Decking</a> and attach it to these frames."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.440x330",
+      "guid": "TRQNtyvJHfIsWvAy",
+      "id": 3550,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TRQNtyvJHfIsWvAy.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4820,
+   "stepid": 932,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Part 1: MicroHouse 2 Floor Frames",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Building the MH 2 Floor Modules",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Circular Saw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/circular_saw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Tape Measure",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/tape_measure"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Cordless Drill / Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/cordless_drill_driver"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Building+the+MH+2+Floor+Modules/140",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/140"
+}

@@ -1,0 +1,1366 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/Installing+TAZ+Final+Assembly/121",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "TAZ 2.0 Final Assembly",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1392815996,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2929,
+ "guideid": 121,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.440x330",
+  "guid": "ev5asAXrFoiDV42P",
+  "id": 3141,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395959610,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Frame Assembly XZ",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Frame_Assembly_XZ"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Y axis assembly",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Y_axis_assembly"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Motor extension -1",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Motor_extension_-1"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Motor extension -2",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Motor_extension_-2"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Motor extension -3",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Motor_extension_-3"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Motor extension -4",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Motor_extension_-4"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Extruder extension",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Extruder_extension"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "X switch extension",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/X_switch_extension"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Y switch extension",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Y_switch_extension"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Z switch extension",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Z_switch_extension"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Heat bed extension",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Heat_bed_extension"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Strain relief plate",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Strain_relief_plate"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Strain relief outer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Strain_relief_outer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Corrugated tubing 100mm",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Corrugated_tubing_100mm"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Rubber feet",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Rubber_feet"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Small Zip ties",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Small_Zip_ties"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 x 6 set screw",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_6_set_screw"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 x 12 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_12_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Washer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Thumb screws",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Thumb_screws"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Heat Bed",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Heat_Bed"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395757744,
+ "revisionid": 2726,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "GATHER PARTS FOR THE FINAL ASSEMBLY",
+     "text_rendered": "GATHER PARTS FOR THE FINAL ASSEMBLY"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TL-FX0006 Fixture",
+     "text_rendered": "TL-FX0006 Fixture"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TL-FX0018",
+     "text_rendered": "TL-FX0018"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "TL-FX0017",
+     "text_rendered": "TL-FX0017"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.440x330",
+      "guid": "ev5asAXrFoiDV42P",
+      "id": 3141,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ev5asAXrFoiDV42P.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.440x330",
+      "guid": "cIfT5IXMIVRCOIyC",
+      "id": 3140,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cIfT5IXMIVRCOIyC.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.440x330",
+      "guid": "UTPuYly3EZN1OmAj",
+      "id": 3139,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/UTPuYly3EZN1OmAj.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4340,
+   "stepid": 864,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD FEET TO THE FRAME ASSEMBLY",
+     "text_rendered": "ADD FEET TO THE FRAME ASSEMBLY"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install 4x rubber feet to bottom of frame.",
+     "text_rendered": "Install 4x rubber feet to bottom of frame."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.440x330",
+      "guid": "TfRayrWB6ppjP4Vk",
+      "id": 3215,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TfRayrWB6ppjP4Vk.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.440x330",
+      "guid": "dcsHLMwUo4vWDBGW",
+      "id": 3212,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/dcsHLMwUo4vWDBGW.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.440x330",
+      "guid": "EChw3ElXi1SJTsAQ",
+      "id": 3213,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EChw3ElXi1SJTsAQ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4352,
+   "stepid": 865,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD FEET TO FRAME ASSEMBLY (continued)",
+     "text_rendered": "ADD FEET TO FRAME ASSEMBLY (continued)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Take note of location, do not cover bottom of vertical extrusion.",
+     "text_rendered": "Take note of location, do not cover bottom of vertical extrusion."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "All four feet shown",
+     "text_rendered": "All four feet shown"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.440x330",
+      "guid": "gm3bdJLaZDmSSB4J",
+      "id": 3211,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/gm3bdJLaZDmSSB4J.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4354,
+   "stepid": 866,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "PLUG IN Z LEFT MOTOR",
+     "text_rendered": "PLUG IN Z LEFT MOTOR"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Route Z left motor wire through relief position #5.",
+     "text_rendered": "Route Z left motor wire through relief position #5."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Plug into the board in location shown.",
+     "text_rendered": "Plug into the board in location shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - Route Z left motor wire through relief #5",
+     "text_rendered": "Photo 1 - Route Z left motor wire through relief #5"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Plug motor into RAMBo board in this location",
+     "text_rendered": "Photo 2 - Plug motor into RAMBo board in this location"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.440x330",
+      "guid": "HgjeaSqUahNf6jkf",
+      "id": 3210,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HgjeaSqUahNf6jkf.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.440x330",
+      "guid": "CvtxDTf1ZssXeB3l",
+      "id": 3209,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/CvtxDTf1ZssXeB3l.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 4364,
+   "stepid": 867,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL THE Z SWITCH",
+     "text_rendered": "INSTALL THE Z SWITCH"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install switch as shown and secure with a M3 x 6 set screw.",
+     "text_rendered": "Install switch as shown and secure with a M3 x 6 set screw."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Route wires through relief #6 and plug in as shown.",
+     "text_rendered": "Route wires through relief #6 and plug in as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 -  Limit switch parts",
+     "text_rendered": "Photo 1 -  Limit switch parts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Install switch into Z motor mount left",
+     "text_rendered": "Photo 2 - Install switch into Z motor mount left"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 3 - Secure with set screw",
+     "text_rendered": "Photo 3 - Secure with set screw"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.440x330",
+      "guid": "INVQkEbBVPEIQrrt",
+      "id": 3174,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/INVQkEbBVPEIQrrt.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.440x330",
+      "guid": "NDrf32s4YtRUfrSd",
+      "id": 3162,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NDrf32s4YtRUfrSd.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.440x330",
+      "guid": "FUBnB1uVVVhxMPgN",
+      "id": 3163,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FUBnB1uVVVhxMPgN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 4373,
+   "stepid": 868,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "INSTALL THE Z SWITCH (continued)",
+     "text_rendered": "INSTALL THE Z SWITCH (continued)"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Route wires through relief #6 and plug in as shown.",
+     "text_rendered": "Route wires through relief #6 and plug in as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Plug in as shown",
+     "text_rendered": "Plug in as shown"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.440x330",
+      "guid": "VrD3cRpRxMaPoNvh",
+      "id": 3206,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VrD3cRpRxMaPoNvh.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.440x330",
+      "guid": "HHC12uES2JZglniG",
+      "id": 3200,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HHC12uES2JZglniG.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 4382,
+   "stepid": 869,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 121,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD THE Z RIGHT MOTOR EXTENSION",
+     "text_rendered": "ADD THE Z RIGHT MOTOR EXTENSION"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Connect the Z motor extension to the right Z motor.",
+     "text_rendered": "Connect the Z motor extension to the right Z motor."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Route the extension through relief position #8.",
+     "text_rendered": "Route the extension through relief position #8."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Plug in as shown and put ground lug on post.",
+     "text_rendered": "Plug in as shown and put ground lug on post."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Zip tie at the 3 locations indicated while removing slack.",
+     "text_rendered": "Zip tie at the 3 locations indicated while removing slack."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - Z motor right extension parts",
+     "text_rendered": "Photo 1 - Z motor right extension parts"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Plug extension into Motor",
+     "text_rendered": "Photo 2 - Plug extension into Motor"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.440x330",
+      "guid": "2E4mAvbxdTYtbfdq",
+      "id": 3208,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2E4mAvbxdTYtbfdq.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.440x330",
+      "guid": "Y6Vn3UYwRTyg55xp",
+      "id": 3204,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y6Vn3UYwRTyg55xp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 4389,
+   "stepid": 870,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing TAZ Final Assembly",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "1.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1.5mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "2.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2.5mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "4mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/4mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Phillips screw driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Phillips_screw_driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Flat head screw driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Flat_head_screw_driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Side cutters",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Side_cutters"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Zip tie gun",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Zip_tie_gun"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "TL-FX0006 Fixture",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/TL-FX0006_Fixture"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "TL-FX0018 Fixture",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/TL-FX0018_Fixture"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "TL-FX0017 Fixture",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/TL-FX0017_Fixture"
+  }
+ ],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+TAZ+Final+Assembly/121",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/121"
+}

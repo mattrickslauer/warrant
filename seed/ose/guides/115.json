@@ -1,0 +1,663 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-07.thumbnail"
+  },
+  "join_date": 1367161849,
+  "reputation": 2032,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/7/Robert+Kirk",
+  "userid": 7,
+  "username": "Robert Kirk"
+ },
+ "body_url_path": "/Guide/Installing+Module+-+X+End+Idler/115",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Module - X End Idler",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1391921091,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 2917,
+ "guideid": 115,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.440x330",
+  "guid": "2tRNMSpGX6Hsas2q",
+  "id": 2862,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2tRNMSpGX6Hsas2q.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1395958474,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "X end idler with inserts",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/X_end_idler_with_inserts"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Double bearing holder with bearings",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Double_bearing_holder_with_bearings"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 x 12 SHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_x_12_SHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M3 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M3_Washer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "608 Bearing",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/608_Bearing"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M8 x 35 BHCS",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M8_x_35_BHCS"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M8 Washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M8_Washer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "M8 Nyloc Nut",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/M8_Nyloc_Nut"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1395958469,
+ "revisionid": 231,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 115,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "GATHER PARTS TO ASSEMBLE BEARINGS ONTO END IDLER",
+     "text_rendered": "GATHER PARTS TO ASSEMBLE BEARINGS ONTO END IDLER"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.440x330",
+      "guid": "tuN1GF3SCuOISyZC",
+      "id": 2857,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tuN1GF3SCuOISyZC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 4029,
+   "stepid": 820,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 115,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ASSEMBLE BEARINGS ONTO X END IDLER",
+     "text_rendered": "ASSEMBLE BEARINGS ONTO X END IDLER"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install 2 608 Bearings with the M8 x 35 BHCS, M8 washers and M8 Nyloc nut.",
+     "text_rendered": "Install 2 608 Bearings with the M8 x 35 BHCS, M8 washers and M8 Nyloc nut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten Bolt all the way down.",
+     "text_rendered": "Tighten Bolt all the way down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Note, there is no washer under the head of the bolt.",
+     "text_rendered": "Note, there is no washer under the head of the bolt."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Do the bearings spin freely?",
+     "text_rendered": "Do the bearings spin freely?"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - M8 washers on both sides of bearings",
+     "text_rendered": "Photo 1 - M8 washers on both sides of bearings"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - No washer under bolt head.",
+     "text_rendered": "Photo 2 - No washer under bolt head."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 3 - M8 Washer under nut",
+     "text_rendered": "Photo 3 - M8 Washer under nut"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.440x330",
+      "guid": "x4Mmhf3ewZuq2vsY",
+      "id": 2856,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x4Mmhf3ewZuq2vsY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.440x330",
+      "guid": "ij1JUP1cq6rWNshM",
+      "id": 2858,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ij1JUP1cq6rWNshM.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.440x330",
+      "guid": "voqUwXN5VMdDR3lX",
+      "id": 2859,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/voqUwXN5VMdDR3lX.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 4030,
+   "stepid": 819,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 115,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ASSEMBLE DOUBLE BEARING HOLDER ONTO X END IDLER",
+     "text_rendered": "ASSEMBLE DOUBLE BEARING HOLDER ONTO X END IDLER"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Assemble the double bearing holder onto the x end idler with 4x M3 x 12 SHCS and washers.",
+     "text_rendered": "Assemble the double bearing holder onto the x end idler with 4x M3 x 12 SHCS and washers."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Leave the bearing holder loose at this point.",
+     "text_rendered": "Leave the bearing holder loose at this point."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 1 - Required parts to assemble the double bearing holder.",
+     "text_rendered": "Photo 1 - Required parts to assemble the double bearing holder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Photo 2 - Bearing holder assembled, take note of orientation.",
+     "text_rendered": "Photo 2 - Bearing holder assembled, take note of orientation."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Does the bearing holder wiggle around?",
+     "text_rendered": "Does the bearing holder wiggle around?"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.440x330",
+      "guid": "MMBDgHIvUZNkDJhn",
+      "id": 2860,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MMBDgHIvUZNkDJhn.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.440x330",
+      "guid": "D5L5tbTkFjKyvooN",
+      "id": 2861,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D5L5tbTkFjKyvooN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 4036,
+   "stepid": 821,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "X End Idler",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Module - X End Idler",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "2.5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/2.5mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "5mm Allen Driver",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/5mm_Allen_Driver"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "13mm Wrench",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/13mm_Wrench"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Module+-+X+End+Idler/115",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/115"
+}

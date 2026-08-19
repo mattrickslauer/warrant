@@ -1,0 +1,898 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Building+the+MicroHouse+2+Beam+Module/150",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "MicroHouse 2 Beam Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1397783294,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3487,
+ "guideid": 150,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.440x330",
+  "guid": "D3QOCwMA4HX4fgO2",
+  "id": 3787,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397787340,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1397786757,
+ "revisionid": 3376,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is what the final Beam Modules will look like.",
+     "text_rendered": "This is what the final Beam Modules will look like."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.440x330",
+      "guid": "D3QOCwMA4HX4fgO2",
+      "id": 3787,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/D3QOCwMA4HX4fgO2.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5095,
+   "stepid": 987,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Start with 4, 14' 2x8s.",
+     "text_rendered": "Start with 4, 14' 2x8s."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut each of the 2x8s to 13' - 10 3/4\" in length.",
+     "text_rendered": "Cut each of the 2x8s to 13' - 10 3/4&quot; in length."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.440x330",
+      "guid": "1LoPMxrDnjsrV1Ep",
+      "id": 3789,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1LoPMxrDnjsrV1Ep.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5097,
+   "stepid": 988,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make 6 short 2x8 pieces for both ends of each beam, each 11 3/8\" in length. Cut these from 8' 2x8s.",
+     "text_rendered": "Make 6 short 2x8 pieces for both ends of each beam, each 11 3/8&quot; in length. Cut these from 8' 2x8s."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You will make 24 of these pieces total.",
+     "text_rendered": "You will make 24 of these pieces total."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Also make 4 end caps, one for each end of both beams. You can make this from the left-over sheet material from the door or window modules (5/8\" plywood).",
+     "text_rendered": "Also make 4 end caps, one for each end of both beams. You can make this from the left-over sheet material from the door or window modules (5/8&quot; plywood)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The plywood endcaps measure 7 1/2\" by 12\"",
+     "text_rendered": "The plywood endcaps measure 7 1/2&quot; by 12&quot;"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.440x330",
+      "guid": "NG3PpTi6yJphhTMb",
+      "id": 3793,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NG3PpTi6yJphhTMb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5101,
+   "stepid": 989,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Begin assembly by pairing the long 2x8s and attaching them together with nails. Use 2 1/2\" long nails, and nail in groups of three approximately every 16\" along each beam.",
+     "text_rendered": "Begin assembly by pairing the long 2x8s and attaching them together with nails. Use 2 1/2&quot; long nails, and nail in groups of three approximately every 16&quot; along each beam."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.440x330",
+      "guid": "xRBphg41TZSPLWtE",
+      "id": 3798,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/xRBphg41TZSPLWtE.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5106,
+   "stepid": 990,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Next, add one of the short 2x8 blocks to each end of both beams. (The first image shows just one of the beams).",
+     "text_rendered": "Next, add one of the short 2x8 blocks to each end of both beams. (The first image shows just one of the beams)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use two 3\" screws to attach the block.",
+     "text_rendered": "Use two 3&quot; screws to attach the block."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Keep the block flush with the top, bottom, and end of the beam.",
+     "text_rendered": "Keep the block flush with the top, bottom, and end of the beam."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.440x330",
+      "guid": "IE5OjohLo52Ds3Cq",
+      "id": 3800,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IE5OjohLo52Ds3Cq.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5115,
+   "stepid": 991,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add a second block to each end of both beams as shown in the image. Keep the  end of the block flush with the end of the beam and one side of the block flush with the first block that you attached.",
+     "text_rendered": "Add a second block to each end of both beams as shown in the image. Keep the  end of the block flush with the end of the beam and one side of the block flush with the first block that you attached."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put two 3\" screws through the bottom block and into the block that you added in the previous step. Put another 3\" screw into the beam itself.",
+     "text_rendered": "Put two 3&quot; screws through the bottom block and into the block that you added in the previous step. Put another 3&quot; screw into the beam itself."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.440x330",
+      "guid": "PbLIUkqI1stArQtg",
+      "id": 3804,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PbLIUkqI1stArQtg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 5117,
+   "stepid": 992,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add two more of your blocks to the other side of the beam.",
+     "text_rendered": "Add two more of your blocks to the other side of the beam."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach one and then the other using two 3\" screws each.",
+     "text_rendered": "Attach one and then the other using two 3&quot; screws each."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Keep the ends flush with the end of the beam and the other blocks.",
+     "text_rendered": "Keep the ends flush with the end of the beam and the other blocks."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The second block you add should end up flush with the other side of the bottom block.",
+     "text_rendered": "The second block you add should end up flush with the other side of the bottom block."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "After screwing these two blocks into the beam, add two 3\" screws through the bottom block and into the outside block that you just added.",
+     "text_rendered": "After screwing these two blocks into the beam, add two 3&quot; screws through the bottom block and into the outside block that you just added."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.440x330",
+      "guid": "5OcVyGKi61oXSIOo",
+      "id": 3806,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5OcVyGKi61oXSIOo.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 5119,
+   "stepid": 993,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add two more blocks to the top of your assembly. Add one then the other. Use four 3\" screws for each.",
+     "text_rendered": "Add two more blocks to the top of your assembly. Add one then the other. Use four 3&quot; screws for each."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The ends of the blocks and the beam should all be flush with each other.",
+     "text_rendered": "The ends of the blocks and the beam should all be flush with each other."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.440x330",
+      "guid": "x35bQ4KcIfTKnAis",
+      "id": 3808,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/x35bQ4KcIfTKnAis.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 5116,
+   "stepid": 994,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 150,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Attach the 5/8\" plywood end cap to both ends of each beam.",
+     "text_rendered": "Attach the 5/8&quot; plywood end cap to both ends of each beam."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Use four 1 5/8\" screws for this. Position your screws nicely, as they may remain visible, depending on how you decide to finish the wall.",
+     "text_rendered": "Use four 1 5/8&quot; screws for this. Position your screws nicely, as they may remain visible, depending on how you decide to finish the wall."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is the final step! Your beams are ready for installation.",
+     "text_rendered": "This is the final step! Your beams are ready for installation."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.440x330",
+      "guid": "Epkv1rJeIT5wlnDW",
+      "id": 3810,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Epkv1rJeIT5wlnDW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 5123,
+   "stepid": 995,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "MicroHouse 2 Beam Module",
+ "summary": "The beam modules support the loft modules.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Building the MicroHouse 2 Beam Module",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Building+the+MicroHouse+2+Beam+Module/150",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/150"
+}

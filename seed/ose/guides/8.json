@@ -1,0 +1,1122 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Fitting+the+Main+Cylinder/8",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041428,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3905,
+ "guideid": 8,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.440x330",
+  "guid": "GNIqOKik21baenWJ",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.huge",
+  "id": 58,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNIqOKik21baenWJ.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "text": "I really reccomend you watch the instructional video:",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "attrs": {
+     "align": "center",
+     "caption": "",
+     "formats": [],
+     "poster": "",
+     "rule": "Video",
+     "service": "youtube",
+     "size": "large",
+     "url": "http://www.youtube.com/watch?v=F9QAa7oHbiE&feature=player_embedded"
+    },
+    "content": [
+     {
+      "text": "[video|http://www.youtube.com/watch?v=F9QAa7oHbiE&feature=player_embedded]",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   },
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=1289cc9979d24e3d1211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "You need to fit the cylinder into the frame so that when it is fully extended, the press foot is in the correct spot to eject the brick. You will need to torch holes in the horizontals for the pin which goes thru the cylinder, and weld DOM tubing to hold the pin.",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "I really reccomend you watch the instructional video:\n\n[video|http://www.youtube.com/watch?v=F9QAa7oHbiE&feature=player_embedded]\n\n[http://sketchup.google.com/3dwarehouse/details?mid=1289cc9979d24e3d1211da1f85706ccd|Sketchup Model]You need to fit the cylinder into the frame so that when it is fully extended, the press foot is in the correct spot to eject the brick. You will need to torch holes in the horizontals for the pin which goes thru the cylinder, and weld DOM tubing to hold the pin.",
+ "introduction_rendered": "<p>I really reccomend you watch the instructional video:</p>\n\n<div class=\"large videoFrame videoBox_center\" style=\"width:570px\"><div class=\"videoBox\"><div videoid=F9QAa7oHbiE class='youtube-player' src=\"https://www.youtube-nocookie.com/embed/F9QAa7oHbiE?wmode=opaque\" style='background-image:url(\"https://i.ytimg.com/vi/F9QAa7oHbiE/hqdefault.jpg\")' width=\"560\" height=\"315\" ></div></div></div>\n\n<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=1289cc9979d24e3d1211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>You need to fit the cylinder into the frame so that when it is fully extended, the press foot is in the correct spot to eject the brick. You will need to torch holes in the horizontals for the pin which goes thru the cylinder, and weld DOM tubing to hold the pin.</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134834,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Prepared main cylinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Prepared_main_cylinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Pin-1 1/2\" DOM Roundstock, 8.5\"",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Pin-1_1_2%22_DOM_Roundstock_8.5%22"
+  },
+  {
+   "notes": null,
+   "quantity": 2,
+   "text": "Pin Receptors: 1.5\" inner diameter, 2\" outer diameter DOM tubing: 1.5\"",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Pin_Receptors_1.5%22_inner_diameter_2%22_outer_diameter_DOM_tubing_1.5%22"
+  }
+ ],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041428,
+ "revisionid": 2000,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay the frame down, with all of the crossmembers and drawer members in place except the upper crossmember and drawer member which are facing up.",
+     "text_rendered": "Lay the frame down, with all of the crossmembers and drawer members in place except the upper crossmember and drawer member which are facing up."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place the assembled cylinder lying down so that the press feet are between the spacers. You need to insure that the vertical height is correct, and that the cylinder is centered.",
+     "text_rendered": "Place the assembled cylinder lying down so that the press feet are between the spacers. You need to insure that the vertical height is correct, and that the cylinder is centered."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Insure the magnet holder nut (welded to the press feet) is on the same side as the sensor holder hole (hole in one vertical).",
+     "text_rendered": "Insure the magnet holder nut (welded to the press feet) is on the same side as the sensor holder hole (hole in one vertical)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The top of the upper press foot should be (4 3/4\" for normal)(6 3/4\" for monster) away from the bottom of the upper crossmembers.",
+     "text_rendered": "The top of the upper press foot should be (4 3/4&quot; for normal)(6 3/4&quot; for monster) away from the bottom of the upper crossmembers."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.440x330",
+      "guid": "ckqRPvLAIUApBNod",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.huge",
+      "id": 59,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ckqRPvLAIUApBNod.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.440x330",
+      "guid": "A6NZKVpqUP5IsRlD",
+      "id": 62,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/A6NZKVpqUP5IsRlD.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.440x330",
+      "guid": "d4V5s1hlZkOBENw1",
+      "id": 66,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/d4V5s1hlZkOBENw1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 32,
+   "stepid": 15,
+   "time_estimate": 0,
+   "title": "Positioning the Cylinder"
+  },
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Add a 1/8\" spacer (big washers work great) under the cylinder, where it contacts the lower crossmember. This insures the cylinder is centered vertically. Where to put it is circled in the first image.",
+     "text_rendered": "Add a 1/8&quot; spacer (big washers work great) under the cylinder, where it contacts the lower crossmember. This insures the cylinder is centered vertically. Where to put it is circled in the first image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure the cylinder is centered, using a speed square pressed against the side of the cylinder, and a tape measure to the to the vertical members as shown.",
+     "text_rendered": "Make sure the cylinder is centered, using a speed square pressed against the side of the cylinder, and a tape measure to the to the vertical members as shown."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make sure the tubing for the pin is square with the lower crossmember using a speed square.",
+     "text_rendered": "Make sure the tubing for the pin is square with the lower crossmember using a speed square."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.440x330",
+      "guid": "4XlynxvMPJqBTiTb",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.huge",
+      "id": 71,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4XlynxvMPJqBTiTb.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.440x330",
+      "guid": "vnlQjvTHfZx6JJUZ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.huge",
+      "id": 72,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vnlQjvTHfZx6JJUZ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 34,
+   "stepid": 16,
+   "time_estimate": 0,
+   "title": "Squaring the cylinder"
+  },
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark the location for the hole for the pin on the bottom horizontal member  using spray paint.",
+     "text_rendered": "Mark the location for the hole for the pin on the bottom horizontal member  using spray paint."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Put the top member on, and put in at least 3 bolts. Spray mark this location as well, from the other side.",
+     "text_rendered": "Put the top member on, and put in at least 3 bolts. Spray mark this location as well, from the other side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove the horizontal members from the frame.",
+     "text_rendered": "Remove the horizontal members from the frame."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "This is possible to do without removing the cylinder, just prop it up on something to remove the lower member.",
+     "text_rendered": "This is possible to do without removing the cylinder, just prop it up on something to remove the lower member."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Place one of the DOM tubing pieces in the center of each of the sprayed marks and spray paint around this to mark where you will torch.",
+     "text_rendered": "Place one of the DOM tubing pieces in the center of each of the sprayed marks and spray paint around this to mark where you will torch."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.440x330",
+      "guid": "jBWypdKObYvw1Yk2",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.huge",
+      "id": 75,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jBWypdKObYvw1Yk2.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.440x330",
+      "guid": "XmjARTwArBHdptjf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.huge",
+      "id": 76,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XmjARTwArBHdptjf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 40,
+   "stepid": 19,
+   "time_estimate": 0,
+   "title": "Marking hole locations"
+  },
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Torch out the hole, and grind away the slag.",
+     "text_rendered": "Torch out the hole, and grind away the slag."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the tubing will go thru each hole. If not, retorch it. Grind off the slag.",
+     "text_rendered": "Insure the tubing will go thru each hole. If not, retorch it. Grind off the slag."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Lay the cylinder back down, with the 1/8\" spacer in,  and replace the crossmembers, with their bolts. Place the tubing in the torched holes.",
+     "text_rendered": "Lay the cylinder back down, with the 1/8&quot; spacer in,  and replace the crossmembers, with their bolts. Place the tubing in the torched holes."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the pin will go thru the tubing and the cylinder. If not, retorch the holes so that it will.",
+     "text_rendered": "Insure the pin will go thru the tubing and the cylinder. If not, retorch the holes so that it will."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.440x330",
+      "guid": "BfBGDnUhbJB1BW1h",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.huge",
+      "id": 78,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BfBGDnUhbJB1BW1h.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.440x330",
+      "guid": "FlC1FLLoFkYkhBSU",
+      "id": 81,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FlC1FLLoFkYkhBSU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 44,
+   "stepid": 21,
+   "time_estimate": 0,
+   "title": "Torching"
+  },
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "With the pin held in, tack the tubing on the top in place.",
+     "text_rendered": "With the pin held in, tack the tubing on the top in place."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure the tubing is pressed up against the cylinder, that is that its as far into the hole as possible.",
+     "text_rendered": "Make sure the tubing is pressed up against the cylinder, that is that its as far into the hole as possible."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Youll want to tack it in many places before welding around it, at least 8 on each side.",
+     "text_rendered": "Youll want to tack it in many places before welding around it, at least 8 on each side."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tack it as best you can on the bottom by hanging the frame off of the table and overhead welding. Again, insure the tubing is pressed up against the cylinder.",
+     "text_rendered": "Tack it as best you can on the bottom by hanging the frame off of the table and overhead welding. Again, insure the tubing is pressed up against the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Remove cylinder and pin, as well as the two crossmembers.",
+     "text_rendered": "Remove cylinder and pin, as well as the two crossmembers."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Fully weld the tubing on both sides. Jump around a lot to minimize any warping on the tubing.",
+     "text_rendered": "Fully weld the tubing on both sides. Jump around a lot to minimize any warping on the tubing."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Block the insides of the tubing so no spatter goes inside. Big washers work well for this.",
+     "text_rendered": "Block the insides of the tubing so no spatter goes inside. Big washers work well for this."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.440x330",
+      "guid": "HjayDXBsDkUQjYhJ",
+      "id": 85,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/HjayDXBsDkUQjYhJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 48,
+   "stepid": 23,
+   "time_estimate": 0,
+   "title": "Welding"
+  },
+  {
+   "comments": [],
+   "guideid": 8,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Replace the crossmembers and the cylinder.",
+     "text_rendered": "Replace the crossmembers and the cylinder."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insure the pin still fits and hammer it thru.",
+     "text_rendered": "Insure the pin still fits and hammer it thru."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "If the pin doesn't fit, you will need to make it fit.",
+     "text_rendered": "If the pin doesn't fit, you will need to make it fit."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "Tighten the bolts on only the bottom crossmember. Put the pin thru the crossmembers and the tube.",
+     "text_rendered": "Tighten the bolts on only the bottom crossmember. Put the pin thru the crossmembers and the tube."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "Mark where the bolt holes need to be torched away for the bolts to fit through. Torch it and you're done.",
+     "text_rendered": "Mark where the bolt holes need to be torched away for the bolts to fit through. Torch it and you're done."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.440x330",
+      "guid": "umILwqEZhEZ6b6uf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.huge",
+      "id": 87,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/umILwqEZhEZ6b6uf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 50,
+   "stepid": 24,
+   "time_estimate": 0,
+   "title": "Re-Assembly"
+  }
+ ],
+ "subject": "",
+ "summary": "Fitting the main cylinder into the main frame.",
+ "time_required": "2 hours",
+ "time_required_max": 7200,
+ "time_required_min": 7200,
+ "title": "Fitting the Main Cylinder",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "1/8\" thick washer",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/1_8%22_thick_washer"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Angle grinder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Angle_grinder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "MIG welder",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/MIG_welder"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Speed Square",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Speed_Square"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "Spray paint",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/Spray_paint"
+  },
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "torch",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/torch"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Fitting+the+Main+Cylinder/8",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/8"
+}

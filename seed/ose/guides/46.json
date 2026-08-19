@@ -1,0 +1,2755 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/Loader+Arms/46",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Sets and Tests",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368132810,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 460,
+ "guideid": 46,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.440x330",
+  "guid": "jdZ3XLFBXTMKGxj4",
+  "id": 501,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jdZ3XLFBXTMKGxj4.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1376147546,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368132810,
+ "revisionid": 94,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Prepare loader arms.",
+     "text_rendered": "Prepare loader arms."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.440x330",
+      "guid": "4WgJeqitQGCMYovK",
+      "id": 502,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4WgJeqitQGCMYovK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 307,
+   "stepid": 153,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Mark loader attach plates for hole locations.",
+     "text_rendered": "Mark loader attach plates for hole locations."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.440x330",
+      "guid": "C3s2mcDJsMV1m22v",
+      "id": 503,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/C3s2mcDJsMV1m22v.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 309,
+   "stepid": 154,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.440x330",
+      "guid": "5QsxBYG5BMlwQZME",
+      "id": 504,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5QsxBYG5BMlwQZME.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 311,
+   "stepid": 155,
+   "time_estimate": 0,
+   "title": "Punch or drill mount plate holes."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.440x330",
+      "guid": "qXKNDlHKiOFIEw4Z",
+      "id": 505,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qXKNDlHKiOFIEw4Z.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 3679,
+   "stepid": 156,
+   "time_estimate": 0,
+   "title": "Drill holes in loader arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.440x330",
+      "guid": "1BRXyYrbMgwKXDgR",
+      "id": 506,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1BRXyYrbMgwKXDgR.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 315,
+   "stepid": 157,
+   "time_estimate": 0,
+   "title": "Torch out arm mounts"
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.440x330",
+      "guid": "EuOtvOIBNksjS1Vp",
+      "id": 507,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EuOtvOIBNksjS1Vp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 317,
+   "stepid": 158,
+   "time_estimate": 0,
+   "title": "Grind arm ends."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.440x330",
+      "guid": "qDYaUi3VFOwyKMCi",
+      "id": 508,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qDYaUi3VFOwyKMCi.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 319,
+   "stepid": 159,
+   "time_estimate": 0,
+   "title": "Drill or punch 1\" holes for cylinder mount bottoms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.440x330",
+      "guid": "MVdw5edwElFuDLCd",
+      "id": 509,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MVdw5edwElFuDLCd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 321,
+   "stepid": 160,
+   "time_estimate": 0,
+   "title": "Cut pins to size."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.440x330",
+      "guid": "tNW1yF3SQBLMJvrb",
+      "id": 510,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tNW1yF3SQBLMJvrb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 323,
+   "stepid": 161,
+   "time_estimate": 0,
+   "title": "Prepare bottom mount plates for loader arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.440x330",
+      "guid": "Qa3GMnSM4MgfRqLk",
+      "id": 511,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Qa3GMnSM4MgfRqLk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 10,
+   "revisionid": 325,
+   "stepid": 162,
+   "time_estimate": 0,
+   "title": "Torch out 2\" inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.440x330",
+      "guid": "watiH54RrURX2tCp",
+      "id": 512,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/watiH54RrURX2tCp.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 11,
+   "revisionid": 327,
+   "stepid": 163,
+   "time_estimate": 0,
+   "title": "Mark arm locations on frame."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.440x330",
+      "guid": "AQ2RO4GBfOTSpeZI",
+      "id": 513,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AQ2RO4GBfOTSpeZI.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 12,
+   "revisionid": 329,
+   "stepid": 164,
+   "time_estimate": 0,
+   "title": "Grind 2\" inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.440x330",
+      "guid": "TKmmDkgEaqsKibNL",
+      "id": 514,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TKmmDkgEaqsKibNL.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 13,
+   "revisionid": 331,
+   "stepid": 165,
+   "time_estimate": 0,
+   "title": "Drill 1\" hole in inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.440x330",
+      "guid": "lX43SXxV6AGJYyFN",
+      "id": 515,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/lX43SXxV6AGJYyFN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 14,
+   "revisionid": 333,
+   "stepid": 166,
+   "time_estimate": 0,
+   "title": "Torch out holes in frame for loader arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.440x330",
+      "guid": "ktb1ByBoLREydH6F",
+      "id": 516,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ktb1ByBoLREydH6F.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 15,
+   "revisionid": 335,
+   "stepid": 167,
+   "time_estimate": 0,
+   "title": "Smooth out holes for loader arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.440x330",
+      "guid": "wcL5TebFY2T23Zyd",
+      "id": 517,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/wcL5TebFY2T23Zyd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 16,
+   "revisionid": 3698,
+   "stepid": 168,
+   "time_estimate": 0,
+   "title": "Fit shafts and DOM bushing for laoder arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.440x330",
+      "guid": "DqfATNhwMkEtK1kB",
+      "id": 518,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DqfATNhwMkEtK1kB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 17,
+   "revisionid": 339,
+   "stepid": 169,
+   "time_estimate": 0,
+   "title": "Finish inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.440x330",
+      "guid": "6ZsZ3lPBGRB4yENU",
+      "id": 519,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZsZ3lPBGRB4yENU.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 18,
+   "revisionid": 3765,
+   "stepid": 170,
+   "time_estimate": 0,
+   "title": "Drill rear loader arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.440x330",
+      "guid": "IwKQoBZSPMOFgfSM",
+      "id": 520,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/IwKQoBZSPMOFgfSM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 19,
+   "revisionid": 343,
+   "stepid": 171,
+   "time_estimate": 0,
+   "title": "Mark loader arms for insert plug welds."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.440x330",
+      "guid": "144dmyHeGtMDppjm",
+      "id": 521,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/144dmyHeGtMDppjm.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 20,
+   "revisionid": 345,
+   "stepid": 172,
+   "time_estimate": 0,
+   "title": "Torch out plug weld holes."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.440x330",
+      "guid": "NQBgTr6ZDaKZwNUs",
+      "id": 522,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/NQBgTr6ZDaKZwNUs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 21,
+   "revisionid": 347,
+   "stepid": 173,
+   "time_estimate": 0,
+   "title": "Grind plug weld holes."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.440x330",
+      "guid": "kx3XFRB3DfsNBtm6",
+      "id": 523,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kx3XFRB3DfsNBtm6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 22,
+   "revisionid": 349,
+   "stepid": 174,
+   "time_estimate": 0,
+   "title": "Line up plug inserts for welding."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.440x330",
+      "guid": "F4D4CsCKOmRH1WUk",
+      "id": 524,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/F4D4CsCKOmRH1WUk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 23,
+   "revisionid": 3840,
+   "stepid": 175,
+   "time_estimate": 0,
+   "title": "Plug weld inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.440x330",
+      "guid": "cGHewV3PL6nVweMK",
+      "id": 525,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/cGHewV3PL6nVweMK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 24,
+   "revisionid": 353,
+   "stepid": 176,
+   "time_estimate": 0,
+   "title": "Grind plug welds."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.440x330",
+      "guid": "pWokfUfYkBUTC5Wl",
+      "id": 526,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pWokfUfYkBUTC5Wl.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 25,
+   "revisionid": 355,
+   "stepid": 177,
+   "time_estimate": 0,
+   "title": "Finished inserts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 26,
+   "revisionid": 180,
+   "stepid": 178,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.440x330",
+      "guid": "hNXhD3xWwkw2t6wY",
+      "id": 527,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/hNXhD3xWwkw2t6wY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 27,
+   "revisionid": 358,
+   "stepid": 179,
+   "time_estimate": 0,
+   "title": "Arm gussets plug welded."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.440x330",
+      "guid": "vcm2HNGT5Zfe2CUk",
+      "id": 528,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/vcm2HNGT5Zfe2CUk.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 28,
+   "revisionid": 360,
+   "stepid": 180,
+   "time_estimate": 0,
+   "title": "Prepare pins for welding."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.440x330",
+      "guid": "yNkbWODUVwXaPM1y",
+      "id": 529,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yNkbWODUVwXaPM1y.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 29,
+   "revisionid": 362,
+   "stepid": 181,
+   "time_estimate": 0,
+   "title": "Mount cylinder base plates."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.440x330",
+      "guid": "kGkhYpCc3HwRQGF1",
+      "id": 530,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/kGkhYpCc3HwRQGF1.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 30,
+   "revisionid": 364,
+   "stepid": 182,
+   "time_estimate": 0,
+   "title": "Mount cylinder plates to arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.440x330",
+      "guid": "5wnLJDwggS3PWasA",
+      "id": 531,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/5wnLJDwggS3PWasA.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 31,
+   "revisionid": 366,
+   "stepid": 183,
+   "time_estimate": 0,
+   "title": "Mount cylinder cross support."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.440x330",
+      "guid": "iolJxFOvEujbCwqD",
+      "id": 532,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/iolJxFOvEujbCwqD.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 32,
+   "revisionid": 368,
+   "stepid": 184,
+   "time_estimate": 0,
+   "title": "Mount cylinder arms on frame."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.440x330",
+      "guid": "GhSCUZpTilkMuOpO",
+      "id": 533,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GhSCUZpTilkMuOpO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 33,
+   "revisionid": 370,
+   "stepid": 185,
+   "time_estimate": 0,
+   "title": "Arm cross supports."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 34,
+   "revisionid": 372,
+   "stepid": 186,
+   "time_estimate": 0,
+   "title": "Put on real loader arms. File:LTfab36.jpg"
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.440x330",
+      "guid": "Zs2K3HeoyR2SSDIT",
+      "id": 534,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Zs2K3HeoyR2SSDIT.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 35,
+   "revisionid": 374,
+   "stepid": 187,
+   "time_estimate": 0,
+   "title": "Hang arm cross support."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.440x330",
+      "guid": "fipvSKjcfBiFXC4I",
+      "id": 535,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/fipvSKjcfBiFXC4I.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 36,
+   "revisionid": 376,
+   "stepid": 188,
+   "time_estimate": 0,
+   "title": "Torch misfit holes."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.440x330",
+      "guid": "6UNehJPObDPeniuC",
+      "id": 536,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6UNehJPObDPeniuC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 37,
+   "revisionid": 378,
+   "stepid": 189,
+   "time_estimate": 0,
+   "title": "Weld inner arm gussets."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.440x330",
+      "guid": "3QPpYo1R2oOhvECB",
+      "id": 537,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3QPpYo1R2oOhvECB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 38,
+   "revisionid": 380,
+   "stepid": 190,
+   "time_estimate": 0,
+   "title": "Grind inner arm gussets."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.440x330",
+      "guid": "m6LYarPNFENa6LPF",
+      "id": 538,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/m6LYarPNFENa6LPF.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 39,
+   "revisionid": 382,
+   "stepid": 191,
+   "time_estimate": 0,
+   "title": "Finish attaching cross supports."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.440x330",
+      "guid": "FVeTrFViANuVtq1L",
+      "id": 539,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/FVeTrFViANuVtq1L.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 40,
+   "revisionid": 384,
+   "stepid": 192,
+   "time_estimate": 0,
+   "title": "Finish weld arms."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.440x330",
+      "guid": "AnU4nJweUIcDcowK",
+      "id": 540,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/AnU4nJweUIcDcowK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 41,
+   "revisionid": 3974,
+   "stepid": 193,
+   "time_estimate": 0,
+   "title": "Bolt cylinder attach plates."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.440x330",
+      "guid": "oNnvUOTBhtUngGR6",
+      "id": 541,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/oNnvUOTBhtUngGR6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 42,
+   "revisionid": 388,
+   "stepid": 194,
+   "time_estimate": 0,
+   "title": "Attach cylinders."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.440x330",
+      "guid": "Y1hLHeZqoEeX1hdG",
+      "id": 542,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Y1hLHeZqoEeX1hdG.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 43,
+   "revisionid": 390,
+   "stepid": 195,
+   "time_estimate": 0,
+   "title": "Mount quick attach (QA) plate cylinders."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.440x330",
+      "guid": "1PGo1MnaPFJxXm6H",
+      "id": 543,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1PGo1MnaPFJxXm6H.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 44,
+   "revisionid": 392,
+   "stepid": 196,
+   "time_estimate": 0,
+   "title": "Begin attaching hoses."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.440x330",
+      "guid": "qacaxJUyEJaOVGLG",
+      "id": 544,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qacaxJUyEJaOVGLG.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 45,
+   "revisionid": 394,
+   "stepid": 197,
+   "time_estimate": 0,
+   "title": "Hose attachment."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.440x330",
+      "guid": "YfBqEDUdMdkoNqnN",
+      "id": 545,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YfBqEDUdMdkoNqnN.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 46,
+   "revisionid": 396,
+   "stepid": 198,
+   "time_estimate": 0,
+   "title": "Tack weld gusset nuts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.440x330",
+      "guid": "QGhMpBGgs3expvWe",
+      "id": 546,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QGhMpBGgs3expvWe.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 47,
+   "revisionid": 398,
+   "stepid": 199,
+   "time_estimate": 0,
+   "title": "Tack weld bottom cylinder support nuts."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.440x330",
+      "guid": "2BKZRlXctWTjrqja",
+      "id": 547,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/2BKZRlXctWTjrqja.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 48,
+   "revisionid": 400,
+   "stepid": 200,
+   "time_estimate": 0,
+   "title": "Tack weld cylinders."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.440x330",
+      "guid": "DCHSPRZnjYXZUATK",
+      "id": 548,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/DCHSPRZnjYXZUATK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 49,
+   "revisionid": 402,
+   "stepid": 201,
+   "time_estimate": 0,
+   "title": "Complete bottom cylinder gusset welds."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.440x330",
+      "guid": "BonDilMbA3eNFRZr",
+      "id": 549,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BonDilMbA3eNFRZr.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 50,
+   "revisionid": 404,
+   "stepid": 202,
+   "time_estimate": 0,
+   "title": "Botom cylinder gusset nuts welded."
+  },
+  {
+   "comments": [],
+   "guideid": 46,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Insert wisdom here.",
+     "text_rendered": "Insert wisdom here."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.440x330",
+      "guid": "LRXp4ZjJIhQtIXGf",
+      "id": 550,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/LRXp4ZjJIhQtIXGf.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 51,
+   "revisionid": 406,
+   "stepid": 203,
+   "time_estimate": 0,
+   "title": "Finish weld top cylinder."
+  }
+ ],
+ "subject": "LifeTrac Loader arms",
+ "summary": "Instructions for fabricating LifeTrac Loader Arms.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Loader Arms",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Loader+Arms/46",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/46"
+}

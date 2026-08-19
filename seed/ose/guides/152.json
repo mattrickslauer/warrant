@@ -1,0 +1,727 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Building+the+North-West+Upper+Wall+Sub-Module/152",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "MicroHouse 2 Upper Wall Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1397840601,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3522,
+ "guideid": 152,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.440x330",
+  "guid": "OOZGbbnFVwHZ2GiO",
+  "id": 3839,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397841924,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1397841904,
+ "revisionid": 305,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This image shows the completed northwest sub-module.",
+     "text_rendered": "This image shows the completed northwest sub-module."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.440x330",
+      "guid": "OOZGbbnFVwHZ2GiO",
+      "id": 3839,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/OOZGbbnFVwHZ2GiO.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5137,
+   "stepid": 1000,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Begin with an 8' long 2x8. Cut it to 6' 11 1/2\" as shown in the image.",
+     "text_rendered": "Begin with an 8' long 2x8. Cut it to 6' 11 1/2&quot; as shown in the image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make the notch shown in the image. The image shows the notch at 7 1/4\", but I would make it  7 5/8\". You want to leave 3 1/2\" of board when you are finished making the notch.",
+     "text_rendered": "Make the notch shown in the image. The image shows the notch at 7 1/4&quot;, but I would make it  7 5/8&quot;. You want to leave 3 1/2&quot; of board when you are finished making the notch."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.440x330",
+      "guid": "XAv34CSJCDEevVxY",
+      "id": 3842,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XAv34CSJCDEevVxY.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5140,
+   "stepid": 1001,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make 8 studs at 4' - 9 9/16\" long, to be used as shown in the image. These pieces are all identical to each other.",
+     "text_rendered": "Make 8 studs at 4' - 9 9/16&quot; long, to be used as shown in the image. These pieces are all identical to each other."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Cut these pieces from 6' 2x4s.",
+     "text_rendered": "Cut these pieces from 6' 2x4s."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Make a top plate that is 6' - 11 1/2\" long. Cut this from an 8' 2x4.",
+     "text_rendered": "Make a top plate that is 6' - 11 1/2&quot; long. Cut this from an 8' 2x4."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.440x330",
+      "guid": "XdRQpYCtCwLtMWEV",
+      "id": 3843,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XdRQpYCtCwLtMWEV.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5143,
+   "stepid": 1002,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD STEP HERE ABOUT LAYING OUT THE TOP PLATE.",
+     "text_rendered": "ADD STEP HERE ABOUT LAYING OUT THE TOP PLATE."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5145,
+   "stepid": 1003,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD STEP SHOWING ATTACHING OF STUDS.",
+     "text_rendered": "ADD STEP SHOWING ATTACHING OF STUDS."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 5147,
+   "stepid": 1004,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut pieces of plywood for the exterior as shown in the image.",
+     "text_rendered": "Cut pieces of plywood for the exterior as shown in the image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Cut the large piece first, as it is a full 4' wide. Then use the table saw to rip the leftover piece to 2' - 11 1/4\"",
+     "text_rendered": "Cut the large piece first, as it is a full 4' wide. Then use the table saw to rip the leftover piece to 2' - 11 1/4&quot;"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You will need to make another narrower piece that is also 2' - 11 1/4\" wide. To determine the length of this piece, subtract the length of the piece you just made from the total length of the long plywood piece.",
+     "text_rendered": "You will need to make another narrower piece that is also 2' - 11 1/4&quot; wide. To determine the length of this piece, subtract the length of the piece you just made from the total length of the long plywood piece."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD NOTE: When we created this module, the lengths worked out to be _____ for our leftover from the long piece, and _____ for the other piece.",
+     "text_rendered": "ADD NOTE: When we created this module, the lengths worked out to be _____ for our leftover from the long piece, and _____ for the other piece."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.440x330",
+      "guid": "GNFGFKcGIcFLIHTB",
+      "id": 3844,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/GNFGFKcGIcFLIHTB.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 5150,
+   "stepid": 1005,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD STEP FOR MARKING EXTERIOR PLYWOOD.",
+     "text_rendered": "ADD STEP FOR MARKING EXTERIOR PLYWOOD."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 5155,
+   "stepid": 1007,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "We will also make plywood pieces for the inside of the wall module. These pieces will be made from 3/8\" plywood.",
+     "text_rendered": "We will also make plywood pieces for the inside of the wall module. These pieces will be made from 3/8&quot; plywood."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Both of these pieces will need to be ripped on the table saw.",
+     "text_rendered": "Both of these pieces will need to be ripped on the table saw."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Rip one to 3' - 8\".",
+     "text_rendered": "Rip one to 3' - 8&quot;."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Rip the other to 3' - 3/4\".",
+     "text_rendered": "Rip the other to 3' - 3/4&quot;."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.440x330",
+      "guid": "XPImI3L4hStcssiM",
+      "id": 3845,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XPImI3L4hStcssiM.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 8,
+   "revisionid": 5153,
+   "stepid": 1006,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 152,
+   "imageURL": "https://d3015z1jd0uox2.cloudfront.net/static/images/guide/NoImage_56x42.jpg",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "ADD STEP SHOWING ASSEMBLY OF PLYWOOD TO FRAME.",
+     "text_rendered": "ADD STEP SHOWING ASSEMBLY OF PLYWOOD TO FRAME."
+    }
+   ],
+   "media": {
+    "data": [],
+    "type": "image"
+   },
+   "orderby": 9,
+   "revisionid": 5157,
+   "stepid": 1008,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "North-West Upper Wall Sub-Module",
+ "summary": "This wall makes up the taller, north side of the MicroHouse 2 loft. It also provides bearing for the rafter modules.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Building the North-West Upper Wall Sub-Module",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Building+the+North-West+Upper+Wall+Sub-Module/152",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/152"
+}

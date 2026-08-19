@@ -1,0 +1,682 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.140x105",
+   "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.200x150",
+   "guid": "riNg1IbUuLQc2Vir",
+   "id": 4267,
+   "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.medium",
+   "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.mini",
+   "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.full",
+   "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.standard",
+   "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/riNg1IbUuLQc2Vir.thumbnail"
+  },
+  "join_date": 1253855471,
+  "reputation": 0,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/1/Dozuki+System",
+  "userid": 1,
+  "username": "Dozuki System"
+ },
+ "body_url_path": "/Guide/CEB:+Fit+the+Drawer+Members/43",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "CEB Press",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1368041586,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3931,
+ "guideid": 43,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.440x330",
+  "guid": "SQ1SAeJNehemQAJ5",
+  "id": 434,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/SQ1SAeJNehemQAJ5.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "content": [
+     {
+      "marks": [
+       {
+        "attrs": {
+         "href": "http://sketchup.google.com/3dwarehouse/details?mid=9821360314d71e781211da1f85706ccd",
+         "target": null
+        },
+        "type": "link"
+       }
+      ],
+      "text": "Sketchup Model",
+      "type": "text"
+     },
+     {
+      "text": "Additional Materials Required:* Roller Guides* Soil Loading Drawer* Wide Cylinder Supports* Drawer Members* 3/4\"x2\" Bolts (16)* 3/4\" Nuts (16)* 3/4\" Washers (16)* 1/2\" Washer (2)* 1/2\" Lock Washer (2)* 1/2\" Nut (2)",
+      "type": "text"
+     }
+    ],
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "[http://sketchup.google.com/3dwarehouse/details?mid=9821360314d71e781211da1f85706ccd|Sketchup Model]Additional Materials Required:* Roller Guides* Soil Loading Drawer* Wide Cylinder Supports* Drawer Members* 3/4\"x2\" Bolts (16)* 3/4\" Nuts (16)* 3/4\" Washers (16)* 1/2\" Washer (2)* 1/2\" Lock Washer (2)* 1/2\" Nut (2)",
+ "introduction_rendered": "<p><a href=\"http://sketchup.google.com/3dwarehouse/details?mid=9821360314d71e781211da1f85706ccd\" rel=\"nofollow noopener noreferrer\">Sketchup Model</a>Additional Materials Required:* Roller Guides* Soil Loading Drawer* Wide Cylinder Supports* Drawer Members* 3/4&quot;x2&quot; Bolts (16)* 3/4&quot; Nuts (16)* 3/4&quot; Washers (16)* 1/2&quot; Washer (2)* 1/2&quot; Lock Washer (2)* 1/2&quot; Nut (2)</p>",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1424134844,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1368041586,
+ "revisionid": 173,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 43,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Install the Roller guides as shown in the illustration. One side should have a 1/2\" spacer, and the other should have a 3/8\" spacer plate.",
+     "text_rendered": "Install the Roller guides as shown in the illustration. One side should have a 1/2&quot; spacer, and the other should have a 3/8&quot; spacer plate."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the bolts snug, but so that they  can still move up and down.",
+     "text_rendered": "Tighten the bolts snug, but so that they  can still move up and down."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Replace the drawer as if you're going to stretch the cylinder again.",
+     "text_rendered": "Replace the drawer as if you're going to stretch the cylinder again."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "The roller bearings should be on top of the rails on the drawer, and be putting no pressure on the drawer.",
+     "text_rendered": "The roller bearings should be on top of the rails on the drawer, and be putting no pressure on the drawer."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.440x330",
+      "guid": "TaoCGXKN5Z6SZkVJ",
+      "id": 439,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/TaoCGXKN5Z6SZkVJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.440x330",
+      "guid": "tYViTP2jPJhVeBAJ",
+      "id": 443,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/tYViTP2jPJhVeBAJ.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.440x330",
+      "guid": "KBabVUDYAYuEnTGs",
+      "id": 447,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KBabVUDYAYuEnTGs.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2870,
+   "stepid": 136,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 43,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Loosely bolt on the drawer members.",
+     "text_rendered": "Loosely bolt on the drawer members."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Adjust them horizontally so that the adjustment bolts are centered on the roller guides. See image.",
+     "text_rendered": "Adjust them horizontally so that the adjustment bolts are centered on the roller guides. See image."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Finger tighten the bolts on the drawer members, as they are sitting on top of the drawer.",
+     "text_rendered": "Finger tighten the bolts on the drawer members, as they are sitting on top of the drawer."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.440x330",
+      "guid": "MRpISK4gr4QAqPOd",
+      "id": 451,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MRpISK4gr4QAqPOd.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 275,
+   "stepid": 137,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 43,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Try to slide the drawer in and out. If the drawer gets stuck somewhere, investigate and find where it's hitting. (It almost certainly will).",
+     "text_rendered": "Try to slide the drawer in and out. If the drawer gets stuck somewhere, investigate and find where it's hitting. (It almost certainly will)."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "You'll probably need to loosen one, or both of the drawer members and move it up a bit.",
+     "text_rendered": "You'll probably need to loosen one, or both of the drawer members and move it up a bit."
+    },
+    {
+     "bullet": "green",
+     "bullet_style": {
+      "bullet_color": "#16dc81",
+      "bullet_styleid": 5,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 0,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 5,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "This can be done uniformly using cardboard shims. See photo. Place the shim between the drawer and the crossmember. Tighten the bolts again. Remove the shims by \"jiggling\" the drawer.",
+     "text_rendered": "This can be done uniformly using cardboard shims. See photo. Place the shim between the drawer and the crossmember. Tighten the bolts again. Remove the shims by &quot;jiggling&quot; the drawer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "If it's hitting a spacer, grind down the spacer.",
+     "text_rendered": "If it's hitting a spacer, grind down the spacer."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 2,
+     "lineid": null,
+     "text_raw": "If the drawer itself is prohibitive in some spots, it wasn't grinded evenly. Grind down the high spots.",
+     "text_rendered": "If the drawer itself is prohibitive in some spots, it wasn't grinded evenly. Grind down the high spots."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.440x330",
+      "guid": "YDJugEDOi4ohtERb",
+      "id": 453,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/YDJugEDOi4ohtERb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 279,
+   "stepid": 139,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 43,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once the drawer is properly adjusted, tighten these bolts all the way.",
+     "text_rendered": "Once the drawer is properly adjusted, tighten these bolts all the way."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 1,
+     "lineid": null,
+     "text_raw": "Make sure the drawer adjustment nuts are still centered on the roller guides.",
+     "text_rendered": "Make sure the drawer adjustment nuts are still centered on the roller guides."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tightly bolt the wide cylinder supports to the frame, leaving no gap between them and the drawer members.",
+     "text_rendered": "Tightly bolt the wide cylinder supports to the frame, leaving no gap between them and the drawer members."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Tighten the bolts at the top of the wide cylinder supports so they are touching the cylinder on each side. Tighten the lock nut.",
+     "text_rendered": "Tighten the bolts at the top of the wide cylinder supports so they are touching the cylinder on each side. Tighten the lock nut."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Go back through the entire frame and make sure every bolt is tight.",
+     "text_rendered": "Go back through the entire frame and make sure every bolt is tight."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.440x330",
+      "guid": "puiT2mpUKwFGucoD",
+      "id": 456,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/puiT2mpUKwFGucoD.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.440x330",
+      "guid": "1snHWEquFk66rAcn",
+      "id": 460,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/1snHWEquFk66rAcn.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 3265,
+   "stepid": 142,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "",
+ "summary": "Fit the drawer members on your Compressed Earth Brick Press.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "CEB: Fit the Drawer Members",
+ "tools": [
+  {
+   "notes": null,
+   "quantity": 1,
+   "text": "various wrenches",
+   "thumbnail": null,
+   "type": "",
+   "url": "/Item/various_wrenches"
+  }
+ ],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/CEB:+Fit+the+Drawer+Members/43",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/43"
+}

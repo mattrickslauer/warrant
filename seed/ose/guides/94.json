@@ -1,0 +1,688 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Installing+Foundation+Module/94",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Foundation Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1383271274,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  }
+ ],
+ "guide_revisionid": 1583,
+ "guideid": 94,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.440x330",
+  "guid": "H3OnYb4raPIQhZ2e",
+  "id": 1683,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1383404101,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1383271812,
+ "revisionid": 189,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Clear vegetation from the site.''' We used the OSE pulverizer on the Life Trac 6.",
+     "text_rendered": "<strong>Clear vegetation from the site.</strong> We used the OSE pulverizer on the Life Trac 6."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''You can strip off the topsoil, as well, or otherwise change the grade at this point.''' In our case, we had little topsoil and we liked the way the grade worked out by raising the building up on the gravel.",
+     "text_rendered": "<strong>You can strip off the topsoil, as well, or otherwise change the grade at this point.</strong> In our case, we had little topsoil and we liked the way the grade worked out by raising the building up on the gravel."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Cut down vegetation in a wide area around your building site, as well.''' 20' beyond where the gravel will be should be adequate. You will need room for the brick press and rollers, and to stage other materials, too. You will also need room for people to move around and work.",
+     "text_rendered": "<strong>Cut down vegetation in a wide area around your building site, as well.</strong> 20' beyond where the gravel will be should be adequate. You will need room for the brick press and rollers, and to stage other materials, too. You will also need room for people to move around and work."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.440x330",
+      "guid": "EJBboMIC3WXhJBpf",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.huge",
+      "id": 1729,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/EJBboMIC3WXhJBpf.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.440x330",
+      "guid": "H3OnYb4raPIQhZ2e",
+      "id": 1683,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/H3OnYb4raPIQhZ2e.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.440x330",
+      "guid": "qG2MYC5gRIwq4eyg",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.huge",
+      "id": 1730,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/qG2MYC5gRIwq4eyg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 2368,
+   "stepid": 440,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Have XX tons of gravel delivered.''' Make sure the truck has access to the site and has room to back up and drop the load where you want it.",
+     "text_rendered": "<strong>Have XX tons of gravel delivered.</strong> Make sure the truck has access to the site and has room to back up and drop the load where you want it."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.440x330",
+      "guid": "QFBdk6BQNRxgXDTl",
+      "id": 1686,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/QFBdk6BQNRxgXDTl.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 2351,
+   "stepid": 441,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Flatten gravel into a level pad.''' The foundation formwork will be built on top of this pad.",
+     "text_rendered": "<strong>Flatten gravel into a level pad.</strong> The foundation formwork will be built on top of this pad."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.440x330",
+      "guid": "e2IUUkkTLp3v6UQK",
+      "id": 1695,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/e2IUUkkTLp3v6UQK.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.440x330",
+      "guid": "aj65PJnDkS3IsJU3",
+      "id": 1697,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/aj65PJnDkS3IsJU3.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 2353,
+   "stepid": 442,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Build foundation forms on pad.''' Forms are built out of 2x10 lumber.",
+     "text_rendered": "<strong>Build foundation forms on pad.</strong> Forms are built out of 2x10 lumber."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "add notes on construction",
+     "text_rendered": "add notes on construction"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.440x330",
+      "guid": "PiWJqv2HKxpjTANH",
+      "id": 1701,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/PiWJqv2HKxpjTANH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.440x330",
+      "guid": "jr2kNrRLtHmWOH3i",
+      "id": 1702,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/jr2kNrRLtHmWOH3i.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.440x330",
+      "guid": "pX5kmnhRfc5yIuQW",
+      "id": 1709,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/pX5kmnhRfc5yIuQW.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 2366,
+   "stepid": 443,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Check levelness and squareness of foundation.''' Use a level to make certain that the foundation is not tilted. Measure the diagonals of the foundation frame and makes adjustments to ensure squareness.",
+     "text_rendered": "<strong>Check levelness and squareness of foundation.</strong> Use a level to make certain that the foundation is not tilted. Measure the diagonals of the foundation frame and makes adjustments to ensure squareness."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Once foundation is level and square, drive stakes into inner corners to keep the foundation in place.''' We used pieces of 1/2\" rebar for this, because we had lots on hand. You could also use wooden stakes.",
+     "text_rendered": "<strong>Once foundation is level and square, drive stakes into inner corners to keep the foundation in place.</strong> We used pieces of 1/2&quot; rebar for this, because we had lots on hand. You could also use wooden stakes."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.440x330",
+      "guid": "MejJkOxSmpiZYFjC",
+      "id": 1703,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/MejJkOxSmpiZYFjC.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.440x330",
+      "guid": "KMjHFPFIBLM4NRmg",
+      "id": 1708,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KMjHFPFIBLM4NRmg.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 5,
+   "revisionid": 2376,
+   "stepid": 447,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Place rebar into foundation formwork. '''Leave the rebar sticking out through the holes you made so that you can add on to your Microhouse in the future.",
+     "text_rendered": "<strong>Place rebar into foundation formwork. </strong>Leave the rebar sticking out through the holes you made so that you can add on to your Microhouse in the future."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.440x330",
+      "guid": "VZCBPVIdUNuJDMee",
+      "id": 1713,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/VZCBPVIdUNuJDMee.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.440x330",
+      "guid": "yI51AmcEXQk26aio",
+      "id": 1711,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yI51AmcEXQk26aio.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 6,
+   "revisionid": 2359,
+   "stepid": 444,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 94,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "'''Pour concrete into foundation forms.''' Fill the foundation forms with concrete and smooth off the top with a screed board. We had a truck deliver the concrete, but you could also mix it yourself in a concrete mixer or in a wheelbarrow with a mixing hoe.",
+     "text_rendered": "<strong>Pour concrete into foundation forms.</strong> Fill the foundation forms with concrete and smooth off the top with a screed board. We had a truck deliver the concrete, but you could also mix it yourself in a concrete mixer or in a wheelbarrow with a mixing hoe."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.440x330",
+      "guid": "mCgZORALb2IZ4eVh",
+      "id": 1718,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/mCgZORALb2IZ4eVh.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.440x330",
+      "guid": "KasCyWeqGtfcwHwY",
+      "id": 1737,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/KasCyWeqGtfcwHwY.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.440x330",
+      "guid": "Pq62tA1pAasQaZYK",
+      "id": 1738,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/Pq62tA1pAasQaZYK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 7,
+   "revisionid": 2377,
+   "stepid": 445,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Foundation",
+ "summary": "",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Installing Foundation Module",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Installing+Foundation+Module/94",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/94"
+}

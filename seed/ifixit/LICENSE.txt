@@ -1,0 +1,11 @@
+iFixit category taxonomy
+Source:  https://www.ifixit.com/api/2.0/categories
+Licence: Creative Commons BY-NC-SA 3.0
+         https://www.ifixit.com/Info/Licensing
+
+NonCommercial. This directory holds the category tree only -- device names and
+their nesting. No guide text, no step content, no images were downloaded.
+
+Warrant does not ingest this into the specification catalogue. It is retained
+as the worked example of a source the promotion flow refuses on licence
+grounds. See docs/data-model.md section 8.

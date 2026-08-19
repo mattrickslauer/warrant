@@ -1,0 +1,612 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-19.thumbnail"
+  },
+  "join_date": 1408923615,
+  "reputation": 1,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/225/Jonathan+Kocurek",
+  "userid": 225,
+  "username": "Jonathan Kocurek"
+ },
+ "body_url_path": "/Guide/How+to+Wiki/193",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "Wiki",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1426632836,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [
+  {
+   "flagid": "GUIDE_IN_PROGRESS",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PENCIL.svg",
+   "text": "This guide is currently being written. Reload periodically to see the latest changes.",
+   "title": "In Progress"
+  },
+  {
+   "flagid": "GUIDE_USER_CONTRIBUTED",
+   "image": "https://d3015z1jd0uox2.cloudfront.net/static/images/flags/svg/PERSON.svg",
+   "text": "This guide is not managed by the site's staff.",
+   "title": "User-Contributed Guide"
+  }
+ ],
+ "guide_revisionid": 3958,
+ "guideid": 193,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.440x330",
+  "guid": "agNSCHDp3ZJyCLqZ",
+  "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.huge",
+  "id": 4298,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1426643088,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1426635329,
+ "revisionid": 3974,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 193,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Learning to how to use a wiki can seem difficult, but with a short guide you can create a work log.",
+     "text_rendered": "Learning to how to use a wiki can seem difficult, but with a short guide you can create a work log."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "For a video instructional on how to set up a work log, see http://opensourceecology.org/wiki/Work_Log",
+     "text_rendered": "For a video instructional on how to set up a work log, see <a href=\"http://opensourceecology.org/wiki/Work_Log\" rel=\"nofollow noopener noreferrer\" title=\"http://opensourceecology.org/wiki/Work_Log\">http://opensourceecology.org/wiki/Work_L...</a>"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Open your browser and go to http://opensourceecology.org/wiki",
+     "text_rendered": "Open your browser and go to <a href=\"http://opensourceecology.org/wiki\" rel=\"nofollow noopener noreferrer\">http://opensourceecology.org/wiki</a>"
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.440x330",
+      "guid": "agNSCHDp3ZJyCLqZ",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.huge",
+      "id": 4298,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/agNSCHDp3ZJyCLqZ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5610,
+   "stepid": 1089,
+   "time_estimate": 0,
+   "title": "Creating a Work Log"
+  },
+  {
+   "comments": [],
+   "guideid": 193,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "In the top right hand corner click Login with OpenID",
+     "text_rendered": "In the top right hand corner click Login with OpenID"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Click Login.",
+     "text_rendered": "Click Login."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Once the Verification succeeds. Click Main Page link.",
+     "text_rendered": "Once the Verification succeeds. Click Main Page link."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.440x330",
+      "guid": "BXfLXTYYQUbaPA4i",
+      "id": 4301,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/BXfLXTYYQUbaPA4i.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.440x330",
+      "guid": "c1ICNQIRXcQFQSWH",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.huge",
+      "id": 4303,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/c1ICNQIRXcQFQSWH.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.440x330",
+      "guid": "o2CEtQYobPhLvBBK",
+      "id": 4305,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/o2CEtQYobPhLvBBK.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5603,
+   "stepid": 1090,
+   "time_estimate": 0,
+   "title": "Logging in with OpenID"
+  },
+  {
+   "comments": [],
+   "guideid": 193,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Go to search bar.",
+     "text_rendered": "Go to search bar."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Type in your first name and then the word log. For example, Frank log, and press go.",
+     "text_rendered": "Type in your first name and then the word log. For example, Frank log, and press go."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If there is a duplicate log name, then please use your first name and last name initial and then log. For example, Frank G Log.",
+     "text_rendered": "If there is a duplicate log name, then please use your first name and last name initial and then log. For example, Frank G Log."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "If there is not a duplicate name, '''++look very carefully++''' for the Create the page \"Frank log\" on this wiki. Of course \"Your First Name Log\".",
+     "text_rendered": "If there is not a duplicate name, <strong><ins>look very carefully</ins></strong> for the Create the page &quot;Frank log&quot; on this wiki. Of course &quot;Your First Name Log&quot;."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.440x330",
+      "guid": "XSV5vk3haxqusngq",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.huge",
+      "id": 4308,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/XSV5vk3haxqusngq.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.440x330",
+      "guid": "sMJ5piRpJSYnNWtr",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.huge",
+      "id": 4310,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/sMJ5piRpJSYnNWtr.thumbnail"
+     },
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.440x330",
+      "guid": "3eJItsOBK5PYBsUC",
+      "id": 4312,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/3eJItsOBK5PYBsUC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5613,
+   "stepid": 1091,
+   "time_estimate": 0,
+   "title": "Creating a Work Log"
+  },
+  {
+   "comments": [],
+   "guideid": 193,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Copy this: =Tues, Mar 17, 2015=",
+     "text_rendered": "Copy this: =Tues, Mar 17, 2015="
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Change the date to current date. Write this is my first work entry. Hello World!",
+     "text_rendered": "Change the date to current date. Write this is my first work entry. Hello World!"
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Save page.",
+     "text_rendered": "Save page."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "Done.",
+     "text_rendered": "Done."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.440x330",
+      "guid": "4ASEQNts6wPmJDi6",
+      "huge": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.huge",
+      "id": 4317,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/4ASEQNts6wPmJDi6.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5622,
+   "stepid": 1092,
+   "time_estimate": 0,
+   "title": "Adding date and first work log entry."
+  }
+ ],
+ "subject": "",
+ "summary": "If you are new to to using a Wiki this guide is to assist you in creating a work log, edit, and add content.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "How to Wiki",
+ "tools": [],
+ "type": "how-to",
+ "url": "https://opensourceecology.dozuki.com/Guide/How+to+Wiki/193",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/193"
+}

@@ -1,0 +1,334 @@
+{
+ "author": {
+  "banned": null,
+  "enabled": true,
+  "image": {
+   "140x105": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.140x105",
+   "200x150": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.200x150",
+   "440x330": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.440x330",
+   "guid": "default_avatar_placeholder_guid",
+   "id": -32,
+   "large": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.large",
+   "medium": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.medium",
+   "mini": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.mini",
+   "original": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11",
+   "standard": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.standard",
+   "thumbnail": "https://d3015z1jd0uox2.cloudfront.net/static/images/avatars/User/Dozuki/single-avatar-2-11.thumbnail"
+  },
+  "join_date": 1383103196,
+  "reputation": 2220,
+  "teams": [],
+  "unique_username": null,
+  "url": "https://opensourceecology.dozuki.com/User/48/Chris+Reinhart",
+  "userid": 48,
+  "username": "Chris Reinhart"
+ },
+ "body_url_path": "/Guide/Overview+of+Upper+Wall+Module/151",
+ "can_delete": false,
+ "can_edit": false,
+ "can_edit_language": false,
+ "can_edit_permissions": false,
+ "category": "MicroHouse 2 Upper Wall Module",
+ "comments": [],
+ "completed": false,
+ "conclusion_raw": "",
+ "conclusion_rendered": "",
+ "created_date": 1397840199,
+ "difficulty": "Moderate",
+ "documents": [],
+ "favorited": false,
+ "featured_document_embed_url": "",
+ "featured_document_thumbnail_url": "",
+ "featured_documentid": null,
+ "flags": [],
+ "guide_revisionid": 3497,
+ "guideid": 151,
+ "image": {
+  "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.140x105",
+  "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.200x150",
+  "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.440x330",
+  "guid": "6luc1EcrDoBAFgjb",
+  "id": 3834,
+  "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.large",
+  "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.medium",
+  "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.mini",
+  "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.full",
+  "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.standard",
+  "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.thumbnail"
+ },
+ "intro_video": null,
+ "intro_video_media_item": null,
+ "intro_video_url": null,
+ "introduction_json": {
+  "content": [
+   {
+    "type": "paragraph"
+   }
+  ],
+  "type": "doc"
+ },
+ "introduction_raw": "",
+ "introduction_rendered": "",
+ "langid": "en",
+ "locale": "en",
+ "modified_date": 1397840524,
+ "number_of_dependent_guides": 0,
+ "ogdc_enabled": "inherit",
+ "parts": [],
+ "patrol_threshold": 100000000,
+ "per_step_time_enabled": false,
+ "prereq_modified_date": 0,
+ "prerequisites": [],
+ "public": true,
+ "published_date": 1397840507,
+ "revisionid": 3406,
+ "should_use_granular_permissions": false,
+ "steps": [
+  {
+   "comments": [],
+   "guideid": 151,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This is what the four modules will look like when they come together.",
+     "text_rendered": "This is what the four modules will look like when they come together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.440x330",
+      "guid": "6luc1EcrDoBAFgjb",
+      "id": 3834,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6luc1EcrDoBAFgjb.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 1,
+   "revisionid": 5129,
+   "stepid": 996,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 151,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "The first image shows the north-west corner.",
+     "text_rendered": "The first image shows the north-west corner."
+    },
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "You can see that the plywood on the west module extends past by several inches - this is how the corner is tied together.",
+     "text_rendered": "You can see that the plywood on the west module extends past by several inches - this is how the corner is tied together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.440x330",
+      "guid": "yoaZVjNw5fTnLaRC",
+      "id": 3835,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/yoaZVjNw5fTnLaRC.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 2,
+   "revisionid": 5131,
+   "stepid": 997,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 151,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This image shows how the two north modules come together. The plywood on the interior and exterior is made so that the two modules should slide together very easily.",
+     "text_rendered": "This image shows how the two north modules come together. The plywood on the interior and exterior is made so that the two modules should slide together very easily."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.440x330",
+      "guid": "6ZYEpFdwSLDIhWwZ",
+      "id": 3836,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/6ZYEpFdwSLDIhWwZ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 3,
+   "revisionid": 5133,
+   "stepid": 998,
+   "time_estimate": 0,
+   "title": ""
+  },
+  {
+   "comments": [],
+   "guideid": 151,
+   "imageURL": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.mini",
+   "lines": [
+    {
+     "bullet": "black",
+     "bullet_style": {
+      "bullet_color": "#11161a",
+      "bullet_styleid": 1,
+      "char": null,
+      "color_locked": 1,
+      "description": null,
+      "imageid": null,
+      "is_default": 1,
+      "is_disabled": 0,
+      "label": null,
+      "last_modified": 1702940598,
+      "size": "small",
+      "type": "dot",
+      "userid_modified": 1
+     },
+     "bullet_styleid": 1,
+     "level": 0,
+     "lineid": null,
+     "text_raw": "This image shows the north-east corner. It is similar to the northwest corner - the plywood that extends on the east module is used to tie the two modules together.",
+     "text_rendered": "This image shows the north-east corner. It is similar to the northwest corner - the plywood that extends on the east module is used to tie the two modules together."
+    }
+   ],
+   "media": {
+    "data": [
+     {
+      "140x105": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.140x105",
+      "200x150": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.200x150",
+      "440x330": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.440x330",
+      "guid": "ALULxOZ5PDwYA4vJ",
+      "id": 3837,
+      "large": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.large",
+      "medium": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.medium",
+      "mini": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.mini",
+      "original": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.full",
+      "standard": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.standard",
+      "thumbnail": "https://d3t0tbmlie281e.cloudfront.net/igi/opensourceecology/ALULxOZ5PDwYA4vJ.thumbnail"
+     }
+    ],
+    "type": "image"
+   },
+   "orderby": 4,
+   "revisionid": 5135,
+   "stepid": 999,
+   "time_estimate": 0,
+   "title": ""
+  }
+ ],
+ "subject": "Overview of Upper Wall Module",
+ "summary": "This guide shows the sub-modules and how they come together.",
+ "time_required": "No estimate",
+ "time_required_max": 0,
+ "time_required_min": 0,
+ "title": "Overview of Upper Wall Module",
+ "tools": [],
+ "type": "installation",
+ "url": "https://opensourceecology.dozuki.com/Guide/Overview+of+Upper+Wall+Module/151",
+ "work_log_enabled": false,
+ "work_log_url": "https://opensourceecology.dozuki.com/Guide/data-capture/151"
+}
