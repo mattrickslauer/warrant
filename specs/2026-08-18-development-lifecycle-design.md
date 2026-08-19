@@ -721,7 +721,9 @@ gain the step contract of §4: the explanation, the two exits, and the three dis
 `architecture.md` §1's `Step` model gains `explanation` and `guidance`; §2's loop diagram gains
 the second exit, because as drawn it has only one way out of a step.
 
-**`site/index.html`** — becomes `/about` per §3.3, which is a rewrite rather than a move: nine
+**`site/index.html`** — ✅ **done 19 Aug.** Deleted, and the `warrant-site` Cloud Run service
+with it. `/` and `/about` in the Next app replace it, deployed as the `warrant` service. What
+follows is why it could not simply be moved: nine
 agents including core services, *"None of them calls another"*, and the courier flow built from
 third-party logos all go. `docs/IMAGES.md` instructs sourcing a DoorDash logo and Google
 product logos; the hosted page is the submission and the rules bar third-party trademarks.

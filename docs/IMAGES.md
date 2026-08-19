@@ -125,10 +125,10 @@ rather than float.
 
 ## One technical note
 
-Deployed to Cloud Run, images are ordinary same-origin files — put them in `site/img/` and
+Deployed to Cloud Run, images are ordinary same-origin files — put them in `web/public/` and
 reference them normally.
 
 The **Artifact preview blocks external requests**, so any version published there needs images
-inlined as data URIs. Keep two paths in mind: `site/img/*` for the real deployment, and an
+inlined as data URIs. Keep two paths in mind: `web/public/*` for the real deployment, and an
 inlined build if you want the preview to match. Don't inline a 2400px hero — the preview has a
 16 MB ceiling and you would spend it on one photograph.
