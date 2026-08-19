@@ -307,18 +307,33 @@ the one thing a paper checklist genuinely cannot imitate.
 this job's strictness holds the machine; a waiver signed by someone with standing releases it and
 says so on the record. Deterministic, in the core, and still four lines.
 
-### One schema, three consumers
+### One contract, authored once, checked mechanically
 
-The data model lives once as **JSON Schema in `contract/`** and generates:
+The shapes live once as **JSON Schema in `contract/`**, in two directories:
 
-1. TypeScript types for the web surfaces
-2. Kotlin data classes for the Android client
-3. **The structured-output contracts the ADK agents validate against**
+- **`contract/entities/`** — what the system stores and the screens render. Generates the
+  TypeScript types for the web surfaces, and validates every fixture.
+- **`contract/agents/`** — **what a model is forced to return.** Fed straight to Vertex
+  `responseSchema`, so each is self-contained and stays inside the OpenAPI 3.0 subset.
 
-The third is the important one: an agent returning something off-schema is rejected
+The second is the important one: an agent returning something off-schema is rejected
 mechanically and retried once, then escalates. That is the hallucination containment the
 Architecture criterion asks about by name, and the "intelligent schema design" bullet
 answered with an artifact rather than a paragraph.
+
+**Descriptions are prompt surface, not documentation.** Vertex sends the schema's
+`description` strings to the model as part of the request, so they are written as
+instructions — *"Doubt is your job"*, *"there is no skip"*, *"never a generic retry"* — and
+`contract/check.mjs` fails the build on any property that lacks one. The contract is doing the
+work a prompt would otherwise be trusted to do.
+
+> **The honest scope of the claim.** This is **not** one schema with three generated
+> consumers, and the earlier draft of this section overstated it. The agent contracts are
+> hand-authored rather than derived from the entities, because Vertex's dialect and a storage
+> model want different shapes; and Kotlin is hand-written (below). What is true, and is
+> mechanically enforced rather than asserted, is: **one authored contract, generating the web
+> types, validating every fixture, constraining every agent, and hand-checked against Kotlin.**
+> Say that, and it survives a reader who opens the directory.
 
 > **Vertex does not accept JSON Schema.** `responseSchema` takes an OpenAPI 3.0 subset:
 > `$ref` is constrained, `oneOf`/`anyOf` support is uneven, `additionalProperties` and most
