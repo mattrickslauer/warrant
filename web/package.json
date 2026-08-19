@@ -1,0 +1,22 @@
+{
+  "name": "warrant-web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "npm run gen && next build",
+    "start": "next start -p ${PORT:-8080}",
+    "gen": "node ../design/build-tokens.mjs && node ../contract/check.mjs && node ../contract/build-types.mjs && node ./scripts/sync-generated.mjs",
+    "check": "node ../contract/check.mjs && tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.3.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.7",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "typescript": "5.7.3"
+  }
+}

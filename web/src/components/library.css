@@ -1,0 +1,398 @@
+/* Warrant component library.
+ *
+ * One stylesheet, imported once. Classes are prefixed `w-` and each block below maps to
+ * exactly one component file, so a parallel agent owning a screen can read the block for
+ * the primitive it is using without opening fourteen files.
+ *
+ * THE ONE RULE THAT IS NOT COSMETIC:
+ *   mono + tabular numerals = the value came from a machine (measured, specified, timestamps,
+ *                             tool ids, part numbers, money)
+ *   sans                    = the value came from a person (assertions, signatures, reasons,
+ *                             explanations, anything typed or spoken)
+ * Provenance is legible in the typeface before you reach the colour chip. Do not mix them.
+ */
+
+/* ---------------------------------------------------------------- foundation */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--work);
+  color: var(--rec);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+:where(p, h1, h2, h3, h4, figure) { margin: 0; }
+:where(button, input, textarea) { font: inherit; color: inherit; }
+:where(a) { color: inherit; }
+
+/* Fluid scale. Phone first — every size below is legible at 360px before it grows. */
+:root {
+  --t-xs: 0.72rem;
+  --t-sm: 0.82rem;
+  --t-base: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+  --t-lg: clamp(1.05rem, 1rem + 0.5vw, 1.2rem);
+  --t-xl: clamp(1.3rem, 1.1rem + 1.4vw, 1.9rem);
+  --t-2xl: clamp(1.7rem, 1.2rem + 3vw, 3rem);
+  --pad: clamp(16px, 4vw, 28px);
+  --stack: clamp(12px, 2.4vw, 18px);
+  /* Touch targets never go below this, on any surface. Dirty hands, small screen. */
+  --tap: 48px;
+}
+
+.w-mono { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.w-wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+
+:where(button, a, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--measured-lift);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------------------------------------------------------------- Ground */
+/* The two worlds. Dark is the workshop, where work happens. Light is the paper record,
+   which is what survives. A screen is one or the other and never both at once. */
+
+.w-ground { min-height: 100%; }
+.w-ground--work  { background: var(--work); color: var(--rec); }
+.w-ground--paper { background: var(--rec);  color: var(--ink); }
+.w-ground--paper a { color: var(--ink); }
+
+/* ---------------------------------------------------------------- Rule */
+
+.w-rule { border: 0; height: 1px; background: rgba(255,255,255,.09); margin: 0; }
+.w-ground--paper .w-rule { background: var(--rule); }
+.w-rule--strong { height: 2px; background: var(--rec); opacity: .9; }
+.w-ground--paper .w-rule--strong { background: var(--ink); }
+
+/* ---------------------------------------------------------------- EvidenceChip */
+/* Four classes, four colours, and the label always present — colour alone never carries it. */
+
+.w-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .13em;
+  padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+  border: 1px solid currentColor;
+}
+.w-chip::before { content: ""; width: 6px; height: 6px; background: currentColor; flex: none; }
+.w-chip--measured  { color: var(--measured-lift); }
+.w-chip--specified { color: var(--specified-lift); }
+.w-chip--inferred  { color: var(--inferred-lift); }
+.w-chip--asserted  { color: var(--asserted-lift); }
+.w-ground--paper .w-chip--measured  { color: var(--measured); }
+.w-ground--paper .w-chip--specified { color: var(--specified); }
+.w-ground--paper .w-chip--inferred  { color: var(--inferred); }
+.w-ground--paper .w-chip--asserted  { color: var(--asserted); }
+.w-chip--out { opacity: .42; text-decoration: line-through; text-decoration-thickness: 1px; }
+
+/* ---------------------------------------------------------------- StatusPill */
+
+.w-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .13em;
+}
+.w-pill i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.w-pill--open    { color: var(--ink-3); }
+.w-pill--waiting { color: var(--inferred-lift); }
+.w-pill--held    { color: var(--held); }
+.w-pill--sealed  { color: var(--measured-lift); }
+.w-pill--held i  { animation: w-beat 1.8s ease-in-out infinite; }
+@keyframes w-beat { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+
+/* ---------------------------------------------------------------- ReadingBadge */
+/* The thesis rendered. Nothing else on a screen gets this treatment. */
+
+.w-reading {
+  display: inline-grid; grid-auto-flow: column; align-items: baseline; gap: 10px;
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  border: 1px solid var(--measured-lift); border-left-width: 3px;
+  padding: 8px 12px; background: rgba(63,191,160,.06); color: var(--measured-lift);
+  overflow-x: auto; max-width: 100%;
+}
+.w-reading b { font-size: var(--t-lg); font-weight: 700; letter-spacing: -.02em; }
+.w-reading span { font-size: var(--t-xs); opacity: .8; white-space: nowrap; }
+.w-ground--paper .w-reading { color: var(--measured); background: rgba(15,122,99,.07); border-color: var(--measured); }
+
+/* ---------------------------------------------------------------- AgentStamp */
+/* An inspection stamp, not a mascot. In QA and aviation an inspector carries a personal
+   stamp that goes onto the record; this is that, one line weight, on a disc. */
+
+.w-stamp { display: block; flex: none; }
+.w-stamp circle, .w-stamp path, .w-stamp line { vector-effect: non-scaling-stroke; }
+
+/* ---------------------------------------------------------------- AgentTrace */
+
+.w-trace { display: flex; flex-direction: column; }
+.w-trace__row {
+  display: grid; grid-template-columns: 30px 1fr; gap: 12px;
+  padding: 12px 0; border-top: 1px solid rgba(255,255,255,.07);
+}
+.w-ground--paper .w-trace__row { border-top-color: var(--rule); }
+.w-trace__row:first-child { border-top: 0; }
+.w-trace__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;
+  font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .06em;
+}
+.w-trace__agent { text-transform: uppercase; letter-spacing: .14em; }
+.w-trace__verdict { color: var(--measured-lift); }
+.w-ground--paper .w-trace__verdict { color: var(--measured); }
+.w-trace__meta { opacity: .55; }
+@media (min-width: 560px) { .w-trace__meta { margin-left: auto; } }
+/* The rationale is a model talking — sans, because a person will read it as prose. */
+.w-trace__why { font-size: var(--t-sm); opacity: .78; margin-top: 5px; max-width: 70ch; }
+
+/* ---------------------------------------------------------------- StepCard */
+
+.w-step { display: flex; flex-direction: column; gap: var(--stack); }
+.w-step__num {
+  font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .18em;
+  text-transform: uppercase; opacity: .55;
+}
+.w-step__title { font-size: var(--t-xl); font-weight: 700; letter-spacing: -.025em; line-height: 1.08; }
+/* The explanation is the Scoper's words to a human. Sans, generous measure. */
+.w-step__why { font-size: var(--t-base); opacity: .8; max-width: 62ch; }
+.w-step__guide {
+  font-size: var(--t-sm); padding: 10px 12px; border-left: 2px solid var(--inferred-lift);
+  background: rgba(232,169,78,.07); max-width: 62ch;
+}
+.w-ground--paper .w-step__guide { border-left-color: var(--inferred); background: rgba(192,120,24,.07); }
+.w-step__guide b {
+  display: block; font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .14em; opacity: .7; margin-bottom: 3px; font-weight: 500;
+}
+/* Two exits, never zero. The primary is always first and always the same size. */
+.w-step__exits { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+@media (min-width: 620px) { .w-step__exits { flex-direction: row; align-items: center; } }
+
+/* ---------------------------------------------------------------- buttons */
+
+.w-btn {
+  min-height: var(--tap); padding: 0 20px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--mono); font-size: var(--t-sm);
+  text-transform: uppercase; letter-spacing: .13em;
+  border: 1px solid transparent; border-radius: 2px; cursor: pointer;
+  background: var(--measured-lift); color: var(--work); font-weight: 600;
+  transition: filter .15s ease, background .15s ease;
+  text-decoration: none;
+}
+.w-btn:hover:not(:disabled) { filter: brightness(1.08); }
+.w-btn:disabled { opacity: .45; cursor: not-allowed; }
+.w-btn--ghost { background: transparent; color: inherit; border-color: currentColor; opacity: .75; }
+.w-btn--ghost:hover:not(:disabled) { opacity: 1; background: rgba(255,255,255,.05); }
+.w-ground--paper .w-btn--ghost:hover:not(:disabled) { background: rgba(0,0,0,.04); }
+.w-btn--block { width: 100%; }
+@media (min-width: 620px) { .w-btn--block { width: auto; } }
+
+/* ---------------------------------------------------------------- CaptureTile */
+
+.w-capture {
+  position: relative; width: 100%; aspect-ratio: 4 / 3;
+  border: 1px dashed rgba(255,255,255,.22); border-radius: 3px;
+  display: grid; place-items: center; gap: 8px;
+  background: var(--work-2); overflow: hidden; cursor: pointer;
+  min-height: 160px;
+}
+.w-ground--paper .w-capture { border-color: var(--rule); background: var(--rec-2); }
+.w-capture:hover { border-color: var(--measured-lift); }
+.w-capture--filled { border-style: solid; cursor: default; }
+.w-capture img, .w-capture video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.w-capture--starting video, .w-capture--denied video, .w-capture--unavailable video { opacity: 0; }
+.w-capture--live { border-style: solid; border-color: var(--measured-lift); cursor: default; }
+
+/* The prompt sits ON the frame, because what you are being asked for and what the lens can
+   see are the same question. */
+.w-capture__prompt {
+  position: absolute; inset: 10px 10px auto 10px;
+  font-size: var(--t-sm); line-height: 1.35;
+  background: rgba(0,0,0,.55); padding: 7px 9px; border-radius: 2px;
+  backdrop-filter: blur(3px);
+}
+.w-capture__live {
+  position: absolute; inset: auto auto 14px 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .16em; color: var(--measured-lift);
+}
+.w-capture__live::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+  animation: w-beat 1.6s ease-in-out infinite;
+}
+.w-capture__shutter {
+  position: absolute; inset: auto 14px 12px auto;
+  width: 60px; height: 60px; border-radius: 50%; padding: 0; cursor: pointer;
+  background: transparent; border: 2px solid var(--rec);
+  display: grid; place-items: center;
+}
+.w-capture__shutter span {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--rec);
+  transition: transform .12s ease;
+}
+.w-capture__shutter:active span { transform: scale(.88); }
+.w-capture__shutter:disabled { opacity: .4; cursor: not-allowed; }
+.w-capture__retake { min-height: 36px; padding: 0 12px; background: rgba(0,0,0,.5); }
+.w-capture__hint {
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .14em; opacity: .6; text-align: center; padding: 0 16px;
+}
+.w-capture__flag {
+  position: absolute; inset: auto 8px 8px 8px;
+  display: flex; justify-content: space-between; gap: 8px; align-items: center;
+}
+@media (min-width: 720px) { .w-capture { aspect-ratio: 16 / 10; } }
+
+/* ---------------------------------------------------------------- ReasonCapture */
+/* The second exit. Never buried, never styled as a failure. */
+
+.w-reason { display: flex; flex-direction: column; gap: 12px; }
+.w-reason__hold {
+  min-height: 96px; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  border: 1px solid currentColor; border-radius: 3px; background: transparent;
+  color: var(--asserted-lift); cursor: pointer;
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .15em;
+}
+.w-ground--paper .w-reason__hold { color: var(--asserted); }
+.w-reason__hold[data-recording="true"] { background: rgba(156,139,212,.12); }
+.w-reason__hold[data-recording="true"] .w-reason__dot { animation: w-beat 1.2s ease-in-out infinite; }
+.w-reason__dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.w-reason__text {
+  width: 100%; min-height: 96px; padding: 12px; resize: vertical;
+  background: var(--work-2); color: inherit; border: 1px solid rgba(255,255,255,.14); border-radius: 3px;
+  font-size: var(--t-base); font-family: var(--sans);
+}
+.w-ground--paper .w-reason__text { background: var(--rec); border-color: var(--rule); }
+.w-reason__switch {
+  background: none; border: 0; padding: 6px 0; cursor: pointer; align-self: flex-start;
+  font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .12em;
+  text-transform: uppercase; opacity: .6; text-decoration: underline; text-underline-offset: 3px;
+}
+.w-reason__switch:hover { opacity: 1; }
+
+/* ---------------------------------------------------------------- CeilingCard */
+/* The signature. What this record could prove, and what it could not, and why. */
+
+.w-ceiling { border: 1px solid currentColor; padding: var(--pad); display: flex; flex-direction: column; gap: 14px; }
+.w-ceiling__head {
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .16em; opacity: .65;
+}
+.w-ceiling__tier { font-size: var(--t-lg); font-weight: 700; letter-spacing: -.02em; }
+.w-ceiling__rows { display: flex; flex-direction: column; gap: 0; }
+.w-ceiling__row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  padding: 11px 0; border-top: 1px solid rgba(255,255,255,.08);
+}
+.w-ground--paper .w-ceiling__row { border-top-color: var(--rule); }
+.w-ceiling__row:first-child { border-top: 0; }
+.w-ceiling__reason { font-size: var(--t-sm); opacity: .62; }
+.w-ceiling__cta { display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 620px) { .w-ceiling__cta { flex-direction: row; align-items: center; } }
+
+/* ---------------------------------------------------------------- JobRow */
+
+.w-jobrow {
+  display: grid; gap: 4px 14px; padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  grid-template-columns: 1fr auto; align-items: baseline;
+  text-decoration: none; cursor: pointer;
+}
+.w-ground--paper .w-jobrow { border-top-color: var(--rule); }
+.w-jobrow:hover { background: rgba(255,255,255,.03); }
+.w-ground--paper .w-jobrow:hover { background: rgba(0,0,0,.025); }
+.w-jobrow__title { font-size: var(--t-base); font-weight: 600; letter-spacing: -.01em; }
+.w-jobrow__meta {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 14px;
+  font-family: var(--mono); font-size: var(--t-xs); opacity: .55;
+}
+@media (min-width: 760px) {
+  .w-jobrow { grid-template-columns: minmax(0,2fr) minmax(0,3fr) auto; }
+  .w-jobrow__meta { grid-column: 2; margin: 0; }
+}
+
+/* ---------------------------------------------------------------- Timeline */
+
+.w-timeline { display: flex; flex-direction: column; }
+.w-timeline__item {
+  display: grid; grid-template-columns: 14px 1fr; gap: 14px;
+  padding-bottom: 18px; position: relative;
+}
+.w-timeline__item::before {
+  content: ""; position: absolute; left: 6px; top: 16px; bottom: 0; width: 1px;
+  background: rgba(255,255,255,.14);
+}
+.w-ground--paper .w-timeline__item::before { background: var(--rule); }
+.w-timeline__item:last-child::before { display: none; }
+.w-timeline__dot {
+  width: 13px; height: 13px; border-radius: 50%; margin-top: 4px;
+  border: 1px solid currentColor; background: var(--work); z-index: 1;
+}
+.w-ground--paper .w-timeline__dot { background: var(--rec); }
+.w-ground .w-timeline__dot--done,
+.w-timeline__dot--done { background: currentColor; }
+.w-timeline__when { font-family: var(--mono); font-size: var(--t-xs); opacity: .5; }
+.w-timeline__what { font-size: var(--t-sm); }
+
+/* ---------------------------------------------------------------- HoldBanner */
+/* The one that protects a person who does not know it exists. It does not look like a toast. */
+
+.w-hold {
+  display: flex; flex-direction: column; gap: 10px;
+  border: 2px solid var(--held); border-left-width: 5px;
+  background: rgba(180,70,60,.10); padding: 14px var(--pad); color: inherit;
+}
+.w-hold__head {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: var(--t-sm); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .16em; color: var(--held);
+}
+.w-hold__why { font-size: var(--t-sm); opacity: .85; max-width: 68ch; }
+.w-hold--fixture, .w-hold--waiting { border-color: var(--inferred); background: rgba(192,120,24,.12); }
+.w-hold--fixture .w-hold__head, .w-hold--waiting .w-hold__head { color: var(--inferred-lift); }
+
+/* ---------------------------------------------------------------- ChatTurn */
+
+.w-turn { display: flex; flex-direction: column; gap: 5px; padding: 10px 0; max-width: 68ch; }
+.w-turn__who {
+  font-family: var(--mono); font-size: var(--t-xs);
+  text-transform: uppercase; letter-spacing: .15em; opacity: .5;
+}
+.w-turn__body { font-size: var(--t-base); }
+.w-turn--them { border-left: 2px solid var(--asserted-lift); padding-left: 12px; }
+.w-ground--paper .w-turn--them { border-left-color: var(--asserted); }
+.w-turn--me { align-self: flex-end; text-align: right; }
+
+/* ---------------------------------------------------------------- SignatureInput */
+
+.w-sign { display: flex; flex-direction: column; gap: 10px; }
+.w-sign__label { font-size: var(--t-base); }
+.w-sign__field {
+  min-height: var(--tap); padding: 0 12px; width: 100%;
+  background: var(--work-2); color: inherit;
+  border: 1px solid rgba(255,255,255,.16); border-radius: 3px;
+  font-size: var(--t-lg);
+}
+.w-ground--paper .w-sign__field { background: var(--rec); border-color: var(--rule); }
+.w-sign__note { font-size: var(--t-sm); opacity: .58; max-width: 56ch; }
+.w-sign--done {
+  border-left: 2px solid var(--asserted-lift); padding-left: 12px; gap: 6px;
+}
+.w-ground--paper .w-sign--done { border-left-color: var(--asserted); }
+/* Italic sans, never mono: a person asserted this, no machine produced it. */
+.w-sign__name { font-size: var(--t-xl); font-style: italic; letter-spacing: -.02em; }
