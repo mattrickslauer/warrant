@@ -4,12 +4,18 @@ rules_version = '2';
 //
 // This file is the second half of a rule written twice. The first half is `tenantFromClaims`
 // in web/src/auth/tenant.ts, and the two MUST agree; scripts/rules.test.mjs feeds the same
-// table of claims to both and fails if they disagree. See docs/data-model.md §7.
+// table of claims to both and fails if they disagree. See docs/data-model.md §7 and
+// specs/2026-08-20-firestore-design.md §2.
 //
 // What this protects: every authenticated client — the browser holding a real ID token, and
 // the Android client — reads and writes through these rules. Server code using the Admin SDK
 // bypasses them entirely, which is why the server takes its tenant only from a verified
 // session cookie (web/src/auth/session.ts) and never from a request.
+//
+// THE ONE THING TO KNOW BEFORE EDITING THIS FILE: rules are OR'd and there is no deny. If any
+// `allow` grants access, access is granted, and a narrower rule written afterwards cannot take
+// it back. Every protection below is therefore expressed at the point access is granted, never
+// as a later exception.
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -46,6 +52,52 @@ service cloud.firestore {
       return signedIn() && tenantOf() == t;
     }
 
+    // --- What a client may not write ---------------------------------------------------
+
+    // Collections a client may READ within its tenant but never WRITE. Each is written by the
+    // Admin SDK from a server path that holds standing the client does not have.
+    //
+    // This list is the security boundary of the whole instance space. Adding a collection to
+    // it is cheap; noticing later that one is missing is not.
+    //
+    //   members            role and standing decide who may waive a step. A technician able to
+    //                      write this could promote themselves and waive their own work.
+    //   records            "written once by the Seal, never updated" is only true if a client
+    //                      cannot update it.
+    //   decisions          the agent reasoning a public record quotes. Forgeable = worthless.
+    //   readings           tool_id is the only thing separating a measured number from a typed
+    //                      one. This is the collection the whole product rests on.
+    //   procedure_versions a frozen version a running job is pinned to, and the point at which
+    //                      may_publish_procedures standing is enforced.
+    //
+    // NOTE these are all FIRST-SEGMENT collections under the tenant, and that is not a
+    // stylistic choice. A `{document=**}` wildcard binds only the first segment, so a
+    // collection nested inside another (/components/{id}/readings/{id}) binds to the OUTER
+    // name and silently escapes this list. Anything that must be write-protected has to sit
+    // directly under /tenants/{t}/. See specs/2026-08-20-firestore-design.md §14.5.
+    function serverWritten(collection) {
+      return collection in ['members', 'records', 'decisions', 'readings', 'procedure_versions'];
+    }
+
+    // Claims a client may never make for itself, at any depth in the tenant subtree.
+    //
+    // Provenance is stamped by the Seal, release by the Gate, and attestation by Play
+    // Integrity server-side. A client asserting any of them is asserting the conclusion the
+    // system exists to reach independently.
+    //
+    // `tool_id` is only reachable here because a Field is now its own document. Inside the
+    // old steps[].fields[] array no rule could see it — rules cannot inspect array contents.
+    //
+    // This is defence in depth, NOT the primary control. A rule can only refuse what a client
+    // sends. The Seal recomputes every field's class from the server-written `readings`
+    // collection and never trusts what arrived on the field document.
+    function clientMayNotClaim() {
+      return request.resource.data.get('provenance_class', '') != 'measured'
+          && request.resource.data.get('capture_surface', '') != 'app_instrument'
+          && request.resource.data.get('status', '') != 'sealed'
+          && request.resource.data.get('tool_id', '') == '';
+    }
+
     // --- Type space --------------------------------------------------------------------
     //
     // The catalogue is a published reference: manufacturer specifications, documents and the
@@ -62,12 +114,36 @@ service cloud.firestore {
     match /spec_docs/{id}   { allow read: if signedIn(); allow write: if false; }
     match /spec_chunks/{id} { allow read: if signedIn(); allow write: if false; }
 
-    // --- Instance space ----------------------------------------------------------------
+    // --- Published records -------------------------------------------------------------
     //
-    // One rule covers the whole subtree at every depth: jobs and their fields, components
-    // and their readings and placements, nodes, overrides, records. A new collection added
-    // beneath a tenant is protected the day it is created rather than the day somebody
-    // remembers to add a rule for it.
+    // A capability URL. The id is 22 characters of crypto randomness and is NOT derived from
+    // the job id, which would be enumerable. Holding the link is the entire credential, which
+    // is the point: a customer or an insurer checks a service record without an account.
+    //
+    // The document here is a REDACTED PROJECTION written by the Seal — no tenant id, no uids,
+    // no raw storage refs, no costs. The private record stays under its tenant. Unsharing
+    // deletes this document, and because media is proxied rather than signed (§6.3), every
+    // image URL dies with it.
+
+    match /records/{publicId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // --- Per-user secrets ---------------------------------------------------------------
+    //
+    // OAuth refresh tokens for Google Calendar. Unreachable by ANY client, including the user
+    // whose token it is — a browser never needs it, because the sweep writes calendar events
+    // server-side.
+    //
+    // This is a top-level root and not /tenants/{t}/… on purpose. Under the tenant, the
+    // recursive read below would hand every colleague the token.
+
+    match /user_secrets/{uid} {
+      allow read, write: if false;
+    }
+
+    // --- Instance space ----------------------------------------------------------------
 
     // The tenant document itself is provisioned server-side on first sign-in. A client may
     // not forge one, because creating `acme.com` before anyone at acme.com had signed in
@@ -78,10 +154,12 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Everything beneath a tenant, at every depth — jobs and their fields and captures,
-    // components and their readings and placements, nodes, overrides, records. A collection
-    // added under a tenant tomorrow is protected the day it is created rather than the day
-    // somebody remembers to write a rule for it.
+    // Everything beneath a tenant, at every depth — jobs and their step outcomes, fields and
+    // captures, components, nodes, overrides, procedures, tasks, devices.
+    //
+    // READ stays broad: a collection added under a tenant tomorrow is readable by its tenant
+    // the day it is created rather than the day somebody remembers to write a rule for it.
+    // WRITE is narrowed at the point it is granted, because it cannot be narrowed afterwards.
     //
     // NOTE the `{collection}` segment, which is doing real work and is not decoration. A
     // recursive wildcard in rules_version 2 matches ZERO or more segments, so the obvious
@@ -91,11 +169,17 @@ service cloud.firestore {
     // match is /tenants/{t}/{collection}, which is a collection and never a write target.
     // web/scripts/rules.test.mjs is what caught this, and is what keeps it caught.
     match /tenants/{t}/{collection}/{document=**} {
-      allow read, write: if inTenant(t);
+      allow read: if inTenant(t);
+      allow write: if inTenant(t) && !serverWritten(collection) && clientMayNotClaim();
     }
 
     // Anything not named above is denied. Stated rather than implied, because a reader
     // should not have to know Firestore's default to know this.
+    //
+    // This also refuses client COLLECTION GROUP queries. Enabling one requires a rule matching
+    // /{path=**}/tasks/{taskId}, and no such rule exists — so the cross-tenant sweep is
+    // available to the server, which holds Admin credentials, and structurally unavailable to
+    // a browser.
     match /{document=**} {
       allow read, write: if false;
     }

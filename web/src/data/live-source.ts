@@ -17,10 +17,31 @@
 // Foreman decide, and they run server-side over Pub/Sub; a capture written here is evidence
 // waiting on them. LiveSource inventing a PASS would be exactly the tick in the box this
 // product exists to abolish.
+//
+// ---------------------------------------------------------------------------------------
+// STORAGE IS DECOMPOSED, THE AGGREGATE IS NOT.
+//
+//   /tenants/{t}/jobs/{jobId}                         header — status, tier, counters
+//   /tenants/{t}/jobs/{jobId}/step_outcomes/{stepId}   one per step
+//   /tenants/{t}/jobs/{jobId}/fields/{stepId}__{key}   one per field
+//   /tenants/{t}/jobs/{jobId}/captures/{captureId}     one per capture
+//
+// This file used to write `tx.update(jobRef, { steps })` on every capture, rewriting the
+// whole steps[] array after reading the whole job inside a transaction. Write cost grew with
+// evidence already captured, a document is capped at 1 MiB, and two technicians on one job
+// contended on a single document. Now a capture writes two new documents and reads nothing.
+//
+// The `Job` the DataSource returns is unchanged — assembled here from the header plus two
+// subcollection reads. That is the seam earning its keep: storage moved and no screen did.
+//
+// It bought a second thing. `tool_id` used to sit inside an array, where no Firestore rule
+// could see it, so a client could claim a fabricated measured reading and only the Seal would
+// catch it. As a field on its own document it is guarded by clientMayNotClaim() in
+// firestore.rules. See specs/2026-08-20-firestore-design.md §7.0.
 
 import {
-  addDoc, collection, doc, getDoc, getDocs, onSnapshot, orderBy, query,
-  runTransaction, serverTimestamp, setDoc, where, type Firestore,
+  collection, deleteField, doc, getDoc, getDocs, increment, onSnapshot, orderBy, query,
+  serverTimestamp, setDoc, updateDoc, where, writeBatch, type Firestore,
 } from "firebase/firestore";
 import type {
   Procedure, Job, StepOutcome, Capture, Decision, SealedRecord, Field,
@@ -33,6 +54,17 @@ const now = () => new Date().toISOString();
 /** `/tenants/{t}/…` — the one path shape docs/data-model.md §4 defines. */
 const tenantCol = (db: Firestore, tenantId: string, name: string) =>
   collection(db, "tenants", tenantId, name);
+
+/**
+ * A field's document id, derived rather than random.
+ *
+ * Re-capturing a field REPLACES the current answer instead of appending, which bounds this
+ * subcollection at (declared fields + ADD_FIELDs) however many attempts a step takes. Nothing
+ * is lost: every attempt stays in `captures`, which storage.rules makes append-only, and every
+ * verdict stays in `decisions`. This collection holds the current answer; history lives where
+ * history belongs.
+ */
+export const fieldId = (stepId: string, key: string) => `${stepId}__${key}`;
 
 export class LiveSource implements DataSource {
   readonly name = "live" as const;
@@ -62,18 +94,55 @@ export class LiveSource implements DataSource {
     return snap.exists() ? (snap.data() as Procedure) : null;
   }
 
+  /**
+   * The frozen version, not the live procedure.
+   *
+   * A job pins the version it started under. Reading the live document instead would mean
+   * publishing v3 mid-job silently changed what a running v2 job was executing, while the job
+   * still recorded `procedure_version: 2` — and a sealed record promises it names the version
+   * that ran.
+   */
+  async getProcedureVersion(tenantId: string, procedureId: string, version: number): Promise<Procedure | null> {
+    const bare = splitScoped(procedureId)[1];
+    const snap = await getDoc(
+      doc(this.db, "tenants", tenantId, "procedure_versions", `${bare}:${version}`),
+    );
+    return snap.exists() ? (snap.data() as Procedure) : null;
+  }
+
+  /** The assembled aggregate: header, plus its step outcomes, plus their fields. */
   async getJob(id: string): Promise<Job | null> {
     const [tenantId, jobId] = splitScoped(id);
     if (!tenantId) return null;
-    const snap = await getDoc(doc(this.db, "tenants", tenantId, "jobs", jobId));
-    return snap.exists() ? (snap.data() as Job) : null;
+
+    const jobRef = doc(this.db, "tenants", tenantId, "jobs", jobId);
+    const snap = await getDoc(jobRef);
+    if (!snap.exists()) return null;
+
+    const [outcomes, fields] = await Promise.all([
+      getDocs(collection(jobRef, "step_outcomes")),
+      getDocs(collection(jobRef, "fields")),
+    ]);
+
+    return assemble(
+      snap.data() as JobHeader,
+      outcomes.docs.map((d) => d.data() as StepOutcome),
+      fields.docs.map((d) => d.data() as Field),
+    );
   }
 
+  /**
+   * The job list, from headers alone.
+   *
+   * One read per job and no subcollection fan-out — which is why the header carries
+   * denormalised counters. A list view that had to assemble every aggregate to show a
+   * progress bar would read the whole tenant to render one screen.
+   */
   async listJobs(tenantId: string): Promise<Job[]> {
     const snap = await getDocs(
       query(tenantCol(this.db, tenantId, "jobs"), orderBy("started_at", "desc")),
     );
-    return snap.docs.map((d) => d.data() as Job);
+    return snap.docs.map((d) => assemble(d.data() as JobHeader, [], []));
   }
 
   async getRecord(id: string): Promise<SealedRecord | null> {
@@ -92,33 +161,78 @@ export class LiveSource implements DataSource {
 
   // ---------------------------------------------------------------- writes
 
+  /**
+   * A job starts as a DRAFT. No agent runs on it until finalize() says so.
+   *
+   * The header and every step outcome land in one batch, because a job whose steps failed to
+   * write would be a job that cannot record why a step was not done — and the second exit is
+   * the thing that must never be missing.
+   */
   async startJob({
     procedureId, tenantId, tier,
   }: { procedureId: string; tenantId: string; tier: Tier }): Promise<Job> {
-    const procedure = await this.getProcedure(scoped(tenantId, procedureId));
-    if (!procedure) throw new Error(`no such procedure: ${procedureId}`);
+    const live = await this.getProcedure(scoped(tenantId, procedureId));
+    if (!live) throw new Error(`no such procedure: ${procedureId}`);
+
+    // Pin the frozen version. Falling back to the live document keeps a procedure that was
+    // never published through the version path runnable, rather than failing the technician.
+    const pinned =
+      (await this.getProcedureVersion(tenantId, procedureId, live.version)) ?? live;
 
     const ref = doc(tenantCol(this.db, tenantId, "jobs"));
-    const job: Job = {
-      id: scoped(tenantId, ref.id),
+    const id = scoped(tenantId, ref.id);
+
+    const header: JobHeader = {
+      schema_version: 1,
+      id,
       tenant_id: tenantId,
-      procedure_id: procedure.id,
-      procedure_version: procedure.version,
+      procedure_id: pinned.id,
+      procedure_version: pinned.version,
       asset_urn: null,
       technician_id: null,
-      status: "open",
-      strictness: procedure.strictness,
+      status: "draft",
+      strictness: pinned.strictness,
       tier,
       started_at: now(),
       sealed_at: null,
-      steps: procedure.steps.map<StepOutcome>((s, i) => ({
-        id: `${ref.id}:${i}`, job_id: scoped(tenantId, ref.id), step_id: s.id,
-        status: "pending", fields: [],
-      })),
+      finalized_at: null,
+      finalized_by: null,
+      step_count: pinned.steps.length,
+      performed_count: 0,
+      field_count: 0,
     };
 
-    await setDoc(ref, { ...job, created_at: serverTimestamp() });
-    return job;
+    const batch = writeBatch(this.db);
+    batch.set(ref, { ...header, created_at: serverTimestamp() });
+    for (const step of pinned.steps) {
+      batch.set(doc(collection(ref, "step_outcomes"), step.id), {
+        id: `${ref.id}:${step.id}`,
+        job_id: id,
+        step_id: step.id,
+        status: "pending",
+      } satisfies Omit<StepOutcome, "fields">);
+    }
+    await batch.commit();
+
+    return assemble(header, pinned.steps.map((s) => ({
+      id: `${ref.id}:${s.id}`, job_id: id, step_id: s.id, status: "pending", fields: [],
+    })), []);
+  }
+
+  /**
+   * The human act that lets the fleet see this job.
+   *
+   * Everything before this is a draft: performed against the local cache, syncing when there
+   * is signal, and invisible to every agent. This is the moment the work becomes work.
+   */
+  async finalize(jobId: string, by: string): Promise<void> {
+    const [tenantId, id] = splitScoped(jobId);
+    if (!tenantId) throw new Error(`job id is not tenant-scoped: ${jobId}`);
+    await updateDoc(doc(this.db, "tenants", tenantId, "jobs", id), {
+      status: "open",
+      finalized_at: now(),
+      finalized_by: by,
+    });
   }
 
   /**
@@ -127,6 +241,12 @@ export class LiveSource implements DataSource {
    * Capture never blocks — a technician with dirty hands does not stand in a workshop
    * watching a spinner. The write lands, the screen advances, and whatever the Inspector
    * concludes arrives later through subscribe().
+   *
+   * Two documents, no reads, no transaction. The capture and the field it produces land in one
+   * batch, so a field pointing at a capture that failed to write cannot exist — that would be
+   * a record claiming evidence it does not have. The batch replaces the old read-modify-write
+   * transaction entirely: nothing here depends on the job's current contents, which is exactly
+   * what makes the cost O(1) rather than O(evidence so far).
    */
   async capture(input: CaptureInput): Promise<Capture> {
     const [tenantId, jobId] = splitScoped(input.jobId);
@@ -134,14 +254,18 @@ export class LiveSource implements DataSource {
 
     const jobRef = doc(this.db, "tenants", tenantId, "jobs", jobId);
     const capRef = doc(collection(jobRef, "captures"));
+    const fRef = doc(collection(jobRef, "fields"), fieldId(input.stepId, input.fieldKey));
 
     const capture: Capture = {
       id: capRef.id,
-      field_id: `${input.stepId}:${input.fieldKey}`,
+      field_id: fieldId(input.stepId, input.fieldKey),
       kind: input.kind,
       media_ref: input.mediaRef,
       capture_mode: input.mode,
-      capture_surface: input.surface,
+      // Reported, not believed. A surface above `browser` is only credited once a server-side
+      // attestation accompanies it, and firestore.rules refuses `app_instrument` from any
+      // client at all — an instrumented capture is written by POST /api/ingest/reading.
+      capture_surface: input.surface === "app_instrument" ? "app" : input.surface,
       attestation_device_id: null,
       attestation_play_integrity: null,
       redacted: false,
@@ -149,32 +273,26 @@ export class LiveSource implements DataSource {
       created_at: now(),
     };
 
-    // The capture and the field it produces land together or not at all. A field pointing at
-    // a capture that failed to write would be a record claiming evidence it does not have.
-    await runTransaction(this.db, async (tx) => {
-      const snap = await tx.get(jobRef);
-      if (!snap.exists()) throw new Error(`no such job: ${input.jobId}`);
-      const job = snap.data() as Job;
+    const field: Field = {
+      id: fieldId(input.stepId, input.fieldKey),
+      step_id: input.stepId,
+      key: input.fieldKey,
+      kind: input.kind === "audio" ? "text" : input.kind,
+      media_ref: capRef.id,
+      captured_at: capture.created_at,
+      // Null on purpose. The Seal stamps provenance, recomputed from the server-written
+      // `readings` collection; a class asserted here would be this file deciding the one thing
+      // the whole product exists to decide independently.
+      provenance_class: null,
+    };
 
-      const field: Field = {
-        id: `${input.stepId}:${input.fieldKey}:${capRef.id}`,
-        step_id: input.stepId,
-        key: input.fieldKey,
-        kind: input.kind === "audio" ? "text" : input.kind,
-        media_ref: capRef.id,
-        captured_at: capture.created_at,
-        // Provisional and inferred by definition. The Seal stamps the real class, and only
-        // an instrument reading through a paired tool ever earns `measured`.
-        provenance_class: input.surface === "app_instrument" ? "measured" : "inferred",
-      };
-
-      const steps = job.steps.map((s) =>
-        s.step_id === input.stepId ? { ...s, fields: [...s.fields, field] } : s,
-      );
-
-      tx.set(capRef, capture);
-      tx.update(jobRef, { steps });
-    });
+    const batch = writeBatch(this.db);
+    batch.set(capRef, capture);
+    batch.set(fRef, field);
+    // A counter, not a rewrite. increment() is a server-side operation, so two technicians
+    // capturing at once both count rather than one overwriting the other.
+    batch.update(jobRef, { field_count: increment(1) });
+    await batch.commit();
 
     return capture;
   }
@@ -184,39 +302,29 @@ export class LiveSource implements DataSource {
     const [tenantId, jobId] = splitScoped(input.jobId);
     if (!tenantId) throw new Error(`job id is not tenant-scoped: ${input.jobId}`);
 
-    const jobRef = doc(this.db, "tenants", tenantId, "jobs", jobId);
-    let result: StepOutcome | null = null;
+    const outcomeRef = doc(
+      this.db, "tenants", tenantId, "jobs", jobId, "step_outcomes", input.stepId,
+    );
 
-    await runTransaction(this.db, async (tx) => {
-      const snap = await tx.get(jobRef);
-      if (!snap.exists()) throw new Error(`no such job: ${input.jobId}`);
-      const job = snap.data() as Job;
+    // The status is deliberately left alone. There is no `blocked` state — the contract
+    // offers pending, performed, deferred, waived and impossible, and choosing between the
+    // last three is the FOREMAN's disposition, made server-side against the reason the
+    // technician just gave. Writing a disposition here would be this file deciding something
+    // it has no standing to decide.
+    const patch = {
+      reason_kind: input.reasonKind,
+      reason_transcript: input.transcript,
+      reason_audio_ref: input.audioRef ?? null,
+      reason_by: input.by,
+      reason_at: now(),
+      provenance_class: "asserted" as const,
+    };
 
-      const steps = job.steps.map((s) => {
-        if (s.step_id !== input.stepId) return s;
-        // The status is deliberately left alone. There is no `blocked` state — the contract
-        // offers pending, performed, deferred, waived and impossible, and choosing between
-        // the last three is the FOREMAN's disposition, made server-side against the reason
-        // the technician just gave. Writing a disposition here would be this file deciding
-        // something it has no standing to decide.
-        const updated: StepOutcome = {
-          ...s,
-          reason_kind: input.reasonKind,
-          reason_transcript: input.transcript,
-          reason_audio_ref: input.audioRef ?? null,
-          reason_by: input.by,
-          reason_at: now(),
-          provenance_class: "asserted",
-        };
-        result = updated;
-        return updated;
-      });
+    await setDoc(outcomeRef, patch, { merge: true });
 
-      tx.update(jobRef, { steps });
-    });
-
-    if (!result) throw new Error(`no such step: ${input.stepId}`);
-    return result;
+    const snap = await getDoc(outcomeRef);
+    if (!snap.exists()) throw new Error(`no such step: ${input.stepId}`);
+    return { ...(snap.data() as StepOutcome), fields: [] };
   }
 
   // ---------------------------------------------------------------- the late half
@@ -224,47 +332,50 @@ export class LiveSource implements DataSource {
   /**
    * Real push, not a poll.
    *
-   * Two listeners: the job document, which carries step status and the fields the Inspector
-   * may have ADDED mid-job, and the decision log for this job, which is where every agent's
-   * reasoning and cost surfaces. Both are what the fixture timeline was imitating.
+   * Four listeners: the job header, its step outcomes, its fields, and the decision log. All
+   * four are what the fixture timeline was imitating.
+   *
+   * An ADD FIELD used to be inferred by diffing two snapshots of the steps[] array. With
+   * fields as documents it is simply `change.type === "added"` — the event stops being
+   * derived and starts being observed, which is a smaller and more honest piece of code.
    */
   subscribe(jobId: string, onEvent: (e: JobEvent) => void): Unsubscribe {
     const [tenantId, id] = splitScoped(jobId);
     if (!tenantId) return () => {};
 
     const jobRef = doc(this.db, "tenants", tenantId, "jobs", id);
-    let previous: Job | null = null;
+    let previous: JobHeader | null = null;
 
     const stopJob = onSnapshot(jobRef, (snap) => {
       if (!snap.exists()) return;
-      const job = snap.data() as Job;
-
-      for (const step of job.steps) {
-        const before = previous?.steps.find((s) => s.step_id === step.step_id);
-        if (!before) continue;
-
-        if (before.status !== step.status) {
-          onEvent({ kind: "step_status", stepId: step.step_id, status: step.status });
-        }
-        // A field that exists now and did not before is an ADD FIELD — the Inspector asking
-        // for more rather than refusing. See docs/architecture.md §3.
-        for (const field of step.fields) {
-          if (!before.fields.some((f) => f.id === field.id)) {
-            onEvent({
-              kind: "add_field",
-              stepId: step.step_id,
-              field: { key: field.key, kind: field.kind } as never,
-            });
-          }
-        }
-      }
-
+      const job = snap.data() as JobHeader;
       if (previous && previous.status !== job.status) {
         if (job.status === "held") onEvent({ kind: "held", reason: "The record does not hold up." });
         if (job.status === "sealed") onEvent({ kind: "sealed", recordId: jobId });
       }
-
       previous = job;
+    });
+
+    const stopOutcomes = onSnapshot(collection(jobRef, "step_outcomes"), (snap) => {
+      for (const change of snap.docChanges()) {
+        if (change.type !== "modified") continue;
+        const outcome = change.doc.data() as StepOutcome;
+        onEvent({ kind: "step_status", stepId: outcome.step_id, status: outcome.status });
+      }
+    });
+
+    const stopFields = onSnapshot(collection(jobRef, "fields"), (snap) => {
+      for (const change of snap.docChanges()) {
+        // `added` on first load replays what is already there; the screen treats an add_field
+        // for a field it already knows as a no-op, and metadata-only changes are ignored.
+        if (change.type !== "added" || snap.metadata.hasPendingWrites) continue;
+        const field = change.doc.data() as Field;
+        onEvent({
+          kind: "add_field",
+          stepId: field.step_id,
+          field: { key: field.key, kind: field.kind } as never,
+        });
+      }
     });
 
     const stopDecisions = onSnapshot(
@@ -280,9 +391,40 @@ export class LiveSource implements DataSource {
 
     return () => {
       stopJob();
+      stopOutcomes();
+      stopFields();
       stopDecisions();
     };
   }
+}
+
+// ---------------------------------------------------------------- assembly
+
+/** The job document as STORED: everything except the steps, which are subcollections. */
+type JobHeader = Omit<Job, "steps"> & {
+  step_count?: number;
+  performed_count?: number;
+  field_count?: number;
+};
+
+/**
+ * Put the aggregate back together.
+ *
+ * The contract's `Job` is the read model every screen already depends on, so it is assembled
+ * here rather than pushed outwards as a breaking change. Storage moved; the interface did not.
+ */
+export function assemble(header: JobHeader, outcomes: StepOutcome[], fields: Field[]): Job {
+  const byStep = new Map<string, Field[]>();
+  for (const f of fields) {
+    const list = byStep.get(f.step_id) ?? [];
+    list.push(f);
+    byStep.set(f.step_id, list);
+  }
+
+  return {
+    ...header,
+    steps: outcomes.map((o) => ({ ...o, fields: byStep.get(o.step_id) ?? [] })),
+  } as Job;
 }
 
 // ---------------------------------------------------------------- ids
@@ -303,3 +445,7 @@ export function splitScoped(id: string): [string | null, string] {
   if (cut < 0) return [null, id];
   return [id.slice(0, cut), id.slice(cut + 1)];
 }
+
+// `deleteField` is re-exported for the seal path, which clears provisional values when it
+// stamps the real ones.
+export { deleteField };

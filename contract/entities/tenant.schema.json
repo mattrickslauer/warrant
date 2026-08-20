@@ -4,11 +4,44 @@
   "type": "object",
   "description": "A Workspace domain is an enterprise; a consumer account is a tenant of one; an anonymous visitor is a tenant of one that has not been claimed.",
   "properties": {
-    "id":     { "type": "string", "description": "Workspace domain, or u:<sub>, or anon:<warrant_uid>." },
-    "kind":   { "type": "string", "enum": ["workspace", "solo", "anon"] },
-    "hd":     { "type": "string", "nullable": true, "description": "Google Sign-In hd claim. Null unless kind is workspace." },
-    "region": { "type": "string", "enum": ["us", "eu"], "description": "Sovereignty. Evidence and memory never leave it." },
-    "claimed_at": { "type": "string", "nullable": true, "description": "ISO 8601 UTC. Null while anonymous." }
+    "schema_version": {
+      "type": "integer",
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
+    },
+    "id": {
+      "type": "string",
+      "description": "Workspace domain, or u:<sub>, or anon:<warrant_uid>."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "workspace",
+        "solo",
+        "anon"
+      ]
+    },
+    "hd": {
+      "type": "string",
+      "nullable": true,
+      "description": "Google Sign-In hd claim. Null unless kind is workspace."
+    },
+    "region": {
+      "type": "string",
+      "enum": [
+        "us",
+        "eu"
+      ],
+      "description": "Sovereignty. Evidence and memory never leave it."
+    },
+    "claimed_at": {
+      "type": "string",
+      "nullable": true,
+      "description": "ISO 8601 UTC. Null while anonymous."
+    }
   },
-  "required": ["id", "kind", "region"]
+  "required": [
+    "id",
+    "kind",
+    "region"
+  ]
 }

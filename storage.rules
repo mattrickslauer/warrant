@@ -1,0 +1,70 @@
+rules_version = '2';
+
+// Warrant — Cloud Storage. Where the evidence actually lives.
+//
+// This is the THIRD copy of the identity model. The other two are `tenantFromClaims` in
+// web/src/auth/tenant.ts and `tenantOf()` in firestore.rules, and all three are held to the
+// same table of claims by the shared corpus in web/scripts/rules.test.mjs. Three copies is
+// where "written twice and tested" begins to strain — see specs/2026-08-20-firestore-design.md
+// §14.3 for the generate-from-one-source fix when it does.
+//
+// Note what is NOT here: media for a PUBLISHED record. That is proxied by Cloud Run under
+// Admin credentials (§6.3), so the bucket stays private and unsharing genuinely revokes.
+// A signed URL would outlive the unshare, which is the whole reason the proxy exists.
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAnonymous() {
+      return signedIn() && request.auth.token.firebase.sign_in_provider == 'anonymous';
+    }
+
+    function hd() {
+      return signedIn() && 'hd' in request.auth.token && request.auth.token.hd != null
+        ? request.auth.token.hd
+        : null;
+    }
+
+    function tenantOf() {
+      return hd() != null
+        ? hd()
+        : (isAnonymous() ? 'anon:' + request.auth.uid : 'u:' + request.auth.uid);
+    }
+
+    // --- Evidence ----------------------------------------------------------------------
+    //
+    // Append-only, deliberately. A capture may be created and never altered or removed, so a
+    // technician cannot replace a photograph that failed inspection with one that passes.
+    // Re-capturing writes a NEW object; the field document points at the current answer while
+    // every attempt stays here. That is what makes "the photos come from the person being
+    // checked" survivable.
+
+    match /tenants/{t}/captures/{jobId}/{file} {
+      allow read: if signedIn() && tenantOf() == t;
+      allow create: if signedIn() && tenantOf() == t
+                    && request.resource.size < 25 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*|video/.*|audio/.*');
+      allow update, delete: if false;
+    }
+
+    // --- Avatars -----------------------------------------------------------------------
+    //
+    // Our copy of the Google profile image, taken server-side at first sign-in. A sealed
+    // record points here rather than at lh3.googleusercontent.com, because that URL rotates
+    // when someone changes their photo and can 404 — and a record has to render years later.
+
+    match /avatars/{uid} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+
+    // Anything not named above is denied.
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

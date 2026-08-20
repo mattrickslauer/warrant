@@ -1,0 +1,41 @@
+{
+  "$id": "member",
+  "title": "Member",
+  "type": "object",
+  "description": "A person inside a tenant. Server-written: role and standing decide who may waive a step, so a client that could write this could grant itself the standing. Membership needs no invite flow — the first person from a Workspace domain creates the tenant and everyone after joins by being from that domain.",
+  "properties": {
+    "schema_version": { "type": "integer", "description": "1. Absent reads as 1. See specs/2026-08-20-firestore-design.md section 9.1." },
+    "uid":       { "type": "string", "description": "Firebase uid. Equal to the token sub." },
+    "tenant_id": { "type": "string" },
+    "email":          { "type": "string", "nullable": true },
+    "email_verified": { "type": "boolean" },
+    "display_name":   { "type": "string", "nullable": true },
+
+    "photo_url": { "type": "string", "nullable": true, "description": "Google's own URL. Rotates when the user changes their photo and can 404, so it is never the only copy." },
+    "photo_ref": { "type": "string", "nullable": true, "description": "Our copy in Cloud Storage, taken at first sign-in. This is what a sealed record points at, because a record must still render years later." },
+    "photo_fetched_at": { "type": "string", "nullable": true },
+
+    "role": { "type": "string", "enum": ["owner", "foreman", "technician", "viewer"],
+              "description": "The first member of a tenant is owner. Everyone after is technician. Promotion is an owner-only server action." },
+    "standing": { "type": "object", "description": "What this person may do that a technician may not. StepOutcome.waived_by requires a named person with standing, and standing a person can grant themselves is not standing.",
+      "properties": {
+        "may_waive_to_strictness": { "type": "integer", "description": "May waive a step required at or below this strictness. -1 waives nothing." },
+        "may_approve_orders":      { "type": "boolean", "description": "May approve a drafted purchase order. A PO is drafted, never sent." },
+        "may_publish_procedures":  { "type": "boolean" }
+      },
+      "required": ["may_waive_to_strictness", "may_approve_orders", "may_publish_procedures"] },
+
+    "joined_at":    { "type": "string" },
+    "last_seen_at": { "type": "string" },
+    "disabled":     { "type": "boolean", "description": "When an employer disables an account, access ends the same instant — session verification re-checks revocation on every request." },
+
+    "calendar": { "type": "object", "nullable": true, "description": "That the account is linked. NEVER the refresh token, which lives in /user_secrets and is unreachable by any client.",
+      "properties": {
+        "linked":      { "type": "boolean" },
+        "linked_at":   { "type": "string", "nullable": true },
+        "calendar_id": { "type": "string" }
+      },
+      "required": ["linked", "calendar_id"] }
+  },
+  "required": ["uid", "tenant_id", "email_verified", "role", "standing", "joined_at", "last_seen_at", "disabled"]
+}

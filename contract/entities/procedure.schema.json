@@ -4,18 +4,109 @@
   "type": "object",
   "description": "Compiled from a Scoper conversation. Versioned; a sealed record names the version it ran.",
   "properties": {
-    "id":        { "type": "string" },
-    "tenant_id": { "type": "string" },
-    "key":       { "type": "string", "description": "Stable across versions. e.g. front-brake-service." },
-    "title":     { "type": "string" },
-    "version":   { "type": "integer" },
-    "strictness":{ "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated." },
-    "minimum_tier": { "type": "string", "enum": ["open", "attested", "instrumented"],
-                      "description": "Derived from the fields. A surface below this is refused before the job starts, never downgraded." },
-    "disqualifiers": { "type": "array", "items": { "type": "string" } },
-    "releases":      { "type": "array", "items": { "type": "string" } },
-    "steps":     { "type": "array", "items": { "$ref": "step" } },
-    "created_at":{ "type": "string" }
+    "schema_version": {
+      "type": "integer",
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
+    },
+    "id": {
+      "type": "string"
+    },
+    "tenant_id": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "description": "Stable across versions. e.g. front-brake-service."
+    },
+    "title": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "strictness": {
+      "type": "integer",
+      "description": "0 log, 1 standard, 2 assured, 3 regulated."
+    },
+    "minimum_tier": {
+      "type": "string",
+      "enum": [
+        "open",
+        "attested",
+        "instrumented"
+      ],
+      "description": "Derived from the fields. A surface below this is refused before the job starts, never downgraded."
+    },
+    "disqualifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "step"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "drafting",
+        "published",
+        "archived"
+      ],
+      "description": "A procedure mid-Scoper-interview is drafting. Compiling publishes v1."
+    },
+    "current_version": {
+      "type": "integer",
+      "description": "A job pins the frozen version it started under, so publishing v3 mid-job cannot change what a v2 job is running."
+    },
+    "published_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "published_by": {
+      "type": "string",
+      "nullable": true
+    },
+    "updated_at": {
+      "type": "string",
+      "nullable": true
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "scoper",
+        "imported",
+        "forked"
+      ],
+      "nullable": true
+    },
+    "source_doc_ref": {
+      "type": "string",
+      "nullable": true,
+      "description": "For catalogue imports. See docs/data-model.md section 8."
+    }
   },
-  "required": ["id", "tenant_id", "key", "title", "version", "strictness", "minimum_tier", "steps", "created_at"]
+  "required": [
+    "id",
+    "tenant_id",
+    "key",
+    "title",
+    "version",
+    "strictness",
+    "minimum_tier",
+    "steps",
+    "created_at"
+  ]
 }

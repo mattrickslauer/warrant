@@ -40,6 +40,38 @@ curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/projects/$PROJECT/rel
   >/dev/null
 echo "  released to cloud.firestore"
 
+# Storage rules go to a different release track (firebase.storage) but through the same API.
+# There were no storage rules at all until 2026-08-20 while storageBucket was already
+# configured, so this step is not optional — an unpublished storage ruleset is an open bucket.
+echo
+echo "publishing storage.rules to $PROJECT"
+
+STORAGE_PAYLOAD="$(python3 - "$ROOT/storage.rules" <<'PY'
+import json, sys
+source = open(sys.argv[1]).read()
+print(json.dumps({"source": {"files": [{"name": "storage.rules", "content": source}]}}))
+PY
+)"
+
+STORAGE_RULESET="$(curl -sS -X POST "https://firebaserules.googleapis.com/v1/projects/$PROJECT/rulesets" \
+  "${API[@]}" -d "$STORAGE_PAYLOAD" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("name") or json.dumps(d))')"
+
+case "$STORAGE_RULESET" in
+  projects/*) ;;
+  *) echo "error: storage ruleset was not created: $STORAGE_RULESET" >&2; exit 1 ;;
+esac
+echo "  ruleset $STORAGE_RULESET"
+
+# The release name embeds the bucket, URL-escaped. Getting this wrong publishes a valid
+# ruleset that governs nothing, which looks exactly like success.
+BUCKET="${FIREBASE_STORAGE_BUCKET:-${PROJECT}.firebasestorage.app}"
+RELEASE="projects/$PROJECT/releases/firebase.storage%2F$BUCKET"
+
+curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/$RELEASE" \
+  "${API[@]}" -d "{\"release\":{\"name\":\"$RELEASE\",\"rulesetName\":\"$STORAGE_RULESET\"}}" \
+  >/dev/null
+echo "  released to firebase.storage/$BUCKET"
+
 echo
 echo "creating composite indexes — already-existing ones are skipped"
 
@@ -93,6 +125,36 @@ create_index COLLECTION_GROUP placements \
 create_index COLLECTION jobs \
   --field-config=field-path=status,order=ascending \
   --field-config=field-path=started_at,order=descending
+
+# The sweep, across every tenant. COLLECTION_GROUP is load-bearing: /tenants/{t}/tasks is a
+# subcollection, so a COLLECTION-scoped index serves one tenant at a time and the cross-tenant
+# sweep does not run at all.
+create_index COLLECTION_GROUP tasks \
+  --field-config=field-path=status,order=ascending \
+  --field-config=field-path=notify_after,order=ascending
+
+create_index COLLECTION tasks \
+  --field-config=field-path=assignee_uid,order=ascending \
+  --field-config=field-path=status,order=ascending \
+  --field-config=field-path=due_at,order=ascending
+
+create_index COLLECTION tasks \
+  --field-config=field-path=assignee_role,order=ascending \
+  --field-config=field-path=status,order=ascending \
+  --field-config=field-path=due_at,order=ascending
+
+create_index COLLECTION readings \
+  --field-config=field-path=component_id,order=ascending \
+  --field-config=field-path=key,order=ascending \
+  --field-config=field-path=at,order=descending
+
+create_index COLLECTION procedures \
+  --field-config=field-path=status,order=ascending \
+  --field-config=field-path=updated_at,order=descending
+
+create_index COLLECTION members \
+  --field-config=field-path=role,order=ascending \
+  --field-config=field-path=display_name,order=ascending
 
 echo
 echo "done. firestore.indexes.json is the source of truth for what should exist here."

@@ -169,3 +169,156 @@ describe("signing out closes everything", () => {
     await assertFails(setDoc(doc(collection(db, "spec_docs")), { title: "x" }));
   });
 });
+
+// ---------------------------------------------------------------------------------------
+// What a client may not write. Added 2026-08-20 with specs/2026-08-20-firestore-design.md.
+//
+// Firestore rules are OR'd and there is no deny, so the recursive grant under /tenants/{t}
+// previously made EVERY document writable by every member at every depth — including sealed
+// records the schema calls immutable, member roles that decide who may waive a step, and
+// readings whose tool_id is the only thing separating a measured number from a typed one.
+//
+// These are the tests that keep that closed.
+
+const PROTECTED = ["members", "records", "decisions", "readings", "procedure_versions"];
+
+describe("server-written collections are readable but not writable", () => {
+  const sam = IDENTITIES[0];
+
+  for (const name of PROTECTED) {
+    test(`a member cannot write ${name}`, async () => {
+      const db = asUser(sam);
+      await assertFails(setDoc(doc(db, "tenants", sam.tenant, name, "x1"), { forged: true }));
+    });
+
+    test(`a member CAN still read ${name}`, async () => {
+      // Read stays broad on purpose: you must be able to see your colleagues' names and your
+      // own sealed records. It is only writing them that requires a server.
+      const db = asUser(sam);
+      await assertSucceeds(getDoc(doc(db, "tenants", sam.tenant, name, "x1")));
+    });
+  }
+
+  test("protection reaches every depth beneath a protected collection", async () => {
+    const db = asUser(sam);
+    await assertFails(setDoc(doc(db, "tenants", sam.tenant, "readings", "r1", "sub", "s1"), { a: 1 }));
+  });
+
+  test("an unprotected collection stays writable, at depth", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j1", "captures", "c1"), { kind: "photo" }),
+    );
+  });
+
+  test("readings nested under components would NOT be protected — this is why they are flat", async () => {
+    // A {document=**} wildcard binds only the FIRST segment, so this path binds `collection`
+    // to "components" and escapes the protected list entirely. The assertion is deliberately
+    // that the write SUCCEEDS: it documents the trap that forced the flat layout, and it
+    // fails loudly if anyone reintroduces the nested path believing it is covered.
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "components", "caliper-88213", "readings", "r1"),
+        { key: "pad_thickness", value: 4.2 }),
+    );
+  });
+});
+
+describe("a client cannot assert the conclusion the system exists to reach", () => {
+  const sam = IDENTITIES[0];
+
+  test("provenance_class: measured is refused", async () => {
+    const db = asUser(sam);
+    await assertFails(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j2"), { provenance_class: "measured" }),
+    );
+  });
+
+  test("provenance_class: inferred is allowed", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j3"), { provenance_class: "inferred" }),
+    );
+  });
+
+  test("capture_surface: app_instrument is refused", async () => {
+    // A browser can pass any string it likes. An instrumented capture is written by
+    // POST /api/ingest/reading under Admin credentials, never by a client.
+    const db = asUser(sam);
+    await assertFails(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j4", "captures", "c2"),
+        { capture_surface: "app_instrument" }),
+    );
+  });
+
+  test("capture_surface: browser is allowed", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j4", "captures", "c3"),
+        { capture_surface: "browser" }),
+    );
+  });
+
+  test("a field carrying any tool_id is refused", async () => {
+    // Only reachable because a Field is now its own document. Inside the old
+    // steps[].fields[] array no rule could see it — rules cannot inspect array contents.
+    const db = asUser(sam);
+    await assertFails(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j5", "fields", "s1__pad_torque"),
+        { key: "pad_torque", value_number: 28, tool_id: "esp32-fabricated" }),
+    );
+  });
+
+  test("a field with no tool_id is allowed", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "jobs", "j5", "fields", "s1__pad_photo"),
+        { key: "pad_photo", media_ref: "cap1" }),
+    );
+  });
+
+  test("status: sealed is refused", async () => {
+    // The Seal is a server act. A client flipping a job to sealed would be the tick in the
+    // box this product exists to abolish.
+    const db = asUser(sam);
+    await assertFails(setDoc(doc(db, "tenants", sam.tenant, "jobs", "j6"), { status: "sealed" }));
+  });
+
+  test("status: draft is allowed — the draft gate is a client act", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(setDoc(doc(db, "tenants", sam.tenant, "jobs", "j7"), { status: "draft" }));
+  });
+});
+
+describe("a published record is a capability URL", () => {
+  test("anyone reads it, including a caller who never signed in", async () => {
+    await env.withSecurityRulesDisabled(async (context) => {
+      await setDoc(doc(context.firestore(), "records", "pub-1"), { sealed_at: "2026-08-20T00:00:00Z" });
+    });
+    await assertSucceeds(getDoc(doc(env.unauthenticatedContext().firestore(), "records", "pub-1")));
+  });
+
+  test("nobody writes it, however they signed in", async () => {
+    for (const identity of IDENTITIES) {
+      await assertFails(setDoc(doc(asUser(identity), "records", "pub-2"), { forged: true }));
+    }
+    await assertFails(
+      setDoc(doc(env.unauthenticatedContext().firestore(), "records", "pub-3"), { forged: true }),
+    );
+  });
+});
+
+describe("an OAuth refresh token is reachable by nobody", () => {
+  test("not even by the user whose token it is", async () => {
+    // The browser never needs it: calendar events are written server-side by the sweep.
+    // This lives OUTSIDE /tenants/** because under the tenant, the recursive read would hand
+    // it to every colleague.
+    const sam = IDENTITIES[0];
+    await assertFails(getDoc(doc(asUser(sam), "user_secrets", sam.uid)));
+    await assertFails(setDoc(doc(asUser(sam), "user_secrets", sam.uid), { refresh_token: "x" }));
+  });
+
+  test("nor by an unauthenticated caller", async () => {
+    await assertFails(getDoc(doc(env.unauthenticatedContext().firestore(), "user_secrets", "tech-1")));
+  });
+});

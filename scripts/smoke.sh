@@ -42,7 +42,7 @@ echo "ok — every route builds and renders from FixtureSource alone"
 # layout resolves the session so the first paint already knows the tenant. That is the
 # Cloud Run shape the architecture calls for, and it is why nothing here is marked static.
 
-step "5/7  tenancy — firestore.rules against the real rules engine"
+step "5/7  tenancy and storage shape — against the real rules engine"
 # A Workspace domain cannot read another's, a consumer account cannot read a domain's, and
 # nobody can write the catalogue. Also asserts that tenantOf() in firestore.rules and
 # tenantFromClaims() in web/src/auth/tenant.ts resolve the SAME tenant for the same claims —
@@ -65,11 +65,13 @@ if [ -n "$RULES_JAVA" ] && [ -x "$ROOT/web/node_modules/.bin/firebase" ]; then
   PATH="$(dirname "$RULES_JAVA"):$PATH" \
   "$ROOT/web/node_modules/.bin/firebase" emulators:exec \
       --project warrant-rules-test --only firestore --config "$ROOT/firebase.json" \
-      'node --experimental-strip-types --test web/scripts/rules.test.mjs' \
+      'node --experimental-strip-types --test web/scripts/rules.test.mjs
+       cd web && node --experimental-strip-types --conditions=react-server \
+         --import ./scripts/ts-resolve.mjs --test scripts/live-source.test.mjs' \
     > /tmp/warrant-rules.log 2>&1 \
     || { echo "TENANCY FAILED — see the report below"; grep -E '^(not ok|  +error:)' /tmp/warrant-rules.log | head -20; exit 1; }
   grep -E '^# (tests|pass|fail)' /tmp/warrant-rules.log
-  echo "ok — no tenant reaches another's data, and the catalogue is read-only"
+  echo "ok — no tenant reaches another's data, the catalogue is read-only, evidence is not forgeable"
   cd "$ROOT/web"
 else
   echo "skipped — needs a JDK 21+ and web/node_modules/.bin/firebase"

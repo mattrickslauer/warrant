@@ -10,6 +10,7 @@ import { cookies } from "next/headers";
 import { adminAuth } from "@/auth/admin";
 import { verifyGoogleIdToken, googleSubOf } from "@/auth/google-hd";
 import { ensureTenant } from "@/auth/provision";
+import { ensureMember } from "@/auth/members";
 import { mintSessionCookie, sessionCookieOptions, toSession, verifyIdToken, SESSION_COOKIE } from "@/auth/session";
 import { normaliseHd, tenantFromClaims } from "@/auth/tenant";
 
@@ -82,6 +83,24 @@ export async function POST(request: Request) {
   });
 
   await ensureTenant(tenant);
+
+  // Who they are, not just which tenant they land in. Called on EVERY sign-in rather than the
+  // first: profile fields drift, the Google avatar URL rotates, and a member document written
+  // once is wrong within a month. Role is assigned on creation and never touched again here.
+  //
+  // Failure here must not block sign-in. A member row is recoverable on the next request; a
+  // technician locked out of the workshop because a bucket was unreachable is not.
+  try {
+    await ensureMember(tenant, {
+      uid: decoded.uid,
+      email: decoded.email ?? null,
+      emailVerified: decoded.email_verified ?? false,
+      displayName: (decoded.name as string | undefined) ?? null,
+      photoUrl: (decoded.picture as string | undefined) ?? null,
+    });
+  } catch (error) {
+    console.error("ensureMember failed; sign-in continues", error);
+  }
 
   const cookie = await mintSessionCookie(body.idToken);
   const jar = await cookies();

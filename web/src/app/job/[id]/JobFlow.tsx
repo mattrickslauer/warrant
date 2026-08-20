@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   StepCard, CaptureTile, ReasonCapture, SignatureInput, AgentTrace, HoldBanner,
-  StatusPill, Rule, Wrap, EvidenceChip,
+  StatusPill, Rule, Wrap, EvidenceChip, type JobStatus,
 } from "@/components";
 import { getDataSource, surfaceCanRun, type JobEvent } from "@/data";
 import type { Decision, FieldDef, Job, Procedure } from "@/generated/types";
@@ -14,6 +14,7 @@ export function JobFlow({ jobId }: { jobId: string }) {
   const router = useRouter();
   const src = useMemo(() => getDataSource(), []);
   const [job, setJob] = useState<Job | null>(null);
+  const [finalising, setFinalising] = useState(false);
   const [proc, setProc] = useState<Procedure | null>(null);
   const [cursor, setCursor] = useState(0);
   const [exit, setExit] = useState<Exit>("capture");
@@ -249,10 +250,39 @@ export function JobFlow({ jobId }: { jobId: string }) {
 
         <Rule />
 
+        {job.status === "draft" && (
+          <div className="stack">
+            <div className="w-trace__head">
+              <span className="w-trace__agent">Not started</span>
+              <StatusPill status="draft" />
+            </div>
+            <p className="w-trace__why">
+              Captured and saved. No agent has looked at it, nothing is sealed, and the machine
+              is not released — a workshop with no signal works exactly the same. Finalising is
+              what hands it to the fleet.
+            </p>
+            <button
+              className="w-btn"
+              disabled={finalising}
+              onClick={async () => {
+                setFinalising(true);
+                try {
+                  await src.finalize(job.id, job.technician_id ?? "unknown");
+                  setJob(await src.getJob(jobId));
+                } finally {
+                  setFinalising(false);
+                }
+              }}
+            >
+              {finalising ? "Finalising…" : "Finalise — hand this to the fleet"}
+            </button>
+          </div>
+        )}
+
         <div className="stack">
           <div className="w-trace__head">
             <span className="w-trace__agent">Verification</span>
-            <StatusPill status={job.status as "open" | "waiting" | "held" | "sealed"} />
+            <StatusPill status={job.status as JobStatus} />
           </div>
           <p className="w-trace__why">
             Capture never waits. These land behind you, and you can keep going.

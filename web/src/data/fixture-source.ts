@@ -77,7 +77,7 @@ export class FixtureSource implements DataSource {
       procedure_version: proc.version,
       asset_urn: null,
       technician_id: null,
-      status: "open",
+      status: "draft",
       strictness: proc.strictness,
       tier,
       started_at: now(),
@@ -88,6 +88,22 @@ export class FixtureSource implements DataSource {
     };
     this.jobs.set(jid, job);
     return job;
+  }
+
+  /**
+   * The human act that lets the fleet see this job.
+   *
+   * Present here and not only on LiveSource on purpose: the seam is worth having only while a
+   * screen cannot tell the two apart, so a draft gate in one implementation and not the other
+   * would be exactly the divergence this interface exists to prevent.
+   */
+  async finalize(jobId: string, by: string): Promise<void> {
+    const job = this.jobs.get(jobId);
+    if (!job) throw new Error(`no such job: ${jobId}`);
+    if (job.status !== "draft") return;
+    job.status = "open";
+    job.finalized_at = now();
+    job.finalized_by = by;
   }
 
   /** Returns immediately. The verdict arrives later, over subscribe(). */

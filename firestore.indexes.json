@@ -6,8 +6,17 @@
       "collectionGroup": "spec_chunks",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "node_urns", "arrayConfig": "CONTAINS" },
-        { "fieldPath": "embedding", "vectorConfig": { "dimension": 1536, "flat": {} } }
+        {
+          "fieldPath": "node_urns",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "embedding",
+          "vectorConfig": {
+            "dimension": 1536,
+            "flat": {}
+          }
+        }
       ]
     },
     {
@@ -15,16 +24,28 @@
       "collectionGroup": "spec_nodes",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "path", "arrayConfig": "CONTAINS" },
-        { "fieldPath": "iso14224_level", "order": "ASCENDING" }
+        {
+          "fieldPath": "path",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "iso14224_level",
+          "order": "ASCENDING"
+        }
       ]
     },
     {
       "collectionGroup": "nodes",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "path", "arrayConfig": "CONTAINS" },
-        { "fieldPath": "iso14224_level", "order": "ASCENDING" }
+        {
+          "fieldPath": "path",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "iso14224_level",
+          "order": "ASCENDING"
+        }
       ]
     },
     {
@@ -32,8 +53,14 @@
       "collectionGroup": "readings",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "key", "order": "ASCENDING" },
-        { "fieldPath": "at", "order": "DESCENDING" }
+        {
+          "fieldPath": "key",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "at",
+          "order": "DESCENDING"
+        }
       ]
     },
     {
@@ -41,8 +68,14 @@
       "collectionGroup": "readings",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
-        { "fieldPath": "key", "order": "ASCENDING" },
-        { "fieldPath": "at", "order": "DESCENDING" }
+        {
+          "fieldPath": "key",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "at",
+          "order": "DESCENDING"
+        }
       ]
     },
     {
@@ -50,8 +83,14 @@
       "collectionGroup": "placements",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
-        { "fieldPath": "position_urn", "order": "ASCENDING" },
-        { "fieldPath": "to", "order": "ASCENDING" }
+        {
+          "fieldPath": "position_urn",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "to",
+          "order": "ASCENDING"
+        }
       ]
     },
     {
@@ -59,8 +98,116 @@
       "collectionGroup": "jobs",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "status", "order": "ASCENDING" },
-        { "fieldPath": "started_at", "order": "DESCENDING" }
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "started_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "//": "The sweep. COLLECTION_GROUP is load-bearing and not a style choice: /tenants/{t}/tasks is a subcollection, so a COLLECTION-scoped index serves queries within ONE tenant only. The sweep is deliberately cross-tenant — one cron for the whole system — which makes it a collection-group query, and without this index it does not run at all. notify_after is a single computed clock (starts at due_at, moves to now+24h after each notification), so the whole query is one equality and one inequality on one field.",
+      "collectionGroup": "tasks",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "notify_after",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "//": "A person's task list.",
+      "collectionGroup": "tasks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "assignee_uid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "due_at",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "//": "The unclaimed queue. A task assigned to a ROLE has no owner and therefore no calendar event; claiming it is what creates one.",
+      "collectionGroup": "tasks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "assignee_role",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "due_at",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "//": "The per-component measured series, now that readings are flat. Flat because a nested collection binds a {document=**} wildcard to its OUTER name and silently escapes the server-written list — see specs/2026-08-20-firestore-design.md section 14.5.",
+      "collectionGroup": "readings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "component_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "key",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "//": "The procedure library view.",
+      "collectionGroup": "procedures",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "updated_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "//": "The people view.",
+      "collectionGroup": "members",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "role",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "display_name",
+          "order": "ASCENDING"
+        }
       ]
     }
   ],

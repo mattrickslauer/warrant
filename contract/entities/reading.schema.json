@@ -4,14 +4,44 @@
   "type": "object",
   "description": "A number from a paired instrument. Never embedded, never consolidated, never in Memory Bank — these are queried exactly and ordered by time, and they are what makes wear rate computable.",
   "properties": {
-    "id":       { "type": "string" },
-    "field_id": { "type": "string", "nullable": true },
-    "component_id": { "type": "string", "nullable": true },
-    "key":   { "type": "string" },
-    "value": { "type": "number" },
-    "unit":  { "type": "string" },
-    "tool_id": { "type": "string", "description": "Device identity. Without this the value is typed, not measured." },
-    "at": { "type": "string" }
+    "schema_version": {
+      "type": "integer",
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
+    },
+    "id": {
+      "type": "string"
+    },
+    "field_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "component_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "key": {
+      "type": "string"
+    },
+    "value": {
+      "type": "number"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "tool_id": {
+      "type": "string",
+      "description": "Device identity. Without this the value is typed, not measured."
+    },
+    "at": {
+      "type": "string"
+    }
   },
-  "required": ["id", "key", "value", "unit", "tool_id", "at"]
+  "required": [
+    "id",
+    "key",
+    "value",
+    "unit",
+    "tool_id",
+    "at"
+  ]
 }

@@ -4,30 +4,173 @@
   "type": "object",
   "description": "Written once by the Seal, never updated. This is what /r/<id> renders and what a stranger checks.",
   "properties": {
-    "id":        { "type": "string", "description": "Opaque and unguessable. It is a public URL." },
-    "job_id":    { "type": "string" },
-    "tenant_id": { "type": "string" },
-    "public":    { "type": "boolean", "description": "True only for anon and demo tenants. Real tenant records are private with an explicit share action." },
-    "sealed_at": { "type": "string" },
-
-    "ceiling_tier":        { "type": "string", "enum": ["open", "attested", "instrumented"] },
-    "ceiling_reachable":   { "type": "array", "items": { "type": "string", "enum": ["measured", "specified", "inferred", "asserted"] } },
-    "ceiling_unreachable": { "type": "array", "description": "Each with the one-line reason it is out of reach at this tier. This is the call to action, and it is honest.",
-      "items": { "type": "object", "properties": {
-        "class":  { "type": "string", "enum": ["measured", "specified", "inferred", "asserted"] },
-        "reason": { "type": "string" }
-      }, "required": ["class", "reason"] } },
-
-    "deficiencies": { "type": "array", "description": "What the Gate reads. A deficiency against a field required at this strictness holds the machine.",
-      "items": { "type": "object", "properties": {
-        "step_id": { "type": "string" },
-        "status":  { "type": "string", "enum": ["deferred", "waived", "impossible"] },
-        "reason":  { "type": "string" }
-      }, "required": ["step_id", "status", "reason"] } },
-
-    "machine_released": { "type": "boolean", "description": "The Gate's answer. Deterministic, from deficiencies and strictness." },
-    "steps":     { "type": "array", "items": { "$ref": "step-outcome" } },
-    "decisions": { "type": "array", "items": { "$ref": "decision" } }
+    "schema_version": {
+      "type": "integer",
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
+    },
+    "id": {
+      "type": "string",
+      "description": "Opaque and unguessable. It is a public URL."
+    },
+    "job_id": {
+      "type": "string"
+    },
+    "tenant_id": {
+      "type": "string"
+    },
+    "public": {
+      "type": "boolean",
+      "description": "A public projection exists at /records/{public_id}. Sharing is a deliberate act by any tenant, not a property of demo tenants."
+    },
+    "sealed_at": {
+      "type": "string"
+    },
+    "ceiling_tier": {
+      "type": "string",
+      "enum": [
+        "open",
+        "attested",
+        "instrumented"
+      ]
+    },
+    "ceiling_reachable": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "measured",
+          "specified",
+          "inferred",
+          "asserted"
+        ]
+      }
+    },
+    "ceiling_unreachable": {
+      "type": "array",
+      "description": "Each with the one-line reason it is out of reach at this tier. This is the call to action, and it is honest.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "class": {
+            "type": "string",
+            "enum": [
+              "measured",
+              "specified",
+              "inferred",
+              "asserted"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "class",
+          "reason"
+        ]
+      }
+    },
+    "deficiencies": {
+      "type": "array",
+      "description": "What the Gate reads. A deficiency against a field required at this strictness holds the machine.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "deferred",
+              "waived",
+              "impossible"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "step_id",
+          "status",
+          "reason"
+        ]
+      }
+    },
+    "machine_released": {
+      "type": "boolean",
+      "description": "The Gate's answer. Deterministic, from deficiencies and strictness."
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "step-outcome"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "$ref": "decision"
+      }
+    },
+    "public_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "The capability URL id: 22 chars of crypto randomness, NOT derived from the job id, which would be enumerable. Null until shared; unsharing deletes the public document and every media URL dies with it."
+    },
+    "issuer": {
+      "type": "object",
+      "nullable": true,
+      "description": "Who stands behind this record, denormalised at seal time.",
+      "properties": {
+        "display_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "display_name"
+      ]
+    },
+    "actors": {
+      "type": "array",
+      "description": "The people, as they were AT SEAL TIME. Denormalised deliberately: a record is immutable, so it must not change when someone updates their profile photo or leaves the company. Bare uids render as nothing to a stranger.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "photo_ref": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uid",
+          "display_name"
+        ]
+      }
+    }
   },
-  "required": ["id", "job_id", "tenant_id", "public", "sealed_at", "ceiling_tier", "ceiling_reachable", "ceiling_unreachable", "deficiencies", "machine_released", "steps", "decisions"]
+  "required": [
+    "id",
+    "job_id",
+    "tenant_id",
+    "public",
+    "sealed_at",
+    "ceiling_tier",
+    "ceiling_reachable",
+    "ceiling_unreachable",
+    "deficiencies",
+    "machine_released",
+    "steps",
+    "decisions"
+  ]
 }

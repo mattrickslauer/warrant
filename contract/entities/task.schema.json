@@ -1,0 +1,45 @@
+{
+  "$id": "task",
+  "title": "Task",
+  "type": "object",
+  "description": "Something needing human attention at a time. Every task is a projection of a decision the fleet already produced — no new agent invents them. The id is derived from its cause so a replayed disposition updates one task instead of creating a second.",
+  "properties": {
+    "schema_version": { "type": "integer", "description": "1. Absent reads as 1." },
+    "id":   { "type": "string", "description": "{kind}__{decision_id}. Deterministic, so the projection is idempotent at the point of write." },
+    "kind": { "type": "string", "enum": ["chase", "approve_order", "escalation", "service_due", "held_machine", "redo_step"] },
+    "title":  { "type": "string" },
+    "detail": { "type": "string" },
+    "source": { "type": "object", "description": "The decision this projects.",
+      "properties": {
+        "job_id":      { "type": "string", "nullable": true },
+        "step_id":     { "type": "string", "nullable": true },
+        "decision_id": { "type": "string", "nullable": true }
+      } },
+    "due_at": { "type": "string", "nullable": true, "description": "From ForemanDisposition.chase_after, which is documented as when to wake and check." },
+
+    "assignee_role": { "type": "string", "nullable": true, "description": "A queue nobody owns yet. Pushes to every holder of the role and writes NO calendar event." },
+    "assignee_uid":  { "type": "string", "nullable": true, "description": "An owner. A calendar event exists if and only if this is set." },
+    "claimed_at":    { "type": "string", "nullable": true },
+    "claimed_by":    { "type": "string", "nullable": true },
+
+    "status": { "type": "string", "enum": ["open", "done", "dismissed"] },
+    "created_by_agent": { "type": "string", "nullable": true },
+
+    "calendar": { "type": "object", "nullable": true,
+      "properties": {
+        "event_id":    { "type": "string" },
+        "calendar_id": { "type": "string" },
+        "synced_at":   { "type": "string" }
+      },
+      "required": ["event_id", "calendar_id", "synced_at"] },
+
+    "notify_after":     { "type": "string", "description": "When this task next wants attention. NEVER null: starts at due_at, moves to now+24h after each notification, and goes far future when closed. One inequality on one field is the whole sweep query." },
+    "last_notified_at": { "type": "string", "nullable": true },
+    "notify_count":     { "type": "integer" },
+
+    "created_at": { "type": "string" },
+    "closed_at":  { "type": "string", "nullable": true },
+    "closed_by":  { "type": "string", "nullable": true }
+  },
+  "required": ["id", "kind", "title", "detail", "status", "notify_after", "notify_count", "created_at"]
+}

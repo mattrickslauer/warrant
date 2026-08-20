@@ -60,6 +60,16 @@ export interface DataSource {
   getJob(id: string): Promise<Job | null>;
   listJobs(tenantId: string): Promise<Job[]>;
 
+  /**
+   * The human act that lets the fleet see this job.
+   *
+   * A job starts as a draft: performed against the local cache, syncing when there is signal,
+   * and invisible to every agent. NO agent runs on a draft — that single condition is what
+   * makes offline capture safe, and it is what "nothing happened until I said so" actually
+   * means. The bytes sync; the work does not start.
+   */
+  finalize(jobId: string, by: string): Promise<void>;
+
   capture(input: CaptureInput): Promise<Capture>;
   /** The second exit. A step is never silently abandoned. */
   declareBlocked(input: BlockedInput): Promise<StepOutcome>;

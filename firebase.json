@@ -4,8 +4,13 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "storage": {
+    "//": "Evidence media and avatars. There were no storage rules at all until 2026-08-20, while storageBucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded.",
+    "rules": "storage.rules"
+  },
   "emulators": {
     "firestore": { "port": 8080 },
+    "storage": { "port": 9199 },
     "singleProjectMode": true,
     "ui": { "enabled": false }
   }

@@ -96,8 +96,10 @@ export interface Field {
   component_ref?: string | null;
 }
 
-/** One run of one procedure version against one asset. */
+/** One run of one procedure version against one asset. This is the ASSEMBLED read model the DataSource seam returns; storage is decomposed into step_outcomes/ and fields/ subcollections so a capture writes O(1) documents instead of rewriting the whole aggregate. See specs/2026-08-20-firestore-design.md section 7.0. */
 export interface Job {
+  /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
   id: string;
   tenant_id: string;
   procedure_id: string;
@@ -105,17 +107,62 @@ export interface Job {
   procedure_version: number;
   asset_urn?: string | null;
   technician_id?: string | null;
-  status: "open" | "waiting" | "held" | "sealed";
+  /** draft is held back from the fleet: NO agent runs on a draft job. finalize() flips draft to open, and that is the human act. */
+  status: "draft" | "open" | "waiting" | "held" | "sealed";
   strictness: number;
   /** What the surface performing this job can actually supply. */
   tier: "open" | "attested" | "instrumented";
   started_at: string;
   sealed_at?: string | null;
   steps: StepOutcome[];
+  finalized_at?: string | null;
+  /** Who said go. The draft gate is a named act, not a timeout. */
+  finalized_by?: string | null;
+  /** Denormalised so a list view needs one read per job and no subcollection fan-out. */
+  step_count?: number;
+  performed_count?: number;
+  field_count?: number;
+}
+
+/** A person inside a tenant. Server-written: role and standing decide who may waive a step, so a client that could write this could grant itself the standing. Membership needs no invite flow — the first person from a Workspace domain creates the tenant and everyone after joins by being from that domain. */
+export interface Member {
+  /** 1. Absent reads as 1. See specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
+  /** Firebase uid. Equal to the token sub. */
+  uid: string;
+  tenant_id: string;
+  email?: string | null;
+  email_verified: boolean;
+  display_name?: string | null;
+  /** Google's own URL. Rotates when the user changes their photo and can 404, so it is never the only copy. */
+  photo_url?: string | null;
+  /** Our copy in Cloud Storage, taken at first sign-in. This is what a sealed record points at, because a record must still render years later. */
+  photo_ref?: string | null;
+  photo_fetched_at?: string | null;
+  /** The first member of a tenant is owner. Everyone after is technician. Promotion is an owner-only server action. */
+  role: "owner" | "foreman" | "technician" | "viewer";
+  /** What this person may do that a technician may not. StepOutcome.waived_by requires a named person with standing, and standing a person can grant themselves is not standing. */
+  standing: {
+    may_waive_to_strictness: number;
+    may_approve_orders: boolean;
+    may_publish_procedures: boolean;
+  };
+  joined_at: string;
+  last_seen_at: string;
+  /** When an employer disables an account, access ends the same instant — session verification re-checks revocation on every request. */
+  disabled: boolean;
+  /** That the account is linked. NEVER the refresh token, which lives in /user_secrets and is unreachable by any client. */
+  calendar?: {
+    linked: boolean;
+    linked_at?: string | null;
+    calendar_id: string;
+  } | null;
 }
 
 /** Compiled from a Scoper conversation. Versioned; a sealed record names the version it ran. */
 export interface Procedure {
+  /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
   id: string;
   tenant_id: string;
   /** Stable across versions. e.g. front-brake-service. */
@@ -130,10 +177,22 @@ export interface Procedure {
   releases?: string[];
   steps: Step[];
   created_at: string;
+  /** A procedure mid-Scoper-interview is drafting. Compiling publishes v1. */
+  status?: "drafting" | "published" | "archived";
+  /** A job pins the frozen version it started under, so publishing v3 mid-job cannot change what a v2 job is running. */
+  current_version?: number;
+  published_at?: string | null;
+  published_by?: string | null;
+  updated_at?: string | null;
+  origin?: "scoper" | "imported" | "forked" | null;
+  /** For catalogue imports. See docs/data-model.md section 8. */
+  source_doc_ref?: string | null;
 }
 
 /** A number from a paired instrument. Never embedded, never consolidated, never in Memory Bank — these are queried exactly and ordered by time, and they are what makes wear rate computable. */
 export interface Reading {
+  /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
   id: string;
   field_id?: string | null;
   component_id?: string | null;
@@ -147,11 +206,13 @@ export interface Reading {
 
 /** Written once by the Seal, never updated. This is what /r/<id> renders and what a stranger checks. */
 export interface SealedRecord {
+  /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
   /** Opaque and unguessable. It is a public URL. */
   id: string;
   job_id: string;
   tenant_id: string;
-  /** True only for anon and demo tenants. Real tenant records are private with an explicit share action. */
+  /** A public projection exists at /records/{public_id}. Sharing is a deliberate act by any tenant, not a property of demo tenants. */
   public: boolean;
   sealed_at: string;
   ceiling_tier: "open" | "attested" | "instrumented";
@@ -171,6 +232,19 @@ export interface SealedRecord {
   machine_released: boolean;
   steps: StepOutcome[];
   decisions: Decision[];
+  /** The capability URL id: 22 chars of crypto randomness, NOT derived from the job id, which would be enumerable. Null until shared; unsharing deletes the public document and every media URL dies with it. */
+  public_id?: string | null;
+  /** Who stands behind this record, denormalised at seal time. */
+  issuer?: {
+    display_name: string;
+  } | null;
+  /** The people, as they were AT SEAL TIME. Denormalised deliberately: a record is immutable, so it must not change when someone updates their profile photo or leaves the company. Bare uids render as nothing to a stranger. */
+  actors?: ({
+    uid: string;
+    display_name: string;
+    photo_ref?: string | null;
+    role?: string;
+  })[];
 }
 
 /** One per step, ALWAYS written, never absent. A step can be satisfied or explained; it can never be silently abandoned. */
@@ -214,8 +288,49 @@ export interface Step {
   fields: FieldDef[];
 }
 
+/** Something needing human attention at a time. Every task is a projection of a decision the fleet already produced — no new agent invents them. The id is derived from its cause so a replayed disposition updates one task instead of creating a second. */
+export interface Task {
+  /** 1. Absent reads as 1. */
+  schema_version?: number;
+  /** {kind}__{decision_id}. Deterministic, so the projection is idempotent at the point of write. */
+  id: string;
+  kind: "chase" | "approve_order" | "escalation" | "service_due" | "held_machine" | "redo_step";
+  title: string;
+  detail: string;
+  /** The decision this projects. */
+  source?: {
+    job_id?: string | null;
+    step_id?: string | null;
+    decision_id?: string | null;
+  };
+  /** From ForemanDisposition.chase_after, which is documented as when to wake and check. */
+  due_at?: string | null;
+  /** A queue nobody owns yet. Pushes to every holder of the role and writes NO calendar event. */
+  assignee_role?: string | null;
+  /** An owner. A calendar event exists if and only if this is set. */
+  assignee_uid?: string | null;
+  claimed_at?: string | null;
+  claimed_by?: string | null;
+  status: "open" | "done" | "dismissed";
+  created_by_agent?: string | null;
+  calendar?: {
+    event_id: string;
+    calendar_id: string;
+    synced_at: string;
+  } | null;
+  /** When this task next wants attention. NEVER null: starts at due_at, moves to now+24h after each notification, and goes far future when closed. One inequality on one field is the whole sweep query. */
+  notify_after: string;
+  last_notified_at?: string | null;
+  notify_count: number;
+  created_at: string;
+  closed_at?: string | null;
+  closed_by?: string | null;
+}
+
 /** A Workspace domain is an enterprise; a consumer account is a tenant of one; an anonymous visitor is a tenant of one that has not been claimed. */
 export interface Tenant {
+  /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1. */
+  schema_version?: number;
   /** Workspace domain, or u:<sub>, or anon:<warrant_uid>. */
   id: string;
   kind: "workspace" | "solo" | "anon";
@@ -274,6 +389,50 @@ export interface InstructorRecommendation {
   blocking_part?: string | null;
   /** True if continuing would put someone at risk. Overrides everything else. */
   safety_flag: boolean;
+}
+
+/** You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do — if a figure has not been stated and cannot be looked up, keep asking. */
+export interface ScoperTurn {
+  /** ask while anything material is unstated. compile once the procedure would run unambiguously. */
+  mode: "ask" | "compile";
+  /** Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you. */
+  question?: string | null;
+  /** Which class of unknown this question closes. Required when mode is ask. */
+  asks_about?: "scope" | "sequence" | "tolerance" | "evidence" | "failure" | "authority" | "parts" | "safety" | null;
+  /** Everything you still do not know that would change the compiled procedure. Empty is the only condition under which you may compile. */
+  unresolved: string[];
+  /** What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end. */
+  understanding: string;
+  /** Required when mode is compile. The procedure as it would run tomorrow. */
+  draft?: {
+    key: string;
+    title: string;
+    strictness: number;
+    minimum_tier: "open" | "attested" | "instrumented";
+    disqualifiers?: string[];
+    releases?: string[];
+    steps: ({
+    title: string;
+    explanation: string;
+    condition?: string | null;
+    max_add_fields: number;
+    fields: ({
+    key: string;
+    kind: "measurement" | "photo" | "video" | "scan" | "choice" | "text" | "signature" | "location";
+    prompt: string;
+    source: "instrument" | "camera" | "human";
+    required_at_strictness: number;
+    choices?: string[];
+    acceptance_rule: "within" | "matches" | "must_show" | "consistent_with" | "per_spec" | "signed_by";
+    acceptance_min?: number | null;
+    acceptance_max?: number | null;
+    acceptance_unit?: string | null;
+    acceptance_target?: string | null;
+    acceptance_description?: string | null;
+    guidance: string;
+  })[];
+  })[];
+  } | null;
 }
 
 /** You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent. */
