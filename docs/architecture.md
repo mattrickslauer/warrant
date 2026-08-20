@@ -34,7 +34,7 @@ Procedure
 | `matches(work_order.part_number)` | Another record in the system | **measured** |
 | `per_spec(document.section)` | The manufacturer's published figure, cited | **specified** |
 | `must_show(description)` | The model reading the media | **inferred** |
-| `consistent_with(asset.history)` | The `readings` series on the component | **inferred** |
+| `consistent_with(asset.history)` | The `readings` series for the component | **inferred** |
 | `signed_by(role)` | A named human | **asserted** |
 
 The class is a property of the **rule**, not of the model's confidence. That is what keeps
@@ -146,6 +146,22 @@ Nothing above this cares which tool it is. A `measurement` field knows only that
 **arrived from a paired device without passing through a human**, and that is the sole
 property that makes it measured rather than typed.
 
+### Where the number actually enters
+
+A reading does **not** travel through the technician's client. It arrives at
+`POST /api/ingest/reading` on Cloud Run, authenticated by the device pairing rather than by
+anybody's session, and that handler — holding Admin credentials — writes both the reading and
+its capture.
+
+This is not plumbing. `/tenants/{t}/readings` is one of the collections `firestore.rules`
+refuses to every client, and a client is refused any write carrying a `tool_id` at all. So the
+ingest endpoint is the *only* thing that can create a reading, which is what makes "a reading
+exists with this `field_id` and a `tool_id`" a claim only a paired instrument can cause to be
+true. The Seal asks exactly that question when it decides whether a field is `measured`.
+
+The technician's app never asserts that a number was measured. It watches the reading appear —
+which is what makes "nobody typed it" a structural fact rather than a promise. See §8.
+
 ### The reference instrument
 
 An **ESP32** advertising a GATT characteristic, paired to the app, filling a `measurement`
@@ -180,11 +196,26 @@ both first-class, no bridge, no wrapper to fight when a device misbehaves.
 | Capture — photo, video, scan | Full fidelity exists nowhere else |
 | BLE pairing and instrument reads | The only place the instrument is reachable |
 | Trivial inline validation — is a photo present, did the tool report | Instant, free, no round trip |
-| Offline queue | Workshops have bad signal; jobs cannot stop |
+| Offline work — Firestore's persistent local cache | Workshops have bad signal; jobs cannot stop |
 | On-device face and plate redaction — **ML Kit** | Raw media should not leave unmasked |
 
 > On-device redaction is ML Kit. **Model Armor is a cloud-side guardrail** over model input
 > and output — see §8. Earlier drafts conflated them.
+
+### Drafts, and what "offline" honestly means
+
+A job starts as a **draft**. It is performed against the local cache, syncs opportunistically,
+and `finalize()` — a named human act — is what hands it to the fleet. The invariant that makes
+this safe is one line: **no agent runs on a job whose status is `draft`.**
+
+Be precise about what that does and does not mean. The local cache is a cache, not a vault:
+the bytes reach Firestore as soon as there is signal, and a claim that *nothing was sent* until
+the technician said so would be false. What is true — and what actually matters — is that **no
+agent ran, no verdict was reached, nothing was sealed and no machine was released** until they
+said so. A product about not overstating evidence cannot overstate its own sync boundary.
+
+`waitForPendingWrites()` backs a truthful "everything is synced" indicator rather than a
+spinner that guesses.
 
 ---
 
@@ -229,6 +260,29 @@ always did.
 
 The same code path backs the development override, so the Workspace branch can be exercised
 from a consumer account with nothing special-cased anywhere downstream.
+
+### Membership, and standing
+
+There is no invite flow and no organisation wizard, because the directory already exists. The
+first person from `acme.com` to sign in creates the tenant **and owns it**; everyone after
+joins as a technician by being from `acme.com`.
+
+| Role | May waive up to strictness | May approve a drafted order | May publish a procedure |
+|---|---|---|---|
+| `owner` | 3 | yes | yes |
+| `foreman` | 2 | yes | yes |
+| `technician` | 1 | no | no |
+| `viewer` | — | no | no |
+
+Deliberately the whole model. A role hierarchy nobody can escalate into is worth more than a
+rich one anybody can — and `StepOutcome.waived_by` requires "a named person with standing", so
+**standing a person can grant themselves is not standing.** That is why `members` is
+server-written and unwritable by any client (§8).
+
+A member carries Google's `photo_url` *and* our own copy at `photo_ref`, because `lh3`
+URLs rotate when somebody changes their photo and can 404 outright. A sealed record
+denormalises name and avatar **at seal time**, so updating a profile picture or leaving the
+company cannot rewrite who signed for a job three years ago.
 
 ---
 
@@ -289,6 +343,80 @@ The Scoper interview (a procedure description governs every future job run again
 Instructor's transcripts, and **MCP requests from external callers** — the last being the one
 that matters, since those tools draft purchase orders and release machines.
 
+### The other half: an attacker who is signed in
+
+Model Armor guards what a *model* reads. It does nothing about the simpler attack, which needs
+no photograph and no prompt: a technician with a valid session and `curl`.
+
+The original tenancy rule granted read and write together —
+
+```javascript
+match /tenants/{t}/{collection}/{document=**} { allow read, write: if inTenant(t); }
+```
+
+— which made every document under a tenant writable by everyone in it, at every depth. That
+contradicted four things this system states in writing:
+
+| Document | The claim | What the rule permitted |
+|---|---|---|
+| `records` | "Written once by the Seal, never updated" | Any member could overwrite a sealed record |
+| `members` | `waived_by` is a person *with standing* | A technician could set their own role and waive their own work |
+| `decisions` | The agent reasoning a public record quotes | Any member could forge or delete a verdict |
+| `readings` | Without `tool_id` a value is typed, not measured | **Any member could POST a fabricated measured value** |
+
+The last one is the product. If a signed-in technician can mint a measured reading with an
+HTTP request, the instrument is theatre and §5 is decoration.
+
+**Firestore rules are OR'd and have no deny.** A narrower rule written afterwards cannot take a
+grant back, so the write has to be narrowed where it is granted:
+
+```javascript
+function serverWritten(c) {
+  return c in ['members', 'records', 'decisions', 'readings', 'procedure_versions'];
+}
+function clientMayNotClaim() {
+  return request.resource.data.get('provenance_class', '') != 'measured'
+      && request.resource.data.get('capture_surface', '') != 'app_instrument'
+      && request.resource.data.get('status', '') != 'sealed'
+      && request.resource.data.get('tool_id', '') == '';
+}
+match /tenants/{t}/{collection}/{document=**} {
+  allow read:  if inTenant(t);
+  allow write: if inTenant(t) && !serverWritten(collection) && clientMayNotClaim();
+}
+```
+
+Read stays broad — you must be able to see your colleagues and your own records. Only writing
+them needs a server, which is where standing is checked.
+
+**Two consequences worth knowing before writing any future rule.**
+
+*Protection is decided by the first path segment alone.* A `{document=**}` wildcard binds only
+the outermost collection name, so `/tenants/{t}/components/{cid}/readings/{id}` binds to
+`components` and escapes the protected list entirely. That is why `readings`,
+`procedure_versions` and `devices` are flat: **anything that must be write-protected sits
+directly under `/tenants/{t}/`.** Nesting it silently loses the protection and nothing fails
+loudly.
+
+*Rules cannot see inside arrays.* While a `Job` carried its fields in a `steps[].fields[]`
+array, no rule could inspect `tool_id`. Decomposing the job into `step_outcomes/` and `fields/`
+subcollections was done for write amplification — a capture now writes two documents instead of
+rewriting the whole aggregate — and closed this hole as a side effect. `tool_id` became an
+ordinary document key, and is now guarded.
+
+**Rules are defence in depth, not the primary control.** A rule can only refuse what a client
+sends. The Seal is meant to recompute every field's class from the server-written `readings`
+collection and never trust what arrived on the field document — so a `tool_id` reaching a field
+by any other route resolves to nothing and stamps `asserted`. *That recomputation is not yet
+implemented*; until it is, the rules are carrying more weight than this design intends, and
+that is the most important outstanding item in §14.
+
+**Tested, not assumed — the same standard as the rest of §8.** 65 assertions run against the
+real rules engine in the Firestore emulator on every `scripts/smoke.sh`, including that each
+protected collection refuses writes and still permits reads, that a forged `tool_id` or
+`provenance_class` is rejected, that a published record is world-readable and nobody-writable,
+and that an OAuth refresh token is unreachable by everyone including its own owner.
+
 ---
 
 ## 9. Surfaces
@@ -305,14 +433,31 @@ editor, because a conversation can ask *"what happens if it's seized?"* and a fo
 | Screen | For |
 |---|---|
 | **Procedures** | The list, their versions, and the Scoper conversation that creates one |
-| **Jobs** | Open, waiting on evidence, held |
-| **The record** | One job's sealed evidence and its provenance classes — *the artifact a stranger can check* |
-| **Technicians** | Read-only, derived from who has signed in |
+| **Jobs** | Draft, open, waiting on evidence, held |
+| **The record** | One job's sealed evidence and its provenance classes |
+| **Tasks** | What needs a person and when — chases, drafted orders awaiting approval, escalations |
+| **Technicians** | Derived from who has signed in, with their role and standing |
 | **Sign-in** | Google, and nothing else |
 
 **The dashboard is an MCP client.** It reads and acts through the same surface any external
 caller uses — so the MCP server is load-bearing rather than aspirational, and it is proven by
 the product depending on it.
+
+### The shared record — the one surface with no sign-in
+
+Not a dashboard screen. A sealed record can be handed to a customer, an insurer or a buyer as
+a **capability URL**: 22 characters of randomness at `/r/<id>`, where holding the link is the
+entire credential. No account, no invitation, no app.
+
+That is deliberately what a paper service book always did and what every digital replacement
+broke. The page is a *redacted projection* written at seal time — no tenant, no uids, no costs,
+no storage refs — living in a separate `/records/{publicId}` root that is world-readable and
+writable by nobody. The tenant's own record stays private and unchanged.
+
+**Unsharing genuinely revokes**, which is the part that dictated the design. Media is proxied
+through Cloud Run and re-checked on every request rather than handed out as a signed URL,
+because a signed URL keeps working after the shop takes the record back. Revoking deletes the
+projection and every image on the page stops resolving with it.
 
 ### The technician's app
 Where evidence is made. The only surface that cannot be substituted, and therefore the one
@@ -385,7 +530,11 @@ be**, not because we ran out of time.
 | Guardrails on model I/O | **Model Armor** — image modality, `us` multi-region (§8) |
 | Traces and audit logs | **Agent Observability** |
 | Services and transport | **Cloud Run**, **Pub/Sub** |
-| Source of truth | **Firestore** |
+| Source of truth | **Firestore** — tenancy enforced by rules, not by application code (§8) |
+| Evidence media and avatars | **Cloud Storage** — `storage.rules`; captures are append-only |
+| Task alerts on a schedule | **Cloud Scheduler** → Cloud Run `/api/tasks/sweep`, one cron for every tenant |
+| Push to a person in a workshop | **Firebase Cloud Messaging** |
+| Dated work on a technician's calendar | **Google Calendar API** — `calendar.events`, write only |
 | Identity and tenancy | **Google Sign-In** — `hd` claim decides the tenant shape |
 | Operator-facing surfaces | **Google Workspace** — a published projection, never authoritative |
 | Machine-to-machine | **MCP server** on Cloud Run, consumed by our own dashboard |
@@ -428,6 +577,23 @@ The product survives losing the dashboard. It does not survive having no capture
 ## 14. Still unverified
 
 - **Are Agent Registry, Memory Bank, Agent Identity, Agent Gateway and Agent Observability enabled and reachable** in our project and region? Model Armor is confirmed; the other five are not. This is the console hour.
-- **Can procedures be modelled in Agent Registry at all?** It publishes agents, not documents. Fallback: procedures in Firestore with versioning, the Registry holding the verifier agents.
+- ~~**Can procedures be modelled in Agent Registry at all?**~~ **Resolved by taking the fallback.** Procedures live in Firestore with immutable versions at `/tenants/{t}/procedure_versions/{id}:{n}`, and a job pins the version it started under, so publishing v3 cannot change what a running v2 job is executing. The Registry holds the verifier agents.
 - **Does the ESP32 pair cleanly to the Android client?** The hello-world for the entire system, and nothing else should be written first.
 - **Cost per job.** Estimated as cents; unproven until a real job has been metered.
+
+Newly outstanding, from the storage and notification work:
+
+- **The Seal does not yet recompute provenance from `readings`.** §8 names this as the primary
+  control and it is the largest gap in the system: the rules currently carry weight the design
+  intends them to share. Everything else here is smaller than this one.
+- **Nothing bridges a Foreman disposition into a task.** `raiseTask` and the cross-tenant sweep
+  work; the Pub/Sub subscriber that calls them from the agent runtime does not exist, so the
+  storage is correct and the fleet is not yet writing into it.
+- **On-device redaction does not set `capture.redacted`.** Publishing *refuses* an unredacted
+  capture, so this fails closed — but no record can reach a capability URL until ML Kit
+  redaction runs.
+- **Calendar consent has not been run against real Google.** The incremental flow, the
+  `access_type=offline` + `prompt=consent` pairing that is required for a refresh token, and
+  the `extendedProperties` idempotency are all implemented and none are proven end to end.
+- **FCM delivery is unproven.** No surface requests a token yet, so `/api/devices` has never
+  been called by a real client.
