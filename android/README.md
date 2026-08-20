@@ -48,7 +48,7 @@ can start one.
 
 - A snapping **carousel** of the public procedures, one card each, mirroring
   `web/src/app/page.tsx` exactly — same order, names, notes and artwork. A judge who opens the
-  hosted page and then installs the app must land on the same four tasks, because the only
+  hosted page and then installs the app must land on the same five tasks, because the only
   intended difference between the surfaces is what each can *prove*.
 - Cards carry the classes the task reaches AND the struck-through ones it cannot, plus the
   refusal when this surface is below the procedure's minimum tier.

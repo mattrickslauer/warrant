@@ -8,7 +8,7 @@ import ink.warrant.contract.ProvenanceClass
  * The public procedures, as the picker shows them.
  *
  * Mirrors `web/src/app/page.tsx` — same order, same names, same notes, same artwork. A judge
- * who opens the hosted page and then installs the app must land on the same four tasks, because
+ * who opens the hosted page and then installs the app must land on the same five tasks, because
  * the ONLY difference between the two surfaces is meant to be what each can prove. If the
  * picker differs, that comparison stops working.
  *
@@ -34,6 +34,16 @@ val publicTasks: List<PublicTask> = listOf(
         steps = 3,
         note = "Two photographs and one thing only you can say.",
         classes = listOf(ProvenanceClass.INFERRED, ProvenanceClass.ASSERTED),
+        unreachable = listOf(ProvenanceClass.MEASURED),
+        available = true,
+    ),
+    PublicTask(
+        procedureId = "proc_pickup_v1",
+        name = "Pick up an object",
+        image = R.drawable.task_pickup,
+        steps = 2,
+        note = "Two photographs, and nothing to fetch. Anything on your desk will do.",
+        classes = listOf(ProvenanceClass.INFERRED),
         unreachable = listOf(ProvenanceClass.MEASURED),
         available = true,
     ),

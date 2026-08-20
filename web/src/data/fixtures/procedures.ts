@@ -85,6 +85,77 @@ export const cutABanana: Procedure = {
   ],
 };
 
+/**
+ * The floor. Two photographs, no props, no assertion — the shortest path there is from
+ * nothing to a sealed record, so a judge with an empty desk can still run one end to end.
+ *
+ * It is also the only fixture that uses `consistent_with`. Photograph a mug, then photograph
+ * a mug in your hand, and neither frame on its own says you lifted THAT mug. The second
+ * capture is judged against the first rather than against a description, which is precisely
+ * the check the Skeptic exists to make.
+ */
+export const pickUpAnObject: Procedure = {
+  id: "proc_pickup_v1",
+  tenant_id: "anon",
+  key: "pick-up-an-object",
+  title: "Pick up an object",
+  version: 1,
+  strictness: 1,
+  minimum_tier: "open",
+  disqualifiers: [
+    "no object visible in the opening capture",
+    "the object in the second capture is not the one in the first",
+  ],
+  releases: ["nothing — this is a demonstration procedure"],
+  created_at: "2026-08-19T09:00:00Z",
+  steps: [
+    {
+      id: "p1",
+      index: 1,
+      title: "Show it where it lies",
+      condition: null,
+      explanation:
+        "The claim is that one object moved, so the record needs where it started — and that means a place, not just a thing. A photograph of something already in a hand cannot establish it.",
+      max_add_fields: 2,
+      fields: [
+        {
+          key: "object_before",
+          kind: "photo",
+          prompt: "Photograph the object where it is sitting",
+          source: "camera",
+          required_at_strictness: 0,
+          acceptance_rule: "must_show",
+          acceptance_description: "a single object resting on a surface, nobody holding it",
+          acceptance_min: null, acceptance_max: null, acceptance_unit: null, acceptance_target: null,
+          guidance: "Anything within reach will do. Stand back far enough that the surface under it is in frame too.",
+        },
+      ],
+    },
+    {
+      id: "p2",
+      index: 2,
+      title: "Pick it up",
+      condition: null,
+      explanation:
+        "Nothing in this frame is judged on its own. It is judged against the opening capture — same object or the step fails — which is what makes two ordinary photographs into evidence of a lift rather than evidence of two objects.",
+      max_add_fields: 2,
+      fields: [
+        {
+          key: "object_held",
+          kind: "photo",
+          prompt: "Photograph it held clear of the surface",
+          source: "camera",
+          required_at_strictness: 0,
+          acceptance_rule: "consistent_with",
+          acceptance_target: "p1.object_before",
+          acceptance_min: null, acceptance_max: null, acceptance_unit: null, acceptance_description: null,
+          guidance: "Lift it, hold it still, shoot. Same room and same light help — the check is continuity, not composition.",
+        },
+      ],
+    },
+  ],
+};
+
 /** The real one. Instrumented tier: it cannot run in a browser, and it says so. */
 export const frontBrakeService: Procedure = {
   id: "proc_front_brake_v3",
@@ -149,4 +220,4 @@ export const frontBrakeService: Procedure = {
   ],
 };
 
-export const procedures: Procedure[] = [cutABanana, frontBrakeService];
+export const procedures: Procedure[] = [cutABanana, pickUpAnObject, frontBrakeService];

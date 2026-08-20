@@ -27,6 +27,7 @@ TASKS = {
     "brake": "A motorcycle front brake caliper and disc, unbranded, freshly serviced, resting on the surface.",
     "lightbulb": "A single clear glass incandescent light bulb lying on the surface, filament visible.",
     "tyre": "A close crop of a worn rubber tyre tread with a plain unmarked coin inserted upright into one groove.",
+    "pickup": "A single plain unglazed ceramic mug, empty and unmarked, standing alone on the surface.",
 }
 
 
@@ -70,7 +71,8 @@ def main() -> int:
     tok = token()
     for name, subject in TASKS.items():
         path = os.path.join(OUT, f"{name}.png")
-        if os.path.exists(path) and os.path.getsize(path) > 0 and not force:
+        shipped = os.path.join(OUT, f"{name}.webp")
+        if not force and any(os.path.exists(q) and os.path.getsize(q) > 0 for q in (path, shipped)):
             print(f"  {name}: already present, skipping")
             continue
         print(f"  {name}: generating…", flush=True)

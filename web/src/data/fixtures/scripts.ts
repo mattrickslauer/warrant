@@ -18,6 +18,8 @@ const gemma = (verdict: string, rationale: string, at: number): DemoBeat =>
   ({ at, kind: "decision", agent: "inspector", verdict, rationale, model: "gemma-3-4b", cost: 0.00002 });
 const flash = (verdict: string, rationale: string, at: number): DemoBeat =>
   ({ at, kind: "decision", agent: "inspector", verdict, rationale, model: "gemini-3.5-flash", cost: 0.00081 });
+const skeptic = (verdict: string, rationale: string, at: number): DemoBeat =>
+  ({ at, kind: "decision", agent: "skeptic", verdict, rationale, model: "multimodalembedding", cost: 0.00011 });
 
 const reframe: FieldDef = {
   key: "slices_reframed",
@@ -56,6 +58,22 @@ export const scripts: Record<string, DemoScript> = {
     ]],
   },
 
+  // No escalation, no added field, no signature. Two captures and it is sealed — the banana
+  // carries the drama, this one carries the floor.
+  proc_pickup_v1: {
+    p1: [[
+      gemma("PASS", "One object at rest on a surface, no hand on it.", 600),
+      { at: 1400, kind: "status", status: "performed" },
+    ]],
+    // The Inspector can only say something is being held. Whether it is the SAME something is
+    // a different question, and a different agent answers it.
+    p2: [[
+      gemma("PASS", "Object clear of the surface and held.", 800),
+      skeptic("BELONGS", "Same object as the opening capture — its markings and the surface behind it both carry over.", 1600),
+      { at: 2200, kind: "status", status: "performed" },
+    ]],
+  },
+
   proc_front_brake_v3: {
     b1: [[
       gemma("PASS", "Wheel removed, caliper and disc both visible.", 900),
@@ -63,7 +81,7 @@ export const scripts: Record<string, DemoScript> = {
     ]],
     b2: [[
       flash("PASS", "Label reads 45022-KA; work order expects 45022-KA. Equality, not judgement — measured.", 1400),
-      { at: 2100, kind: "decision", agent: "skeptic", verdict: "BELONGS", rationale: "Label wear and background match this job's prior captures.", model: "multimodalembedding", cost: 0.00011 },
+      skeptic("BELONGS", "Label wear and background match this job's prior captures.", 2100),
       { at: 2600, kind: "status", status: "performed" },
     ]],
     b3: [[

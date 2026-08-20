@@ -13,9 +13,9 @@ import ink.warrant.contract.Tier
  * The seeded procedures, ported from `web/src/data/fixtures/procedures.ts`.
  *
  * Kept identical to the web fixtures on purpose: a judge who runs the browser task and then
- * installs the app sees the same two procedures, and the ONLY difference between them is what
- * each surface can actually prove. That comparison is the pitch, so the fixtures must not
- * drift apart.
+ * installs the app sees the same three procedures, and the ONLY difference between them is
+ * what each surface can actually prove. That comparison is the pitch, so the fixtures must
+ * not drift apart.
  */
 
 /** The public, Open-tier task. Nothing to buy, nothing to install, no location, no timer. */
@@ -79,6 +79,70 @@ val cutABanana = Procedure(
                     acceptanceTarget = "whoever performed the job",
                     guidance = "Type a name. It goes on the record as an assertion, attributed " +
                         "to you — not as something the system checked.",
+                ),
+            ),
+        ),
+    ),
+)
+
+/**
+ * The floor. Two photographs, no props, no assertion — the shortest path there is from
+ * nothing to a sealed record, so a judge with an empty desk can still run one end to end.
+ *
+ * It is also the only fixture that uses `consistent_with`. Photograph a mug, then photograph
+ * a mug in your hand, and neither frame on its own says you lifted THAT mug. The second
+ * capture is judged against the first rather than against a description, which is precisely
+ * the check the Skeptic exists to make.
+ */
+val pickUpAnObject = Procedure(
+    id = "proc_pickup_v1",
+    tenantId = "anon",
+    key = "pick-up-an-object",
+    title = "Pick up an object",
+    version = 1,
+    strictness = 1,
+    minimumTier = Tier.OPEN,
+    disqualifiers = listOf(
+        "no object visible in the opening capture",
+        "the object in the second capture is not the one in the first",
+    ),
+    releases = listOf("nothing — this is a demonstration procedure"),
+    createdAt = "2026-08-19T09:00:00Z",
+    steps = listOf(
+        Step(
+            id = "p1", index = 1, title = "Show it where it lies", condition = null,
+            explanation = "The claim is that one object moved, so the record needs where it " +
+                "started — and that means a place, not just a thing. A photograph of " +
+                "something already in a hand cannot establish it.",
+            maxAddFields = 2,
+            fields = listOf(
+                FieldDef(
+                    key = "object_before", kind = FieldKind.PHOTO,
+                    prompt = "Photograph the object where it is sitting",
+                    source = FieldSource.CAMERA, requiredAtStrictness = 0,
+                    acceptanceRule = AcceptanceRule.MUST_SHOW,
+                    acceptanceDescription = "a single object resting on a surface, nobody holding it",
+                    guidance = "Anything within reach will do. Stand back far enough that the " +
+                        "surface under it is in frame too.",
+                ),
+            ),
+        ),
+        Step(
+            id = "p2", index = 2, title = "Pick it up", condition = null,
+            explanation = "Nothing in this frame is judged on its own. It is judged against " +
+                "the opening capture — same object or the step fails — which is what makes " +
+                "two ordinary photographs into evidence of a lift rather than evidence of " +
+                "two objects.",
+            maxAddFields = 2,
+            fields = listOf(
+                FieldDef(
+                    key = "object_held", kind = FieldKind.PHOTO,
+                    prompt = "Photograph it held clear of the surface",
+                    source = FieldSource.CAMERA, requiredAtStrictness = 0,
+                    acceptanceRule = AcceptanceRule.CONSISTENT_WITH,
+                    acceptanceTarget = "p1.object_before",
+                    guidance = "Lift it, hold it still, shoot. Same room and same light help " +
+                        "— the check is continuity, not composition.",
                 ),
             ),
         ),
@@ -168,7 +232,7 @@ val frontBrakeService = Procedure(
     ),
 )
 
-val procedures: List<Procedure> = listOf(cutABanana, frontBrakeService)
+val procedures: List<Procedure> = listOf(cutABanana, pickUpAnObject, frontBrakeService)
 
 // ----------------------------------------------------------------- the timeline
 
@@ -207,6 +271,11 @@ private fun gemma(verdict: String, rationale: String, at: Long) = DemoBeat.Decid
 private fun flash(verdict: String, rationale: String, at: Long) = DemoBeat.Decide(
     at = at, agent = ink.warrant.contract.Agent.INSPECTOR, verdict = verdict,
     rationale = rationale, model = "gemini-3.5-flash", cost = 0.00081,
+)
+
+private fun skeptic(verdict: String, rationale: String, at: Long) = DemoBeat.Decide(
+    at = at, agent = ink.warrant.contract.Agent.SKEPTIC, verdict = verdict,
+    rationale = rationale, model = "multimodalembedding", cost = 0.00011,
 )
 
 /** The field the Inspector appends when the first slices photograph is not good enough. */
@@ -263,6 +332,30 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
             ),
         ),
     ),
+    // No escalation, no added field, no signature. Two captures and it is sealed — the banana
+    // carries the drama, this one carries the floor.
+    "proc_pickup_v1" to mapOf(
+        "p1" to listOf(
+            listOf(
+                gemma("PASS", "One object at rest on a surface, no hand on it.", 600),
+                DemoBeat.Status(1400, StepStatus.PERFORMED),
+            ),
+        ),
+        // The Inspector can only say something is being held. Whether it is the SAME something
+        // is a different question, and a different agent answers it.
+        "p2" to listOf(
+            listOf(
+                gemma("PASS", "Object clear of the surface and held.", 800),
+                skeptic(
+                    "BELONGS",
+                    "Same object as the opening capture — its markings and the surface behind " +
+                        "it both carry over.",
+                    1600,
+                ),
+                DemoBeat.Status(2200, StepStatus.PERFORMED),
+            ),
+        ),
+    ),
     "proc_front_brake_v3" to mapOf(
         "b1" to listOf(
             listOf(
@@ -277,11 +370,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
                     "Label reads 45022-KA; work order expects 45022-KA. Equality, not judgement — measured.",
                     1400,
                 ),
-                DemoBeat.Decide(
-                    at = 2100, agent = ink.warrant.contract.Agent.SKEPTIC, verdict = "BELONGS",
-                    rationale = "Label wear and background match this job's prior captures.",
-                    model = "multimodalembedding", cost = 0.00011,
-                ),
+                skeptic("BELONGS", "Label wear and background match this job's prior captures.", 2100),
                 DemoBeat.Status(2600, StepStatus.PERFORMED),
             ),
         ),

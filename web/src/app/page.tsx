@@ -16,6 +16,16 @@ const TASKS: Task[] = [
     available: true,
   },
   {
+    procedureId: "proc_pickup_v1",
+    name: "Pick up an object",
+    image: "/tasks/pickup.webp",
+    steps: 2,
+    note: "Two photographs, and nothing to fetch. Anything on your desk will do.",
+    classes: ["inferred"],
+    unreachable: ["measured"],
+    available: true,
+  },
+  {
     procedureId: "proc_front_brake_v3",
     name: "Front brake service",
     image: "/tasks/brake.webp",
