@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      The OAuth WEB client id for this Google Cloud project. Credential Manager wants the web
+      client id, not the Android one — though an Android OAuth client for this package name and
+      signing certificate must also exist in the same project.
+
+      Empty by default: a client id belongs to whoever deploys this, and a wrong one fails in a
+      way that looks like a bug in the app. While it is empty the sign-in gate says so plainly
+      instead of offering a button that cannot work.
+
+      Google Cloud console → APIs & Services → Credentials → OAuth client ID → Web application.
+    -->
+    <string name="google_web_client_id" translatable="false"></string>
+</resources>

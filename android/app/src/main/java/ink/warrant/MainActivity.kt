@@ -1,0 +1,207 @@
+package ink.warrant
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import androidx.compose.ui.Modifier
+import ink.warrant.design.Tokens
+import ink.warrant.design.WarrantTheme
+import ink.warrant.instrument.tierOf
+import ink.warrant.ui.ProceduresScreen
+import ink.warrant.ui.account.AccountScreen
+import ink.warrant.ui.instrument.PairScreen
+import ink.warrant.ui.job.JobScreen
+import ink.warrant.ui.job.JobViewModel
+import ink.warrant.ui.procedure.CreateProcedureScreen
+import ink.warrant.ui.records.RecordScreen
+import ink.warrant.ui.records.RecordsScreen
+import ink.warrant.ui.settings.SettingsScreen
+import ink.warrant.ui.shell.Dest
+import ink.warrant.ui.shell.Shell
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        val container = (application as WarrantApplication).container
+
+        setContent {
+            WarrantTheme {
+                val nav = rememberNavController()
+                // The window is edge to edge so the workshop ground runs under the system
+                // bars rather than leaving them a different colour — but the CONTENT must be
+                // inset, or the first line of a hold banner sits behind the clock and the
+                // second exit sits behind the navigation bar. Both were happening.
+                Box(
+                    Modifier
+                        .fillMaxSize()
+                        .background(Tokens.work)
+                        .safeDrawingPadding(),
+                ) {
+                    WarrantNav(nav, container)
+                }
+            }
+        }
+    }
+}
+
+/** The job route, which is the only one that lives outside the shell. */
+private const val JOB = "job"
+
+@Composable
+private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Container) {
+    // The job outlives the screen it is shown on: a technician can walk to pairing and back
+    // without the job restarting, so this ViewModel is scoped to the activity, not the route.
+    val jobVm: JobViewModel = viewModel(
+        factory = remember {
+            viewModelFactory {
+                initializer { JobViewModel(container.source, container.instruments) }
+            }
+        },
+    )
+
+    NavHost(navController = nav, startDestination = Dest.PROCEDURES.route) {
+        composable(Dest.PROCEDURES.route) {
+            val auth by container.auth.state.collectAsState()
+            Shelled(Dest.PROCEDURES, nav, container) {
+                ProceduresScreen(
+                    source = container.source,
+                    instruments = container.instruments,
+                    // The quick actions need to know whether there is an account, because a
+                    // gated one says so on its face rather than only once you tap it.
+                    auth = auth,
+                    onStart = { procedure, tier ->
+                        jobVm.start(procedure.id, procedure.tenantId, tier)
+                        nav.navigate(JOB)
+                    },
+                    onNavigate = { dest -> nav.go(dest) },
+                )
+            }
+        }
+
+        composable(Dest.RECORDS.route) {
+            Shelled(Dest.RECORDS, nav, container) {
+                RecordsScreen(
+                    source = container.source,
+                    onOpenRecord = { id -> nav.navigate("record/$id") },
+                )
+            }
+        }
+
+        composable(
+            "record/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.StringType }),
+        ) { entry ->
+            Shelled(Dest.RECORDS, nav, container) {
+                RecordScreen(
+                    source = container.source,
+                    recordId = entry.arguments?.getString("id").orEmpty(),
+                    onBack = { nav.popBackStack() },
+                )
+            }
+        }
+
+        // Authoring is gated: a procedure belongs to a tenant, and there is no tenant
+        // without an identity. Running a public procedure stays open to anyone.
+        composable(Dest.CREATE.route) {
+            Shelled(Dest.CREATE, nav, container) {
+                CreateProcedureScreen(
+                    auth = container.auth,
+                    onBack = { nav.popBackStack() },
+                )
+            }
+        }
+
+        composable(Dest.INSTRUMENTS.route) {
+            Shelled(Dest.INSTRUMENTS, nav, container) {
+                PairScreen(session = container.instruments, onBack = { nav.popBackStack() })
+            }
+        }
+
+        composable(Dest.ACCOUNT.route) {
+            Shelled(Dest.ACCOUNT, nav, container) {
+                AccountScreen(auth = container.auth, onBack = { nav.popBackStack() })
+            }
+        }
+
+        composable(Dest.SETTINGS.route) {
+            Shelled(Dest.SETTINGS, nav, container) {
+                SettingsScreen(
+                    instruments = container.instruments,
+                    source = container.source,
+                    onOpenInstruments = { nav.navigate(Dest.INSTRUMENTS.route) },
+                )
+            }
+        }
+
+        // No shell. Evidence capture owns its whole surface — see the note on [Shell].
+        composable(JOB) {
+            JobScreen(
+                vm = jobVm,
+                onOpenPairing = { nav.navigate(Dest.INSTRUMENTS.route) },
+            )
+        }
+    }
+}
+
+/**
+ * A screen inside the app frame.
+ *
+ * The header needs two live things — who is signed in, and what the surface can reach — and
+ * both are read here rather than passed down through every screen, so no screen has to know
+ * the shell exists.
+ */
+@Composable
+private fun Shelled(
+    dest: Dest,
+    nav: NavHostController,
+    container: WarrantApplication.Container,
+    content: @Composable () -> Unit,
+) {
+    val auth by container.auth.state.collectAsState()
+    val instrument by container.instruments.state.collectAsState()
+
+    Shell(
+        current = dest,
+        tier = tierOf(instrument),
+        auth = auth,
+        onNavigate = { target -> nav.go(target) },
+        content = content,
+    )
+}
+
+/**
+ * Going somewhere the menu names.
+ *
+ * One function rather than a lambda per call site, because the drawer and the home screen's
+ * quick actions now reach the same destinations and they must land on them the same way.
+ *
+ * The menu is not a stack: walking Procedures → Records → Procedures should leave you with
+ * one way back out, not three.
+ */
+private fun NavHostController.go(dest: Dest) {
+    navigate(dest.route) {
+        launchSingleTop = true
+        popUpTo(Dest.PROCEDURES.route) { inclusive = false }
+    }
+}

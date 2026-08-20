@@ -1,0 +1,21 @@
+# Gradle's local caches — machine-specific binary state, regenerated on first build.
+.gradle/
+.kotlin/
+
+# Build output. The root .gitignore already carries `build/`; this is here so the
+# Android module stands on its own if that rule ever changes.
+build/
+
+# Points at this machine's SDK install. Every clone writes its own.
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing material. Never commit these.
+*.jks
+*.keystore

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The window behind Compose. It is the workshop ground so there is no white flash
+         between the launcher and the first frame.
+
+         The system bars are transparent and the app draws behind them, which is how every
+         Google app on Android has looked since edge-to-edge became the default. The screens
+         already reserve the insets themselves. -->
+    <style name="Theme.Warrant" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/work</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+</resources>
