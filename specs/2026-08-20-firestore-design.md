@@ -1,6 +1,6 @@
 # Firestore — accounts, procedures, records, drafts and tasks
 
-**Status:** approved design, rules verified against the emulator, not yet implemented
+**Status:** approved design, rules verified against the emulator (28 assertions), not yet implemented
 **Date:** 2026-08-20
 **Extends:** `docs/data-model.md`, `firestore.rules`, `contract/entities/*`
 
@@ -73,10 +73,14 @@ function serverWritten(collection) {
 // Provenance is stamped by the Seal, release by the Gate, and attestation by Play Integrity
 // server-side. A client asserting any of them is asserting the conclusion the system exists
 // to reach independently.
+//
+// `tool_id` is only guardable here because §7.0 made a Field its own document. Inside the
+// old steps[].fields[] array it was unreachable by any rule.
 function clientMayNotClaim() {
   return request.resource.data.get('provenance_class', '') != 'measured'
       && request.resource.data.get('capture_surface', '') != 'app_instrument'
-      && request.resource.data.get('status', '') != 'sealed';
+      && request.resource.data.get('status', '') != 'sealed'
+      && request.resource.data.get('tool_id', '') == '';
 }
 
 match /tenants/{t}/{collection}/{document=**} {
@@ -107,7 +111,7 @@ is safe on documents where the field is absent.
 ### 2.2a This was verified, not assumed
 
 The whole design rests on two constructs behaving a particular way, so both were run against
-the real rules engine in the Firestore emulator before this spec was accepted — 25 assertions,
+the real rules engine in the Firestore emulator before this spec was accepted — 28 assertions,
 all passing:
 
 | Verified | Result |
@@ -117,6 +121,7 @@ all passing:
 | `data.get(key, default)` on an **absent** field | does not block the write |
 | `provenance_class: "measured"`, `capture_surface: "app_instrument"`, `status: "sealed"` | each refused |
 | `provenance_class: "inferred"`, `capture_surface: "browser"` | each allowed |
+| A field document carrying **any** `tool_id` | refused; without one, allowed |
 | `/records/{publicId}` unauthenticated | readable; not writable by anyone |
 | `/user_secrets/{uid}` | unreachable, **including by its own owner** |
 | Existing guarantees — no client tenant creation, no cross-tenant write | still hold |
@@ -134,15 +139,22 @@ than inherit whichever JDK happens to be default.
 
 ### 2.3 Rules are defence in depth, not the primary control
 
-`clientMayNotClaim()` cannot inspect array contents, and a `Job` carries its fields inside a
-`steps[].fields[]` array. A client can therefore still write a `Field` with a `tool_id` inside
-a job document.
+Firestore rules cannot inspect array contents. While a `Job` carried its fields inside a
+`steps[].fields[]` array, a client could write a `Field` with any `tool_id` it liked and no
+rule could see it — the rule layer simply had no reach into the array.
 
-**The primary control is that the Seal never trusts client-written provenance.** It recomputes
-each field's class from the server-written `readings` collection: a field is `measured` if and
-only if a `reading` exists with a matching `field_id` and a `tool_id`, written by the ingest
-path that received it from a paired instrument. A `tool_id` a client typed into a job document
-resolves to nothing and stamps `asserted`.
+**§7.0 removes that blind spot as a side effect.** Once a field is its own document,
+`tool_id` becomes an ordinary top-level key and `clientMayNotClaim()` guards it directly
+(verified above). The decomposition was motivated by write amplification; closing this hole is
+the second thing it buys, and it is arguably the more valuable one.
+
+**The primary control remains that the Seal never trusts client-written provenance**, because
+a rule can only refuse what a client *sends*, and defence that depends on a single layer is
+not defence. The Seal recomputes each field's class from the server-written `readings`
+collection: a field is `measured` if and only if a `reading` exists with a matching `field_id`
+and a `tool_id`, written by the ingest path that received it from a paired instrument. A
+`tool_id` that reached a field document by any other route resolves to nothing and stamps
+`asserted`.
 
 This is worth stating explicitly because it is the difference between a rule that is nice to
 have and a rule that is load-bearing. Rules stop the cheap forgery; the Seal stops the rest.
@@ -434,9 +446,55 @@ tenant may share a record deliberately, which is the point of a capability URL.
 
 ---
 
-## 7. Drafts
+## 7. Jobs — storage shape and drafts
 
-### 7.1 Mechanism
+### 7.0 The job aggregate is decomposed
+
+**The problem.** `web/src/data/live-source.ts:176` writes `tx.update(jobRef, { steps })` on
+every capture — rewriting the *entire* `steps[]` array, having first read the whole job
+document inside a transaction. `Job.steps[]` holds `StepOutcome[]`, each holding `Field[]`, so
+the document grows with every piece of evidence and every Inspector `ADD_FIELD`.
+
+Two Firestore limits meet here: a document is capped at **1 MiB**, and a single document
+sustains roughly **one write per second**. Seven steps with five fields each is about 10 KB and
+entirely fine. A 200-step regulated procedure with field growth reaches the hundreds of KB, and
+every capture rewrites all of it. Write cost is O(evidence already captured) when it should be
+O(1), and two technicians on one job contend on a single document.
+
+**The shape.** Storage is decomposed; the aggregate becomes a read model.
+
+```
+/tenants/{t}/jobs/{jobId}                        header only — status, tier, counters
+/tenants/{t}/jobs/{jobId}/step_outcomes/{stepId}  one per step
+/tenants/{t}/jobs/{jobId}/fields/{stepId}__{key}  one per field
+/tenants/{t}/jobs/{jobId}/captures/{captureId}    already a subcollection
+```
+
+The job header keeps `id`, `tenant_id`, `procedure_id`, `procedure_version`, `asset_urn`,
+`technician_id`, `status`, `strictness`, `tier`, `started_at`, `sealed_at`, `finalized_at/by`,
+`schema_version`, and denormalised counters (`step_count`, `performed_count`, `field_count`)
+so a list view needs one read per job and no subcollection fan-out.
+
+**A capture now writes two new documents and updates nothing.** No array rewrite, no read of
+existing evidence, no shared write target, no 1 MiB ceiling.
+
+**Field ids are deterministic — `{stepId}__{key}`.** Re-capturing a field replaces the current
+answer rather than appending, which bounds the subcollection at (declared fields + ADD_FIELDs).
+Nothing is lost by this: every attempt remains in `captures`, which `storage.rules` makes
+append-only (§2.5), and every Inspector verdict remains in `decisions`. The `fields`
+subcollection holds *the current answer*; the history lives where history belongs.
+
+**`subscribe()` gets simpler, not harder.** Today it diffs two array snapshots to notice an
+added field. With a subcollection, `onSnapshot` reports `docChanges()` with
+`change.type === "added"` directly — the `add_field` event stops being inferred and starts
+being observed.
+
+**The contract does not change.** `Job` with `steps[].fields[]` stays the assembled read model
+the `DataSource` seam returns, so no screen changes. `getJob()` assembles it from the header
+plus two subcollection reads; `subscribe()` keeps it current. This is the seam earning its
+keep — storage was restructured underneath and the interface above it did not move.
+
+### 7.1 Draft mechanism
 
 - `initializeFirestore(app, { localCache: persistentLocalCache({ tabManager:
   persistentMultipleTabManager() }) })` in `web/src/auth/firebase-client.ts`. Verified present
@@ -473,23 +531,55 @@ narrate a sync boundary it does not have.
 
 ```jsonc
 {
-  "id": "…",
+  "id": "…",                       // deterministic — see "no duplicates" below
+  "schema_version": 1,
   "kind": "chase" | "approve_order" | "escalation" | "service_due" | "held_machine" | "redo_step",
   "title": "Chase supersession for 45022-KA",
   "detail": "…",
   "source": { "job_id": "…", "step_id": "s3", "decision_id": "…" },
   "due_at": "2026-08-24T09:00:00Z",
-  "assignee_uid": "…" | null,
-  "assignee_role": "foreman" | null,
+
+  "assignee_role": "foreman" | null,   // a queue: nobody owns it yet
+  "assignee_uid": "…" | null,          // an owner
+  "claimed_at": null, "claimed_by": null,
+
   "status": "open" | "done" | "dismissed",
   "created_by_agent": "foreman",
-  "calendar": { "event_id": "…", "calendar_id": "primary", "synced_at": "…" },
-  "notified_at": null,
+
+  "calendar": { "event_id": "…", "calendar_id": "primary", "synced_at": "…" } | null,
+
+  "notify_after": "2026-08-24T09:00:00Z",   // never null — see §8.3
+  "last_notified_at": null, "notify_count": 0,
+
   "created_at": "…", "closed_at": null, "closed_by": null
 }
 ```
 
-Client-writable: closing a task is a legitimate act by the person doing the work.
+Client-writable: closing or claiming a task is a legitimate act by the person doing the work.
+
+**No duplicate tasks.** The document id is derived from what caused the task —
+`{kind}__{decision_id}` — so a Foreman disposition replayed after a retry or a redeploy
+updates the existing task instead of creating a second one. A projection that can be replayed
+must be idempotent at the point of write, not deduplicated afterwards.
+
+### 8.1a Role assignment, and whose calendar it lands on
+
+A task assigned to a *role* has no single calendar to write to. Three foremen would get three
+events, each of which somebody has to dismiss, and claiming the task would become a distributed
+delete. So:
+
+> **A calendar event exists if and only if `assignee_uid` is set.**
+
+- **Role-assigned** (`assignee_role` set, `assignee_uid` null) — the task is a **queue item**.
+  It pushes to every member holding that role and appears in the shared queue. No calendar
+  event is written.
+- **Claiming it** sets `assignee_uid`, `claimed_at`, `claimed_by` — and *that* is what creates
+  the calendar event, on the calendar of the person who now owns it.
+- **Person-assigned from birth** (`redo_step` to the technician who hit it) skips the queue and
+  gets its event immediately.
+
+An unclaimed queue item is not forgotten: §8.3's re-notification keeps raising it until someone
+takes it or closes it.
 
 ### 8.2 Tasks need no new agent
 
@@ -510,18 +600,34 @@ when the action is chase. The schema was already written for this; nothing about
 
 Two independent channels, either of which may be off:
 
-1. **FCM push** to every device in `/tenants/{t}/devices` matching the assignee.
-2. **Calendar event**, for tasks with a `due_at`.
+1. **FCM push** to every device in `/tenants/{t}/devices` matching the assignee — or every
+   holder of the role, when the task is still a queue item (§8.1a).
+2. **Calendar event**, for tasks that have an owner and a `due_at`.
 
 Firing is Cloud Scheduler → Cloud Run `POST /api/tasks/sweep`, once a minute:
 
+```js
+db.collectionGroup('tasks')                    // ← across every tenant. See §10.
+  .where('status', '==', 'open')
+  .where('notify_after', '<=', now)
 ```
-where status == "open" and notified_at == null and due_at <= now
-```
+
+**One equality and one inequality, on one field.** `notify_after` is a single computed clock
+rather than a pair of conditions: it starts equal to `due_at`, and each notification pushes it
+to `now + 24h`. A task that is not yet due, and a task notified an hour ago, are both simply
+*not returned* — no null handling, no multi-inequality index, and re-notification of an
+unclaimed escalation falls out for free instead of being a second mechanism.
+
+`notify_after` is therefore **never null**. Closing a task sets it far in the future.
 
 Chosen over per-task Cloud Tasks because it is one cron, it is visible in the Console the
 competition rules require on screen, and it self-heals if a due time passes while nothing is
 deployed. Cloud Tasks is more precise; it is not more demonstrable.
+
+The sweep runs under Admin credentials, which bypass rules — that is what lets it read across
+tenants. A **client** cannot do the same: enabling a collection-group query requires a rule
+matching `/{path=**}/tasks/{taskId}`, and no such rule exists. The cross-tenant view is
+available to the server and structurally unavailable to the browser.
 
 ### 8.4 Calendar
 
@@ -537,7 +643,13 @@ deployed. Cloud Tasks is more precise; it is not more demonstrable.
   trusting a stored id.
 - **Event body:** `summary` = task title; `description` = deep links to the job and record;
   `start` = `due_at`, 30 minutes; `reminders.useDefault: false` with popups at 0 and 60 min.
-- **Closing or dismissing a task deletes the event.**
+- **Closing or dismissing a task deletes the event.** So does un-claiming it — the event
+  belongs to the owner, and a task with no owner has no event (§8.1a).
+- **Quota:** Calendar enforces per-user write limits, and a fleet of tasks all due at 09:00
+  arrives as a burst. The sweep writes per user with exponential backoff on 403
+  `rateLimitExceeded`, and a task whose event fails to write is left with its `calendar` field
+  null and picked up on the next sweep. A missed calendar event must never block the push
+  notification, which is the channel that actually reaches someone.
 - **Workspace upgrade, noted not built:** a service account with domain-wide delegation would
   remove per-user consent entirely for `hd` tenants. Per-user OAuth is specified here because
   it works for solo accounts too.
@@ -554,24 +666,66 @@ deployed. Cloud Tasks is more precise; it is not more demonstrable.
 | `entities/member.schema.json` | **new** |
 | `entities/task.schema.json` | **new** |
 | `entities/reading.schema.json` | add `component_id` (was implied by the nested path) |
+| every durable entity | add `schema_version` — see §9.1 |
 
 `contract/build-types.mjs` regenerates `contract/types.ts`; `web/scripts/sync-generated.mjs`
 copies it into `web/src/generated`. Both run under `npm run gen`.
+
+`Job` keeps `steps[].fields[]` as the assembled read model even though storage is decomposed
+(§7.0). The contract describes what a surface receives, not how Firestore holds it.
+
+### 9.1 `schema_version`, and why an evidence system cannot migrate in place
+
+There is currently no `schema_version` on any document in the contract — verified across
+`contract/entities/`. For most systems that is a deferred chore. For this one it is a hole in
+the central claim: a sealed record is supposed to be readable and *meaningful* years later, and
+today there is no way to know which shape a given record was written in.
+
+Every durable entity gains `schema_version: number`, starting at `1`. A document with the field
+absent reads as version 1.
+
+**The rule that follows is not the usual one.** The ordinary answer to a schema change is a
+migration that rewrites stored documents. **Sealed records and readings must never be rewritten** —
+rewriting evidence to fit a newer shape is precisely the act this product exists to make
+impossible, and it would invalidate anything that had been published at a capability URL.
+
+So: **upgrade on read, never migrate in place.**
+
+| Collection | Policy |
+|---|---|
+| `records`, `readings`, `decisions`, `procedure_versions` | Immutable. Readers handle every historical shape, forever. |
+| `members`, `procedures`, `tasks`, `devices`, `jobs` (unsealed) | Mutable. May be migrated in place by a server job. |
+
+A public projection at `/records/{publicId}` is *regenerated* from the private record when the
+projection shape changes, which is a new write of a derived document rather than an edit of
+evidence. `revoked` and republication make that safe.
+
+The practical cost is that reader code accumulates cases. That is the correct cost: the
+alternative is a system that quietly edits its own history.
 
 ---
 
 ## 10. Indexes
 
-| Collection | Index | For |
-|---|---|---|
-| `tasks` | `status` ASC, `notified_at` ASC, `due_at` ASC | the sweep |
-| `tasks` | `assignee_uid` ASC, `status` ASC, `due_at` ASC | a person's task list |
-| `readings` | `key` ASC, `at` DESC | unchanged, now collection-scoped |
-| `readings` | `component_id` ASC, `key` ASC, `at` DESC | the per-component series |
-| `procedures` | `status` ASC, `updated_at` DESC | the library view |
-| `members` | `role` ASC, `display_name` ASC | the people view |
+| Collection | Scope | Index | For |
+|---|---|---|---|
+| `tasks` | **`COLLECTION_GROUP`** | `status` ASC, `notify_after` ASC | the sweep, across every tenant |
+| `tasks` | `COLLECTION` | `assignee_uid` ASC, `status` ASC, `due_at` ASC | a person's task list |
+| `tasks` | `COLLECTION` | `assignee_role` ASC, `status` ASC, `due_at` ASC | the unclaimed queue (§8.1a) |
+| `readings` | `COLLECTION` | `key` ASC, `at` DESC | the measured series |
+| `readings` | `COLLECTION` | `component_id` ASC, `key` ASC, `at` DESC | the per-component series |
+| `procedures` | `COLLECTION` | `status` ASC, `updated_at` DESC | the library view |
+| `members` | `COLLECTION` | `role` ASC, `display_name` ASC | the people view |
 
-The existing `jobs` index (`status`, `started_at` DESC) already serves the draft list.
+**The scope column is load-bearing, and the sweep index was wrong in an earlier draft of this
+spec.** `/tenants/{t}/tasks/{id}` is a subcollection under each tenant, so a
+`COLLECTION`-scoped index only serves queries *within one tenant*. The sweep is deliberately
+cross-tenant — one cron for the whole system, not one per customer — which makes it a
+collection-group query, and a collection-group query requires a `COLLECTION_GROUP` index. With
+the collection-scoped index alone the sweep does not run at all.
+
+The existing `jobs` index (`status`, `started_at` DESC) already serves the draft list. §7.0's
+decomposition adds no index: `step_outcomes` and `fields` are read whole, per job.
 
 ---
 
@@ -587,6 +741,13 @@ The existing `jobs` index (`status`, `started_at` DESC) already serves the draft
    collection, so nothing in the current app breaks.
 5. **`storage.rules`** is new; `firebase.json` gains a `storage` block and `infra/deploy-rules.sh`
    deploys it.
+6. **The job aggregate decomposes** (§7.0). `LiveSource.capture()` and `declareBlocked()` stop
+   rewriting `steps[]` and write into `step_outcomes` and `fields` instead; `getJob()` assembles
+   the aggregate; `subscribe()` listens to subcollections and stops diffing arrays. The
+   `DataSource` interface and every screen are unchanged, which is the point of the seam.
+   Existing jobs are fixture data, so there is nothing to migrate.
+7. **`schema_version` is added to every durable entity** (§9.1). Absent reads as `1`, so
+   existing documents remain valid without a backfill.
 
 ---
 
@@ -623,6 +784,16 @@ Beyond rules:
   rejects an unpaired device (§2.4a)
 - a second `POST /api/tasks/sweep` over the same task updates the Calendar event rather than
   creating a duplicate (§8.4)
+- **a capture writes O(1) documents** — capturing the 50th field touches no more documents than
+  the first, and does not read the preceding 49 (§7.0). This is the regression test that stops
+  the aggregate quietly reassembling itself.
+- **replaying one Foreman disposition twice yields one task**, not two (§8.1)
+- **a role-assigned task has no calendar event; claiming it creates one; un-claiming deletes
+  it** (§8.1a)
+- **the sweep is cross-tenant** — one call raises due tasks in two different tenants (§8.3)
+- **a client collection-group query on `tasks` is refused** — the cross-tenant view is the
+  server's alone (§8.3)
+- **a document written without `schema_version` reads as version 1** (§9.1)
 
 ---
 
@@ -633,3 +804,75 @@ Beyond rules:
 - Domain-wide delegation for Workspace Calendar (§8.4).
 - Reading Calendar back — RSVPs, reschedules, free/busy.
 - Any invite or organisation-management flow. Membership is the Google directory (§4.1).
+
+---
+
+## 14. Known ceilings
+
+What this design does *not* solve, stated here so it is a decision rather than a surprise.
+Every one of these is comfortable at demo and early-customer scale; each has a point where it
+stops being comfortable, and that point is what is written down.
+
+### 14.1 A sealed record is still one document
+
+`SealedRecord` embeds `steps[]` **and** `decisions[]`. Embedding is right for it — write-once,
+read whole, immutable, one read to render `/r/<id>` — but the 1 MiB document cap applies, and
+`decisions` grows with every agent call rather than with the size of the job. A long job that
+escalates repeatedly is the shape that gets there first.
+
+**Bites at:** roughly 1,500–2,000 decisions on one job.
+**Fix when it does:** the Seal measures the assembled record and, above ~800 KiB, spills
+`decisions` into `/tenants/{t}/records/{jobId}/decisions/{n}` and sets `decisions_overflow:
+true`. Seal is a single write, so the guard is cheap and there is no concurrent writer to race.
+Not built now, because the guard is only correct if it is also tested, and the ceiling is far
+from the current shape of a job.
+
+### 14.2 Public record reads are uncached and billable
+
+`/records/{publicId}` is world-readable, so a link that spreads converts directly into Firestore
+reads on your bill, and every image byte flows through the Cloud Run media proxy (§6.3) rather
+than a CDN. That proxy is the price of revocation being real — a signed URL outlives an
+unshare — but it is a per-byte price.
+
+**Bites at:** the first record that gets shared somewhere public.
+**Fix when it does:** Next.js ISR or Cloud CDN in front of `/r/<id>`, with cache invalidation on
+unshare. Revocation stays correct as long as the invalidation is part of the unshare path.
+
+### 14.3 `tenantOf()` now exists three times
+
+`web/src/auth/tenant.ts`, `firestore.rules`, and now `storage.rules`. "Written twice and tested
+for agreement" is a good pattern; written three times is where it begins to strain, even with
+the shared claims corpus holding all three to the same table.
+
+**Fix when it strains:** generate `storage.rules` from the same source as `firestore.rules`
+rather than maintaining a third hand-written copy.
+
+### 14.4 "Server-written" is convention, not type
+
+§2.2 makes five collections unwritable *by clients*. Nothing prevents future server code from
+calling `adminDb().collection('readings')` directly from the wrong place — Admin credentials
+bypass rules by design, which is what makes the ingest path possible and also what makes
+misuse possible.
+
+**Fix when it matters:** a single repository module owning writes to those five collections,
+with the raw `adminDb()` handle not exported. The boundary becomes structural instead of
+remembered — the same move as §2.3's "the Seal recomputes rather than trusts".
+
+### 14.5 Protected collections must be first-segment
+
+Not a ceiling so much as a rule the design now depends on. §2.2a established that rule
+protection is decided by the **first** path segment alone. Any future collection that must be
+write-protected has to sit directly under `/tenants/{t}/`, never nested inside another
+collection. Nesting it silently loses the protection, and nothing fails loudly when that
+happens.
+
+This is why `readings`, `devices` and `procedure_versions` are flat. It is infrastructure
+shaping the data model, which is a real cost — accepted knowingly, and written down so the next
+collection follows the same rule.
+
+### 14.6 Deliberately not addressed
+
+- `claimTenant()` copies sequentially and is capped at 5,000 documents. It is a one-off on
+  sign-in and bounded; batching it is work with no current payoff.
+- Per-tenant sharding of the sweep. One cron across all tenants is correct until the number of
+  *simultaneously due* tasks exceeds what one Cloud Run request can process in a minute.
