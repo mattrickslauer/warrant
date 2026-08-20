@@ -1,0 +1,174 @@
+/* /model-tests — the instrument panel.
+ *
+ * Not a product screen. This is the bench the product is measured on, and it is styled to
+ * read like a test report rather than an app: dense, monospaced where the machine speaks,
+ * and with the status of a thing always the leftmost thing on its line.
+ *
+ * Prefixed `mt-` so nothing here can be mistaken for, or reused as, product vocabulary.
+ */
+
+.mt { color: var(--fg); }
+.mt a { color: inherit; text-decoration: none; }
+
+/* ------------------------------------------------------------------ the run header */
+
+.mt-head { display: flex; flex-direction: column; gap: 16px; }
+.mt-head__title {
+  font-family: var(--brand); font-size: var(--t-display, clamp(30px, 5vw, 46px));
+  font-weight: 400; letter-spacing: -.015em; line-height: 1.12;
+}
+.mt-head__lede { color: var(--fg-2); max-width: 68ch; line-height: 1.65; }
+
+/* The scoreboard. Big enough to read across a room during a demo, and honest: the count of
+   things never asked sits on the same line as the count that passed. */
+.mt-score { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule-dark); border-radius: var(--r-md); overflow: hidden; }
+.mt-score__cell { background: var(--work-2); padding: 14px 20px; flex: 1 1 120px; }
+.mt-score__n { font-family: var(--mono); font-size: 28px; line-height: 1.1; display: block; }
+.mt-score__k { font-size: 12px; color: var(--fg-3); letter-spacing: .04em; text-transform: uppercase; }
+.mt-score__cell--pass .mt-score__n { color: var(--measured-lift); }
+.mt-score__cell--fail .mt-score__n { color: var(--held-lift); }
+.mt-score__cell--invalid .mt-score__n { color: var(--inferred-lift); }
+.mt-score__cell--error .mt-score__n { color: var(--open-lift); }
+
+/* The run's own provenance: which model, at what temperature, replayed or called live. */
+.mt-runmeta {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline;
+  font-size: 13px; color: var(--fg-3); font-family: var(--mono);
+}
+.mt-runmeta b { color: var(--fg-2); font-weight: 500; }
+
+/* ------------------------------------------------------------------ agent sections */
+
+.mt-agent { display: flex; flex-direction: column; gap: 10px; }
+.mt-agent__head { display: flex; align-items: center; gap: 12px; }
+.mt-agent__name { font-family: var(--brand); font-size: 22px; font-weight: 500; }
+.mt-agent__decides { color: var(--fg-3); font-size: 14px; flex: 1 1 320px; line-height: 1.5; }
+.mt-agent__tally { font-family: var(--mono); font-size: 14px; color: var(--fg-2); white-space: nowrap; }
+
+.mt-rows { display: flex; flex-direction: column; gap: 1px; background: var(--rule-dark);
+           border-radius: var(--r-md); overflow: hidden; }
+.mt-row {
+  display: grid; grid-template-columns: 132px 1fr; gap: 4px 16px;
+  background: var(--work-2); padding: 14px 18px;
+  transition: background var(--fast) var(--ease);
+}
+a.mt-row:hover { background: var(--work-3); }
+.mt-row__title { font-weight: 500; }
+.mt-row__why { grid-column: 2; color: var(--fg-3); font-size: 13px; line-height: 1.55; max-width: 92ch; }
+.mt-row__tag {
+  grid-column: 2; font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  color: var(--primary-lift); text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .mt-row { grid-template-columns: 1fr; }
+  .mt-row__why, .mt-row__tag { grid-column: 1; }
+}
+
+/* ------------------------------------------------------------------ status */
+
+.mt-chip {
+  display: inline-flex; align-items: center; gap: 7px; align-self: start;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .02em;
+  padding: 3px 10px 3px 8px; border-radius: var(--r-full);
+  border: 1px solid var(--rule-dark); color: var(--fg-2); white-space: nowrap;
+}
+.mt-chip i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.mt-chip--pass { color: var(--measured-lift); border-color: color-mix(in srgb, var(--measured-lift) 35%, transparent); }
+.mt-chip--fail { color: var(--held-lift); border-color: color-mix(in srgb, var(--held-lift) 35%, transparent); }
+.mt-chip--invalid { color: var(--inferred-lift); border-color: color-mix(in srgb, var(--inferred-lift) 35%, transparent); }
+.mt-chip--error { color: var(--open-lift); border-color: var(--rule-dark); }
+
+/* ------------------------------------------------------------------ the detail page */
+
+.mt-panel { background: var(--work-2); border-radius: var(--r-md); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.mt-panel__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mt-panel__name { font-family: var(--brand); font-size: 17px; font-weight: 500; }
+.mt-panel__note { color: var(--fg-3); font-size: 13px; max-width: 80ch; line-height: 1.55; }
+
+.mt-why {
+  border-left: 2px solid var(--primary-lift); padding: 2px 0 2px 16px;
+  color: var(--fg-2); line-height: 1.65; max-width: 78ch;
+}
+
+.mt-field { display: flex; gap: 10px; align-items: baseline; font-size: 13px; }
+.mt-field__label { color: var(--fg-3); min-width: 96px; }
+.mt-field__value { font-family: var(--mono); color: var(--fg-2); word-break: break-word; }
+.mt-facts { display: flex; flex-wrap: wrap; gap: 6px 28px; }
+
+.mt-mono { font-family: var(--mono); }
+.mt-dim { color: var(--fg-3); }
+
+.mt-json, .mt-pre {
+  font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+  background: var(--work); border-radius: var(--r-sm); padding: 14px 16px;
+  overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+  border: 1px solid var(--rule-dark); margin: 0;
+}
+.mt-pre { white-space: pre-wrap; color: var(--fg-2); }
+.mt-pre--turn { background: transparent; border-color: var(--work-4); }
+.mt-json { max-height: 620px; overflow-y: auto; }
+
+.mt-fold summary {
+  cursor: pointer; font-size: 13px; color: var(--fg-2); padding: 8px 0;
+  display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap;
+}
+.mt-fold summary::marker { color: var(--fg-3); }
+.mt-fold__note { color: var(--fg-3); font-size: 12px; }
+
+.mt-prompt { display: flex; flex-direction: column; gap: 12px; }
+.mt-media { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.mt-media__img { width: 100%; max-width: 420px; height: auto; border-radius: var(--r-sm); border: 1px solid var(--rule-dark); }
+.mt-media figcaption { display: flex; flex-direction: column; gap: 2px; font-size: 11.5px; font-family: var(--mono); color: var(--fg-2); }
+
+/* ------------------------------------------------------------------ assertions */
+
+.mt-checks { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mt-checks th {
+  text-align: left; font-weight: 500; color: var(--fg-3); font-size: 11px;
+  letter-spacing: .05em; text-transform: uppercase; padding: 0 12px 8px 0;
+  border-bottom: 1px solid var(--rule-dark);
+}
+.mt-checks td { padding: 8px 12px 8px 0; border-bottom: 1px solid var(--work-4); vertical-align: top; color: var(--fg-2); }
+.mt-checks__mark { font-family: var(--mono); font-size: 11px; color: var(--measured-lift); width: 44px; }
+.mt-checks__bad .mt-checks__mark { color: var(--held-lift); }
+.mt-checks__bad td { color: var(--fg); }
+
+/* ------------------------------------------------------------------ the interview */
+
+.mt-convo { display: flex; flex-direction: column; gap: 2px; }
+.mt-turn { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--work-4); }
+.mt-turn__n { font-family: var(--mono); font-size: 12px; color: var(--fg-3); padding-top: 3px; }
+.mt-turn__body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.mt-said { display: flex; flex-direction: column; gap: 3px; }
+.mt-said__who { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-3); }
+.mt-said--agent .mt-said__who { color: var(--primary-lift); }
+.mt-said__text { line-height: 1.6; color: var(--fg); }
+.mt-said--shop .mt-said__text { color: var(--fg-2); }
+.mt-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.mt-tag {
+  font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: var(--r-full);
+  border: 1px solid var(--rule-dark); color: var(--fg-3);
+}
+.mt-tag--asks { color: var(--specified-lift); border-color: color-mix(in srgb, var(--specified-lift) 35%, transparent); }
+/* A shrug is not noise — it is the shop declining to supply a figure, which is the input the
+   Scoper's one unbreakable rule is tested against. It gets its own colour for that reason. */
+.mt-tag--shrug { color: var(--inferred-lift); border-color: color-mix(in srgb, var(--inferred-lift) 35%, transparent); }
+
+/* ------------------------------------------------------------------ traceability */
+
+.mt-trace { display: flex; flex-direction: column; gap: 12px; }
+.mt-nums { display: flex; flex-wrap: wrap; gap: 6px; }
+.mt-num {
+  font-family: var(--mono); font-size: 12.5px; padding: 3px 10px; border-radius: var(--r-sm);
+  border: 1px solid var(--rule-dark); color: var(--fg-2); background: var(--work);
+}
+.mt-num--ok { color: var(--measured-lift); border-color: color-mix(in srgb, var(--measured-lift) 40%, transparent); }
+.mt-num--invented { color: var(--held-lift); border-color: var(--held); background: color-mix(in srgb, var(--held) 14%, var(--work)); }
+.mt-verdict { font-size: 14px; line-height: 1.6; }
+.mt-verdict--ok { color: var(--measured-lift); }
+.mt-verdict--bad { color: var(--held-lift); }
+
+.mt-back { font-size: 13px; color: var(--fg-3); font-family: var(--mono); }
+.mt-back:hover { color: var(--fg); }
+
+.mt-empty { color: var(--fg-3); line-height: 1.65; max-width: 70ch; }
