@@ -15,7 +15,8 @@ import "server-only";
 // the proxy exists. See specs/2026-08-20-firestore-design.md §6.
 
 import { randomBytes } from "node:crypto";
-import { adminDb } from "@/auth/admin";
+import { getStorage } from "firebase-admin/storage";
+import { adminDb, adminApp } from "@/auth/admin";
 import { getMember } from "@/auth/members";
 import type { SealedRecord, StepOutcome, Decision, Capture } from "@/generated/types";
 
@@ -89,15 +90,34 @@ export async function publishRecord(
     if (step.reason_by) actorUids.add(step.reason_by);
     if (step.waived_by) actorUids.add(step.waived_by);
   }
-  const actors = [];
+  const actors: PublicRecord["actors"] = [];
   for (const uid of actorUids) {
     const member = await getMember(tenantId, uid);
     if (!member) continue;
+    // Indexed, not keyed by uid. The projection is world-readable, so a uid in an avatar URL
+    // is a uid in a public document — and the redaction rule says no uids.
+    const slot = actors.length;
+    const copied = member.photo_ref
+      ? await copyIntoPublished(member.photo_ref, publicId, `avatar-${slot}`)
+      : false;
     actors.push({
       display_name: member.display_name ?? "a technician",
-      avatar: member.photo_ref ? `/api/r/${publicId}/avatar/${uid}` : null,
+      avatar: copied ? `/api/r/${publicId}/avatar/${slot}` : null,
       role: member.role,
     });
+  }
+
+  // Freeze the evidence alongside the projection. A published record is a self-contained
+  // artifact: the tenant's own bucket prefix stays private and untouched, and revoking
+  // deletes this copy outright rather than hoping a URL expires.
+  for (const doc of captures.docs) {
+    const capture = doc.data() as Capture;
+    if (capture.media_ref) {
+      await copyIntoPublished(
+        `tenants/${tenantId}/captures/${jobId}/${capture.media_ref}`,
+        publicId, capture.id,
+      );
+    }
   }
 
   const projection: PublicRecord = {
@@ -120,7 +140,10 @@ export async function publishRecord(
   };
 
   await db.collection("records").doc(publicId).set(projection);
-  await recordSnap.ref.set({ public: true, public_id: publicId }, { merge: true });
+  await recordSnap.ref.set(
+    { public: true, public_id: publicId, published_by: byUid, published_at: new Date().toISOString() },
+    { merge: true },
+  );
 
   return { publicId };
 }
@@ -133,7 +156,13 @@ export async function revokeRecord(tenantId: string, jobId: string): Promise<voi
   if (!snap.exists) return;
 
   const publicId = (snap.data() as SealedRecord).public_id;
-  if (publicId) await db.collection("records").doc(publicId).delete();
+  if (publicId) {
+    await db.collection("records").doc(publicId).delete();
+    // The proxy already refuses once the document is gone, so access ends there. Deleting the
+    // frozen copy as well is hygiene rather than security: bytes nobody can reach are still
+    // bytes somebody pays to store.
+    await deletePublished(publicId);
+  }
 
   await ref.set({ public: false, public_id: null }, { merge: true });
 }
@@ -170,4 +199,65 @@ function redactDecision(decision: Decision, _publicId: string): Record<string, u
     rationale: decision.rationale,
     at: decision.at,
   };
+}
+
+/**
+ * The published projection, or null.
+ *
+ * Never throws. A record page must render for a reader with no session, no project
+ * credentials and no network to Google — the fixture path is the whole reason this
+ * repository is clonable — so an unreachable Admin SDK means "not published", not an error
+ * page.
+ */
+export async function readPublicRecord(publicId: string): Promise<PublicRecord | null> {
+  try {
+    const { adminConfigured } = await import("@/auth/admin");
+    if (!adminConfigured()) return null;
+    const snap = await adminDb().collection("records").doc(publicId).get();
+    if (!snap.exists) return null;
+    const record = snap.data() as PublicRecord;
+    return record.revoked ? null : record;
+  } catch {
+    return null;
+  }
+}
+
+
+// ---------------------------------------------------------------- published media
+//
+// `published/{publicId}/…` is a frozen copy, deliberately separate from the tenant's own
+// prefix. The tenant's evidence is append-only and private; this is a redacted snapshot that
+// exists only while the record is shared.
+
+function bucketName(): string {
+  return process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "";
+}
+
+/** Copy one object into the published prefix. False when there was nothing to copy. */
+async function copyIntoPublished(from: string, publicId: string, name: string): Promise<boolean> {
+  const bucket = bucketName();
+  if (!bucket) return false;
+  try {
+    const source = from.startsWith("gs://") ? from.replace(`gs://${bucket}/`, "") : from;
+    const store = getStorage(adminApp()).bucket(bucket);
+    const file = store.file(source);
+    const [exists] = await file.exists();
+    if (!exists) return false;
+    await file.copy(store.file(`published/${publicId}/${name}`));
+    return true;
+  } catch {
+    // A missing avatar or an unreachable bucket must not stop a record being published. The
+    // page renders without the image; the evidence it describes is unaffected.
+    return false;
+  }
+}
+
+async function deletePublished(publicId: string): Promise<void> {
+  const bucket = bucketName();
+  if (!bucket) return;
+  try {
+    await getStorage(adminApp()).bucket(bucket).deleteFiles({ prefix: `published/${publicId}/` });
+  } catch {
+    // Nothing to do. The capability document is already gone, which is what governs access.
+  }
 }

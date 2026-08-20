@@ -176,9 +176,11 @@ time-varying property of a component, not part of its identity.**
 
 *"This caliper has been through three machines and eleven jobs"* is one query on `placements`.
 
-### `/tenants/{t}/components/{cid}/readings/{id}` — the measured series
+### `/tenants/{t}/readings/{id}` — the measured series
 ```jsonc
-{ "key": "pad_thickness", "value": 4.2, "unit": "mm",
+{ "schema_version": 1,
+  "key": "pad_thickness", "value": 4.2, "unit": "mm",
+  "component_id": "caliper-88213",       // ← was the parent path; now a field
   "at": "2026-07-14T…", "tool_id": "esp32-…",
   "job_ref": "…", "field_ref": "…" }
 ```
@@ -186,6 +188,21 @@ time-varying property of a component, not part of its identity.**
 **Never embedded, never consolidated, never in Memory Bank.** These are numbers, queried
 exactly and ordered by time. They are what `consistent_with(asset.history)` reads, and they
 are the reason wear *rate* is computable at all.
+
+> **Flat, not nested under the component — and this is a security boundary, not a style
+> choice.** Readings are one of the collections a client may read but never write (§7), because
+> `tool_id` is the only thing separating a measured number from a typed one. A rule can only
+> protect a collection it can name, and a `{document=**}` wildcard binds only the FIRST path
+> segment: at `/tenants/{t}/components/{cid}/readings/{id}` the rule sees `components` and the
+> reading escapes the protected list entirely, leaving any signed-in tenant member able to POST
+> a fabricated measured value. Anything that must be write-protected sits directly under
+> `/tenants/{t}/`. The same reasoning flattens `procedure_versions` and splits `devices` out of
+> `members`. See `specs/2026-08-20-firestore-design.md` §14.5.
+>
+> The only writer is `POST /api/ingest/reading`, authenticated by the device pairing rather
+> than by a technician's session. That is what makes "a reading exists with this field_id and a
+> tool_id" a claim only a paired instrument can cause to be true — which is exactly what the
+> Seal checks when it decides whether a field is `measured`.
 
 ### `/tenants/{t}/overrides/{id}` — the shop disagreeing with the manufacturer
 ```jsonc
@@ -209,6 +226,67 @@ are the reason wear *rate* is computable at all.
   "verdict": { "status": "PASS", "agent": "inspector",
                "model": "gemini-3.5-flash-…", "at": "…" } }
 ```
+
+### `/tenants/{t}/jobs/{jobId}` — decomposed, not an aggregate document
+
+The job document is a **header**: status, tier, timestamps and denormalised counters. Its
+contents live in subcollections.
+
+```
+/tenants/{t}/jobs/{jobId}                          header — status, tier, counters
+/tenants/{t}/jobs/{jobId}/step_outcomes/{stepId}    one per step, ALWAYS written
+/tenants/{t}/jobs/{jobId}/fields/{stepId}__{key}    one per field, id derived not random
+/tenants/{t}/jobs/{jobId}/captures/{captureId}      one per capture
+```
+
+Writing the whole aggregate to one document meant every capture rewrote the entire `steps[]`
+array after reading the whole job inside a transaction: write cost grew with evidence already
+captured, a 1 MiB document cap loomed, and two technicians on one job contended on a single
+document. A capture now writes two documents and reads nothing.
+
+The `Job` the `DataSource` seam returns is unchanged — assembled from the header plus two
+subcollection reads. Storage moved and no screen did.
+
+A field id is derived (`{stepId}__{key}`) so re-capturing REPLACES the current answer rather
+than appending, which bounds the subcollection however many attempts a step takes. Nothing is
+lost: every attempt stays in `captures`, which `storage.rules` makes append-only.
+
+### `/tenants/{t}/members/{uid}` — who the people are
+
+Server-written. Role and standing decide who may waive a step, approve a drafted order or
+publish a procedure, and standing a person can grant themselves is not standing. The first
+member of a tenant is its `owner`; everyone after is a `technician`. There is no invite flow,
+because the Google directory already exists.
+
+A member carries both Google's `photo_url` and our own `photo_ref` copy, because `lh3`
+URLs rotate when someone changes their photo and can 404 — and a sealed record has to render
+years later. The record denormalises name and avatar **at seal time**, so changing a profile
+photo or leaving the company cannot rewrite who signed for a job.
+
+### `/tenants/{t}/tasks/{taskId}` — what needs a human, and when
+
+A projection of decisions the fleet already made — no new agent. `chase_after` on a Foreman
+disposition becomes a due date; a drafted purchase order becomes an approval; an escalation to
+a role becomes a queue. Ids are derived from the cause, so a replayed disposition updates one
+task instead of creating a second.
+
+A task assigned to a **role** has no owner and therefore no calendar event; claiming it is what
+creates one. `notify_after` is a single computed clock — it starts at `due_at` and moves to
+now + 24h after each notification — so the cross-tenant sweep is one equality and one
+inequality on one field.
+
+### `/records/{publicId}` — the capability URL
+
+A **separate top-level root**, world-readable and nobody-writable, holding a redacted
+projection: no tenant id, no uids, no storage refs, no costs. Holding the link is the whole
+credential, which is what a paper service book always offered. Unsharing deletes the document,
+and because media is proxied rather than signed, every image URL dies with it.
+
+### `/user_secrets/{uid}` — OAuth refresh tokens
+
+Reachable by nobody, including the user whose token it is. Top-level rather than under the
+tenant, because the recursive tenant read would hand every colleague a token that writes to
+this person's calendar.
 
 ### `/tenants/{t}/records/{jobId}` — written once by the seal, never updated
 
@@ -266,7 +344,26 @@ match /spec_chunks/{id} { allow read: if request.auth != null; allow write: if f
 
 match /tenants/{t}                        { allow read: if tenantOf() == t;
                                             allow write: if false; }
-match /tenants/{t}/{collection}/{doc=**}  { allow read, write: if tenantOf() == t; }
+
+// Collections a client may READ within its tenant but never WRITE.
+function serverWritten(c) {
+  return c in ['members', 'records', 'decisions', 'readings', 'procedure_versions'];
+}
+// Claims a client may never make for itself, at any depth.
+function clientMayNotClaim() {
+  return request.resource.data.get('provenance_class', '') != 'measured'
+      && request.resource.data.get('capture_surface', '') != 'app_instrument'
+      && request.resource.data.get('status', '') != 'sealed'
+      && request.resource.data.get('tool_id', '') == '';
+}
+
+match /tenants/{t}/{collection}/{doc=**} {
+  allow read:  if tenantOf() == t;
+  allow write: if tenantOf() == t && !serverWritten(collection) && clientMayNotClaim();
+}
+
+match /records/{publicId} { allow read: if true;         allow write: if false; }
+match /user_secrets/{uid} { allow read, write: if false; }
 ```
 
 The catalogue is operator-seeded and read-only to every tenant. Tenant data is reachable only
@@ -283,6 +380,17 @@ by its own tenant. Both follow from §7's identity model with no additional conc
 > and which therefore appears at `request.auth.token.hd` exactly where the rule above looks.
 > See `web/src/auth/google-hd.ts`.
 
+> **Correction 3 — read and write cannot be granted together.** The original rule above was
+> `allow read, write: if tenantOf() == t` for the whole tenant subtree, which made EVERY
+> document writable by every member of that tenant at every depth. That contradicted four
+> things stated elsewhere in this document and the contract: a sealed record "written once,
+> never updated" that any member could overwrite; a `waived_by` requiring "a named person with
+> standing" whose role that person could set themselves; agent decisions a public record quotes
+> that anyone could forge; and readings whose `tool_id` is the only thing separating a measured
+> number from a typed one. Firestore rules are **OR'd and have no deny**, so a narrower rule
+> written afterwards cannot take a grant back — the write has to be narrowed at the point it is
+> granted. Verified against the real rules engine; see `web/scripts/rules.test.mjs`.
+
 > **Correction 2 — the `{collection}` segment is load-bearing.** In `rules_version = '2'` a
 > recursive wildcard matches **zero** or more segments, so the obvious
 > `match /tenants/{t}/{doc=**}` **also matches `/tenants/{t}` itself** and silently re-grants
@@ -294,6 +402,10 @@ by its own tenant. Both follow from §7's identity model with no additional conc
 ### Required indexes
 | Collection | Index |
 |---|---|
+| `tasks` | **COLLECTION_GROUP**: `status` + `notify_after` — the cross-tenant sweep |
+| `tasks` | `assignee_uid` + `status` + `due_at`; `assignee_role` + `status` + `due_at` |
+| `procedures` | `status` + `updated_at` desc |
+| `members` | `role` + `display_name` |
 | `spec_chunks` | composite **vector**: `node_urns` array-contains + `embedding` (1536) |
 | `nodes`, `spec_nodes` | `path` array-contains + `iso14224_level` |
 | `readings` | `key` + `at` desc |
