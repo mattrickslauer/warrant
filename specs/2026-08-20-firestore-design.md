@@ -1,6 +1,7 @@
 # Firestore — accounts, procedures, records, drafts and tasks
 
-**Status:** approved design, rules verified against the emulator (28 assertions), not yet implemented
+**Status:** implemented — commits 7767575, ebf887a. 65 assertions pass against the real
+rules engine. Outstanding work is listed in §15.
 **Date:** 2026-08-20
 **Extends:** `docs/data-model.md`, `firestore.rules`, `contract/entities/*`
 
@@ -876,3 +877,35 @@ collection follows the same rule.
   sign-in and bounded; batching it is work with no current payoff.
 - Per-tenant sharding of the sweep. One cron across all tenants is correct until the number of
   *simultaneously due* tasks exceeds what one Cloud Run request can process in a minute.
+
+---
+
+## 15. What is built, and what is not
+
+Implemented and covered by `scripts/smoke.sh` step 5 (65 assertions against the real rules
+engine in the emulator):
+
+- §2 the rules architecture, including `serverWritten`, `clientMayNotClaim` and the `tool_id`
+  guard the decomposition made possible
+- §2.5 `storage.rules`, deployed by `infra/deploy-rules.sh`
+- §4 members, standing, the durable avatar copy, wired into every sign-in
+- §5 frozen procedure versions and the publish path that enforces standing
+- §6 the capability URL, the redacted projection, the media and avatar proxies, revocation
+- §7 offline persistence, `status: "draft"`, `finalize()`, and the job decomposition
+- §8 tasks, the queue/claim model, push, Calendar consent and the cross-tenant sweep
+- §9–§10 contract entities and indexes
+
+**Not built.** Each needs a decision or a component that does not exist yet, rather than more
+of the same work:
+
+| Gap | Why it is not done |
+|---|---|
+| The Scoper compile writes a procedure | The interview persists to `turns/`, but nothing yet turns a compiled `ScoperTurn` into a draft procedure document. Needs the Scoper runtime, not storage. |
+| Anything calls `taskFromDisposition` | The Foreman produces dispositions in `agents/`; the bridge from that runtime into `raiseTask` is a Pub/Sub subscriber that does not exist yet. |
+| The Seal recomputes provenance | §2.3 names this as the PRIMARY control, above the rules. `web/src/data/seal.ts` still derives class from the field. Until it reads `readings`, the rules are carrying more weight than the design intends. |
+| Redaction sets `capture.redacted` | Publishing REFUSES an unredacted capture (§6.2), so this is fail-closed — but it means no record can be published until on-device ML Kit redaction runs. |
+| FCM registration from the client | `POST /api/devices` accepts a token; no surface requests one yet. |
+| A share button | `POST /api/records/share` works; nothing calls it. |
+
+The two that matter most are the Seal and the disposition bridge: without them the storage is
+correct and the fleet is not yet writing into it.
