@@ -30,6 +30,8 @@ import ink.warrant.design.Ground
 import ink.warrant.design.WarrantTheme
 import ink.warrant.instrument.InstrumentClient
 import ink.warrant.instrument.InstrumentSession
+import ink.warrant.instrument.scanFailureMessage
+import ink.warrant.instrument.scanOrder
 import ink.warrant.instrument.tierOf
 import ink.warrant.ui.components.EvidenceChip
 import ink.warrant.ui.components.HoldBanner
@@ -69,11 +71,20 @@ fun PairScreen(
         if (!scanning) return@LaunchedEffect
         found.clear()
         scanError = null
-        runCatching {
+        try {
             session.scan().collect { device ->
-                if (found.none { it.address == device.address }) found.add(device)
+                // Replace, do not skip: a device is re-emitted when a later advertisement
+                // tells us something new about it, and the name usually arrives second.
+                val at = found.indexOfFirst { it.address == device.address }
+                if (at >= 0) found[at] = device else found.add(device)
             }
-        }.onFailure { scanError = it.message }
+        } catch (t: Throwable) {
+            // Stopping is not failing. Tapping a device to connect cancels this scan, and so
+            // does leaving the screen; neither is a fault worth a red banner. `runCatching`
+            // could not tell the difference, and swallowing the cancellation also kept it from
+            // ever reaching the parent job.
+            scanError = scanFailureMessage(t) ?: throw t
+        }
     }
 
     Ground(Ground.Work, modifier) {
@@ -161,7 +172,28 @@ fun PairScreen(
                 Rule()
             }
 
-            state.error?.let { HoldBanner("Instrument problem", it) }
+            when (val link = state.link) {
+                is InstrumentSession.Link.Connecting -> HoldBanner(
+                    "Connecting",
+                    "Opening a connection to ${link.name ?: link.address}. This takes a moment, " +
+                        "and some devices have to be woken first.",
+                    waiting = true,
+                )
+
+                is InstrumentSession.Link.Rejected -> HoldBanner(
+                    "Could not pair with ${link.name ?: link.address}",
+                    link.reason,
+                    actions = {
+                        WarrantButton(
+                            "Try again",
+                            ghost = true,
+                            onClick = { session.connect(link.address, name = link.name) },
+                        )
+                    },
+                )
+
+                else -> Unit
+            }
             scanError?.let { HoldBanner("Scan failed", it) }
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -175,14 +207,24 @@ fun PairScreen(
 
             if (found.isNotEmpty()) {
                 MonoLabel("In range")
-                found.sortedByDescending { it.rssi }.forEach { device ->
+                // See scanOrder: recognised instrument first, then connectable, then roughly
+                // how close — in bands, so the list does not reshuffle under a moving finger.
+                scanOrder(found).forEach { device ->
+                    val busy = state.isConnecting(device.address)
+                    val refused = state.isRejected(device.address)
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .clickable {
-                                scanning = false
-                                session.connect(device.address, device.driver)
-                            }
+                            .then(
+                                if (device.connectable && !state.connecting) {
+                                    Modifier.clickable {
+                                        scanning = false
+                                        session.connect(device.address, device.driver, device.name)
+                                    }
+                                } else {
+                                    Modifier
+                                }
+                            )
                             .padding(vertical = 12.dp),
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
@@ -192,18 +234,41 @@ fun PairScreen(
                         ) {
                             Text(
                                 device.name ?: "(unnamed)",
-                                style = WarrantTheme.type.body.copy(color = colors.fg),
+                                style = WarrantTheme.type.body.copy(
+                                    color = if (device.connectable) colors.fg
+                                    else colors.fg.copy(alpha = 0.45f),
+                                ),
                                 modifier = Modifier.weight(1f),
                             )
-                            MonoLabel("${device.rssi} dBm")
+                            MonoLabel(
+                                when {
+                                    busy -> "connecting…"
+                                    refused -> "refused"
+                                    else -> "${device.rssi} dBm"
+                                },
+                                color = when {
+                                    busy -> colors.inferred
+                                    refused -> colors.held
+                                    else -> null
+                                },
+                            )
                         }
                         Text(
-                            device.driver?.label
-                                ?: "No driver claims this device — a generic read will be tried, " +
-                                "and the reading marked unvetted.",
+                            when {
+                                !device.connectable ->
+                                    "Advertises only — it broadcasts, and refuses connections. " +
+                                        "Beacons and phone-to-phone adverts look like this."
+                                device.driver != null -> device.driver.label
+                                else ->
+                                    "No driver claims this device — a generic read will be " +
+                                        "tried, and the reading marked unvetted."
+                            },
                             style = WarrantTheme.type.bodySmall.copy(
-                                color = if (device.driver != null) colors.measured
-                                else colors.fg.copy(alpha = 0.6f),
+                                color = when {
+                                    !device.connectable -> colors.fg.copy(alpha = 0.45f)
+                                    device.driver != null -> colors.measured
+                                    else -> colors.fg.copy(alpha = 0.6f)
+                                },
                             ),
                         )
                         Text(

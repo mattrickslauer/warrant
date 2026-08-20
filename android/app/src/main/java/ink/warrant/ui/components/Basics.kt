@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import ink.warrant.contract.JobStatus
 import ink.warrant.contract.ProvenanceClass
 import ink.warrant.design.WarrantTheme
+import ink.warrant.instrument.formatReading
 
 /**
  * The small primitives, on Material 3. Every screen is these arranged differently, which is
@@ -152,7 +153,7 @@ fun ReadingBadge(
 ) {
     val colors = WarrantTheme.colors
     val time = if (at.length > 19) at.substring(11, 19) else at
-    val shown = if (value == value.toLong().toDouble()) value.toLong().toString() else value.toString()
+    val shown = formatReading(value)
 
     Row(
         modifier
@@ -168,8 +169,18 @@ fun ReadingBadge(
             if (unit.isBlank()) shown else "$shown $unit",
             style = WarrantTheme.type.monoValue.copy(color = colors.measured),
         )
-        Text(time, style = WarrantTheme.type.monoLabel.copy(color = colors.measured.copy(alpha = 0.85f)))
-        Text("tool #$toolId", style = WarrantTheme.type.monoLabel.copy(color = colors.measured.copy(alpha = 0.85f)))
+        // maxLines, because a long value used to squeeze these until the tool id wrapped one
+        // character per line. An identifier broken across five lines is not an identifier.
+        Text(
+            time,
+            style = WarrantTheme.type.monoLabel.copy(color = colors.measured.copy(alpha = 0.85f)),
+            maxLines = 1,
+        )
+        Text(
+            "tool #$toolId",
+            style = WarrantTheme.type.monoLabel.copy(color = colors.measured.copy(alpha = 0.85f)),
+            maxLines = 1,
+        )
     }
 }
 

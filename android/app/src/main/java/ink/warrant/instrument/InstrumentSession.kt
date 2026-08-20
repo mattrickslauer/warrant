@@ -20,19 +20,66 @@ class InstrumentSession(
     private val scope: CoroutineScope,
 ) {
 
+    /**
+     * Where the connection has got to, as ONE value rather than several that can disagree.
+     *
+     * This was three loose fields — `connecting`, `toolId`, `error` — which made it impossible
+     * to show progress against the row the technician actually tapped, and impossible to tell a
+     * refusal apart from an ordinary disconnect. Both of those are things a person standing at
+     * a bench needs to see.
+     */
+    sealed interface Link {
+        /** Nothing attempted, or disconnected cleanly. */
+        data object Idle : Link
+
+        /** In flight. The address is carried so the tapped row can show it, and only that row. */
+        data class Connecting(val address: String, val name: String?) : Link
+
+        /** Attached and reading. */
+        data class Paired(val address: String, val toolId: String, val driver: Driver) : Link
+
+        /** The attempt finished and did not pair. The reason is the whole point of the state. */
+        data class Rejected(val address: String, val name: String?, val reason: String) : Link
+
+        /** No hardware; generated values. Never raises the tier — see [tierOf]. */
+        data class Simulated(val toolId: String) : Link
+    }
+
     data class State(
-        val connecting: Boolean = false,
-        val toolId: String? = null,
-        val driver: Driver? = null,
+        val link: Link = Link.Idle,
         val latest: InstrumentEvent.Value? = null,
-        val error: String? = null,
+    ) {
+        val connecting: Boolean get() = link is Link.Connecting
+        val connected: Boolean get() = link is Link.Paired || link is Link.Simulated
+
         /**
          * True when readings are simulated because no hardware is paired. Every surface that
          * shows a simulated value MUST say so — see [simulate].
          */
-        val simulated: Boolean = false,
-    ) {
-        val connected: Boolean get() = toolId != null
+        val simulated: Boolean get() = link is Link.Simulated
+
+        val toolId: String? get() = when (link) {
+            is Link.Paired -> link.toolId
+            is Link.Simulated -> link.toolId
+            else -> null
+        }
+
+        val driver: Driver? get() = when (link) {
+            is Link.Paired -> link.driver
+            is Link.Simulated -> FakeDriver
+            else -> null
+        }
+
+        /** The refusal, if the last attempt was refused. */
+        val error: String? get() = (link as? Link.Rejected)?.reason
+
+        /** True while this exact device is being connected to, and false for every other row. */
+        fun isConnecting(address: String): Boolean =
+            (link as? Link.Connecting)?.address == address
+
+        /** True when this exact device is the one that refused. */
+        fun isRejected(address: String): Boolean =
+            (link as? Link.Rejected)?.address == address
     }
 
     private val _state = MutableStateFlow(State())
@@ -46,32 +93,12 @@ class InstrumentSession(
 
     fun missingPermissions() = client.missingPermissions()
 
-    fun connect(address: String, preferred: Driver? = null) {
+    fun connect(address: String, preferred: Driver? = null, name: String? = null) {
         connection?.cancel()
-        _state.value = State(connecting = true)
+        _state.value = State(link = Link.Connecting(address, name))
         connection = scope.launch {
             client.connect(address, preferred).collect { event ->
-                _state.value = when (event) {
-                    is InstrumentEvent.Connecting ->
-                        _state.value.copy(connecting = true, error = null)
-
-                    is InstrumentEvent.Connected ->
-                        _state.value.copy(
-                            connecting = false,
-                            toolId = event.toolId,
-                            driver = event.driver,
-                            error = null,
-                            simulated = false,
-                        )
-
-                    is InstrumentEvent.Value ->
-                        _state.value.copy(latest = event, error = null)
-
-                    is InstrumentEvent.Failed ->
-                        _state.value.copy(connecting = false, error = event.reason)
-
-                    is InstrumentEvent.Disconnected -> State()
-                }
+                _state.value = reduce(_state.value, event, address, name)
             }
         }
     }
@@ -91,20 +118,47 @@ class InstrumentSession(
      */
     fun simulate() {
         connection?.cancel()
-        val value = FakeDriver.sample()
+        val toolId = "${FakeDriver.TOOL_ID_PREFIX}sim"
         _state.value = State(
-            toolId = "${FakeDriver.TOOL_ID_PREFIX}sim",
-            driver = FakeDriver,
-            simulated = true,
+            link = Link.Simulated(toolId),
             latest = InstrumentEvent.Value(
-                value = value,
+                value = FakeDriver.sample(),
                 unit = FakeDriver.produces.unit,
-                toolId = "${FakeDriver.TOOL_ID_PREFIX}sim",
+                toolId = toolId,
                 plausible = true,
                 driverId = FakeDriver.id,
             ),
         )
     }
+}
+
+/**
+ * One event applied to the connection state. Pure, so the transitions can be pinned by tests
+ * rather than inferred from a coroutine.
+ */
+fun reduce(
+    state: InstrumentSession.State,
+    event: InstrumentEvent,
+    address: String,
+    name: String?,
+): InstrumentSession.State = when (event) {
+    is InstrumentEvent.Connecting ->
+        state.copy(link = InstrumentSession.Link.Connecting(address, name))
+
+    is InstrumentEvent.Connected ->
+        state.copy(link = InstrumentSession.Link.Paired(address, event.toolId, event.driver))
+
+    is InstrumentEvent.Value ->
+        state.copy(latest = event)
+
+    is InstrumentEvent.Failed ->
+        InstrumentSession.State(link = InstrumentSession.Link.Rejected(address, name, event.reason))
+
+    // A refused connection tears the GATT client down, so this arrives immediately behind
+    // Failed. Letting it reset to idle makes the explanation flash up and disappear, which is
+    // indistinguishable from the silent failure this state exists to end.
+    is InstrumentEvent.Disconnected ->
+        if (state.link is InstrumentSession.Link.Rejected) state else InstrumentSession.State()
 }
 
 /**
@@ -117,4 +171,4 @@ class InstrumentSession(
  * product is about.
  */
 fun tierOf(state: InstrumentSession.State): Tier =
-    if (state.connected && !state.simulated) Tier.INSTRUMENTED else Tier.ATTESTED
+    if (state.link is InstrumentSession.Link.Paired) Tier.INSTRUMENTED else Tier.ATTESTED
