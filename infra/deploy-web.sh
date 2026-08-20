@@ -16,6 +16,17 @@ SERVICE="${SERVICE:-warrant}"
 HOST="${REGION}-docker.pkg.dev"
 IMAGE="${HOST}/${PROJECT}/warrant/web:$(date -u +%Y%m%d-%H%M%S)"
 
+# The runtime identity. Least privilege: firebaseauth.admin to mint session cookies, write
+# the `hd` custom claim and check revocation; datastore.user for Firestore. Attaching it here
+# is what makes the Admin SDK work on Cloud Run with NO KEY ANYWHERE — the metadata server
+# hands the container short-lived credentials, so there is no long-lived secret to leak,
+# rotate, or accidentally commit.
+RUN_SA="${RUN_SA:-warrant-web@${PROJECT}.iam.gserviceaccount.com}"
+
+# Load .env if present, so the public Firebase config reaches the build without being typed
+# out. Nothing secret lives there — see the note in Dockerfile.web.
+if [ -f "$ROOT/.env" ]; then set -a; . "$ROOT/.env"; set +a; fi
+
 [ -n "$PROJECT" ] || { echo "error: no project set — gcloud config set project <id>" >&2; exit 1; }
 
 if docker info >/dev/null 2>&1; then ENG=docker
@@ -41,7 +52,15 @@ gcloud artifacts repositories create warrant \
 gcloud auth configure-docker "$HOST" --quiet --project="$PROJECT" >/dev/null 2>&1
 
 echo "building…"
-$ENG build --platform linux/amd64 -f "$ROOT/infra/Dockerfile.web" -t "$IMAGE" "$ROOT"
+$ENG build --platform linux/amd64 -f "$ROOT/infra/Dockerfile.web" -t "$IMAGE" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_API_KEY=${NEXT_PUBLIC_FIREBASE_API_KEY:-}" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:-}" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_PROJECT_ID=${NEXT_PUBLIC_FIREBASE_PROJECT_ID:-}" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-}" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:-}" \
+  --build-arg "NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID:-}" \
+  --build-arg "NEXT_PUBLIC_WARRANT_DATA_SOURCE=${NEXT_PUBLIC_WARRANT_DATA_SOURCE:-fixture}" \
+  "$ROOT"
 echo "pushing…"
 $ENG push "$IMAGE" >/dev/null
 
@@ -59,8 +78,31 @@ gcloud run deploy "$SERVICE" \
   --concurrency 80 \
   --cpu 1 \
   --memory 512Mi \
+  --service-account "$RUN_SA" \
+  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-}" \
   --quiet
 
 URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 echo
 echo "live: $URL"
+
+# The sign-in popup is refused from any origin Identity Platform does not know about, and a
+# Cloud Run hostname is generated rather than chosen — so it cannot be authorised in advance.
+# Doing it here means a fresh project reaches working sign-in without a console visit.
+RUN_HOST="${URL#https://}"
+echo
+echo "authorising $RUN_HOST for sign-in"
+AT="$(gcloud auth print-access-token)"
+curl -sS "https://identitytoolkit.googleapis.com/admin/v2/projects/$PROJECT/config" \
+  -H "Authorization: Bearer $AT" -H "x-goog-user-project: $PROJECT" \
+  > "$ROOT/.warrant-idp-config.json"
+
+python3 "$ROOT/infra/authorize-domain.py" "$ROOT/.warrant-idp-config.json" "$RUN_HOST" \
+  > "$ROOT/.warrant-domains.json"
+
+curl -sS -X PATCH \
+  "https://identitytoolkit.googleapis.com/admin/v2/projects/$PROJECT/config?updateMask=authorizedDomains" \
+  -H "Authorization: Bearer $AT" -H "x-goog-user-project: $PROJECT" \
+  -H "Content-Type: application/json" -d @"$ROOT/.warrant-domains.json" >/dev/null
+rm -f "$ROOT/.warrant-idp-config.json" "$ROOT/.warrant-domains.json"
+echo "  ok"

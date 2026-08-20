@@ -24,3 +24,13 @@ dist/
 build/
 .DS_Store
 *.log
+
+# Eval run output. The cassettes and the media corpus ARE committed — they are what makes
+# the agent suite replayable with no cloud account — but a run's results are a moment in time.
+agents/evals/runs/
+__pycache__/
+.pytest_cache/
+
+# Transient deploy scratch — the Identity Platform config is fetched, merged, and deleted.
+.warrant-idp-config.json
+.warrant-domains.json

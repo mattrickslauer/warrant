@@ -1,0 +1,68 @@
+{
+  "//": "The indexes docs/data-model.md §7 requires. Deployed by infra/deploy-rules.sh.",
+  "indexes": [
+    {
+      "//": "Hierarchical pre-filter, then vector search inside the survivors. The array-contains on node_urns cuts the corpus to the handful of chunks that could possibly be relevant before the ANN runs at all — which is why retrieval here is cheap. Dimension is 1536 because Firestore caps vector indexes at 2048 and a naive 3072-dim embedding will not index; use Matryoshka truncation.",
+      "collectionGroup": "spec_chunks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "node_urns", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "embedding", "vectorConfig": { "dimension": 1536, "flat": {} } }
+      ]
+    },
+    {
+      "//": "Everything under this node, at any depth, in one query — the materialised path doing its job.",
+      "collectionGroup": "spec_nodes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "path", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "iso14224_level", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "nodes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "path", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "iso14224_level", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "//": "The measured series, newest first. This is what consistent_with(asset.history) reads, and what makes a wear RATE computable rather than just a wear reading.",
+      "collectionGroup": "readings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "key", "order": "ASCENDING" },
+        { "fieldPath": "at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "The same series across every component on a machine.",
+      "collectionGroup": "readings",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "key", "order": "ASCENDING" },
+        { "fieldPath": "at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "//": "What has been fitted here, and what is fitted here now — `to == null` is the current placement.",
+      "collectionGroup": "placements",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "position_urn", "order": "ASCENDING" },
+        { "fieldPath": "to", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "//": "The job list a dashboard opens on.",
+      "collectionGroup": "jobs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "started_at", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

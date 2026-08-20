@@ -1,0 +1,12 @@
+{
+  "//": "Only what the emulator and the rules deploy need. The app itself is Cloud Run, not Firebase Hosting — see infra/deploy-web.sh.",
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "firestore": { "port": 8080 },
+    "singleProjectMode": true,
+    "ui": { "enabled": false }
+  }
+}

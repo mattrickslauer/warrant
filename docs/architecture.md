@@ -196,13 +196,39 @@ both first-class, no bridge, no wrapper to fight when a device misbehaves.
 |---|---|
 | Google Workspace — an `hd` claim is present | The **domain** is the enterprise. Everyone at `acme.com` shares procedures, jobs, parts and records |
 | Consumer Google account — no `hd` claim | A **single-user tenant**. Their own procedures, their own jobs |
+| Nobody — no sign-in at all | A **tenant of one that has not been claimed**, `anon:<uid>`. Real jobs, real records. Signing in later moves all of it into whichever tenant the account resolves to |
 
 That is the whole model, and the boundary is a natural one: **multiple technicians require
 Workspace.** A solo operator signs in and starts working; a company with a crew already has a
 directory, and that directory is the membership list.
 
 Offboarding is somebody else's problem and it already works — a technician leaves, their
-employer disables the account, their access ends the same instant.
+employer disables the account, their access ends the same instant. That is only true because
+the session cookie is re-checked for revocation on **every** request rather than trusted until
+it expires, which costs one lookup and buys the whole claim.
+
+**The third row is what makes the product openable.** A visitor can work through a real
+procedure to a real sealed record before deciding whether to sign in, and nothing they did is
+thrown away when they do: `linkWithPopup` upgrades the anonymous Firebase user in place so the
+uid survives, and the anonymous tenant's whole subtree is moved across.
+
+### Where the `hd` claim actually comes from
+
+Everything above rests on `request.auth.token.hd`, and **it does not arrive by itself.** A
+Firebase ID token carries `sub`, `email`, `email_verified` and `firebase.identities`, and drops
+the rest of the OIDC payload — Google's `hd` included. Implemented naively, every Workspace
+user resolves to a solo tenant, silently, because a solo tenant is a perfectly valid place to
+land and nothing errors.
+
+So the browser sends a second token. `signInWithPopup` also hands back Google's *own* ID token,
+which does carry `hd`. The server verifies it against Google's certificates, checks it belongs
+to the same Google account as the Firebase user — without that cross-check any valid Google
+token could assert somebody else's domain — and writes `hd` as a **custom claim**, which
+Firebase does propagate into subsequent ID tokens. The rules then read it exactly where they
+always did.
+
+The same code path backs the development override, so the Workspace branch can be exercised
+from a consumer account with nothing special-cased anywhere downstream.
 
 ---
 

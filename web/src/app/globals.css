@@ -1,56 +1,71 @@
 @import "../generated/tokens.css";
 @import "../components/library.css";
 
-/* Page-level scaffolding only. Anything reusable belongs in the library. */
+/* Page-level scaffolding only. Anything reusable belongs in the library.
+   The shell follows Material 3: a top app bar that gains elevation only once content has
+   moved under it, cards on the shape scale, and one persistent primary action. */
+
 .page { display: flex; flex-direction: column; min-height: 100dvh; }
-.page__body { flex: 1; padding-block: clamp(28px, 6vw, 64px); }
+.page__body { padding-block: clamp(24px, 5vw, 56px); flex: 1; }
 .stack { display: flex; flex-direction: column; gap: var(--stack); }
-.stack--lg { gap: clamp(24px, 5vw, 44px); }
+.stack--lg { gap: clamp(24px, 5vw, 40px); }
+
+/* ---------------------------------------------------------------- top app bar */
 
 .masthead {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  min-height: 58px; border-bottom: 1px solid rgba(255,255,255,.08);
+  min-height: 64px;
   padding-top: env(safe-area-inset-top);
 }
-.w-ground--paper .masthead { border-bottom-color: var(--rule); }
 .masthead__logo {
-  display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
-  font-family: var(--mono); font-size: var(--t-xs); font-weight: 700;
-  text-transform: uppercase; letter-spacing: .18em;
+  display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+  font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 500;
+  letter-spacing: 0;
 }
-.masthead__logo i { width: 8px; height: 8px; background: var(--measured-lift); }
-.masthead__nav { display: flex; gap: clamp(12px, 3vw, 22px); }
+/* The mark: Google's four colours on one disc. Four hues, four provenance classes — the
+   product's whole argument is that evidence comes in kinds, and the mark says so. */
+.masthead__logo i, .topbar__logo i {
+  width: 20px; height: 20px; border-radius: 50%; flex: none;
+  background: conic-gradient(
+    var(--primary) 0deg 90deg,
+    var(--held) 90deg 180deg,
+    var(--inferred-lift) 180deg 270deg,
+    var(--measured) 270deg 360deg
+  );
+}
+.masthead__nav { display: flex; gap: 4px; }
 .masthead__nav a {
-  font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .1em;
-  text-transform: uppercase; opacity: .6; text-decoration: none; padding: 6px 0;
+  font-size: var(--t-label-lg); font-weight: 500; text-decoration: none;
+  color: var(--on-surface-2); padding: 10px 14px; border-radius: var(--r-full);
+  min-height: 40px; display: inline-flex; align-items: center;
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
 }
-.masthead__nav a:hover { opacity: 1; }
+.masthead__nav a:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); color: var(--on-surface); }
 
+/* An overline in the action colour. Material calls this a label; it labels, nothing more. */
 .eyebrow {
-  font-family: var(--mono); font-size: var(--t-xs); text-transform: uppercase;
-  letter-spacing: .19em; color: var(--measured-lift);
-  display: flex; align-items: center; gap: 10px;
+  font-size: var(--t-label-lg); font-weight: 500; letter-spacing: .006em;
+  color: var(--action);
+  display: flex; align-items: center; gap: 8px;
 }
-.eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; opacity: .6; }
 
-h1.hero { font-size: var(--t-2xl); font-weight: 760; letter-spacing: -.035em; line-height: 1.02; text-wrap: balance; }
-.lede { font-size: var(--t-lg); opacity: .78; max-width: 58ch; }
+h1.hero {
+  font-family: var(--brand); font-size: var(--t-display);
+  font-weight: 400; letter-spacing: -.015em; line-height: 1.12; text-wrap: balance;
+}
+.lede { font-size: var(--t-title); color: var(--on-surface-2); max-width: 58ch; line-height: 1.6; }
 
 .footer {
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding-block: 22px;
-  padding-bottom: max(22px, env(safe-area-inset-bottom));
-  font-family: var(--mono); font-size: var(--t-xs); opacity: .5;
-  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  border-top: 1px solid var(--outline);
+  padding-block: 24px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  font-size: var(--t-body); color: var(--on-surface-3);
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
 }
-.w-ground--paper .footer { border-top-color: var(--rule); }
 
-.gallery { display: flex; flex-direction: column; gap: clamp(28px, 5vw, 46px); }
+.gallery { display: flex; flex-direction: column; gap: clamp(28px, 5vw, 44px); }
 .gallery__block { display: flex; flex-direction: column; gap: 12px; }
-.gallery__label {
-  font-family: var(--mono); font-size: var(--t-xs); text-transform: uppercase;
-  letter-spacing: .16em; opacity: .45;
-}
+.gallery__label { font-size: var(--t-label-lg); font-weight: 500; color: var(--on-surface-2); }
 .gallery__row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 
 /* ============================================================ the app shell
@@ -68,147 +83,214 @@ h1.hero { font-size: var(--t-2xl); font-weight: 760; letter-spacing: -.035em; li
 
 .topbar {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: max(10px, env(safe-area-inset-top)) var(--pad) 10px;
+  min-height: 64px;
+  padding: max(8px, env(safe-area-inset-top)) var(--pad) 8px;
   position: sticky; top: 0; z-index: 20;
-  background: color-mix(in srgb, var(--work) 88%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: var(--work);
+  transition: background var(--med) var(--ease), box-shadow var(--med) var(--ease);
 }
 .topbar__logo {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--mono); font-size: var(--t-xs); font-weight: 700;
-  text-transform: uppercase; letter-spacing: .18em;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 500;
 }
-.topbar__logo i { width: 8px; height: 8px; background: var(--measured-lift); }
 .topbar__nav a {
-  font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .1em;
-  text-transform: uppercase; opacity: .6; text-decoration: none;
-  min-height: var(--tap); display: inline-flex; align-items: center;
+  font-size: var(--t-label-lg); font-weight: 500; text-decoration: none;
+  color: var(--on-surface-2); padding: 0 14px; border-radius: var(--r-full);
+  min-height: 40px; display: inline-flex; align-items: center;
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
 }
-.topbar__nav a:hover { opacity: 1; }
+.topbar__nav a:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); color: var(--on-surface); }
 
-.picker { flex: 1; display: flex; flex-direction: column; gap: 14px; padding-top: 18px; }
+.picker { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
 
-.picker__lead { padding-inline: var(--gutter); display: flex; flex-direction: column; gap: 2px; }
+.picker__lead { padding-inline: var(--gutter); display: flex; flex-direction: column; gap: 4px; }
 .picker__kicker {
-  font-size: clamp(1.5rem, 1.1rem + 2.2vw, 2.1rem);
-  font-weight: 760; letter-spacing: -.03em; line-height: 1.05;
+  font-family: var(--brand);
+  font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.5rem);
+  font-weight: 400; letter-spacing: -.01em; line-height: 1.15;
 }
-.picker__sub { font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; opacity: .5; }
+.picker__sub { font-size: var(--t-body-lg); color: var(--on-surface-2); }
 
 /* ---- the rail ---- */
 .rail {
-  display: flex; gap: 14px;
+  display: flex; gap: 16px;
   overflow-x: auto; overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 4px var(--gutter) 6px;
+  padding: 8px var(--gutter) 12px;
   scroll-padding-inline: var(--gutter);
 }
 .rail::-webkit-scrollbar { display: none; }
 
+/* A Material 3 card: the shape scale's large corner, a tonal surface, and elevation that
+   arrives on interaction rather than sitting there by default. */
 .card {
   scroll-snap-align: start;
   flex: 0 0 min(84vw, 400px);
   display: flex; flex-direction: column;
-  background: var(--work-2);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 4px; overflow: hidden; cursor: pointer;
-  transition: border-color .2s ease, transform .2s ease, opacity .2s ease;
-  opacity: .42; transform: scale(.965);
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--r-lg); overflow: hidden; cursor: pointer;
+  transition: box-shadow var(--med) var(--ease), transform var(--med) var(--ease),
+              opacity var(--med) var(--ease), background var(--med) var(--ease);
+  opacity: .55; transform: scale(.97);
 }
+.card:hover { background: var(--surface-high); }
 .card--active {
   opacity: 1; transform: none;
-  border-color: var(--measured-lift);
-  box-shadow: 0 0 0 1px var(--measured-lift);
+  background: var(--surface-high);
+  box-shadow: var(--e2);
 }
-.card--soon { }
-.card--soon .card__art { filter: grayscale(.7) brightness(.62); }
+.card--soon .card__art { filter: grayscale(.75) brightness(.6); }
 
-.card__art { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--work-3); }
+.card__art { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--surface-highest); }
 @media (min-width: 700px) { .card__art { aspect-ratio: 1 / 1; } }
+/* A Material assist chip floated on the artwork. */
 .card__soon {
-  position: absolute; inset: auto 10px 10px auto;
-  font-family: var(--mono); font-size: var(--t-xs);
-  text-transform: uppercase; letter-spacing: .14em;
-  padding: 4px 8px; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.25);
+  position: absolute; inset: auto 12px 12px auto;
+  font-size: var(--t-label); font-weight: 500;
+  padding: 6px 12px; border-radius: var(--r-sm);
+  background: rgba(32,33,36,.78); color: #fff; backdrop-filter: blur(8px);
 }
-.card__foot { padding: 14px var(--pad) 16px; display: flex; flex-direction: column; gap: 7px; }
-.card__name { font-size: var(--t-xl); font-weight: 740; letter-spacing: -.028em; line-height: 1.06; }
-.card__note { font-size: var(--t-sm); opacity: .66; }
-.card__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; }
+.card__foot { padding: 16px var(--pad) 20px; display: flex; flex-direction: column; gap: 8px; }
+.card__name { font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 400; line-height: 1.2; }
+.card__note { font-size: var(--t-body); color: var(--on-surface-2); }
+.card__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 
-.dots { display: flex; justify-content: center; gap: 9px; }
+/* Material page indicator: a dot that stretches into a bar for the current page. */
+.dots { display: flex; justify-content: center; gap: 8px; align-items: center; }
 .dot {
-  width: 34px; height: var(--tap); padding: 0; border: 0; background: none; cursor: pointer;
+  width: 32px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer;
   display: grid; place-items: center;
 }
 .dot::after {
-  content: ""; width: 100%; height: 2px; background: currentColor; opacity: .22;
-  transition: opacity .2s ease;
+  content: ""; width: 8px; height: 8px; border-radius: var(--r-full);
+  background: var(--on-surface-3); opacity: .5;
+  transition: width var(--med) var(--ease), opacity var(--med) var(--ease),
+              background var(--med) var(--ease);
 }
-.dot--on::after { opacity: 1; background: var(--measured-lift); }
+.dot--on::after { width: 24px; opacity: 1; background: var(--action); }
 
 /* ---- your devices ---- */
+/* A Material outlined card that expands in place. */
 
 .devices {
   margin-inline: var(--gutter);
-  border: 1px solid rgba(255,255,255,.11); border-radius: 3px;
-  background: var(--work-2);
+  border: 1px solid var(--outline); border-radius: var(--r-md);
+  background: transparent;
+  overflow: hidden;
 }
 .devices--loading {
-  padding: 14px; font-family: var(--mono); font-size: var(--t-xs);
-  letter-spacing: .12em; text-transform: uppercase; opacity: .45;
+  padding: 16px; font-size: var(--t-body); color: var(--on-surface-3);
 }
 .devices__bar {
-  width: 100%; min-height: var(--tap); padding: 0 14px;
-  display: flex; align-items: center; gap: 10px;
+  width: 100%; min-height: 56px; padding: 0 16px;
+  display: flex; align-items: center; gap: 12px;
   background: none; border: 0; cursor: pointer; color: inherit; text-align: left;
-  font-family: var(--mono); font-size: var(--t-xs);
-  text-transform: uppercase; letter-spacing: .14em;
+  font-size: var(--t-body-lg); font-weight: 500;
+  transition: background var(--fast) var(--ease);
 }
-.devices__count { margin-left: auto; opacity: .55; }
-.devices__chev { opacity: .55; }
-.devices__body { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 14px; }
+.devices__bar:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); }
+.devices__count { margin-left: auto; font-size: var(--t-body); color: var(--on-surface-3); font-weight: 400; }
+.devices__chev { color: var(--on-surface-3); transition: transform var(--med) var(--ease); }
+.devices--open .devices__chev { transform: rotate(90deg); }
+.devices__body { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 16px; }
 .devices__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .devices__item {
-  display: grid; grid-template-columns: 12px 1fr; gap: 4px 10px;
-  padding: 9px 0; border-top: 1px solid rgba(255,255,255,.07); align-items: center;
+  display: grid; grid-template-columns: 12px 1fr; gap: 2px 12px;
+  padding: 10px 0; border-top: 1px solid var(--outline); align-items: center;
 }
 .devices__item:first-child { border-top: 0; }
 .devices__dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  border: 1px solid var(--ink-3); background: transparent;
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid var(--on-surface-3); background: transparent;
 }
-.devices__item[data-present="true"] .devices__dot { background: var(--measured-lift); border-color: var(--measured-lift); }
-.devices__label { font-size: var(--t-sm); }
-.devices__detail {
-  grid-column: 2; font-family: var(--mono); font-size: var(--t-xs); opacity: .5;
-}
-.devices__ceiling { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.07); }
-.devices__why { font-size: var(--t-sm); opacity: .6; }
+.devices__item[data-present="true"] .devices__dot { background: var(--c-measured); border-color: var(--c-measured); }
+.devices__label { font-size: var(--t-body-lg); }
+.devices__detail { grid-column: 2; font-size: var(--t-body); color: var(--on-surface-3); }
+.devices__ceiling { display: flex; flex-direction: column; gap: 10px; padding-top: 12px; border-top: 1px solid var(--outline); }
+.devices__why { font-size: var(--t-body); color: var(--on-surface-2); }
 
 /* ---- the action, always at the thumb ---- */
 
 .cta {
   position: sticky; bottom: 0; z-index: 20;
   display: flex; flex-direction: column; gap: 8px; align-items: stretch;
-  padding: 12px var(--gutter) max(14px, env(safe-area-inset-bottom));
+  padding: 12px var(--gutter) max(16px, env(safe-area-inset-bottom));
   /* Solid, not a gradient: content scrolling underneath must be hidden, not half-legible. */
   background: var(--work);
-  border-top: 1px solid rgba(255,255,255,.09);
+  border-top: 1px solid var(--outline);
   margin-top: auto;
 }
-.cta__go { min-height: 56px; font-size: var(--t-sm); }
-.cta__meta {
-  font-family: var(--mono); font-size: var(--t-xs); opacity: .45;
-  text-align: center; letter-spacing: .05em;
-}
+/* An extended FAB in position and in weight — the one thing on the screen carrying elevation
+   at rest, because it is the one thing you are meant to press. */
+.cta__go { min-height: 56px; font-size: var(--t-title); box-shadow: var(--e2); }
+.cta__go:disabled { box-shadow: none; }
+.cta__meta { font-size: var(--t-body); color: var(--on-surface-3); text-align: center; }
 
 @media (min-width: 760px) {
-  .picker { gap: 18px; }
+  .picker { gap: 20px; }
   .card { flex: 0 0 380px; }
-  .cta { align-items: center; padding-block: 14px; }
+  .cta { align-items: center; padding-block: 16px; }
   .cta__go { min-width: 360px; }
 }
+
+/* ---------------------------------------------------------------- sign-in and tenancy */
+
+/* The tenant is shown, not hidden. "Your account decides the shape of the tenant" is a claim
+   a person should be able to check, and they can only check it if the product says which
+   tenant they landed in. */
+
+.signin { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.signin__note {
+  font-size: var(--t-label-lg); color: var(--on-surface-2);
+  padding: 10px 4px; display: inline-flex; align-items: center;
+}
+
+.signin__google {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 40px; padding: 0 18px 0 14px; border-radius: var(--r-full);
+  border: 1px solid var(--outline); background: var(--surface);
+  color: var(--on-surface); font-family: inherit;
+  font-size: var(--t-label-lg); font-weight: 500; cursor: pointer;
+  transition: background var(--fast) var(--ease), border-color var(--fast) var(--ease);
+}
+.signin__google:hover { background: color-mix(in srgb, var(--on-surface) 8%, var(--surface)); }
+.signin__google--small { min-height: 32px; padding: 0 14px 0 10px; font-size: var(--t-label); }
+
+.signin__anon, .signin__out {
+  min-height: 40px; padding: 0 12px; border: 0; background: none; cursor: pointer;
+  font-family: inherit; font-size: var(--t-label-lg); font-weight: 500;
+  color: var(--on-surface-2); border-radius: var(--r-full);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.signin__anon:hover, .signin__out:hover { color: var(--on-surface); }
+
+.signin__error {
+  flex-basis: 100%; margin: 0;
+  font-size: var(--t-label); color: var(--held);
+}
+
+/* The badge carries the tenant id verbatim, in mono, because it is a machine-produced
+   identifier and the product's type rule says so. The kind is what explains it. */
+.tenant {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 6px 12px; border-radius: var(--r-full);
+  border: 1px solid var(--outline);
+  background: color-mix(in srgb, var(--on-surface) 4%, transparent);
+  max-width: 44ch;
+}
+.tenant__id {
+  font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tenant__kind {
+  font-size: var(--t-label-sm); font-weight: 500; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--on-surface-2); flex: none;
+}
+.tenant[data-kind="workspace"] { border-color: color-mix(in srgb, var(--measured) 50%, var(--outline)); }
+.tenant[data-kind="workspace"] .tenant__kind { color: var(--measured); }
+.tenant[data-kind="anon"] { border-style: dashed; }
+.tenant[data-kind="anon"] .tenant__kind { color: var(--held); }

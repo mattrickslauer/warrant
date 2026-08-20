@@ -247,11 +247,16 @@ is these three reads, unioned. Nothing measured and nothing from type space ever
 
 ## 7. Enforcement
 
+The live rules are [`firestore.rules`](../firestore.rules), executed on every run of
+`scripts/smoke.sh` against the real rules engine in the Firestore emulator. What follows is
+that file's shape, with the two corrections implementation forced.
+
 ```javascript
 function tenantOf() {
-  return request.auth.token.hd != null
-       ? request.auth.token.hd                 // Workspace domain — the enterprise
-       : "u:" + request.auth.token.sub;        // consumer account — a solo tenant
+  return hd() != null
+       ? hd()                                  // Workspace domain — the enterprise
+       : (isAnonymous() ? "anon:" + request.auth.uid   // an unclaimed visitor
+                        : "u:" + request.auth.uid);    // consumer account — a solo tenant
 }
 
 match /spec_nodes/{id}  { allow read: if request.auth != null; allow write: if false; }
@@ -259,11 +264,32 @@ match /spec_values/{id} { allow read: if request.auth != null; allow write: if f
 match /spec_docs/{id}   { allow read: if request.auth != null; allow write: if false; }
 match /spec_chunks/{id} { allow read: if request.auth != null; allow write: if false; }
 
-match /tenants/{t}/{doc=**} { allow read, write: if tenantOf() == t; }
+match /tenants/{t}                        { allow read: if tenantOf() == t;
+                                            allow write: if false; }
+match /tenants/{t}/{collection}/{doc=**}  { allow read, write: if tenantOf() == t; }
 ```
 
 The catalogue is operator-seeded and read-only to every tenant. Tenant data is reachable only
 by its own tenant. Both follow from §7's identity model with no additional concepts.
+
+> **Correction 1 — `hd` does not arrive by itself.** A Firebase ID token carries `sub`,
+> `email`, `email_verified` and `firebase.identities`, and **drops the rest of the OIDC
+> payload including Google's `hd`**. Written naively, every Workspace user resolves to a solo
+> tenant and the enterprise model never fires — silently, because a solo tenant is a
+> perfectly valid place to land. The fix takes the second token: `signInWithPopup` also
+> returns Google's *own* ID token, which does carry `hd`. The server verifies it against
+> Google's certificates, checks it belongs to the same Google account as the Firebase user,
+> and writes `hd` as a **custom claim** — which Firebase *does* put in subsequent ID tokens,
+> and which therefore appears at `request.auth.token.hd` exactly where the rule above looks.
+> See `web/src/auth/google-hd.ts`.
+
+> **Correction 2 — the `{collection}` segment is load-bearing.** In `rules_version = '2'` a
+> recursive wildcard matches **zero** or more segments, so the obvious
+> `match /tenants/{t}/{doc=**}` **also matches `/tenants/{t}` itself** and silently re-grants
+> the write the line above it refuses. An outsider could create `acme.com` before anyone at
+> acme.com had signed in and be sitting inside the enterprise when they arrived. Consuming
+> the subcollection name explicitly means the shortest path the recursive rule can match is
+> a collection, which is never a write target. This was found by the test, not by reading.
 
 ### Required indexes
 | Collection | Index |

@@ -1,0 +1,103 @@
+rules_version = '2';
+
+// Warrant — tenancy, enforced by Firestore itself.
+//
+// This file is the second half of a rule written twice. The first half is `tenantFromClaims`
+// in web/src/auth/tenant.ts, and the two MUST agree; scripts/rules.test.mjs feeds the same
+// table of claims to both and fails if they disagree. See docs/data-model.md §7.
+//
+// What this protects: every authenticated client — the browser holding a real ID token, and
+// the Android client — reads and writes through these rules. Server code using the Admin SDK
+// bypasses them entirely, which is why the server takes its tenant only from a verified
+// session cookie (web/src/auth/session.ts) and never from a request.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Identity ----------------------------------------------------------------------
+    //
+    // A Workspace domain is an enterprise. A consumer account is a tenant of one. A visitor
+    // who has not signed in is a tenant of one that has not been claimed.
+    //
+    // `hd` is a custom claim written by the server after it verified Google's own ID token —
+    // Firebase does not propagate Google's hd by itself. See web/src/auth/google-hd.ts.
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAnonymous() {
+      return signedIn() && request.auth.token.firebase.sign_in_provider == 'anonymous';
+    }
+
+    function hd() {
+      return signedIn() && 'hd' in request.auth.token && request.auth.token.hd != null
+        ? request.auth.token.hd
+        : null;
+    }
+
+    function tenantOf() {
+      return hd() != null
+        ? hd()
+        : (isAnonymous() ? 'anon:' + request.auth.uid : 'u:' + request.auth.uid);
+    }
+
+    function inTenant(t) {
+      return signedIn() && tenantOf() == t;
+    }
+
+    // --- Type space --------------------------------------------------------------------
+    //
+    // The catalogue is a published reference: manufacturer specifications, documents and the
+    // retrieval corpus. It belongs to nobody's tenant, every signed-in user may read it, and
+    // NOBODY may write it from a client. Promotion into the catalogue is a reviewed
+    // server-side act (docs/data-model.md §8), so it runs with Admin credentials and does not
+    // need a rule here.
+    //
+    // The invariant that makes this safe is structural: a spec document has no tenant field,
+    // so tenant data has nowhere to leak into.
+
+    match /spec_nodes/{id}  { allow read: if signedIn(); allow write: if false; }
+    match /spec_values/{id} { allow read: if signedIn(); allow write: if false; }
+    match /spec_docs/{id}   { allow read: if signedIn(); allow write: if false; }
+    match /spec_chunks/{id} { allow read: if signedIn(); allow write: if false; }
+
+    // --- Instance space ----------------------------------------------------------------
+    //
+    // One rule covers the whole subtree at every depth: jobs and their fields, components
+    // and their readings and placements, nodes, overrides, records. A new collection added
+    // beneath a tenant is protected the day it is created rather than the day somebody
+    // remembers to add a rule for it.
+
+    // The tenant document itself is provisioned server-side on first sign-in. A client may
+    // not forge one, because creating `acme.com` before anyone at acme.com had signed in
+    // would leave an outsider sitting inside the enterprise when they arrived.
+    //
+    match /tenants/{t} {
+      allow read: if inTenant(t);
+      allow write: if false;
+    }
+
+    // Everything beneath a tenant, at every depth — jobs and their fields and captures,
+    // components and their readings and placements, nodes, overrides, records. A collection
+    // added under a tenant tomorrow is protected the day it is created rather than the day
+    // somebody remembers to write a rule for it.
+    //
+    // NOTE the `{collection}` segment, which is doing real work and is not decoration. A
+    // recursive wildcard in rules_version 2 matches ZERO or more segments, so the obvious
+    // `match /tenants/{t}/{document=**}` ALSO matches /tenants/{t} itself and silently
+    // re-granted the write the rule above refuses — an outsider could seed `acme.com`.
+    // Consuming the subcollection name explicitly means the shortest path this rule can
+    // match is /tenants/{t}/{collection}, which is a collection and never a write target.
+    // web/scripts/rules.test.mjs is what caught this, and is what keeps it caught.
+    match /tenants/{t}/{collection}/{document=**} {
+      allow read, write: if inTenant(t);
+    }
+
+    // Anything not named above is denied. Stated rather than implied, because a reader
+    // should not have to know Firestore's default to know this.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

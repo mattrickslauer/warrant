@@ -25,6 +25,9 @@ gcloud services enable \
   cloudtrace.googleapis.com \
   iamcredentials.googleapis.com \
   modelarmor.googleapis.com \
+  identitytoolkit.googleapis.com \
+  firebase.googleapis.com \
+  firebaserules.googleapis.com \
   --project="$PROJECT"
 
 echo
@@ -42,6 +45,19 @@ Not covered here, because they are not plain API enablements:
       gcloud firestore databases create --location=nam5 --project=$PROJECT
   - Model Armor templates must live in the 'us' or 'eu' MULTI-region for image
     modality. A template in us-central1 fails silently. See docs/architecture.md §8.
+  - Firestore rules and indexes are published separately:
+      ./infra/deploy-rules.sh
+  - Sign-in needs Firebase added to the project and a web app registered:
+      TOKEN=\$(gcloud auth print-access-token)
+      curl -sX POST "https://firebase.googleapis.com/v1beta1/projects/$PROJECT:addFirebase" \\
+        -H "Authorization: Bearer \$TOKEN" -H "x-goog-user-project: $PROJECT" -d '{}'
+      curl -sX POST "https://firebase.googleapis.com/v1beta1/projects/$PROJECT/webApps" \\
+        -H "Authorization: Bearer \$TOKEN" -H "x-goog-user-project: $PROJECT" \\
+        -H "Content-Type: application/json" -d '{"displayName":"Warrant Web"}'
+    Anonymous sign-in can then be enabled over the API, but the GOOGLE provider cannot:
+    it needs an OAuth client, and there is no public API that creates one. Enable it once
+    in the console — Authentication -> Sign-in method -> Google — which creates the client
+    for you. That is the only manual step in this whole setup.
   - Agent Engine, Agent Registry, Memory Bank, Agent Identity and Agent Gateway
     are unconfirmed in this project. Check them before building against them.
 NOTE

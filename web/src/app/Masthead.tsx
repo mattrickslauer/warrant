@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignIn } from "@/auth/SignIn";
 
 export function Masthead() {
   return (
@@ -7,6 +8,7 @@ export function Masthead() {
       <nav className="masthead__nav">
         <Link href="/library">Library</Link>
         <Link href="/about">About</Link>
+        <SignIn />
       </nav>
     </header>
   );

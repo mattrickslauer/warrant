@@ -11,5 +11,5 @@
 
       Google Cloud console → APIs & Services → Credentials → OAuth client ID → Web application.
     -->
-    <string name="google_web_client_id" translatable="false"></string>
+    <string name="google_web_client_id" translatable="false">1020487917587-9s2mklllnpcarhdu4c9uecn3s7rosfks.apps.googleusercontent.com</string>
 </resources>

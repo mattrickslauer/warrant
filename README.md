@@ -158,18 +158,6 @@ classes, and they never blur:
 about whether a pad looks seated. It is not allowed an opinion about the angle, because a tool
 already answered that, and tools do not have opinions.
 
-### What Warrant will not tell you
-
-It does not judge workmanship from a photograph. It cannot see whether a bolt was
-cross-threaded, whether a caliper seated correctly, or whether a fluid is the right grade. Any
-system claiming to assess craft from video is guessing, and guessing is worse than nothing in
-a record people will rely on years later.
-
-**What it establishes is that the work happened, with these parts, on this machine, at this
-time, to these measured values — and it refuses when it cannot.** That is narrower than
-"we verify maintenance," and it is the one that is true. It also addresses the failure that
-actually occurs, which is not bad work. **It is work that never happened.**
-
 ---
 
 ## Buy the assurance you need
@@ -302,18 +290,6 @@ this product is one nobody has to open.
 
 ---
 
-## What it will not do
-
-- **It does not certify workmanship.** A human signs for that, by name.
-- **It does not infer what it did not observe.** Blocked view, missing reading, unusable framing — the record says so and the step does not pass.
-- **It does not claim tamper-proof evidence.** Captures are timestamped and attributed. A determined faker with time is not the threat model; a record that never got made is.
-- **It does not withhold quietly.** Every failure escalates to a person the same day. Wrongly blocking a technician who did the work is a worse harm than the one this exists to prevent.
-- **It does not move money.** It drafts charges and orders. A human approves them.
-- **It does not surveil technicians.** It watches a procedure, not a person. This is the system that finally lets them prove they did it right.
-- **It does not exceed its budget.** The Treasurer holds a hard ceiling and refuses past it rather than asking forgiveness.
-
----
-
 ## Proven on
 
 A working motorcycle rental fleet — real machines, real customers, real money.
@@ -383,9 +359,11 @@ nothing about when or where it was made.
 
 Runs a full procedure end to end against recorded fixtures: the agent schemas are checked
 against the subset Vertex accepts, the tokens generate for both stacks, every fixture
-typechecks against the contract, every surface builds from `FixtureSource` alone, and — if
-Playwright is installed — a real browser drives a procedure to a sealed record with a
-synthetic camera. Nothing runs against a project and nothing is at risk.
+typechecks against the contract, every surface builds from `FixtureSource` alone, **no tenant
+can reach another tenant's data** — proved by running `firestore.rules` in the Firestore
+emulator, not by asserting it — and, if Playwright is installed, a real browser drives a
+procedure to a sealed record with a synthetic camera. Nothing runs against a project and
+nothing is at risk.
 
 ### Connecting it to Google Cloud
 
@@ -393,8 +371,45 @@ synthetic camera. Nothing runs against a project and nothing is at risk.
 cp .env.example .env                # project, region, models
 ./infra/bootstrap.sh                # enables every API this needs, once
 gcloud firestore databases create --location=nam5
+./infra/deploy-rules.sh             # tenancy rules and the composite indexes
 ./infra/deploy-web.sh               # the app to Cloud Run
 ```
+
+There is one further check that is **deliberately not** in `smoke.sh`, because it needs
+credentials and writes to a real project:
+
+```bash
+set -a; . web/.env.local; set +a
+cd web && node --experimental-strip-types --conditions=react-server \
+  --import ./scripts/ts-resolve.mjs --test scripts/claim.test.mjs
+```
+
+That exercises claiming an anonymous tenant — a recursive copy across an arbitrarily deep
+document tree, then a delete. It is the riskiest code in the auth layer and the one path that
+cannot be reached by clicking through the product, because getting there requires linking a
+real Google account to an anonymous session. It cleans up after itself.
+
+**No key is ever created.** `deploy-web.sh` attaches a least-privilege service account
+(`firebaseauth.admin` to mint session cookies, write the `hd` claim and check revocation;
+`datastore.user` for Firestore), and Cloud Run's metadata server hands the container
+short-lived credentials. There is no long-lived secret to leak, rotate, or commit. For local
+development against the real project you need Application Default Credentials —
+`gcloud auth application-default login` — and without them the surfaces fall back to
+`FixtureSource` and say so, which is a supported state rather than a failure.
+
+**Sign-in is the only part with a manual step, and there is exactly one.** Adding Firebase to
+the project, registering the web app and enabling anonymous sign-in are all API calls, and
+`infra/bootstrap.sh` prints them. Enabling the **Google** provider is not: it needs an OAuth
+client, and no public API creates one. Toggle it once in the Firebase console under
+*Authentication → Sign-in method → Google*, which creates the client for you, then copy the
+`NEXT_PUBLIC_FIREBASE_*` values into `.env`.
+
+Once it is on, the identity model in [`docs/architecture.md`](docs/architecture.md) §7 is live:
+a Workspace account lands in its employer's tenant, a personal account in a tenant of one, and
+a visitor who never signs in gets a real tenant that is migrated into their account if they
+later do. **Tenancy is enforced by Firestore itself** — `firestore.rules` is executed against
+the real rules engine on every `./scripts/smoke.sh`, so the isolation claim is a test rather
+than a paragraph.
 
 The Android client is **native Kotlin and Jetpack Compose** — CameraX and the platform BLE
 stack, no bridge — and it is where the instrument path lives. It consumes the same generated
