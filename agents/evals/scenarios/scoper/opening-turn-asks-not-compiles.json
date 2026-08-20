@@ -1,0 +1,37 @@
+{
+  "agent": "scoper",
+  "title": "opening turn asks not compiles",
+  "why": "Given one sentence, the only correct move is to ask. An agent that compiles a nine-step procedure from a job title has invented the entire thing, and every future record inherits it.",
+  "input": {
+    "shop": {
+      "trade": "motorcycle rental and workshop",
+      "machines": "12 Honda CB500X, 3 CRF300L",
+      "technicians": 2,
+      "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
+    },
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "We need a procedure for the front brake service we do on the CB500Xs."
+      }
+    ]
+  },
+  "expect": {
+    "equals": {
+      "mode": "ask"
+    },
+    "present": [
+      "question",
+      "asks_about"
+    ],
+    "absent": [
+      "draft"
+    ],
+    "len_gte": {
+      "unresolved": 2
+    },
+    "max_words": {
+      "question": 45
+    }
+  }
+}

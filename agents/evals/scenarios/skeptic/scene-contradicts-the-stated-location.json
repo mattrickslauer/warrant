@@ -1,0 +1,62 @@
+{
+  "agent": "skeptic",
+  "title": "scene contradicts the stated location",
+  "why": "The job is in a workshop and the photograph is a wet gravel roadside at dusk. The machine may well be the right one; the moment is not.",
+  "input": {
+    "asset": {
+      "id": "CB500X-07",
+      "type": "motorcycle",
+      "model": "Honda CB500X 2021",
+      "marks": [
+        "deep diagonal scuff across the left fork lower, from a drop in 2025",
+        "plain circular sticker on the left yoke"
+      ],
+      "history": [
+        "2026-05-02 front pads replaced",
+        "2026-07-30 front tyre replaced",
+        "2026-08-12 front brake service opened"
+      ]
+    },
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-19T09:00:00Z",
+      "location": "Workshop, El Chalt\u00e9n"
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "media": [
+      "scene/outdoors-away-from-workshop.jpg"
+    ],
+    "prior_media": [
+      "scene/workshop-interior.jpg"
+    ]
+  },
+  "expect": {
+    "is_false": [
+      "belongs"
+    ],
+    "in": {
+      "mismatch_kind": [
+        "scene",
+        "asset"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "outdoor",
+        "road",
+        "gravel",
+        "wet",
+        "rain",
+        "dusk",
+        "workshop",
+        "location"
+      ]
+    }
+  }
+}

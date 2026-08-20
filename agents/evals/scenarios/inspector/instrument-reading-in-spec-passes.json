@@ -1,0 +1,49 @@
+{
+  "agent": "inspector",
+  "title": "instrument reading in spec passes",
+  "why": "The straightforward pass, and the only route to `measured` in this system: a paired instrument put the number in the record and no hand touched it. It needs no photograph, because the instrument is the evidence. If this fails, the Inspector is too strict to be usable and every other refusal in the suite is meaningless.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "caliper_bolt_torque",
+      "kind": "measurement",
+      "source": "instrument",
+      "prompt": "Torque both caliper bolts and record the reading from the paired instrument",
+      "required_at_strictness": 1,
+      "acceptance_rule": "within",
+      "acceptance_min": 27,
+      "acceptance_max": 33,
+      "acceptance_unit": "Nm",
+      "guidance": "The number must arrive from a paired instrument. A click wrench cannot satisfy this field: it reports nothing, it is set to a bound and pulled until it clicks."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [],
+    "reading": {
+      "value": 30.4,
+      "unit": "Nm",
+      "source": "instrument"
+    }
+  },
+  "expect": {
+    "equals": {
+      "verdict": "PASS"
+    },
+    "gte": {
+      "confidence": 0.75
+    },
+    "absent": [
+      "add_field_prompt",
+      "escalation_question"
+    ]
+  }
+}

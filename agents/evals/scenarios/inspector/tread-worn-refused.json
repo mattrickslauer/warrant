@@ -1,0 +1,50 @@
+{
+  "agent": "inspector",
+  "title": "tread worn refused",
+  "why": "The same check on a worn tyre. The coin standing proud is the whole signal, and reading it the wrong way round sends a bald tyre out onto a gravel pass in the wet.",
+  "input": {
+    "step": {
+      "title": "Check front tyre tread depth",
+      "max_add_fields": 2,
+      "explanation": "The bikes go out on gravel passes in the wet. Below the legal minimum the bike is both illegal and uninsured, and neither is discovered until after a crash."
+    },
+    "field": {
+      "key": "tread_depth",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Put a coin upright in the main groove and photograph it",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "a coin standing in the tread groove, with enough of the coin swallowed by the groove to show the tread is well above the wear limit",
+      "guidance": "Close enough that the groove and the coin edge are both sharp."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 1,
+    "media": [
+      "tyre/tread-coin-shallow.jpg"
+    ]
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "worn",
+        "shallow",
+        "proud",
+        "smooth",
+        "little",
+        "limit",
+        "below"
+      ]
+    }
+  }
+}

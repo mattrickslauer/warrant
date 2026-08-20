@@ -1,0 +1,58 @@
+{
+  "agent": "instructor",
+  "title": "machine absent",
+  "why": "The machine leaving mid-job is a distinct blocker: nothing about the parts or the tools is wrong, and a reorder here would be pure waste.",
+  "input": {
+    "procedure": {
+      "title": "Front brake service \u2014 Honda CB500X",
+      "version": 3,
+      "strictness": 2,
+      "step_count": 9
+    },
+    "step": {
+      "index": 4,
+      "title": "Fit the new pads and torque the caliper bolts",
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped.",
+      "fields": [
+        {
+          "prompt": "Torque both caliper bolts to spec and record the reading"
+        }
+      ]
+    },
+    "machine": {
+      "id": "CB500X-07",
+      "model": "Honda CB500X 2021",
+      "usage": "31,402 km",
+      "history": [
+        "2026-05-02 front pads replaced at 24,880 km",
+        "2026-06-19 fork seal weep noted, not actioned",
+        "2026-07-30 tyre replaced front"
+      ]
+    },
+    "stock": {
+      "EBC FA388HH front pads": 0,
+      "caliper bolts M8x30": 6,
+      "brake fluid DOT4": "2 x 500ml"
+    },
+    "remaining_steps": [
+      "Bleed the front circuit",
+      "Road test",
+      "Sign off"
+    ],
+    "transcript": "Customer's turned up and taken it. Said he needed it for the weekend and he'd bring it back Monday. It's gone, mate.",
+    "reason_kind": "voice"
+  },
+  "expect": {
+    "equals": {
+      "blocker_kind": "machine_absent"
+    },
+    "in": {
+      "proposed_status": [
+        "deferred"
+      ]
+    },
+    "absent": [
+      "blocking_part"
+    ]
+  }
+}

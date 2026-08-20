@@ -1,0 +1,97 @@
+{
+  "agent": "scoper",
+  "title": "instrument answer forces instrumented tier",
+  "why": "minimum_tier is derived, never chosen. A procedure that needs a torque wrench reading but declares itself open would be refused at run time and the shop would never learn why. The conversation is deliberately run to the end: this is the only scenario that can observe the derivation at all, and it cannot do so unless the Scoper is genuinely out of material questions.",
+  "input": {
+    "shop": {
+      "trade": "motorcycle rental and workshop",
+      "machines": "12 Honda CB500X, 3 CRF300L",
+      "technicians": 2,
+      "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
+    },
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "Front brake service on the CB500X. Two steps really: pads in, bolts torqued."
+      },
+      {
+        "who": "scoper",
+        "said": "What torque, and how do you know it was hit?"
+      },
+      {
+        "who": "shop",
+        "said": "30 Nm, plus or minus 3. We've got a Bluetooth torque wrench, it reads out on the phone."
+      },
+      {
+        "who": "scoper",
+        "said": "And the pads \u2014 what makes a pad acceptable to put in?"
+      },
+      {
+        "who": "shop",
+        "said": "New EBC FA388HH out of the box, photo of them seated in the caliper before the wheel goes back on."
+      },
+      {
+        "who": "scoper",
+        "said": "What stops the bike going out even if everything else passed?"
+      },
+      {
+        "who": "shop",
+        "said": "Any fluid on the disc. That's an instant no, we strip it again."
+      },
+      {
+        "who": "scoper",
+        "said": "Who signs it off and what does it let the bike do?"
+      },
+      {
+        "who": "shop",
+        "said": "Either of the two mechanics signs. It puts the bike back on hire."
+      },
+      {
+        "who": "scoper",
+        "said": "Which bolts get torqued to 30 Nm?"
+      },
+      {
+        "who": "shop",
+        "said": "The two caliper mounting bolts, that's it. Nothing else on this job gets a torque figure."
+      },
+      {
+        "who": "scoper",
+        "said": "What does the photo of the seated pads have to show for you to accept it?"
+      },
+      {
+        "who": "shop",
+        "said": "Both pad faces visible against the disc, close enough to see they're sat flat in the caliper. If you can't see both, retake it."
+      },
+      {
+        "who": "scoper",
+        "said": "How many goes does a technician get at re-sending evidence before it comes to one of you?"
+      },
+      {
+        "who": "shop",
+        "said": "Two. After that one of us looks at it ourselves."
+      }
+    ]
+  },
+  "expect": {
+    "equals": {
+      "mode": "compile",
+      "draft.minimum_tier": "instrumented"
+    },
+    "present": [
+      "draft"
+    ],
+    "absent": [
+      "unresolved"
+    ],
+    "len_gte": {
+      "draft.steps": 2
+    },
+    "mentions_any": {
+      "draft.disqualifiers": [
+        "fluid",
+        "disc",
+        "contaminat"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here.\n\nReturn JSON with these fields:\n- status (one of deferred | waived | impossible, required): deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect.\n- action (one of chase | reorder | escalate | revise, required)\n- rationale (string, required): Why this disposition and not the others. This is read by a person in a dispute months later.\n- chase_after (string, null when it does not apply): ISO 8601 UTC. When to wake and check. Required when action is chase.\n- reorder_part (string, null when it does not apply): Required when action is reorder. A purchase order is DRAFTED, never sent.\n- escalate_to_role (string, null when it does not apply): Required when action is escalate. The role that must decide, not a person's name.\n- hold_machine (boolean, required): Your recommendation. The Gate decides deterministically from the record; you do not hold anything yourself.",
+  "parts": [
+    "t:1ba7e2988586bf45"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "status": "deferred",
+    "action": "escalate",
+    "rationale": "The required front brake pads (EBC FA388HH) are missing. The original order PO-2210 has missed its ETA twice and the supplier is now unresponsive. With the customer collection booked for 2026-08-21 (in 48 hours) and the machine's safety depending on this step, we must escalate to the Parts Manager to urgently source the parts from an alternative supplier or resolve the delivery, and coordinate with the Service Advisor regarding the customer booking.",
+    "chase_after": null,
+    "reorder_part": null,
+    "escalate_to_role": "Parts Manager",
+    "hold_machine": true
+  },
+  "raw": "{\n  \"status\": \"deferred\",\n  \"action\": \"escalate\",\n  \"rationale\": \"The required front brake pads (EBC FA388HH) are missing. The original order PO-2210 has missed its ETA twice and the supplier is now unresponsive. With the customer collection booked for 2026-08-21 (in 48 hours) and the machine's safety depending on this step, we must escalate to the Parts Manager to urgently source the parts from an alternative supplier or resolve the delivery, and coordinate with the Service Advisor regarding the customer booking.\",\n  \"chase_after\": null,\n  \"reorder_part\": null,\n  \"escalate_to_role\": \"Parts Manager\",\n  \"hold_machine\": true\n}",
+  "usage": {
+    "promptTokenCount": 1243,
+    "candidatesTokenCount": 174,
+    "totalTokenCount": 2318
+  }
+}

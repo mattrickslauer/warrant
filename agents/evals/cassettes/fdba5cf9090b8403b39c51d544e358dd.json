@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:0dca39035e236930"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "it's rocking a bit every time I lean on the bar",
+    "blocker_kind": "unsafe",
+    "recommended_action": "Stop immediately. Do not attempt to torque the bolts while the motorcycle is unstable. Secure the bike properly using tie-down straps or a paddock stand before proceeding.",
+    "proposed_status": "deferred",
+    "blocking_part": null,
+    "safety_flag": true
+  },
+  "raw": "{\"reason_summary\":\"it's rocking a bit every time I lean on the bar\",\"blocker_kind\":\"unsafe\",\"recommended_action\":\"Stop immediately. Do not attempt to torque the bolts while the motorcycle is unstable. Secure the bike properly using tie-down straps or a paddock stand before proceeding.\",\"proposed_status\":\"deferred\",\"blocking_part\":null,\"safety_flag\":true}",
+  "usage": {
+    "promptTokenCount": 1061,
+    "candidatesTokenCount": 81,
+    "totalTokenCount": 2039
+  }
+}

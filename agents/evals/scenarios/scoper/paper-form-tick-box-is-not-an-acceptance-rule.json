@@ -1,0 +1,42 @@
+{
+  "agent": "scoper",
+  "title": "paper form tick box is not an acceptance rule",
+  "why": "Importing a paper form is the adoption path, and its tick boxes are exactly where the ambiguity hides. 'Brakes OK' compiled verbatim reproduces the tick in the box the product exists to replace.",
+  "input": {
+    "shop": {
+      "trade": "bicycle hire",
+      "machines": "40 hybrid bikes, 12 e-bikes",
+      "technicians": 1,
+      "stakes": "hire bikes on city streets; a wheel coming loose is a serious injury and we have had one near miss"
+    },
+    "existing_form": "DAILY HIRE CHECK \u2014 bike no. ____   date ____\n[ ] Brakes OK\n[ ] Tyres OK\n[ ] Wheels secure\n[ ] Lights working\n[ ] Battery charged (e-bikes)\nSigned ____________",
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "This is the sheet we fill in every morning. Can you just turn that into the app?"
+      }
+    ]
+  },
+  "expect": {
+    "equals": {
+      "mode": "ask"
+    },
+    "absent": [
+      "draft"
+    ],
+    "len_gte": {
+      "unresolved": 2
+    },
+    "mentions_any": {
+      "unresolved": [
+        "OK",
+        "brake",
+        "tyre",
+        "secure",
+        "mean",
+        "accept",
+        "pass"
+      ]
+    }
+  }
+}

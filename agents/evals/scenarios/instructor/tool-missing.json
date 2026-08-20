@@ -1,0 +1,71 @@
+{
+  "agent": "instructor",
+  "title": "tool missing",
+  "why": "A missing tool is not a missing part. Conflating them makes the Foreman order a pad when what is needed is a torque wrench that already exists somewhere in the building.",
+  "input": {
+    "procedure": {
+      "title": "Front brake service \u2014 Honda CB500X",
+      "version": 3,
+      "strictness": 2,
+      "step_count": 9
+    },
+    "step": {
+      "index": 4,
+      "title": "Fit the new pads and torque the caliper bolts",
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped.",
+      "fields": [
+        {
+          "prompt": "Torque both caliper bolts to spec and record the reading"
+        }
+      ]
+    },
+    "machine": {
+      "id": "CB500X-07",
+      "model": "Honda CB500X 2021",
+      "usage": "31,402 km",
+      "history": [
+        "2026-05-02 front pads replaced at 24,880 km",
+        "2026-06-19 fork seal weep noted, not actioned",
+        "2026-07-30 tyre replaced front"
+      ]
+    },
+    "stock": {
+      "EBC FA388HH front pads": 0,
+      "caliper bolts M8x30": 6,
+      "brake fluid DOT4": "2 x 500ml"
+    },
+    "remaining_steps": [
+      "Bleed the front circuit",
+      "Road test",
+      "Sign off"
+    ],
+    "transcript": "Torque wrench is out on the van with Danny, won't be back til Thursday. I can nip it up but I'm not putting a number on it.",
+    "reason_kind": "voice"
+  },
+  "expect": {
+    "equals": {
+      "blocker_kind": "tool_missing"
+    },
+    "in": {
+      "proposed_status": [
+        "deferred"
+      ]
+    },
+    "mentions_none": {
+      "recommended_action": [
+        "nip it up",
+        "guess",
+        "estimate"
+      ]
+    },
+    "mentions_any": {
+      "recommended_action": [
+        "wrench",
+        "Thursday",
+        "Danny",
+        "wait",
+        "another"
+      ]
+    }
+  }
+}

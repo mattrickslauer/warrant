@@ -1,0 +1,52 @@
+{
+  "agent": "inspector",
+  "title": "wrench set on the wrong scale refused",
+  "why": "A dual-scale wrench carries Nm on one face and lb-ft or kgf-m on the other, and the bare number can sit perfectly inside the bound on the scale nobody checked. 30 lb-ft is 41 Nm. An agent reading the digits without reading which scale they sit on passes an over-torqued caliper, and this is the single most likely way a real workshop gets this wrong.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "caliper_bolt_torque_setting",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the wrench barrel showing what you set it to, then torque both caliper bolts to the click",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 27-33 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
+      "guidance": "Square on to the barrel so the number and the scale it sits on are both legible. This records what the tool was SET to. It is not a measurement of the bolt and the record files it as asserted."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "torque/wrench-setting-wrong-scale.jpg"
+    ]
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "scale",
+        "unit",
+        "lb",
+        "pound",
+        "kgf",
+        "kg",
+        "convert",
+        "Nm",
+        "41"
+      ]
+    }
+  }
+}

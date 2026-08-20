@@ -1,0 +1,65 @@
+{
+  "agent": "scoper",
+  "title": "contradiction must be resolved",
+  "why": "The shop has said two incompatible things. Compiling either one silently picks a winner and the losing technician's jobs start failing for reasons nobody can see.",
+  "input": {
+    "shop": {
+      "trade": "bicycle hire",
+      "machines": "40 hybrid bikes, 12 e-bikes",
+      "technicians": 1,
+      "stakes": "hire bikes on city streets; a wheel coming loose is a serious injury and we have had one near miss"
+    },
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "Wheel security check before every hire."
+      },
+      {
+        "who": "scoper",
+        "said": "What makes it pass?"
+      },
+      {
+        "who": "shop",
+        "said": "Quick release done up tight, you should not be able to move it by hand."
+      },
+      {
+        "who": "scoper",
+        "said": "Anything measured?"
+      },
+      {
+        "who": "shop",
+        "said": "Yeah we torque the axle nuts to 18 Nm on the e-bikes."
+      },
+      {
+        "who": "scoper",
+        "said": "Are the hire bikes quick release or bolt-up axles?"
+      },
+      {
+        "who": "shop",
+        "said": "Both, depends on the bike. Same check though."
+      }
+    ]
+  },
+  "expect": {
+    "equals": {
+      "mode": "ask"
+    },
+    "absent": [
+      "draft"
+    ],
+    "len_gte": {
+      "unresolved": 1
+    },
+    "mentions_any": {
+      "question": [
+        "quick release",
+        "bolt",
+        "axle",
+        "which",
+        "both",
+        "e-bike",
+        "differ"
+      ]
+    }
+  }
+}

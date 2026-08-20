@@ -1,0 +1,55 @@
+{
+  "agent": "foreman",
+  "title": "no stock no order reorder",
+  "why": "Nothing on the shelf and nothing on order is the one case that must raise a purchase order. A chase here waits forever on a delivery nobody asked for.",
+  "input": {
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-12T09:14:00Z",
+      "now": "2026-08-19T08:00:00Z",
+      "days_open": 7,
+      "asset_id": "CB500X-07",
+      "booking": "Customer collection booked 2026-08-21 16:00",
+      "steps_outstanding": 5
+    },
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves.",
+      "safety_critical": true
+    },
+    "recommendation": {
+      "reason_summary": "no pads on the shelf",
+      "blocker_kind": "part_missing",
+      "blocking_part": "EBC FA388HH front pads",
+      "proposed_status": "deferred",
+      "recommended_action": "order the pads",
+      "safety_flag": false
+    },
+    "stock": {
+      "EBC FA388HH front pads": 0,
+      "on order": "nothing on order for this part"
+    },
+    "history": [
+      "2026-08-12 job opened",
+      "2026-08-19 pads found to be out of stock"
+    ]
+  },
+  "expect": {
+    "equals": {
+      "action": "reorder"
+    },
+    "present": [
+      "reorder_part"
+    ],
+    "mentions_any": {
+      "reorder_part": [
+        "pad",
+        "FA388"
+      ]
+    },
+    "is_true": [
+      "hold_machine"
+    ]
+  }
+}

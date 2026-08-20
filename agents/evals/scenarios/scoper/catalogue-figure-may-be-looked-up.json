@@ -1,0 +1,41 @@
+{
+  "agent": "scoper",
+  "title": "catalogue figure may be looked up",
+  "why": "A published manufacturer figure is the one case where a bound does not have to come from the shop. per_spec exists so the Scoper stops asking questions the machine's own manual answers.",
+  "input": {
+    "shop": {
+      "trade": "motorcycle rental and workshop",
+      "machines": "12 Honda CB500X, 3 CRF300L",
+      "technicians": 2,
+      "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
+    },
+    "catalogue": {
+      "Honda CB500X 2021 front caliper mounting bolt": "30 Nm \u00b1 3, Honda service manual 2021",
+      "Honda CB500X front pad minimum thickness": "1.0 mm, Honda service manual 2021"
+    },
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "Front brake service, CB500X."
+      },
+      {
+        "who": "scoper",
+        "said": "What torque do the caliper bolts go to?"
+      },
+      {
+        "who": "shop",
+        "said": "Whatever Honda says, we go by the book on that one."
+      }
+    ]
+  },
+  "expect": {
+    "mentions_none": {
+      "question": [
+        "what torque do the caliper bolts"
+      ]
+    },
+    "min_words": {
+      "understanding": 8
+    }
+  }
+}

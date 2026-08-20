@@ -1,0 +1,57 @@
+{
+  "agent": "skeptic",
+  "title": "uploaded stock looking image dissents",
+  "why": "An uploaded, studio-lit, immaculate product photograph submitted as workshop evidence. Uses the editorial imagery already in the repo, which is exactly what a lifted stock image looks like.",
+  "input": {
+    "asset": {
+      "id": "CB500X-07",
+      "type": "motorcycle",
+      "model": "Honda CB500X 2021",
+      "marks": [
+        "deep diagonal scuff across the left fork lower, from a drop in 2025",
+        "plain circular sticker on the left yoke"
+      ],
+      "history": [
+        "2026-05-02 front pads replaced",
+        "2026-07-30 front tyre replaced",
+        "2026-08-12 front brake service opened"
+      ]
+    },
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-19T09:00:00Z",
+      "location": "Workshop, El Chalt\u00e9n"
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "upload",
+      "capture_surface": "browser",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "media": [
+      "brake/caliper-editorial-stockish.webp"
+    ],
+    "prior_media": [
+      "scene/workshop-interior.jpg"
+    ]
+  },
+  "expect": {
+    "is_false": [
+      "belongs"
+    ],
+    "mentions_any": {
+      "rationale": [
+        "upload",
+        "studio",
+        "lit",
+        "staged",
+        "stock",
+        "clean",
+        "not a workshop",
+        "background",
+        "cannot"
+      ]
+    }
+  }
+}

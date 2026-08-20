@@ -1,0 +1,45 @@
+{
+  "agent": "inspector",
+  "title": "label legible matches the spec",
+  "why": "The control for the glare case. matches resolves against a specific part number, so a readable label showing the right code is the one thing that should pass \u2014 and an agent that refuses this too is just refusing everything.",
+  "input": {
+    "step": {
+      "title": "Record the part fitted",
+      "max_add_fields": 2,
+      "explanation": "A record that does not say which part went in cannot answer the only question that matters after a failure: was it the right part."
+    },
+    "field": {
+      "key": "part_label",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the part number on the box of the pads you fitted",
+      "required_at_strictness": 1,
+      "acceptance_rule": "matches",
+      "acceptance_target": "the part number specified by the procedure: X004X2NVXZ",
+      "guidance": "The printed code has to be readable in the photograph. Watch for glare off the light."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "label/part-number-legible.jpg"
+    ],
+    "add_fields_used": 0
+  },
+  "expect": {
+    "equals": {
+      "verdict": "PASS"
+    },
+    "gte": {
+      "confidence": 0.6
+    },
+    "absent": [
+      "add_field_prompt",
+      "escalation_question"
+    ]
+  }
+}

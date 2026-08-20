@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:0b0b8d2be15c47b9",
+    "t:0f3fa5ac560e28f7",
+    "m:image/jpeg:afaa5abc5248644f"
+  ],
+  "labels": [
+    "",
+    "",
+    "scene/workshop-interior.jpg"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 1.0,
+    "rationale": "The image shows a Segway Xyber electric bike/motorcycle on a lift, whereas the claimed asset is a Honda CB500X 2021 motorcycle.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"The image shows a Segway Xyber electric bike/motorcycle on a lift, whereas the claimed asset is a Honda CB500X 2021 motorcycle.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 1894,
+    "candidatesTokenCount": 85,
+    "totalTokenCount": 2221
+  }
+}

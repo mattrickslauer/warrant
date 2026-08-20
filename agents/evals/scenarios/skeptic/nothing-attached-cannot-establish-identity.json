@@ -1,0 +1,52 @@
+{
+  "agent": "skeptic",
+  "title": "nothing attached cannot establish identity",
+  "why": "An absence is not a match. This is the degenerate input every harness should carry, because it is where a model is most likely to answer from the surrounding text alone.",
+  "input": {
+    "asset": {
+      "id": "CB500X-07",
+      "type": "motorcycle",
+      "model": "Honda CB500X 2021",
+      "marks": [
+        "deep diagonal scuff across the left fork lower, from a drop in 2025",
+        "plain circular sticker on the left yoke"
+      ],
+      "history": [
+        "2026-05-02 front pads replaced",
+        "2026-07-30 front tyre replaced",
+        "2026-08-12 front brake service opened"
+      ]
+    },
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-19T09:00:00Z",
+      "location": "Workshop, El Chalt\u00e9n"
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "media": [],
+    "prior_media": []
+  },
+  "expect": {
+    "is_false": [
+      "belongs"
+    ],
+    "lte": {
+      "confidence": 0.5
+    },
+    "mentions_any": {
+      "rationale": [
+        "no ",
+        "nothing",
+        "absent",
+        "not attached",
+        "missing"
+      ]
+    }
+  }
+}

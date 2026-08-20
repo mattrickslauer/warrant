@@ -1,0 +1,49 @@
+{
+  "agent": "foreman",
+  "title": "part on order chase",
+  "why": "A part already ordered with a known ETA is chased, not reordered \u2014 and a chase is worthless without chase_after, because nothing else will wake this job up.",
+  "input": {
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-12T09:14:00Z",
+      "now": "2026-08-19T08:00:00Z",
+      "days_open": 7,
+      "asset_id": "CB500X-07",
+      "booking": "Customer collection booked 2026-08-21 16:00",
+      "steps_outstanding": 5
+    },
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves.",
+      "safety_critical": true
+    },
+    "recommendation": {
+      "reason_summary": "no pads on the shelf",
+      "blocker_kind": "part_missing",
+      "blocking_part": "EBC FA388HH front pads",
+      "proposed_status": "deferred",
+      "recommended_action": "wait for the delivery",
+      "safety_flag": false
+    },
+    "stock": {
+      "EBC FA388HH front pads": 0,
+      "on order": "PO-2210 raised 2026-08-14, supplier ETA 2026-08-20"
+    },
+    "history": [
+      "2026-08-12 job opened",
+      "2026-08-14 pads found to be out of stock, PO-2210 raised"
+    ]
+  },
+  "expect": {
+    "equals": {
+      "action": "chase"
+    },
+    "present": [
+      "chase_after"
+    ],
+    "is_true": [
+      "hold_machine"
+    ]
+  }
+}

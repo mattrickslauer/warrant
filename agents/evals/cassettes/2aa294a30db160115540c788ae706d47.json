@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. ADD_FIELD when the evidence is insufficient but recoverable. ESCALATE when a person must decide.\n\nReturn JSON with these fields:\n- verdict (one of PASS | ADD_FIELD | ESCALATE, required)\n- confidence (number, required): 0 to 1. Below the strictness threshold you must not return PASS.\n- rationale (string, required): One or two sentences citing what in the evidence decided it. Never restate the prompt.\n- add_field_key (string, null when it does not apply): Required when verdict is ADD_FIELD. A new key, not an existing one.\n- add_field_kind (one of measurement | photo | video | scan | choice | text | signature | location, null when it does not apply)\n- add_field_prompt (string, null when it does not apply): The specific next ask, e.g. 'the label is out of focus, photograph it again'. Never a generic retry.\n- escalation_question (string, null when it does not apply): Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary.",
+  "parts": [
+    "t:08b19ecae1e9e962",
+    "t:8981bcb1449d7353",
+    "m:image/jpeg:f333b216b960a2cc"
+  ],
+  "labels": [
+    "",
+    "",
+    "brake/pads-seated-blurred.jpg"
+  ],
+  "output": {
+    "verdict": "ADD_FIELD",
+    "confidence": 0.9,
+    "rationale": "The provided image shows the caliper held in hand from a distance, making it impossible to clearly see the pad faces and verify the thickness of the friction material.",
+    "add_field_key": "front_caliper_pads_close_up",
+    "add_field_kind": "photo",
+    "add_field_prompt": "Please take a close-up photograph of the front caliper showing the faces of both new pads clearly so the thickness of the friction material can be verified.",
+    "escalation_question": null
+  },
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.9,\n  \"rationale\": \"The provided image shows the caliper held in hand from a distance, making it impossible to clearly see the pad faces and verify the thickness of the friction material.\",\n  \"add_field_key\": \"front_caliper_pads_close_up\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"Please take a close-up photograph of the front caliper showing the faces of both new pads clearly so the thickness of the friction material can be verified.\",\n  \"escalation_question\": null\n}",
+  "usage": {
+    "promptTokenCount": 2057,
+    "candidatesTokenCount": 144,
+    "totalTokenCount": 2710
+  }
+}

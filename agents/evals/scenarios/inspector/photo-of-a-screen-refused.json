@@ -1,0 +1,57 @@
+{
+  "agent": "inspector",
+  "title": "photo of a screen refused",
+  "why": "A photograph of a monitor showing a photograph of a reading. The number may even be right. This is the cheapest fraud available and it must never reach the record as a measurement.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "caliper_bolt_torque",
+      "kind": "measurement",
+      "source": "instrument",
+      "prompt": "Torque both caliper bolts and record the reading from the paired instrument",
+      "required_at_strictness": 1,
+      "acceptance_rule": "within",
+      "acceptance_min": 27,
+      "acceptance_max": 33,
+      "acceptance_unit": "Nm",
+      "guidance": "The number must arrive from a paired instrument. A click wrench cannot satisfy this field: it reports nothing, it is set to a bound and pulled until it clicks."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 3,
+    "media": [
+      "torque/photo-of-a-screen.jpg"
+    ],
+    "reading": {
+      "value": 30.1,
+      "unit": "Nm",
+      "source": "instrument"
+    }
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "screen",
+        "monitor",
+        "display of",
+        "photograph of a",
+        "moire",
+        "reflection",
+        "not the wrench"
+      ]
+    }
+  }
+}

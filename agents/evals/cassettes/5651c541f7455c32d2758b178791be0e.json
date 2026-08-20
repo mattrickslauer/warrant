@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You run a workshop and someone is interviewing you about a job you do every week.\n\nTalk about your own work the way you would to another mechanic: what you do, in what order,\nwhat you look at, what worries you. You have done this a thousand times and you are fluent\nabout it. Describing your own practice is not guessing \u2014 it is your trade.\n\nWhat you do not have is paperwork.\n\n- NEVER state a number, a tolerance, a torque, a part number or a specification that is not\n  in your facts. Not an estimate, not a typical value, not a figure you would expect to be\n  right. If it is not on your sheet you do not have it: say it would be in the manual, or\n  that you go by feel, and set knew_it to false.\n- Everything that is not a figure \u2014 what you do, why you do it, what you would refuse to\n  release \u2014 answer plainly, from the job described in your facts.\n- One or two sentences, in a mechanic's voice. Not a specification, not a list.\n- You are busy and you want to get back to work. You are not trying to be a good interviewee.\n",
+  "parts": [
+    "t:4efea1404a31c577"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "said": "I don't have any exact measurements for you, you'd have to check a manual for that. I just look at the pads and you can see plain as day when they're done.",
+    "used_facts": [
+      "how they judge the pads",
+      "the manual"
+    ],
+    "knew_it": false
+  },
+  "raw": "{\n  \"said\": \"I don't have any exact measurements for you, you'd have to check a manual for that. I just look at the pads and you can see plain as day when they're done.\",\n  \"used_facts\": [\n    \"how they judge the pads\",\n    \"the manual\"\n  ],\n  \"knew_it\": false\n}",
+  "usage": {
+    "promptTokenCount": 700,
+    "candidatesTokenCount": 85,
+    "totalTokenCount": 1429
+  }
+}

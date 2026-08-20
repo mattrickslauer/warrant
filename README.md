@@ -245,7 +245,7 @@ has ground truth for free.
 |---|---|
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI |
 | Volume classification | **Gemma** |
-| Framework | **Agent Development Kit** |
+| Framework | **Google GenAI SDK** — the live path in `agents/warrant/model.py` |
 | Long-running jobs spanning days | **Agent Runtime** — up to 7 days of continuous execution |
 | Publishing and versioning agents | **Agent Registry** |
 | Asset history across services | **Memory Bank** |

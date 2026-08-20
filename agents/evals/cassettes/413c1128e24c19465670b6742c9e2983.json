@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:a4cf919a6899db7c"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "there's no pads on the shelf. The EBC ones. Bin's empty, I checked the back as well.",
+    "blocker_kind": "part_missing",
+    "recommended_action": "Stop and hand off to parts procurement to order EBC FA388HH front pads.",
+    "proposed_status": "deferred",
+    "blocking_part": "EBC FA388HH front pads",
+    "safety_flag": false
+  },
+  "raw": "{\n  \"reason_summary\": \"there's no pads on the shelf. The EBC ones. Bin's empty, I checked the back as well.\",\n  \"blocker_kind\": \"part_missing\",\n  \"recommended_action\": \"Stop and hand off to parts procurement to order EBC FA388HH front pads.\",\n  \"proposed_status\": \"deferred\",\n  \"blocking_part\": \"EBC FA388HH front pads\",\n  \"safety_flag\": false\n}",
+  "usage": {
+    "promptTokenCount": 1058,
+    "candidatesTokenCount": 113,
+    "totalTokenCount": 1751
+  }
+}

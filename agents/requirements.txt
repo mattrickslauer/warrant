@@ -1,0 +1,15 @@
+# The agent framework. Live calls go through the Google GenAI SDK against Vertex AI —
+# `agents/warrant/model.py` is the one place that happens.
+google-genai>=2.19            # Gemini via Vertex AI, with schema-constrained output
+
+# Replaying the recorded suite needs NONE of the above. The SDK is imported lazily, inside
+# the live branch only, so a judge who clones this repo can run every scenario against the
+# checked-in cassettes on the standard library alone — no SDK, no cloud account, no
+# credentials, nothing at risk.
+#
+#   python3 -m evals run            # replay, offline, free
+#   python3 -m evals run --live     # calls Vertex, records new cassettes
+
+# These two are for testing.
+jsonschema>=4.23        # validates every answer against contract/agents/*.schema.json
+pytest>=8.0             # the harness's own tests

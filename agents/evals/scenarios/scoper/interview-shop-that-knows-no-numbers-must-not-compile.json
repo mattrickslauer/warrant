@@ -1,0 +1,67 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "a shop that knows no numbers must not yield a compiled procedure",
+  "why": "The refusal, run to its end. This shop does the job entirely by feel and has no figure for anything \u2014 every answer is a shrug. There is no correct procedure to compile here, so the only correct outcome is that the Scoper keeps asking and finishes the interview with the missing figures still named in unresolved. An agent that compiles anyway has written a specification out of nothing, and the shop would never learn which numbers were theirs and which were the model's.",
+  "input": {
+    "shop": {
+      "trade": "small independent bike shop, mostly commuters",
+      "machines": "whatever comes through the door",
+      "technicians": 1,
+      "stakes": "customers ride these in city traffic; if a brake job is wrong someone gets hurt"
+    },
+    "facts": {
+      "what the job is": "brake pads front and back, that's the main one",
+      "how they judge the pads": "you can see when they're done, you just look at them",
+      "how they torque things": "by feel, been doing it thirty years, you know when it's right",
+      "the manual": "haven't got the book for half of what comes in",
+      "who signs it off": "just me",
+      "evidence they keep": "nothing, it goes on the invoice and that's it"
+    },
+    "max_turns": 8
+  },
+  "expect": {
+    "is_false": [
+      "compiled"
+    ],
+    "absent": [
+      "draft",
+      "invented_bounds"
+    ],
+    "is_true": [
+      "traceable"
+    ],
+    "gte": {
+      "shop_shrugs": 1
+    },
+    "len_gte": {
+      "unresolved": 1
+    },
+    "mentions_any": {
+      "unresolved": [
+        "torque",
+        "thick",
+        "mm",
+        "Nm",
+        "figure",
+        "number",
+        "spec",
+        "wear",
+        "limit",
+        "criteria",
+        "thin",
+        "depth",
+        "measure",
+        "determine",
+        "how to tell",
+        "worn",
+        "replacement",
+        "replace",
+        "acceptable",
+        "constitutes",
+        "tolerance",
+        "how much"
+      ]
+    }
+  }
+}

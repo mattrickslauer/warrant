@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here.\n\nReturn JSON with these fields:\n- status (one of deferred | waived | impossible, required): deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect.\n- action (one of chase | reorder | escalate | revise, required)\n- rationale (string, required): Why this disposition and not the others. This is read by a person in a dispute months later.\n- chase_after (string, null when it does not apply): ISO 8601 UTC. When to wake and check. Required when action is chase.\n- reorder_part (string, null when it does not apply): Required when action is reorder. A purchase order is DRAFTED, never sent.\n- escalate_to_role (string, null when it does not apply): Required when action is escalate. The role that must decide, not a person's name.\n- hold_machine (boolean, required): Your recommendation. The Gate decides deterministically from the record; you do not hold anything yourself.",
+  "parts": [
+    "t:d771b6bd902ebdd9"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "status": "deferred",
+    "action": "chase",
+    "rationale": "The required front brake pads (EBC FA388HH) are currently out of stock but are already on order under PO-2210 with an expected supplier ETA of 2026-08-20. Since the machine's safety depends on this step, we must defer the job and hold the machine. We will check the delivery status on 2026-08-20.",
+    "chase_after": "2026-08-20T12:00:00Z",
+    "reorder_part": null,
+    "escalate_to_role": null,
+    "hold_machine": true
+  },
+  "raw": "{\n  \"status\": \"deferred\",\n  \"action\": \"chase\",\n  \"rationale\": \"The required front brake pads (EBC FA388HH) are currently out of stock but are already on order under PO-2210 with an expected supplier ETA of 2026-08-20. Since the machine's safety depends on this step, we must defer the job and hold the machine. We will check the delivery status on 2026-08-20.\",\n  \"chase_after\": \"2026-08-20T12:00:00Z\",\n  \"reorder_part\": null,\n  \"escalate_to_role\": null,\n  \"hold_machine\": true\n}",
+  "usage": {
+    "promptTokenCount": 1188,
+    "candidatesTokenCount": 176,
+    "totalTokenCount": 2109
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:2ccbf9cb0692cc5f"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "Customer's turned up and taken it. Said he needed it for the weekend and he'd bring it back Monday. It's gone, mate.",
+    "blocker_kind": "machine_absent",
+    "recommended_action": "Stop work immediately and notify the Foreman that the vehicle was taken mid-service with incomplete front brakes.",
+    "proposed_status": "deferred",
+    "blocking_part": null,
+    "safety_flag": true
+  },
+  "raw": "{\"reason_summary\":\"Customer's turned up and taken it. Said he needed it for the weekend and he'd bring it back Monday. It's gone, mate.\",\"blocker_kind\":\"machine_absent\",\"recommended_action\":\"Stop work immediately and notify the Foreman that the vehicle was taken mid-service with incomplete front brakes.\",\"proposed_status\":\"deferred\",\"blocking_part\":null,\"safety_flag\":true}",
+  "usage": {
+    "promptTokenCount": 1055,
+    "candidatesTokenCount": 91,
+    "totalTokenCount": 1858
+  }
+}

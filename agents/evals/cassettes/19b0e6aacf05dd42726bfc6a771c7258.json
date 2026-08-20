@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:e46548f31b5687b8",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:afaa5abc5248644f",
+    "t:0f3fa5ac560e28f7",
+    "m:image/webp:95396cd3d1d002dc"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:scene/workshop-interior.jpg",
+    "",
+    "brake/caliper-editorial-stockish.webp"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The submitted image is a highly stylized, studio-lit product photograph of a brake caliper and disc rotor rather than a real-world photo of the Honda CB500X-07 motorcycle at the workshop. It does not show the actual vehicle or any of its distinguishing marks, indicating it is likely a stock or promotional image.",
+    "mismatch_kind": "scene",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The submitted image is a highly stylized, studio-lit product photograph of a brake caliper and disc rotor rather than a real-world photo of the Honda CB500X-07 motorcycle at the workshop. It does not show the actual vehicle or any of its distinguishing marks, indicating it is likely a stock or promotional image.\",\n  \"mismatch_kind\": \"scene\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3051,
+    "candidatesTokenCount": 116,
+    "totalTokenCount": 4043
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "agent": "inspector",
+  "title": "no media at all cannot pass",
+  "why": "Nothing was captured. An agent that reasons from the step description alone will produce a confident verdict about evidence that does not exist.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "pads_seated",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the new pads seated in the caliper before the wheel goes back on",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "both new pads in place in the FRONT caliper, friction material thick and unworn, close enough that the pad faces can be seen",
+      "guidance": "Get close, get the caliper filling the frame, and make sure both pads are visible."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": []
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "no ",
+        "nothing",
+        "absent",
+        "not supplied",
+        "missing"
+      ]
+    },
+    "lte": {
+      "confidence": 0.5
+    }
+  }
+}

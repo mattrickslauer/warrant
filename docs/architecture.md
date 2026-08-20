@@ -521,7 +521,7 @@ be**, not because we ran out of time.
 |---|---|
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI |
 | Volume classification | **Gemma** |
-| Framework | **ADK** |
+| Framework | **Google GenAI SDK** (`google-genai`), Vertex AI backend |
 | Long-running jobs spanning days | **Agent Runtime** — up to 7 days continuous |
 | Publishing and versioning agents | **Agent Registry** |
 | Asset history across services | **Memory Bank** |

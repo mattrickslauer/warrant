@@ -1,0 +1,48 @@
+{
+  "agent": "inspector",
+  "title": "worn to backing plate fails the wear check",
+  "why": "The judgement the shop actually cares about. Pads worn through to metal must not pass a check asking whether usable material remains.",
+  "input": {
+    "step": {
+      "title": "Check remaining pad material before deciding to replace",
+      "max_add_fields": 2,
+      "explanation": "Pads worn to the backing plate destroy the disc, which turns a 40 pound job into a 300 pound one, and the bike is unsafe long before that."
+    },
+    "field": {
+      "key": "pad_material_remaining",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the pads in place so the remaining material can be judged",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "the friction material of the pads, close enough to judge whether any usable thickness remains above the backing plate",
+      "guidance": "Side on to the pad edge is what shows thickness. Straight at the face shows nothing."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "brake/pads-worn-to-backing.jpg"
+    ]
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "worn",
+        "backing",
+        "metal",
+        "no material",
+        "replace"
+      ]
+    }
+  }
+}

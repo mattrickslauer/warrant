@@ -1,0 +1,145 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:bc36e7f162c0752f"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We are establishing the post-rental brake safety inspection for your rental fleet. This includes checking pad thickness, inspecting for fluid leaks, capturing a photo of the installed pads, performing a road test, and signing off.",
+    "draft": {
+      "key": "post-rental-brake-inspection",
+      "title": "Post-Rental Brake Safety Inspection",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Fork oil or brake fluid present on the brake disc"
+      ],
+      "releases": [
+        "Ready for rental"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Brake Pads and Disc",
+          "explanation": "To prevent brake failure on gravel passes, pads must have sufficient material and the disc must be free of contaminating fluids.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "prompt": "Measure or estimate the remaining brake pad thickness.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 2,
+              "acceptance_max": null,
+              "acceptance_unit": "mm",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Pads must be at least 2 mm thick. If they are thinner, they must be binned and replaced."
+            },
+            {
+              "key": "disc_contamination",
+              "kind": "choice",
+              "prompt": "Is there any fork oil or brake fluid leaking onto the disc?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No leaks",
+                "Oil or fluid present on disc"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No leaks",
+              "acceptance_description": null,
+              "guidance": "The disc must be completely dry. Any oil or fluid on the disc puts the bike on immediate hold."
+            }
+          ]
+        },
+        {
+          "title": "Document Pad Installation",
+          "explanation": "Taking a photo of the pads in the caliper before the wheel goes back on proves they were correctly installed and checked.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_in_caliper_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the pads sitting in the caliper before putting the wheel back on.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Clear view of the brake pads seated inside the caliper",
+              "guidance": "Ensure the photo clearly shows the pads positioned in the caliper before the wheel is reinstalled."
+            }
+          ]
+        },
+        {
+          "title": "Bed-In Road Test",
+          "explanation": "Performing gentle stops ensures the pads are properly seated and the brakes are fully functional before rental.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bed_in_stops",
+              "kind": "measurement",
+              "prompt": "Perform gentle stops down the lane to bed the pads in and enter the number of stops completed.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 20,
+              "acceptance_max": null,
+              "acceptance_unit": "stops",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Perform at least 20 gentle stops down the lane to ensure everything is seated."
+            }
+          ]
+        },
+        {
+          "title": "Sign-Off",
+          "explanation": "Either authorized technician must sign off to certify the bike is safe for rental.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "technician_signature",
+              "kind": "signature",
+              "prompt": "Sign to certify that the brakes have been inspected, tested, and are safe for rental.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Must be signed by one of the two authorized technicians."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"We are establishing the post-rental brake safety inspection for your rental fleet. This includes checking pad thickness, inspecting for fluid leaks, capturing a photo of the installed pads, performing a road test, and signing off.\",\n  \"draft\": {\n    \"key\": \"post-rental-brake-inspection\",\n    \"title\": \"Post-Rental Brake Safety Inspection\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Fork oil or brake fluid present on the brake disc\"\n    ],\n    \"releases\": [\n      \"Ready for rental\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Brake Pads and Disc\",\n        \"explanation\": \"To prevent brake failure on gravel passes, pads must have sufficient material and the disc must be free of contaminating fluids.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_thickness\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Measure or estimate the remaining brake pad thickness.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 2,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"mm\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Pads must be at least 2 mm thick. If they are thinner, they must be binned and replaced.\"\n          },\n          {\n            \"key\": \"disc_contamination\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is there any fork oil or brake fluid leaking onto the disc?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No leaks\",\n              \"Oil or fluid present on disc\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No leaks\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The disc must be completely dry. Any oil or fluid on the disc puts the bike on immediate hold.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Document Pad Installation\",\n        \"explanation\": \"Taking a photo of the pads in the caliper before the wheel goes back on proves they were correctly installed and checked.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_in_caliper_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the pads sitting in the caliper before putting the wheel back on.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Clear view of the brake pads seated inside the caliper\",\n            \"guidance\": \"Ensure the photo clearly shows the pads positioned in the caliper before the wheel is reinstalled.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed-In Road Test\",\n        \"explanation\": \"Performing gentle stops ensures the pads are properly seated and the brakes are fully functional before rental.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bed_in_stops\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Perform gentle stops down the lane to bed the pads in and enter the number of stops completed.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 20,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"stops\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Perform at least 20 gentle stops down the lane to ensure everything is seated.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Sign-Off\",\n        \"explanation\": \"Either authorized technician must sign off to certify the bike is safe for rental.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"technician_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to certify that the brakes have been inspected, tested, and are safe for rental.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Must be signed by one of the two authorized technicians.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 2927,
+    "candidatesTokenCount": 1258,
+    "totalTokenCount": 7883
+  }
+}

@@ -34,3 +34,7 @@ __pycache__/
 # Transient deploy scratch — the Identity Platform config is fetched, merged, and deleted.
 .warrant-idp-config.json
 .warrant-domains.json
+
+# The raw phone drop for the eval corpus. The photographs live resized and stripped under
+# agents/evals/media/; the 149 MB original is an archive, not a repo artifact.
+Warrant-training.zip

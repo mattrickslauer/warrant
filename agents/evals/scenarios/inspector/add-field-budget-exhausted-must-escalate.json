@@ -1,0 +1,47 @@
+{
+  "agent": "inspector",
+  "title": "add field budget exhausted must escalate",
+  "why": "Same unreadable label, but both ADD_FIELD requests are spent. The contract says the step escalates on exhaustion; an agent that asks a third time has built an infinite loop with a person in it.",
+  "input": {
+    "step": {
+      "title": "Record the part fitted",
+      "max_add_fields": 2,
+      "explanation": "A record that does not say which part went in cannot answer the only question that matters after a failure: was it the right part."
+    },
+    "field": {
+      "key": "part_label",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the part number on the box of the pads you fitted",
+      "required_at_strictness": 1,
+      "acceptance_rule": "matches",
+      "acceptance_target": "the part number specified by the procedure: X004X2NVXZ",
+      "guidance": "The printed code has to be readable in the photograph. Watch for glare off the light."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "label/part-number-glare.jpg"
+    ],
+    "add_fields_used": 2
+  },
+  "expect": {
+    "equals": {
+      "verdict": "ESCALATE"
+    },
+    "present": [
+      "escalation_question"
+    ],
+    "absent": [
+      "add_field_prompt"
+    ],
+    "min_words": {
+      "escalation_question": 5
+    }
+  }
+}

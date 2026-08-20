@@ -1,0 +1,49 @@
+{
+  "agent": "skeptic",
+  "title": "ambiguous evidence must not be waved through",
+  "why": "Nothing identifying is visible and there is no prior capture to compare against. The contract is explicit: if you cannot establish identity, dissent. Confident agreement here is the failure.",
+  "input": {
+    "asset": {
+      "id": "CB500X-07",
+      "type": "motorcycle",
+      "model": "Honda CB500X 2021",
+      "marks": [
+        "none recorded"
+      ],
+      "history": [
+        "2026-05-02 front pads replaced",
+        "2026-07-30 front tyre replaced",
+        "2026-08-12 front brake service opened"
+      ]
+    },
+    "job": {
+      "id": "J-4471",
+      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "opened_at": "2026-08-19T09:00:00Z",
+      "location": "Workshop, El Chalt\u00e9n"
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "upload",
+      "capture_surface": "browser",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "media": [
+      "scene/workshop-interior.jpg"
+    ],
+    "prior_media": []
+  },
+  "expect": {
+    "is_false": [
+      "belongs"
+    ],
+    "not_in": {
+      "mismatch_kind": [
+        "none"
+      ]
+    },
+    "min_words": {
+      "rationale": 5
+    }
+  }
+}

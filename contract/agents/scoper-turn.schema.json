@@ -1,0 +1,71 @@
+{
+  "title": "ScoperTurn",
+  "type": "object",
+  "description": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do — a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.",
+  "properties": {
+    "mode": { "type": "string", "enum": ["ask", "compile"],
+              "description": "ask while anything material is unstated. compile once the procedure would run unambiguously." },
+    "question": { "type": "string", "nullable": true,
+                  "description": "Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer." },
+    "asks_about": { "type": "string", "nullable": true,
+                    "enum": ["scope", "sequence", "tolerance", "evidence", "failure", "authority", "parts", "safety"],
+                    "description": "Which class of unknown this question closes. Required when mode is ask." },
+    "unresolved": { "type": "array", "items": { "type": "string" },
+                    "description": "Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile." },
+    "understanding": { "type": "string",
+                       "description": "What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end." },
+    "draft": {
+      "type": "object",
+      "nullable": true,
+      "description": "Required when mode is compile. The procedure as it would run tomorrow.",
+      "properties": {
+        "key": { "type": "string", "description": "Stable slug across versions, e.g. front-brake-service." },
+        "title": { "type": "string" },
+        "strictness": { "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated. Chosen from what the shop said is at stake, not from ambition." },
+        "minimum_tier": { "type": "string", "enum": ["open", "attested", "instrumented"],
+                          "description": "Derived, never chosen: instrumented if any field has source instrument, attested if any field needs a trustworthy time or place, open otherwise." },
+        "disqualifiers": { "type": "array", "items": { "type": "string" },
+                           "description": "Findings that stop the job and hold the machine whatever else passed." },
+        "releases": { "type": "array", "items": { "type": "string" },
+                      "description": "What this procedure, completed, entitles the machine to do." },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "explanation": { "type": "string", "description": "WHY this step exists and what goes wrong without it, in the shop's own terms. A step nobody can justify is a step to cut." },
+              "condition": { "type": "string", "nullable": true, "description": "Show only if. Null means always." },
+              "max_add_fields": { "type": "integer", "description": "How many times the Inspector may ask for more before the step escalates to a person. 2 unless the shop said otherwise." },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": { "type": "string" },
+                    "kind": { "type": "string", "enum": ["measurement", "photo", "video", "scan", "choice", "text", "signature", "location"] },
+                    "prompt": { "type": "string", "description": "What to do, addressed to the technician." },
+                    "source": { "type": "string", "enum": ["instrument", "camera", "human"] },
+                    "required_at_strictness": { "type": "integer" },
+                    "choices": { "type": "array", "items": { "type": "string" } },
+                    "acceptance_rule": { "type": "string", "enum": ["within", "matches", "must_show", "consistent_with", "per_spec", "signed_by"] },
+                    "acceptance_min": { "type": "number", "nullable": true },
+                    "acceptance_max": { "type": "number", "nullable": true },
+                    "acceptance_unit": { "type": "string", "nullable": true },
+                    "acceptance_target": { "type": "string", "nullable": true },
+                    "acceptance_description": { "type": "string", "nullable": true },
+                    "guidance": { "type": "string", "description": "What good looks like, shown to the technician BEFORE the capture. The same rule the Inspector applies after it." }
+                  },
+                  "required": ["key", "kind", "prompt", "source", "required_at_strictness", "acceptance_rule", "guidance"]
+                }
+              }
+            },
+            "required": ["title", "explanation", "max_add_fields", "fields"]
+          }
+        }
+      },
+      "required": ["key", "title", "strictness", "minimum_tier", "steps"]
+    }
+  },
+  "required": ["mode", "unresolved", "understanding"]
+}

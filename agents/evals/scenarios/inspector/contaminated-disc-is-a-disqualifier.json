@@ -1,0 +1,49 @@
+{
+  "agent": "inspector",
+  "title": "contaminated disc is a disqualifier",
+  "why": "Fluid on the disc is the shop's stated instant-stop condition. This is the money shot: the verdict that holds a machine back from service.",
+  "input": {
+    "step": {
+      "title": "Inspect the disc face for contamination",
+      "max_add_fields": 1,
+      "explanation": "Fluid on a disc means the pads are contaminated too. Cleaning the disc and leaving the pads in is the shortcut that puts a bike out with no front brake."
+    },
+    "field": {
+      "key": "disc_clean",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the disc face",
+      "required_at_strictness": 2,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "a dry, uncontaminated disc face with no fluid on it",
+      "guidance": "Any wet run on the disc is an instant fail and the job stops."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "brake/disc-contaminated-fluid.jpg"
+    ],
+    "add_fields_used": 0
+  },
+  "expect": {
+    "not_in": {
+      "verdict": [
+        "PASS"
+      ]
+    },
+    "mentions_any": {
+      "rationale": [
+        "fluid",
+        "contaminat",
+        "wet",
+        "run",
+        "leak"
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "interviews a shop to a compiled procedure without inventing a figure",
+  "why": "The whole product in one scenario. The shop holds three real figures and does not hold a fourth, and the Scoper has to reach a procedure that runs tomorrow using only what it was told. Every bound in the compiled draft is checked against the numbers the shop actually said aloud; a figure that appears here and nowhere in the transcript was fabricated, and would enter every future record indistinguishable from one a person set.",
+  "input": {
+    "shop": {
+      "trade": "motorcycle rental and workshop",
+      "machines": "12 Honda CB500X, 3 CRF300L",
+      "technicians": 2,
+      "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
+    },
+    "facts": {
+      "what the job is": "front brake service on the CB500X \u2014 pads out, everything cleaned up, pads in, torque the caliper back on, bed them in down the lane",
+      "pad wear limit": "we bin the pads at 2 mm of friction material, anything less and they go",
+      "caliper bolt torque": "30 Nm on the two caliper mounting bolts, that's out of the Honda book",
+      "who signs it off": "either of the two of us can sign it off, no supervisor",
+      "what stops the job dead": "if there's fork oil or brake fluid down the disc the bike doesn't go out at all, that's a hold \u2014 new pads won't fix a contaminated disc",
+      "evidence they already keep": "we photograph the pads sat in the caliper before the wheel goes back on, always have",
+      "how many bikes at once": "usually two or three bikes get done the same morning",
+      "bedding in": "twenty or so gentle stops down the lane before it goes back on the rack"
+    },
+    "max_turns": 14
+  },
+  "expect": {
+    "is_true": [
+      "compiled",
+      "traceable"
+    ],
+    "is_false": [
+      "hit_turn_cap"
+    ],
+    "absent": [
+      "invented_bounds"
+    ],
+    "lte": {
+      "turns": 14
+    },
+    "len_gte": {
+      "draft.steps": 2,
+      "bounds": 1
+    },
+    "mentions_any": {
+      "asked_about": [
+        "tolerance",
+        "evidence"
+      ],
+      "draft.disqualifiers": [
+        "contaminat",
+        "fluid",
+        "oil",
+        "disc"
+      ]
+    }
+  }
+}

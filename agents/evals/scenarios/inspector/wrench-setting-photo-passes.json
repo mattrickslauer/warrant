@@ -1,0 +1,45 @@
+{
+  "agent": "inspector",
+  "title": "a wrench setting passes the field written for it",
+  "why": "The control for the case above. Same wrench, same photograph — but the procedure asks for the setting instead of pretending the tool reports a reading, and the record files it as asserted. An agent that refuses this too has not learned the distinction, it has just learned to refuse torque.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "caliper_bolt_torque_setting",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the wrench barrel showing what you set it to, then torque both caliper bolts to the click",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 27-33 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
+      "guidance": "Square on to the barrel so the number and the scale it sits on are both legible. This records what the tool was SET to. It is not a measurement of the bolt and the record files it as asserted."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 1,
+    "media": [
+      "torque/wrench-setting-in-spec.jpg",
+      "torque/wrench-on-fastener.jpg"
+    ]
+  },
+  "expect": {
+    "equals": {
+      "verdict": "PASS"
+    },
+    "gte": {
+      "confidence": 0.6
+    },
+    "absent": [
+      "add_field_prompt",
+      "escalation_question"
+    ]
+  }
+}

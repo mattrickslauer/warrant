@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. ADD_FIELD when the evidence is insufficient but recoverable. ESCALATE when a person must decide.\n\nReturn JSON with these fields:\n- verdict (one of PASS | ADD_FIELD | ESCALATE, required)\n- confidence (number, required): 0 to 1. Below the strictness threshold you must not return PASS.\n- rationale (string, required): One or two sentences citing what in the evidence decided it. Never restate the prompt.\n- add_field_key (string, null when it does not apply): Required when verdict is ADD_FIELD. A new key, not an existing one.\n- add_field_kind (one of measurement | photo | video | scan | choice | text | signature | location, null when it does not apply)\n- add_field_prompt (string, null when it does not apply): The specific next ask, e.g. 'the label is out of focus, photograph it again'. Never a generic retry.\n- escalation_question (string, null when it does not apply): Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary.",
+  "parts": [
+    "t:01f326d2b0df039e",
+    "t:ceeb135790989f12"
+  ],
+  "labels": [
+    "",
+    ""
+  ],
+  "output": {
+    "verdict": "ADD_FIELD",
+    "confidence": 1.0,
+    "rationale": "The torque reading was manually entered instead of being transmitted from a paired instrument as required. A photo of the torque wrench display is needed to verify the measurement.",
+    "add_field_key": "caliper_bolt_torque_photo",
+    "add_field_kind": "photo",
+    "add_field_prompt": "Please take a clear photo of the digital torque wrench display showing the torque reading for the caliper bolts.",
+    "escalation_question": null
+  },
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 1.0,\n  \"rationale\": \"The torque reading was manually entered instead of being transmitted from a paired instrument as required. A photo of the torque wrench display is needed to verify the measurement.\",\n  \"add_field_key\": \"caliper_bolt_torque_photo\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"Please take a clear photo of the digital torque wrench display showing the torque reading for the caliper bolts.\",\n  \"escalation_question\": null\n}",
+  "usage": {
+    "promptTokenCount": 1022,
+    "candidatesTokenCount": 132,
+    "totalTokenCount": 1662
+  }
+}

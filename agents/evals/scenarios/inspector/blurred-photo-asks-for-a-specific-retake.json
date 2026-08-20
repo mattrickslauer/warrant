@@ -1,0 +1,57 @@
+{
+  "agent": "inspector",
+  "title": "blurred photo asks for a specific retake",
+  "why": "Recoverable insufficiency is the ADD_FIELD case, and the request has to name what was wrong. 'Please retake' teaches the technician nothing and produces a second identical blurry photo.",
+  "input": {
+    "step": {
+      "title": "Fit the new pads and torque the caliper bolts",
+      "max_add_fields": 2,
+      "explanation": "An under-torqued caliper bolt backs out under braking heat and the caliper moves. This is the step that kills someone if it is skipped."
+    },
+    "field": {
+      "key": "pads_seated",
+      "kind": "photo",
+      "source": "camera",
+      "prompt": "Photograph the new pads seated in the caliper before the wheel goes back on",
+      "required_at_strictness": 1,
+      "acceptance_rule": "must_show",
+      "acceptance_description": "both new pads in place in the FRONT caliper, friction material thick and unworn, close enough that the pad faces can be seen",
+      "guidance": "Get close, get the caliper filling the frame, and make sure both pads are visible."
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app_instrument",
+      "created_at": "2026-08-19T10:41:00Z"
+    },
+    "strictness": 2,
+    "media": [
+      "brake/pads-seated-blurred.jpg"
+    ],
+    "add_fields_used": 0
+  },
+  "expect": {
+    "equals": {
+      "verdict": "ADD_FIELD"
+    },
+    "present": [
+      "add_field_prompt",
+      "add_field_key"
+    ],
+    "mentions_any": {
+      "add_field_prompt": [
+        "focus",
+        "blur",
+        "sharp",
+        "still",
+        "again"
+      ]
+    },
+    "mentions_none": {
+      "add_field_prompt": [
+        "please try again",
+        "retake the photo."
+      ]
+    }
+  }
+}
