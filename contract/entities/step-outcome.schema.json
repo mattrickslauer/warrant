@@ -25,6 +25,13 @@
 
     "waived_by": { "type": "string", "nullable": true, "description": "Required when status is waived. A named person with the standing to waive." },
     "provenance_class": { "type": "string", "enum": ["asserted"], "nullable": true, "description": "A stated reason is always asserted — a named human said it, at this time." },
+
+    "add_fields_used": { "type": "integer", "description": "How many times an agent has asked for one more field on this step. Bounded by Step.max_add_fields, and enforced server-side rather than trusted to the agent that asks." },
+    "added_fields":    { "type": "array", "items": { "$ref": "field-def" }, "description": "Fields an agent appended because the declared evidence was insufficient. They are as required as the declared ones." },
+    "accepted_fields": { "type": "array", "items": { "type": "string" }, "description": "Field keys whose evidence has been accepted. A step is performed when every required field appears here — never before, and never because one field passed." },
+    "escalation_question": { "type": "string", "nullable": true, "description": "The unresolved question an agent raised for a person. The step stays pending: an escalation is a decision awaited, not a status of its own, and a step that is escalated has still not been performed." },
+    "hold_reason":   { "type": "string", "nullable": true, "description": "Why the step did not advance. Written when an agent answered but the answer could not be acted on — a malformed verdict, an unreachable fleet, an unestablished belonging. On the record rather than in a log." },
+    "adjudicated_at": { "type": "string", "nullable": true, "description": "When the fleet last ruled on this step." },
     "fields": { "type": "array", "items": { "$ref": "field" } }
   },
   "required": ["id", "job_id", "step_id", "status", "fields"]

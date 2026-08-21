@@ -12,7 +12,7 @@
 #   2. the token source generates for both stacks
 #   3. every fixture typechecks against the generated contract
 #   4. every surface renders from FixtureSource alone, with no backend
-#   5. tenancy holds — firestore.rules executed against the real rules engine
+#   5. tenancy holds, and a verdict becomes a decision — against the real rules engine
 #   6. the five agents obey their contracts, and the scenario corpus replays
 #   7. optionally, a real browser drives a procedure through to a sealed record
 
@@ -34,6 +34,14 @@ cd web
 npm run gen >/dev/null
 npx tsc --noEmit
 echo "ok — every fixture matches the generated types"
+
+# The adjudication spine, minus anything that needs a network or a database. The outcome
+# table is the one worth reading: it is where a model's verdict stops being an opinion and
+# becomes a step transition, and every way a model can be wrong is a row in it.
+node --experimental-strip-types --conditions=react-server --import ./scripts/ts-resolve.mjs \
+  --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs 2>&1 \
+  | grep -E '^# (tests|pass|fail)'
+echo "ok — the outcome table, the case builders and the fleet client hold"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null
@@ -67,7 +75,7 @@ if [ -n "$RULES_JAVA" ] && [ -x "$ROOT/web/node_modules/.bin/firebase" ]; then
       --project warrant-rules-test --only firestore --config "$ROOT/firebase.json" \
       'node --experimental-strip-types --test web/scripts/rules.test.mjs
        cd web && node --experimental-strip-types --conditions=react-server \
-         --import ./scripts/ts-resolve.mjs --test scripts/live-source.test.mjs' \
+         --import ./scripts/ts-resolve.mjs --test scripts/live-source.test.mjs scripts/adjudicate.test.mjs' \
     > /tmp/warrant-rules.log 2>&1 \
     || { echo "TENANCY FAILED — see the report below"; grep -E '^(not ok|  +error:)' /tmp/warrant-rules.log | head -20; exit 1; }
   grep -E '^# (tests|pass|fail)' /tmp/warrant-rules.log
