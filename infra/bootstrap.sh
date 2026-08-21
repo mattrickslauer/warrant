@@ -35,6 +35,36 @@ echo "enabled:"
 gcloud services list --enabled --project="$PROJECT" \
   --format='value(config.name)' | sort | sed 's/^/  /'
 
+# --- the adjudicator ------------------------------------------------------------------
+#
+# Separate from warrant-web ON PURPOSE. warrant-web mints session cookies and reads
+# Firestore; nothing that can do that should also be able to run models. Sourcing .env and
+# calling Vertex as warrant-web fails with a 403 on aiplatform.endpoints.predict that reads
+# exactly like the model not existing — which is the whole reason this account exists.
+
+ADJ="warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com"
+
+if ! gcloud iam service-accounts describe "$ADJ" --project "$PROJECT" >/dev/null 2>&1; then
+  echo "creating $ADJ"
+  gcloud iam service-accounts create warrant-adjudicator --project "$PROJECT" \
+    --display-name "Warrant adjudicator" \
+    --description "Calls the agent fleet and writes decisions. Cannot mint sessions."
+fi
+
+for ROLE in roles/aiplatform.user roles/datastore.user roles/storage.objectViewer; do
+  gcloud projects add-iam-policy-binding "$PROJECT" \
+    --member "serviceAccount:$ADJ" --role "$ROLE" --condition=None >/dev/null
+done
+
+# The Cloud Run runtime identity must be allowed to BECOME the adjudicator. Without this the
+# impersonation in web/src/server/fleet.ts fails on generateAccessToken with a 403 that says
+# nothing whatever about the wrong service account being configured.
+gcloud iam service-accounts add-iam-policy-binding "$ADJ" --project "$PROJECT" \
+  --member "serviceAccount:warrant-web@${PROJECT}.iam.gserviceaccount.com" \
+  --role roles/iam.serviceAccountTokenCreator >/dev/null
+
+echo "adjudicator ready: $ADJ"
+
 cat <<NOTE
 
 Propagation takes up to a minute. If a deploy still reports SERVICE_DISABLED,
@@ -58,6 +88,9 @@ Not covered here, because they are not plain API enablements:
     it needs an OAuth client, and there is no public API that creates one. Enable it once
     in the console — Authentication -> Sign-in method -> Google — which creates the client
     for you. That is the only manual step in this whole setup.
-  - Agent Engine, Agent Registry, Memory Bank, Agent Identity and Agent Gateway
-    are unconfirmed in this project. Check them before building against them.
+  - Agent Engine IS confirmed and the fleet is deployed to it:
+      ./.venv-deploy/bin/python ./infra/deploy-agents.py          # deploy or update
+      ./.venv-deploy/bin/python ./infra/deploy-agents.py --smoke  # ask it for its roster
+    Put the resource name it prints into WARRANT_FLEET_ENGINE.
+    Agent Registry, Memory Bank, Agent Identity and Agent Gateway remain unconfirmed.
 NOTE
