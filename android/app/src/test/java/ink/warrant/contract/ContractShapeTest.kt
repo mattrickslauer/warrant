@@ -114,8 +114,15 @@ class ContractShapeTest {
      */
     @Test
     fun `no entity schema is left unbound`() {
-        // tenant is server-side only; the client never deserialises one.
-        val deliberatelyUnbound = setOf("tenant")
+        // Server-side only; this client never deserialises one.
+        //
+        //   tenant  provisioning and membership shape, decided from the `hd` claim server-side.
+        //   member  roles and standing. The phone is told what it may do, never asked to
+        //           compute it — a client that resolved its own standing could waive.
+        //   task    the queue behind push and calendar. Projected from decisions the fleet
+        //           already made, swept by cron. When the phone shows tasks it will bind this
+        //           and this line must go.
+        val deliberatelyUnbound = setOf("tenant", "member", "task")
 
         val onDisk = contractDir.listFiles { f -> f.name.endsWith(".schema.json") }
             .orEmpty()

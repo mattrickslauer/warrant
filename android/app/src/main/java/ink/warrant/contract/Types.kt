@@ -130,6 +130,22 @@ enum class Agent {
     @SerialName("wright") WRIGHT,
 }
 
+/** A procedure mid-Scoper-interview is drafting. Compiling publishes v1. */
+@Serializable
+enum class ProcedureStatus {
+    @SerialName("drafting") DRAFTING,
+    @SerialName("published") PUBLISHED,
+    @SerialName("archived") ARCHIVED,
+}
+
+/** Where a procedure came from. A forked one carries its parent's shape and its own history. */
+@Serializable
+enum class ProcedureOrigin {
+    @SerialName("scoper") SCOPER,
+    @SerialName("imported") IMPORTED,
+    @SerialName("forked") FORKED,
+}
+
 @Serializable
 enum class ReasonKind {
     @SerialName("voice") VOICE,
@@ -269,6 +285,19 @@ data class Procedure(
     val disqualifiers: List<String> = emptyList(),
     val releases: List<String> = emptyList(),
     val steps: List<Step>,
+    /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
+    @SerialName("schema_version") val schemaVersion: Int = 1,
+    /** A procedure mid-Scoper-interview is drafting. Compiling publishes v1. */
+    val status: ProcedureStatus = ProcedureStatus.PUBLISHED,
+    /** A job pins the frozen version it started under, so publishing v3 mid-job cannot change
+     *  what a v2 job is running. */
+    @SerialName("current_version") val currentVersion: Int = 1,
+    @SerialName("published_at") val publishedAt: String? = null,
+    @SerialName("published_by") val publishedBy: String? = null,
+    @SerialName("updated_at") val updatedAt: String? = null,
+    val origin: ProcedureOrigin? = null,
+    /** For catalogue imports. */
+    @SerialName("source_doc_ref") val sourceDocRef: String? = null,
     @SerialName("created_at") val createdAt: String,
 )
 
@@ -297,6 +326,36 @@ data class StepOutcome(
     @SerialName("waived_by") val waivedBy: String? = null,
     /** A stated reason is always asserted — a named human said it, at this time. */
     @SerialName("provenance_class") val provenanceClass: ProvenanceClass? = null,
+    /**
+     * How many times an agent has asked for one more field on this step. Bounded by
+     * [Step.maxAddFields], and enforced server-side rather than trusted to the agent asking.
+     */
+    @SerialName("add_fields_used") val addFieldsUsed: Int = 0,
+    /**
+     * Fields an agent appended because the declared evidence was insufficient. As required as
+     * the declared ones — an agent does not ask for evidence it is willing to do without.
+     */
+    @SerialName("added_fields") val addedFields: List<FieldDef> = emptyList(),
+    /**
+     * Field keys whose evidence has been accepted. A step is performed when every required
+     * field appears here — never before, and never because one field passed.
+     */
+    @SerialName("accepted_fields") val acceptedFields: List<String> = emptyList(),
+    /**
+     * The unresolved question an agent raised for a person.
+     *
+     * The step stays PENDING while this is set. There is deliberately no "escalated" status:
+     * an escalation is a decision awaited, not a state the step has reached, and a step with
+     * a question outstanding has still not been performed.
+     */
+    @SerialName("escalation_question") val escalationQuestion: String? = null,
+    /**
+     * Why the step did not advance when an agent DID answer — a malformed verdict, an
+     * unreachable fleet, an unestablished belonging. On the record rather than in a log.
+     */
+    @SerialName("hold_reason") val holdReason: String? = null,
+    /** When the fleet last ruled on this step. */
+    @SerialName("adjudicated_at") val adjudicatedAt: String? = null,
     val fields: List<Field>,
 )
 
@@ -315,6 +374,15 @@ data class Job(
     val tier: Tier,
     @SerialName("started_at") val startedAt: String,
     @SerialName("sealed_at") val sealedAt: String? = null,
+    /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
+    @SerialName("schema_version") val schemaVersion: Int = 1,
+    @SerialName("finalized_at") val finalizedAt: String? = null,
+    /** Who said go. The draft gate is a named act, not a timeout. */
+    @SerialName("finalized_by") val finalizedBy: String? = null,
+    /** Denormalised so a list view needs one read per job and no subcollection fan-out. */
+    @SerialName("step_count") val stepCount: Int = 0,
+    @SerialName("performed_count") val performedCount: Int = 0,
+    @SerialName("field_count") val fieldCount: Int = 0,
     val steps: List<StepOutcome>,
 )
 
@@ -337,8 +405,20 @@ data class Capture(
      * is true.
      */
     val redacted: Boolean,
-    /** Model Armor pi_and_jailbreak on the image. */
+    /**
+     * Model Armor pi_and_jailbreak on the image. NOT_SCREENED when the screen could not be
+     * run — an admitted gap, never NO_MATCH_FOUND, because a false clean is worse than a
+     * stated one.
+     */
     @SerialName("armor_verdict") val armorVerdict: String? = null,
+    /**
+     * Whether the fleet has ruled on this capture.
+     *
+     * False, never absent: Firestore cannot query for a missing field, so a capture written
+     * without this is invisible to the sweep that exists to catch what a dying client left
+     * behind.
+     */
+    val adjudicated: Boolean = false,
     @SerialName("created_at") val createdAt: String,
 )
 
@@ -357,6 +437,8 @@ data class Reading(
     val unit: String,
     /** Device identity. Without this the value is typed, not measured. */
     @SerialName("tool_id") val toolId: String,
+    /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
+    @SerialName("schema_version") val schemaVersion: Int = 1,
     val at: String,
 )
 
@@ -410,4 +492,35 @@ data class SealedRecord(
     @SerialName("machine_released") val machineReleased: Boolean,
     val steps: List<StepOutcome>,
     val decisions: List<Decision>,
+    /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
+    @SerialName("schema_version") val schemaVersion: Int = 1,
+    /**
+     * The capability URL id: 22 chars of crypto randomness, NOT derived from the job id,
+     * which would be enumerable. Null until shared; unsharing deletes the public document
+     * and every media URL dies with it.
+     */
+    @SerialName("public_id") val publicId: String? = null,
+    /** Who stands behind this record, denormalised at seal time. */
+    val issuer: RecordIssuer? = null,
+    /**
+     * The people, as they were AT SEAL TIME. Denormalised deliberately: a record is
+     * immutable, so it must not change when someone updates their profile photo or leaves
+     * the company. Bare uids render as nothing to a stranger.
+     */
+    val actors: List<RecordActor> = emptyList(),
+)
+
+/** Who stands behind a record. Denormalised at seal time, and never re-resolved. */
+@Serializable
+data class RecordIssuer(
+    @SerialName("display_name") val displayName: String,
+)
+
+/** One person as they were at seal time. */
+@Serializable
+data class RecordActor(
+    val uid: String,
+    @SerialName("display_name") val displayName: String,
+    @SerialName("photo_ref") val photoRef: String? = null,
+    val role: String? = null,
 )
