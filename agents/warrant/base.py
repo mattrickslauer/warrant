@@ -107,6 +107,19 @@ class Agent:
 
     @staticmethod
     def media(ref: str, label: str = "") -> Part:
+        """Evidence, by value from disk or by reference in Cloud Storage.
+
+        The eval corpus names files under MEDIA_DIR. Production names `gs://` objects, which
+        the model reads for itself. Both refuse an extension they cannot decode, because an
+        Inspector handed something undecodable will confidently return a verdict anyway, and
+        that answer would be recorded as though it had seen the evidence.
+        """
+        if ref.startswith("gs://"):
+            mime = _MIME.get(Path(ref).suffix.lower())
+            if mime is None:
+                raise MediaMissing(f"{ref}: unsupported media type {Path(ref).suffix}")
+            return Part(mime_type=mime, uri=ref, label=label or ref)
+
         path = (MEDIA_DIR / ref) if not Path(ref).is_absolute() else Path(ref)
         if not path.exists():
             raise MediaMissing(f"{ref} is not in {MEDIA_DIR}; run evals/gen_media.py")

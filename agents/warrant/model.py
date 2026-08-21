@@ -49,10 +49,17 @@ class ModelUnavailable(RuntimeError):
 
 @dataclass
 class Part:
-    """One piece of the user turn. Text, or media the agent has to actually look at."""
+    """One piece of the user turn. Text, media bytes, or media BY REFERENCE.
+
+    A URI part names an object the model reads for itself. It exists because the deployed
+    fleet judges photographs that live in Cloud Storage, and base64 through the query payload
+    would mean every megabyte crossed the wire twice for no gain.
+    """
     text: str | None = None
     mime_type: str | None = None
     data: bytes | None = None
+    #: A `gs://` object the model reads directly. Mutually exclusive with `data`.
+    uri: str | None = None
     label: str = ""
 
     def to_sdk(self) -> Any:
@@ -60,12 +67,20 @@ class Part:
         from google.genai import types
         if self.text is not None:
             return types.Part.from_text(text=self.text)
+        if self.uri is not None:
+            return types.Part.from_uri(file_uri=self.uri,
+                                       mime_type=self.mime_type or "application/octet-stream")
         return types.Part.from_bytes(data=self.data or b"",
                                      mime_type=self.mime_type or "application/octet-stream")
 
     def digest(self) -> str:
         if self.text is not None:
             return "t:" + hashlib.sha256(self.text.encode()).hexdigest()[:16]
+        # A URI part has no bytes to key on, so it keys on the reference. Replay of a
+        # gs:// part is therefore only ever as trustworthy as the object being immutable,
+        # which is why storage.rules makes evidence append-only.
+        if self.uri is not None:
+            return f"u:{self.mime_type}:" + hashlib.sha256(self.uri.encode()).hexdigest()[:16]
         return f"m:{self.mime_type}:" + hashlib.sha256(self.data or b"").hexdigest()[:16]
 
 
