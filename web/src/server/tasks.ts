@@ -291,3 +291,55 @@ export async function dueTasks(limit = 200): Promise<DueTask[]> {
     tenant_id: d.ref.parent.parent?.id ?? "",
   }));
 }
+
+/**
+ * Captures nobody adjudicated.
+ *
+ * The cost of letting a client trigger adjudication is that a client which dies between
+ * writing the capture and making the call leaves evidence in limbo — accepted, stored, and
+ * judged by nobody. This is the net beneath that. It is why the client may trigger at all.
+ *
+ * Two minutes: long enough that a live client has certainly had its chance, short enough
+ * that a technician still standing at the machine gets an answer while it matters.
+ *
+ * A COLLECTION_GROUP query on `captures`, which needs the matching index deployed — the same
+ * requirement and the same misleading failure as `dueTasks()` above.
+ */
+export interface UndecidedCapture {
+  tenantId: string;
+  jobId: string;
+  stepId: string;
+  fieldKey: string;
+  captureId: string;
+}
+
+export async function undecidedCaptures(
+  olderThanMs: number,
+  limit = 50,
+): Promise<UndecidedCapture[]> {
+  const cutoff = new Date(Date.now() - olderThanMs).toISOString();
+  const snap = await adminDb()
+    .collectionGroup("captures")
+    .where("adjudicated", "==", false)
+    .where("created_at", "<", cutoff)
+    .limit(limit)
+    .get();
+
+  return snap.docs.flatMap((doc) => {
+    // tenants/{t}/jobs/{j}/captures/{c}
+    const parts = doc.ref.path.split("/");
+    if (parts.length !== 6) return [];
+    const fieldId = String((doc.data() as { field_id?: string }).field_id ?? "");
+    const split = fieldId.indexOf("__");
+    // A capture whose field_id is unparseable cannot be adjudicated, and guessing which
+    // field it belonged to would put a verdict against the wrong evidence.
+    if (split <= 0) return [];
+    return [{
+      tenantId: parts[1],
+      jobId: parts[3],
+      stepId: fieldId.slice(0, split),
+      fieldKey: fieldId.slice(split + 2),
+      captureId: doc.id,
+    }];
+  });
+}

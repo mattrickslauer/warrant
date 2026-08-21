@@ -270,6 +270,9 @@ export class LiveSource implements DataSource {
       attestation_play_integrity: null,
       redacted: false,
       armor_verdict: null,
+      // The sweep's flag. FALSE, not absent — Firestore cannot query for a missing field, so
+      // a capture written without this is invisible to the safety net that exists to catch it.
+      adjudicated: false,
       created_at: now(),
     };
 
@@ -293,6 +296,20 @@ export class LiveSource implements DataSource {
     // capturing at once both count rather than one overwriting the other.
     batch.update(jobRef, { field_count: increment(1) });
     await batch.commit();
+
+    // Fire and forget. The technician's screen advances now and learns the verdict through
+    // its snapshot listener; making a person wait on a model would defeat the entire seam.
+    // A failure here is not fatal — the sweep finds whatever this call did not.
+    void fetch("/api/adjudicate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        job_id: input.jobId,
+        step_id: input.stepId,
+        field_key: input.fieldKey,
+        capture_id: capRef.id,
+      }),
+    }).catch(() => {});
 
     return capture;
   }

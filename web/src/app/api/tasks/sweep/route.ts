@@ -1,6 +1,6 @@
 // The sweep. One cron for the whole system.
 //
-//   Cloud Scheduler --(OIDC)--> POST /api/tasks/sweep --> push + calendar
+//   Cloud Scheduler --(OIDC)--> POST /api/tasks/sweep --> push + calendar + adjudication
 //
 // Chosen over per-task Cloud Tasks because it is one job rather than thousands of scheduled
 // callbacks, it is visible in the Console, and it self-heals: if a due time passes while
@@ -10,7 +10,8 @@
 // The query is one equality and one inequality on one field — see tasks.ts on `notify_after`.
 
 import { NextResponse } from "next/server";
-import { dueTasks, markNotified, attachCalendarEvent } from "@/server/tasks";
+import { dueTasks, markNotified, attachCalendarEvent, undecidedCaptures } from "@/server/tasks";
+import { adjudicate } from "@/server/adjudicate/run";
 import { pushTask } from "@/server/notify";
 import { upsertEvent, RateLimited } from "@/server/calendar";
 
@@ -94,7 +95,38 @@ export async function POST(request: Request) {
     await markNotified(task.tenant_id, task.id, task.notify_count ?? 0);
   }
 
-  return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred });
+  // Evidence whose client died before it could ask for a verdict. This is what makes it
+  // acceptable for a client to trigger adjudication at all: nothing depends on the client
+  // surviving long enough to make the call.
+  //
+  // Failures are left undecided ON PURPOSE. A capture that cannot be adjudicated must keep
+  // showing up here rather than being marked done to tidy the query — the whole point of the
+  // net is that it does not quietly drop anything.
+  let adjudicated = 0;
+  let stillUndecided = 0;
+  try {
+    for (const ref of await undecidedCaptures(2 * 60 * 1000)) {
+      try {
+        await adjudicate(ref);
+        adjudicated += 1;
+      } catch {
+        stillUndecided += 1;
+      }
+    }
+  } catch (error) {
+    // Almost certainly the missing COLLECTION_GROUP index on `captures`. Say so, rather than
+    // reporting a clean sweep that adjudicated nothing because it could not look.
+    return NextResponse.json(
+      { due: tasks.length, pushed, scheduled, deferred,
+        error: "Could not read undecided captures. Is the COLLECTION_GROUP index on " +
+               "`captures` deployed?",
+        detail: String(error) },
+      { status: 500 },
+    );
+  }
+
+  return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
+                             adjudicated, stillUndecided });
 }
 
 /** Convenience for a human checking the cron is wired, without firing notifications. */

@@ -156,5 +156,17 @@ create_index COLLECTION members \
   --field-config=field-path=role,order=ascending \
   --field-config=field-path=display_name,order=ascending
 
+# The sweep's net: captures nobody adjudicated, across every job in every tenant. Without
+# this the sweep returns a 500 naming the missing index rather than a clean sweep that
+# adjudicated nothing — see undecidedCaptures() in web/src/server/tasks.ts.
+create_index COLLECTION_GROUP captures \
+  --field-config=field-path=adjudicated,order=ascending \
+  --field-config=field-path=created_at,order=ascending
+
 echo
-echo "done. firestore.indexes.json is the source of truth for what should exist here."
+echo "done."
+echo
+echo "NOTE: the create_index calls above are HAND-MAINTAINED and are what actually runs."
+echo "firestore.indexes.json states the same set for the emulator and for review. Adding an"
+echo "index to that file alone deploys nothing — add it here too, or the query fails in"
+echo "production with a link telling you to create it by hand."

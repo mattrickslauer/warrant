@@ -1,8 +1,8 @@
 {
-  "//": "The indexes docs/data-model.md §7 requires. Deployed by infra/deploy-rules.sh.",
+  "//": "The indexes docs/data-model.md \u00a77 requires. Deployed by infra/deploy-rules.sh.",
   "indexes": [
     {
-      "//": "Hierarchical pre-filter, then vector search inside the survivors. The array-contains on node_urns cuts the corpus to the handful of chunks that could possibly be relevant before the ANN runs at all — which is why retrieval here is cheap. Dimension is 1536 because Firestore caps vector indexes at 2048 and a naive 3072-dim embedding will not index; use Matryoshka truncation.",
+      "//": "Hierarchical pre-filter, then vector search inside the survivors. The array-contains on node_urns cuts the corpus to the handful of chunks that could possibly be relevant before the ANN runs at all \u2014 which is why retrieval here is cheap. Dimension is 1536 because Firestore caps vector indexes at 2048 and a naive 3072-dim embedding will not index; use Matryoshka truncation.",
       "collectionGroup": "spec_chunks",
       "queryScope": "COLLECTION",
       "fields": [
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "//": "Everything under this node, at any depth, in one query — the materialised path doing its job.",
+      "//": "Everything under this node, at any depth, in one query \u2014 the materialised path doing its job.",
       "collectionGroup": "spec_nodes",
       "queryScope": "COLLECTION",
       "fields": [
@@ -79,7 +79,7 @@
       ]
     },
     {
-      "//": "What has been fitted here, and what is fitted here now — `to == null` is the current placement.",
+      "//": "What has been fitted here, and what is fitted here now \u2014 `to == null` is the current placement.",
       "collectionGroup": "placements",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "//": "The sweep. COLLECTION_GROUP is load-bearing and not a style choice: /tenants/{t}/tasks is a subcollection, so a COLLECTION-scoped index serves queries within ONE tenant only. The sweep is deliberately cross-tenant — one cron for the whole system — which makes it a collection-group query, and without this index it does not run at all. notify_after is a single computed clock (starts at due_at, moves to now+24h after each notification), so the whole query is one equality and one inequality on one field.",
+      "//": "The sweep. COLLECTION_GROUP is load-bearing and not a style choice: /tenants/{t}/tasks is a subcollection, so a COLLECTION-scoped index serves queries within ONE tenant only. The sweep is deliberately cross-tenant \u2014 one cron for the whole system \u2014 which makes it a collection-group query, and without this index it does not run at all. notify_after is a single computed clock (starts at due_at, moves to now+24h after each notification), so the whole query is one equality and one inequality on one field.",
       "collectionGroup": "tasks",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "//": "The per-component measured series, now that readings are flat. Flat because a nested collection binds a {document=**} wildcard to its OUTER name and silently escapes the server-written list — see specs/2026-08-20-firestore-design.md section 14.5.",
+      "//": "The per-component measured series, now that readings are flat. Flat because a nested collection binds a {document=**} wildcard to its OUTER name and silently escapes the server-written list \u2014 see specs/2026-08-20-firestore-design.md section 14.5.",
       "collectionGroup": "readings",
       "queryScope": "COLLECTION",
       "fields": [
@@ -206,6 +206,20 @@
         },
         {
           "fieldPath": "display_name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "captures",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "adjudicated",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_at",
           "order": "ASCENDING"
         }
       ]

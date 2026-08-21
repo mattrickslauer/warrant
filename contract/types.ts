@@ -18,8 +18,10 @@ export interface Capture {
   attestation_play_integrity?: string | null;
   /** On-device ML Kit face and plate redaction has run. A record is not readable until this is true. */
   redacted: boolean;
-  /** Model Armor pi_and_jailbreak on the image. */
-  armor_verdict?: "NO_MATCH_FOUND" | "MATCH_FOUND" | null;
+  /** Model Armor pi_and_jailbreak on the image. NOT_SCREENED when the screen could not be run — an admitted gap, never NO_MATCH_FOUND, because a false clean is worse than a stated one. */
+  armor_verdict?: "NO_MATCH_FOUND" | "MATCH_FOUND" | "NOT_SCREENED" | null;
+  /** Whether the fleet has ruled on this capture. False, never absent: Firestore cannot query for a missing field, so a capture written without it is invisible to the sweep that exists to catch what a dying client left behind. */
+  adjudicated?: boolean;
   created_at: string;
 }
 

@@ -204,3 +204,60 @@ describe("adjudicate", () => {
     assert.ok(!/PASS|verdict|acceptance_rule/.test(text), text);
   });
 });
+
+describe("undecidedCaptures", () => {
+  test("finds a capture older than the window that nobody ruled on", async () => {
+    const { undecidedCaptures } = await import("../src/server/tasks.ts");
+    await db.doc(`tenants/${TENANT}/jobs/job_a/captures/cap_orphan`).set({
+      id: "cap_orphan", field_id: "s3__pad_photo", kind: "photo", capture_mode: "live",
+      capture_surface: "app", adjudicated: false,
+      created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+    });
+    const found = await undecidedCaptures(2 * 60 * 1000);
+    const orphan = found.find((r) => r.captureId === "cap_orphan");
+    assert.ok(orphan, "a capture whose client died must be found by the sweep");
+    assert.equal(orphan.tenantId, TENANT);
+    assert.equal(orphan.jobId, "job_a");
+    assert.equal(orphan.stepId, "s3");
+    assert.equal(orphan.fieldKey, "pad_photo");
+  });
+
+  test("leaves an already-adjudicated capture alone", async () => {
+    const { undecidedCaptures } = await import("../src/server/tasks.ts");
+    const found = await undecidedCaptures(2 * 60 * 1000);
+    assert.ok(!found.some((r) => r.jobId === "job_a" && r.captureId === "cap_1"),
+      "job_a/cap_1 was adjudicated and must not be picked up again");
+  });
+
+  test("still finds the capture an unreachable fleet left behind", async () => {
+    const { undecidedCaptures } = await import("../src/server/tasks.ts");
+    await db.doc(`tenants/${TENANT}/jobs/job_f/captures/cap_1`)
+      .set({ created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString() },
+            { merge: true });
+    const found = await undecidedCaptures(2 * 60 * 1000);
+    assert.ok(found.some((r) => r.jobId === "job_f"),
+      "the retry path is the whole reason the flag is not set on an unreachable fleet");
+  });
+
+  test("a capture too recent to have been abandoned is left alone", async () => {
+    const { undecidedCaptures } = await import("../src/server/tasks.ts");
+    await db.doc(`tenants/${TENANT}/jobs/job_a/captures/cap_fresh`).set({
+      id: "cap_fresh", field_id: "s3__pad_photo", kind: "photo", adjudicated: false,
+      created_at: new Date().toISOString(),
+    });
+    const found = await undecidedCaptures(2 * 60 * 1000);
+    assert.ok(!found.some((r) => r.captureId === "cap_fresh"),
+      "a live client must be given its chance before the sweep steps in");
+  });
+
+  test("an unparseable field_id is skipped rather than guessed at", async () => {
+    const { undecidedCaptures } = await import("../src/server/tasks.ts");
+    await db.doc(`tenants/${TENANT}/jobs/job_a/captures/cap_broken`).set({
+      id: "cap_broken", field_id: "nonsense", kind: "photo", adjudicated: false,
+      created_at: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+    });
+    const found = await undecidedCaptures(2 * 60 * 1000);
+    assert.ok(!found.some((r) => r.captureId === "cap_broken"),
+      "guessing the field would put a verdict against the wrong evidence");
+  });
+});

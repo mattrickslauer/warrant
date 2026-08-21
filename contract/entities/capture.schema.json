@@ -15,7 +15,8 @@
     "attestation_device_id":     { "type": "string", "nullable": true, "description": "Null on browser." },
     "attestation_play_integrity":{ "type": "string", "nullable": true, "description": "Null on browser." },
     "redacted": { "type": "boolean", "description": "On-device ML Kit face and plate redaction has run. A record is not readable until this is true." },
-    "armor_verdict": { "type": "string", "enum": ["NO_MATCH_FOUND", "MATCH_FOUND"], "nullable": true, "description": "Model Armor pi_and_jailbreak on the image." },
+    "armor_verdict": { "type": "string", "enum": ["NO_MATCH_FOUND", "MATCH_FOUND", "NOT_SCREENED"], "nullable": true, "description": "Model Armor pi_and_jailbreak on the image. NOT_SCREENED when the screen could not be run — an admitted gap, never NO_MATCH_FOUND, because a false clean is worse than a stated one." },
+    "adjudicated": { "type": "boolean", "description": "Whether the fleet has ruled on this capture. False, never absent: Firestore cannot query for a missing field, so a capture written without it is invisible to the sweep that exists to catch what a dying client left behind." },
     "created_at": { "type": "string" }
   },
   "required": ["id", "field_id", "kind", "media_ref", "capture_mode", "capture_surface", "redacted", "created_at"]
