@@ -1,344 +1,436 @@
 package ink.warrant.ui.job
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import ink.warrant.capture.Redactor
 import ink.warrant.contract.FieldDef
 import ink.warrant.contract.FieldKind
-import ink.warrant.contract.FieldSource
-import ink.warrant.contract.Step
+import ink.warrant.contract.ProvenanceClass
 import ink.warrant.design.Ground
 import ink.warrant.design.WarrantTheme
-import ink.warrant.ui.components.AgentTrace
-import ink.warrant.ui.components.CaptureTile
-import ink.warrant.ui.components.EvidenceChip
-import ink.warrant.ui.components.HoldBanner
-import ink.warrant.ui.components.MonoLabel
+import ink.warrant.instrument.InstrumentEvent
+import ink.warrant.ui.components.CameraLayer
+import ink.warrant.ui.components.LiveMark
 import ink.warrant.ui.components.ReadingBadge
-import ink.warrant.ui.components.ReasonCapture
-import ink.warrant.ui.components.Rule
-import ink.warrant.ui.components.SignedName
-import ink.warrant.ui.components.StepCard
-import ink.warrant.ui.components.WarrantButton
+import ink.warrant.ui.components.rememberCameraHandle
 import kotlinx.coroutines.launch
+import java.io.File
 
 /**
  * Where evidence is made.
  *
- * The only surface that cannot be substituted, and therefore the one that got built first. Its
- * whole job is to make the two exits obvious and to never, ever block the hands in front of it
- * on something happening in a data centre.
+ * One step, one screen, and the screen does not scroll. The lens (or the workshop ground)
+ * fills it edge to edge and every control is drawn over the top — because what you are being
+ * asked for and what the camera can see are the same question, and answering it should not
+ * involve finding a button.
+ *
+ * The layout is in [StepPage]; what the one big button means at any moment is in
+ * [primaryActionFor]. This file is the wiring between them and the view model, plus the small
+ * amount of per-field content that sits in the middle of the frame.
+ *
+ * Two rules survive from the first version of this screen unchanged, because they are the
+ * reason it exists:
+ *
+ *  - **Capture never waits on a model.** The bar returns as soon as the file is written.
+ *    Verdicts land later as notices, fixable from wherever the technician has got to.
+ *  - **A measurement has no keyboard path.** Not at any strictness, not when no instrument is
+ *    attached. "Could not be measured" is a real outcome; a typed number wearing the measured
+ *    chip is not.
  */
 @Composable
 fun JobScreen(
     vm: JobViewModel,
     onOpenPairing: () -> Unit,
+    onExit: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val state by vm.state.collectAsState()
     val instrument by vm.instrumentState.collectAsState()
-    val colors = WarrantTheme.colors
-    val dim = WarrantTheme.dim
-    val scroll = rememberScrollState()
+    val scope = rememberCoroutineScope()
 
-    // The workshop ground. Work happens here; the paper record is a different world.
-    Ground(Ground.Work, modifier) {
-        Column(Modifier.fillMaxWidth().verticalScroll(scroll)) {
+    val step = state.step
+    if (step == null) {
+        Ground(Ground.Work, modifier) {
+            Text(
+                state.error ?: "Starting…",
+                style = WarrantTheme.type.body.copy(color = WarrantTheme.colors.fg),
+                modifier = Modifier.align(Alignment.Center).padding(WarrantTheme.dim.pad),
+            )
+        }
+        return
+    }
 
-            if (state.fabricated) {
-                // The screen MUST say when it is serving fabricated data. A demo that looks
-                // like production is how a judge gets misled, and we would rather be believed.
-                HoldBanner(
-                    headline = "Fixture data",
-                    why = "This build runs the scripted demo timeline, not a live backend. " +
-                        "Verdicts and costs below are fabricated; the instrument reading is not.",
-                    waiting = true,
-                )
-            }
+    // Which sheet is open, if any. All three are one tap from the bottom bar.
+    var brief by remember { mutableStateOf(false) }
+    var blocked by remember { mutableStateOf(false) }
+    var trace by remember { mutableStateOf(false) }
 
-            state.heldReason?.let { reason ->
-                HoldBanner(
-                    headline = "Machine held",
-                    why = "$reason. The Gate does not release until the job seals clean.",
-                )
-            }
+    // Frames taken on this device, keyed by step and field. Held here rather than in the view
+    // model because they are a property of the *review* — the picture you are looking at
+    // before you accept it — not of the record, which already has the file path.
+    val captured = remember { mutableStateMapOf<String, File>() }
+    var redacting by remember { mutableStateOf(false) }
+    var redactNote by remember { mutableStateOf<String?>(null) }
 
-            state.error?.let { e ->
-                HoldBanner(headline = "Cannot run", why = e)
-            }
+    // The technician's override of which field the page is pointed at. Cleared whenever the
+    // step changes, so arriving on a step always starts at its first outstanding field.
+    var selected by remember(step.id) { mutableStateOf<String?>(null) }
 
-            // Alerts land here — on the job, not on the step. That is what makes a late
-            // verdict fixable from three steps away instead of a modal interrupting a torque.
-            state.alerts.forEach { alert ->
-                val stepTitle = state.steps.firstOrNull { it.id == alert.stepId }?.title ?: alert.stepId
-                HoldBanner(
-                    headline = alert.headline,
-                    why = "$stepTitle — ${alert.detail}",
-                    waiting = !alert.blocking,
-                ) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        WarrantButton("Go to that step", onClick = { vm.goToStepId(alert.stepId) })
-                        WarrantButton("Later", ghost = true, onClick = { vm.dismissAlert(alert) })
-                    }
-                }
-            }
+    val fields = state.fieldsFor(step.id)
+    val strictness = state.job?.strictness ?: 0
+    val active = activeFieldFor(fields, strictness, selected) { key -> state.isFilled(step.id, key) }
+    val camera = rememberCameraHandle()
 
-            val step = state.step
-            if (step == null) {
-                Box(Modifier.fillMaxWidth().padding(dim.pad)) {
-                    Text("Starting…", style = WarrantTheme.type.body.copy(color = colors.fg))
-                }
-                return@Column
-            }
+    // A frame already taken for the field in front of us. Its presence is what turns the page
+    // into a review: the picture replaces the live preview and the bar offers a retake.
+    val reviewing = if (active != null && active.usesCamera()) {
+        captured["${step.id}:${active.key}"]
+    } else {
+        null
+    }
 
-            Column(Modifier.padding(dim.pad), verticalArrangement = Arrangement.spacedBy(dim.stack)) {
+    // Once every required field is filled there is no active field, and the step's last frame
+    // stays on screen behind "Next step" — so you can still see what you just recorded.
+    val resting = if (active == null) {
+        fields.firstOrNull { it.usesCamera() && captured.containsKey("${step.id}:${it.key}") }
+            ?.let { captured["${step.id}:${it.key}"] }
+    } else {
+        null
+    }
 
-                StepCard(
-                    step = step,
-                    total = state.steps.size,
-                    guidance = state.fieldsFor(step.id).firstOrNull()?.guidance,
-                    content = {
-                        state.fieldsFor(step.id).forEach { field ->
-                            // Give every field its own composable identity. Without this the
-                            // next step reuses this slot, and a CaptureTile that has already
-                            // been filled shows the PREVIOUS step's photograph — evidence
-                            // appearing against work it did not come from, which is the worst
-                            // bug this screen could have.
-                            key(step.id, field.key) {
-                            FieldEditor(
-                                vm = vm,
-                                state = state,
-                                step = step,
-                                field = field,
-                                instrumentConnected = instrument.connected,
-                                instrumentSimulated = instrument.simulated,
-                                latestValue = instrument.latest,
-                                onOpenPairing = onOpenPairing,
-                            )
+    var typed by remember(step.id, active?.key) { mutableStateOf("") }
+
+    // For a camera field "filled" means there is a frame under review right now — not that the
+    // record has one. Retake clears the review and puts the lens back, and the bar has to
+    // follow that rather than the record, which can never go back to empty.
+    val activeFilled = when {
+        active == null -> false
+        active.usesCamera() -> reviewing != null
+        else -> state.isFilled(step.id, active.key)
+    }
+
+    val busy = redacting || camera.busy
+    val action = primaryActionFor(
+        field = active,
+        fieldFilled = activeFilled,
+        lastStep = state.stepIndex == state.steps.lastIndex,
+        instrumentConnected = instrument.connected,
+        instrumentHasReading = instrument.latest != null,
+        inputReady = typed.isNotBlank(),
+    ).let { if (busy) it.copy(enabled = false) else it }
+
+    StepPage(
+        modifier = modifier,
+        stepIndex = state.stepIndex,
+        stepCount = state.steps.size,
+        title = step.title,
+        prompt = active?.prompt,
+        guidance = active?.guidance,
+        evidence = active?.declaredClass
+            ?: fields.firstOrNull()?.declaredClass
+            ?: ProvenanceClass.ASSERTED,
+        notices = noticesFor(state, vm),
+        primary = action,
+        onPrimary = {
+            when (action.kind) {
+                ActionKind.CAPTURE -> active?.let { field ->
+                    val slot = "${step.id}:${field.key}"
+                    if (captured.containsKey(slot)) {
+                        // Retake is two taps on purpose: drop the frame, look again, then
+                        // decide. A single tap that both discarded and re-fired would make
+                        // the discard invisible.
+                        captured.remove(slot)
+                        redactNote = null
+                    } else {
+                        camera.capture { file ->
+                            if (file == null) return@capture
+                            captured[slot] = file
+                            redacting = true
+                            scope.launch {
+                                // Masked here, before anything leaves the device. A record is
+                                // not readable until this has run.
+                                val result = Redactor.redactInPlace(file)
+                                redacting = false
+                                redactNote = when {
+                                    !result.ran -> "Redaction could not run on this capture."
+                                    result.facesFound > 0 ->
+                                        "${result.facesFound} face(s) masked on device."
+                                    else -> "No faces found. Nothing to mask."
+                                }
+                                vm.capture(step.id, field, file, redacted = result.ran)
+                                selected = null
                             }
                         }
-                    },
-                    exits = {
-                        // Exit one is always first and always the same size.
-                        WarrantButton(
-                            text = if (state.stepIndex == state.steps.lastIndex) "Finish" else "Next step",
-                            enabled = state.stepComplete(step.id),
-                            onClick = { vm.next() },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                        if (state.stepIndex > 0) {
-                            WarrantButton(
-                                "Back",
-                                ghost = true,
-                                onClick = { vm.previous() },
-                                modifier = Modifier.fillMaxWidth(),
-                            )
-                        }
-                    },
-                )
-
-                Rule()
-
-                // Exit two. Never buried, never styled as a failure.
-                MonoLabel("Can't do this step?")
-                ReasonCapture(
-                    onSubmit = { kind, transcript, audio ->
-                        vm.declareBlocked(step.id, kind, transcript, audio)
-                    },
-                    recommendation = state.job?.steps
-                        ?.firstOrNull { it.stepId == step.id }
-                        ?.recommendationText,
-                )
-
-                Rule()
-
-                MonoLabel("What the fleet decided")
-                AgentTrace(state.decisions.filter { it.stepId == null || it.stepId == step.id })
-
-                state.sealedRecordId?.let { id ->
-                    Rule()
-                    MonoLabel("Sealed")
-                    Text(
-                        id,
-                        style = WarrantTheme.type.mono.copy(color = colors.measured),
-                    )
+                    }
+                    Unit
                 }
 
-                Spacer(Modifier.height(40.dp))
+                ActionKind.TAKE_READING -> {
+                    active?.let { vm.takeReading(step.id, it) }
+                    selected = null
+                }
+
+                ActionKind.PAIR -> onOpenPairing()
+
+                ActionKind.RECORD, ActionKind.SIGN -> {
+                    active?.let { vm.fillByHand(step.id, it, typed.trim()) }
+                    typed = ""
+                    selected = null
+                }
+
+                ActionKind.ADVANCE, ActionKind.FINISH -> {
+                    redactNote = null
+                    vm.next()
+                }
             }
-        }
+        },
+        onExit = onExit,
+        onBrief = { brief = true },
+        onBlocked = { blocked = true },
+        onTrace = { trace = true },
+        onBack = if (state.stepIndex > 0) ({ vm.previous() }) else null,
+        pips = fields.map { f ->
+            FieldPip(
+                key = f.key,
+                label = f.key.replace('_', ' '),
+                filled = state.isFilled(step.id, f.key),
+                required = f.requiredAt(strictness),
+            )
+        },
+        activePipKey = active?.key,
+        onPip = { key -> selected = key; redactNote = null },
+        backdrop = {
+            val frame = reviewing ?: resting
+            when {
+                frame != null -> ReviewFrame(frame, active?.prompt ?: step.title)
+                active != null && active.usesCamera() -> CameraLayer(camera, Modifier.fillMaxSize())
+                else -> Unit
+            }
+        },
+        center = {
+            StepCenter(
+                field = active,
+                live = active != null && active.usesCamera() && reviewing == null,
+                filled = active != null && state.isFilled(step.id, active.key),
+                stepComplete = active == null,
+                connected = instrument.connected,
+                simulated = instrument.simulated,
+                latest = instrument.latest,
+                typed = typed,
+                onTyped = { typed = it },
+                redacting = redacting,
+                redactNote = redactNote,
+            )
+        },
+    )
+
+    if (brief) {
+        StepBriefSheet(
+            step = step,
+            total = state.steps.size,
+            guidance = active?.guidance ?: fields.firstOrNull()?.guidance,
+            onDismiss = { brief = false },
+        )
+    }
+
+    if (blocked) {
+        BlockedSheet(
+            recommendation = state.job?.steps
+                ?.firstOrNull { it.stepId == step.id }
+                ?.recommendationText,
+            onSubmit = { kind, transcript, audio ->
+                vm.declareBlocked(step.id, kind, transcript, audio)
+            },
+            onDismiss = { blocked = false },
+        )
+    }
+
+    if (trace) {
+        TraceSheet(
+            decisions = state.decisions.filter { it.stepId == null || it.stepId == step.id },
+            sealedRecordId = state.sealedRecordId,
+            fabricated = state.fabricated,
+            onDismiss = { trace = false },
+        )
     }
 }
 
 /**
- * One field, rendered by its kind.
+ * Holds, errors and late verdicts, in the order they should be noticed.
  *
- * The measurement branch is the one that matters: there is no text input on it, at all, on
- * purpose. If a person can type the number, the number is asserted, and calling it measured
- * afterwards would be a lie told by the user interface.
+ * These land on the JOB, not on the step — which is what makes a late verdict fixable from
+ * three steps away instead of a modal interrupting a torque.
  */
-@Composable
-private fun FieldEditor(
-    vm: JobViewModel,
-    state: JobViewModel.UiState,
-    step: Step,
-    field: FieldDef,
-    instrumentConnected: Boolean,
-    instrumentSimulated: Boolean,
-    latestValue: ink.warrant.instrument.InstrumentEvent.Value?,
-    onOpenPairing: () -> Unit,
-) {
-    val colors = WarrantTheme.colors
-    val filled = state.isFilled(step.id, field.key)
-
-    // A camera field prints its prompt ON the frame, where the lens is. Repeating it as a
-    // label above would say the same thing twice and crowd the chip off the row.
-    val usesCamera = field.kind == FieldKind.PHOTO ||
-        field.kind == FieldKind.VIDEO ||
-        field.source == FieldSource.CAMERA
-
-    Column(
-        Modifier.fillMaxWidth().padding(top = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Row(
-            Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            if (usesCamera) {
-                Spacer(Modifier.weight(1f))
-            } else {
-                // Weighted so the chip is measured at its own width first; without this a
-                // long prompt eats the row and the chip wraps one letter per line.
-                MonoLabel(field.prompt, modifier = Modifier.weight(1f))
-            }
-            // What class this field can reach, shown before it is filled. The rule decides
-            // it, not the outcome.
-            EvidenceChip(field.declaredClass)
-        }
-
-        when (field.kind) {
-            FieldKind.MEASUREMENT -> MeasurementField(
-                vm = vm,
-                step = step,
-                field = field,
-                filled = filled,
-                connected = instrumentConnected,
-                simulated = instrumentSimulated,
-                latest = latestValue,
-                onOpenPairing = onOpenPairing,
-            )
-
-            FieldKind.SIGNATURE -> SignatureField(
-                filled = filled,
-                onSign = { name -> vm.fillByHand(step.id, field, name) },
-            )
-
-            FieldKind.TEXT, FieldKind.SCAN, FieldKind.CHOICE, FieldKind.LOCATION ->
-                if (field.source == FieldSource.CAMERA) {
-                    CaptureField(vm, step, field)
-                } else {
-                    TypedField(onSubmit = { v -> vm.fillByHand(step.id, field, v) }, filled = filled)
-                }
-
-            FieldKind.PHOTO, FieldKind.VIDEO -> CaptureField(vm, step, field)
-        }
-
-        if (filled) {
-            Text(
-                "Recorded. Verification is running behind you — you can carry on.",
-                style = WarrantTheme.type.bodySmall.copy(color = colors.measured),
-            )
-        }
-    }
-}
-
-@Composable
-private fun CaptureField(vm: JobViewModel, step: Step, field: FieldDef) {
-    val scope = rememberCoroutineScope()
-    var redacting by remember { mutableStateOf(false) }
-    var note by remember { mutableStateOf<String?>(null) }
-
-    CaptureTile(
-        prompt = field.prompt,
-        onCaptured = { file ->
-            redacting = true
-            scope.launch {
-                // Masked here, before anything leaves the device. A record is not readable
-                // until this has run.
-                val result = Redactor.redactInPlace(file)
-                redacting = false
-                note = when {
-                    !result.ran -> "Redaction could not run on this capture."
-                    result.facesFound > 0 -> "${result.facesFound} face(s) masked on device."
-                    else -> "No faces found. Nothing to mask."
-                }
-                vm.capture(step.id, field, file, redacted = result.ran)
-            }
-        },
-    )
-    if (redacting) {
-        Text(
-            "Masking faces on device…",
-            style = WarrantTheme.type.monoLabel.copy(color = WarrantTheme.colors.inferred),
+private fun noticesFor(state: JobViewModel.UiState, vm: JobViewModel): List<Notice> = buildList {
+    state.heldReason?.let {
+        add(
+            Notice(
+                headline = "Machine held",
+                detail = "$it. The Gate does not release until the job seals clean.",
+                blocking = true,
+            ),
         )
     }
-    note?.let {
-        Text(
-            it,
-            style = WarrantTheme.type.monoLabel.copy(
-                color = WarrantTheme.colors.fg.copy(alpha = 0.6f),
+    state.error?.let { add(Notice(headline = "Cannot run", detail = it, blocking = true)) }
+    state.alerts.forEach { alert ->
+        val stepTitle = state.steps.firstOrNull { it.id == alert.stepId }?.title ?: alert.stepId
+        add(
+            Notice(
+                headline = alert.headline,
+                detail = "$stepTitle — ${alert.detail}",
+                blocking = alert.blocking,
+                goToLabel = "Go to that step",
+                onGoTo = { vm.goToStepId(alert.stepId) },
+                onDismiss = { vm.dismissAlert(alert) },
             ),
         )
     }
 }
 
+/** The frame under review, or the last one taken on this step. */
+@Composable
+private fun ReviewFrame(file: File, description: String) {
+    val bitmap = remember(file) { decodeSampled(file) }
+    if (bitmap != null) {
+        Image(
+            bitmap = bitmap.asImageBitmap(),
+            contentDescription = description,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize(),
+        )
+    }
+}
+
 /**
- * The measurement field. No keyboard, by design.
+ * The frame, at screen size rather than sensor size.
  *
- * Either an instrument is paired and its number can be taken onto the form, or it is not and
- * the field cannot be satisfied at all. The second case is a real, correct outcome: the step
- * gets explained through the other exit, and the record says a measurement was not obtainable
- * rather than showing one that a person typed.
+ * These files come off a 12MP camera. Decoded whole that is roughly 48MB of ARGB_8888 held on
+ * the main thread for a picture being shown at 1080px wide — which is how a review screen ends
+ * up killed by the low-memory reaper on a mid-range phone. Sample it down first.
+ */
+private fun decodeSampled(file: File, maxEdge: Int = 1600): android.graphics.Bitmap? {
+    val bounds = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true }
+    android.graphics.BitmapFactory.decodeFile(file.absolutePath, bounds)
+    if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
+
+    var sample = 1
+    while (bounds.outWidth / sample > maxEdge || bounds.outHeight / sample > maxEdge) sample *= 2
+
+    return android.graphics.BitmapFactory.decodeFile(
+        file.absolutePath,
+        android.graphics.BitmapFactory.Options().apply { inSampleSize = sample },
+    )
+}
+
+/**
+ * What the middle of the frame carries, by field kind.
+ *
+ * On a camera step this is nearly empty, and that is the point — the live frame is the
+ * affordance, so putting a card over it would be covering the thing being asked about.
  */
 @Composable
-private fun MeasurementField(
-    vm: JobViewModel,
-    step: Step,
+private fun BoxScope.StepCenter(
+    field: FieldDef?,
+    live: Boolean,
+    filled: Boolean,
+    stepComplete: Boolean,
+    connected: Boolean,
+    simulated: Boolean,
+    latest: InstrumentEvent.Value?,
+    typed: String,
+    onTyped: (String) -> Unit,
+    redacting: Boolean,
+    redactNote: String?,
+) {
+    val colors = WarrantTheme.colors
+
+    Column(
+        Modifier.align(Alignment.Center),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        when {
+            stepComplete -> OverlayNote(
+                "Everything this step needs is recorded. Verification is running behind you.",
+                colors.measured,
+            )
+
+            field == null -> Unit
+
+            field.kind == FieldKind.MEASUREMENT -> MeasurementCenter(
+                field = field,
+                filled = filled,
+                connected = connected,
+                simulated = simulated,
+                latest = latest,
+            )
+
+            field.usesCamera() -> Unit
+
+            field.kind == FieldKind.SIGNATURE -> OverlayInput(
+                value = typed,
+                onValueChange = onTyped,
+                placeholder = "Your name",
+            )
+
+            else -> OverlayInput(
+                value = typed,
+                onValueChange = onTyped,
+                placeholder = "Type the value",
+            )
+        }
+
+        if (redacting) OverlayNote("Masking faces on device…", colors.inferred)
+        redactNote?.let { OverlayNote(it, colors.fg2) }
+    }
+
+    if (live) {
+        LiveMark(Modifier.align(Alignment.BottomStart).padding(bottom = 4.dp))
+    }
+}
+
+/**
+ * The measurement, or the honest reason there isn't one.
+ *
+ * There is no text input on this branch, at all, on purpose. If a person can type the number,
+ * the number is asserted, and calling it measured afterwards would be a lie told by the user
+ * interface. The bar below offers pairing instead — see [primaryActionFor].
+ */
+@Composable
+private fun MeasurementCenter(
     field: FieldDef,
     filled: Boolean,
     connected: Boolean,
     simulated: Boolean,
-    latest: ink.warrant.instrument.InstrumentEvent.Value?,
-    onOpenPairing: () -> Unit,
+    latest: InstrumentEvent.Value?,
 ) {
     val colors = WarrantTheme.colors
     val band = buildString {
@@ -347,23 +439,20 @@ private fun MeasurementField(
         field.acceptanceUnit?.let { append(" ").append(it) }
     }
 
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        if (band.isNotBlank()) MonoLabel("Accepts $band")
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        if (band.isNotBlank()) OverlayNote("Accepts $band", colors.fg2)
 
         when {
-            !connected -> {
-                Text(
-                    "No instrument paired. This value cannot be typed — that is what makes it " +
-                        "a measurement rather than a claim.",
-                    style = WarrantTheme.type.bodySmall.copy(color = colors.fg.copy(alpha = 0.75f)),
-                )
-                WarrantButton("Pair an instrument", onClick = onOpenPairing, modifier = Modifier.fillMaxWidth())
-            }
-
-            latest == null -> Text(
-                "Paired. Waiting for the tool to report.",
-                style = WarrantTheme.type.bodySmall.copy(color = colors.fg.copy(alpha = 0.75f)),
+            !connected -> OverlayNote(
+                "No instrument paired. This value cannot be typed — that is what makes it a " +
+                    "measurement rather than a claim.",
+                Color.White.copy(alpha = 0.85f),
             )
+
+            latest == null -> OverlayNote("Paired. Waiting for the tool to report.", colors.fg2)
 
             else -> {
                 ReadingBadge(
@@ -373,87 +462,69 @@ private fun MeasurementField(
                     toolId = latest.toolId,
                 )
                 if (simulated) {
-                    Text(
+                    OverlayNote(
                         "SIMULATED — no hardware is attached. This reading is marked on the " +
                             "record and cannot seal as measured.",
-                        style = WarrantTheme.type.monoLabel.copy(color = colors.held),
+                        colors.held,
                     )
                 }
                 if (!latest.plausible) {
-                    Text(
-                        "Outside the range this driver claims it can produce. Reported, not hidden.",
-                        style = WarrantTheme.type.monoLabel.copy(color = colors.inferred),
+                    OverlayNote(
+                        "Outside the range this driver claims it can produce. Reported, not " +
+                            "hidden.",
+                        colors.inferred,
                     )
                 }
-                if (!filled) {
-                    WarrantButton(
-                        "Take this reading",
-                        onClick = { vm.takeReading(step.id, field) },
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
+                if (filled) OverlayNote("Taken onto the form.", colors.measured)
             }
         }
     }
 }
 
+/**
+ * A line of text over the frame.
+ *
+ * Backed rather than bare: this sits on whatever the lens happens to see, and a white sentence
+ * over a white workbench is not a sentence.
+ */
 @Composable
-private fun SignatureField(filled: Boolean, onSign: (String) -> Unit) {
-    var name by remember { mutableStateOf("") }
-    if (filled) {
-        SignedName(name.ifBlank { "signed" })
-        return
-    }
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        TextBox(value = name, onValueChange = { name = it }, placeholder = "Your name")
-        WarrantButton(
-            "Sign",
-            enabled = name.isNotBlank(),
-            onClick = { onSign(name.trim()) },
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
+private fun OverlayNote(text: String, color: Color) {
+    Text(
+        text,
+        style = WarrantTheme.type.bodySmall.copy(color = color),
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .background(Color(0xCC202124), RoundedCornerShape(WarrantTheme.dim.rSm))
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+    )
 }
 
+/** The only keyboard on this screen, and it can never be reached from a measurement field. */
 @Composable
-private fun TypedField(onSubmit: (String) -> Unit, filled: Boolean) {
-    var value by remember { mutableStateOf("") }
-    if (filled) {
-        Text(value, style = WarrantTheme.type.mono.copy(color = WarrantTheme.colors.fg))
-        return
-    }
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        TextBox(value = value, onValueChange = { value = it }, placeholder = "Type the value")
-        WarrantButton(
-            "Record",
-            enabled = value.isNotBlank(),
-            onClick = { onSubmit(value.trim()) },
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
-}
-
-@Composable
-private fun TextBox(value: String, onValueChange: (String) -> Unit, placeholder: String) {
+private fun OverlayInput(value: String, onValueChange: (String) -> Unit, placeholder: String) {
     val colors = WarrantTheme.colors
     Box(
         Modifier
             .fillMaxWidth()
             .heightIn(min = WarrantTheme.dim.tap)
-            .background(colors.surface, RoundedCornerShape(WarrantTheme.dim.radius))
-            .border(1.dp, colors.fg.copy(alpha = 0.16f), RoundedCornerShape(WarrantTheme.dim.radius))
-            .padding(horizontal = 12.dp, vertical = 12.dp),
+            .background(Color(0xE6202124), RoundedCornerShape(WarrantTheme.dim.radius))
+            .border(
+                1.dp,
+                Color.White.copy(alpha = 0.2f),
+                RoundedCornerShape(WarrantTheme.dim.radius),
+            )
+            .padding(horizontal = 14.dp, vertical = 14.dp),
     ) {
         if (value.isEmpty()) {
             Text(
                 placeholder,
-                style = WarrantTheme.type.body.copy(color = colors.fg.copy(alpha = 0.45f)),
+                style = WarrantTheme.type.body.copy(color = Color.White.copy(alpha = 0.45f)),
             )
         }
         BasicTextField(
             value = value,
             onValueChange = onValueChange,
-            textStyle = WarrantTheme.type.body.copy(color = colors.fg),
+            textStyle = WarrantTheme.type.body.copy(color = Color.White),
             cursorBrush = SolidColor(colors.measured),
             modifier = Modifier.fillMaxWidth(),
         )

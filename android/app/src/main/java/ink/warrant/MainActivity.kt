@@ -49,14 +49,15 @@ class MainActivity : ComponentActivity() {
             WarrantTheme {
                 val nav = rememberNavController()
                 // The window is edge to edge so the workshop ground runs under the system
-                // bars rather than leaving them a different colour — but the CONTENT must be
-                // inset, or the first line of a hold banner sits behind the clock and the
-                // second exit sits behind the navigation bar. Both were happening.
+                // bars rather than leaving them a different colour. The inset is applied by
+                // the SHELL rather than here, because the one route that lives outside the
+                // shell is the job — and a capture screen whose camera stops short of the
+                // status bar is not a full-screen camera. That screen insets its own chrome
+                // instead, so nothing lands behind the clock or the navigation bar.
                 Box(
                     Modifier
                         .fillMaxSize()
-                        .background(Tokens.work)
-                        .safeDrawingPadding(),
+                        .background(Tokens.work),
                 ) {
                     WarrantNav(nav, container)
                 }
@@ -159,6 +160,7 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
             JobScreen(
                 vm = jobVm,
                 onOpenPairing = { nav.navigate(Dest.INSTRUMENTS.route) },
+                onExit = { if (!nav.popBackStack()) nav.go(Dest.PROCEDURES) },
             )
         }
     }
@@ -186,6 +188,7 @@ private fun Shelled(
         tier = tierOf(instrument),
         auth = auth,
         onNavigate = { target -> nav.go(target) },
+        modifier = Modifier.safeDrawingPadding(),
         content = content,
     )
 }
