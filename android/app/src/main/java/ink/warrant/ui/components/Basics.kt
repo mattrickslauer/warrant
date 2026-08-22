@@ -101,6 +101,9 @@ fun EvidenceChip(
 }
 
 private fun labelOf(status: JobStatus) = when (status) {
+    // Named for what it means to the person holding the phone, not for the enum. Nothing runs
+    // on a draft until someone says go.
+    JobStatus.DRAFT -> "Not started"
     JobStatus.OPEN -> "Open"
     JobStatus.WAITING -> "Waiting on evidence"
     JobStatus.HELD -> "Held"

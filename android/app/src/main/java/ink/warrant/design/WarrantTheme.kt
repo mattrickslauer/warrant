@@ -105,6 +105,9 @@ data class WarrantColors(
     }
 
     fun of(s: JobStatus): Color = when (s) {
+        // A draft is not yet work. It reads as waiting rather than open, because no agent has
+        // looked at it and nothing about it is settled.
+        JobStatus.DRAFT -> waiting
         JobStatus.OPEN -> open
         JobStatus.WAITING -> waiting
         JobStatus.HELD -> held

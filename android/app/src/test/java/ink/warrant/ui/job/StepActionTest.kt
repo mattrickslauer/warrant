@@ -183,4 +183,51 @@ class StepActionTest {
         val active = activeFieldFor(fields, strictness = 1, selected = "gone") { false }
         assertEquals("front_plate", active?.key)
     }
+
+    // --------------------------------------------------------------- what redo would throw away
+
+    private val rear = field("rear_plate", FieldKind.PHOTO, FieldSource.CAMERA)
+
+    @Test
+    fun `the frame on screen belongs to the field in front of you`() {
+        val fields = listOf(photo, rear)
+        val framed = framedFieldFor(fields, active = rear) { it == "rear_plate" }
+        assertEquals("rear_plate", framed?.key)
+    }
+
+    @Test
+    fun `a lens field with nothing taken yet has no frame to redo`() {
+        assertNull(framedFieldFor(listOf(photo), active = photo) { false })
+    }
+
+    @Test
+    fun `a field answered another way never offers redo`() {
+        // The photo was taken, but the page has moved on to the torque. Redo on this step
+        // would mean redoing a measurement, which is not a thing the lens can do.
+        val fields = listOf(photo, torque)
+        val framed = framedFieldFor(fields, active = torque) { it == "front_plate" }
+        assertNull(framed)
+    }
+
+    @Test
+    fun `a finished step still offers redo on the frame it is resting on`() {
+        // Nothing outstanding, so the bar reads "Next step" and cannot offer a retake. This is
+        // the case redo exists for: the last frame is still on screen and still replaceable.
+        val fields = listOf(photo, torque)
+        val framed = framedFieldFor(fields, active = null) { it == "front_plate" }
+        assertEquals("front_plate", framed?.key)
+    }
+
+    @Test
+    fun `a finished step with no camera field has nothing to redo`() {
+        assertNull(framedFieldFor(listOf(torque, note), active = null) { true })
+    }
+
+    @Test
+    fun `redo stays on one field when the step has several lenses`() {
+        // Both frames exist; the one being decided about is the one redo can throw away.
+        val fields = listOf(photo, rear)
+        assertEquals("front_plate", framedFieldFor(fields, active = photo) { true }?.key)
+        assertEquals("rear_plate", framedFieldFor(fields, active = rear) { true }?.key)
+    }
 }

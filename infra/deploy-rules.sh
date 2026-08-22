@@ -64,7 +64,11 @@ echo "  ruleset $STORAGE_RULESET"
 
 # The release name embeds the bucket, URL-escaped. Getting this wrong publishes a valid
 # ruleset that governs nothing, which looks exactly like success.
-BUCKET="${FIREBASE_STORAGE_BUCKET:-${PROJECT}.firebasestorage.app}"
+# The evidence bucket, which is NOT the Firebase default name. `${PROJECT}.firebasestorage.app`
+# is what google-services.json advertises and it has never existed in this project — so until
+# 2026-08-21 this script released a valid ruleset to a bucket that was not there, which is
+# precisely the "governs nothing and looks like success" failure the comment above warns about.
+BUCKET="${FIREBASE_STORAGE_BUCKET:-${PROJECT}-evidence}"
 RELEASE="projects/$PROJECT/releases/firebase.storage%2F$BUCKET"
 
 curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/$RELEASE" \

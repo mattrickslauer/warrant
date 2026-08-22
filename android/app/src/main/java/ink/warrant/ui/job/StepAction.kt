@@ -65,6 +65,27 @@ fun activeFieldFor(
 }
 
 /**
+ * The camera field whose frame is currently filling the screen, if any.
+ *
+ * A step can hold more than one lens field, and the backdrop can only draw one of them. While
+ * something is still outstanding that is the active field — the picture you have just taken
+ * and are deciding about. Once nothing is outstanding the step's own last frame stays up
+ * behind "Next step", so you can still see what you recorded.
+ *
+ * It is also the answer to "what would Redo throw away". Redo is scoped to exactly this field
+ * on exactly this step: the frame on screen goes, the lens comes back, and every other field
+ * and every other step is left alone.
+ */
+fun framedFieldFor(
+    fields: List<FieldDef>,
+    active: FieldDef?,
+    hasFrame: (String) -> Boolean,
+): FieldDef? {
+    if (active != null) return active.takeIf { it.usesCamera() && hasFrame(it.key) }
+    return fields.firstOrNull { it.usesCamera() && hasFrame(it.key) }
+}
+
+/**
  * The label and behaviour of the primary bar.
  *
  * [fieldFilled] is not redundant with a null [field]: a filled field can still be the active

@@ -11,6 +11,7 @@ import ink.warrant.contract.FieldKind
 import ink.warrant.contract.Job
 import ink.warrant.contract.Procedure
 import ink.warrant.contract.ReasonKind
+import ink.warrant.contract.Step
 import ink.warrant.contract.StepStatus
 import ink.warrant.contract.Tier
 import ink.warrant.data.BlockedInput
@@ -63,6 +64,15 @@ class JobViewModel(
         val alerts: List<Alert> = emptyList(),
         val heldReason: String? = null,
         val sealedRecordId: String? = null,
+        /**
+         * The technician has tapped Finish and is looking at the handover rather than a step.
+         *
+         * This is a property of the *screen*, not of the job: finishing is the end of the work
+         * in front of the hands, and the record seals later on its own schedule. Keeping the
+         * two apart is what lets the handover say "waiting" honestly instead of claiming a
+         * seal that has not happened.
+         */
+        val handedOver: Boolean = false,
         val error: String? = null,
         val fabricated: Boolean = true,
     ) {
@@ -82,13 +92,41 @@ class JobViewModel(
                 .filter { it.requiredAt(strictness) }
                 .all { isFilled(stepId, it.key) }
         }
+
+        /**
+         * Every step that still owes something, in procedure order.
+         *
+         * Not just the last one. A field the Inspector appended three steps back leaves that
+         * step incomplete however far forward the technician has walked, and the handover has
+         * to name it rather than let the job quietly fail to seal.
+         */
+        val outstanding: List<Step> get() = steps.filterNot { stepComplete(it.id) }
     }
 
     private val _state = MutableStateFlow(UiState(fabricated = source.fabricated))
     val state: StateFlow<UiState> = _state.asStateFlow()
 
+    /**
+     * The event collector for the job currently in hand, so the next job can cancel it.
+     *
+     * One per job, never more. Without this a technician who runs the same procedure four
+     * times has four live collectors folding into one state, and the stale three outlive the
+     * jobs they were opened for.
+     */
+    private var watching: kotlinx.coroutines.Job? = null
+
     val instrumentState get() = instruments.state
 
+    /**
+     * Begin a job — including the second, third and fourth run of a procedure already sealed.
+     *
+     * This view model is scoped to the activity rather than the route (see `MainActivity`),
+     * so one instance serves every job of the session. That makes the reset below load-bearing
+     * rather than tidy: the state carried `sealedRecordId` and `handedOver` out of the last
+     * run, and `JobScreen` reads `handedOver` before it reads anything else — so run two
+     * opened on run one's handover page and the work was unreachable. A new job starts from
+     * [newJobState] and inherits nothing from the one before it.
+     */
     fun start(procedureId: String, tenantId: String, tier: Tier) {
         viewModelScope.launch {
             val procedure = source.getProcedure(procedureId)
@@ -104,18 +142,20 @@ class JobViewModel(
                 return@launch
             }
 
-            _state.value = _state.value.copy(
-                procedure = procedure,
-                job = job,
-                statuses = job.steps.associate { it.stepId to it.status },
-                error = null,
-            )
+            _state.value = newJobState(procedure, job, source.fabricated)
             observe(job.id)
         }
     }
 
+    /** Run the procedure in hand again, from the top, as a job of its own. */
+    fun again() {
+        val job = _state.value.job ?: return
+        start(job.procedureId, job.tenantId, job.tier)
+    }
+
     private fun observe(jobId: String) {
-        viewModelScope.launch {
+        watching?.cancel()
+        watching = viewModelScope.launch {
             source.subscribe(jobId).collect { event -> fold(event) }
         }
     }
@@ -277,7 +317,58 @@ class JobViewModel(
     fun next() = goTo(_state.value.stepIndex + 1)
     fun previous() = goTo(_state.value.stepIndex - 1)
 
+    /**
+     * The end of the last step.
+     *
+     * Deliberately not [next]: there is no step after the last one, so advancing past it is a
+     * no-op and the button reads as broken. Finishing is its own move, and it ends on its own
+     * screen — see [ink.warrant.ui.job.handoverStateFor].
+     */
+    fun finish() {
+        _state.value = _state.value.copy(handedOver = true)
+    }
+
+    /** Back into the work from the handover, pointed at the step that is still owed. */
+    fun reopen(stepId: String) {
+        _state.value = _state.value.copy(handedOver = false)
+        goToStepId(stepId)
+    }
+
     fun dismissAlert(alert: Alert) {
         _state.value = _state.value.copy(alerts = _state.value.alerts - alert)
     }
 }
+
+/**
+ * The state a job starts in — and, just as importantly, everything it starts *without*.
+ *
+ * A top-level function rather than a `copy()` inside `start()` because the failure it fixes was
+ * invisible in a `copy()`: the fields that mattered were the ones nobody named. Written out,
+ * the reset is readable, and a test can hand it a filthy previous run and check that nothing
+ * survives — see `JobStartTest`.
+ *
+ * `fabricated` is the one thing carried in, and it is carried as an argument rather than
+ * inherited, because it is a property of the data source and not of any job.
+ */
+fun newJobState(
+    procedure: Procedure,
+    job: Job,
+    fabricated: Boolean,
+): JobViewModel.UiState = JobViewModel.UiState(
+    procedure = procedure,
+    job = job,
+    // Not "wherever the last run got to". The first step of this one.
+    stepIndex = 0,
+    addedFields = emptyMap(),
+    filled = emptySet(),
+    decisions = emptyList(),
+    statuses = job.steps.associate { it.stepId to it.status },
+    alerts = emptyList(),
+    // The three that blocked the second run. A hold and a record belong to the job that
+    // earned them; carrying them forward accuses this job of the last one's outcome.
+    heldReason = null,
+    sealedRecordId = null,
+    handedOver = false,
+    error = null,
+    fabricated = fabricated,
+)

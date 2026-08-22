@@ -13,6 +13,7 @@ service-account*.json
 __pycache__/
 *.py[cod]
 .venv/
+.venv-deploy/
 venv/
 *.egg-info/
 
@@ -38,3 +39,8 @@ __pycache__/
 # The raw phone drop for the eval corpus. The photographs live resized and stripped under
 # agents/evals/media/; the 149 MB original is an archive, not a repo artifact.
 Warrant-training.zip
+
+# Per-deployer, like .env. Not a secret — it ships inside every APK — but it pins the repo to
+# one Firebase project, and this project keeps deployment config out of the tree. Fetch it:
+#   ./infra/fetch-google-services.sh
+android/app/google-services.json

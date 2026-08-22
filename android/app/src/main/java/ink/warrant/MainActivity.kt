@@ -160,6 +160,12 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
             JobScreen(
                 vm = jobVm,
                 onOpenPairing = { nav.navigate(Dest.INSTRUMENTS.route) },
+                // The job is over by the time this is reachable, so it is left behind rather
+                // than stacked under the record: back from a record goes to the records list,
+                // not into a finished job's last step.
+                onOpenRecord = { id ->
+                    nav.navigate("record/$id") { popUpTo(JOB) { inclusive = true } }
+                },
                 onExit = { if (!nav.popBackStack()) nav.go(Dest.PROCEDURES) },
             )
         }

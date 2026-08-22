@@ -35,18 +35,55 @@ import org.json.JSONObject
  * client ID of type Web application** (not Android — Credential Manager wants the web client
  * id), then put the value in `res/values/auth.xml`. An Android OAuth client for this package
  * and signing certificate must also exist in the same project.
+ *
+ * ## Signing in once means once
+ *
+ * Android kills this process routinely — the moment another app wants the camera, when the
+ * battery saver decides, or simply overnight. Sign-in therefore CANNOT live only in memory, or
+ * a technician meets the gate again at random and the account stops feeling like an account.
+ *
+ * So the identity goes to [store] on success and comes back out of it here, in the constructor,
+ * before any screen exists to observe the wrong answer. [store] is a parameter rather than a
+ * `SharedPreferences` call inline because start-up is precisely the behaviour worth testing.
  */
-class GoogleAuth(private val context: Context) {
+class GoogleAuth(
+    private val store: IdentityStore,
+    private val clientIdOf: () -> String,
+) {
+
+    constructor(context: Context) : this(
+        PrefsIdentityStore(context),
+        { context.getString(R.string.google_web_client_id).trim() },
+    )
 
     companion object {
         private const val TAG = "GoogleAuth"
     }
 
-    private val _state = MutableStateFlow<AuthState>(AuthState.SignedOut)
+    // Read eagerly, not in a coroutine: see the note on [AuthState] about flashing the gate.
+    // It is one small file in app-private storage, read once per process.
+    private val _state = MutableStateFlow<AuthState>(
+        store.read()?.let(AuthState::SignedIn) ?: AuthState.SignedOut,
+    )
     val state: StateFlow<AuthState> = _state.asStateFlow()
 
-    private val clientId: String
-        get() = context.getString(R.string.google_web_client_id).trim()
+    private val clientId: String get() = clientIdOf()
+
+    /**
+     * What to do with Google's token once it has been obtained.
+     *
+     * A Google ID token proves who somebody is to Google and means NOTHING to Firestore, whose
+     * rules authorise against a Firebase token. So the exchange has to happen before any read
+     * is attempted, or every read is unauthenticated and correctly refused.
+     *
+     * A property rather than a constructor parameter because the exchange needs an [Api], and
+     * an [Api] needs configuration this class has no business knowing about. Null in a fixture
+     * build, where there is nothing to exchange with.
+     */
+    var onGoogleToken: (suspend (String, Identity) -> Unit)? = null
+
+    /** Called on sign-out, to end the Firebase session as well as this one. */
+    var onSignOut: (() -> Unit)? = null
 
     val isConfigured: Boolean get() = clientId.isNotEmpty()
 
@@ -83,7 +120,23 @@ class GoogleAuth(private val context: Context) {
                 credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
             ) {
                 val token = GoogleIdTokenCredential.createFrom(credential.data)
-                AuthState.SignedIn(identityFrom(token))
+                val identity = identityFrom(token)
+
+                // Before the state changes. A screen that showed a signed-in technician while
+                // Firestore still refused every read would look like an app that lost their
+                // data, not like an exchange that had not happened yet.
+                //
+                // A failure here is not fatal: the identity is real and the local tenant is
+                // correct for a consumer account. It is logged and the person is let in,
+                // because a technician standing at a machine with a working camera should not
+                // be stopped by a claim service.
+                runCatching { onGoogleToken?.invoke(token.idToken, identity) }
+                    .onFailure { Log.w(TAG, "Firebase exchange failed; continuing local", it) }
+
+                // Written before the state changes, so a process death in the same instant
+                // cannot leave a screen showing somebody who is not on disk.
+                store.write(identity)
+                AuthState.SignedIn(identity)
             } else {
                 AuthState.Failed("Signed in, but not with a Google account.")
             }
@@ -97,7 +150,19 @@ class GoogleAuth(private val context: Context) {
         }
     }
 
+    /**
+     * Signing out has to stick across a restart too — otherwise the stored identity simply
+     * signs them back in on the next launch, which is the same bug pointed the other way.
+     *
+     * The credential provider's own state is left alone deliberately: sign-in asks with
+     * `setFilterByAuthorizedAccounts(false)` and no auto-select, so the account chooser always
+     * appears and there is nothing here that would silently pick the account just abandoned.
+     */
     fun signOut() {
+        // Firebase first. Leaving that session behind would leave a client that still passes
+        // signedIn() in firestore.rules after the person believes they have gone.
+        runCatching { onSignOut?.invoke() }
+        store.clear()
         _state.value = AuthState.SignedOut
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Where this build's server lives.
+
+      Almost everything the app does goes straight to Firestore through the authenticated
+      client, so that firestore.rules is what enforces tenancy. Three things cannot: waking the
+      agent fleet, submitting an instrument reading, and exchanging a Google token for the
+      tenant claim. Those go here. See ink.warrant.net.Api for why each one has to.
+
+      Empty means fixture data only. The app still runs — it simply says so, rather than
+      failing in a way that looks like a bug.
+    -->
+    <string name="warrant_api_base" translatable="false">https://warrant-zq2l2kwg3q-uc.a.run.app</string>
+
+    <!--
+      The Cloud Storage bucket evidence is written to.
+
+      NOT the Firebase default `${project}.firebasestorage.app`, which google-services.json
+      advertises and which does not exist in this project. A mismatch here is silent: uploads
+      fail against a bucket that was never created, and the capture is adjudicated as missing
+      evidence rather than as a failed upload.
+    -->
+    <string name="warrant_storage_bucket" translatable="false">warrent-505918-evidence</string>
+
+    <!--
+      Whether this build talks to the real backend.
+
+      false is the demo build: bundled procedures, in-memory jobs, a scripted fleet, and a
+      banner on every screen that says so. See ink.warrant.data.FixtureSource.
+    -->
+    <bool name="warrant_live">true</bool>
+</resources>

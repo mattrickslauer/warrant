@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -83,6 +85,11 @@ data class FieldPip(
  *     should never have to aim, and a button that moves is a button you have to look for.
  *  3. **Both exits stay on the surface.** Satisfy the step with the bar, or say why you cannot
  *     with the ⚠ beside it. There is still no third way out and no skip.
+ *
+ * [onRedo] is the one control that appears and disappears: it is offered only while a frame
+ * from this step is on the backdrop, and it throws that frame away so the lens can be pointed
+ * at the same field again. It sits above the bar rather than in it, so nothing the thumb has
+ * already learned moves when it arrives.
  */
 @Composable
 fun StepPage(
@@ -101,6 +108,7 @@ fun StepPage(
     onTrace: () -> Unit,
     onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    onRedo: (() -> Unit)? = null,
     pips: List<FieldPip> = emptyList(),
     activePipKey: String? = null,
     onPip: (String) -> Unit = {},
@@ -147,6 +155,7 @@ fun StepPage(
                 onBlocked = onBlocked,
                 onTrace = onTrace,
                 onBack = onBack,
+                onRedo = onRedo,
                 pips = pips,
                 activePipKey = activePipKey,
                 onPip = onPip,
@@ -345,6 +354,7 @@ private fun BottomChrome(
     onBlocked: () -> Unit,
     onTrace: () -> Unit,
     onBack: (() -> Unit)?,
+    onRedo: (() -> Unit)?,
     pips: List<FieldPip>,
     activePipKey: String?,
     onPip: (String) -> Unit,
@@ -363,6 +373,8 @@ private fun BottomChrome(
         TraceHandle(onTrace)
 
         if (pips.size > 1) FieldStrip(pips, activePipKey, onPip)
+
+        onRedo?.let { RedoPill(it) }
 
         Row(
             Modifier.fillMaxWidth(),
@@ -386,6 +398,45 @@ private fun BottomChrome(
                 tint = WarrantTheme.colors.inferred,
             )
         }
+    }
+}
+
+/**
+ * Throw this frame away and look again.
+ *
+ * Only ever offered when there is a frame from this step on screen, and it discards exactly
+ * that one — the field it belongs to, on the step in front of you. Nothing else on the job is
+ * touched, and the record already holding an earlier frame is not rewritten: a capture that
+ * happened is a thing that happened. What Redo does is put the lens back so a better one can
+ * be taken beside it.
+ *
+ * Deliberately not the big bar. The bar's job is to move you forward; a control that destroys
+ * work should be a separate, smaller, differently-shaped decision — while still landing on the
+ * 44dp target a gloved thumb can hit.
+ */
+@Composable
+private fun RedoPill(onClick: () -> Unit) {
+    Row(
+        Modifier
+            .heightIn(min = 44.dp)
+            .background(Color(0xCC202124), WarrantTheme.pill)
+            .border(1.dp, Color.White.copy(alpha = 0.45f), WarrantTheme.pill)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 18.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Icon(
+            Icons.Rounded.Refresh,
+            contentDescription = null,
+            tint = Color.White,
+            modifier = Modifier.size(18.dp),
+        )
+        Text(
+            "Redo this capture",
+            style = WarrantTheme.type.label.copy(color = Color.White),
+            maxLines = 1,
+        )
     }
 }
 

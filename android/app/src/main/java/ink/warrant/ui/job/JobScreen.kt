@@ -69,12 +69,32 @@ import java.io.File
 fun JobScreen(
     vm: JobViewModel,
     onOpenPairing: () -> Unit,
+    onOpenRecord: (String) -> Unit,
     onExit: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val state by vm.state.collectAsState()
     val instrument by vm.instrumentState.collectAsState()
     val scope = rememberCoroutineScope()
+
+    // The end of the job is its own screen, not a step. Finishing the last step is not the
+    // same event as the record sealing, and [HandoverPage] is where that gap is stated out
+    // loud rather than papered over.
+    if (state.handedOver) {
+        HandoverPage(
+            outstanding = state.outstanding,
+            sealedRecordId = state.sealedRecordId,
+            heldReason = state.heldReason,
+            decisions = state.decisions,
+            fabricated = state.fabricated,
+            onReopen = { stepId -> vm.reopen(stepId) },
+            onOpenRecord = onOpenRecord,
+            onAgain = { vm.again() },
+            onDone = onExit,
+            modifier = modifier,
+        )
+        return
+    }
 
     val step = state.step
     if (step == null) {
@@ -109,21 +129,30 @@ fun JobScreen(
     val active = activeFieldFor(fields, strictness, selected) { key -> state.isFilled(step.id, key) }
     val camera = rememberCameraHandle()
 
-    // A frame already taken for the field in front of us. Its presence is what turns the page
-    // into a review: the picture replaces the live preview and the bar offers a retake.
-    val reviewing = if (active != null && active.usesCamera()) {
-        captured["${step.id}:${active.key}"]
-    } else {
-        null
-    }
+    // The frame on the backdrop, and which field it belongs to. Two cases, one answer: the
+    // picture under review while that field is still the one in front of you, or the step's
+    // last frame resting behind "Next step" once nothing is outstanding — so you can still see
+    // what you recorded. See [framedFieldFor].
+    val framedField = framedFieldFor(fields, active) { key -> "${step.id}:$key" in captured }
+    val framedFile = framedField?.let { captured["${step.id}:${it.key}"] }
 
-    // Once every required field is filled there is no active field, and the step's last frame
-    // stays on screen behind "Next step" — so you can still see what you just recorded.
-    val resting = if (active == null) {
-        fields.firstOrNull { it.usesCamera() && captured.containsKey("${step.id}:${it.key}") }
-            ?.let { captured["${step.id}:${it.key}"] }
-    } else {
-        null
+    // Under review only while the field is still open. This is what the bar reads to decide
+    // between "Capture" and "Retake"; a resting frame must not make a finished step look busy.
+    val reviewing = if (active != null) framedFile else null
+
+    // Redo. Offered whenever a frame from this step is on screen — including after the step has
+    // gone quiet, which is the case the bar cannot reach, because by then it says "Next step".
+    //
+    // Scoped to one slot: this field, this step. It drops the frame, points the page back at
+    // that field so the lens reopens, and clears the redaction line that described the frame
+    // being thrown away. Everything else on the job is untouched, and the capture already sent
+    // is not retracted — the next one lands beside it and the record keeps both.
+    val onRedo: (() -> Unit)? = framedField?.let { field ->
+        {
+            captured.remove("${step.id}:${field.key}")
+            redactNote = null
+            selected = field.key
+        }
     }
 
     var typed by remember(step.id, active?.key) { mutableStateOf("") }
@@ -206,9 +235,17 @@ fun JobScreen(
                     selected = null
                 }
 
-                ActionKind.ADVANCE, ActionKind.FINISH -> {
+                ActionKind.ADVANCE -> {
                     redactNote = null
                     vm.next()
+                }
+
+                // Deliberately not vm.next(). There is no step after the last one, so
+                // advancing past it changed nothing and the button read as dead — which is
+                // exactly what it was. Finishing is its own move onto its own screen.
+                ActionKind.FINISH -> {
+                    redactNote = null
+                    vm.finish()
                 }
             }
         },
@@ -227,10 +264,10 @@ fun JobScreen(
         },
         activePipKey = active?.key,
         onPip = { key -> selected = key; redactNote = null },
+        onRedo = onRedo,
         backdrop = {
-            val frame = reviewing ?: resting
             when {
-                frame != null -> ReviewFrame(frame, active?.prompt ?: step.title)
+                framedFile != null -> ReviewFrame(framedFile, active?.prompt ?: step.title)
                 active != null && active.usesCamera() -> CameraLayer(camera, Modifier.fillMaxSize())
                 else -> Unit
             }

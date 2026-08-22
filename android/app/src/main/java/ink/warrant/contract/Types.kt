@@ -70,6 +70,12 @@ enum class Tier {
 
 @Serializable
 enum class JobStatus {
+    /**
+     * Held back from the fleet: NO agent runs on a draft job. `finalize()` flips draft to
+     * open, and that flip is the human act — which is why this value has to exist here rather
+     * than being folded into `open`.
+     */
+    @SerialName("draft") DRAFT,
     @SerialName("open") OPEN,
     @SerialName("waiting") WAITING,
     @SerialName("held") HELD,
