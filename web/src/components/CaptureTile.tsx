@@ -28,6 +28,15 @@ export function CaptureTile({
 }) {
   const video = useRef<HTMLVideoElement>(null);
   const stream = useRef<MediaStream | null>(null);
+  /**
+   * The frame shape this stream opened with, and the only shape it is allowed to have.
+   *
+   * Left alone, a phone re-cuts a live camera track whenever its orientation sensor decides
+   * the device has turned — the track transposes, and the viewfinder lurches to a different
+   * crop of the world mid-step. Nothing asked for that and nothing about the evidence
+   * changed, so it is pinned here at first frame and held for the life of the stream.
+   */
+  const geometry = useRef<{ w: number; h: number } | null>(null);
   const [phase, setPhase] = useState<Phase>("starting");
   const [shot, setShot] = useState<string | null>(null);
 
@@ -43,9 +52,19 @@ export function CaptureTile({
     }
     try {
       const s = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: facing, width: { ideal: 1280 }, height: { ideal: 960 } },
+        // aspectRatio and crop-and-scale say the quiet part out loud: give me this shape and
+        // keep giving me this shape. Without them the browser is free to hand back a
+        // transposed frame the moment the gyro twitches.
+        video: {
+          facingMode: facing,
+          width: { ideal: 1280 },
+          height: { ideal: 960 },
+          aspectRatio: { ideal: 4 / 3 },
+          resizeMode: "crop-and-scale",
+        } as MediaTrackConstraints,
         audio: false,
       });
+      geometry.current = null;
       stream.current = s;
       if (video.current) {
         video.current.srcObject = s;
@@ -63,13 +82,59 @@ export function CaptureTile({
     return stop;
   }, [start, stop]);
 
+  /**
+   * Take the first frame's shape as the truth, and refuse every later one.
+   *
+   * The video element fires `resize` when the track's own dimensions change, which on a phone
+   * means the orientation sensor moved and the browser re-oriented the stream. The constraint
+   * is simply asked for again: the track is told to go back to the shape it started in, and
+   * the picture stays where the technician left it.
+   */
+  const pin = useCallback(() => {
+    const v = video.current;
+    const track = stream.current?.getVideoTracks()[0];
+    if (!v || !track || !v.videoWidth) return;
+    if (!geometry.current) {
+      geometry.current = { w: v.videoWidth, h: v.videoHeight };
+      return;
+    }
+    const { w, h } = geometry.current;
+    if (v.videoWidth === w && v.videoHeight === h) return;
+    track
+      .applyConstraints({
+        width: { exact: w },
+        height: { exact: h },
+        aspectRatio: { exact: w / h },
+        resizeMode: "crop-and-scale",
+      } as MediaTrackConstraints)
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const v = video.current;
+    if (!v) return;
+    v.addEventListener("resize", pin);
+    v.addEventListener("loadedmetadata", pin);
+    return () => {
+      v.removeEventListener("resize", pin);
+      v.removeEventListener("loadedmetadata", pin);
+    };
+  }, [pin, phase]);
+
   function grab() {
     const v = video.current;
     if (!v || !v.videoWidth) return;
+    // If a device managed to re-cut the track anyway, the photograph is still the picture the
+    // viewfinder was showing: centre-cropped into the shape the stream opened with, never a
+    // sideways frame the technician never framed.
+    const base = geometry.current ?? { w: v.videoWidth, h: v.videoHeight };
     const c = document.createElement("canvas");
-    c.width = v.videoWidth;
-    c.height = v.videoHeight;
-    c.getContext("2d")?.drawImage(v, 0, 0);
+    c.width = base.w;
+    c.height = base.h;
+    const fill = Math.max(base.w / v.videoWidth, base.h / v.videoHeight);
+    const dw = v.videoWidth * fill;
+    const dh = v.videoHeight * fill;
+    c.getContext("2d")?.drawImage(v, (base.w - dw) / 2, (base.h - dh) / 2, dw, dh);
     c.toBlob((blob) => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
