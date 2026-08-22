@@ -95,6 +95,69 @@ describe("adjudicate", () => {
     assert.ok(d.agent_version);
   });
 
+  test("a typed answer is sent AS the answer, and no media URI is built for it", async () => {
+    // The bug this pins reached a phone. `capture.kind` had no `text` member, so a signature
+    // went out labelled `scan`; the server built a gs:// URI for it; Gemini was asked for a
+    // file nobody had uploaded and returned 404; and the technician was shown "the fleet
+    // could not be reached" — a sentence about the network, for a name typed into a box.
+    //
+    // Both directions are asserted in one test on purpose. Without the photo half, an empty
+    // `media` proves nothing: it is also what you get when the bucket is unset, which is the
+    // default in this suite.
+    const prev = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = "warrant-test-evidence";
+
+    const seen = {};
+    const watch = async (agent, kase) => {
+      if (agent === "inspector") seen[kase.field.key] = kase;
+      return {
+        output: agent === "inspector" ? PASS : BELONGS,
+        valid: true, schemaErrors: [], model: "gemini-3.5-flash",
+        latencyMs: 1, usage: { totalTokenCount: 1 },
+      };
+    };
+
+    try {
+      const ref = await seedJob("job_typed", {
+        fields: [
+          { key: "pad_photo", kind: "photo", prompt: "Photograph the pad edge",
+            source: "camera", required_at_strictness: 0, acceptance_rule: "must_show" },
+          { key: "knife_stored", kind: "signature", prompt: "Confirm the knife is stored",
+            source: "human", required_at_strictness: 0, acceptance_rule: "signed_by",
+            acceptance_target: "whoever performed the job" },
+        ],
+      });
+
+      await db.doc(`tenants/${TENANT}/jobs/job_typed/captures/cap_text`).set({
+        id: "cap_text", field_id: "s3__knife_stored", kind: "text",
+        // The answer itself. There is no object, and media_ref is where the shape puts it.
+        media_ref: "Anthony", capture_mode: "live", capture_surface: "app",
+        created_at: "2026-08-21T10:05:00Z", armor_verdict: null, adjudicated: false,
+      });
+
+      await adjudicate(ref, { ask: watch, db });
+      await adjudicate(
+        { ...ref, fieldKey: "knife_stored", captureId: "cap_text" },
+        { ask: watch, db },
+      );
+
+      // The photograph still gets one, so the empty list below means something.
+      assert.equal(seen.pad_photo.media.length, 1);
+      assert.match(seen.pad_photo.media[0], /^gs:\/\//);
+      assert.equal(seen.pad_photo.answer, undefined);
+
+      assert.deepEqual(seen.knife_stored.media, [], "a text capture points at no object");
+      assert.equal(seen.knife_stored.answer, "Anthony", "and the fleet is told what was said");
+
+      const stuck = (await decisionsFor("job_typed")).docs
+        .map((d) => d.data()).filter((d) => d.verdict === "engine_unreachable");
+      assert.deepEqual(stuck, [], "nothing should have been sent after a missing file");
+    } finally {
+      if (prev === undefined) delete process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+      else process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = prev;
+    }
+  });
+
   test("a PASS on the only required field performs the step", async () => {
     const o = await outcomeOf("job_a");
     assert.deepEqual(o.accepted_fields, ["pad_photo"]);

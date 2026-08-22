@@ -161,9 +161,13 @@ class FixtureSource(
                     CaptureKind.PHOTO -> FieldKind.PHOTO
                     CaptureKind.VIDEO -> FieldKind.VIDEO
                     CaptureKind.SCAN -> FieldKind.SCAN
-                    CaptureKind.AUDIO -> FieldKind.TEXT
+                    CaptureKind.AUDIO, CaptureKind.TEXT -> FieldKind.TEXT
                 },
-                mediaRef = cap.id,
+                // The same split the live source makes: a text answer has no object, and
+                // `isFilled` reads valueText for this kind — a typed answer left only in
+                // mediaRef reads as an empty field on the fixtures the demo runs on.
+                mediaRef = if (input.kind.hasObject) cap.id else null,
+                valueText = if (input.kind.hasObject) null else input.mediaRef,
                 capturedAt = cap.createdAt,
                 // The class is stamped by the Seal, never here, and never by a model. What is
                 // recorded now is only how the evidence was made.

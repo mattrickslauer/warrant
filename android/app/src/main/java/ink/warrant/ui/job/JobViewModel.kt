@@ -255,7 +255,10 @@ class JobViewModel(
                 source.capture(
                     CaptureInput(
                         jobId = jobId, stepId = stepId, fieldKey = field.key,
-                        kind = CaptureKind.SCAN, mediaRef = value,
+                        // TEXT, not SCAN. A scan is a photograph of a code and has an
+                        // object; this has an answer and none. Labelling it scan is what sent
+                        // the fleet after a `.jpg` nobody uploaded.
+                        kind = CaptureKind.TEXT, mediaRef = value,
                         surface = CaptureSurface.APP, mode = CaptureMode.LIVE, redacted = true,
                     ),
                 )

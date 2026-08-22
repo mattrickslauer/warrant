@@ -229,6 +229,8 @@ class LiveSource(
             id = capRef.id,
             fieldId = fieldId(input.stepId, input.fieldKey),
             kind = input.kind,
+            // The stored path, or — for a text capture, the only kind with no object — the
+            // answer itself. uploadMedia now returns null for that kind and nothing else.
             mediaRef = stored ?: input.mediaRef,
             captureMode = input.mode,
             // Reported, not believed. firestore.rules refuses `app_instrument` from any client
@@ -274,9 +276,14 @@ class LiveSource(
                     CaptureKind.PHOTO -> "photo"
                     CaptureKind.VIDEO -> "video"
                     CaptureKind.SCAN -> "scan"
-                    CaptureKind.AUDIO -> "text"
+                    CaptureKind.AUDIO, CaptureKind.TEXT -> "text"
                 },
-                "media_ref" to capRef.id,
+                // A text field points at no object, and its answer belongs on the field
+                // rather than only on the capture — the Seal reads `value_text` when it
+                // publishes, and a null there would seal a record missing the one thing the
+                // technician actually said.
+                "media_ref" to if (input.kind.hasObject) capRef.id else null,
+                "value_text" to if (input.kind.hasObject) null else input.mediaRef,
                 "captured_at" to createdAt,
                 // Null on purpose. The Seal stamps provenance, recomputed from the
                 // server-written `readings` collection. A class asserted here would be this
@@ -312,18 +319,41 @@ class LiveSource(
         captureId: String,
         input: CaptureInput,
     ): String? {
+        // No object, so nothing to put anywhere. Null here is the honest answer, and the
+        // caller keeps the typed value in media_ref — see capture.schema.json.
+        if (!input.kind.hasObject) return null
+
         val ext = when (input.kind) {
+            // Guarded above. Kept exhaustive so a kind added later has to be classified here
+            // as well as on hasObject, rather than silently taking a default extension.
+            CaptureKind.TEXT -> return null
             CaptureKind.PHOTO, CaptureKind.SCAN -> "jpg"
             CaptureKind.VIDEO -> "mp4"
             CaptureKind.AUDIO -> "m4a"
         }
         val path = "tenants/$tenant/captures/$job/$captureId.$ext"
-        return runCatching {
-            val local = File(input.mediaRef)
-            val uri = if (local.exists()) Uri.fromFile(local) else Uri.parse(input.mediaRef)
+        val local = File(input.mediaRef)
+        val uri = if (local.exists()) Uri.fromFile(local) else Uri.parse(input.mediaRef)
+
+        // Fatal, and that is the point. This used to swallow the throw and hand back null,
+        // and the caller then wrote a capture document and asked the fleet to rule on an
+        // object that was never uploaded. The fleet did the only thing it could and returned
+        // 404, which surfaced to the technician as "the fleet could not be reached" — a
+        // sentence about the network, for a file that had failed to leave the phone.
+        //
+        // A capture that cannot be stored has not happened. Say so here, and let it reach
+        // the person standing there while they can still take the photograph again.
+        try {
             storage.reference.child(path).putFile(uri).await()
-            path
-        }.onFailure { Log.w(TAG, "media upload failed for $path", it) }.getOrNull()
+        } catch (e: Exception) {
+            Log.w(TAG, "media upload failed for $path", e)
+            throw IllegalStateException(
+                "The photograph could not be uploaded, so nothing was recorded. " +
+                    "Check the connection and take it again.",
+                e,
+            )
+        }
+        return path
     }
 
     /**
