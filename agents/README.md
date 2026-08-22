@@ -1,8 +1,13 @@
 # The agents, and how we know they work
 
-Five agents, and one line drawn deliberately: a model is used where judgement is genuinely
+Seven agents, and one line drawn deliberately: a model is used where judgement is genuinely
 required and nowhere else. The seal, the gate and the ledger are deterministic and are not
 in this directory.
+
+Six of them judge something and return a verdict a person can argue with. Wright is the
+exception, and it is held to a stricter standard for a reason: a wrong verdict sits on the
+record where somebody can dispute it, while a wrong driver mints wrong measurements
+unattended — each one filed as `measured`, the strongest provenance class the product has.
 
 | Agent | Decides | Why it cannot be code |
 |---|---|---|
@@ -11,6 +16,8 @@ in this directory.
 | **Skeptic** | Does this evidence belong to this job, this machine, this moment | Perceptual identity — same asset, does the wear match the history |
 | **Instructor** | Turns "I can't do this one" into a structured blocker and a next action | Unbounded speech against the procedure in context |
 | **Foreman** | Owns the job for its whole life and disposes of a step nobody could do | Long-horizon state and delegation under ambiguity |
+| **Auditor** | Reads weeks of finished jobs and finds the defects in the procedure itself | Telling a broken form apart from a working one — a step that keeps failing is usually the rule catching real faults |
+| **Wright** | Meets an unfamiliar instrument and works out how it speaks | Inferring an encoding from a GATT tree, and knowing when the honest answer is to refuse |
 
 ## The contract is the prompt
 
@@ -25,7 +32,7 @@ it in `check_conditionals`, and every one of those rules is tested.
 
 ## Testing
 
-The corpus is **48 scenarios across the five agents**, each a genuinely different situation —
+The corpus is **62 scenarios across the seven agents**, each a genuinely different situation —
 a different photograph, a different transcript, a different job history — because running
 one case repeatedly measures sampling noise, not the agent.
 
@@ -86,7 +93,7 @@ arithmetic rather than an impression formed by reading the transcript:
 ```
 
 `evals/shop.py` is the simulated shop, and it lives in `evals/` rather than `warrant/` because
-it is not one of the five agents and ships with nothing.
+it is not one of the seven agents and ships with nothing.
 
 The first interviews are also what made the Scoper's real defect visible. Its contract asks it
 to know what it has not yet asked, and nothing ever told it — so it did what anyone would and
@@ -180,3 +187,36 @@ cassettes needs none of it: the SDK is imported lazily, inside the live branch o
 
 The Gemini 3 family is served from the `global` endpoint, not a regional one. `model.py`
 defaults to it; `GEMINI_LOCATION` overrides it for a model that is genuinely regional.
+
+## Deploying the fleet to Agent Runtime
+
+```bash
+gcloud auth application-default login       # once, per machine
+./infra/deploy-agents.py                    # create, or update the engine in place
+./infra/deploy-agents.py --list             # what is deployed
+./infra/deploy-agents.py --smoke            # ask the deployed engine what it is
+```
+
+`warrant/runtime.py` is the whole surface: one `query(case=…, agent=…)` and one `roster()`.
+It keeps no job state between calls, and that is the design rather than an omission. Agent
+Runtime caps a single execution at seven days; a Warrant job is a service interval or a
+purchase-order lead time, which is longer. So the runtime hosts a **session** and the record
+holds the **job** — the Foreman wakes, is shown a case, decides, and the decision is written
+down by the caller. Anything this process remembered would be state that vanishes when the
+runtime recycles.
+
+Two things the local harness gets for free have to be arranged for the remote, both by
+`infra/deploy-agents.py`:
+
+- **The contract.** The fleet ships as the `warrant` package alone — there is no repo out
+  there — so a verbatim copy of `contract/agents` and `contract/entities` is staged into the
+  package as `_contract_data/`. It is copied at deploy time, never authored, so there is
+  still exactly one statement of the contract. `contract.py` prefers the repo copy and falls
+  back to the packaged one; `WARRANT_CONTRACT_DIR` overrides both.
+- **The credential.** Deploying is an operator action, so the script deliberately ignores
+  `GOOGLE_APPLICATION_CREDENTIALS` from `.env` — that points at the least-privilege
+  `warrant-web` runtime identity, and authenticating the deploy as the running product
+  produces a 403 that reads exactly like the API being unavailable.
+
+The deployed fleet always calls live. A cassette answering on a deployed engine would mean
+the thing under judgement was replaying a recording, which is the one thing it must not do.

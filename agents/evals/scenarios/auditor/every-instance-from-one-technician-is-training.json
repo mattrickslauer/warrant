@@ -1,0 +1,598 @@
+{
+  "agent": "auditor",
+  "title": "a pattern that traces entirely to one technician is not a procedure defect",
+  "why": "Six blocked jobs on one step looks like a defect until you read the names, and all six are the same person while eleven other jobs on the same step by four other technicians passed without comment. Revising the procedure here fixes the wrong thing and makes the form worse for everyone who was already doing it correctly.",
+  "input": {
+    "procedure": {
+      "key": "front-brake-service",
+      "title": "Front brake service \u2014 Honda CB500X",
+      "version": 3,
+      "strictness": 2,
+      "in_service_since": "2026-06-01",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Check the pads before you touch anything",
+          "explanation": "If they are already past the limit the rest of the job changes.",
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 2,
+              "acceptance_unit": "mm",
+              "prompt": "Measure the thinnest pad and enter it"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "title": "Clean the caliper up",
+          "explanation": "Contamination on the disc stops the job dead.",
+          "fields": [
+            {
+              "key": "caliper_clean",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the caliper clean",
+              "prompt": "Photograph the caliper once it is clean"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "title": "Fit the new pads and torque the caliper bolts",
+          "explanation": "An under-torqued caliper bolt backs out under braking heat.",
+          "fields": [
+            {
+              "key": "caliper_bolt_torque",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 27,
+              "acceptance_max": 33,
+              "acceptance_unit": "Nm",
+              "prompt": "Torque both caliper bolts and record the reading"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "title": "Photograph the disc face for records",
+          "explanation": "Kept for the file.",
+          "fields": [
+            {
+              "key": "disc_face",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the disc face",
+              "prompt": "Photograph the disc"
+            }
+          ]
+        }
+      ]
+    },
+    "window": {
+      "from": "2026-08-01",
+      "to": "2026-08-20"
+    },
+    "jobs": [
+      {
+        "id": "J-4700",
+        "sealed_at": "2026-08-01",
+        "asset_id": "CB500X-00",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4701",
+        "sealed_at": "2026-08-02",
+        "asset_id": "CB500X-01",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4702",
+        "sealed_at": "2026-08-03",
+        "asset_id": "CB500X-02",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4703",
+        "sealed_at": "2026-08-04",
+        "asset_id": "CB500X-03",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4704",
+        "sealed_at": "2026-08-05",
+        "asset_id": "CB500X-04",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4705",
+        "sealed_at": "2026-08-06",
+        "asset_id": "CB500X-05",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "impossible",
+            "reason": {
+              "kind": "voice",
+              "by": "Eddie",
+              "transcript": "not sure I'm doing this bit right, leaving it"
+            },
+            "blocker_kind": "other"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4800",
+        "sealed_at": "2026-08-01",
+        "asset_id": "CB500X-20",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Ana"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4801",
+        "sealed_at": "2026-08-02",
+        "asset_id": "CB500X-21",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Bruno"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4802",
+        "sealed_at": "2026-08-03",
+        "asset_id": "CB500X-22",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Chen"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4803",
+        "sealed_at": "2026-08-04",
+        "asset_id": "CB500X-23",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Dev"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4804",
+        "sealed_at": "2026-08-05",
+        "asset_id": "CB500X-24",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Ana"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4805",
+        "sealed_at": "2026-08-06",
+        "asset_id": "CB500X-25",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Bruno"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4806",
+        "sealed_at": "2026-08-07",
+        "asset_id": "CB500X-26",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Chen"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4807",
+        "sealed_at": "2026-08-08",
+        "asset_id": "CB500X-27",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Dev"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4808",
+        "sealed_at": "2026-08-09",
+        "asset_id": "CB500X-28",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Ana"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4809",
+        "sealed_at": "2026-08-10",
+        "asset_id": "CB500X-29",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Bruno"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4810",
+        "sealed_at": "2026-08-11",
+        "asset_id": "CB500X-30",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "by": "Chen"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "mentions_any": {
+      "considered_and_rejected": [
+        "Eddie",
+        "one technician",
+        "same technician",
+        "training",
+        "one person"
+      ]
+    }
+  }
+}

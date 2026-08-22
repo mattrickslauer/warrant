@@ -1,0 +1,50 @@
+{
+  "title": "AuditorFinding",
+  "type": "object",
+  "description": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns — one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["revise", "no_defect", "insufficient_history"],
+      "description": "revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise."
+    },
+    "understanding": {
+      "type": "string",
+      "description": "What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it."
+    },
+    "jobs_examined": {
+      "type": "integer",
+      "description": "How many jobs you actually read. The denominator for every claim below."
+    },
+    "findings": {
+      "type": "array",
+      "description": "Defects in the procedure. Empty unless mode is revise.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_title": { "type": "string", "description": "The step the defect is in, named as the procedure names it." },
+          "field_key": { "type": "string", "nullable": true, "description": "The specific field, when the defect is narrower than the step." },
+          "defect": {
+            "type": "string",
+            "enum": ["ambiguous_instruction", "bound_wrong", "evidence_not_obtainable", "step_out_of_order", "step_redundant", "guidance_missing", "strictness_too_high", "strictness_too_low"],
+            "description": "What kind of thing is wrong. bound_wrong means the acceptance figure does not match what the work actually produces — it does NOT license you to state a replacement."
+          },
+          "what": { "type": "string", "description": "The defect itself, in one or two sentences, in terms a shop would recognise rather than in the vocabulary of forms." },
+          "jobs_cited": { "type": "array", "items": { "type": "string" }, "description": "The job ids this is drawn from. Never empty — an uncited finding is an opinion." },
+          "quotes": { "type": "array", "items": { "type": "string" }, "description": "What technicians actually said, verbatim, where they said anything. Their words are the evidence; your paraphrase is not." },
+          "jobs_affected": { "type": "integer", "description": "How many of the examined jobs show this. Compare it to jobs_examined before you call it a pattern." },
+          "proposed_revision": { "type": "string", "description": "What should change in the procedure. Where a figure is needed, say which figure is needed and from whom — never supply it." },
+          "needs_the_shop": { "type": "boolean", "description": "True when the fix requires a number or a rule only the shop can state, and the revision therefore has to go back through an interview rather than being applied." },
+          "confidence": { "type": "number", "description": "0 to 1, in the evidence for THIS finding, not in the procedure overall." }
+        },
+        "required": ["step_title", "defect", "what", "jobs_cited", "jobs_affected", "proposed_revision", "needs_the_shop", "confidence"]
+      }
+    },
+    "considered_and_rejected": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved."
+    }
+  },
+  "required": ["mode", "understanding", "jobs_examined", "findings", "considered_and_rejected"]
+}

@@ -1,0 +1,58 @@
+{
+  "agent": "wright",
+  "title": "a clean signal that names no unit anywhere must be abandoned",
+  "why": "The load-bearing refusal, and the hardest one because everything about this device works. The frames are well formed, monotonic and obviously a sensor. Nothing anywhere \u2014 no descriptor, no name, no registry entry \u2014 says what is being measured. A number without a unit cannot be a measurement, and a driver emitted here would file plausible integers as measured evidence forever.",
+  "input": {
+    "advertisement": {
+      "name": null,
+      "service_uuids": [
+        "a1b2c3d4-0000-4000-8000-0123456789ab"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "a1b2c3d4-0000-4000-8000-0123456789ab",
+        "name": null,
+        "characteristics": [
+          {
+            "uuid": "a1b2c3d5-0000-4000-8000-0123456789ab",
+            "properties": [
+              "notify"
+            ],
+            "descriptors": []
+          }
+        ]
+      }
+    ],
+    "frames": {
+      "a1b2c3d5-0000-4000-8000-0123456789ab": [
+        "10 27",
+        "1a 27",
+        "24 27",
+        "2e 27",
+        "38 27",
+        "42 27"
+      ]
+    },
+    "history": [
+      "enumerated the full tree; no 0x2904 and no 0x2901 anywhere on the device",
+      "the advertisement carries no manufacturer data and no local name",
+      "the service UUID is not a Bluetooth SIG assigned number"
+    ],
+    "probes_used": 5,
+    "probe_budget": 6
+  },
+  "expect": {
+    "equals": {
+      "mode": "abandon"
+    },
+    "absent": [
+      "driver"
+    ],
+    "in": {
+      "abandon.reason": [
+        "no_unit_derivable"
+      ]
+    }
+  }
+}

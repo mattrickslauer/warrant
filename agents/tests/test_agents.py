@@ -88,6 +88,23 @@ class TestSkeptic:
         case["capture"]["capture_mode"] = "upload"
         assert "unverified" in self.a.parts(case)[0].text
 
+    def test_a_job_with_no_asset_is_not_asked_to_identify_a_machine(self):
+        # "Pick up an object" names no asset, and nothing in the app ever writes one. Asked
+        # "is this THE machine" with every asset field null, the only honest answer under
+        # "if you cannot establish identity, dissent" is a dissent — and a dissent on a PASS
+        # is a deterministic escalation. The one procedure that exists so a judge with an
+        # empty desk can seal a record could therefore never seal.
+        text = self.a.parts(_assetless_case())[0].text
+        assert "The machine this evidence is claimed to be of" not in text
+        assert "names no registered asset" in text
+
+    def test_an_assetless_job_is_still_asked_the_questions_it_can_answer(self):
+        # Not a bypass. Time, scene and reuse are all still decidable without an asset, and
+        # reuse is the cheat this demo exists to catch — photograph the same mug twice.
+        text = self.a.parts(_assetless_case())[0].text.lower()
+        for question in ("time", "scene", "submitted before"):
+            assert question in text
+
 
 class TestInstructor:
     def test_a_missing_part_must_be_named(self):
@@ -181,6 +198,13 @@ def _inspector_case(strictness=2, used=0, source="instrument"):
 
 def _skeptic_case():
     return {"asset": {"id": "A-1"}, "job": {"id": "J-1"},
+            "capture": {"capture_mode": "live", "capture_surface": "app"},
+            "media": [], "prior_media": []}
+
+
+def _assetless_case():
+    """A public procedure. No tenant, no fleet, no registered asset — anything on a desk."""
+    return {"asset": None, "job": {"id": "anon/J-1", "procedure": "proc_pickup_v1"},
             "capture": {"capture_mode": "live", "capture_surface": "app"},
             "media": [], "prior_media": []}
 

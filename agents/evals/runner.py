@@ -287,6 +287,16 @@ def main(argv: list[str] | None = None) -> int:
     common(sub.add_parser("list", help="list scenarios")).set_defaults(fn=cmd_list)
     common(sub.add_parser("media", help="what still needs photographing")).set_defaults(fn=cmd_media)
 
+    t = sub.add_parser("talk", help="interview the Scoper yourself and keep what it compiles")
+    t.add_argument("--key", help="slug for the procedure, e.g. xyber-rear-brake-pads")
+    t.add_argument("--shop", help="path to a JSON file describing the shop, instead of being asked")
+    t.add_argument("--max-turns", type=int, default=16, help="how many questions it may ask")
+    t.add_argument("--temperature", type=float, default=0.0)
+    t.add_argument("--no-save-scenario", dest="save_scenario", action="store_false",
+                   help="do not turn this conversation into a regression scenario")
+    t.set_defaults(save_scenario=True)
+    t.set_defaults(fn=lambda a: __import__("evals.talk", fromlist=["cmd_talk"]).cmd_talk(a))
+
     d = sub.add_parser("diff", help="compare two runs")
     d.add_argument("before")
     d.add_argument("after")

@@ -106,6 +106,22 @@ MANIFEST: dict[str, tuple[str, str]] = {
         "A bike outdoors somewhere that is obviously not the workshop — roadside, gravel, "
         "weather, no building.",
         "skeptic/scene-contradicts-the-stated-location"),
+
+    # --- the public demo, which names no asset at all --------------------------------
+    #
+    # Deliberately NOT a machine part. proc_pickup_v1 is the shortest path from nothing to a
+    # sealed record and it names no asset, so the Skeptic is asked about time, scene and
+    # reuse and nothing else. Photograph a bolt here and a Skeptic that still dissents on
+    # "this is not the asset" would pass the test for the wrong reason.
+    "desk/object-on-desk.jpg": (
+        "One ordinary object — a mug, a stapler, an apple — at rest on a surface with nobody "
+        "touching it, far enough back that the surface under it is in frame. Not a tool and "
+        "not a part.",
+        "skeptic/no-asset-named-is-not-a-mismatch"),
+    "desk/object-in-hand.jpg": (
+        "The SAME object held clear of the surface, same room and same light. The pair is "
+        "what makes two ordinary photographs into evidence of a lift.",
+        "skeptic/no-asset-named-is-not-a-mismatch"),
 }
 
 #: Already in the repo. The editorial caliper still-life was generated for the landing page,

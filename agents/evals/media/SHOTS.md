@@ -1,6 +1,6 @@
 # The shot list
 
-Eighteen photographs. They are the corpus the Inspector and the Skeptic are tested against,
+Twenty-one photographs. They are the corpus the Inspector and the Skeptic are tested against,
 and they have to be **real photographs** — not renders and not stock.
 
 Three reasons, in order of how much they matter:
@@ -86,6 +86,20 @@ The hardest thing the Skeptic does is tell twelve identical bikes apart.
 | `tyre/tread-coin-deep.jpg` | A coin stood upright in the main groove of a good tyre, most of its edge swallowed. |
 | `tyre/tread-coin-shallow.jpg` | The same on a worn tyre — coin standing proud, surrounding rubber smooth. |
 
+## 7 · The public demo · ~1 min
+
+Anywhere, on any desk, with no bike involved. That is the point of them: `proc_pickup_v1` is
+the shortest path there is from nothing to a sealed record, and it names no asset at all.
+
+**Use something that is obviously not a machine part** — a mug, a stapler, an apple. A
+photograph of a bolt would let a Skeptic that still dissents on "this is not the asset" pass
+the test for the wrong reason, and that is the exact regression these two exist to catch.
+
+| File | What |
+|---|---|
+| `desk/object-on-desk.jpg` | One ordinary object at rest on a surface, nobody touching it, far enough back that the surface under it is in frame. |
+| `desk/object-in-hand.jpg` | The **same object**, held clear of the surface. Same room, same light — the check is continuity, not composition. |
+
 ## 7 · One staged fraud · ~2 min
 
 | File | What |
@@ -131,7 +145,7 @@ avoid.
 
 ## What is already shot
 
-The 2026-08-20 brake session filled **eight** of the nineteen: `brake/pads-seated-sharp`,
+The 2026-08-20 brake session filled **eight** of the twenty-one: `brake/pads-seated-sharp`,
 `brake/pads-seated-blurred`, `brake/caliper-rear-not-front`, `brake/pads-worn-to-backing`,
 `label/part-number-legible`, `label/part-number-glare`, `scene/workshop-interior`
 and `torque/wrench-on-fastener`.

@@ -1,0 +1,78 @@
+{
+  "title": "WrightTurn",
+  "type": "object",
+  "description": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit — a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["probe", "emit", "abandon"],
+      "description": "probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why."
+    },
+    "understanding": {
+      "type": "string",
+      "description": "What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end."
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead."
+    },
+    "unresolved": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Everything still unknown that would change the driver. Empty is the only condition under which you may emit."
+    },
+    "probe": {
+      "type": "object",
+      "nullable": true,
+      "description": "Required when mode is probe. One operation for the phone to perform against the device.",
+      "properties": {
+        "op": {
+          "type": "string",
+          "enum": ["enumerate", "read", "subscribe", "write_then_subscribe", "sample_while_changing"],
+          "description": "enumerate returns the full GATT tree including 0x2901 and 0x2904 descriptors. write_then_subscribe is for devices that stay silent until a control byte is written. sample_while_changing asks the person holding the device to make the quantity move, and is what makes the tracking gate possible."
+        },
+        "service": { "type": "string", "nullable": true, "description": "Service UUID this operation targets." },
+        "characteristic": { "type": "string", "nullable": true, "description": "Characteristic UUID this operation targets." },
+        "bytes": { "type": "string", "nullable": true, "description": "Hex to write, for write_then_subscribe. Only ever to a characteristic you have reason to believe starts a stream — never to anything that could alter the device's calibration or stored state." },
+        "samples": { "type": "integer", "description": "How many frames to collect. More than twenty is rarely informative and costs time." },
+        "instruction": { "type": "string", "nullable": true, "description": "Required for sample_while_changing. Addressed to the person holding the device, in plain language: what to do to the sensor to make the quantity move, and in which direction." },
+        "why": { "type": "string", "description": "What this probe will tell you that you do not already know." }
+      },
+      "required": ["op", "samples", "why"]
+    },
+    "driver": {
+      "type": "object",
+      "nullable": true,
+      "description": "Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.",
+      "properties": {
+        "class_name": { "type": "string", "description": "Kotlin class name, e.g. AcmeHygrometerDriver." },
+        "label": { "type": "string", "description": "Human-facing name for the pairing screen." },
+        "service": { "type": "string", "description": "Service UUID the reading lives under." },
+        "characteristic": { "type": "string", "description": "Characteristic UUID carrying the reading." },
+        "unit": { "type": "string", "description": "The physical unit, named. Never empty, never 'unknown', never a bare count. If you cannot name it, abandon instead." },
+        "min": { "type": "number", "description": "Lowest value this device could legitimately report." },
+        "max": { "type": "number", "description": "Highest value this device could legitimately report." },
+        "start_write": { "type": "string", "nullable": true, "description": "Hex that must be written to begin streaming, if any. Null for devices that notify unprompted." },
+        "kotlin": { "type": "string", "description": "The complete class. Imports limited to java.nio, java.util and kotlin.*; it must implement Driver and its decode must return null for any frame that is not a reading." },
+        "rationale": { "type": "string", "description": "Why this offset, this width, this endianness and this scale. Written for someone auditing a sealed record who wants to know whether to believe the number." }
+      },
+      "required": ["class_name", "label", "service", "characteristic", "unit", "min", "max", "kotlin", "rationale"]
+    },
+    "abandon": {
+      "type": "object",
+      "nullable": true,
+      "description": "Required when mode is abandon. Saying why is the deliverable.",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": ["encrypted", "bonding_required", "no_readable_characteristic", "vendor_handshake_unknown", "no_unit_derivable", "frames_never_decode", "probe_budget_exhausted"],
+          "description": "The class of failure. no_unit_derivable is not a defeat — a number without a unit cannot be a measurement, and refusing it is correct."
+        },
+        "detail": { "type": "string", "description": "What was tried and what the device did, specifically enough that a person with the vendor's documentation could finish the job." }
+      },
+      "required": ["reason", "detail"]
+    }
+  },
+  "required": ["mode", "understanding", "evidence", "unresolved"]
+}

@@ -1,0 +1,62 @@
+{
+  "agent": "wright",
+  "title": "a device that notifies nothing must be written to before any driver is emitted",
+  "why": "Subscribing returned not one frame. There is nothing to decode, so there is nothing to emit, and the only honest move is a probe that writes the control byte the vendor characteristic advertises write-without-response for. A driver emitted here would be decoding an empty set. The device also states its hand: 0000fff1 carries a 0x2901 descriptor reading 'Control Point', and a packet capture of the vendor app shows it written on connect. Without that evidence the contract's own rule \u2014 never write to a characteristic on a hunch \u2014 makes refusing to write the correct answer, so the scenario has to supply the grounds it is testing the use of.",
+  "input": {
+    "advertisement": {
+      "name": "TQ-PRO",
+      "service_uuids": [
+        "0000fff0-0000-1000-8000-00805f9b34fb"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "0000fff0-0000-1000-8000-00805f9b34fb",
+        "name": null,
+        "characteristics": [
+          {
+            "uuid": "0000fff1-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "write_without_response"
+            ],
+            "descriptors": [
+              {
+                "uuid": "00002901-0000-1000-8000-00805f9b34fb",
+                "name": "Characteristic User Description",
+                "value": "Control Point"
+              }
+            ]
+          },
+          {
+            "uuid": "0000fff2-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "notify"
+            ],
+            "descriptors": []
+          }
+        ]
+      }
+    ],
+    "frames": {
+      "0000fff2-0000-1000-8000-00805f9b34fb": []
+    },
+    "history": [
+      "subscribed to 0000fff2 for 30 s and received no notifications",
+      "the vendor's own app writes a single byte to 0000fff1 immediately after connecting, observed with a packet capture; the value written was 0x01"
+    ],
+    "probes_used": 2
+  },
+  "expect": {
+    "equals": {
+      "mode": "probe"
+    },
+    "absent": [
+      "driver"
+    ],
+    "in": {
+      "probe.op": [
+        "write_then_subscribe"
+      ]
+    }
+  }
+}

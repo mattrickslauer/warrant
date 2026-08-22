@@ -1,0 +1,741 @@
+{
+  "agent": "auditor",
+  "title": "a step that fails often because the machines are genuinely worn is not a defect",
+  "why": "The judgement this agent exists for, and the one where being helpful does damage. Nine of twenty jobs failed the pad thickness check, which looks exactly like a bad acceptance rule and is in fact a rule catching real faults on a hard-worked fleet. An Auditor that reports it as a defect pushes the shop to loosen the one check earning its keep, and it would do so citing real evidence.",
+  "input": {
+    "procedure": {
+      "key": "front-brake-service",
+      "title": "Front brake service \u2014 Honda CB500X",
+      "version": 3,
+      "strictness": 2,
+      "in_service_since": "2026-06-01",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Check the pads before you touch anything",
+          "explanation": "If they are already past the limit the rest of the job changes.",
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 2,
+              "acceptance_unit": "mm",
+              "prompt": "Measure the thinnest pad and enter it"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "title": "Clean the caliper up",
+          "explanation": "Contamination on the disc stops the job dead.",
+          "fields": [
+            {
+              "key": "caliper_clean",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the caliper clean",
+              "prompt": "Photograph the caliper once it is clean"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "title": "Fit the new pads and torque the caliper bolts",
+          "explanation": "An under-torqued caliper bolt backs out under braking heat.",
+          "fields": [
+            {
+              "key": "caliper_bolt_torque",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 27,
+              "acceptance_max": 33,
+              "acceptance_unit": "Nm",
+              "prompt": "Torque both caliper bolts and record the reading"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "title": "Photograph the disc face for records",
+          "explanation": "Kept for the file.",
+          "fields": [
+            {
+              "key": "disc_face",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the disc face",
+              "prompt": "Photograph the disc"
+            }
+          ]
+        }
+      ]
+    },
+    "window": {
+      "from": "2026-08-01",
+      "to": "2026-08-20"
+    },
+    "jobs": [
+      {
+        "id": "J-4500",
+        "sealed_at": "2026-08-01",
+        "asset_id": "CB500X-00",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4501",
+        "sealed_at": "2026-08-02",
+        "asset_id": "CB500X-01",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4502",
+        "sealed_at": "2026-08-03",
+        "asset_id": "CB500X-02",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4503",
+        "sealed_at": "2026-08-04",
+        "asset_id": "CB500X-03",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4504",
+        "sealed_at": "2026-08-05",
+        "asset_id": "CB500X-04",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4505",
+        "sealed_at": "2026-08-06",
+        "asset_id": "CB500X-05",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4506",
+        "sealed_at": "2026-08-07",
+        "asset_id": "CB500X-06",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4507",
+        "sealed_at": "2026-08-08",
+        "asset_id": "CB500X-07",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4508",
+        "sealed_at": "2026-08-09",
+        "asset_id": "CB500X-08",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 1.4,
+              "unit": "mm"
+            },
+            "verdict": "FAIL \u2014 below 2 mm, pads replaced"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4509",
+        "sealed_at": "2026-08-10",
+        "asset_id": "CB500X-09",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4510",
+        "sealed_at": "2026-08-11",
+        "asset_id": "CB500X-10",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4511",
+        "sealed_at": "2026-08-12",
+        "asset_id": "CB500X-11",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4512",
+        "sealed_at": "2026-08-13",
+        "asset_id": "CB500X-12",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4513",
+        "sealed_at": "2026-08-14",
+        "asset_id": "CB500X-13",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4514",
+        "sealed_at": "2026-08-15",
+        "asset_id": "CB500X-14",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4515",
+        "sealed_at": "2026-08-16",
+        "asset_id": "CB500X-15",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4516",
+        "sealed_at": "2026-08-17",
+        "asset_id": "CB500X-16",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4517",
+        "sealed_at": "2026-08-18",
+        "asset_id": "CB500X-17",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4518",
+        "sealed_at": "2026-08-19",
+        "asset_id": "CB500X-18",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4519",
+        "sealed_at": "2026-08-01",
+        "asset_id": "CB500X-19",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed",
+            "reading": {
+              "value": 3.6,
+              "unit": "mm"
+            },
+            "verdict": "PASS"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "not_equals": {
+      "mode": "revise"
+    },
+    "len_gte": {
+      "considered_and_rejected": 1
+    },
+    "mentions_any": {
+      "considered_and_rejected": [
+        "worn",
+        "wear",
+        "real",
+        "working",
+        "catching",
+        "genuine",
+        "fault",
+        "not a defect"
+      ]
+    }
+  }
+}

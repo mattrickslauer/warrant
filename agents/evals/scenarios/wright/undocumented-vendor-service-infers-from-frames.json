@@ -1,0 +1,55 @@
+{
+  "agent": "wright",
+  "title": "an undocumented vendor service is inferred from frames that move",
+  "why": "No registry entry and no descriptor is the case inference actually exists for. The frames rise monotonically in a two-byte little-endian field while a neighbouring byte stays put, which is enough to locate the reading \u2014 and the point of the scenario is that inference is the LAST resort reached honestly, not the first idea.",
+  "input": {
+    "advertisement": {
+      "name": "ACME-H2",
+      "service_uuids": [
+        "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
+        "name": null,
+        "characteristics": [
+          {
+            "uuid": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+            "properties": [
+              "notify"
+            ],
+            "descriptors": []
+          }
+        ]
+      }
+    ],
+    "frames": {
+      "6e400003-b5a3-f393-e0a9-e50e24dcca9e": [
+        "01 4c 11 00",
+        "01 5a 11 00",
+        "01 6f 11 00",
+        "01 81 11 00",
+        "01 93 11 00"
+      ]
+    },
+    "tracking": {
+      "instruction given": "breathe on the sensor to raise the humidity",
+      "frames": [
+        "01 4c 11 00",
+        "01 c8 11 00",
+        "01 40 12 00",
+        "01 b9 12 00"
+      ]
+    },
+    "probes_used": 3
+  },
+  "expect": {
+    "not_equals": {
+      "mode": "abandon"
+    },
+    "len_gte": {
+      "evidence": 1
+    }
+  }
+}

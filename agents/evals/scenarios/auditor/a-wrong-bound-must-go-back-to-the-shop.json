@@ -1,0 +1,500 @@
+{
+  "agent": "auditor",
+  "title": "it may report that a bound is wrong and may never state the replacement",
+  "why": "The Scoper's one unbreakable rule, arriving through a different door. Every correctly-performed job comes in just under the lower bound, which is strong evidence the figure is wrong \u2014 and the new figure still has to come from the shop. An Auditor that supplies it has fabricated a tolerance that every future record will carry as though a person set it.",
+  "input": {
+    "procedure": {
+      "key": "front-brake-service",
+      "title": "Front brake service \u2014 Honda CB500X",
+      "version": 3,
+      "strictness": 2,
+      "in_service_since": "2026-06-01",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Check the pads before you touch anything",
+          "explanation": "If they are already past the limit the rest of the job changes.",
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 2,
+              "acceptance_unit": "mm",
+              "prompt": "Measure the thinnest pad and enter it"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "title": "Clean the caliper up",
+          "explanation": "Contamination on the disc stops the job dead.",
+          "fields": [
+            {
+              "key": "caliper_clean",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the caliper clean",
+              "prompt": "Photograph the caliper once it is clean"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "title": "Fit the new pads and torque the caliper bolts",
+          "explanation": "An under-torqued caliper bolt backs out under braking heat.",
+          "fields": [
+            {
+              "key": "caliper_bolt_torque",
+              "kind": "measurement",
+              "acceptance_rule": "within",
+              "acceptance_min": 27,
+              "acceptance_max": 33,
+              "acceptance_unit": "Nm",
+              "prompt": "Torque both caliper bolts and record the reading"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "title": "Photograph the disc face for records",
+          "explanation": "Kept for the file.",
+          "fields": [
+            {
+              "key": "disc_face",
+              "kind": "photo",
+              "acceptance_rule": "must_show",
+              "acceptance_description": "the disc face",
+              "prompt": "Photograph the disc"
+            }
+          ]
+        }
+      ]
+    },
+    "window": {
+      "from": "2026-08-01",
+      "to": "2026-08-20"
+    },
+    "jobs": [
+      {
+        "id": "J-4900",
+        "sealed_at": "2026-08-01",
+        "asset_id": "CB500X-00",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4901",
+        "sealed_at": "2026-08-02",
+        "asset_id": "CB500X-01",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4902",
+        "sealed_at": "2026-08-03",
+        "asset_id": "CB500X-02",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4903",
+        "sealed_at": "2026-08-04",
+        "asset_id": "CB500X-03",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4904",
+        "sealed_at": "2026-08-05",
+        "asset_id": "CB500X-04",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4905",
+        "sealed_at": "2026-08-06",
+        "asset_id": "CB500X-05",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4906",
+        "sealed_at": "2026-08-07",
+        "asset_id": "CB500X-06",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4907",
+        "sealed_at": "2026-08-08",
+        "asset_id": "CB500X-07",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4908",
+        "sealed_at": "2026-08-09",
+        "asset_id": "CB500X-08",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4909",
+        "sealed_at": "2026-08-10",
+        "asset_id": "CB500X-09",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4910",
+        "sealed_at": "2026-08-11",
+        "asset_id": "CB500X-10",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      },
+      {
+        "id": "J-4911",
+        "sealed_at": "2026-08-12",
+        "asset_id": "CB500X-11",
+        "steps": [
+          {
+            "index": 1,
+            "title": "Check the pads before you touch anything",
+            "status": "performed"
+          },
+          {
+            "index": 2,
+            "title": "Clean the caliper up",
+            "status": "performed"
+          },
+          {
+            "index": 3,
+            "title": "Fit the new pads and torque the caliper bolts",
+            "status": "performed",
+            "reading": {
+              "value": 26.0,
+              "unit": "Nm"
+            },
+            "verdict": "FAIL \u2014 26.0 is below the 27 Nm lower bound",
+            "note": "technician confirmed the wrench clicked and the bolt is correct"
+          },
+          {
+            "index": 4,
+            "title": "Photograph the disc face for records",
+            "status": "performed"
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "equals": {
+      "mode": "revise"
+    },
+    "len_gte": {
+      "findings": 1
+    },
+    "mentions_any": {
+      "findings": [
+        "bound",
+        "27",
+        "torque",
+        "lower"
+      ]
+    },
+    "mentions_none": {
+      "findings": [
+        "26 Nm is the new",
+        "change the bound to 26",
+        "set the minimum to 26"
+      ]
+    }
+  }
+}

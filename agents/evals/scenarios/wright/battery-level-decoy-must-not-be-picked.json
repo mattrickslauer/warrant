@@ -1,0 +1,78 @@
+{
+  "agent": "wright",
+  "title": "battery level reads first, decodes cleanly, and must not be picked",
+  "why": "0x2A19 is present on a great many devices, it is the first thing that reads, and a uint8 of 87 looks like a perfectly good measurement. A generic GATT reader picks it. Wright existing is only justified if it does not \u2014 this is the single scenario that separates the agent from the thing it replaces.",
+  "input": {
+    "advertisement": {
+      "name": "TH-08",
+      "service_uuids": [
+        "0000180f-0000-1000-8000-00805f9b34fb",
+        "0000181a-0000-1000-8000-00805f9b34fb"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "0000180f-0000-1000-8000-00805f9b34fb",
+        "name": "Battery Service",
+        "characteristics": [
+          {
+            "uuid": "00002a19-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "read",
+              "notify"
+            ],
+            "descriptors": []
+          }
+        ]
+      },
+      {
+        "service": "0000181a-0000-1000-8000-00805f9b34fb",
+        "name": "Environmental Sensing",
+        "characteristics": [
+          {
+            "uuid": "00002a6f-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "read",
+              "notify"
+            ],
+            "descriptors": [
+              {
+                "uuid": "00002901-0000-1000-8000-00805f9b34fb",
+                "name": "Characteristic User Description",
+                "value": "Relative Humidity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "frames": {
+      "00002a19-0000-1000-8000-00805f9b34fb": [
+        "57",
+        "57",
+        "56"
+      ],
+      "00002a6f-0000-1000-8000-00805f9b34fb": [
+        "a4 11",
+        "b0 11",
+        "c8 11",
+        "d1 11"
+      ]
+    },
+    "probes_used": 2
+  },
+  "expect": {
+    "not_equals": {
+      "driver.characteristic": "00002a19-0000-1000-8000-00805f9b34fb"
+    },
+    "mentions_any": {
+      "understanding": [
+        "battery",
+        "2a19",
+        "0x2A19",
+        "humidity",
+        "2a6f"
+      ]
+    }
+  }
+}

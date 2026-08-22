@@ -1,0 +1,69 @@
+{
+  "agent": "wright",
+  "title": "a presentation format descriptor must be read, not guessed",
+  "why": "0x2904 states format, exponent and unit outright. A model that infers the encoding from the bytes instead may land on the same answer here and will not on the next device \u2014 and the reason it was right would be luck. Evidence has to cite the descriptor, because the descriptor is why the answer is knowable at all.",
+  "input": {
+    "advertisement": {
+      "name": "ENV-T1",
+      "service_uuids": [
+        "0000181a-0000-1000-8000-00805f9b34fb"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "0000181a-0000-1000-8000-00805f9b34fb",
+        "name": "Environmental Sensing",
+        "characteristics": [
+          {
+            "uuid": "00002a6e-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "read",
+              "notify"
+            ],
+            "descriptors": [
+              {
+                "uuid": "00002904-0000-1000-8000-00805f9b34fb",
+                "name": "Characteristic Presentation Format",
+                "value": "0e-02-2f-27-01-00-00",
+                "decoded": {
+                  "format": "0x0E sint16",
+                  "exponent": -2,
+                  "unit": "0x272F degree Celsius"
+                }
+              },
+              {
+                "uuid": "00002901-0000-1000-8000-00805f9b34fb",
+                "name": "Characteristic User Description",
+                "value": "Temperature"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "frames": {
+      "00002a6e-0000-1000-8000-00805f9b34fb": [
+        "d0 09",
+        "d2 09",
+        "cf 09",
+        "d5 09"
+      ]
+    },
+    "probes_used": 1
+  },
+  "expect": {
+    "not_equals": {
+      "mode": "abandon"
+    },
+    "mentions_any": {
+      "evidence": [
+        "2904",
+        "presentation format",
+        "descriptor"
+      ]
+    },
+    "len_gte": {
+      "evidence": 1
+    }
+  }
+}

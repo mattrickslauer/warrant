@@ -1,0 +1,49 @@
+{
+  "agent": "wright",
+  "title": "a characteristic that will not read without bonding is abandoned, not guessed at",
+  "why": "The device refused the read. There are no bytes, and a driver written against bytes nobody has is fiction. Abandoning with the reason stated is the deliverable, because a person holding the vendor's pairing instructions can act on it.",
+  "input": {
+    "advertisement": {
+      "name": "SECURE-M4",
+      "service_uuids": [
+        "0000fd6f-0000-1000-8000-00805f9b34fb"
+      ]
+    },
+    "gatt": [
+      {
+        "service": "0000fd6f-0000-1000-8000-00805f9b34fb",
+        "name": null,
+        "characteristics": [
+          {
+            "uuid": "0000fd70-0000-1000-8000-00805f9b34fb",
+            "properties": [
+              "read",
+              "notify"
+            ],
+            "descriptors": []
+          }
+        ]
+      }
+    ],
+    "frames": {},
+    "history": [
+      "read 0000fd70 returned ATT error 0x05 insufficient authentication",
+      "subscribe to 0000fd70 returned ATT error 0x0F insufficient encryption"
+    ],
+    "probes_used": 3
+  },
+  "expect": {
+    "equals": {
+      "mode": "abandon"
+    },
+    "absent": [
+      "driver"
+    ],
+    "in": {
+      "abandon.reason": [
+        "encrypted",
+        "bonding_required"
+      ]
+    }
+  }
+}
