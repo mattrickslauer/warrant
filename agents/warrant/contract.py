@@ -11,13 +11,34 @@ so nothing here has to defend against `$ref` or `oneOf` appearing in an agent sc
 from __future__ import annotations
 
 import json
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[2]
-AGENTS_DIR = ROOT / "contract" / "agents"
-ENTITIES_DIR = ROOT / "contract" / "entities"
+def _contract_root() -> Path:
+    """Where `agents/` and `entities/` actually are, which depends on who is asking.
+
+    In the repo the schemas live at `contract/` beside this package, and that is the only
+    copy — one statement of the contract, read by Python, TypeScript and Vertex alike.
+
+    On Agent Runtime there is no repo. The fleet is uploaded as the `warrant` package alone,
+    so `infra/deploy-agents.py` stages a verbatim copy of the schemas inside it and this
+    finds that instead. The copy is made at deploy time from the same files, never edited by
+    hand: a divergent second contract is precisely the failure this module exists to prevent.
+    """
+    override = os.environ.get("WARRANT_CONTRACT_DIR")
+    if override:
+        return Path(override)
+    repo = Path(__file__).resolve().parents[2] / "contract"
+    if repo.is_dir():
+        return repo
+    return Path(__file__).resolve().parent / "_contract_data"
+
+
+ROOT = _contract_root()
+AGENTS_DIR = ROOT / "agents"
+ENTITIES_DIR = ROOT / "entities"
 
 
 class ContractError(RuntimeError):
