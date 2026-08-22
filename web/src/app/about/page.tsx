@@ -119,7 +119,14 @@ export default function About() {
           </Wrap>
         </main>
 
-        <footer className="w-wrap footer"><span>Warrant</span><span>Fixture data — no backend connected yet</span></footer>
+        {/* The instrument manual is reachable from here and nowhere else. It is the receipt for
+            the claim this page makes about the driver abstraction, for the reader who wants to
+            check it — not a navigation destination. */}
+        <footer className="w-wrap footer">
+          <span>Warrant</span>
+          <span>Fixture data — no backend connected yet</span>
+          <Link href="/firmware">Instrument manual — build your own, MIT</Link>
+        </footer>
       </div>
     </Ground>
   );
