@@ -1,0 +1,184 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously. The gate is mechanical, not a judgement: if unresolved is not empty then the mode is ask. There is no exception for a procedure that feels finished.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:2d306cfe6a77ecf6"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The user is replacing the front brake pads on a Segway Xyber e-bike at home. Since there is no service manual, they rely on visual inspections, matching parts by hand, tightening bolts by feel, and performing a road test to ensure the brakes are safe.",
+    "draft": {
+      "key": "front-brake-pad-swap",
+      "title": "Front Brake Pad Swap",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Oil or brake fluid on the brake disc/rotor"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Pre-Disassembly Inspection",
+          "explanation": "Checking for oil or brake fluid on the disc prevents ruining new pads and identifies leaks that must be fixed before riding.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "rotor_condition",
+              "kind": "choice",
+              "prompt": "Inspect the brake disc/rotor for any oil or brake fluid.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Clean (no oil or fluid)",
+                "Contaminated (oil or brake fluid present)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Clean (no oil or fluid)",
+              "guidance": "The rotor must be completely dry and free of any oily residue or brake fluid."
+            },
+            {
+              "key": "rotor_photo",
+              "kind": "photo",
+              "prompt": "Take a clear photo of the brake rotor.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_target": "Brake rotor surface",
+              "guidance": "Ensure the photo is in focus and shows the braking surface of the rotor."
+            }
+          ]
+        },
+        {
+          "title": "Pad Comparison and Installation",
+          "explanation": "Comparing the old and new pads by hand ensures the replacement parts are the correct fit since no official part numbers are documented.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_match",
+              "kind": "choice",
+              "prompt": "Compare the old and new pads side-by-side. Do they match in shape and size?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Pads match perfectly",
+                "Pads do not match"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Pads match perfectly",
+              "guidance": "The backing plate shape, friction material area, and pin holes must align exactly."
+            },
+            {
+              "key": "pad_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the old and new pads side-by-side.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_target": "Old and new pads side-by-side",
+              "guidance": "Show both pads clearly next to each other to verify they are the same model."
+            }
+          ]
+        },
+        {
+          "title": "Reassembly and Alignment",
+          "explanation": "Securing the caliper and wheel by feel and pumping the lever ensures the pads are properly seated and aligned without dragging.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fastener_check",
+              "kind": "choice",
+              "prompt": "Tighten the caliper mounting bolts and axle firm by feel. Are they secure?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Tightened firm by feel",
+                "Not fully tightened"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Tightened firm by feel",
+              "guidance": "Ensure both caliper bolts and the axle are snug and firm to prevent them from backing out."
+            },
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Pump the brake lever several times. Does it feel firm?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Lever is firm",
+                "Lever is spongy or soft"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Lever is firm",
+              "guidance": "Pump the lever until the pads contact the rotor and the lever resistance feels solid."
+            },
+            {
+              "key": "wheel_spin",
+              "kind": "choice",
+              "prompt": "Spin the front wheel. Does it spin freely without brake drag?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Spins freely without drag",
+                "Brakes are dragging"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Spins freely without drag",
+              "guidance": "Listen and feel for any rubbing. The wheel should spin smoothly."
+            }
+          ]
+        },
+        {
+          "title": "Bedding-In and Sign-Off",
+          "explanation": "Performing gentle stops beds in the new pads for reliable stopping power, and a personal sign-off confirms the bike is safe to ride.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "road_test",
+              "kind": "choice",
+              "prompt": "Perform a dozen gentle stops down the road. Do the brakes grab consistently?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Brakes grab consistently and stop safely",
+                "Brakes do not stop safely"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Brakes grab consistently and stop safely",
+              "guidance": "Gradually slow down from moderate speed multiple times to bed in the pads."
+            },
+            {
+              "key": "rider_sign_off",
+              "kind": "signature",
+              "prompt": "Sign to confirm the front brake pad swap is complete and the bike is safe to ride.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "guidance": "Your signature confirms you have verified all steps and trust the bike in traffic."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The user is replacing the front brake pads on a Segway Xyber e-bike at home. Since there is no service manual, they rely on visual inspections, matching parts by hand, tightening bolts by feel, and performing a road test to ensure the brakes are safe.\",\n  \"draft\": {\n    \"key\": \"front-brake-pad-swap\",\n    \"title\": \"Front Brake Pad Swap\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Oil or brake fluid on the brake disc/rotor\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Pre-Disassembly Inspection\",\n        \"explanation\": \"Checking for oil or brake fluid on the disc prevents ruining new pads and identifies leaks that must be fixed before riding.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"rotor_condition\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the brake disc/rotor for any oil or brake fluid.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Clean (no oil or fluid)\",\n              \"Contaminated (oil or brake fluid present)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Clean (no oil or fluid)\",\n            \"guidance\": \"The rotor must be completely dry and free of any oily residue or brake fluid.\"\n          },\n          {\n            \"key\": \"rotor_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a clear photo of the brake rotor.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_target\": \"Brake rotor surface\",\n            \"guidance\": \"Ensure the photo is in focus and shows the braking surface of the rotor.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Pad Comparison and Installation\",\n        \"explanation\": \"Comparing the old and new pads by hand ensures the replacement parts are the correct fit since no official part numbers are documented.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_match\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Compare the old and new pads side-by-side. Do they match in shape and size?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Pads match perfectly\",\n              \"Pads do not match\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Pads match perfectly\",\n            \"guidance\": \"The backing plate shape, friction material area, and pin holes must align exactly.\"\n          },\n          {\n            \"key\": \"pad_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old and new pads side-by-side.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_target\": \"Old and new pads side-by-side\",\n            \"guidance\": \"Show both pads clearly next to each other to verify they are the same model.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reassembly and Alignment\",\n        \"explanation\": \"Securing the caliper and wheel by feel and pumping the lever ensures the pads are properly seated and aligned without dragging.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fastener_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Tighten the caliper mounting bolts and axle firm by feel. Are they secure?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Tightened firm by feel\",\n              \"Not fully tightened\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Tightened firm by feel\",\n            \"guidance\": \"Ensure both caliper bolts and the axle are snug and firm to prevent them from backing out.\"\n          },\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pump the brake lever several times. Does it feel firm?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Lever is firm\",\n              \"Lever is spongy or soft\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Lever is firm\",\n            \"guidance\": \"Pump the lever until the pads contact the rotor and the lever resistance feels solid.\"\n          },\n          {\n            \"key\": \"wheel_spin\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Spin the front wheel. Does it spin freely without brake drag?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Spins freely without drag\",\n              \"Brakes are dragging\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Spins freely without drag\",\n            \"guidance\": \"Listen and feel for any rubbing. The wheel should spin smoothly.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bedding-In and Sign-Off\",\n        \"explanation\": \"Performing gentle stops beds in the new pads for reliable stopping power, and a personal sign-off confirms the bike is safe to ride.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"road_test\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform a dozen gentle stops down the road. Do the brakes grab consistently?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Brakes grab consistently and stop safely\",\n              \"Brakes do not stop safely\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Brakes grab consistently and stop safely\",\n            \"guidance\": \"Gradually slow down from moderate speed multiple times to bed in the pads.\"\n          },\n          {\n            \"key\": \"rider_sign_off\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm the front brake pad swap is complete and the bike is safe to ride.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"guidance\": \"Your signature confirms you have verified all steps and trust the bike in traffic.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3397,
+    "candidatesTokenCount": 1683,
+    "totalTokenCount": 11320
+  }
+}

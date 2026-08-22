@@ -1,0 +1,41 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:0a0bbe57eb9193a8"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "emit",
+    "understanding": "The ACME-H2 is a humidity sensor where the relative humidity reading is carried in the fourth byte (offset 3) of the notifications from characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e. The previous driver failed because it decoded a static uint16 at offset 1, whereas the byte at offset 3 correctly scales and moves with humidity changes.",
+    "evidence": [
+      "Characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e notifications",
+      "During deliberate breathing on the sensor, the byte at offset 3 increased from 0x2c (44% RH) to 0x3a (58% RH), 0x48 (72% RH), and 0x56 (86% RH)"
+    ],
+    "unresolved": [],
+    "probe": null,
+    "driver": {
+      "class_name": "AcmeH2Driver",
+      "label": "ACME-H2 Humidity Sensor",
+      "service": "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
+      "characteristic": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+      "unit": "%RH",
+      "min": 0.0,
+      "max": 100.0,
+      "start_write": null,
+      "kotlin": "package ink.warrant.instrument\n\nimport android.bluetooth.BluetoothGattCharacteristic\nimport java.util.UUID\n\nclass AcmeH2Driver : Driver {\n    override val id: String = \"acme-h2\"\n    override val label: String = \"ACME-H2 Humidity Sensor\"\n\n    override val produces: Produces = Produces(\n        unit = \"%RH\",\n        min = 0.0,\n        max = 100.0\n    )\n\n    override val matches: Match = Match(\n        serviceUuids = listOf(UUID.fromString(\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\")),\n        namePrefixes = listOf(\"ACME-H2\")\n    )\n\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\n        val serviceUuid = UUID.fromString(\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\")\n        val charUuid = UUID.fromString(\"6e400003-b5a3-f393-e0a9-e50e24dcca9e\")\n        return if (services.contains(serviceUuid)) {\n            CharacteristicRef(serviceUuid, charUuid)\n        } else {\n            null\n        }\n    }\n\n    override fun decode(raw: ByteArray): Double? {\n        if (raw.size < 4) return null\n        val humidity = raw[3].toInt() and 0xFF\n        return humidity.toDouble()\n    }\n}",
+      "rationale": "The byte at offset 3 perfectly tracks the humidity increase during the breathing test, moving from 0x2c (44% RH) to 0x56 (86% RH). The previous attempt at decoding a uint16 at offset 1 remained static at 44.28, proving it was not the active humidity reading."
+    },
+    "abandon": null
+  },
+  "raw": "{\n  \"mode\": \"emit\",\n  \"understanding\": \"The ACME-H2 is a humidity sensor where the relative humidity reading is carried in the fourth byte (offset 3) of the notifications from characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e. The previous driver failed because it decoded a static uint16 at offset 1, whereas the byte at offset 3 correctly scales and moves with humidity changes.\",\n  \"evidence\": [\n    \"Characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e notifications\",\n    \"During deliberate breathing on the sensor, the byte at offset 3 increased from 0x2c (44% RH) to 0x3a (58% RH), 0x48 (72% RH), and 0x56 (86% RH)\"\n  ],\n  \"unresolved\": [],\n  \"probe\": null,\n  \"driver\": {\n    \"class_name\": \"AcmeH2Driver\",\n    \"label\": \"ACME-H2 Humidity Sensor\",\n    \"service\": \"6e400001-b5a3-f393-e0a9-e50e24dcca9e\",\n    \"characteristic\": \"6e400003-b5a3-f393-e0a9-e50e24dcca9e\",\n    \"unit\": \"%RH\",\n    \"min\": 0.0,\n    \"max\": 100.0,\n    \"start_write\": null,\n    \"kotlin\": \"package ink.warrant.instrument\\n\\nimport android.bluetooth.BluetoothGattCharacteristic\\nimport java.util.UUID\\n\\nclass AcmeH2Driver : Driver {\\n    override val id: String = \\\"acme-h2\\\"\\n    override val label: String = \\\"ACME-H2 Humidity Sensor\\\"\\n\\n    override val produces: Produces = Produces(\\n        unit = \\\"%RH\\\",\\n        min = 0.0,\\n        max = 100.0\\n    )\\n\\n    override val matches: Match = Match(\\n        serviceUuids = listOf(UUID.fromString(\\\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\\\")),\\n        namePrefixes = listOf(\\\"ACME-H2\\\")\\n    )\\n\\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\\n        val serviceUuid = UUID.fromString(\\\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\\\")\\n        val charUuid = UUID.fromString(\\\"6e400003-b5a3-f393-e0a9-e50e24dcca9e\\\")\\n        return if (services.contains(serviceUuid)) {\\n            CharacteristicRef(serviceUuid, charUuid)\\n        } else {\\n            null\\n        }\\n    }\\n\\n    override fun decode(raw: ByteArray): Double? {\\n        if (raw.size < 4) return null\\n        val humidity = raw[3].toInt() and 0xFF\\n        return humidity.toDouble()\\n    }\\n}\",\n    \"rationale\": \"The byte at offset 3 perfectly tracks the humidity increase during the breathing test, moving from 0x2c (44% RH) to 0x56 (86% RH). The previous attempt at decoding a uint16 at offset 1 remained static at 44.28, proving it was not the active humidity reading.\"\n  },\n  \"abandon\": null\n}",
+  "usage": {
+    "promptTokenCount": 3759,
+    "candidatesTokenCount": 901,
+    "totalTokenCount": 8095
+  }
+}

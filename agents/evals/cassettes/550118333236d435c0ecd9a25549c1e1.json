@@ -1,0 +1,52 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:c21dcd0bfd92c1c1"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "revise",
+    "understanding": "This procedure outlines the front brake service for the Honda CB500X, covering pad inspection, caliper cleaning, pad replacement, and disc recording. While most steps are executed without issue, the caliper cleaning step frequently blocks work due to unclear standards on what constitutes a clean caliper and what the photo should capture.",
+    "jobs_examined": 11,
+    "findings": [
+      {
+        "step_title": "Clean the caliper up",
+        "field_key": "caliper_clean",
+        "defect": "ambiguous_instruction",
+        "what": "The requirement to photograph the caliper clean is ambiguous, leaving technicians unsure of the required cleanliness standard or what the photo should focus on.",
+        "jobs_cited": [
+          "J-4401",
+          "J-4403",
+          "J-4405",
+          "J-4407",
+          "J-4409"
+        ],
+        "quotes": [
+          "clean enough for what? I've wiped it down but I don't know what you want me to prove here",
+          "what counts as clean, there's always going to be some dust on it",
+          "again, I can't tell if this passes",
+          "is this about the disc or the caliper body? the photo shows both",
+          "no idea what good looks like on this one"
+        ],
+        "jobs_affected": 5,
+        "proposed_revision": "Revise the step to provide clear visual or qualitative criteria for what constitutes a clean caliper, and specify the exact framing or components (e.g., pistons, slide pins) that must be visible in the photo. The shop must define these standards.",
+        "needs_the_shop": true,
+        "confidence": 0.95
+      }
+    ],
+    "considered_and_rejected": [
+      "Pad thickness checks, caliper bolt torquing, and disc face photography steps were completed successfully in all 11 jobs with zero failures or technician complaints, showing these steps are performing correctly."
+    ]
+  },
+  "raw": "{\"mode\":\"revise\",\"understanding\":\"This procedure outlines the front brake service for the Honda CB500X, covering pad inspection, caliper cleaning, pad replacement, and disc recording. While most steps are executed without issue, the caliper cleaning step frequently blocks work due to unclear standards on what constitutes a clean caliper and what the photo should capture.\",\"jobs_examined\":11,\"findings\":[{\"step_title\":\"Clean the caliper up\",\"field_key\":\"caliper_clean\",\"defect\":\"ambiguous_instruction\",\"what\":\"The requirement to photograph the caliper clean is ambiguous, leaving technicians unsure of the required cleanliness standard or what the photo should focus on.\",\"jobs_cited\":[\"J-4401\",\"J-4403\",\"J-4405\",\"J-4407\",\"J-4409\"],\"quotes\":[\"clean enough for what? I've wiped it down but I don't know what you want me to prove here\",\"what counts as clean, there's always going to be some dust on it\",\"again, I can't tell if this passes\",\"is this about the disc or the caliper body? the photo shows both\",\"no idea what good looks like on this one\"],\"jobs_affected\":5,\"proposed_revision\":\"Revise the step to provide clear visual or qualitative criteria for what constitutes a clean caliper, and specify the exact framing or components (e.g., pistons, slide pins) that must be visible in the photo. The shop must define these standards.\",\"needs_the_shop\":true,\"confidence\":0.95}],\"considered_and_rejected\":[\"Pad thickness checks, caliper bolt torquing, and disc face photography steps were completed successfully in all 11 jobs with zero failures or technician complaints, showing these steps are performing correctly.\"]}",
+  "usage": {
+    "promptTokenCount": 4993,
+    "candidatesTokenCount": 374,
+    "totalTokenCount": 7468
+  }
+}

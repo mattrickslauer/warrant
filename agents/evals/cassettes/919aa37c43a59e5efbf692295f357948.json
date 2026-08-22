@@ -1,0 +1,55 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:2afe185106489a86"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "revise",
+    "understanding": "This procedure outlines the front brake service for the Honda CB500X, covering pad inspection, caliper cleaning, pad fitting, and bolt torquing. During the audited window, all 12 jobs failed at the caliper bolt torquing step because the recorded torque of 26.0 Nm was below the procedure's minimum limit of 27 Nm.",
+    "jobs_examined": 12,
+    "findings": [
+      {
+        "step_title": "Fit the new pads and torque the caliper bolts",
+        "field_key": "caliper_bolt_torque",
+        "defect": "bound_wrong",
+        "what": "The minimum torque limit of 27 Nm is set too high, causing every job to fail despite the technician confirming the torque wrench clicked and the bolt was correct at 26.0 Nm.",
+        "jobs_cited": [
+          "J-4900",
+          "J-4901",
+          "J-4902",
+          "J-4903",
+          "J-4904",
+          "J-4905",
+          "J-4906",
+          "J-4907",
+          "J-4908",
+          "J-4909",
+          "J-4910",
+          "J-4911"
+        ],
+        "quotes": [
+          "technician confirmed the wrench clicked and the bolt is correct"
+        ],
+        "jobs_affected": 12,
+        "proposed_revision": "The shop must review the manufacturer's torque specification for the Honda CB500X front caliper bolts and adjust the minimum acceptance bound to align with the correct value.",
+        "needs_the_shop": true,
+        "confidence": 1.0
+      }
+    ],
+    "considered_and_rejected": [
+      "We considered whether the torque failures were due to a single technician's error or a single out-of-calibration wrench, but rejected this because the issue occurred across all 12 jobs with explicit confirmation that the wrench clicked and the bolt was correct."
+    ]
+  },
+  "raw": "{\n  \"mode\": \"revise\",\n  \"understanding\": \"This procedure outlines the front brake service for the Honda CB500X, covering pad inspection, caliper cleaning, pad fitting, and bolt torquing. During the audited window, all 12 jobs failed at the caliper bolt torquing step because the recorded torque of 26.0 Nm was below the procedure's minimum limit of 27 Nm.\",\n  \"jobs_examined\": 12,\n  \"findings\": [\n    {\n      \"step_title\": \"Fit the new pads and torque the caliper bolts\",\n      \"field_key\": \"caliper_bolt_torque\",\n      \"defect\": \"bound_wrong\",\n      \"what\": \"The minimum torque limit of 27 Nm is set too high, causing every job to fail despite the technician confirming the torque wrench clicked and the bolt was correct at 26.0 Nm.\",\n      \"jobs_cited\": [\n        \"J-4900\",\n        \"J-4901\",\n        \"J-4902\",\n        \"J-4903\",\n        \"J-4904\",\n        \"J-4905\",\n        \"J-4906\",\n        \"J-4907\",\n        \"J-4908\",\n        \"J-4909\",\n        \"J-4910\",\n        \"J-4911\"\n      ],\n      \"quotes\": [\n        \"technician confirmed the wrench clicked and the bolt is correct\"\n      ],\n      \"jobs_affected\": 12,\n      \"proposed_revision\": \"The shop must review the manufacturer's torque specification for the Honda CB500X front caliper bolts and adjust the minimum acceptance bound to align with the correct value.\",\n      \"needs_the_shop\": true,\n      \"confidence\": 1.0\n    }\n  ],\n  \"considered_and_rejected\": [\n    \"We considered whether the torque failures were due to a single technician's error or a single out-of-calibration wrench, but rejected this because the issue occurred across all 12 jobs with explicit confirmation that the wrench clicked and the bolt was correct.\"\n  ]\n}",
+  "usage": {
+    "promptTokenCount": 5811,
+    "candidatesTokenCount": 503,
+    "totalTokenCount": 8005
+  }
+}

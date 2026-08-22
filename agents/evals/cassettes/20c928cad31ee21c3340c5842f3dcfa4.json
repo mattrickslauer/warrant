@@ -1,0 +1,42 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:150d1ecca2c51f3d"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "emit",
+    "understanding": "The ACME-H2 device transmits temperature as a 16-bit signed little-endian integer at offset 2 in Celsius, while offset 1 carries another reading (likely hydrogen concentration) which remained constant during the warming test.",
+    "evidence": [
+      "Characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e notifications",
+      "Warming test frames show byte 2 changing from 0x11 (17) to 0x14 (20) while byte 1 remains constant at 0x4c",
+      "This corresponds to a temperature rise from 17\u00b0C to 20\u00b0C, matching the physical action of warming the sensor in a hand"
+    ],
+    "unresolved": [],
+    "probe": null,
+    "driver": {
+      "class_name": "AcmeH2Driver",
+      "label": "ACME H2 Temperature",
+      "service": "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
+      "characteristic": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+      "unit": "Celsius",
+      "min": -40.0,
+      "max": 125.0,
+      "start_write": null,
+      "kotlin": "package ink.warrant.instrument\n\nimport android.bluetooth.BluetoothGattCharacteristic\nimport java.util.UUID\n\nclass AcmeH2Driver : Driver {\n    override val id: String = \"acme-h2-temp\"\n    override val label: String = \"ACME H2 Temperature\"\n    override val produces: Produces = Produces(\n        unit = \"Celsius\",\n        min = -40.0,\n        max = 125.0\n    )\n    override val matches: Match = Match(\n        serviceUuids = listOf(UUID.fromString(\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\"))\n    )\n\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\n        val serviceUuid = UUID.fromString(\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\")\n        val charUuid = UUID.fromString(\"6e400003-b5a3-f393-e0a9-e50e24dcca9e\")\n        return if (services.contains(serviceUuid)) {\n            CharacteristicRef(serviceUuid, charUuid)\n        } else {\n            null\n        }\n    }\n\n    override fun decode(raw: ByteArray): Double? {\n        if (raw.size < 4) return null\n        if (raw[0].toInt() != 1) return null\n        val tempLow = raw[2].toInt() and 0xff\n        val tempHigh = raw[3].toInt()\n        val tempRaw = ((tempHigh shl 8) or tempLow).toShort().toDouble()\n        return tempRaw\n    }\n}",
+      "rationale": "The ACME-H2 device transmits a 4-byte notification. During the warming test, byte 2 incremented from 0x11 (17) to 0x14 (20) while byte 1 remained constant at 0x4c. This corresponds to a temperature rise from 17\u00b0C to 20\u00b0C, which is the expected physical response when warming the sensor in a hand. Decoding as a 16-bit signed little-endian integer at offset 2 correctly tracks this temperature change in Celsius."
+    },
+    "abandon": null
+  },
+  "raw": "{\n  \"mode\": \"emit\",\n  \"understanding\": \"The ACME-H2 device transmits temperature as a 16-bit signed little-endian integer at offset 2 in Celsius, while offset 1 carries another reading (likely hydrogen concentration) which remained constant during the warming test.\",\n  \"evidence\": [\n    \"Characteristic 6e400003-b5a3-f393-e0a9-e50e24dcca9e notifications\",\n    \"Warming test frames show byte 2 changing from 0x11 (17) to 0x14 (20) while byte 1 remains constant at 0x4c\",\n    \"This corresponds to a temperature rise from 17\u00b0C to 20\u00b0C, matching the physical action of warming the sensor in a hand\"\n  ],\n  \"unresolved\": [],\n  \"probe\": null,\n  \"driver\": {\n    \"class_name\": \"AcmeH2Driver\",\n    \"label\": \"ACME H2 Temperature\",\n    \"service\": \"6e400001-b5a3-f393-e0a9-e50e24dcca9e\",\n    \"characteristic\": \"6e400003-b5a3-f393-e0a9-e50e24dcca9e\",\n    \"unit\": \"Celsius\",\n    \"min\": -40.0,\n    \"max\": 125.0,\n    \"start_write\": null,\n    \"kotlin\": \"package ink.warrant.instrument\\n\\nimport android.bluetooth.BluetoothGattCharacteristic\\nimport java.util.UUID\\n\\nclass AcmeH2Driver : Driver {\\n    override val id: String = \\\"acme-h2-temp\\\"\\n    override val label: String = \\\"ACME H2 Temperature\\\"\\n    override val produces: Produces = Produces(\\n        unit = \\\"Celsius\\\",\\n        min = -40.0,\\n        max = 125.0\\n    )\\n    override val matches: Match = Match(\\n        serviceUuids = listOf(UUID.fromString(\\\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\\\"))\\n    )\\n\\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\\n        val serviceUuid = UUID.fromString(\\\"6e400001-b5a3-f393-e0a9-e50e24dcca9e\\\")\\n        val charUuid = UUID.fromString(\\\"6e400003-b5a3-f393-e0a9-e50e24dcca9e\\\")\\n        return if (services.contains(serviceUuid)) {\\n            CharacteristicRef(serviceUuid, charUuid)\\n        } else {\\n            null\\n        }\\n    }\\n\\n    override fun decode(raw: ByteArray): Double? {\\n        if (raw.size < 4) return null\\n        if (raw[0].toInt() != 1) return null\\n        val tempLow = raw[2].toInt() and 0xff\\n        val tempHigh = raw[3].toInt()\\n        val tempRaw = ((tempHigh shl 8) or tempLow).toShort().toDouble()\\n        return tempRaw\\n    }\\n}\",\n    \"rationale\": \"The ACME-H2 device transmits a 4-byte notification. During the warming test, byte 2 incremented from 0x11 (17) to 0x14 (20) while byte 1 remained constant at 0x4c. This corresponds to a temperature rise from 17\u00b0C to 20\u00b0C, which is the expected physical response when warming the sensor in a hand. Decoding as a 16-bit signed little-endian integer at offset 2 correctly tracks this temperature change in Celsius.\"\n  },\n  \"abandon\": null\n}",
+  "usage": {
+    "promptTokenCount": 3745,
+    "candidatesTokenCount": 941,
+    "totalTokenCount": 18083
+  }
+}

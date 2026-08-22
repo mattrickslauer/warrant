@@ -1,0 +1,113 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:d37699e65a14e31a"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [
+      "Torque specification for caliper mounting bolts (unknown, done by feel)",
+      "Threadlocker requirement for caliper bolts (unknown, done by feel)",
+      "Lever pump-up verification criteria (unknown, done by feel)",
+      "Retaining pin locking verification (unknown, checked by eye)",
+      "Replacement brake pad brand and part number (unknown)"
+    ],
+    "understanding": "The job is a front brake pad replacement on a Segway Xyber e-bike, performed at home for personal safety. It involves comparing pad wear, cleaning the caliper, seating the new pads, tightening the caliper by feel, and bedding the pads in with a series of gentle stops.",
+    "draft": {
+      "key": "segway-xyber-front-brake-pad-replacement",
+      "title": "Segway Xyber Front Brake Pad Replacement",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "steps": [
+        {
+          "title": "Compare Pad Wear",
+          "explanation": "Comparing the old pads side-by-side with the new ones provides visual confirmation of the wear level and justifies the replacement.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "old_vs_new_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the old brake pads sitting next to the new brake pads.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The difference in thickness between the old and new pads to verify wear.",
+              "guidance": "Place the old and new pads side-by-side and take a clear photo showing the wear on the old pads."
+            }
+          ]
+        },
+        {
+          "title": "Install and Verify New Pads",
+          "explanation": "Verifying that the new pads are correctly seated in the caliper prevents uneven wear or brake failure once the wheel is reinstalled.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_seated_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the new pads seated inside the caliper before reinstalling the wheel.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The new pads correctly seated and aligned inside the caliper.",
+              "guidance": "Ensure the pads are fully seated in the caliper and take a clear photo before putting the wheel back on."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall Caliper",
+          "explanation": "The caliper must be secured back onto the frame firmly to prevent it from working loose under braking, which could cause a severe accident.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_bolts_feel",
+              "kind": "choice",
+              "prompt": "Confirm the caliper mounting bolts are tightened good and firm by feel.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Tightened firm by feel",
+                "Not tightened / loose"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Tightened firm by feel",
+              "guidance": "Ensure the caliper mounting bolts are tightened firmly by feel, as no official torque specification is available."
+            }
+          ]
+        },
+        {
+          "title": "Bed In New Pads",
+          "explanation": "Performing gentle stops beds the new pads into the rotor, ensuring reliable stopping power before riding in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_stops",
+              "kind": "measurement",
+              "prompt": "Record the number of gentle stops performed to bed in the new pads.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "within",
+              "acceptance_min": 10,
+              "acceptance_max": 20,
+              "acceptance_unit": "stops",
+              "guidance": "Perform a dozen or so (between 10 and 20) gentle stops down the road to bed the pads in before normal riding."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [\n    \"Torque specification for caliper mounting bolts (unknown, done by feel)\",\n    \"Threadlocker requirement for caliper bolts (unknown, done by feel)\",\n    \"Lever pump-up verification criteria (unknown, done by feel)\",\n    \"Retaining pin locking verification (unknown, checked by eye)\",\n    \"Replacement brake pad brand and part number (unknown)\"\n  ],\n  \"understanding\": \"The job is a front brake pad replacement on a Segway Xyber e-bike, performed at home for personal safety. It involves comparing pad wear, cleaning the caliper, seating the new pads, tightening the caliper by feel, and bedding the pads in with a series of gentle stops.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-front-brake-pad-replacement\",\n    \"title\": \"Segway Xyber Front Brake Pad Replacement\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"steps\": [\n      {\n        \"title\": \"Compare Pad Wear\",\n        \"explanation\": \"Comparing the old pads side-by-side with the new ones provides visual confirmation of the wear level and justifies the replacement.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"old_vs_new_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old brake pads sitting next to the new brake pads.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The difference in thickness between the old and new pads to verify wear.\",\n            \"guidance\": \"Place the old and new pads side-by-side and take a clear photo showing the wear on the old pads.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Install and Verify New Pads\",\n        \"explanation\": \"Verifying that the new pads are correctly seated in the caliper prevents uneven wear or brake failure once the wheel is reinstalled.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_seated_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the new pads seated inside the caliper before reinstalling the wheel.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The new pads correctly seated and aligned inside the caliper.\",\n            \"guidance\": \"Ensure the pads are fully seated in the caliper and take a clear photo before putting the wheel back on.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall Caliper\",\n        \"explanation\": \"The caliper must be secured back onto the frame firmly to prevent it from working loose under braking, which could cause a severe accident.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"caliper_bolts_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm the caliper mounting bolts are tightened good and firm by feel.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Tightened firm by feel\",\n              \"Not tightened / loose\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Tightened firm by feel\",\n            \"guidance\": \"Ensure the caliper mounting bolts are tightened firmly by feel, as no official torque specification is available.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed In New Pads\",\n        \"explanation\": \"Performing gentle stops beds the new pads into the rotor, ensuring reliable stopping power before riding in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bedding_stops\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Record the number of gentle stops performed to bed in the new pads.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 10,\n            \"acceptance_max\": 20,\n            \"acceptance_unit\": \"stops\",\n            \"guidance\": \"Perform a dozen or so (between 10 and 20) gentle stops down the road to bed the pads in before normal riding.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3276,
+    "candidatesTokenCount": 1078,
+    "totalTokenCount": 7415
+  }
+}

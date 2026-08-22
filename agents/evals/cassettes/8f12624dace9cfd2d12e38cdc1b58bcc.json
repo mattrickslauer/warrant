@@ -1,0 +1,127 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:f16258bbb58da81f"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is flushing and bleeding the front and back brakes on a Segway Xyber or bicycle to ensure rock-solid lever feel and no leaks. Since there are no written specs for the sequence or manual, the procedure relies on checking the lever stamp for fluid type and verifying by feel and visual inspection.",
+    "draft": {
+      "key": "ebike-brake-bleed",
+      "title": "Brake Fluid Flush and Bleed",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Fluid weeping from any hose, fitting, or bleed port after the bleed.",
+        "Brake lever feels spongy after two bleed attempts."
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Identify Fluid Type",
+          "explanation": "Using the wrong fluid type swells the seals and causes the brakes to fail completely within a week.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_type_stamp",
+              "kind": "choice",
+              "prompt": "Select the fluid type stamped on the brake lever body or reservoir cap.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Mineral Oil",
+                "DOT Fluid"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Mineral Oil",
+              "guidance": "You must use exactly the fluid type stamped on the lever body or reservoir cap. Never mix or substitute fluid types."
+            }
+          ]
+        },
+        {
+          "title": "Flush and Bleed System",
+          "explanation": "Flushing removes old fluid and purging air ensures hydraulic pressure transfers fully to the brake pads.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bleed_execution",
+              "kind": "choice",
+              "prompt": "Confirm you have flushed the lines and bled the system according to the guide for the brand stamped on your lever.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Completed per manufacturer guide"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Completed per manufacturer guide",
+              "guidance": "Follow the manufacturer's instructions for your specific brake brand to protect pads/rotors and purge all air."
+            }
+          ]
+        },
+        {
+          "title": "Verify Lever Feel",
+          "explanation": "A spongy lever indicates air remains in the system, which can lead to sudden brake failure under load.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_firmness",
+              "kind": "choice",
+              "prompt": "Pull the brake lever with full force. Does it feel rock solid without pulling back to the handlebar grip?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Rock solid (does not pull back to the bar)",
+                "Spongy / pulls to the bar"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Rock solid (does not pull back to the bar)",
+              "guidance": "The lever must feel completely firm and must not contact the handlebar grip under full force. If spongy after two attempts, the job fails."
+            }
+          ]
+        },
+        {
+          "title": "Inspect for Leaks",
+          "explanation": "Any fluid weeping from fittings or hoses will cause pressure loss and eventual brake failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "leak_inspection",
+              "kind": "choice",
+              "prompt": "Closely inspect all hoses, fittings, and bleed ports. Is there any fluid weeping?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No leaks detected",
+                "Fluid weeping detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No leaks detected",
+              "guidance": "All fittings and hoses must be completely dry. Any sign of wetness or weeping is an immediate failure."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is flushing and bleeding the front and back brakes on a Segway Xyber or bicycle to ensure rock-solid lever feel and no leaks. Since there are no written specs for the sequence or manual, the procedure relies on checking the lever stamp for fluid type and verifying by feel and visual inspection.\",\n  \"draft\": {\n    \"key\": \"ebike-brake-bleed\",\n    \"title\": \"Brake Fluid Flush and Bleed\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Fluid weeping from any hose, fitting, or bleed port after the bleed.\",\n      \"Brake lever feels spongy after two bleed attempts.\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Identify Fluid Type\",\n        \"explanation\": \"Using the wrong fluid type swells the seals and causes the brakes to fail completely within a week.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_type_stamp\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Select the fluid type stamped on the brake lever body or reservoir cap.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Mineral Oil\",\n              \"DOT Fluid\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Mineral Oil\",\n            \"guidance\": \"You must use exactly the fluid type stamped on the lever body or reservoir cap. Never mix or substitute fluid types.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Flush and Bleed System\",\n        \"explanation\": \"Flushing removes old fluid and purging air ensures hydraulic pressure transfers fully to the brake pads.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bleed_execution\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm you have flushed the lines and bled the system according to the guide for the brand stamped on your lever.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Completed per manufacturer guide\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Completed per manufacturer guide\",\n            \"guidance\": \"Follow the manufacturer's instructions for your specific brake brand to protect pads/rotors and purge all air.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verify Lever Feel\",\n        \"explanation\": \"A spongy lever indicates air remains in the system, which can lead to sudden brake failure under load.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"lever_firmness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pull the brake lever with full force. Does it feel rock solid without pulling back to the handlebar grip?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Rock solid (does not pull back to the bar)\",\n              \"Spongy / pulls to the bar\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Rock solid (does not pull back to the bar)\",\n            \"guidance\": \"The lever must feel completely firm and must not contact the handlebar grip under full force. If spongy after two attempts, the job fails.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inspect for Leaks\",\n        \"explanation\": \"Any fluid weeping from fittings or hoses will cause pressure loss and eventual brake failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"leak_inspection\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Closely inspect all hoses, fittings, and bleed ports. Is there any fluid weeping?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No leaks detected\",\n              \"Fluid weeping detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No leaks detected\",\n            \"guidance\": \"All fittings and hoses must be completely dry. Any sign of wetness or weeping is an immediate failure.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 2929,
+    "candidatesTokenCount": 1101,
+    "totalTokenCount": 6682
+  }
+}

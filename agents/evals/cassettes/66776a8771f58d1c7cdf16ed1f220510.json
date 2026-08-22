@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:fb31de1ce8539888"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "no_defect",
+    "understanding": "This procedure outlines the steps for inspecting and servicing the front brakes on a Honda CB500X, including measuring pad thickness and cleaning the caliper. Over the audited window, the procedure successfully guided technicians through all 20 jobs, correctly flagging worn pads below the 2 mm threshold in 9 instances.",
+    "jobs_examined": 20,
+    "findings": [],
+    "considered_and_rejected": [
+      "We noted that Step 1 ('Check the pads before you touch anything') failed in 9 out of 20 jobs (J-4500 through J-4508) because the measured pad thickness was 1.4 mm, which is below the 2 mm limit. This is not a procedure defect; it is the procedure successfully performing its design function by identifying worn pads that require replacement."
+    ]
+  },
+  "raw": "{\n  \"mode\": \"no_defect\",\n  \"understanding\": \"This procedure outlines the steps for inspecting and servicing the front brakes on a Honda CB500X, including measuring pad thickness and cleaning the caliper. Over the audited window, the procedure successfully guided technicians through all 20 jobs, correctly flagging worn pads below the 2 mm threshold in 9 instances.\",\n  \"jobs_examined\": 20,\n  \"findings\": [],\n  \"considered_and_rejected\": [\n    \"We noted that Step 1 ('Check the pads before you touch anything') failed in 9 out of 20 jobs (J-4500 through J-4508) because the measured pad thickness was 1.4 mm, which is below the 2 mm limit. This is not a procedure defect; it is the procedure successfully performing its design function by identifying worn pads that require replacement.\"\n  ]\n}",
+  "usage": {
+    "promptTokenCount": 7396,
+    "candidatesTokenCount": 199,
+    "totalTokenCount": 8657
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:8b367cf9e6013cf9"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "You are replacing the front brake pads on your Segway Xyber e-bike at home to ensure safe braking in city traffic and on gravel. You will document the pad swap with photos, tighten the caliper by feel, verify the disc is free of oil or fluid, and bed the pads in with gentle stops.",
+    "draft": {
+      "key": "segway-xyber-front-brake-pad-swap",
+      "title": "Segway Xyber Front Brake Pad Replacement",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Any oil or brake fluid detected on the brake disc"
+      ],
+      "releases": [
+        "Safe operation of the front braking system on city streets and gravel"
+      ],
+      "steps": [
+        {
+          "title": "Remove Wheel and Old Pads",
+          "explanation": "Removing the front wheel and old pads allows access to clean the caliper and prepare for the new pad installation.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_comparison",
+              "kind": "photo",
+              "prompt": "Take a photo of the old brake pads next to the new replacement brake pads.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Clear photo showing both the old pads and the new pads side-by-side to verify correct replacement type.",
+              "guidance": "Place the old pads and new pads next to each other in good lighting and capture a clear photo."
+            }
+          ]
+        },
+        {
+          "title": "Clean Caliper and Install New Pads",
+          "explanation": "Cleaning the caliper prevents dirt buildup from binding the pistons, and verifying pad placement ensures correct braking alignment.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_in_caliper",
+              "kind": "photo",
+              "prompt": "Take a photo of the new pads properly seated inside the caliper before reinstalling the wheel.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Clear photo showing the new pads correctly positioned inside the brake caliper.",
+              "guidance": "Ensure the camera is focused inside the caliper showing the pads fully seated before the wheel goes back on."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall Wheel and Tighten Caliper",
+          "explanation": "Securing the wheel and caliper mounting bolts prevents the caliper from vibrating loose under heavy braking, which could cause a crash.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_tightness_check",
+              "kind": "choice",
+              "prompt": "Confirm that the caliper mounting bolts have been tightened firmly by feel.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Tightened firmly by feel"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Tightened firmly by feel",
+              "acceptance_description": "The bolts must be confirmed as tightened firmly by feel.",
+              "guidance": "Since there is no published torque spec, tighten the caliper mounting bolts firmly by hand feel to ensure they will not vibrate loose."
+            }
+          ]
+        },
+        {
+          "title": "Inspect Disc for Contamination",
+          "explanation": "Any oil or brake fluid on the disc will contaminate the new pads and cause a complete loss of braking power.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "disc_contamination_check",
+              "kind": "choice",
+              "prompt": "Inspect the brake disc. Is there any oil or brake fluid present on the disc?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No oil or fluid detected",
+                "Oil or fluid detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No oil or fluid detected",
+              "acceptance_description": "The disc must be completely free of oil or brake fluid before riding.",
+              "guidance": "Visually inspect both sides of the brake disc. If any fluid is spotted, the job fails and the disc must be cleaned or replaced before proceeding."
+            }
+          ]
+        },
+        {
+          "title": "Bed In New Pads",
+          "explanation": "Bedding in transfers a layer of pad material to the disc, ensuring optimal stopping power before riding in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_in_completed",
+              "kind": "choice",
+              "prompt": "Perform a dozen or so gentle stops down the road to bed in the new pads.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Completed a dozen gentle stops"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Completed a dozen gentle stops",
+              "acceptance_description": "The bedding-in sequence must be completed to ensure brake performance.",
+              "guidance": "Take the bike for a slow ride and perform approximately 12 gentle, controlled stops to bed in the new pads."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"You are replacing the front brake pads on your Segway Xyber e-bike at home to ensure safe braking in city traffic and on gravel. You will document the pad swap with photos, tighten the caliper by feel, verify the disc is free of oil or fluid, and bed the pads in with gentle stops.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-front-brake-pad-swap\",\n    \"title\": \"Segway Xyber Front Brake Pad Replacement\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Any oil or brake fluid detected on the brake disc\"\n    ],\n    \"releases\": [\n      \"Safe operation of the front braking system on city streets and gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Remove Wheel and Old Pads\",\n        \"explanation\": \"Removing the front wheel and old pads allows access to clean the caliper and prepare for the new pad installation.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_comparison\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old brake pads next to the new replacement brake pads.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Clear photo showing both the old pads and the new pads side-by-side to verify correct replacement type.\",\n            \"guidance\": \"Place the old pads and new pads next to each other in good lighting and capture a clear photo.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Clean Caliper and Install New Pads\",\n        \"explanation\": \"Cleaning the caliper prevents dirt buildup from binding the pistons, and verifying pad placement ensures correct braking alignment.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_in_caliper\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the new pads properly seated inside the caliper before reinstalling the wheel.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Clear photo showing the new pads correctly positioned inside the brake caliper.\",\n            \"guidance\": \"Ensure the camera is focused inside the caliper showing the pads fully seated before the wheel goes back on.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall Wheel and Tighten Caliper\",\n        \"explanation\": \"Securing the wheel and caliper mounting bolts prevents the caliper from vibrating loose under heavy braking, which could cause a crash.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"caliper_tightness_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm that the caliper mounting bolts have been tightened firmly by feel.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Tightened firmly by feel\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Tightened firmly by feel\",\n            \"acceptance_description\": \"The bolts must be confirmed as tightened firmly by feel.\",\n            \"guidance\": \"Since there is no published torque spec, tighten the caliper mounting bolts firmly by hand feel to ensure they will not vibrate loose.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inspect Disc for Contamination\",\n        \"explanation\": \"Any oil or brake fluid on the disc will contaminate the new pads and cause a complete loss of braking power.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"disc_contamination_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the brake disc. Is there any oil or brake fluid present on the disc?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No oil or fluid detected\",\n              \"Oil or fluid detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No oil or fluid detected\",\n            \"acceptance_description\": \"The disc must be completely free of oil or brake fluid before riding.\",\n            \"guidance\": \"Visually inspect both sides of the brake disc. If any fluid is spotted, the job fails and the disc must be cleaned or replaced before proceeding.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed In New Pads\",\n        \"explanation\": \"Bedding in transfers a layer of pad material to the disc, ensuring optimal stopping power before riding in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bedding_in_completed\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform a dozen or so gentle stops down the road to bed in the new pads.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Completed a dozen gentle stops\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Completed a dozen gentle stops\",\n            \"acceptance_description\": \"The bedding-in sequence must be completed to ensure brake performance.\",\n            \"guidance\": \"Take the bike for a slow ride and perform approximately 12 gentle, controlled stops to bed in the new pads.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 2853,
+    "candidatesTokenCount": 1439,
+    "totalTokenCount": 8450
+  }
+}

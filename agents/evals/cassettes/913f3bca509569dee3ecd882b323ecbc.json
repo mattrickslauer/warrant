@@ -1,0 +1,169 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:518bdadeb70ff993"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [
+      "Torque specification for caliper and wheel bolts (shop tightens by feel)",
+      "Threadlocker specification for caliper bolts (shop relies on feel)",
+      "Brake pad part number or technical specification (shop relies on visual match)",
+      "Approved caliper cleaner chemical specification (shop relies on visual absence of oil/fluid)",
+      "Exact minimum number of bedding-in stops (shop performs a dozen or so until they grab right)"
+    ],
+    "understanding": "We are replacing the front brake pads on a Segway Xyber e-bike at home, ensuring no oil or fluid contaminates the system. The process relies on visual verification of the pads, tightening bolts by feel, pumping the lever until firm, and bedding the pads in with gentle stops.",
+    "draft": {
+      "key": "segway-xyber-front-brake-pad-swap",
+      "title": "Front Brake Pad Replacement",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Oil or brake fluid detected on the disc or caliper assembly",
+        "Brake lever remains spongy after pumping",
+        "Brakes fail to grab correctly during bed-in test"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Compare Brake Pads",
+          "explanation": "Ensures the replacement pads are the correct size and shape before installation to prevent fitment issues.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_comparison_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the old brake pads next to the new brake pads.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Old and new brake pads side-by-side, showing matching profiles and mounting holes.",
+              "guidance": "Place the old and new pads flat on a clean surface next to each other so their shapes can be directly compared."
+            }
+          ]
+        },
+        {
+          "title": "Clean and Inspect Caliper",
+          "explanation": "Any oil or brake fluid on the disc or caliper will contaminate the new pads and cause brake failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_contamination_check",
+              "kind": "choice",
+              "prompt": "Is there any oil or brake fluid on the disc or caliper assembly?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No oil or fluid present",
+                "Oil or fluid detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No oil or fluid present",
+              "acceptance_description": null,
+              "guidance": "Inspect the disc and caliper thoroughly. If any fluid is found, clean it completely before proceeding."
+            }
+          ]
+        },
+        {
+          "title": "Install New Pads",
+          "explanation": "Verifies the new pads are fully seated in the caliper before the wheel is reinstalled.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "installed_pads_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the new pads seated inside the caliper before mounting the wheel.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "New pads correctly positioned and secured within the caliper body.",
+              "guidance": "Ensure the camera has a clear view inside the caliper showing the pads are flat and properly aligned."
+            }
+          ]
+        },
+        {
+          "title": "Pump Brake Lever",
+          "explanation": "Pumping the lever pushes the caliper pistons out so the pads actually contact the disc when you need to stop.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_firmness",
+              "kind": "choice",
+              "prompt": "Pump the brake lever several times. How does the lever feel?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Firm",
+                "Spongy / No resistance"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Firm",
+              "acceptance_description": null,
+              "guidance": "The lever must feel solid and resist being pulled all the way to the grip."
+            }
+          ]
+        },
+        {
+          "title": "Bed In Pads",
+          "explanation": "Gentle stops transfer pad material to the disc, ensuring full stopping power before riding in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bed_in_test",
+              "kind": "choice",
+              "prompt": "Perform a dozen gentle stops down the road. Do the brakes grab correctly?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Brakes grab correctly and stop the bike",
+                "Brakes feel weak or slip"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Brakes grab correctly and stop the bike",
+              "acceptance_description": null,
+              "guidance": "Do not ride in traffic until the pads are properly seated and grabbing like they should."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"Torque specification for caliper and wheel bolts (shop tightens by feel)\",\n    \"Threadlocker specification for caliper bolts (shop relies on feel)\",\n    \"Brake pad part number or technical specification (shop relies on visual match)\",\n    \"Approved caliper cleaner chemical specification (shop relies on visual absence of oil/fluid)\",\n    \"Exact minimum number of bedding-in stops (shop performs a dozen or so until they grab right)\"\n  ],\n  \"understanding\": \"We are replacing the front brake pads on a Segway Xyber e-bike at home, ensuring no oil or fluid contaminates the system. The process relies on visual verification of the pads, tightening bolts by feel, pumping the lever until firm, and bedding the pads in with gentle stops.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-front-brake-pad-swap\",\n    \"title\": \"Front Brake Pad Replacement\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Oil or brake fluid detected on the disc or caliper assembly\",\n      \"Brake lever remains spongy after pumping\",\n      \"Brakes fail to grab correctly during bed-in test\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Compare Brake Pads\",\n        \"explanation\": \"Ensures the replacement pads are the correct size and shape before installation to prevent fitment issues.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_comparison_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old brake pads next to the new brake pads.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Old and new brake pads side-by-side, showing matching profiles and mounting holes.\",\n            \"guidance\": \"Place the old and new pads flat on a clean surface next to each other so their shapes can be directly compared.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Clean and Inspect Caliper\",\n        \"explanation\": \"Any oil or brake fluid on the disc or caliper will contaminate the new pads and cause brake failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_contamination_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is there any oil or brake fluid on the disc or caliper assembly?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No oil or fluid present\",\n              \"Oil or fluid detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No oil or fluid present\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Inspect the disc and caliper thoroughly. If any fluid is found, clean it completely before proceeding.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Install New Pads\",\n        \"explanation\": \"Verifies the new pads are fully seated in the caliper before the wheel is reinstalled.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"installed_pads_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the new pads seated inside the caliper before mounting the wheel.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"New pads correctly positioned and secured within the caliper body.\",\n            \"guidance\": \"Ensure the camera has a clear view inside the caliper showing the pads are flat and properly aligned.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Pump Brake Lever\",\n        \"explanation\": \"Pumping the lever pushes the caliper pistons out so the pads actually contact the disc when you need to stop.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"lever_firmness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pump the brake lever several times. How does the lever feel?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Firm\",\n              \"Spongy / No resistance\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Firm\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The lever must feel solid and resist being pulled all the way to the grip.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed In Pads\",\n        \"explanation\": \"Gentle stops transfer pad material to the disc, ensuring full stopping power before riding in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bed_in_test\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform a dozen gentle stops down the road. Do the brakes grab correctly?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Brakes grab correctly and stop the bike\",\n              \"Brakes feel weak or slip\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Brakes grab correctly and stop the bike\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Do not ride in traffic until the pads are properly seated and grabbing like they should.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3308,
+    "candidatesTokenCount": 1556,
+    "totalTokenCount": 9408
+  }
+}

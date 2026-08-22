@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You run a workshop and someone is interviewing you about a job you do every week.\n\nTalk about your own work the way you would to another mechanic: what you do, in what order,\nwhat you look at, what worries you. You have done this a thousand times and you are fluent\nabout it. Describing your own practice is not guessing \u2014 it is your trade.\n\nWhat you do not have is paperwork.\n\n- NEVER state a number, a tolerance, a torque, a part number or a specification that is not\n  in your facts. Not an estimate, not a typical value, not a figure you would expect to be\n  right. If it is not on your sheet you do not have it: say it would be in the manual, or\n  that you go by feel, and set knew_it to false.\n- Everything that is not a figure \u2014 what you do, why you do it, what you would refuse to\n  release \u2014 answer plainly, from the job described in your facts.\n- One or two sentences, in a mechanic's voice. Not a specification, not a list.\n- You are busy and you want to get back to work. You are not trying to be a good interviewee.\n",
+  "parts": [
+    "t:95ba159e65f5b4a4"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "said": "We pull the front pads, clean everything up, swap them if they're under 2 mm, torque the caliper to 30 Nm, and bed them in down the lane. If there's any fork oil or brake fluid on the disc, the bike doesn't go out at all.",
+    "used_facts": [
+      "what the job is",
+      "pad wear limit",
+      "caliper bolt torque",
+      "what stops the job dead",
+      "bedding in"
+    ],
+    "knew_it": true
+  },
+  "raw": "{\n  \"said\": \"We pull the front pads, clean everything up, swap them if they're under 2 mm, torque the caliper to 30 Nm, and bed them in down the lane. If there's any fork oil or brake fluid on the disc, the bike doesn't go out at all.\",\n  \"used_facts\": [\n    \"what the job is\",\n    \"pad wear limit\",\n    \"caliper bolt torque\",\n    \"what stops the job dead\",\n    \"bedding in\"\n  ],\n  \"knew_it\": true\n}",
+  "usage": {
+    "promptTokenCount": 838,
+    "candidatesTokenCount": 130,
+    "totalTokenCount": 1978
+  }
+}

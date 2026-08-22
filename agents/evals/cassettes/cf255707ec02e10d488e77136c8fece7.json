@@ -1,0 +1,165 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:394a22813ce045a3"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [
+      "Maximum hole size limit for plugging or patching",
+      "Allowed pressure loss tolerance over one hour",
+      "Step-by-step sequence for tubeless plug installation"
+    ],
+    "understanding": "The job is repairing tyre punctures on an e-bike or bicycle by either patching the tube or plugging a tubeless tyre. The repair is verified by inflating the tyre to the sidewall specification and ensuring it remains firm to the touch after one hour.",
+    "draft": {
+      "key": "tyre-puncture-repair",
+      "title": "Tyre Puncture Repair and Verification",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Split tread",
+        "Sidewall hole"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Tyre for Damage",
+          "explanation": "A split tread or sidewall hole compromises the tyre structure and can cause a catastrophic blowout at speed in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "tyre_damage_check",
+              "kind": "choice",
+              "prompt": "Inspect the tyre tread and sidewall for splits or holes.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No splits or sidewall holes",
+                "Split tread or sidewall hole found"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No splits or sidewall holes",
+              "acceptance_description": null,
+              "guidance": "The tyre must be free of any splits in the tread or holes in the sidewall. If either is present, the tyre is scrap and must be replaced."
+            }
+          ]
+        },
+        {
+          "title": "Clear Carcass",
+          "explanation": "Any sharp objects remaining in the tyre carcass will immediately puncture the repaired tube or plug.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "carcass_clearance",
+              "kind": "choice",
+              "prompt": "Feel the inside of the tyre carcass with your fingers to ensure the puncturing object is gone.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Carcass is clear of sharp objects",
+                "Sharp object still present"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Carcass is clear of sharp objects",
+              "acceptance_description": null,
+              "guidance": "Carefully run your fingers along the inside of the tyre carcass to locate and remove any thorns, glass, or wire."
+            }
+          ]
+        },
+        {
+          "title": "Repair Puncture",
+          "explanation": "The puncture must be sealed properly to hold air pressure under load.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "puncture_repair_status",
+              "kind": "choice",
+              "prompt": "Rough up and patch the tube, or plug the tubeless tyre. Confirm the repair is complete.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Repair completed successfully (patched or plugged)",
+                "Repair failed to seal"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Repair completed successfully (patched or plugged)",
+              "acceptance_description": null,
+              "guidance": "For tubes, rough the area, apply glue, apply patch, and press hard for a few minutes. For tubeless, seat the plug firmly in the tread."
+            }
+          ]
+        },
+        {
+          "title": "Reassemble and Inflate",
+          "explanation": "The tyre must be inflated to its rated pressure to test the integrity of the repair.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "inflation_pressure",
+              "kind": "measurement",
+              "prompt": "Inflate the tyre to the pressure specified on the sidewall and record the pressure.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "per_spec",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "tyre sidewall",
+              "acceptance_description": null,
+              "guidance": "Check the tyre sidewall for the recommended pressure and inflate to that specification."
+            }
+          ]
+        },
+        {
+          "title": "Leak Test",
+          "explanation": "Leaving the tyre for an hour ensures that slow leaks are detected before riding in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "leak_test_result",
+              "kind": "choice",
+              "prompt": "After 1 hour, check the tyre firmness by hand.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Holding firm",
+                "Gone soft / leaking"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Holding firm",
+              "acceptance_description": null,
+              "guidance": "The tyre must feel rock solid and show no signs of pressure loss after sitting for one hour."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [\n    \"Maximum hole size limit for plugging or patching\",\n    \"Allowed pressure loss tolerance over one hour\",\n    \"Step-by-step sequence for tubeless plug installation\"\n  ],\n  \"understanding\": \"The job is repairing tyre punctures on an e-bike or bicycle by either patching the tube or plugging a tubeless tyre. The repair is verified by inflating the tyre to the sidewall specification and ensuring it remains firm to the touch after one hour.\",\n  \"draft\": {\n    \"key\": \"tyre-puncture-repair\",\n    \"title\": \"Tyre Puncture Repair and Verification\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Split tread\",\n      \"Sidewall hole\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Tyre for Damage\",\n        \"explanation\": \"A split tread or sidewall hole compromises the tyre structure and can cause a catastrophic blowout at speed in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"tyre_damage_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the tyre tread and sidewall for splits or holes.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No splits or sidewall holes\",\n              \"Split tread or sidewall hole found\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No splits or sidewall holes\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The tyre must be free of any splits in the tread or holes in the sidewall. If either is present, the tyre is scrap and must be replaced.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Clear Carcass\",\n        \"explanation\": \"Any sharp objects remaining in the tyre carcass will immediately puncture the repaired tube or plug.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"carcass_clearance\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Feel the inside of the tyre carcass with your fingers to ensure the puncturing object is gone.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Carcass is clear of sharp objects\",\n              \"Sharp object still present\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Carcass is clear of sharp objects\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Carefully run your fingers along the inside of the tyre carcass to locate and remove any thorns, glass, or wire.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Repair Puncture\",\n        \"explanation\": \"The puncture must be sealed properly to hold air pressure under load.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"puncture_repair_status\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Rough up and patch the tube, or plug the tubeless tyre. Confirm the repair is complete.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Repair completed successfully (patched or plugged)\",\n              \"Repair failed to seal\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Repair completed successfully (patched or plugged)\",\n            \"acceptance_description\": null,\n            \"guidance\": \"For tubes, rough the area, apply glue, apply patch, and press hard for a few minutes. For tubeless, seat the plug firmly in the tread.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reassemble and Inflate\",\n        \"explanation\": \"The tyre must be inflated to its rated pressure to test the integrity of the repair.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"inflation_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Inflate the tyre to the pressure specified on the sidewall and record the pressure.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"tyre sidewall\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Check the tyre sidewall for the recommended pressure and inflate to that specification.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Leak Test\",\n        \"explanation\": \"Leaving the tyre for an hour ensures that slow leaks are detected before riding in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"leak_test_result\",\n            \"kind\": \"choice\",\n            \"prompt\": \"After 1 hour, check the tyre firmness by hand.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Holding firm\",\n              \"Gone soft / leaking\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Holding firm\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The tyre must feel rock solid and show no signs of pressure loss after sitting for one hour.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3410,
+    "candidatesTokenCount": 1464,
+    "totalTokenCount": 11123
+  }
+}

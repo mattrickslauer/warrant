@@ -1,0 +1,42 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:b1c35f3ac6fc39da"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "probe",
+    "understanding": "The TQ-PRO device appears to be a digital torque wrench or similar instrument using a vendor-specific FFF0 service. We need to write an activation command to characteristic FFF1 to trigger notifications on FFF2.",
+    "evidence": [
+      "Service 0000fff0-0000-1000-8000-00805f9b34fb is a common vendor-specific serial service",
+      "Characteristic 0000fff1-0000-1000-8000-00805f9b34fb has write_without_response properties",
+      "Characteristic 0000fff2-0000-1000-8000-00805f9b34fb has notify properties but remained silent when subscribed to directly"
+    ],
+    "unresolved": [
+      "The command required to initiate data streaming on FFF1",
+      "The format and encoding of the measurement frames on FFF2",
+      "The physical unit of measurement (likely Newton-meters or Foot-pounds for a torque wrench)"
+    ],
+    "probe": {
+      "op": "write_then_subscribe",
+      "service": "0000fff0-0000-1000-8000-00805f9b34fb",
+      "characteristic": "0000fff1-0000-1000-8000-00805f9b34fb",
+      "bytes": "01",
+      "samples": 10,
+      "why": "We will write a common activation byte (01) to the write characteristic to see if it prompts the device to begin notifying on FFF2."
+    },
+    "driver": null,
+    "abandon": null
+  },
+  "raw": "{\n  \"mode\": \"probe\",\n  \"understanding\": \"The TQ-PRO device appears to be a digital torque wrench or similar instrument using a vendor-specific FFF0 service. We need to write an activation command to characteristic FFF1 to trigger notifications on FFF2.\",\n  \"evidence\": [\n    \"Service 0000fff0-0000-1000-8000-00805f9b34fb is a common vendor-specific serial service\",\n    \"Characteristic 0000fff1-0000-1000-8000-00805f9b34fb has write_without_response properties\",\n    \"Characteristic 0000fff2-0000-1000-8000-00805f9b34fb has notify properties but remained silent when subscribed to directly\"\n  ],\n  \"unresolved\": [\n    \"The command required to initiate data streaming on FFF1\",\n    \"The format and encoding of the measurement frames on FFF2\",\n    \"The physical unit of measurement (likely Newton-meters or Foot-pounds for a torque wrench)\"\n  ],\n  \"probe\": {\n    \"op\": \"write_then_subscribe\",\n    \"service\": \"0000fff0-0000-1000-8000-00805f9b34fb\",\n    \"characteristic\": \"0000fff1-0000-1000-8000-00805f9b34fb\",\n    \"bytes\": \"01\",\n    \"samples\": 10,\n    \"why\": \"We will write a common activation byte (01) to the write characteristic to see if it prompts the device to begin notifying on FFF2.\"\n  },\n  \"driver\": null,\n  \"abandon\": null\n}",
+  "usage": {
+    "promptTokenCount": 2639,
+    "candidatesTokenCount": 445,
+    "totalTokenCount": 4164
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:c66b3220015a5c99"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is to repair tyre punctures on a Segway Xyber e-bike using patches or plugs, ensuring the tyre is not scrapped due to split treads or holed sidewalls. The repair is verified by inflating the tyre to the sidewall specification and ensuring it remains firm after sitting for one hour.",
+    "draft": {
+      "key": "segway-xyber-tyre-repair",
+      "title": "Segway Xyber Tyre Puncture Repair",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Split tread",
+        "Holed sidewall"
+      ],
+      "releases": [
+        "Safe to ride in traffic"
+      ],
+      "steps": [
+        {
+          "title": "Pre-Repair Inspection",
+          "explanation": "To ensure the tyre is safe to repair and does not have catastrophic damage that could cause a blowout at speed.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "tyre_condition",
+              "kind": "choice",
+              "prompt": "Inspect the tyre tread and sidewall.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "good_to_repair",
+                "split_tread",
+                "holed_sidewall"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "good_to_repair",
+              "guidance": "The tyre must not have a split tread or a holed sidewall. If either is present, the tyre is scrap and must be replaced."
+            }
+          ]
+        },
+        {
+          "title": "Isolate Motor Power",
+          "explanation": "To prevent accidental motor startup or electrical damage while removing the wheel.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "motor_isolation",
+              "kind": "choice",
+              "prompt": "Isolate the motor power.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "isolated_per_service_guide",
+                "not_isolated"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "isolated_per_service_guide",
+              "guidance": "Consult the online Segway service guide to safely isolate the motor power before proceeding."
+            }
+          ]
+        },
+        {
+          "title": "Puncture Repair",
+          "explanation": "To seal the puncture using a plug or patch so that the tyre or tube can hold air pressure.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "repair_execution",
+              "kind": "choice",
+              "prompt": "Rough the area, apply glue, and press the patch or plug down hard.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "repaired_successfully",
+                "failed_to_seal"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "repaired_successfully",
+              "guidance": "Ensure the patch or plug is firmly pressed down and fully covers the puncture."
+            }
+          ]
+        },
+        {
+          "title": "Inflation",
+          "explanation": "To return the tyre to its correct operating pressure as specified by the manufacturer.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "tyre_inflation",
+              "kind": "choice",
+              "prompt": "Inflate the tyre to the pressure printed on the sidewall.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "inflated_to_sidewall_spec",
+                "incorrect_pressure"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "inflated_to_sidewall_spec",
+              "guidance": "Check the tyre sidewall for the recommended PSI and inflate the tyre to that specification."
+            }
+          ]
+        },
+        {
+          "title": "Leak Check",
+          "explanation": "To verify that the repair is holding air and will not fail under load in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "leak_check",
+              "kind": "choice",
+              "prompt": "Let the tyre sit for one hour and check if it remains firm.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "firm_after_one_hour",
+                "soft_after_one_hour"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "firm_after_one_hour",
+              "guidance": "The tyre must feel completely firm to the touch after sitting for one hour. If it feels soft, the repair has failed."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall Wheel",
+          "explanation": "To ensure the wheel and brakes are securely bolted back onto the bike frame.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "wheel_reinstallation",
+              "kind": "choice",
+              "prompt": "Reinstall the wheel and secure all fasteners.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "secured_per_service_guide",
+                "not_secure"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "secured_per_service_guide",
+              "guidance": "Consult the online Segway service guide to ensure the wheel is bolted up right and brakes are secure."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to repair tyre punctures on a Segway Xyber e-bike using patches or plugs, ensuring the tyre is not scrapped due to split treads or holed sidewalls. The repair is verified by inflating the tyre to the sidewall specification and ensuring it remains firm after sitting for one hour.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-tyre-repair\",\n    \"title\": \"Segway Xyber Tyre Puncture Repair\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Split tread\",\n      \"Holed sidewall\"\n    ],\n    \"releases\": [\n      \"Safe to ride in traffic\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Pre-Repair Inspection\",\n        \"explanation\": \"To ensure the tyre is safe to repair and does not have catastrophic damage that could cause a blowout at speed.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"tyre_condition\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the tyre tread and sidewall.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"good_to_repair\",\n              \"split_tread\",\n              \"holed_sidewall\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"good_to_repair\",\n            \"guidance\": \"The tyre must not have a split tread or a holed sidewall. If either is present, the tyre is scrap and must be replaced.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Isolate Motor Power\",\n        \"explanation\": \"To prevent accidental motor startup or electrical damage while removing the wheel.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"motor_isolation\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Isolate the motor power.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"isolated_per_service_guide\",\n              \"not_isolated\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"isolated_per_service_guide\",\n            \"guidance\": \"Consult the online Segway service guide to safely isolate the motor power before proceeding.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Puncture Repair\",\n        \"explanation\": \"To seal the puncture using a plug or patch so that the tyre or tube can hold air pressure.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"repair_execution\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Rough the area, apply glue, and press the patch or plug down hard.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"repaired_successfully\",\n              \"failed_to_seal\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"repaired_successfully\",\n            \"guidance\": \"Ensure the patch or plug is firmly pressed down and fully covers the puncture.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inflation\",\n        \"explanation\": \"To return the tyre to its correct operating pressure as specified by the manufacturer.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"tyre_inflation\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inflate the tyre to the pressure printed on the sidewall.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"inflated_to_sidewall_spec\",\n              \"incorrect_pressure\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"inflated_to_sidewall_spec\",\n            \"guidance\": \"Check the tyre sidewall for the recommended PSI and inflate the tyre to that specification.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Leak Check\",\n        \"explanation\": \"To verify that the repair is holding air and will not fail under load in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"leak_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Let the tyre sit for one hour and check if it remains firm.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"firm_after_one_hour\",\n              \"soft_after_one_hour\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"firm_after_one_hour\",\n            \"guidance\": \"The tyre must feel completely firm to the touch after sitting for one hour. If it feels soft, the repair has failed.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall Wheel\",\n        \"explanation\": \"To ensure the wheel and brakes are securely bolted back onto the bike frame.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"wheel_reinstallation\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Reinstall the wheel and secure all fasteners.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"secured_per_service_guide\",\n              \"not_secure\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"secured_per_service_guide\",\n            \"guidance\": \"Consult the online Segway service guide to ensure the wheel is bolted up right and brakes are secure.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3346,
+    "candidatesTokenCount": 1443,
+    "totalTokenCount": 9590
+  }
+}

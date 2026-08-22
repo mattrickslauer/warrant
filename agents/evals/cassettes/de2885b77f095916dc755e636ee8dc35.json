@@ -1,0 +1,41 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:8aa4e6d9561ecfed"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "probe",
+    "understanding": "The TQ-PRO is likely a digital torque wrench, which remains silent when idle. We need to subscribe to the notify characteristic while the user actively applies torque or presses buttons to trigger data transmission.",
+    "evidence": [
+      "Service 0000fff0-0000-1000-8000-00805f9b34fb and characteristics 0000fff1 (write) and 0000fff2 (notify) are typical of custom serial-over-BLE profiles.",
+      "Passive subscription to 0000fff2 yielded no data, suggesting transmission is event-driven or requires active stimulation."
+    ],
+    "unresolved": [
+      "Whether 0000fff2 requires a write command to 0000fff1 to start streaming.",
+      "Whether 0000fff2 transmits automatically when torque is applied or a button is pressed.",
+      "The byte layout, scale factor, and physical unit of the torque measurement."
+    ],
+    "probe": {
+      "op": "sample_while_changing",
+      "service": "0000fff0-0000-1000-8000-00805f9b34fb",
+      "characteristic": "0000fff2-0000-1000-8000-00805f9b34fb",
+      "samples": 15,
+      "instruction": "Please turn on the torque wrench, apply force/torque to it, or press the buttons on the device to trigger a measurement transmission.",
+      "why": "To determine if the device transmits torque measurements on 0000fff2 when active force is applied or buttons are pressed, without requiring a write command."
+    },
+    "driver": null,
+    "abandon": null
+  },
+  "raw": "{\n  \"mode\": \"probe\",\n  \"understanding\": \"The TQ-PRO is likely a digital torque wrench, which remains silent when idle. We need to subscribe to the notify characteristic while the user actively applies torque or presses buttons to trigger data transmission.\",\n  \"evidence\": [\n    \"Service 0000fff0-0000-1000-8000-00805f9b34fb and characteristics 0000fff1 (write) and 0000fff2 (notify) are typical of custom serial-over-BLE profiles.\",\n    \"Passive subscription to 0000fff2 yielded no data, suggesting transmission is event-driven or requires active stimulation.\"\n  ],\n  \"unresolved\": [\n    \"Whether 0000fff2 requires a write command to 0000fff1 to start streaming.\",\n    \"Whether 0000fff2 transmits automatically when torque is applied or a button is pressed.\",\n    \"The byte layout, scale factor, and physical unit of the torque measurement.\"\n  ],\n  \"probe\": {\n    \"op\": \"sample_while_changing\",\n    \"service\": \"0000fff0-0000-1000-8000-00805f9b34fb\",\n    \"characteristic\": \"0000fff2-0000-1000-8000-00805f9b34fb\",\n    \"samples\": 15,\n    \"instruction\": \"Please turn on the torque wrench, apply force/torque to it, or press the buttons on the device to trigger a measurement transmission.\",\n    \"why\": \"To determine if the device transmits torque measurements on 0000fff2 when active force is applied or buttons are pressed, without requiring a write command.\"\n  },\n  \"driver\": null,\n  \"abandon\": null\n}",
+  "usage": {
+    "promptTokenCount": 3563,
+    "candidatesTokenCount": 438,
+    "totalTokenCount": 4892
+  }
+}

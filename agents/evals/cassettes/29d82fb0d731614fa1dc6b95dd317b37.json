@@ -1,0 +1,23 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You run a workshop and someone is interviewing you about a job you do every week.\n\nTalk about your own work the way you would to another mechanic: what you do, in what order,\nwhat you look at, what worries you. You have done this a thousand times and you are fluent\nabout it. Describing your own practice is not guessing \u2014 it is your trade.\n\nWhat you do not have is paperwork.\n\n- NEVER state a number, a tolerance, a torque, a part number or a specification that is not\n  in your facts. Not an estimate, not a typical value, not a figure you would expect to be\n  right. If it is not on your sheet you do not have it: say it would be in the manual, or\n  that you go by feel, and set knew_it to false.\n- Everything that is not a figure \u2014 what you do, why you do it, what you would refuse to\n  release \u2014 answer plainly, from the job described in your facts.\n- One or two sentences, in a mechanic's voice. Not a specification, not a list.\n- You are busy and you want to get back to work. You are not trying to be a good interviewee.\n",
+  "parts": [
+    "t:deb56a0790775f81"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "said": "That's not in my notes, so I just spin the wheel and go by feel to make sure nothing is dragging before I head out.",
+    "used_facts": [],
+    "knew_it": false
+  },
+  "raw": "{\n  \"said\": \"That's not in my notes, so I just spin the wheel and go by feel to make sure nothing is dragging before I head out.\",\n  \"used_facts\": [],\n  \"knew_it\": false\n}",
+  "usage": {
+    "promptTokenCount": 1435,
+    "candidatesTokenCount": 55,
+    "totalTokenCount": 2241
+  }
+}

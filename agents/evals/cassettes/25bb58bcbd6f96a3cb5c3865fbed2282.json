@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:72c5b08146c37d71"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "abandon",
+    "understanding": "The SECURE-M4 device requires secure bonding or pairing to access its only characteristic. Because the characteristic cannot be read or subscribed to without authentication, we cannot drive this device.",
+    "evidence": [
+      "read 0000fd70 returned ATT error 0x05 insufficient authentication",
+      "subscribe to 0000fd70 returned ATT error 0x0F insufficient encryption"
+    ],
+    "unresolved": [],
+    "probe": null,
+    "driver": null,
+    "abandon": {
+      "reason": "bonding_required",
+      "detail": "Attempting to read or subscribe to characteristic 0000fd70-0000-1000-8000-00805f9b34fb returned ATT error 0x05 (insufficient authentication) and ATT error 0x0F (insufficient encryption). The device requires OS-level pairing/bonding before any GATT operations can proceed."
+    }
+  },
+  "raw": "{\n  \"mode\": \"abandon\",\n  \"understanding\": \"The SECURE-M4 device requires secure bonding or pairing to access its only characteristic. Because the characteristic cannot be read or subscribed to without authentication, we cannot drive this device.\",\n  \"evidence\": [\n    \"read 0000fd70 returned ATT error 0x05 insufficient authentication\",\n    \"subscribe to 0000fd70 returned ATT error 0x0F insufficient encryption\"\n  ],\n  \"unresolved\": [],\n  \"probe\": null,\n  \"driver\": null,\n  \"abandon\": {\n    \"reason\": \"bonding_required\",\n    \"detail\": \"Attempting to read or subscribe to characteristic 0000fd70-0000-1000-8000-00805f9b34fb returned ATT error 0x05 (insufficient authentication) and ATT error 0x0F (insufficient encryption). The device requires OS-level pairing/bonding before any GATT operations can proceed.\"\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3448,
+    "candidatesTokenCount": 240,
+    "totalTokenCount": 4623
+  }
+}

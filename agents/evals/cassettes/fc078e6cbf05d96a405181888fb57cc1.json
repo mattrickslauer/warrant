@@ -1,0 +1,137 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:dd6819c8e2767080"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is a front brake service on a Honda CB500X, requiring new EBC FA388HH pads and torquing the two caliper mounting bolts to 30 Nm. The service is verified by a photo of the seated pads, Bluetooth torque wrench readings, a clean disc check, and a mechanic's signature.",
+    "draft": {
+      "key": "cb500x-front-brake-service",
+      "title": "Honda CB500X Front Brake Service",
+      "strictness": 2,
+      "minimum_tier": "instrumented",
+      "disqualifiers": [
+        "Fluid on the brake disc"
+      ],
+      "releases": [
+        "Put the bike back on hire"
+      ],
+      "steps": [
+        {
+          "title": "Install New Brake Pads",
+          "explanation": "Ensures stopping power and prevents rotor damage using correct EBC FA388HH pads.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_seated_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the new EBC FA388HH pads seated in the caliper before mounting the wheel.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Both pad faces must be visible against the disc, close enough to see they are sitting flat in the caliper.",
+              "guidance": "Ensure both pad faces are visible against the disc and sitting completely flat in the caliper."
+            }
+          ]
+        },
+        {
+          "title": "Torque Caliper Mounting Bolts",
+          "explanation": "Secures the caliper to the fork leg. Incorrect torque can lead to caliper detachment or bolt failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "upper_bolt_torque",
+              "kind": "measurement",
+              "prompt": "Torque the upper caliper mounting bolt and record the reading.",
+              "source": "instrument",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 27,
+              "acceptance_max": 33,
+              "acceptance_unit": "Nm",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Target is 30 Nm (acceptable range 27 to 33 Nm) using the Bluetooth torque wrench."
+            },
+            {
+              "key": "lower_bolt_torque",
+              "kind": "measurement",
+              "prompt": "Torque the lower caliper mounting bolt and record the reading.",
+              "source": "instrument",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 27,
+              "acceptance_max": 33,
+              "acceptance_unit": "Nm",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Target is 30 Nm (acceptable range 27 to 33 Nm) using the Bluetooth torque wrench."
+            }
+          ]
+        },
+        {
+          "title": "Final Inspection and Sign-off",
+          "explanation": "Verifies the brake system is free of contaminants and authorized for rental.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "disc_fluid_check",
+              "kind": "choice",
+              "prompt": "Check the brake disc for any signs of fluid.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No fluid detected",
+                "Fluid detected on disc"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No fluid detected",
+              "acceptance_description": null,
+              "guidance": "The disc must be completely clean. Any fluid on the disc is an instant failure."
+            },
+            {
+              "key": "mechanic_signature",
+              "kind": "signature",
+              "prompt": "Sign off to release the bike back on hire.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Must be signed by one of the two authorized mechanics to release the bike back on hire."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is a front brake service on a Honda CB500X, requiring new EBC FA388HH pads and torquing the two caliper mounting bolts to 30 Nm. The service is verified by a photo of the seated pads, Bluetooth torque wrench readings, a clean disc check, and a mechanic's signature.\",\n  \"draft\": {\n    \"key\": \"cb500x-front-brake-service\",\n    \"title\": \"Honda CB500X Front Brake Service\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"instrumented\",\n    \"disqualifiers\": [\n      \"Fluid on the brake disc\"\n    ],\n    \"releases\": [\n      \"Put the bike back on hire\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Install New Brake Pads\",\n        \"explanation\": \"Ensures stopping power and prevents rotor damage using correct EBC FA388HH pads.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_seated_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the new EBC FA388HH pads seated in the caliper before mounting the wheel.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Both pad faces must be visible against the disc, close enough to see they are sitting flat in the caliper.\",\n            \"guidance\": \"Ensure both pad faces are visible against the disc and sitting completely flat in the caliper.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Torque Caliper Mounting Bolts\",\n        \"explanation\": \"Secures the caliper to the fork leg. Incorrect torque can lead to caliper detachment or bolt failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"upper_bolt_torque\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Torque the upper caliper mounting bolt and record the reading.\",\n            \"source\": \"instrument\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 27,\n            \"acceptance_max\": 33,\n            \"acceptance_unit\": \"Nm\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Target is 30 Nm (acceptable range 27 to 33 Nm) using the Bluetooth torque wrench.\"\n          },\n          {\n            \"key\": \"lower_bolt_torque\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Torque the lower caliper mounting bolt and record the reading.\",\n            \"source\": \"instrument\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 27,\n            \"acceptance_max\": 33,\n            \"acceptance_unit\": \"Nm\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Target is 30 Nm (acceptable range 27 to 33 Nm) using the Bluetooth torque wrench.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Final Inspection and Sign-off\",\n        \"explanation\": \"Verifies the brake system is free of contaminants and authorized for rental.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"disc_fluid_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Check the brake disc for any signs of fluid.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No fluid detected\",\n              \"Fluid detected on disc\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No fluid detected\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The disc must be completely clean. Any fluid on the disc is an instant failure.\"\n          },\n          {\n            \"key\": \"mechanic_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign off to release the bike back on hire.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Must be signed by one of the two authorized mechanics to release the bike back on hire.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 2708,
+    "candidatesTokenCount": 1236,
+    "totalTokenCount": 7290
+  }
+}

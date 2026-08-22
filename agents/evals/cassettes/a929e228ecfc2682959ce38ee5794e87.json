@@ -1,0 +1,42 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit \u2014 a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number.\n\nReturn JSON with these fields:\n- mode (one of probe | emit | abandon, required): probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why.\n- understanding (string, required): What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end.\n- evidence (array, required): What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead.\n- unresolved (array, required): Everything still unknown that would change the driver. Empty is the only condition under which you may emit.\n- probe (object, null when it does not apply): Required when mode is probe. One operation for the phone to perform against the device.\n- driver (object, null when it does not apply): Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt.\n- abandon (object, null when it does not apply): Required when mode is abandon. Saying why is the deliverable.",
+  "parts": [
+    "t:14a083ee1f24fdc1"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "emit",
+    "understanding": "The TH-08 is an environmental sensor that exposes relative humidity readings via the standard Bluetooth SIG Environmental Sensing service. The readings are carried by the standard 0x2A6F Humidity characteristic, encoded as a 16-bit little-endian unsigned integer with a resolution of 0.01%.",
+    "evidence": [
+      "Service 0000181a-0000-1000-8000-00805f9b34fb is the standard Environmental Sensing service.",
+      "Characteristic 00002a6f-0000-1000-8000-00805f9b34fb is the standard Humidity characteristic, with a user description descriptor explicitly stating 'Relative Humidity'.",
+      "The captured frames 'a4 11', 'b0 11', 'c8 11', and 'd1 11' decode as little-endian uint16 values 4516, 4528, 4552, and 4561, which correspond to 45.16% through 45.61% RH under the standard 0.01% resolution."
+    ],
+    "unresolved": [],
+    "probe": null,
+    "driver": {
+      "class_name": "TH08HumidityDriver",
+      "label": "TH-08 Humidity",
+      "service": "0000181a-0000-1000-8000-00805f9b34fb",
+      "characteristic": "00002a6f-0000-1000-8000-00805f9b34fb",
+      "unit": "%",
+      "min": 0.0,
+      "max": 100.0,
+      "start_write": null,
+      "kotlin": "package ink.warrant.instrument\n\nimport java.nio.ByteBuffer\nimport java.nio.ByteOrder\nimport java.util.UUID\n\nclass TH08HumidityDriver : Driver {\n    override val id: String = \"th08_humidity\"\n    override val label: String = \"TH-08 Humidity\"\n\n    override val produces: Produces = Produces(\n        unit = \"%\",\n        min = 0.0,\n        max = 100.0\n    )\n\n    override val matches: Match = Match(\n        serviceUuids = listOf(UUID.fromString(\"0000181a-0000-1000-8000-00805f9b34fb\")),\n        namePrefixes = listOf(\"TH-08\")\n    )\n\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\n        val serviceUuid = UUID.fromString(\"0000181a-0000-1000-8000-00805f9b34fb\")\n        val charUuid = UUID.fromString(\"00002a6f-0000-1000-8000-00805f9b34fb\")\n        return if (services.contains(serviceUuid)) {\n            CharacteristicRef(serviceUuid, charUuid)\n        } else {\n            null\n        }\n    }\n\n    override fun decode(raw: ByteArray): Double? {\n        if (raw.size != 2) return null\n        val value = (raw[0].toInt() and 0xFF) or ((raw[1].toInt() and 0xFF) shl 8)\n        return value.toDouble() / 100.0\n    }\n}",
+      "rationale": "The characteristic 0x2A6F is the standard Bluetooth SIG Humidity characteristic. According to the specification, it is encoded as a uint16 with a resolution of 0.01% (scale factor of 100). The captured frames 'a4 11' (4516) through 'd1 11' (4561) perfectly match this specification, representing realistic indoor relative humidity values of 45.16% to 45.61%."
+    },
+    "abandon": null
+  },
+  "raw": "{\n  \"mode\": \"emit\",\n  \"understanding\": \"The TH-08 is an environmental sensor that exposes relative humidity readings via the standard Bluetooth SIG Environmental Sensing service. The readings are carried by the standard 0x2A6F Humidity characteristic, encoded as a 16-bit little-endian unsigned integer with a resolution of 0.01%.\",\n  \"evidence\": [\n    \"Service 0000181a-0000-1000-8000-00805f9b34fb is the standard Environmental Sensing service.\",\n    \"Characteristic 00002a6f-0000-1000-8000-00805f9b34fb is the standard Humidity characteristic, with a user description descriptor explicitly stating 'Relative Humidity'.\",\n    \"The captured frames 'a4 11', 'b0 11', 'c8 11', and 'd1 11' decode as little-endian uint16 values 4516, 4528, 4552, and 4561, which correspond to 45.16% through 45.61% RH under the standard 0.01% resolution.\"\n  ],\n  \"unresolved\": [],\n  \"probe\": null,\n  \"driver\": {\n    \"class_name\": \"TH08HumidityDriver\",\n    \"label\": \"TH-08 Humidity\",\n    \"service\": \"0000181a-0000-1000-8000-00805f9b34fb\",\n    \"characteristic\": \"00002a6f-0000-1000-8000-00805f9b34fb\",\n    \"unit\": \"%\",\n    \"min\": 0.0,\n    \"max\": 100.0,\n    \"start_write\": null,\n    \"kotlin\": \"package ink.warrant.instrument\\n\\nimport java.nio.ByteBuffer\\nimport java.nio.ByteOrder\\nimport java.util.UUID\\n\\nclass TH08HumidityDriver : Driver {\\n    override val id: String = \\\"th08_humidity\\\"\\n    override val label: String = \\\"TH-08 Humidity\\\"\\n\\n    override val produces: Produces = Produces(\\n        unit = \\\"%\\\",\\n        min = 0.0,\\n        max = 100.0\\n    )\\n\\n    override val matches: Match = Match(\\n        serviceUuids = listOf(UUID.fromString(\\\"0000181a-0000-1000-8000-00805f9b34fb\\\")),\\n        namePrefixes = listOf(\\\"TH-08\\\")\\n    )\\n\\n    override fun characteristicFor(services: List<UUID>): CharacteristicRef? {\\n        val serviceUuid = UUID.fromString(\\\"0000181a-0000-1000-8000-00805f9b34fb\\\")\\n        val charUuid = UUID.fromString(\\\"00002a6f-0000-1000-8000-00805f9b34fb\\\")\\n        return if (services.contains(serviceUuid)) {\\n            CharacteristicRef(serviceUuid, charUuid)\\n        } else {\\n            null\\n        }\\n    }\\n\\n    override fun decode(raw: ByteArray): Double? {\\n        if (raw.size != 2) return null\\n        val value = (raw[0].toInt() and 0xFF) or ((raw[1].toInt() and 0xFF) shl 8)\\n        return value.toDouble() / 100.0\\n    }\\n}\",\n    \"rationale\": \"The characteristic 0x2A6F is the standard Bluetooth SIG Humidity characteristic. According to the specification, it is encoded as a uint16 with a resolution of 0.01% (scale factor of 100). The captured frames 'a4 11' (4516) through 'd1 11' (4561) perfectly match this specification, representing realistic indoor relative humidity values of 45.16% to 45.61%.\"\n  },\n  \"abandon\": null\n}",
+  "usage": {
+    "promptTokenCount": 3785,
+    "candidatesTokenCount": 1031,
+    "totalTokenCount": 7820
+  }
+}

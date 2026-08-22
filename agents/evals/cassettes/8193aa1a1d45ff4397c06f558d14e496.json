@@ -1,0 +1,124 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:cc955b939a761dd1"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is to bleed the front and back brakes on a Segway Xyber e-bike, ensuring the correct fluid is used and all air is purged. The job is successful only if the lever feels solid without touching the grip and there are absolutely no fluid leaks.",
+    "draft": {
+      "key": "segway-xyber-brake-bleed",
+      "title": "Brake Fluid Bleed and Verification",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Brake lever pulls all the way to the handlebar grip",
+        "Any fluid wetness or weeping at fittings, hoses, or reservoirs"
+      ],
+      "releases": [
+        "Safe operation of the e-bike in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Identify Fluid Type",
+          "explanation": "Using the wrong fluid type (DOT vs Mineral Oil) will destroy the rubber seals and cause total brake failure.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_stamp_photo",
+              "kind": "photo",
+              "prompt": "Take a clear photo of the fluid type stamp on the brake lever body or reservoir cap.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The manufacturer's stamp indicating either 'Mineral Oil' or 'DOT' fluid.",
+              "guidance": "Ensure the text on the reservoir cap or lever body is legible in the photo."
+            },
+            {
+              "key": "fluid_type",
+              "kind": "choice",
+              "prompt": "Select the fluid type indicated by the stamp.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Mineral Oil",
+                "DOT Fluid",
+                "No stamp visible / Unknown"
+              ],
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "the stamp on the lever body or reservoir cap",
+              "guidance": "Select the option that matches the stamp on your brake lever."
+            }
+          ]
+        },
+        {
+          "title": "Flush and Bleed Brakes",
+          "explanation": "Flushing the system replaces old, contaminated fluid with fresh fluid to prevent brake fade and spongy lever feel.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_comparison_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the discharged old fluid next to the fresh fluid container.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "A clear contrast showing the dark, dirty old fluid next to the clean, fresh fluid.",
+              "guidance": "Place the container of old fluid next to a sample of new fluid to show that the old discolored fluid has been fully flushed."
+            }
+          ]
+        },
+        {
+          "title": "Verify Lever and Leak Check",
+          "explanation": "The lever must feel solid and there must be zero leaks to ensure the brakes do not fail under load in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Squeeze the brake lever firmly. Does it stop before touching the handlebar grip?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Stops before touching the handlebar grip",
+                "Pulls all the way to the handlebar grip"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Stops before touching the handlebar grip",
+              "guidance": "The lever must feel completely solid and absolutely cannot pull back to touch the grip."
+            },
+            {
+              "key": "leak_inspection",
+              "kind": "choice",
+              "prompt": "Inspect all hoses, fittings, and reservoirs. Are there any signs of wetness or weeping?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No wetness or weeping detected",
+                "Visible wetness or weeping detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No wetness or weeping detected",
+              "guidance": "Check all connections by eye and feel. Any wetness at all is a failure."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to bleed the front and back brakes on a Segway Xyber e-bike, ensuring the correct fluid is used and all air is purged. The job is successful only if the lever feels solid without touching the grip and there are absolutely no fluid leaks.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-brake-bleed\",\n    \"title\": \"Brake Fluid Bleed and Verification\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Brake lever pulls all the way to the handlebar grip\",\n      \"Any fluid wetness or weeping at fittings, hoses, or reservoirs\"\n    ],\n    \"releases\": [\n      \"Safe operation of the e-bike in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Identify Fluid Type\",\n        \"explanation\": \"Using the wrong fluid type (DOT vs Mineral Oil) will destroy the rubber seals and cause total brake failure.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_stamp_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a clear photo of the fluid type stamp on the brake lever body or reservoir cap.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The manufacturer's stamp indicating either 'Mineral Oil' or 'DOT' fluid.\",\n            \"guidance\": \"Ensure the text on the reservoir cap or lever body is legible in the photo.\"\n          },\n          {\n            \"key\": \"fluid_type\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Select the fluid type indicated by the stamp.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Mineral Oil\",\n              \"DOT Fluid\",\n              \"No stamp visible / Unknown\"\n            ],\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"the stamp on the lever body or reservoir cap\",\n            \"guidance\": \"Select the option that matches the stamp on your brake lever.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Flush and Bleed Brakes\",\n        \"explanation\": \"Flushing the system replaces old, contaminated fluid with fresh fluid to prevent brake fade and spongy lever feel.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_comparison_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the discharged old fluid next to the fresh fluid container.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"A clear contrast showing the dark, dirty old fluid next to the clean, fresh fluid.\",\n            \"guidance\": \"Place the container of old fluid next to a sample of new fluid to show that the old discolored fluid has been fully flushed.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verify Lever and Leak Check\",\n        \"explanation\": \"The lever must feel solid and there must be zero leaks to ensure the brakes do not fail under load in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Squeeze the brake lever firmly. Does it stop before touching the handlebar grip?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Stops before touching the handlebar grip\",\n              \"Pulls all the way to the handlebar grip\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Stops before touching the handlebar grip\",\n            \"guidance\": \"The lever must feel completely solid and absolutely cannot pull back to touch the grip.\"\n          },\n          {\n            \"key\": \"leak_inspection\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect all hoses, fittings, and reservoirs. Are there any signs of wetness or weeping?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No wetness or weeping detected\",\n              \"Visible wetness or weeping detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No wetness or weeping detected\",\n            \"guidance\": \"Check all connections by eye and feel. Any wetness at all is a failure.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3293,
+    "candidatesTokenCount": 1140,
+    "totalTokenCount": 8691
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:b2f4928a0446006e"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "What pressure do you inflate the Segway Xyber tyre to after completing the repair?",
+    "asks_about": "tolerance",
+    "unresolved": [
+      "How the repair is verified to be leak-free before riding",
+      "The target inflation pressure for the Segway Xyber tyre",
+      "Whether the Segway Xyber uses tubeless tyres or tubes, and how the steps differ",
+      "Any safety checks performed on the wheel and brakes after reinstallation"
+    ],
+    "understanding": "You repair punctures on your Segway Xyber e-bike by plugging tubeless tyres or patching tubes, scrapping any tyre with a split tread or sidewall damage. Because a failure at speed is highly dangerous, the repair must be absolutely secure before the bike is ridden in traffic.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"What pressure do you inflate the Segway Xyber tyre to after completing the repair?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"How the repair is verified to be leak-free before riding\",\n    \"The target inflation pressure for the Segway Xyber tyre\",\n    \"Whether the Segway Xyber uses tubeless tyres or tubes, and how the steps differ\",\n    \"Any safety checks performed on the wheel and brakes after reinstallation\"\n  ],\n  \"understanding\": \"You repair punctures on your Segway Xyber e-bike by plugging tubeless tyres or patching tubes, scrapping any tyre with a split tread or sidewall damage. Because a failure at speed is highly dangerous, the repair must be absolutely secure before the bike is ridden in traffic.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 2718,
+    "candidatesTokenCount": 196,
+    "totalTokenCount": 3621
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:27ad7818c53ef2ef"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "unresolved": [],
+    "understanding": "The job is to repair a flat tyre on a Segway Xyber or bicycle by finding and removing the puncture cause, patching or plugging the tyre, and verifying it holds air after one hour. The wheel is then reinstalled and tightened securely to ensure safe riding in traffic.",
+    "draft": {
+      "key": "flat-tyre-repair",
+      "title": "Flat Tyre Repair and Verification",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Tyre is still losing air after the one-hour wait test",
+        "Debris causing the puncture cannot be found or removed from the casing"
+      ],
+      "releases": [
+        "Safe to ride on city streets and gravel paths"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Casing and Remove Debris",
+          "explanation": "Sweeping the inside of the tyre casing ensures the thorn, glass, or nail that caused the flat is removed so it does not immediately puncture the tube again.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "puncture_cause_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the thorn, glass, or other debris removed from the tyre casing.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "A clear photo showing the extracted object that caused the flat.",
+              "guidance": "Capture a clear photo of the object that caused the puncture after extracting it."
+            }
+          ]
+        },
+        {
+          "title": "Apply Patch or Plug",
+          "explanation": "Sealing the puncture hole is required to allow the tube or tyre to hold air pressure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "repaired_area_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the applied patch on the tube or plug in the tyre.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "A clear photo of the completed patch or plug.",
+              "guidance": "The photo must clearly show the patch or plug centered over the puncture site with edges fully sealed."
+            }
+          ]
+        },
+        {
+          "title": "Inflate to Sidewall Specification",
+          "explanation": "Inflating the tyre to the pressure printed on its sidewall ensures optimal performance and prevents pinch flats or bead unseating.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "sidewall_pressure_limit",
+              "kind": "measurement",
+              "prompt": "Enter the maximum pressure printed on the tyre sidewall.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 10.0,
+              "acceptance_max": 100.0,
+              "acceptance_unit": "PSI",
+              "acceptance_target": null,
+              "acceptance_description": "A valid PSI rating read directly off the tyre sidewall.",
+              "guidance": "Read the PSI rating directly off the tyre sidewall and enter it here."
+            },
+            {
+              "key": "inflated_pressure",
+              "kind": "measurement",
+              "prompt": "Measure and enter the pressure you filled the tyre to.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 10.0,
+              "acceptance_max": 100.0,
+              "acceptance_unit": "PSI",
+              "acceptance_target": null,
+              "acceptance_description": "The final pressure must be within safe operating limits and not exceed the sidewall maximum.",
+              "guidance": "Ensure the final pressure does not exceed the sidewall limit you recorded."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Leak Verification",
+          "explanation": "Letting the inflated tyre sit for one hour ensures the patch or plug is stable and not suffering from a slow leak before reassembly.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "leak_check_result",
+              "kind": "choice",
+              "prompt": "After waiting one hour, check the tyre firmness.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Firm - holding air perfectly",
+                "Soft - leaking air"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Firm - holding air perfectly",
+              "acceptance_description": "The tyre must remain firm and hold its pressure over the hour.",
+              "guidance": "Squeeze the tyre firmly. It must feel as hard as it did when first inflated an hour ago."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall and Tighten Wheel",
+          "explanation": "Securing the wheel bolts prevents the wheel from wobbling or detaching while riding in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "wheel_tightness_check",
+              "kind": "choice",
+              "prompt": "Confirm the wheel is securely locked down.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, locked down tight with no wobble"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, locked down tight with no wobble",
+              "acceptance_description": "The wheel must be tightened securely by feel or manual spec with zero play.",
+              "guidance": "Ensure the wheel is locked down tight with no play or wobble before riding."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to repair a flat tyre on a Segway Xyber or bicycle by finding and removing the puncture cause, patching or plugging the tyre, and verifying it holds air after one hour. The wheel is then reinstalled and tightened securely to ensure safe riding in traffic.\",\n  \"draft\": {\n    \"key\": \"flat-tyre-repair\",\n    \"title\": \"Flat Tyre Repair and Verification\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Tyre is still losing air after the one-hour wait test\",\n      \"Debris causing the puncture cannot be found or removed from the casing\"\n    ],\n    \"releases\": [\n      \"Safe to ride on city streets and gravel paths\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Casing and Remove Debris\",\n        \"explanation\": \"Sweeping the inside of the tyre casing ensures the thorn, glass, or nail that caused the flat is removed so it does not immediately puncture the tube again.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"puncture_cause_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the thorn, glass, or other debris removed from the tyre casing.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"A clear photo showing the extracted object that caused the flat.\",\n            \"guidance\": \"Capture a clear photo of the object that caused the puncture after extracting it.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Apply Patch or Plug\",\n        \"explanation\": \"Sealing the puncture hole is required to allow the tube or tyre to hold air pressure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"repaired_area_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the applied patch on the tube or plug in the tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"A clear photo of the completed patch or plug.\",\n            \"guidance\": \"The photo must clearly show the patch or plug centered over the puncture site with edges fully sealed.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inflate to Sidewall Specification\",\n        \"explanation\": \"Inflating the tyre to the pressure printed on its sidewall ensures optimal performance and prevents pinch flats or bead unseating.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"sidewall_pressure_limit\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Enter the maximum pressure printed on the tyre sidewall.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 10.0,\n            \"acceptance_max\": 100.0,\n            \"acceptance_unit\": \"PSI\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"A valid PSI rating read directly off the tyre sidewall.\",\n            \"guidance\": \"Read the PSI rating directly off the tyre sidewall and enter it here.\"\n          },\n          {\n            \"key\": \"inflated_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Measure and enter the pressure you filled the tyre to.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 10.0,\n            \"acceptance_max\": 100.0,\n            \"acceptance_unit\": \"PSI\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The final pressure must be within safe operating limits and not exceed the sidewall maximum.\",\n            \"guidance\": \"Ensure the final pressure does not exceed the sidewall limit you recorded.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Leak Verification\",\n        \"explanation\": \"Letting the inflated tyre sit for one hour ensures the patch or plug is stable and not suffering from a slow leak before reassembly.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"leak_check_result\",\n            \"kind\": \"choice\",\n            \"prompt\": \"After waiting one hour, check the tyre firmness.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Firm - holding air perfectly\",\n              \"Soft - leaking air\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Firm - holding air perfectly\",\n            \"acceptance_description\": \"The tyre must remain firm and hold its pressure over the hour.\",\n            \"guidance\": \"Squeeze the tyre firmly. It must feel as hard as it did when first inflated an hour ago.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall and Tighten Wheel\",\n        \"explanation\": \"Securing the wheel bolts prevents the wheel from wobbling or detaching while riding in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"wheel_tightness_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm the wheel is securely locked down.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, locked down tight with no wobble\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, locked down tight with no wobble\",\n            \"acceptance_description\": \"The wheel must be tightened securely by feel or manual spec with zero play.\",\n            \"guidance\": \"Ensure the wheel is locked down tight with no play or wobble before riding.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3007,
+    "candidatesTokenCount": 1617,
+    "totalTokenCount": 8215
+  }
+}
