@@ -64,8 +64,16 @@ $ENG build --platform linux/amd64 -f "$ROOT/infra/Dockerfile.web" -t "$IMAGE" \
 echo "pushing…"
 $ENG push "$IMAGE" >/dev/null
 
-# Scale to zero: no request, no container, no charge. The surfaces are all fixture-backed
-# for now, so a cold start costs a second and nothing else.
+# WARRANT_FLEET_ENGINE and WARRANT_ADJUDICATOR_SA are runtime, not build-time. Without the
+# first, POST /api/adjudicate refuses every call rather than guessing at an engine. Without the
+# second the route runs as warrant-web, which is DELIBERATELY unable to call Vertex and returns
+# a 403 that reads exactly like the model not existing.
+#
+# NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET is passed at runtime as well as at build: the client
+# bundle has it inlined, but the adjudicator reads it on the server to work out where a
+# capture's bytes live.
+#
+# Scale to zero: no request, no container, no charge.
 gcloud run deploy "$SERVICE" \
   --image "$IMAGE" \
   --project "$PROJECT" \
@@ -79,7 +87,7 @@ gcloud run deploy "$SERVICE" \
   --cpu 1 \
   --memory 512Mi \
   --service-account "$RUN_SA" \
-  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-}" \
+  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-},WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-},WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com},NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-}" \
   --quiet
 
 URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"

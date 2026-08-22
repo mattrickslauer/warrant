@@ -39,9 +39,10 @@ echo "ok — every fixture matches the generated types"
 # table is the one worth reading: it is where a model's verdict stops being an opinion and
 # becomes a step transition, and every way a model can be wrong is a row in it.
 node --experimental-strip-types --conditions=react-server --import ./scripts/ts-resolve.mjs \
-  --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs 2>&1 \
+  --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs \
+       scripts/armor.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
-echo "ok — the outcome table, the case builders and the fleet client hold"
+echo "ok — the outcome table, the case builders, the fleet client and the armor screen hold"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null

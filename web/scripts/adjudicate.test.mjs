@@ -184,6 +184,14 @@ describe("adjudicate", () => {
       "an unreachable fleet must leave the capture for the sweep to retry");
   });
 
+  test("an unscreened capture records NOT_SCREENED, never a clean verdict", async () => {
+    // The capture in these tests has no media in a reachable bucket, so Model Armor cannot
+    // have run. What must never happen is the record claiming it did.
+    const cap = await db.doc(`tenants/${TENANT}/jobs/job_a/captures/cap_1`).get();
+    assert.equal(cap.data().armor_verdict, "NOT_SCREENED");
+    assert.notEqual(cap.data().armor_verdict, "NO_MATCH_FOUND");
+  });
+
   test("an adjudicated capture is marked so the sweep leaves it alone", async () => {
     const cap = await db.doc(`tenants/${TENANT}/jobs/job_a/captures/cap_1`).get();
     assert.equal(cap.data().adjudicated, true);

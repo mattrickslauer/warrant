@@ -15,6 +15,10 @@ import { adminDb } from "@/auth/admin";
 import { askFleet, FleetUnreachable, type FleetReply } from "@/server/fleet";
 import { decideOutcome, type Effect } from "./outcome";
 import { inspectorCase, skepticCase, mediaUri, type CaseSources } from "./cases";
+import { screenEvidence, type ArmorVerdict } from "./armor";
+import { getStorage } from "firebase-admin/storage";
+import { adminApp } from "@/auth/admin";
+import { GoogleAuth } from "google-auth-library";
 
 export interface AdjudicateRef {
   tenantId: string;
@@ -114,6 +118,34 @@ export async function adjudicate(
     priorMediaUris: [],
     asset: job.asset_id ? { id: job.asset_id } : null,
   };
+
+  // Model Armor, BEFORE any model is shown the evidence.
+  //
+  // The Inspector is a model reading a picture chosen by the person being checked, which is
+  // the textbook setting for prompt injection. A match means no model sees the image at all.
+  const armor = await screenCapture(sources.mediaUris[0] ?? null);
+  await jobRef
+    .collection("captures")
+    .doc(ref.captureId)
+    .set({ armor_verdict: armor.verdict }, { merge: true });
+
+  if (armor.verdict === "MATCH_FOUND") {
+    const id = randomUUID();
+    await db.doc(`tenants/${ref.tenantId}/decisions/${id}`).set({
+      id, job_id: scopedJobId, step_id: ref.stepId,
+      agent: "inspector",
+      agent_version: process.env.WARRANT_FLEET_ENGINE?.split("/").pop() ?? "unknown",
+      model: null, verdict: "REFUSED_BY_ARMOR", rationale: armor.detail,
+      cost_usd: null, at: nowIso(),
+    });
+    await applyEffect(db, ref, step, job.strictness ?? 1, {
+      kind: "escalate",
+      question: `This evidence was refused before any model saw it. ${armor.detail}`,
+    });
+    await jobRef.collection("captures").doc(ref.captureId)
+      .set({ adjudicated: true, adjudicated_at: nowIso() }, { merge: true });
+    return { decisionIds: [id], effect: { kind: "escalate", question: armor.detail } };
+  }
 
   const decisionIds: string[] = [];
   const write = async (
@@ -310,4 +342,52 @@ async function applyEffect(
 
   // hold — the step does not move, and the reason is on the record rather than in a log.
   await outRef.set({ hold_reason: effect.why, adjudicated_at: nowIso() }, { merge: true });
+}
+
+/**
+ * Download one capture and put it through Model Armor.
+ *
+ * The bytes have to come down for this — the fleet reads the object by URI and never needs
+ * them here, so this is the one place that pays for the transfer. Worth it: it is the only
+ * check standing between a photograph chosen by the person being verified and a model that
+ * will read any text in it.
+ *
+ * Every failure path returns NOT_SCREENED. An unscreened capture recorded as clean is a lie
+ * the record carries forever.
+ */
+async function screenCapture(
+  gsUri: string | null,
+): Promise<{ verdict: ArmorVerdict; detail: string }> {
+  if (!gsUri) {
+    return { verdict: "NOT_SCREENED", detail: "There was no media to screen." };
+  }
+  const without = gsUri.replace("gs://", "");
+  const slash = without.indexOf("/");
+  if (slash <= 0) {
+    return { verdict: "NOT_SCREENED", detail: `Unreadable media reference: ${gsUri}` };
+  }
+
+  let bytes: Uint8Array;
+  try {
+    const [buf] = await getStorage(adminApp())
+      .bucket(without.slice(0, slash))
+      .file(without.slice(slash + 1))
+      .download();
+    bytes = new Uint8Array(buf);
+  } catch (error) {
+    return { verdict: "NOT_SCREENED", detail: `Could not read the evidence: ${String(error)}` };
+  }
+
+  let token: string | null = null;
+  try {
+    const client = await new GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+    }).getClient();
+    const t = await client.getAccessToken();
+    token = typeof t === "string" ? t : (t?.token ?? null);
+  } catch {
+    token = null;
+  }
+
+  return screenEvidence(bytes, token);
 }
