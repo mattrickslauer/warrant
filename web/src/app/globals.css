@@ -62,6 +62,11 @@ h1.hero {
   font-size: var(--t-body); color: var(--on-surface-3);
   display: flex; flex-wrap: wrap; gap: 8px 24px;
 }
+/* A footer link is quiet by design — the one on /about is the only way to reach the instrument
+   manual, and it should be findable by someone looking for it without competing with the page. */
+.footer a { color: var(--on-surface-2); text-decoration: none; border-bottom: 1px solid var(--outline); padding-bottom: 1px; }
+.footer a:hover { color: var(--on-surface); border-bottom-color: currentColor; }
+@media (min-width: 620px) { .footer a { margin-left: auto; } }
 
 .gallery { display: flex; flex-direction: column; gap: clamp(28px, 5vw, 44px); }
 .gallery__block { display: flex; flex-direction: column; gap: 12px; }
@@ -294,3 +299,146 @@ h1.hero {
 .tenant[data-kind="workspace"] .tenant__kind { color: var(--measured); }
 .tenant[data-kind="anon"] { border-style: dashed; }
 .tenant[data-kind="anon"] .tenant__kind { color: var(--held); }
+
+/* ---------------------------------------------------------------- the manual
+   /firmware — the open-source instrument manual. One long document, reachable only from the
+   About footer, and the only page on the site that has to render code and wire formats.
+
+   The house provenance rule decides the typography for free: a sketch, a UUID, a unit code and
+   a byte width are all machine text, so they are mono; the prose around them is a person
+   explaining, so it is sans. Nothing here invents a colour, a radius or a face. */
+
+.manual { max-width: 74ch; }
+.manual h2 {
+  font-family: var(--brand); font-size: var(--t-headline);
+  font-weight: 400; letter-spacing: -.012em; line-height: 1.2; text-wrap: balance;
+  scroll-margin-top: 88px;
+}
+.manual h3 {
+  font-size: var(--t-title); font-weight: 500; color: var(--on-surface);
+  letter-spacing: .004em;
+}
+.manual p { font-size: var(--t-body-lg); color: var(--on-surface-2); line-height: 1.65; }
+.manual p strong, .manual li strong { color: var(--on-surface); font-weight: 500; }
+.manual ul, .manual ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+.manual li { font-size: var(--t-body-lg); color: var(--on-surface-2); line-height: 1.6; }
+.manual a:not(.w-btn) { color: var(--action); text-underline-offset: 3px; }
+
+/* Contents. Anchors only — no client JS on this page, and a document you can link into
+   halfway is the difference between a manual and a brochure. */
+.manual__toc { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.manual__toc a {
+  font-size: var(--t-body); color: var(--on-surface-2); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.manual__toc a:hover { color: var(--on-surface); border-bottom-color: var(--outline); }
+
+/* Code. Horizontal scroll inside the block, never on the page — a 78-column sketch line must
+   not push the prose off a 360px phone. */
+.manual__code {
+  margin: 0; padding: 16px var(--pad); overflow-x: auto;
+  background: var(--surface); border: 1px solid var(--outline); border-radius: var(--r-md);
+  font-family: var(--mono); font-size: var(--t-body-sm); line-height: 1.6;
+  color: var(--on-surface); tab-size: 2;
+}
+.manual__code b { font-weight: 500; color: var(--action); }
+.manual__code i { font-style: normal; color: var(--on-surface-3); }
+.manual .manual__caption { font-size: var(--t-label); color: var(--on-surface-3); font-family: var(--mono); line-height: 1.5; }
+
+/* Wire formats and unit codes. Left-aligned, mono in the value columns, scrollable as a unit. */
+.manual__tablewrap { overflow-x: auto; border: 1px solid var(--outline); border-radius: var(--r-md); }
+.manual__table { border-collapse: collapse; width: 100%; min-width: 460px; }
+.manual__table th, .manual__table td {
+  text-align: left; padding: 10px 16px; border-top: 1px solid var(--outline);
+  font-size: var(--t-body); vertical-align: top;
+}
+.manual__table thead th {
+  border-top: 0; font-weight: 500; color: var(--on-surface-3);
+  font-size: var(--t-label); letter-spacing: .04em; text-transform: uppercase;
+}
+.manual__table td { color: var(--on-surface-2); }
+.manual__table td:first-child { color: var(--on-surface); }
+.manual__table code, .manual__table .manual__val {
+  font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--on-surface);
+}
+.manual__table--units { min-width: 0; }
+
+/* An aside that is a warning, not decoration. Borrows the held hue the rest of the product
+   uses for "stop and read this". */
+.manual__note {
+  border-left: 2px solid var(--c-held); padding: 2px 0 2px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.manual__note b { font-size: var(--t-label-lg); font-weight: 500; color: var(--c-held); }
+.manual__note p { font-size: var(--t-body); }
+
+/* The three rungs, and the troubleshooting list. Same row rhythm as .w-trace so the page reads
+   as part of the product rather than as documentation bolted to it. */
+.manual__rungs { display: flex; flex-direction: column; }
+.manual__rung { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; border-top: 1px solid var(--outline); }
+.manual__rung:first-child { border-top: 0; }
+.manual__rung header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+.manual__rung h3 { margin: 0; }
+.manual__prefix {
+  font-family: var(--mono); font-size: var(--t-label); padding: 2px 8px;
+  border: 1px solid var(--outline); border-radius: var(--r-xs); color: var(--on-surface-3);
+}
+.manual__rung p { font-size: var(--t-body); }
+
+.manual__inline {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: .92em; color: var(--on-surface);
+  /* A file path or a UUID is longer than a 360px line, and mono has no soft break points.
+     Without this the string runs off the edge and the page loses its right margin. */
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------- operator view
+
+   The one screen that claims scale, so the one screen where an invented row would do the
+   most damage. It is built out of counts and rationales rather than charts on purpose:
+   the interesting quantity is what an agent SAID, and a bar chart of verdicts hides that
+   behind the one number a reader has least reason to trust.                            */
+
+.fleet__stats {
+  display: flex; flex-wrap: wrap; gap: clamp(20px, 5vw, 48px);
+}
+.fleet__stat { display: flex; flex-direction: column; gap: 2px; }
+.fleet__statv {
+  font-family: var(--brand); font-size: var(--t-title-lg);
+  font-weight: 400; letter-spacing: -.01em; color: var(--on-surface);
+}
+.fleet__statl {
+  font-family: var(--mono); font-size: var(--t-label);
+  color: var(--on-surface-3); letter-spacing: .02em;
+}
+
+.fleet__chips { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.fleet__chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: var(--t-label);
+  color: var(--on-surface-2);
+}
+
+.fleet__log { display: flex; flex-direction: column; }
+.fleet__entry {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 16px 0; border-bottom: 1px solid var(--outline);
+}
+.fleet__head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-2);
+}
+.fleet__why { font-size: var(--t-body); color: var(--on-surface); margin: 0; }
+.fleet__where {
+  font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-3);
+  margin: 0; overflow-wrap: anywhere;
+}
+.fleet__note {
+  font-family: var(--mono); font-size: var(--t-label); color: var(--c-held);
+}
+.fleet__fail {
+  font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-2);
+  white-space: pre-wrap; overflow-wrap: anywhere;
+  background: var(--surface-high); border-radius: var(--r-sm); padding: 12px;
+}
