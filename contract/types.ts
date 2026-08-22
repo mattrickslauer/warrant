@@ -359,6 +359,31 @@ export interface Tenant {
 }
 
 // ---- agent contracts: what a model is forced to return ----
+/** You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns — one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door. */
+export interface AuditorFinding {
+  /** revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise. */
+  mode: "revise" | "no_defect" | "insufficient_history";
+  /** What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it. */
+  understanding: string;
+  /** How many jobs you actually read. The denominator for every claim below. */
+  jobs_examined: number;
+  /** Defects in the procedure. Empty unless mode is revise. */
+  findings: ({
+    step_title: string;
+    field_key?: string | null;
+    defect: "ambiguous_instruction" | "bound_wrong" | "evidence_not_obtainable" | "step_out_of_order" | "step_redundant" | "guidance_missing" | "strictness_too_high" | "strictness_too_low";
+    what: string;
+    jobs_cited: string[];
+    quotes?: string[];
+    jobs_affected: number;
+    proposed_revision: string;
+    needs_the_shop: boolean;
+    confidence: number;
+  })[];
+  /** Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved. */
+  considered_and_rejected: string[];
+}
+
 /** You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here. */
 export interface ForemanDisposition {
   /** deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect. */
@@ -463,4 +488,44 @@ export interface SkepticVerdict {
   mismatch_kind?: "asset" | "time" | "reuse" | "scene" | "none" | null;
   /** When mismatch_kind is reuse, the earlier capture this resembles. */
   prior_capture_ref?: string | null;
+}
+
+/** You are meeting a Bluetooth Low Energy device nobody has written a driver for, and your job is to work out which characteristic carries a physical reading and exactly how it is encoded. Prefer evidence over inference, in this order: a 0x2904 presentation-format descriptor states the format, exponent and unit outright and must be read rather than guessed; a Bluetooth SIG assigned service or characteristic has a published encoding you already know; only when neither exists may you infer from the bytes. Probe before you commit — a driver emitted from a single frame is a guess wearing a uniform. You must never emit a driver whose unit you cannot name, and you must never emit one for a characteristic that plausibly carries battery level, firmware revision, a sequence counter or a status flag rather than a reading. Abandoning with a clear reason is a correct outcome and is worth more than a driver that decodes something into a believable wrong number. */
+export interface WrightTurn {
+  /** probe while anything material about the encoding is unknown. emit once a driver would decode correctly. abandon when this device cannot be driven and you can say why. */
+  mode: "probe" | "emit" | "abandon";
+  /** What you now believe this device is and which characteristic carries the reading, in two sentences. Written every turn so a wrong track is visible early rather than at the end. */
+  understanding: string;
+  /** What in the GATT tree, the advertisement or the frames supports your current belief. Cite the actual UUID, descriptor or byte offset. An empty list means you are guessing and should be probing instead. */
+  evidence: string[];
+  /** Everything still unknown that would change the driver. Empty is the only condition under which you may emit. */
+  unresolved: string[];
+  /** Required when mode is probe. One operation for the phone to perform against the device. */
+  probe?: {
+    op: "enumerate" | "read" | "subscribe" | "write_then_subscribe" | "sample_while_changing";
+    service?: string | null;
+    characteristic?: string | null;
+    bytes?: string | null;
+    samples: number;
+    instruction?: string | null;
+    why: string;
+  } | null;
+  /** Required when mode is emit. Kotlin implementing the Driver interface in android/app/src/main/java/ink/warrant/instrument/Driver.kt. */
+  driver?: {
+    class_name: string;
+    label: string;
+    service: string;
+    characteristic: string;
+    unit: string;
+    min: number;
+    max: number;
+    start_write?: string | null;
+    kotlin: string;
+    rationale: string;
+  } | null;
+  /** Required when mode is abandon. Saying why is the deliverable. */
+  abandon?: {
+    reason: "encrypted" | "bonding_required" | "no_readable_characteristic" | "vendor_handshake_unknown" | "no_unit_derivable" | "frames_never_decode" | "probe_budget_exhausted";
+    detail: string;
+  } | null;
 }
