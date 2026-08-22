@@ -44,3 +44,7 @@ Warrant-training.zip
 # one Firebase project, and this project keeps deployment config out of the tree. Fetch it:
 #   ./infra/fetch-google-services.sh
 android/app/google-services.json
+
+# Worktrees this session created under the repo itself. The branches are the durable thing;
+# the checkouts are scratch, and committing one would nest the whole tree inside itself.
+.claude/worktrees/
