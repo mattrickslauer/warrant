@@ -11,14 +11,21 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.FlashAuto
+import androidx.compose.material.icons.rounded.FlashOff
+import androidx.compose.material.icons.rounded.FlashOn
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -94,9 +101,17 @@ fun rememberCameraHandle(): CameraHandle {
  *
  * The preview is only bound while [handle] says Live, and it is unbound the moment this leaves
  * the composition. A step that does not need the lens does not open it.
+ *
+ * [flash] is the technician's choice for the step in hand, owned by the job's state and passed
+ * down rather than held here — see [ink.warrant.ui.job.JobViewModel.UiState.flash]. One owner
+ * means the chip and the lamp cannot disagree, which is the whole failure worth preventing.
  */
 @Composable
-fun CameraLayer(handle: CameraHandle, modifier: Modifier = Modifier) {
+fun CameraLayer(
+    handle: CameraHandle,
+    flash: FlashMode = FlashMode.Default,
+    modifier: Modifier = Modifier,
+) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
@@ -115,6 +130,13 @@ fun CameraLayer(handle: CameraHandle, modifier: Modifier = Modifier) {
             cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
             setEnabledUseCases(LifecycleCameraController.IMAGE_CAPTURE)
         }
+    }
+
+    // Set on the controller rather than passed at the moment of capture: the lamp is part of
+    // how the lens is configured, and a mode applied only inside takePhoto would be a setting
+    // the preview never reflects.
+    LaunchedEffect(controller, flash) {
+        controller.imageCaptureFlashMode = flash.imageCaptureMode
     }
 
     DisposableEffect(lifecycleOwner, handle.status) {
@@ -177,6 +199,48 @@ fun LiveMark(modifier: Modifier = Modifier) {
     ) {
         Box(Modifier.size(8.dp).background(WarrantTheme.colors.measured, CircleShape))
         Text("Live", style = WarrantTheme.type.label.copy(color = Color.White))
+    }
+}
+
+/**
+ * The lamp, and the one control that changes it.
+ *
+ * Sits opposite [LiveMark] at the foot of the frame: both are statements about the lens rather
+ * than about the work, and both come and go with it. Nothing above the primary bar moves to
+ * make room, because [ink.warrant.ui.job.StepPage]'s second rule is that the bar never moves —
+ * a technician with dirty hands should never have to aim, and a shutter that shifts because a
+ * chip appeared is a shutter you have to look for.
+ *
+ * A tap cycles rather than opening a menu. Three states is few enough to walk through, and the
+ * page has nowhere to put a popup: it does not scroll, and a sheet over the lens would hide
+ * the thing you are pointing it at. The label is spelled out beside the icon because a flash
+ * glyph alone does not say which of three states it is currently in — the icon is the state,
+ * not a button, and the two read differently at arm's length in bad light.
+ */
+@Composable
+fun FlashChip(mode: FlashMode, onCycle: () -> Unit, modifier: Modifier = Modifier) {
+    val tint = if (mode == FlashMode.Off) Color.White.copy(alpha = 0.55f) else Color.White
+    val icon = when (mode) {
+        FlashMode.Off -> Icons.Rounded.FlashOff
+        FlashMode.Auto -> Icons.Rounded.FlashAuto
+        FlashMode.On -> Icons.Rounded.FlashOn
+    }
+
+    Row(
+        modifier
+            // Deliberately not the 48dp of an OverlayIcon — this is a chip, not an exit — but
+            // still on a target a gloved thumb lands on without aiming.
+            .heightIn(min = 44.dp)
+            .background(Color(0xB8202124), CircleShape)
+            .clickable(onClickLabel = "Change the flash", onClick = onCycle)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(7.dp),
+    ) {
+        // Null: the label beside it already says the state, and a screen reader announcing it
+        // twice is worse than not at all.
+        Icon(icon, contentDescription = null, tint = tint, modifier = Modifier.size(16.dp))
+        Text(mode.label, style = WarrantTheme.type.label.copy(color = tint))
     }
 }
 

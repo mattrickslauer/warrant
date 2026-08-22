@@ -20,6 +20,7 @@ import ink.warrant.data.DataSource
 import ink.warrant.data.JobEvent
 import ink.warrant.data.ReadingInput
 import ink.warrant.instrument.InstrumentSession
+import ink.warrant.ui.components.FlashMode
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -73,6 +74,16 @@ class JobViewModel(
          * seal that has not happened.
          */
         val handedOver: Boolean = false,
+        /**
+         * The lamp, per step. Absent means [FlashMode.Default].
+         *
+         * Keyed by step id rather than held as one value for the job, because one step's
+         * lighting is not another's: the shot up inside a wheel arch needs the lamp and the
+         * one of the bay floor two steps later does not. Screen state, like [handedOver] —
+         * how the lens was set is not part of what the step produced, and the record does not
+         * carry it.
+         */
+        val flash: Map<String, FlashMode> = emptyMap(),
         val error: String? = null,
         val fabricated: Boolean = true,
     ) {
@@ -84,6 +95,18 @@ class JobViewModel(
             (steps.firstOrNull { it.id == stepId }?.fields.orEmpty()) + addedFields[stepId].orEmpty()
 
         fun isFilled(stepId: String, key: String) = "$stepId:$key" in filled
+
+        /** How the lamp is set for this step. Untouched steps are [FlashMode.Default]. */
+        fun flashFor(stepId: String): FlashMode = flash[stepId] ?: FlashMode.Default
+
+        /**
+         * This step's lamp moved one place on, and every other step's left exactly alone.
+         *
+         * A whole transition in one pure function so `FlashPerStepTest` can walk it without a
+         * view model, a dispatcher or a device.
+         */
+        fun withFlashCycled(stepId: String): UiState =
+            copy(flash = flash + (stepId to flashFor(stepId).next()))
 
         /** A step is complete when every field required at this strictness has been filled. */
         fun stepComplete(stepId: String): Boolean {
@@ -317,6 +340,11 @@ class JobViewModel(
     fun next() = goTo(_state.value.stepIndex + 1)
     fun previous() = goTo(_state.value.stepIndex - 1)
 
+    /** Walk this step's lamp on one state. Scoped to the step; nothing else on the job moves. */
+    fun cycleFlash(stepId: String) {
+        _state.value = _state.value.withFlashCycled(stepId)
+    }
+
     /**
      * The end of the last step.
      *
@@ -369,6 +397,9 @@ fun newJobState(
     heldReason = null,
     sealedRecordId = null,
     handedOver = false,
+    // Named rather than left to the default, for the same reason as the three above: a lamp
+    // belongs to the job that chose it, and this list is the audit of what does not survive.
+    flash = emptyMap(),
     error = null,
     fabricated = fabricated,
 )

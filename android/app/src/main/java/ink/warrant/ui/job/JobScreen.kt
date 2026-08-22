@@ -38,6 +38,8 @@ import ink.warrant.design.Ground
 import ink.warrant.design.WarrantTheme
 import ink.warrant.instrument.InstrumentEvent
 import ink.warrant.ui.components.CameraLayer
+import ink.warrant.ui.components.FlashChip
+import ink.warrant.ui.components.FlashMode
 import ink.warrant.ui.components.LiveMark
 import ink.warrant.ui.components.ReadingBadge
 import ink.warrant.ui.components.rememberCameraHandle
@@ -268,7 +270,8 @@ fun JobScreen(
         backdrop = {
             when {
                 framedFile != null -> ReviewFrame(framedFile, active?.prompt ?: step.title)
-                active != null && active.usesCamera() -> CameraLayer(camera, Modifier.fillMaxSize())
+                active != null && active.usesCamera() ->
+                    CameraLayer(camera, state.flashFor(step.id), Modifier.fillMaxSize())
                 else -> Unit
             }
         },
@@ -285,6 +288,8 @@ fun JobScreen(
                 onTyped = { typed = it },
                 redacting = redacting,
                 redactNote = redactNote,
+                flash = state.flashFor(step.id),
+                onCycleFlash = { vm.cycleFlash(step.id) },
             )
         },
     )
@@ -406,6 +411,8 @@ private fun BoxScope.StepCenter(
     onTyped: (String) -> Unit,
     redacting: Boolean,
     redactNote: String?,
+    flash: FlashMode,
+    onCycleFlash: () -> Unit,
 ) {
     val colors = WarrantTheme.colors
 
@@ -449,8 +456,16 @@ private fun BoxScope.StepCenter(
         redactNote?.let { OverlayNote(it, colors.fg2) }
     }
 
+    // Both only while the lens is actually open. `live` is already false while a frame is
+    // under review, which is what we want: the lamp cannot be changed for a photograph that
+    // has already been taken. Redo reopens the lens and the chip comes back with it.
     if (live) {
         LiveMark(Modifier.align(Alignment.BottomStart).padding(bottom = 4.dp))
+        FlashChip(
+            mode = flash,
+            onCycle = onCycleFlash,
+            modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 4.dp),
+        )
     }
 }
 
