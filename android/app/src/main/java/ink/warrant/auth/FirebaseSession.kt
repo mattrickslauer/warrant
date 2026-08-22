@@ -2,6 +2,7 @@ package ink.warrant.auth
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.GoogleAuthProvider
 import ink.warrant.net.Api
 import kotlinx.coroutines.tasks.await
@@ -43,6 +44,43 @@ class FirebaseSession(
 
     val isSignedIn: Boolean get() = auth.currentUser != null
 
+    val isAnonymous: Boolean get() = auth.currentUser?.isAnonymous == true
+
+    /**
+     * There must ALWAYS be a Firebase user before Firestore is touched.
+     *
+     * `firestore.rules` refuses everything to `request.auth == null`, and a rejected listen is
+     * not a quiet empty result — Firestore's async queue rethrows it on the main thread and
+     * the app dies. So a signed-out launch that reads anything is a crash, not an empty screen.
+     *
+     * Anonymous is the right answer rather than a workaround. Running a public task needs no
+     * account — that is a product decision, and `isAnonymous()` in firestore.rules exists to
+     * serve it, giving a stranger the tenant `anon:<uid>` of their own. Signing in with Google
+     * later LINKS to this same uid, so the work they did before signing in comes with them.
+     *
+     * Idempotent and cheap: it checks for a user before asking for one.
+     */
+    suspend fun ensureSignedIn(): String? {
+        auth.currentUser?.let { return it.uid }
+        return runCatching { auth.signInAnonymously().await().user?.uid }
+            .onFailure { Log.w(TAG, "anonymous sign-in failed; Firestore will refuse reads", it) }
+            .getOrNull()
+    }
+
+    /**
+     * The tenant this session resolves to, computed the way `tenantOf()` in firestore.rules
+     * computes it.
+     *
+     * These are the same rule written twice, and a divergence between them is not a cosmetic
+     * bug: the phone would read one tenant's path while the rules authorised another, and
+     * every read would be refused for reasons no screen could explain.
+     */
+    fun tenantId(hostedDomain: String? = null): String {
+        if (!hostedDomain.isNullOrBlank()) return hostedDomain
+        val user = auth.currentUser ?: return "anon:unknown"
+        return if (user.isAnonymous) "anon:${user.uid}" else "u:${user.uid}"
+    }
+
     /**
      * Exchange a Google ID token for a Firebase session.
      *
@@ -52,7 +90,27 @@ class FirebaseSession(
      */
     suspend fun signIn(googleIdToken: String, identity: Identity): String {
         val credential = GoogleAuthProvider.getCredential(googleIdToken, null)
-        val result = auth.signInWithCredential(credential).await()
+        val existing = auth.currentUser
+
+        // LINK rather than replace when the current user is anonymous. The uid is preserved,
+        // so a stranger who ran a public task and then decided to sign in keeps the record
+        // they just made. Signing in fresh would strand it in a tenant nobody can reach again.
+        val result = if (existing != null && existing.isAnonymous) {
+            runCatching { existing.linkWithCredential(credential).await() }
+                .recoverCatching { error ->
+                    // The Google account is already a Firebase user. Their real account wins;
+                    // the empty anonymous one is what gets abandoned.
+                    if (error is FirebaseAuthUserCollisionException) {
+                        auth.signInWithCredential(credential).await()
+                    } else {
+                        throw error
+                    }
+                }
+                .getOrThrow()
+        } else {
+            auth.signInWithCredential(credential).await()
+        }
+
         val user = result.user ?: error("Firebase accepted the credential and returned no user.")
 
         // Best effort. A Workspace account NEEDS this; a consumer account does not, and a
@@ -71,7 +129,7 @@ class FirebaseSession(
             }.onFailure { Log.w(TAG, "tenant claim exchange failed; using the local tenant", it) }
         }
 
-        return identity.tenantId
+        return tenantId(identity.hostedDomain)
     }
 
     /** The current Firebase ID token, for the few calls that go to our own server. */

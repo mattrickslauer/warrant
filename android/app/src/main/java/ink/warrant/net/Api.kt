@@ -97,6 +97,22 @@ class Api(private val baseUrl: String) {
     }
 
     /**
+     * Put the public catalogue into this tenant.
+     *
+     * The picker is bundled on every surface, but a bundled picker is not a bundled
+     * procedure: a job is judged against a version frozen in Firestore, and
+     * `procedure_versions` is a collection firestore.rules refuses to every client. So the
+     * server writes it, and a client that could write its own frozen version — and therefore
+     * rewrite the acceptance rule it is about to be judged against — cannot.
+     *
+     * Idempotent, so calling it on every launch costs one read per procedure and nothing else.
+     */
+    suspend fun seedPublicProcedures(idToken: String?): Boolean =
+        runCatching { post("/api/procedures/seed", JSONObject(), idToken) }
+            .onFailure { Log.w(TAG, "could not seed the public catalogue", it) }
+            .isSuccess
+
+    /**
      * Exchange a freshly minted Firebase token for the tenant claim.
      *
      * Workspace accounts carry `hd`, and Firebase does NOT propagate it into its own ID token

@@ -98,6 +98,32 @@ class LiveSource(
     override val name = "live"
     override val fabricated = false
 
+    /**
+     * Nothing touches Firestore before there is a Firebase user.
+     *
+     * `firestore.rules` refuses everything to `request.auth == null`, and a rejected LISTEN is
+     * not a quiet empty result — Firestore's async queue rethrows it on the main thread and
+     * the process dies. This was found by running the app on a phone: it crashed on launch
+     * with PERMISSION_DENIED and no frame of ours in the trace.
+     */
+    private suspend fun ready() { session.ensureSignedIn() }
+
+    /**
+     * The public catalogue has to exist in this tenant before the picker can offer it.
+     *
+     * Once per process. A stranger's tenant is created empty, so without this every public
+     * task renders as "not in this build yet" — which is what the phone actually showed, and
+     * is a far more confusing symptom than an error would have been.
+     */
+    @Volatile private var seeded = false
+
+    private suspend fun seedPublic() {
+        if (seeded) return
+        ready()
+        if (api.isConfigured) api.seedPublicProcedures(session.idToken())
+        seeded = true
+    }
+
     private fun now() = Instant.now().toString()
     private fun jobDoc(tenant: String, job: String) =
         db.collection("tenants").document(tenant).collection("jobs").document(job)
@@ -105,12 +131,14 @@ class LiveSource(
     // ------------------------------------------------------------------ procedures
 
     override suspend fun listProcedures(tenantId: String): List<Procedure> {
+        seedPublic()
         val t = if (tenantId == "*") this.tenantId() else tenantId
         return db.collection("tenants").document(t).collection("procedures")
             .get().await().documents.mapNotNull { it.toProcedure() }
     }
 
     override suspend fun getProcedure(id: String): Procedure? {
+        seedPublic()
         val (t, p) = if ('/' in id) split(id) else tenantId() to id
         return db.collection("tenants").document(t).collection("procedures").document(p)
             .get().await().toProcedure()
@@ -119,6 +147,7 @@ class LiveSource(
     // ------------------------------------------------------------------ jobs
 
     override suspend fun startJob(procedureId: String, tenantId: String, tier: Tier): Job {
+        seedPublic()
         val t = if (tenantId == "*") this.tenantId() else tenantId
         val proc = getProcedure(procedureId) ?: error("no such procedure: $procedureId")
         val ref = db.collection("tenants").document(t).collection("jobs").document()
@@ -155,6 +184,7 @@ class LiveSource(
     }
 
     override suspend fun getJob(id: String): Job? {
+        ready()
         val (t, j) = split(id)
         val ref = jobDoc(t, j)
         val header = ref.get().await()
@@ -170,6 +200,7 @@ class LiveSource(
     }
 
     override suspend fun listJobs(tenantId: String): List<Job> {
+        ready()
         val t = if (tenantId == "*") this.tenantId() else tenantId
         return db.collection("tenants").document(t).collection("jobs")
             .orderBy("started_at", Query.Direction.DESCENDING)
@@ -183,6 +214,7 @@ class LiveSource(
     // ------------------------------------------------------------------ evidence
 
     override suspend fun capture(input: CaptureInput): Capture {
+        ready()
         val (t, j) = split(input.jobId)
         val ref = jobDoc(t, j)
         val capRef = ref.collection("captures").document()
@@ -340,6 +372,7 @@ class LiveSource(
     var appContext: android.content.Context? = null
 
     override suspend fun declareBlocked(input: BlockedInput): StepOutcome {
+        ready()
         val (t, j) = split(input.jobId)
         val ref = jobDoc(t, j).collection("step_outcomes").document(input.stepId)
         ref.set(
@@ -367,6 +400,7 @@ class LiveSource(
     override suspend fun listRecords(tenantId: String): List<SealedRecord> = emptyList()
 
     override suspend fun listDecisions(tenantId: String): List<Decision> {
+        ready()
         val t = if (tenantId == "*") this.tenantId() else tenantId
         return db.collection("tenants").document(t).collection("decisions")
             .orderBy("at", Query.Direction.DESCENDING).limit(200)
@@ -382,6 +416,9 @@ class LiveSource(
      * tell the difference, which is the test that the seam was drawn in the right place.
      */
     override fun subscribe(jobId: String): Flow<JobEvent> = callbackFlow {
+        // Before ANY listener is registered. A listen registered without a user is rejected,
+        // and a rejected listen kills the process rather than returning nothing.
+        ready()
         val (t, j) = split(jobId)
         val ref = jobDoc(t, j)
         val seenStatus = mutableMapOf<String, StepStatus>()
@@ -389,6 +426,10 @@ class LiveSource(
         val seenEscalation = mutableMapOf<String, String>()
 
         val stopOutcomes = ref.collection("step_outcomes").addSnapshotListener { snap, e ->
+            // Logged, never rethrown. Consuming the error here is what keeps a rules rejection
+            // from becoming a crash — and saying nothing at all is how a permanently empty
+            // screen gets mistaken for a job with no steps.
+            if (e != null) { Log.w(TAG, "step_outcomes listener failed", e) }
             if (e != null || snap == null) return@addSnapshotListener
             for (doc in snap.documents) {
                 val stepId = doc.getString("step_id") ?: doc.id
@@ -418,6 +459,7 @@ class LiveSource(
         }
 
         val stopFields = ref.collection("fields").addSnapshotListener { snap, e ->
+            if (e != null) { Log.w(TAG, "fields listener failed", e) }
             if (e != null || snap == null) return@addSnapshotListener
             for (change in snap.documentChanges) {
                 val d = change.document
@@ -434,6 +476,7 @@ class LiveSource(
         val stopDecisions = db.collection("tenants").document(t).collection("decisions")
             .whereEqualTo("job_id", jobId)
             .addSnapshotListener { snap, e ->
+                if (e != null) { Log.w(TAG, "decisions listener failed", e) }
                 if (e != null || snap == null) return@addSnapshotListener
                 for (change in snap.documentChanges) {
                     val decision = change.document.toDecision() ?: continue
@@ -442,6 +485,7 @@ class LiveSource(
             }
 
         val stopHeader = ref.addSnapshotListener { snap, e ->
+            if (e != null) { Log.w(TAG, "job header listener failed", e) }
             if (e != null || snap == null) return@addSnapshotListener
             if (snap.getString("status") == "sealed") {
                 snap.getString("record_id")?.let { trySend(JobEvent.Sealed(it)) }

@@ -16,6 +16,38 @@ PROJECT="${GCP_PROJECT:-$(gcloud config get-value project 2>/dev/null)}"
 TOKEN="$(gcloud auth print-access-token)"
 API=(-H "Authorization: Bearer $TOKEN" -H "x-goog-user-project: $PROJECT" -H "Content-Type: application/json")
 
+# Publish a ruleset to a release track, and SAY SO ONLY IF IT WORKED.
+#
+# This used to be a bare `curl -X PATCH … >/dev/null` followed by an unconditional success
+# line. PATCH cannot create a release that does not exist yet, so on a project where the
+# release had never been made it returned 404, the body went to /dev/null, and the script
+# printed "released" — while firestore.rules governed nothing at all. Every server path kept
+# working, because the Admin SDK bypasses rules, so nothing looked wrong until a phone tried
+# to read its own tenant and was refused.
+#
+# So: POST to create, PATCH to update, and check the reply either way.
+release() {
+  local track="$1" ruleset="$2" out
+  local name="projects/$PROJECT/releases/$track"
+  local body="{\"name\":\"$name\",\"rulesetName\":\"$ruleset\"}"
+
+  out="$(curl -sS -X POST "https://firebaserules.googleapis.com/v1/projects/$PROJECT/releases" \
+    "${API[@]}" -d "$body")"
+
+  # Already there: update it instead.
+  if printf '%s' "$out" | grep -q '"code": *409'; then
+    out="$(curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/$name" \
+      "${API[@]}" -d "{\"release\":$body}")"
+  fi
+
+  if printf '%s' "$out" | grep -q '"error"'; then
+    echo "error: $track was NOT released" >&2
+    printf '%s\n' "$out" >&2
+    exit 1
+  fi
+  echo "  released to $track"
+}
+
 echo "publishing firestore.rules to $PROJECT"
 
 # The API takes the source inline, so the file is embedded as a JSON string.
@@ -35,10 +67,7 @@ case "$RULESET" in
 esac
 echo "  ruleset $RULESET"
 
-curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/projects/$PROJECT/releases/cloud.firestore" \
-  "${API[@]}" -d "{\"release\":{\"name\":\"projects/$PROJECT/releases/cloud.firestore\",\"rulesetName\":\"$RULESET\"}}" \
-  >/dev/null
-echo "  released to cloud.firestore"
+release cloud.firestore "$RULESET"
 
 # Storage rules go to a different release track (firebase.storage) but through the same API.
 # There were no storage rules at all until 2026-08-20 while storageBucket was already
@@ -71,10 +100,7 @@ echo "  ruleset $STORAGE_RULESET"
 BUCKET="${FIREBASE_STORAGE_BUCKET:-${PROJECT}-evidence}"
 RELEASE="projects/$PROJECT/releases/firebase.storage%2F$BUCKET"
 
-curl -sS -X PATCH "https://firebaserules.googleapis.com/v1/$RELEASE" \
-  "${API[@]}" -d "{\"release\":{\"name\":\"$RELEASE\",\"rulesetName\":\"$STORAGE_RULESET\"}}" \
-  >/dev/null
-echo "  released to firebase.storage/$BUCKET"
+release "firebase.storage/$BUCKET" "$STORAGE_RULESET"
 
 echo
 echo "creating composite indexes — already-existing ones are skipped"

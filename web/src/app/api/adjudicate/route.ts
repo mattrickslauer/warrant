@@ -9,7 +9,7 @@
 // could call it later without this file changing shape.
 
 import { NextResponse } from "next/server";
-import { getSession } from "@/auth/session";
+import { callerSession } from "@/auth/bearer";
 import { adjudicate } from "@/server/adjudicate/run";
 
 export const runtime = "nodejs";
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
   }
 
   if (!fromSweep(request)) {
-    const session = await getSession();
+    const session = await callerSession(request);
     if (!session) {
       return NextResponse.json({ error: "Not authorised." }, { status: 401 });
     }

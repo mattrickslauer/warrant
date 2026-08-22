@@ -8,7 +8,7 @@
 // nothing, and said so; this is what it was waiting for.
 
 import { NextResponse } from "next/server";
-import { getSession } from "@/auth/session";
+import { callerSession } from "@/auth/bearer";
 import { askFleet, FleetUnreachable } from "@/server/fleet";
 
 export const runtime = "nodejs";
@@ -35,7 +35,7 @@ interface Body {
 }
 
 export async function POST(request: Request) {
-  const session = await getSession();
+  const session = await callerSession(request);
   // Authoring is gated and has to be. Running a public task needs no account, but a procedure
   // governs every job ever run against it, so it belongs to a tenant.
   if (!session) return NextResponse.json({ error: "Not authorised." }, { status: 401 });

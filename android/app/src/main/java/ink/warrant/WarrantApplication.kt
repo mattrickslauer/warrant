@@ -72,15 +72,15 @@ class WarrantApplication : Application() {
                     storage = FirebaseStorage.getInstance(
                         "gs://" + app.getString(R.string.warrant_storage_bucket),
                     ),
-                    // Falls back exactly as tenantOf() in firestore.rules does, so the phone
-                    // and the rules never disagree about who somebody is.
+                    // Exactly what tenantOf() in firestore.rules computes: the hd claim if
+                    // there is one, `anon:<uid>` for a stranger, `u:<uid>` otherwise. These
+                    // are the same rule written twice and they must not drift — the phone
+                    // would read one path while the rules authorised another.
                     tenantId = {
-                        val identity = (auth.state.value as? ink.warrant.auth.AuthState.SignedIn)
-                            ?.identity
-                        identity?.hostedDomain
-                            ?: firebase.uid?.let { "u:$it" }
-                            ?: identity?.let { "u:${it.subject}" }
-                            ?: "u:unknown"
+                        firebase.tenantId(
+                            (auth.state.value as? ink.warrant.auth.AuthState.SignedIn)
+                                ?.identity?.hostedDomain,
+                        )
                     },
                 ).apply { appContext = app }
             } else {
