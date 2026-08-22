@@ -17,16 +17,12 @@ class Skeptic(Agent):
     schema_name = "skeptic-verdict"
 
     def parts(self, case: dict[str, Any]) -> list[Part]:
-        asset = case.get("asset", {})
+        asset = case.get("asset") or {}
         job = case.get("job", {})
         cap = case.get("capture", {})
 
         body = [
-            self.block("The machine this evidence is claimed to be of", {
-                "asset id": asset.get("id"), "type": asset.get("type"),
-                "make and model": asset.get("model"),
-                "distinguishing marks": asset.get("marks", []),
-                "known history": asset.get("history", [])}),
+            self._subject(asset),
             self.block("The job this evidence is claimed to belong to", {
                 "job id": job.get("id"), "procedure": job.get("procedure"),
                 "opened at": job.get("opened_at"), "location": job.get("location")}),
@@ -63,6 +59,40 @@ class Skeptic(Agent):
         if not case.get("media"):
             parts.append(self.text("Nothing was attached. You cannot establish identity from an absence."))
         return parts
+
+    @staticmethod
+    def _subject(asset: dict[str, Any]) -> str:
+        """What this evidence is claimed to be OF — which is not always a machine.
+
+        A job that names a registered asset gets the asset. A job that names none gets told
+        so, in as many words, and gets the asset question withdrawn.
+
+        That second branch is not a softening. Handed a block headed "the machine" with
+        every field null, the honest reading of "if you cannot establish identity, dissent"
+        is a dissent — and a dissent on a PASS escalates deterministically. So the public
+        procedures, which never name an asset and never will, could not seal a record at
+        all: the one path built for a stranger with an empty desk was the one path
+        guaranteed to end at a person. The fault was in the question, not the answer.
+
+        What survives is everything an assetless job can actually decide: when the capture
+        was made, whether the scene fits the job, and whether the frame has been submitted
+        before. Reuse is the cheat this demo exists to catch, and it is untouched here.
+        """
+        if asset.get("id"):
+            return Skeptic.block("The machine this evidence is claimed to be of", {
+                "asset id": asset.get("id"), "type": asset.get("type"),
+                "make and model": asset.get("model"),
+                "distinguishing marks": asset.get("marks", []),
+                "known history": asset.get("history", [])})
+        return Skeptic.block("What this evidence is claimed to be of", {
+            "registered asset": None,
+            "note": "This job names no registered asset, and the procedure it runs is not "
+                    "tied to one — the subject is whatever the technician was asked to "
+                    "photograph. Asset identity is therefore not a question you can decide "
+                    "here and not one you are being asked: do not dissent on it, and never "
+                    "return mismatch_kind 'asset'. Judge only what remains decidable — the "
+                    "time the capture was made, whether the scene is consistent with this "
+                    "job, and whether this frame has been submitted before."})
 
     def check_conditionals(self, out: dict[str, Any]) -> list[str]:
         errs: list[str] = []

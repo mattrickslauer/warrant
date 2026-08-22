@@ -1,0 +1,38 @@
+{
+  "agent": "skeptic",
+  "title": "a job that names no asset is not a mismatch",
+  "why": "proc_pickup_v1 names no asset and never will — the subject is whatever was on the desk. Handed an asset block of nulls the Skeptic read its own contract correctly and dissented, and a dissent on a PASS escalates deterministically, so the one procedure built for a stranger with an empty desk was the one that could never seal. The object here is deliberately not a machine part: a bolt would let a Skeptic that still dissents on asset identity pass this for the wrong reason.",
+  "input": {
+    "asset": null,
+    "job": {
+      "id": "anon/J-pickup-1",
+      "procedure": "Pick up an object v1",
+      "opened_at": "2026-08-21T14:00:00Z",
+      "location": null
+    },
+    "capture": {
+      "kind": "photo",
+      "capture_mode": "live",
+      "capture_surface": "app",
+      "created_at": "2026-08-21T14:01:00Z"
+    },
+    "media": [
+      "desk/object-on-desk.jpg"
+    ],
+    "prior_media": []
+  },
+  "expect": {
+    "is_true": [
+      "belongs"
+    ],
+    "in": {
+      "mismatch_kind": [
+        "none",
+        null
+      ]
+    },
+    "gte": {
+      "confidence": 0.6
+    }
+  }
+}
