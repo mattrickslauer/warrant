@@ -63,6 +63,25 @@ gcloud iam service-accounts add-iam-policy-binding "$ADJ" --project "$PROJECT" \
   --member "serviceAccount:warrant-web@${PROJECT}.iam.gserviceaccount.com" \
   --role roles/iam.serviceAccountTokenCreator >/dev/null
 
+# The Cloud Run runtime identity needs to READ evidence — not to serve it, but to put it
+# through Model Armor before any model is shown it. Granted on the bucket rather than the
+# project, and viewer rather than admin: this identity screens evidence, it never rewrites it.
+#
+# Without it the download fails, screenEvidence() records NOT_SCREENED, and the record
+# honestly says the check did not run — which is the right failure and still the wrong outcome.
+EVIDENCE_BUCKET="${FIREBASE_STORAGE_BUCKET:-${PROJECT}-evidence}"
+if gcloud storage buckets describe "gs://$EVIDENCE_BUCKET" --project "$PROJECT" >/dev/null 2>&1; then
+  gcloud storage buckets add-iam-policy-binding "gs://$EVIDENCE_BUCKET" \
+    --member "serviceAccount:warrant-web@${PROJECT}.iam.gserviceaccount.com" \
+    --role roles/storage.objectViewer >/dev/null
+  gcloud storage buckets add-iam-policy-binding "gs://$EVIDENCE_BUCKET" \
+    --member "serviceAccount:$ADJ" \
+    --role roles/storage.objectViewer >/dev/null
+  echo "evidence bucket readable: gs://$EVIDENCE_BUCKET"
+else
+  echo "note: gs://$EVIDENCE_BUCKET does not exist yet — create it before capturing evidence"
+fi
+
 echo "adjudicator ready: $ADJ"
 
 cat <<NOTE
