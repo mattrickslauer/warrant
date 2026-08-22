@@ -2,6 +2,8 @@ package ink.warrant.contract
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.SerialKind
+import kotlinx.serialization.descriptors.elementNames
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
@@ -105,6 +107,71 @@ class ContractShapeTest {
 
         if (problems.isNotEmpty()) {
             fail("Kotlin has drifted from contract/entities:\n  " + problems.joinToString("\n  "))
+        }
+    }
+
+    /**
+     * Every enum the schema spells out, spelled the same way in Kotlin.
+     *
+     * The shape check above compares property NAMES and stops there, which is how a real bug
+     * reached a phone: `capture.kind` gained no `text` member on either side, the web guarded
+     * on `capture.kind !== "text"` — a value the contract could not produce — and so the guard
+     * never fired. The client then labelled a typed answer `scan`, the server built a `gs://`
+     * URI for it, and Gemini was asked for an object nobody had uploaded. Every layer was
+     * individually reasonable. The disagreement was in the vocabulary.
+     *
+     * A missing member is the dangerous direction — code branches on a string the type system
+     * cannot produce — but an extra one is checked too, because a client that can serialise a
+     * value the backend will reject is a round trip that fails at 2am rather than at compile
+     * time.
+     */
+    @OptIn(ExperimentalSerializationApi::class)
+    @Test
+    fun `every enum matches the schema it implements`() {
+        // Places the schema deliberately allows LESS than the Kotlin enum, because the field
+        // is a narrowing of a shared vocabulary rather than a type of its own.
+        //
+        //   step-outcome.provenance_class  a stated reason is always `asserted` — a named
+        //                                  human said it, at this time. Kotlin reuses the
+        //                                  whole ProvenanceClass rather than minting a
+        //                                  one-member enum to say so.
+        //
+        // Only the extra-member direction is waived. A schema value Kotlin cannot produce is
+        // never acceptable here — that is the bug this test exists for.
+        val deliberatelyNarrowed = setOf("step-outcome.provenance_class")
+
+        val problems = mutableListOf<String>()
+
+        for ((stem, descriptor) in bindings) {
+            val file = File(contractDir, "$stem.schema.json")
+            if (!file.exists()) continue
+            val properties = json.parseToJsonElement(file.readText())
+                .jsonObject["properties"]?.jsonObject ?: continue
+
+            for (index in 0 until descriptor.elementsCount) {
+                val name = descriptor.getElementName(index)
+                val element = descriptor.getElementDescriptor(index)
+                // Only where Kotlin actually models it as an enum. A schema enum carried as a
+                // plain String on this side is a separate (and looser) choice, not drift.
+                if (element.kind != SerialKind.ENUM) continue
+
+                val declared = properties[name]?.jsonObject?.get("enum")?.jsonArray
+                    ?.map { it.jsonPrimitive.content }?.toSet() ?: continue
+                val inKotlin = element.elementNames.toSet()
+
+                (declared - inKotlin).forEach {
+                    problems += "$stem.$name: schema allows '$it' but Kotlin has no such member"
+                }
+                if ("$stem.$name" !in deliberatelyNarrowed) {
+                    (inKotlin - declared).forEach {
+                        problems += "$stem.$name: Kotlin has '$it' but the schema does not allow it"
+                    }
+                }
+            }
+        }
+
+        if (problems.isNotEmpty()) {
+            fail("Kotlin enums have drifted from contract/entities:\n  " + problems.joinToString("\n  "))
         }
     }
 

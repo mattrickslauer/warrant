@@ -101,6 +101,30 @@ enum class CaptureKind {
     @SerialName("video") VIDEO,
     @SerialName("audio") AUDIO,
     @SerialName("scan") SCAN,
+
+    /**
+     * An answer a person typed or chose. The one kind with no object behind it.
+     *
+     * It carries the answer in `media_ref`, because that is where the shape puts the thing
+     * the capture is of. Every surface that reaches for media must skip this kind — a URI
+     * built for a text capture points at a file nobody uploaded.
+     */
+    @SerialName("text") TEXT,
+    ;
+
+    /**
+     * Whether this kind is backed by an object in storage.
+     *
+     * Named once and used everywhere that reaches for bytes, because while this rule was
+     * implicit two surfaces disagreed about it and the fleet was sent after a file that did
+     * not exist. A `when` rather than `!= TEXT` so a kind added later cannot compile until
+     * somebody has decided which side of this line it falls on.
+     */
+    val hasObject: Boolean
+        get() = when (this) {
+            PHOTO, VIDEO, AUDIO, SCAN -> true
+            TEXT -> false
+        }
 }
 
 /**

@@ -117,7 +117,15 @@ export async function adjudicate(
           source: readingDoc.tool_id ? "instrument" : "human",
         }
       : null,
-    answer: null,
+    // What the technician typed or chose, when that is what the evidence IS. `text` is the
+    // one capture kind with no object: media_ref carries the answer itself rather than a
+    // path to it (contract/entities/capture.schema.json). The Inspector already renders this
+    // as "What the technician entered" — it was simply never sent, so a typed step was judged
+    // on no evidence at all.
+    answer: capture.kind === "text" ? ((capture as { media_ref?: string }).media_ref ?? null) : null,
+    // Skipped for `text`, which has nothing to point at. This guard was written before the
+    // contract had a `text` kind, so it could never fire: the client labelled typed answers
+    // `scan`, a URI was built for them, and Gemini was asked for a file nobody uploaded.
     mediaUris:
       bucket && capture.kind !== "text"
         ? [mediaUri(bucket, capture as { id: string; kind: string }, ref.tenantId, ref.jobId)]
