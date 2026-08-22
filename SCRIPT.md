@@ -8,6 +8,7 @@ directly and it sets the judge's impression of the other 70%.
 - Problem overview, value proposition, and a demo of the app in action
 - **Must explain the architecture** — `rules.md:207` asks whether the video "clearly defines the friction being solved **and explains the architecture**." Shot 29 is that beat
 - **Must** show the backend running on Google Cloud — Console, Cloud Run dashboard, Vertex logs, or a `.run` URL on screen
+- **Must name the Gemini model and the agent framework, clearly and out loud.** Devpost's own guidance is *"say them clearly, don't bury them."* Shot 15 puts them on screen at 0:52 and shot 29 says them at 3:19 — a judge who looks away for either one still gets the other. Check both against `README.md` on the day you shoot
 - **One segment must be an unedited, live execution** — "via terminal logs, database updates, or UI changes." Shot 24 is that segment and it is not cut
 - **No third-party trademarks, logos or slogans** — `rules.md:147`, enforced at the Sponsor's sole discretion. Tank badges, tool brands, the key safe, app icons, and the logbook in shot 11 all count. Mask, reframe, or use generic stand-ins
 - Nothing violating a third party's publicity or privacy rights — `rules.md:149`. See the note on shot 11
@@ -114,7 +115,7 @@ The strongest asset in the film.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 15 | 0:52 | Screen: you type *"front brake service"* in plain language. The Scoper starts asking. | VO: *"You describe the job once."* |
+| 15 | 0:52 | Screen: you type *"front brake service"* in plain language. The Scoper starts asking. **Lower third, held four seconds:** `Scoper · Gemini 3.5 Flash · Agent Development Kit` | VO: *"You describe the job once."* |
 | 16 | 0:57 | Real exchange, readable: *"Does the pad wear need to match the service interval?"* · *"What has to be measured, and what's the tolerance?"* · *"Who's allowed to override this?"* | VO: *"And it asks until there's nothing left to interpret."* |
 | 17 | 1:04 | The compiled procedure renders — seven steps, evidence declared per step, disqualifiers, what it releases. Version stamp `v3`. | VO: *"What comes out is a procedure a machine can check. That document is the product."* |
 
@@ -215,9 +216,19 @@ You, on camera, attempting to defeat your own system. Play it deadpan.
 
 | # | Time | Visual | Audio / VO |
 |---|---|---|---|
-| 29 | 3:19 | Real screen recording: Cloud Console → Agent Runtime deployments, with the **seven** agents listed, then the Cloud Run services beside them. | VO: *"Seven agents, because seven things need a model. I cut two more that would have been switch statements in costume. What holds the machine is not an agent at all — it is four lines of code."* |
+| 29 | 3:19 | Real screen recording: Cloud Console → Agent Runtime deployments, with the **seven** agents listed, then the Cloud Run services beside them. | VO: *"Seven agents on the Agent Development Kit, every one of them Gemini 3.5 Flash. I cut two more that would have been switch statements in costume. What holds the machine is not an agent at all — it is four lines of code."* |
 | 30 | 3:28 | Cloud Run services, Pub/Sub topics firing, a live `.run` URL in the bar. Cloud Trace expands one reasoning chain across four agents. | VO: *"Firestore is the record. Every decision traceable to the model version that made it."* |
 
+> **The naming is a scored requirement, not a credit roll.** Judges are told to look for which
+> Gemini model and which agent framework the project used, and they may score without ever
+> opening the repo — so the video has to answer it on its own. Shot 15 carries it as a lower
+> third at 0:52 and shot 29 says it aloud here. **Say the version.** "Gemini" alone is the
+> burial the guidance warns about.
+>
+> The rewritten line runs about two seconds long against the old one. Take them from Wright —
+> cutting it already returns twelve — or tighten shot 33. **Do not take them from shot 24**,
+> which has to stay unedited.
+>
 > **Shot 29 is now the architecture beat**, which `rules.md:207` requires and the previous draft
 > had nowhere. Naming four agents and what each does, over a real console, satisfies "explains
 > the architecture" in nine seconds.
