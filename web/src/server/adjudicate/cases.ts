@@ -17,6 +17,7 @@ export interface CaseSources {
   answer: string | null;
   mediaUris: string[];
   priorMediaUris: string[];
+  /** Null when this job names no asset. Absence is a fact, not an empty object. */
   asset: Record<string, any> | null;
 }
 
@@ -82,7 +83,12 @@ export function inspectorCase(a: CaseSources): Record<string, unknown> {
  */
 export function skepticCase(a: CaseSources): Record<string, unknown> {
   return {
-    asset: a.asset ?? { id: a.job.asset_id ?? null },
+    // Null when the job names no asset, and never `{ id: null }`. The public procedures
+    // never name one — the subject is whatever was on the desk — and skeptic.py branches on
+    // absence to withdraw the asset question entirely. An empty shell would instead read as
+    // an asset it was handed and could not identify, and "if you cannot establish identity,
+    // dissent" would make a dissent the only honest answer to a question nobody asked.
+    asset: a.asset ?? (a.job.asset_id ? { id: a.job.asset_id } : null),
     job: {
       id: a.job.id,
       procedure: a.job.procedure ?? a.job.procedure_id ?? null,

@@ -77,6 +77,26 @@ describe("skepticCase", () => {
     assert.deepEqual(c.media, ["gs://evidence/tenants/acme.com/captures/job_9/cap_1.jpg"]);
   });
 
+  test("a job with no asset says so, rather than saying null", () => {
+    // The public procedures — "Pick up an object" is the shortest — never name an asset,
+    // and nothing in the app writes one. `{ id: null }` is not an honest way to say that:
+    // skeptic.py reads it as an asset it was given and cannot identify, and its contract
+    // ("if you cannot establish identity, dissent") then makes a dissent the only honest
+    // answer. A dissent on a PASS escalates deterministically, so the one path built for a
+    // stranger with an empty desk was the one path that could never seal.
+    const c = skepticCase({
+      ...SOURCES,
+      asset: null,
+      job: { id: "anon/job_x", procedure: "proc_pickup_v1" },
+    });
+    assert.equal(c.asset, null);
+  });
+
+  test("an asset the job does name still travels", () => {
+    const c = skepticCase({ ...SOURCES, asset: null });
+    assert.deepEqual(c.asset, { id: "bike-04" });
+  });
+
   test("prior media travels so reuse is detectable", () => {
     const c = skepticCase({ ...SOURCES, priorMediaUris: ["gs://evidence/old.jpg"] });
     assert.deepEqual(c.prior_media, ["gs://evidence/old.jpg"]);
