@@ -7,6 +7,7 @@ export function Masthead() {
       <Link className="masthead__logo" href="/"><i aria-hidden />Warrant</Link>
       <nav className="masthead__nav">
         <Link href="/library">Library</Link>
+        <Link href="/model-tests">Model tests</Link>
         <Link href="/about">About</Link>
         <SignIn />
       </nav>

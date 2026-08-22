@@ -22,6 +22,17 @@ mkdirSync(outDir, { recursive: true });
 if (!existsSync(pointer)) {
   // Not a build failure. A clone that has never run the suite still has to build, and the
   // page says plainly that there is no run rather than rendering a fabricated green.
+  //
+  // But absent is not the same as empty. The web container builds from a context with no
+  // `agents/` in it (see infra/Dockerfile.web), while `web/src/generated/evals.json` was
+  // already produced on the host and copied in. Overwriting it with a stub there would blank
+  // /model-tests on exactly the deployed instance the page exists to be read on. So a
+  // snapshot that is already present wins over a run this context cannot reach.
+  if (existsSync(out)) {
+    const n = JSON.parse(readFileSync(out, "utf8")).results?.length ?? 0;
+    console.log(`no agents/ in this build context — kept the existing evals.json (${n} results)`);
+    process.exit(0);
+  }
   writeFileSync(out, JSON.stringify({ empty: true, results: [] }, null, 2));
   console.log("no eval run found — wrote an empty evals.json");
   process.exit(0);

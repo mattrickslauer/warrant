@@ -90,6 +90,8 @@ export const AGENTS: Record<string, { title: string; decides: string }> = {
   skeptic: { title: "Skeptic", decides: "Whether this evidence belongs to this job, this machine, this moment." },
   instructor: { title: "Instructor", decides: "Turns “I can't do this one” into a structured blocker and a next action." },
   foreman: { title: "Foreman", decides: "Owns a job for its whole life and disposes of a step nobody could do." },
+  auditor: { title: "Auditor", decides: "Reads weeks of finished jobs and finds the defects in the procedure itself." },
+  wright: { title: "Wright", decides: "Meets an unfamiliar instrument and works out how it speaks \u2014 or refuses to guess." },
 };
 
 export const STATUS_LABEL: Record<Status, string> = {
@@ -128,8 +130,16 @@ export interface AgentGroup {
   scored: number;
 }
 
-/** Grouped for display, in the order the agents appear in a job's life. */
-const ORDER = ["scoper", "inspector", "skeptic", "instructor", "foreman"];
+/**
+ * Grouped for display, in the order the agents appear in a job's life: the procedure is
+ * written, evidence is judged, a blocker is escalated and disposed of, and only then does
+ * anything sweep across weeks. Wright sits last because it is the one agent outside that
+ * loop entirely — it runs when a new instrument shows up, not when a job does.
+ *
+ * An agent missing from this list sorts to the front, which is how Auditor and Wright first
+ * appeared above the Scoper.
+ */
+const ORDER = ["scoper", "inspector", "skeptic", "instructor", "foreman", "auditor", "wright"];
 
 export function grouped(): AgentGroup[] {
   const groups = new Map<string, Result[]>();
