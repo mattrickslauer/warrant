@@ -167,6 +167,29 @@ create_index COLLECTION_GROUP captures \
   --field-config=field-path=adjudicated,order=ascending \
   --field-config=field-path=created_at,order=ascending
 
+# --- single-field indexes ---------------------------------------------------------------
+#
+# A COLLECTION GROUP query that merely ORDERS BY one field still needs an index, and it is a
+# field-level exemption rather than a composite — `indexes composite create` cannot express it
+# and returns an error that sounds like the query is malformed.
+#
+# The operator view at /fleet reads every decision across every tenant, newest first. Without
+# this it fails with FAILED_PRECONDITION, which is why that page distinguishes "the query
+# failed" from "the fleet has decided nothing" instead of rendering an empty state.
+#
+# `gcloud firestore indexes fields update` cannot express queryScope — its --index flag takes
+# only `order` — so this goes through the REST API. The write REPLACES indexConfig, which is
+# why the two collection-scope indexes are restated here: omitting them deletes them.
+echo
+echo "creating single-field indexes"
+FIELD="https://firestore.googleapis.com/v1/projects/$PROJECT/databases/(default)/collectionGroups/decisions/fields/at"
+curl -sS -X PATCH "$FIELD?updateMask=indexConfig" "${API[@]}" -d '{"indexConfig":{"indexes":[
+  {"fields":[{"fieldPath":"at","order":"ASCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"at","order":"DESCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"at","order":"DESCENDING"}],"queryScope":"COLLECTION_GROUP"}
+]}}' >/dev/null
+echo "  decisions.at (COLLECTION_GROUP desc) — requested"
+
 echo
 echo "done."
 echo

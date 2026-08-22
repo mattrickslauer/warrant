@@ -87,6 +87,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.kotlinx.coroutines.play.services)
+    implementation(libs.play.integrity)
 
     implementation(libs.mlkit.face.detection)
     implementation(libs.mlkit.barcode.scanning)

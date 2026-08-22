@@ -16,6 +16,7 @@ import { askFleet, FleetUnreachable, type FleetReply } from "@/server/fleet";
 import { decideOutcome, type Effect } from "./outcome";
 import { inspectorCase, skepticCase, mediaUri, type CaseSources } from "./cases";
 import { screenEvidence, type ArmorVerdict } from "./armor";
+import { verifyIntegrity } from "./attest";
 import { getStorage } from "firebase-admin/storage";
 import { adminApp } from "@/auth/admin";
 import { GoogleAuth } from "google-auth-library";
@@ -26,6 +27,14 @@ export interface AdjudicateRef {
   stepId: string;
   fieldKey: string;
   captureId: string;
+  /**
+   * The device's Play Integrity token, if it had one.
+   *
+   * Opaque to the client that carries it and verified here, because an attestation the
+   * attested party can read is an attestation it can forge. firestore.rules refuses these
+   * fields from any client, which is what makes that division real.
+   */
+  integrityToken?: string | null;
 }
 
 export interface Deps {
@@ -118,6 +127,22 @@ export async function adjudicate(
     priorMediaUris: [],
     asset: job.asset_id ? { id: job.asset_id } : null,
   };
+
+  // Attestation first: it says what this evidence COULD prove, and it is written whether the
+  // answer is yes or no. "fixture-device" used to sit in this field, which was a claim about
+  // a check nobody had run.
+  const attestation = await verifyIntegrity(
+    ref.integrityToken ?? null,
+    process.env.WARRANT_ANDROID_PACKAGE ?? "ink.warrant",
+  );
+  await jobRef.collection("captures").doc(ref.captureId).set(
+    {
+      attestation_play_integrity: attestation.verdict,
+      // Null when Google gave none. Never a value the client supplied.
+      attestation_device_id: attestation.deviceId,
+    },
+    { merge: true },
+  );
 
   // Model Armor, BEFORE any model is shown the evidence.
   //

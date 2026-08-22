@@ -28,6 +28,7 @@ import ink.warrant.contract.SealedRecord
 import ink.warrant.contract.StepOutcome
 import ink.warrant.contract.StepStatus
 import ink.warrant.contract.Tier
+import ink.warrant.capture.Attestation
 import ink.warrant.net.Api
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -256,7 +257,13 @@ class LiveSource(
         // at once both count rather than one overwriting the other.
         ref.update("field_count", FieldValue.increment(1)).await()
 
-        api.adjudicate(session.idToken(), input.jobId, input.stepId, input.fieldKey, capRef.id)
+        // Bound to THIS capture, so a token minted on a genuine device cannot be replayed
+        // against a later fabrication. Null on any build not installed from Play, and the
+        // server then records UNATTESTED rather than inventing a device.
+        val integrity = appContext?.let { Attestation.token(it, capRef.id) }
+        api.adjudicate(
+            session.idToken(), input.jobId, input.stepId, input.fieldKey, capRef.id, integrity,
+        )
         return capture
     }
 
@@ -325,6 +332,12 @@ class LiveSource(
 
     /** Set by the build that pairs instruments. Absent, submitReading fails loudly. */
     var instrumentKey: String = ""
+
+    /**
+     * Needed only to ask Play Integrity for a token. Null in tests and in any build without
+     * Play Services, where the capture simply records UNATTESTED.
+     */
+    var appContext: android.content.Context? = null
 
     override suspend fun declareBlocked(input: BlockedInput): StepOutcome {
         val (t, j) = split(input.jobId)

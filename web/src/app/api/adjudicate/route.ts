@@ -20,6 +20,8 @@ interface Body {
   step_id?: string;
   field_key?: string;
   capture_id?: string;
+  /** Opaque. Read only by Google, and only from here. */
+  integrity_token?: string;
 }
 
 /** The cron has no session. The same lock the sweep already uses. */

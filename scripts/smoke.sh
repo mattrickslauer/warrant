@@ -40,9 +40,9 @@ echo "ok — every fixture matches the generated types"
 # becomes a step transition, and every way a model can be wrong is a row in it.
 node --experimental-strip-types --conditions=react-server --import ./scripts/ts-resolve.mjs \
   --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs \
-       scripts/armor.test.mjs 2>&1 \
+       scripts/armor.test.mjs scripts/attest.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
-echo "ok — the outcome table, the case builders, the fleet client and the armor screen hold"
+echo "ok — the outcome table, the cases, the fleet client, the armor screen and attestation hold"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null

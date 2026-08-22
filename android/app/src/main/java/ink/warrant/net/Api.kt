@@ -47,12 +47,16 @@ class Api(private val baseUrl: String) {
         stepId: String,
         fieldKey: String,
         captureId: String,
+        integrityToken: String? = null,
     ) {
         val body = JSONObject()
             .put("job_id", jobId)
             .put("step_id", stepId)
             .put("field_key", fieldKey)
             .put("capture_id", captureId)
+        // Opaque, and only meaningful to Google. Absent on any build not installed from Play,
+        // in which case the server records UNATTESTED rather than inventing a device.
+        integrityToken?.let { body.put("integrity_token", it) }
         runCatching { post("/api/adjudicate", body, idToken) }
             .onFailure { Log.i(TAG, "adjudicate did not land; the sweep will catch it", it) }
     }

@@ -82,7 +82,7 @@ class WarrantApplication : Application() {
                             ?: identity?.let { "u:${it.subject}" }
                             ?: "u:unknown"
                     },
-                )
+                ).apply { appContext = app }
             } else {
                 FixtureSource(parent = scope)
             }
