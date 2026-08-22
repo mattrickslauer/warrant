@@ -2,7 +2,7 @@
 // One token source, two stacks. Reads tokens.json, writes tokens.css here and
 // Tokens.kt straight into the Android source tree.
 // No dependencies on purpose — `node design/build-tokens.mjs` and that is all.
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -53,8 +53,21 @@ const kt = [
   "",
 ].join("\n");
 // The Android consumer is the app source tree, not this directory — one file, one home.
-writeFileSync(join(here, "..", "android", "app", "src", "main", "java", "ink", "warrant", "design", "Tokens.kt"), kt);
+//
+// The web container builds from a context that has no `android/` in it at all (see
+// infra/Dockerfile.web: only contract/, design/ and web/ are copied), and there is nothing
+// in that image to read a Kotlin file. Skip it there, and say so — writing a stray Tokens.kt
+// into an empty tree would be a lie about what the image contains.
+//
+// An `android/` that is present but has moved its package directory is a different thing
+// entirely: that is a real path to repair, so create it rather than quietly emitting nothing.
+const androidRoot = join(here, "..", "android");
+let ktNote = "Tokens.kt skipped — no android/ in this build context";
+if (existsSync(androidRoot)) {
+  const ktDir = join(androidRoot, "app", "src", "main", "java", "ink", "warrant", "design");
+  mkdirSync(ktDir, { recursive: true });
+  writeFileSync(join(ktDir, "Tokens.kt"), kt);
+  ktNote = `Tokens.kt written — ${shape.length} radii`;
+}
 
-console.log(
-  `tokens.css and Tokens.kt written — ${real(t.color).length} colours, ${shape.length} radii`,
-);
+console.log(`tokens.css written — ${real(t.color).length} colours; ${ktNote}`);
