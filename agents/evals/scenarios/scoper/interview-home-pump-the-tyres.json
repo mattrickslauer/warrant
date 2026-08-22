@@ -1,0 +1,51 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "a procedure anyone can run at home, containing no stored figure at all",
+  "why": "The cleanest demonstration of the whole idea, and the easiest for a stranger to try. The correct pressure is printed on the side of the tyre, so a good procedure does not carry a number \u2014 it carries an instruction to read one off the machine and an acceptance rule that resolves against it. If the Scoper writes a bound like 40 psi here it has invented a figure for a tyre it has never seen, and every rider following it over-inflates something.",
+  "input": {
+    "shop": {
+      "trade": "one person looking after their own ride at home, no workshop",
+      "machines": "a Segway Xyber e-bike, plus a couple of ordinary bicycles",
+      "technicians": 1,
+      "stakes": "it gets ridden in city traffic and on gravel; a brake or a tyre letting go at speed puts the rider under a car"
+    },
+    "facts": {
+      "what the job is": "check and pump up both tyres before a ride, front and back",
+      "how I know what pressure to use": "it's moulded into the sidewall of the tyre itself, there's a max pressure printed right there and I go to that. Every tyre is different so I always read the one in front of me",
+      "how I check": "a pump with a gauge on it, or a separate pressure gauge if the pump hasn't got one",
+      "what I do first": "have a proper look at the tyre for anything stuck in it, glass or a thorn, before I put air in",
+      "what stops the job": "if the tyre's cracked or the sidewall is split I don't pump it up at all, that tyre needs replacing not inflating",
+      "evidence I keep": "photo of the gauge reading and a photo of the sidewall so you can see the number I was aiming for",
+      "who signs it off": "just me"
+    },
+    "max_turns": 12
+  },
+  "expect": {
+    "is_true": [
+      "compiled",
+      "traceable"
+    ],
+    "absent": [
+      "invented_bounds"
+    ],
+    "len_gte": {
+      "draft.steps": 2
+    },
+    "mentions_any": {
+      "draft": [
+        "sidewall",
+        "printed",
+        "moulded",
+        "max pressure",
+        "per_spec"
+      ],
+      "draft.disqualifiers": [
+        "crack",
+        "split",
+        "sidewall",
+        "replac"
+      ]
+    }
+  }
+}

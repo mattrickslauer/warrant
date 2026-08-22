@@ -1,0 +1,52 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "brake fluid, where using the wrong kind destroys the brake and the label says which",
+  "why": "Mineral oil and DOT fluid are not interchangeable \u2014 putting DOT into a mineral-oil system swells every seal in it and the brake fails, usually later rather than immediately. Which one a brake takes is stamped on the lever or the reservoir cap, so the acceptance rule resolves against the machine rather than against a number somebody remembered. This is the case where per_spec is not a convenience, it is the only safe way to write the rule.",
+  "input": {
+    "shop": {
+      "trade": "one person looking after their own ride at home, no workshop",
+      "machines": "a Segway Xyber e-bike, plus a couple of ordinary bicycles",
+      "technicians": 1,
+      "stakes": "it gets ridden in city traffic and on gravel; a brake or a tyre letting go at speed puts the rider under a car"
+    },
+    "facts": {
+      "what the job is": "replace the old brake fluid front and back, get the air out, check the lever feels solid",
+      "which fluid": "depends on the brake. It is stamped on the lever body or the reservoir cap \u2014 mineral oil on some, DOT on others. You use the one it says and never the other one, they are not interchangeable and the wrong one wrecks the seals",
+      "why it matters": "if you put DOT in a mineral oil brake the seals swell up and the brake stops working, and it usually happens a week later not while you are standing there",
+      "how I know the air is out": "the lever goes solid instead of squishy, and it does not pull back to the bar",
+      "what stops the job": "if fluid is weeping from a hose or a fitting after I have bled it, the bike does not get ridden until that is sorted. And if it still feels spongy after two goes at bleeding I stop and get someone to look at it",
+      "evidence I keep": "photo of the stamp on the lever showing which fluid it takes, and a photo of the old fluid I drained out next to the new stuff so you can see the difference",
+      "who signs it off": "just me"
+    },
+    "max_turns": 12
+  },
+  "expect": {
+    "is_true": [
+      "compiled",
+      "traceable"
+    ],
+    "absent": [
+      "invented_bounds"
+    ],
+    "len_gte": {
+      "draft.steps": 2
+    },
+    "mentions_any": {
+      "draft": [
+        "mineral",
+        "DOT",
+        "stamp",
+        "lever",
+        "reservoir",
+        "per_spec"
+      ],
+      "draft.disqualifiers": [
+        "weep",
+        "leak",
+        "spong",
+        "seal"
+      ]
+    }
+  }
+}

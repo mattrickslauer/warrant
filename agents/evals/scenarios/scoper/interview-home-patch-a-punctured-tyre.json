@@ -1,0 +1,46 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "patching a puncture, where the disqualifier matters more than any figure",
+  "why": "A home job with almost no numbers in it, which is exactly why it is worth compiling: the thing that makes it safe is not a tolerance but a refusal. A cut in the sidewall must never be patched however good the patch looks, and a procedure that does not carry that as a disqualifier will happily record a beautifully executed repair on a tyre that is going to fail.",
+  "input": {
+    "shop": {
+      "trade": "one person looking after their own ride at home, no workshop",
+      "machines": "a Segway Xyber e-bike, plus a couple of ordinary bicycles",
+      "technicians": 1,
+      "stakes": "it gets ridden in city traffic and on gravel; a brake or a tyre letting go at speed puts the rider under a car"
+    },
+    "facts": {
+      "what the job is": "find the puncture, patch the tube or plug the tubeless tyre, get it back on and pumped up",
+      "how I find it": "pump it up and listen, or put it in water and watch for bubbles",
+      "what I do to the tube": "rough the area up, glue, patch, press it down hard and leave it a few minutes before I put it back",
+      "what stops the job dead": "if the hole is in the sidewall rather than the tread, that tyre is scrap. You cannot patch a sidewall, it flexes too much and it will blow. Same if the tread is split rather than punctured",
+      "how I know it worked": "pump it back up, leave it, and check it is still up an hour later",
+      "what pressure": "same as always, whatever is printed on the sidewall of that tyre",
+      "evidence I keep": "photo of what came out of the tyre, the thorn or the glass or whatever, and a photo of the patch before the tyre goes back on",
+      "who signs it off": "just me"
+    },
+    "max_turns": 12
+  },
+  "expect": {
+    "is_true": [
+      "compiled",
+      "traceable"
+    ],
+    "absent": [
+      "invented_bounds"
+    ],
+    "len_gte": {
+      "draft.steps": 2
+    },
+    "mentions_any": {
+      "draft.disqualifiers": [
+        "sidewall",
+        "split",
+        "scrap",
+        "cannot patch",
+        "replac"
+      ]
+    }
+  }
+}

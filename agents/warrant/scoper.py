@@ -151,6 +151,16 @@ class Scoper(Agent):
                 errs.append(f"draft.{f.get('key')}: acceptance_rule within with no bound")
             if f.get("acceptance_rule") == "must_show" and not f.get("acceptance_description"):
                 errs.append(f"draft.{f.get('key')}: must_show with nothing it must show")
+            if f.get("kind") == "choice" and len(f.get("choices") or []) < 2:
+                # Observed, not hypothetical: asked to compile a brake job whose torque figure
+                # nobody had, the Scoper wrote `caliper_tightness_check` with the single choice
+                # "Tightened firmly by feel". A field whose only permitted answer is that the
+                # work was done cannot record it going wrong — it is the tick in the box this
+                # product exists to replace, and it slips past every numeric check because it
+                # contains no number to check.
+                errs.append(f"draft.{f.get('key')}: a choice with "
+                            f"{len(f.get('choices') or [])} option(s) cannot record the job "
+                            "going wrong; offer the failing answer too")
         keys = [f.get("key") for f in fields]
         if len(keys) != len(set(keys)):
             errs.append("draft: two fields share a key")

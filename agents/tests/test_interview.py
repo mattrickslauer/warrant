@@ -157,3 +157,47 @@ class TestTheScoperIsToldWhatItHasNotAsked:
         assert "unable to answer 5 of your questions" in self.build(
             asked_about=["tolerance"], unanswered=5)
         assert "unable to answer" not in self.build(asked_about=["tolerance"], unanswered=0)
+
+
+class TestATickBoxIsNotAnAcceptanceRule:
+    """Observed on a real demo procedure, not invented for a test.
+
+    Asked to compile a brake pad job for a machine whose caliper torque nobody publishes, the
+    Scoper did not refuse and did not fabricate a figure. It wrote a `choice` field offering
+    the single option "Tightened firmly by feel" — a tick box, for the fastener whose own
+    explanation in this repo is the step that kills someone if it is skipped. It slipped past
+    every numeric check because it contains no number to check.
+    """
+
+    def check(self, field):
+        from warrant import REGISTRY
+        draft = {"key": "k", "title": "t", "strictness": 1, "minimum_tier": "open",
+                 "steps": [{"title": "s", "explanation": "e", "max_add_fields": 2,
+                            "fields": [field]}]}
+        return REGISTRY["scoper"]().check_conditionals(
+            {"mode": "compile", "unresolved": [], "understanding": "u", "draft": draft})
+
+    def base(self, **over):
+        f = {"key": "caliper_tightness_check", "kind": "choice", "prompt": "p",
+             "source": "human", "required_at_strictness": 1, "acceptance_rule": "matches",
+             "guidance": "g", "acceptance_target": "Tightened firmly by feel"}
+        f.update(over)
+        return f
+
+    def test_the_single_option_tick_box_is_refused(self):
+        errs = self.check(self.base(choices=["Tightened firmly by feel"]))
+        assert any("cannot record the job going wrong" in e for e in errs)
+
+    def test_a_choice_with_no_options_at_all_is_refused(self):
+        assert any("cannot record the job going wrong" in e for e in self.check(self.base()))
+
+    def test_a_choice_that_can_fail_is_accepted(self):
+        errs = self.check(self.base(key="disc_contamination",
+                                    choices=["No oil or fluid detected", "Oil or fluid detected"]))
+        assert errs == []
+
+    def test_non_choice_fields_are_untouched(self):
+        """The gate is about what a choice can express, not about every field having options."""
+        errs = self.check(self.base(kind="photo", acceptance_rule="must_show",
+                                    acceptance_description="the pads seated in the caliper"))
+        assert errs == []
