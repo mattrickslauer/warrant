@@ -10,7 +10,7 @@
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { inspectorCase, skepticCase, mediaUri } from "../src/server/adjudicate/cases.ts";
+import { inspectorCase, skepticCase, mediaUri, referenceFieldId } from "../src/server/adjudicate/cases.ts";
 
 const SOURCES = {
   step: { id: "s3", title: "Check pad wear", explanation: "Worn pads stop it less well.",
@@ -28,6 +28,7 @@ const SOURCES = {
   answer: null,
   mediaUris: ["gs://evidence/tenants/acme.com/captures/job_9/cap_1.jpg"],
   priorMediaUris: [],
+  referenceUris: [],
   asset: { id: "bike-04", type: "motorcycle", model: "Himalayan 450" },
 };
 
@@ -42,6 +43,34 @@ describe("inspectorCase", () => {
     assert.equal(c.add_fields_used, 1);
     assert.equal(c.capture.capture_surface, "app");
     assert.deepEqual(c.media, ["gs://evidence/tenants/acme.com/captures/job_9/cap_1.jpg"]);
+  });
+
+  test("a consistent_with field carries the image it resolves against", () => {
+    // Without this the Inspector is told "resolves against: p1.object_before" and shown only
+    // the new frame, so it escalates every time — which is what the pickup procedure did on
+    // every run it has ever had.
+    const c = inspectorCase({ ...SOURCES,
+      fieldDef: { key: "object_held", kind: "photo", prompt: "Photograph it held clear",
+                  source: "camera", acceptance_rule: "consistent_with",
+                  acceptance_target: "p1.object_before" },
+      referenceUris: ["gs://evidence/tenants/anon/captures/job_1/cap_0.jpg"] });
+    assert.equal(c.reference.target, "p1.object_before");
+    assert.deepEqual(c.reference.media, ["gs://evidence/tenants/anon/captures/job_1/cap_0.jpg"]);
+  });
+
+  test("omits reference entirely when nothing resolved", () => {
+    // inspector.py omits the block on absence. A `reference` present but empty would render
+    // a heading with no image under it, which is an invitation to invent one.
+    const c = inspectorCase(SOURCES);
+    assert.ok(!("reference" in c));
+  });
+
+  test("referenceFieldId maps an acceptance_target onto a capture's field_id", () => {
+    // Captures are stored with field_id `<stepId>__<fieldKey>`; the contract writes the
+    // target as `<stepId>.<fieldKey>`. This is the one place those two spellings meet.
+    assert.equal(referenceFieldId("p1.object_before"), "p1__object_before");
+    assert.equal(referenceFieldId(null), null);
+    assert.equal(referenceFieldId("nonsense"), null);
   });
 
   test("omits reading entirely when there is none", () => {

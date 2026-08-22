@@ -71,6 +71,30 @@ class Inspector(Agent):
         }))
 
         parts: list[Part] = [self.text("\n\n".join(body))]
+
+        # What `consistent_with` resolves against, as pixels.
+        #
+        # The rule line above can say "resolves against: p1.object_before" all it likes; a
+        # field key is not an image, and an Inspector shown only the new frame cannot decide
+        # consistency with anything. It escalated instead, every single time, which read as
+        # the model being cautious when it was the prompt being incomplete.
+        #
+        # Attached BEFORE the evidence and labelled, because the order is the only thing
+        # telling the model which frame the acceptance rule is about. Judging the reference
+        # against the rule would fail every correct job in exactly the same way.
+        reference = case.get("reference") or {}
+        ref_media = reference.get("media") or []
+        if ref_media:
+            parts.append(self.text(
+                f"## The reference\nThe {'image' if len(ref_media) == 1 else str(len(ref_media)) + ' images'} "
+                f"below {'is' if len(ref_media) == 1 else 'are'} the earlier capture this field "
+                f"resolves against ({reference.get('target') or 'an earlier field'}). It is NOT "
+                "what you are judging. It is what the evidence must be consistent WITH — same "
+                "object, same machine, same subject, whatever this field's rule asks. Differences "
+                "of angle, distance, lighting or a hand entering the frame are expected and are "
+                "not inconsistencies; a different object is."))
+            parts.extend(self.media(ref, label=f"reference:{ref}") for ref in ref_media)
+
         media = case.get("media") or []
         if media:
             parts.append(self.text(

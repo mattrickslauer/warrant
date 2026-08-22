@@ -46,6 +46,36 @@ class TestInspector:
         text = self.a.parts(_inspector_case(source="human"))[0].text
         assert "TYPED BY A PERSON" in text
 
+    def test_a_consistent_with_rule_is_shown_what_it_compares_against(self):
+        """`consistent_with` names an earlier field; without that image it is undecidable.
+
+        Observed on the pickup procedure: p2 resolves against `p1.object_before` and the
+        Inspector was handed only the new frame, so the honest answer was the one it gave —
+        ESCALATE, "the reference image is not provided to verify consistency". A rule that
+        can never be satisfied is worse than no rule: it escalates every correct job.
+        """
+        case = _inspector_case()
+        case["field"] = {"key": "object_held", "kind": "photo", "prompt": "p",
+                         "source": "camera", "acceptance_rule": "consistent_with",
+                         "acceptance_target": "p1.object_before", "guidance": "g"}
+        case["media"] = ["brake/pads-seated-sharp.jpg"]
+        case["reference"] = {"target": "p1.object_before",
+                             "media": ["brake/pads-seated-blurred.jpg"]}
+        parts = self.a.parts(case)
+        # The reference must arrive as pixels, not as a sentence about pixels.
+        assert sum(1 for p in parts if p.data) == 2
+        text = " ".join(p.text or "" for p in parts)
+        assert "p1.object_before" in text
+        # And it must be distinguishable from the evidence, or the Inspector will judge the
+        # wrong frame against the rule.
+        assert "reference" in text.lower()
+
+    def test_the_reference_block_is_absent_when_there_is_no_reference(self):
+        # Every other optional block in this prompt is omitted rather than nulled, because a
+        # heading with nothing under it invites the model to invent what belongs there.
+        parts = self.a.parts(_inspector_case())
+        assert "reference" not in " ".join(p.text or "" for p in parts).lower()
+
     def test_media_is_attached_as_media_not_described(self):
         # An agent told "there is a photo" will hallucinate its contents.
         case = _inspector_case()

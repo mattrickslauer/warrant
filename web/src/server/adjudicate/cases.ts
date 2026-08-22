@@ -17,6 +17,14 @@ export interface CaseSources {
   answer: string | null;
   mediaUris: string[];
   priorMediaUris: string[];
+  /**
+   * The capture this field's `consistent_with` rule resolves against, if there is one.
+   *
+   * Separate from priorMediaUris on purpose. Prior media is everything earlier, and it exists
+   * so the Skeptic can spot a frame being submitted twice. This is one specific earlier
+   * capture, named by the contract, and the Inspector judges against it.
+   */
+  referenceUris: string[];
   /** Null when this job names no asset. Absence is a fact, not an empty object. */
   asset: Record<string, any> | null;
 }
@@ -52,6 +60,21 @@ export function mediaUri(
   return `gs://${bucket}/tenants/${tenantId}/captures/${jobId}/${capture.id}.${ext}`;
 }
 
+/**
+ * The capture a `consistent_with` target names, in the spelling captures are stored under.
+ *
+ * The contract writes `acceptance_target` as `<stepId>.<fieldKey>`; a capture carries
+ * `field_id` as `<stepId>__<fieldKey>`. Those two spellings meet here and nowhere else, so
+ * a target that is not that shape resolves to null rather than to a query that matches
+ * nothing — an unresolvable target is a procedure defect, not an empty result set.
+ */
+export function referenceFieldId(acceptanceTarget: string | null | undefined): string | null {
+  if (!acceptanceTarget) return null;
+  const parts = acceptanceTarget.split(".");
+  if (parts.length !== 2 || !parts[0] || !parts[1]) return null;
+  return `${parts[0]}__${parts[1]}`;
+}
+
 export function inspectorCase(a: CaseSources): Record<string, unknown> {
   return {
     step: {
@@ -70,6 +93,17 @@ export function inspectorCase(a: CaseSources): Record<string, unknown> {
     // would print an instrument block about a reading that does not exist.
     ...(a.reading ? { reading: a.reading } : {}),
     ...(a.answer !== null ? { answer: a.answer } : {}),
+    // Omitted rather than emptied, like every other optional block: inspector.py renders a
+    // heading only when there is an image under it, and a heading with nothing under it is
+    // an invitation to invent what belongs there.
+    ...(a.referenceUris.length
+      ? {
+          reference: {
+            target: a.fieldDef.acceptance_target ?? null,
+            media: a.referenceUris,
+          },
+        }
+      : {}),
     media: a.mediaUris,
   };
 }

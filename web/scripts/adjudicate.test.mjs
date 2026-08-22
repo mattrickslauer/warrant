@@ -274,6 +274,60 @@ describe("adjudicate", () => {
     const text = JSON.stringify(skepticCase);
     assert.ok(!/PASS|verdict|acceptance_rule/.test(text), text);
   });
+
+  test("a consistent_with field is handed the capture its target names", async () => {
+    // The pickup procedure's whole claim is that two photographs prove one lift, and it
+    // rests on this. Before it, the Inspector was told "resolves against: s1.object_before"
+    // and shown only the new frame, so ESCALATE was the only honest verdict it could reach
+    // and every correct run stalled on it.
+    let seen = null;
+    const watch = async (agent, c) => {
+      if (agent === "inspector") seen = c;
+      return { output: agent === "inspector" ? PASS : BELONGS, valid: true, schemaErrors: [],
+               model: "gemini-3.5-flash", latencyMs: 1, usage: { totalTokenCount: 1 } };
+    };
+
+    // A reference is a storage URI, so this test needs a bucket like the typed-answer one.
+    const prev = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = "warrant-test-evidence";
+    try {
+      const ref = await seedJob("job_ref", {
+        fields: [{ key: "pad_photo", kind: "photo", prompt: "Photograph it held clear",
+                   source: "camera", required_at_strictness: 0,
+                   acceptance_rule: "consistent_with", acceptance_target: "s1.object_before" }],
+      });
+      // The earlier capture, on the step the target names.
+      await db.doc(`tenants/${TENANT}/jobs/job_ref/captures/cap_0`).set({
+        id: "cap_0", field_id: "s1__object_before", kind: "photo", capture_mode: "live",
+        capture_surface: "app", created_at: "2026-08-21T09:30:00Z",
+        armor_verdict: null, adjudicated: true,
+      });
+
+      await adjudicate(ref, { ask: watch, db });
+
+      assert.equal(seen.reference.target, "s1.object_before");
+      assert.equal(seen.reference.media.length, 1);
+      assert.match(seen.reference.media[0], /cap_0\.jpg$/);
+      // And the frame under judgement is still the new one, not the reference.
+      assert.match(seen.media[0], /cap_1\.jpg$/);
+    } finally {
+      if (prev === undefined) delete process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+      else process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = prev;
+    }
+  });
+
+  test("no reference block when the field does not resolve against one", async () => {
+    let seen = null;
+    const watch = async (agent, c) => {
+      if (agent === "inspector") seen = c;
+      return { output: agent === "inspector" ? PASS : BELONGS, valid: true, schemaErrors: [],
+               model: "gemini-3.5-flash", latencyMs: 1, usage: { totalTokenCount: 1 } };
+    };
+    const ref = await seedJob("job_noref");
+    await adjudicate(ref, { ask: watch, db });
+    assert.ok(!("reference" in seen));
+  });
+
 });
 
 describe("undecidedCaptures", () => {

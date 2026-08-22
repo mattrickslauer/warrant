@@ -14,7 +14,7 @@ import { randomUUID } from "node:crypto";
 import { adminDb } from "@/auth/admin";
 import { askFleet, FleetUnreachable, type FleetReply } from "@/server/fleet";
 import { decideOutcome, type Effect } from "./outcome";
-import { inspectorCase, skepticCase, mediaUri, type CaseSources } from "./cases";
+import { inspectorCase, skepticCase, mediaUri, referenceFieldId, type CaseSources } from "./cases";
 import { screenEvidence, type ArmorVerdict } from "./armor";
 import { verifyIntegrity } from "./attest";
 import { getStorage } from "firebase-admin/storage";
@@ -101,6 +101,32 @@ export async function adjudicate(
   const readingDoc = readingSnap.empty ? null : readingSnap.docs[0].data();
 
   const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "";
+
+  // The earlier capture a `consistent_with` field is judged against.
+  //
+  // Read here rather than passed in, for the same reason every other fact in this function
+  // is: a caller that could nominate the reference frame could nominate one that matches.
+  // Newest wins, because a step that was retaken should be compared against what the
+  // technician actually left on the record, not against the frame they replaced.
+  const referenceId = referenceFieldId(fieldDef.acceptance_target);
+  let referenceUris: string[] = [];
+  if (referenceId && bucket) {
+    const refSnap = await jobRef
+      .collection("captures")
+      .where("field_id", "==", referenceId)
+      .get();
+    const newest = refSnap.docs
+      .map((d): Record<string, any> => ({ id: d.id, ...d.data() }))
+      // Never the frame being judged. A target pointing at its own field is a procedure
+      // defect, and comparing a photograph against itself would pass it every time.
+      .filter((c) => c.id !== ref.captureId && c.kind !== "text")
+      .sort((a, b) => String(b.created_at ?? "").localeCompare(String(a.created_at ?? "")))[0];
+    if (newest) {
+      referenceUris = [
+        mediaUri(bucket, newest as { id: string; kind: string }, ref.tenantId, ref.jobId),
+      ];
+    }
+  }
   const sources: CaseSources = {
     step,
     fieldDef,
@@ -133,6 +159,7 @@ export async function adjudicate(
     // Empty for now. Reuse detection needs earlier captures for the same asset, which is a
     // query worth its own task — and an empty list is honest, where a fabricated one is not.
     priorMediaUris: [],
+    referenceUris,
     asset: job.asset_id ? { id: job.asset_id } : null,
   };
 
