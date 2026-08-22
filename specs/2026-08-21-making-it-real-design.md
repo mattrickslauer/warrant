@@ -1,8 +1,9 @@
 # Making it real — the adjudication spine, and Android on the live backend
 
-**Status:** §§1–6 and §11 implemented — the adjudication spine is live and proven end to end
-(commits ba3b73e…c4b9430). §7 Model Armor, §8 Android, §9 attestation and §10 Scoper/operator
-remain. See `docs/superpowers/plans/2026-08-21-adjudication-spine.md`.
+**Status:** implemented, §§1–11. The adjudication spine, Model Armor, Android on the live
+backend, Play Integrity, the Scoper endpoint and the operator view are all in and deployed.
+What is *proven* and what is merely *built* is set out in §14 — the difference matters and is
+not glossed. Plan: `docs/superpowers/plans/2026-08-21-adjudication-spine.md`.
 **Date:** 2026-08-21
 **Extends:** `specs/2026-08-20-firestore-design.md`, `docs/architecture.md`, `firestore.rules`
 **Deadline context:** submissions close 31 Aug 2026 17:00 PT.
@@ -317,12 +318,12 @@ fine when it has not checked.**
 2. ~~`gs://` media transport in `base.py` / `model.py`.~~ **Done** — corpus still replays from cassettes, 0 live calls.
 3. ~~`POST /api/adjudicate` + the deterministic outcome logic + `warrant-adjudicator`.~~ **Done** — 28 pure tests, 15 against the emulator.
 4. ~~Web wired to it.~~ **Done** — a capture asks for a verdict on commit; the sweep catches what a dead client left behind.
-5. Firebase Android app registration and Firebase Auth exchange.
-6. `LiveSource.kt` + Storage upload.
-7. Model Armor on the adjudicate path.
-8. Play Integrity.
-9. Scoper turn endpoint, both surfaces.
-10. Operator view.
+5. ~~Firebase Android app registration and Firebase Auth exchange.~~ **Done** — both apps were already registered; `infra/fetch-google-services.sh` fetches the config.
+6. ~~`LiveSource.kt` + Storage upload.~~ **Done.**
+7. ~~Model Armor on the adjudicate path.~~ **Done** — and only `pi_and_jailbreak` decides; see §7.
+8. ~~Play Integrity.~~ **Done**, server-verified.
+9. ~~Scoper turn endpoint.~~ **Done** — `POST /api/scoper/turn`, proven live.
+10. ~~Operator view.~~ **Done** — `/fleet`, reading only real decisions.
 11. If time allows: Eventarc trigger as a second caller of the §4 handler, removing the
     client's ability to skip adjudication.
 
@@ -350,3 +351,41 @@ Steps 1–4 are what make the claim true. Everything after raises how much of it
 
   Still owed: the same thing **from the phone**, which is §8 and cannot be proven until
   Android can upload.
+
+---
+
+## 14. What is proven, and what is only built
+
+Written last, and deliberately separated, because "it is implemented" and "I watched it work"
+are different claims and the gap between them is where a demo dies.
+
+**Proven, observed end to end:**
+
+- The deployed fleet judging a real photograph out of Cloud Storage — Inspector `PASS` (0.95),
+  Skeptic `BELONGS`, both stamped with model and cost, the step moved to `performed` by the
+  outcome table rather than by either model.
+- Model Armor screening a real photograph, and the finding in §7 that made it necessary.
+- The Scoper opening an interview, correctly declaring `asks_about: scope`.
+- `/fleet` rendering those decisions in production.
+- 34 pure tests, 57 rules assertions, 24 emulator tests, 132 Android tests.
+
+**Built and typechecked, not yet observed:**
+
+- **Android against the live backend.** No device or emulator was available in this session, so
+  `LiveSource`, the Firebase exchange, the Storage upload and the attestation request have
+  never run on hardware. The APK builds and the pure logic is tested; that is not the same
+  thing, and the first run on a real phone should be treated as the real test.
+- **Play Integrity returning anything but `UNATTESTED`.** A sideloaded build cannot mint a
+  token. The verification path is tested against recorded payloads, both positive and negative.
+- **The sweep re-driving a capture in production.** Tested against the emulator; the cron has
+  not yet fired on a genuinely orphaned capture.
+
+**Known gaps, deliberately left:**
+
+- The Skeptic receives no `prior_media`, so reuse detection cannot fire yet. It needs a query
+  over earlier captures for the same asset, and an empty list is honest where a fabricated one
+  would not be.
+- The blocked flow — Instructor to Foreman — is not wired. `declareBlocked` writes an outcome
+  that nobody adjudicates.
+- `getRecord` and `listRecords` on Android's `LiveSource` return nothing. Sealing is not on
+  this path and stubbing them to plausible data would have been worse than an obvious absence.
