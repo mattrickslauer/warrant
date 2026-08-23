@@ -20,7 +20,7 @@ import {
   initializeTestEnvironment, assertFails, assertSucceeds,
 } from "@firebase/rules-unit-testing";
 import { readFileSync } from "node:fs";
-import { doc, getDoc, setDoc, collection } from "firebase/firestore";
+import { doc, getDoc, getDocs, setDoc, collection } from "firebase/firestore";
 import { tenantFromClaims } from "../src/auth/tenant.ts";
 
 const RULES = new URL("../../firestore.rules", import.meta.url);
@@ -305,6 +305,48 @@ describe("a published record is a capability URL", () => {
     await assertFails(
       setDoc(doc(env.unauthenticatedContext().firestore(), "records", "pub-3"), { forged: true }),
     );
+  });
+});
+
+describe("a public procedure is published to be found", () => {
+  const seed = async (id) => {
+    await env.withSecurityRulesDisabled(async (context) => {
+      await setDoc(doc(context.firestore(), "public_procedures", id), {
+        key: "yard-clean", title: "Yard Cleaning", version: 1, owner_label: "acme.com",
+      });
+    });
+  };
+
+  test("anyone reads one, including a caller who never signed in", async () => {
+    await seed("pp-1");
+    await assertSucceeds(
+      getDoc(doc(env.unauthenticatedContext().firestore(), "public_procedures", "pp-1")));
+  });
+
+  // The deliberate difference from /records, and the reason both tests are here rather than
+  // one. A record's public id is a capability and listing the collection would hand over every
+  // record anyone ever shared. A procedure is published in order to be browsed, and the search
+  // surface IS a listing of this collection — so `list` must be granted here and must stay
+  // refused there. Asserting only one of the two would let the wrong one drift into the other.
+  test("anyone LISTS them, which is what publishing one is for", async () => {
+    await seed("pp-2");
+    await assertSucceeds(
+      getDocs(collection(env.unauthenticatedContext().firestore(), "public_procedures")));
+  });
+
+  test("a shared RECORD is still not listable, which is the opposite bargain", async () => {
+    await assertFails(
+      getDocs(collection(env.unauthenticatedContext().firestore(), "records")));
+  });
+
+  test("nobody writes one, however they signed in", async () => {
+    for (const identity of IDENTITIES) {
+      await assertFails(
+        setDoc(doc(asUser(identity), "public_procedures", "pp-3"), { forged: true }));
+    }
+    await assertFails(
+      setDoc(doc(env.unauthenticatedContext().firestore(), "public_procedures", "pp-4"),
+             { forged: true }));
   });
 });
 

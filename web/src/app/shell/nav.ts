@@ -12,8 +12,8 @@
 // page behind it.
 
 export type DestId =
-  | "procedures" | "records" | "create" | "instruments" | "fleet" | "account" | "settings"
-  | "about" | "library" | "modelTests" | "manual";
+  | "procedures" | "yourProcedures" | "records" | "create" | "instruments" | "fleet"
+  | "account" | "settings" | "about" | "library" | "modelTests" | "manual";
 
 export interface Dest {
   readonly id: DestId;
@@ -29,6 +29,11 @@ export interface Dest {
  */
 export const DEST: Record<DestId, Dest> = {
   procedures: { id: "procedures", route: "/", label: "Procedures" },
+  // `/` is where you go to RUN something; this is where you go to see what you have written
+  // and decide who else may read it. Two verbs, so two rows — the picker was carrying both
+  // and could only ever show one of them, which is why a published procedure appeared to
+  // vanish the moment the authoring desk was closed.
+  yourProcedures: { id: "yourProcedures", route: "/procedures/yours", label: "Your procedures" },
   records: { id: "records", route: "/records", label: "Records" },
   create: { id: "create", route: "/author", label: "Create a procedure" },
   instruments: { id: "instruments", route: "/instruments", label: "Instruments" },
@@ -100,6 +105,7 @@ export function menu(signedIn: boolean): MenuSection[] {
         // A procedure governs every job ever run against it, so it must belong to a tenant,
         // and there is no tenant without an identity.
         { dest: DEST.create, reach: gated },
+        { dest: DEST.yourProcedures, reach: gated },
         { dest: DEST.instruments, reach: "open" },
       ],
     },
@@ -177,6 +183,14 @@ export function quickActions(signedIn: boolean): QuickAction[] {
       dest: DEST.create,
       label: "Create a procedure",
       hint: "A spec of your own.",
+      reach: gated,
+    },
+    {
+      dest: DEST.yourProcedures,
+      // The deed, not the place. Sharing is the thing this page can do that neither the
+      // picker nor the authoring desk can, so it is what the row is named after.
+      label: "Share what you have written",
+      hint: "Decide which of your procedures the world can read.",
       reach: gated,
     },
   ];

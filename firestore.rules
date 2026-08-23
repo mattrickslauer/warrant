@@ -225,6 +225,42 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // --- Public procedures ---------------------------------------------------------------
+    //
+    // A procedure a shop chose to show the world: the steps, the acceptance rules and the
+    // bounds, so somebody else can read what "done" means here and run it themselves.
+    //
+    // The private procedure never moves. It stays at /tenants/{t}/procedures/{id}, which the
+    // subtree rule above keeps unreachable to everyone else, and sharing writes a SECOND
+    // document — a projection of ONE frozen version — exactly as sharing a record does.
+    //
+    // This is why `public_id` on the procedure is a pointer and not a permission. A boolean
+    // inside the tenant subtree could not have made anything readable: nothing outside the
+    // tenant can see that subtree to read the boolean. What makes a procedure public is the
+    // existence of the document below. web/src/server/procedures.ts says the same thing at
+    // more length, and it was right before this collection existed.
+    //
+    // LIST IS ALLOWED HERE, and that is the one line worth arguing about, because ten lines
+    // above /records refuses it. The difference is what the id means. A record's public id is
+    // a capability — 128 bits of randomness, and holding the link IS the credential, so a
+    // `list` rule would hand over every record anyone had ever shared to a client that had
+    // been given no link at all. A public procedure is the opposite: being FOUND is the
+    // entire point of publishing one, and the browse and search surfaces are a listing of
+    // this collection. Enumerable on purpose is not the same failure as enumerable by
+    // accident.
+    //
+    // Which is exactly why the projection carries no tenant id and no uid. The owner is named
+    // by a display label, the way a published record names its issuer, and nothing here can
+    // be walked back to the tenant that wrote it.
+    //
+    // Nobody writes it from a client. A world-readable collection a browser may write to is a
+    // defacement of every surface that renders it, and the home page renders this one.
+
+    match /public_procedures/{publicId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // --- Per-user secrets ---------------------------------------------------------------
     //
     // OAuth refresh tokens for Google Calendar. Unreachable by ANY client, including the user

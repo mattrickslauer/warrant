@@ -191,6 +191,8 @@ export interface Procedure {
   origin?: "scoper" | "imported" | "forked" | null;
   /** For catalogue imports. See docs/data-model.md section 8. */
   source_doc_ref?: string | null;
+  /** Where the world-readable copy of this procedure lives, at /public_procedures/{public_id}, or null when it is private. A POINTER, never a permission: the tenant subtree is unreachable to outsiders whatever this says, so what makes a procedure public is the existence of that other document and nothing else. Mirrors record.public_id. */
+  public_id?: string | null;
 }
 
 /** A number from a paired instrument. Never embedded, never consolidated, never in Memory Bank — these are queried exactly and ordered by time, and they are what makes wear rate computable. */

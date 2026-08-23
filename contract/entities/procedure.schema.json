@@ -6,7 +6,7 @@
   "properties": {
     "schema_version": {
       "type": "integer",
-      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place \u2014 see specs/2026-08-20-firestore-design.md section 9.1."
     },
     "id": {
       "type": "string"
@@ -96,6 +96,11 @@
       "type": "string",
       "nullable": true,
       "description": "For catalogue imports. See docs/data-model.md section 8."
+    },
+    "public_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "Where the world-readable copy of this procedure lives, at /public_procedures/{public_id}, or null when it is private. A POINTER, never a permission: the tenant subtree is unreachable to outsiders whatever this says, so what makes a procedure public is the existence of that other document and nothing else. Mirrors record.public_id."
     }
   },
   "required": [
