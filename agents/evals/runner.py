@@ -194,9 +194,31 @@ def cmd_run(args: argparse.Namespace) -> int:
          "model": args.model or DEFAULT_MODEL, "results": results}, indent=2))
     print(f"{rep.DIM}written to {out}{rep.RESET}", file=sys.stderr)
 
-    latest = RUNS / "latest"
-    RUNS.mkdir(parents=True, exist_ok=True)
-    latest.write_text(str(out))
+    # A FILTERED RUN IS NOT A CORPUS RESULT AND MUST NEVER BECOME `latest`.
+    #
+    # `runs/latest` is what web/scripts/sync-evals.mjs freezes into the app, and /model-tests is
+    # the page a judge opens to see whether these agents work. It has to show the WHOLE corpus,
+    # including the scenarios that fail and the ones that error — a page showing whichever slice
+    # somebody re-recorded last is not evidence, it is a highlight reel.
+    #
+    # Observed, and it is why this exists: a one-off `run --agent scoper --id ... --out <tmp>`
+    # left `latest` pointing at a job scratch directory, the next `npm run gen` froze it, and
+    # /model-tests went from 68 scenarios to a single passing one. Both halves of that are bad —
+    # the page was wrong, and it was wrong in the direction that flatters us.
+    #
+    # An `--out` outside the runs directory is refused for the same reason with a sharper edge:
+    # a scratch path is deleted when the job that made it is cleaned up, so the app would have
+    # been frozen against a pointer to nothing.
+    filtered = bool(args.agent or args.id)
+    inside_runs = out.resolve().is_relative_to(RUNS.resolve())
+    if filtered or not inside_runs:
+        why = ("a filtered run" if filtered else "a run written outside evals/runs")
+        print(f"{rep.DIM}runs/latest NOT updated — {why} is not the corpus, and "
+              f"/model-tests must show all of it{rep.RESET}", file=sys.stderr)
+    else:
+        latest = RUNS / "latest"
+        RUNS.mkdir(parents=True, exist_ok=True)
+        latest.write_text(str(out))
 
     failed = sum(1 for r in results if r["status"] != "pass")
     return 1 if failed and not args.allow_fail else 0
