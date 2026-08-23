@@ -40,12 +40,21 @@ export async function POST(request: Request) {
   for (const [id, source] of Object.entries(PUBLIC)) {
     const procRef = db.doc(`tenants/${tenantId}/procedures/${id}`);
     const versionRef = db.doc(`tenants/${tenantId}/procedure_versions/${id}`);
+    // The VERSIONED spelling as well, which is the one a job's pin resolves to.
+    // `publishProcedure` freezes `{id}:{n}` and `pinnedVersion` looks there first; writing only
+    // the bare document meant the public catalogue was reachable solely through the fallback,
+    // and a seeded procedure and an authored one resolved by different rules.
+    const pinnedRef = db.doc(
+      `tenants/${tenantId}/procedure_versions/${id}:${source.version}`,
+    );
 
-    // Both or neither. A procedure a client can see but no version to judge it against
+    // All three or none. A procedure a client can see but no version to judge it against
     // produces a job that starts and then cannot be adjudicated — which fails later, in a
     // place that says nothing about this one.
-    const [proc, version] = await Promise.all([procRef.get(), versionRef.get()]);
-    if (proc.exists && version.exists) continue;
+    const [proc, version, pinned] = await Promise.all([
+      procRef.get(), versionRef.get(), pinnedRef.get(),
+    ]);
+    if (proc.exists && version.exists && pinned.exists) continue;
 
     const doc: Procedure = {
       ...source,
@@ -59,10 +68,8 @@ export async function POST(request: Request) {
     await procRef.set(doc, { merge: true });
     // The frozen copy. A job pins this, so publishing a new version mid-job cannot change
     // what a running job is being judged against.
-    await versionRef.set(
-      { ...doc, frozen_at: new Date().toISOString(), version: source.version },
-      { merge: true },
-    );
+    const frozen = { ...doc, frozen_at: new Date().toISOString(), version: source.version };
+    await Promise.all([versionRef.set(frozen, { merge: true }), pinnedRef.set(frozen, { merge: true })]);
     seeded.push(id);
   }
 

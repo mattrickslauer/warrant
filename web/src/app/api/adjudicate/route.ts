@@ -24,13 +24,6 @@ interface Body {
   integrity_token?: string;
 }
 
-/** The cron has no session. The same lock the sweep already uses. */
-function fromSweep(request: Request): boolean {
-  const expected = process.env.WARRANT_SWEEP_SECRET;
-  if (!expected) return false;
-  return request.headers.get("x-warrant-sweep") === expected;
-}
-
 export async function POST(request: Request) {
   let body: Body;
   try {
@@ -60,14 +53,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "job_id must be tenant-scoped." }, { status: 400 });
   }
 
-  if (!fromSweep(request)) {
-    const session = await callerSession(request);
-    if (!session) {
-      return NextResponse.json({ error: "Not authorised." }, { status: 401 });
-    }
-    if (session.tenant.id !== tenantId) {
-      return NextResponse.json({ error: "Not authorised." }, { status: 403 });
-    }
+  // ALWAYS the session, with no bypass beside it.
+  //
+  // There used to be a `fromSweep()` branch here that skipped this check entirely on a shared
+  // header secret — a full cross-tenant bypass, reachable by anyone who ever saw the value in
+  // an env file, a log line or a deploy script. It was also DEAD: the sweep calls `adjudicate()`
+  // in process (see /api/tasks/sweep), and has never made an HTTP request to this route. A
+  // standing tenancy bypass that nothing uses is all cost and no benefit.
+  const session = await callerSession(request);
+  if (!session) {
+    return NextResponse.json({ error: "Not authorised." }, { status: 401 });
+  }
+  if (session.tenant.id !== tenantId) {
+    return NextResponse.json({ error: "Not authorised." }, { status: 403 });
   }
 
   try {

@@ -43,16 +43,21 @@ export function machineReleased(job: Job): boolean {
 
 export function sealJob(job: Job, decisions: Decision[], opts: { public: boolean }): SealedRecord {
   const at = new Date().toISOString();
+  // Computed ONCE and spread nowhere. `...verificationCeiling(tier)` used to sit alongside the
+  // three `ceiling_*` fields below, which put `tier`, `reachable` and `unreachable` on the
+  // record as well — three keys the contract does not declare, hidden by the `as SealedRecord`
+  // at the end. A sealed record is the artifact a stranger reads years later; it should carry
+  // what the schema says it carries and nothing that arrived by accident.
+  const ceiling = verificationCeiling(job.tier as Tier);
   return {
     id: job.id.replace(/^job_/, "rec_"),
     job_id: job.id,
     tenant_id: job.tenant_id,
     public: opts.public,
     sealed_at: at,
-    ...verificationCeiling(job.tier as Tier),
     ceiling_tier: job.tier as Tier,
-    ceiling_reachable: verificationCeiling(job.tier as Tier).reachable,
-    ceiling_unreachable: verificationCeiling(job.tier as Tier).unreachable,
+    ceiling_reachable: ceiling.reachable,
+    ceiling_unreachable: ceiling.unreachable,
     deficiencies: deficienciesOf(job),
     machine_released: machineReleased(job),
     steps: job.steps,

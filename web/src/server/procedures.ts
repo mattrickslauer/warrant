@@ -91,3 +91,37 @@ export async function getProcedureVersion(
     .get();
   return snap.exists ? (snap.data() as Procedure) : null;
 }
+
+/**
+ * The version a running job is actually judged against.
+ *
+ * THIS IS THE FUNCTION THAT MAKES THE PIN REAL, and until it existed the pin was decorative:
+ * `publishProcedure` froze `{id}:{n}` and every server-side reader asked for `{id}` — a
+ * document only the public-catalogue seed ever wrote. So a procedure authored through the
+ * Scoper and published had no version any reader could find, every capture against it threw
+ * "step X is not in the pinned procedure version", and the capture was never marked
+ * adjudicated, so the sweep retried it forever. Meanwhile the guarantee the comments all
+ * claimed — "a job is judged against the rules it started under" — was false in the other
+ * direction too: the one document being read was mutable.
+ *
+ * The job's `procedure_version` is honoured first. The bare `{id}` document is a fallback and
+ * nothing more: it is what `/api/procedures/seed` wrote before it learned to write both, and a
+ * job pinned to a version that was never frozen must still be runnable rather than stranding a
+ * technician mid-procedure.
+ */
+export async function pinnedVersion(
+  db: FirebaseFirestore.Firestore,
+  tenantId: string,
+  procedureId: string,
+  version: number | null | undefined,
+): Promise<Procedure | null> {
+  const versions = db.collection("tenants").doc(tenantId).collection("procedure_versions");
+
+  if (typeof version === "number" && Number.isFinite(version)) {
+    const exact = await versions.doc(versionId(procedureId, version)).get();
+    if (exact.exists) return exact.data() as Procedure;
+  }
+
+  const bare = await versions.doc(procedureId).get();
+  return bare.exists ? (bare.data() as Procedure) : null;
+}

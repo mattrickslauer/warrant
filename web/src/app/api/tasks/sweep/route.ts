@@ -10,8 +10,10 @@
 // The query is one equality and one inequality on one field — see tasks.ts on `notify_after`.
 
 import { NextResponse } from "next/server";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { dueTasks, markNotified, attachCalendarEvent, undecidedCaptures,
-         stalledSteps } from "@/server/tasks";
+         stalledSteps, sealableJobs } from "@/server/tasks";
+import { sealJobLive } from "@/server/seal";
 import { adjudicate } from "@/server/adjudicate/run";
 import { dispose } from "@/server/adjudicate/dispose";
 import { audit } from "@/server/adjudicate/audit";
@@ -30,7 +32,15 @@ export const dynamic = "force-dynamic";
 function authorised(request: Request): boolean {
   const expected = process.env.WARRANT_SWEEP_SECRET;
   if (!expected) return process.env.NODE_ENV !== "production";
-  return request.headers.get("x-warrant-sweep") === expected;
+  const presented = request.headers.get("x-warrant-sweep");
+  if (!presented) return false;
+  // Constant time, like the instrument key in /api/ingest/reading. `===` on a secret leaks its
+  // prefix a byte at a time to anyone patient enough to measure, and the two locks in this
+  // system should not disagree about whether that matters.
+  return timingSafeEqual(
+    createHash("sha256").update(presented).digest(),
+    createHash("sha256").update(expected).digest(),
+  );
 }
 
 export async function POST(request: Request) {
@@ -160,6 +170,28 @@ export async function POST(request: Request) {
     );
   }
 
+  // Jobs that finished and were never sealed.
+  //
+  // The Seal is what turns settled steps into a record, and a record is what the Gate reads to
+  // release a machine. A technician who closes the app on the last step must not leave a job
+  // complete, unsealed and holding a machine forever — so the sweep seals it, exactly as it
+  // adjudicates a capture whose client died. Failures leave the job unsealed and it turns up
+  // here again, which is the whole value of the net.
+  let sealed = 0;
+  try {
+    for (const job of await sealableJobs()) {
+      try {
+        await sealJobLive(job.tenantId, job.jobId);
+        sealed += 1;
+      } catch {
+        // Left unsealed on purpose. Nothing partial was written — the Seal commits in one
+        // batch — so there is no half-sealed state to reconcile.
+      }
+    }
+  } catch {
+    // A missing index on `jobs` must not take the rest of the sweep down with it.
+  }
+
   // The procedure itself, read across weeks of finished jobs.
   //
   // The longest horizon in the system, and the only agent whose subject is the document every
@@ -186,7 +218,7 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
-                             adjudicated, stillUndecided, disposed, stillStalled,
+                             adjudicated, stillUndecided, disposed, stillStalled, sealed,
                              audited, findings: findings.length });
 }
 

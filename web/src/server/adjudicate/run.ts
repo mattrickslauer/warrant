@@ -104,12 +104,20 @@ export async function adjudicate(
 
   // A reading, if a paired instrument produced one. Server-written and server-read; a client
   // never gets to claim that a number was measured.
+  //
+  // SCOPED TO THIS JOB, and that is not a refinement. `field_id` is `{stepId}__{fieldKey}`,
+  // which is identical for every job running the same procedure — so a tenant-wide query with
+  // `limit(1)` returned an arbitrary job's reading, and this job's field was credited with a
+  // measurement taken on a different machine. Ordered newest-first for the same reason a
+  // re-measured field should read as the number the technician actually left behind.
   const readingSnap = await db
     .collection(`tenants/${ref.tenantId}/readings`)
+    .where("job_id", "==", ref.jobId)
     .where("field_id", "==", `${ref.stepId}__${ref.fieldKey}`)
-    .limit(1)
     .get();
-  const readingDoc = readingSnap.empty ? null : readingSnap.docs[0].data();
+  const readingDoc = readingSnap.docs
+    .map((d) => d.data())
+    .sort((a, b) => String(b.at ?? "").localeCompare(String(a.at ?? "")))[0] ?? null;
 
   const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? "";
 

@@ -25,6 +25,9 @@ import { stockFor } from "@/server/stock";
 import type { Role } from "@/auth/members";
 import { newTrace, withSpan } from "@/server/trace";
 import { pinnedVersion } from "@/server/procedures";
+import { screenText } from "./armor";
+import { GoogleAuth } from "google-auth-library";
+import type { Procedure } from "@/generated/types";
 
 export interface StallRef {
   tenantId: string;
@@ -83,9 +86,9 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
 
   // The PINNED version, for the same reason adjudication reads it: a job is disposed of against
   // the procedure it started under, not the one somebody published this morning.
-  const version = (await pinnedVersion(
+  const version: Partial<Procedure> & { steps?: any[] } = (await pinnedVersion(
     db, ref.tenantId, String(job.procedure_id), job.procedure_version,
-  )) ?? { steps: [] as any[] };
+  )) ?? { steps: [] };
   const steps: any[] = version.steps ?? [];
   const index = steps.findIndex((s) => s.id === ref.stepId);
   if (index < 0) throw new Error(`step ${ref.stepId} is not in the pinned procedure version`);
@@ -141,18 +144,58 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
     decisionIds.push(id);
   };
 
+  // --- Model Armor, on the TRANSCRIPT, before either agent is shown it ------------------
+  //
+  // The image path has been screened since the beginning and this one had not, which left the
+  // wrong half unguarded. The Inspector reads a photograph and can only ACCEPT A FIELD; the
+  // Foreman reads this transcript and writes `status: "impossible"` — one of the three statuses
+  // that settle a step, which firestore.rules refuses to every client for exactly the reason
+  // that the person being checked must not settle their own work. The transcript is written by
+  // that same person, in free text, and handed on verbatim.
+  //
+  // A match means neither agent sees it. The stall is raised for a human instead, which is the
+  // conservative direction and the one a refusal should always take: the step does not settle,
+  // the machine stays held, and somebody is told why.
+  const armor = await withSpan(trace, "armor.transcript",
+    { job: scopedJobId, step: ref.stepId },
+    () => screenTranscript(String(outcome.reason_transcript ?? "")));
+
+  if (armor.verdict === "MATCH_FOUND") {
+    await write("foreman", "REFUSED_BY_ARMOR",
+                `This stall was refused before any model saw it. ${armor.detail}`, null);
+    await outRef.set({
+      // NOT settled. An escalation is a decision awaited, and this one is awaited by a person.
+      disposition_action: "escalate",
+      disposition_at: now,
+      hold_reason: `The stated reason was refused by Model Armor: ${armor.detail}`,
+    }, { merge: true });
+    const raised = await taskFromDisposition({
+      tenantId: ref.tenantId, jobId: ref.jobId, stepId: ref.stepId,
+      decisionId: decisionIds[decisionIds.length - 1] ?? randomUUID(),
+      action: "escalate",
+      rationale: `The stated reason for this stall reads as an instruction to the fleet rather ` +
+                 `than an account of a blocker. A person has to read it. ${armor.detail}`,
+      chaseAfter: null, reorderPart: null, escalateToRole: "foreman",
+      technicianUid: outcome.reason_by ?? null,
+    });
+    return { decisionIds, action: "escalate", status: null, taskId: raised?.id ?? null,
+             refused: armor.detail };
+  }
+
   // --- the Instructor ------------------------------------------------------------------
   //
   // Its failure is survivable and must not stop the chain. The Foreman is then shown the
   // technician's raw sentence and told plainly that there is no recommendation, which is a
   // worse input than a structured blocker and a far better one than an invented blocker.
   let recommendation: Record<string, any> | null = null;
+  let recommendationModel: string | null = null;
   try {
     const reply = await withSpan(trace, "agent.instructor",
       { agent: "instructor", job: scopedJobId, step: ref.stepId },
       () => ask("instructor", instructorCase(sources)));
     if (reply.valid) {
       recommendation = reply.output as Record<string, any>;
+      recommendationModel = reply.model ?? null;
       await write("instructor", String(recommendation.blocker_kind ?? "unstated"),
                   String(recommendation.recommended_action ?? ""), reply);
     } else {
@@ -226,8 +269,12 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
     disposition_at: now,
     // The Instructor's next action for the person standing there, when there was one.
     ...(recommendation
+      // The INSTRUCTOR's model, not the Foreman's. `recommendation_text` is the Instructor's
+      // sentence, and stamping it with the model that ran afterwards attributes one agent's
+      // words to another — in the one field a dispute months later would read to find out
+      // which model said this.
       ? { recommendation_text: String(recommendation.recommended_action ?? ""),
-          recommendation_model: foreman.model ?? null }
+          recommendation_model: recommendationModel }
       : {}),
     // A RECOMMENDATION on the record, never an act. The Gate reads the record and holds the
     // machine deterministically; a hold that depended on a model's mood would not be a hold.
@@ -251,4 +298,28 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
 
   return { decisionIds, action: effectiveAction, status, taskId: task?.id ?? null,
            ...(refused ? { refused } : {}) };
+}
+
+
+/**
+ * Put one transcript through Model Armor.
+ *
+ * Every failure path returns NOT_SCREENED, and NOT_SCREENED does not block — the same posture
+ * `run.ts` takes on evidence. An admitted gap beats a fabricated pass, and a workshop whose
+ * Foreman stopped ruling on stalls because a screening API was unreachable would be a worse
+ * failure than the one this guards.
+ */
+async function screenTranscript(text: string): Promise<{ verdict: string; detail: string }> {
+  if (!text.trim()) return { verdict: "NO_MATCH_FOUND", detail: "There was no text to screen." };
+  let token: string | null = null;
+  try {
+    const client = await new GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+    }).getClient();
+    const t = await client.getAccessToken();
+    token = typeof t === "string" ? t : (t?.token ?? null);
+  } catch {
+    token = null;
+  }
+  return screenText(text, token);
 }

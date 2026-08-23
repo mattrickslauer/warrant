@@ -19,10 +19,14 @@ import { getStorage } from "firebase-admin/storage";
 import { adminDb, adminApp } from "@/auth/admin";
 import { getMember } from "@/auth/members";
 import type { SealedRecord, StepOutcome, Decision, Capture } from "@/generated/types";
+import { mediaUri } from "@/server/adjudicate/cases";
+import { screenText } from "@/server/adjudicate/armor";
+import { GoogleAuth } from "google-auth-library";
 
-/** 22 chars of base64url ≈ 132 bits. Not derived from the job id, which is enumerable. */
+/** 16 random bytes = 128 bits, which base64url spells in exactly 22 characters. Not derived
+ *  from the job id, which is enumerable. */
 export function newPublicId(): string {
-  return randomBytes(16).toString("base64url").slice(0, 22);
+  return randomBytes(16).toString("base64url");
 }
 
 export interface PublicRecord {
@@ -79,6 +83,33 @@ export async function publishRecord(
     }
   }
 
+  // THE TEXT IS EVIDENCE TOO, and it was the half this gate never looked at.
+  //
+  // Above, every capture is checked for redaction and for a Model Armor match, because an
+  // unredacted photograph on a public URL may carry a face or a plate. Directly below,
+  // `redactStep` copies `reason_transcript` and `recommendation_text` onto that same public
+  // document verbatim — unbounded free text a technician spoke and a model wrote, screened by
+  // nothing. Whatever the argument is for screening the image, it is the same argument.
+  //
+  // A match refuses the publish rather than redacting silently: a record with a hole in it that
+  // nobody was told about is the failure this product exists to abolish.
+  const armorToken = await armorAccessToken();
+  for (const step of record.steps ?? []) {
+    for (const [what, text] of [
+      ["stated reason", step.reason_transcript],
+      ["recommendation", step.recommendation_text],
+    ] as const) {
+      if (!text) continue;
+      const verdict = await screenText(String(text), armorToken);
+      if (verdict.verdict === "MATCH_FOUND") {
+        throw new NotPublishable(
+          `The ${what} on step ${step.step_id} was flagged by Model Armor and must not reach a ` +
+          `public URL. ${verdict.detail}`,
+        );
+      }
+    }
+  }
+
   const publicId = record.public_id ?? newPublicId();
   const tenant = (await tenantRef.get()).data() ?? {};
 
@@ -112,12 +143,15 @@ export async function publishRecord(
   // deletes this copy outright rather than hoping a URL expires.
   for (const doc of captures.docs) {
     const capture = doc.data() as Capture;
-    if (capture.media_ref) {
-      await copyIntoPublished(
-        `tenants/${tenantId}/captures/${jobId}/${capture.media_ref}`,
-        publicId, capture.id,
-      );
-    }
+    // The SAME path the adjudicator reads and the client wrote — `{captureId}.{ext}`, built by
+    // `mediaUri`. This used to interpolate `capture.media_ref`, which is a different thing
+    // entirely: on a photo it is the capture id with no extension, and on an instrument
+    // capture it is a READING id, which is not a storage object at all. So the copy silently
+    // found nothing (copyIntoPublished swallows a miss by design) and the published record
+    // rendered a dead image. One builder, used everywhere, is the only way that stays true.
+    if (capture.kind === "text") continue;
+    const from = mediaUri(bucketName(), { id: capture.id, kind: capture.kind }, tenantId, jobId);
+    await copyIntoPublished(from, publicId, capture.id);
   }
 
   const projection: PublicRecord = {
@@ -259,5 +293,26 @@ async function deletePublished(publicId: string): Promise<void> {
     await getStorage(adminApp()).bucket(bucket).deleteFiles({ prefix: `published/${publicId}/` });
   } catch {
     // Nothing to do. The capability document is already gone, which is what governs access.
+  }
+}
+
+
+/**
+ * A credential for Model Armor, or null.
+ *
+ * Null is a real answer and not an error: `screenText` returns NOT_SCREENED without one, and
+ * NOT_SCREENED does not block a publish — the same posture the evidence path takes. A shop
+ * unable to share a record because a screening API was unreachable would be a worse failure
+ * than the one this guards, and the gap is recorded rather than hidden.
+ */
+async function armorAccessToken(): Promise<string | null> {
+  try {
+    const client = await new GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+    }).getClient();
+    const token = await client.getAccessToken();
+    return typeof token === "string" ? token : (token?.token ?? null);
+  } catch {
+    return null;
   }
 }

@@ -146,6 +146,18 @@ export function decideOutcome(input: OutcomeInput): Effect {
   // decides.
   const rule = input.acceptance?.rule;
   const target = input.acceptance?.target;
+  // A `matches` rule with nothing to match against is a PROCEDURE DEFECT, and it used to pass.
+  // `rule === "matches" && target` skipped the whole comparison when the target was empty or
+  // absent, so the field advanced on the Inspector's confidence alone — on the one rule whose
+  // entire design is that the Inspector is blinded and the comparison happens here. The step
+  // holds instead, which is the conservative direction and names the defect to whoever reads it.
+  if (rule === "matches" && !target) {
+    return {
+      kind: "hold",
+      why: "this field's rule is `matches` but the procedure names no value to match against, " +
+           "so there is nothing the transcription could be checked against",
+    };
+  }
   if (rule === "matches" && target) {
     const observed = inspector.output.observed;
     if (typeof observed !== "string" || !observed.trim()) {

@@ -291,4 +291,26 @@ describe("a matches rule is decided from the transcription, in code", () => {
     });
     assert.equal(e.kind, "accept_field");
   });
+
+  // A `matches` RULE WITH NO TARGET USED TO PASS, which is the worst way for this to fail.
+  //
+  // The guard read `if (rule === "matches" && target)`, so an absent or empty target skipped
+  // the comparison entirely and the field advanced on the Inspector's confidence alone — on
+  // the one rule whose whole design is that the Inspector is blinded and the comparison
+  // happens HERE. A procedure with a typo in `acceptance_target` did not fail loudly; it
+  // quietly stopped checking, and the record still said the part number was verified.
+  for (const target of [null, undefined, ""]) {
+    test(`a matches rule with target ${JSON.stringify(target)} holds rather than passing`, () => {
+      const e = decideOutcome({
+        inspector: {
+          output: { verdict: "PASS", confidence: 0.99, observed: "ANYTHINGATALL" },
+          valid: true, schemaErrors: [],
+        },
+        skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2, strictness: 1,
+        acceptance: { rule: "matches", target },
+      });
+      assert.equal(e.kind, "hold",
+        "a procedure that names nothing to match against cannot verify anything");
+    });
+  }
 });
