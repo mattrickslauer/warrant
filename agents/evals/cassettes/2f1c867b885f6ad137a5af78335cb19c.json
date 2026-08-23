@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. THAT THE EVIDENCE IS CLEAR ENOUGH TO JUDGE IS NOT ITSELF A PASS: a sharp, well lit, entirely legitimate photograph showing the acceptance rule is NOT met is the commonest way a step fails, and passing it because the photograph is good is the single worst mistake you can make. Where the acceptance description says what must be visible rather than what must be true, read it as the condition the step exists to establish \u2014 the step explanation tells you which. ADD_FIELD when the evidence is insufficient but recoverable, and name what specifically was wrong with it. ESCALATE when a person must decide \u2014 INCLUDING when the evidence is entirely sufficient and shows the acceptance rule is not satisfied. Asking for another photograph of a condition you can already see is not a remedy.\n\nReturn JSON with these fields:\n- verdict (one of PASS | ADD_FIELD | ESCALATE, required)\n- confidence (number, required): 0 to 1: YOUR CONFIDENCE THAT THE ACCEPTANCE RULE IS SATISFIED by this evidence. Not how sure you are of your verdict, and not how good the photograph is \u2014 a perfectly clear photograph of a rule being broken is high certainty and LOW confidence, because the rule is not satisfied. Evidence you were never shown cannot make you confident of anything. Below the strictness threshold you must not return PASS, and a threshold in ordinary code enforces that whatever you return.\n- rationale (string, required): One or two sentences citing what in the evidence decided it. Never restate the prompt.\n- add_field_key (string, null when it does not apply): Required when verdict is ADD_FIELD. A new key, not an existing one.\n- add_field_kind (one of measurement | photo | video | scan | choice | text | signature | location, null when it does not apply)\n- add_field_prompt (string, null when it does not apply): The specific next ask, e.g. 'the label is out of focus, photograph it again'. Never a generic retry.\n- escalation_question (string, null when it does not apply): Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary.",
+  "parts": [
+    "t:e80dcbe3ab9b9f13",
+    "t:8981bcb1449d7353",
+    "m:image/jpeg:3a771dd1e3cf836e"
+  ],
+  "labels": [
+    "",
+    "",
+    "label/part-number-glare.jpg"
+  ],
+  "output": {
+    "verdict": "PASS",
+    "confidence": 0.9,
+    "rationale": "The part number X004X2NVXZ is visible and readable on the white barcode label on the box, matching the required part number.",
+    "add_field_key": null,
+    "add_field_kind": "photo",
+    "add_field_prompt": null,
+    "escalation_question": null
+  },
+  "raw": "{\n  \"verdict\": \"PASS\",\n  \"confidence\": 0.9,\n  \"rationale\": \"The part number X004X2NVXZ is visible and readable on the white barcode label on the box, matching the required part number.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": null\n}",
+  "usage": {
+    "promptTokenCount": 2613,
+    "candidatesTokenCount": 102,
+    "totalTokenCount": 3243
+  }
+}

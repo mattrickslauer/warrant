@@ -1,0 +1,102 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:65465d5254c5396a"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We are establishing a standard procedure for re-rolling and boxing stainless steel tool wrap foil (grades 321 and 309). The process requires verifying the parent coil's mill tag via photo to prevent grade mix-ups, wearing cut gloves for safety, rejecting any foil with oil or grease, and photographing the labeled retail box before sealing.",
+    "draft": {
+      "key": "foil-rerolling-and-boxing",
+      "title": "Foil Re-rolling and Boxing",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Mill tag grade does not match the work order",
+        "Presence of oil or grease on the foil"
+      ],
+      "releases": [
+        "Retail rolls are approved for shipment to Amazon"
+      ],
+      "steps": [
+        {
+          "title": "Verify Parent Coil and Safety Setup",
+          "explanation": "To prevent catastrophic grade mix-ups (321 vs 309) which ruin customer workpieces, and to prevent severe hand lacerations from the sharp foil edges.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "safety_gloves_worn",
+              "kind": "choice",
+              "prompt": "Are you wearing cut-resistant gloves?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Yes, cut gloves are on",
+                "No"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, cut gloves are on",
+              "guidance": "Cut gloves must be worn for absolutely any task that involves touching or handling the foil."
+            },
+            {
+              "key": "parent_coil_tag_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the parent coil mill tag showing the grade alongside the coil itself.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The mill tag showing the grade (321 or 309) and the parent coil must both be clearly visible in the same shot.",
+              "guidance": "Ensure the grade on the mill tag is legible and matches the work order before starting the run."
+            }
+          ]
+        },
+        {
+          "title": "Inspect and Box Retail Roll",
+          "explanation": "To ensure the foil is free of contaminants that would bake into the customer's workpiece, and to prove the correct grade label is on the box before sealing.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "foil_contamination_check",
+              "kind": "choice",
+              "prompt": "Is the foil free of oil, grease, or other surface contaminants?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Clean and free of oil/grease",
+                "Contaminated (oil or grease detected)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Clean and free of oil/grease",
+              "guidance": "Any oil or grease on the foil will bake into the customer's workpiece and must be rejected as scrap."
+            },
+            {
+              "key": "boxed_roll_label_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the finished retail box showing the grade label clearly before taping it shut.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The retail box label showing the correct grade (321 or 309) must be clearly readable.",
+              "guidance": "This photo is our proof of what is inside the box before it is sealed and shipped."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"We are establishing a standard procedure for re-rolling and boxing stainless steel tool wrap foil (grades 321 and 309). The process requires verifying the parent coil's mill tag via photo to prevent grade mix-ups, wearing cut gloves for safety, rejecting any foil with oil or grease, and photographing the labeled retail box before sealing.\",\n  \"draft\": {\n    \"key\": \"foil-rerolling-and-boxing\",\n    \"title\": \"Foil Re-rolling and Boxing\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Mill tag grade does not match the work order\",\n      \"Presence of oil or grease on the foil\"\n    ],\n    \"releases\": [\n      \"Retail rolls are approved for shipment to Amazon\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Verify Parent Coil and Safety Setup\",\n        \"explanation\": \"To prevent catastrophic grade mix-ups (321 vs 309) which ruin customer workpieces, and to prevent severe hand lacerations from the sharp foil edges.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"safety_gloves_worn\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Are you wearing cut-resistant gloves?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Yes, cut gloves are on\",\n              \"No\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, cut gloves are on\",\n            \"guidance\": \"Cut gloves must be worn for absolutely any task that involves touching or handling the foil.\"\n          },\n          {\n            \"key\": \"parent_coil_tag_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the parent coil mill tag showing the grade alongside the coil itself.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The mill tag showing the grade (321 or 309) and the parent coil must both be clearly visible in the same shot.\",\n            \"guidance\": \"Ensure the grade on the mill tag is legible and matches the work order before starting the run.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inspect and Box Retail Roll\",\n        \"explanation\": \"To ensure the foil is free of contaminants that would bake into the customer's workpiece, and to prove the correct grade label is on the box before sealing.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"foil_contamination_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is the foil free of oil, grease, or other surface contaminants?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Clean and free of oil/grease\",\n              \"Contaminated (oil or grease detected)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Clean and free of oil/grease\",\n            \"guidance\": \"Any oil or grease on the foil will bake into the customer's workpiece and must be rejected as scrap.\"\n          },\n          {\n            \"key\": \"boxed_roll_label_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the finished retail box showing the grade label clearly before taping it shut.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The retail box label showing the correct grade (321 or 309) must be clearly readable.\",\n            \"guidance\": \"This photo is our proof of what is inside the box before it is sealed and shipped.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3380,
+    "candidatesTokenCount": 975,
+    "totalTokenCount": 8270
+  }
+}

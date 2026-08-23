@@ -14,6 +14,48 @@ export interface OutcomeInput {
   skeptic: { output: Record<string, any>; valid: boolean } | null;
   addFieldsUsed: number;
   maxAddFields: number;
+  /** The job's strictness, which sets the confidence a PASS has to clear. Defaults to 1. */
+  strictness?: number;
+  /**
+   * The field's acceptance rule and, for `matches`, the value the evidence must carry.
+   *
+   * The Inspector is NOT shown this target — `inspector.py` withholds it deliberately — so
+   * the comparison has to happen here. That is not tidiness; it is the only thing that works.
+   */
+  acceptance?: { rule?: string | null; target?: string | null };
+}
+
+/**
+ * The confidence a PASS must clear, by strictness. Mirrors `THRESHOLD` in
+ * `agents/warrant/inspector.py`, which renders these same numbers into the prompt.
+ *
+ * The contract says it in prose — "Below the strictness threshold you must not return PASS" —
+ * and until now nothing read `confidence` at all, so an Inspector that ignored that sentence
+ * advanced a regulated step on a coin flip. Telling a model a rule and never checking it is
+ * the exact shape of mistake this file exists to prevent everywhere else: the verdict is an
+ * INPUT, and the threshold is ours to enforce, not the agent's to honour.
+ */
+export const THRESHOLD: Record<number, number> = { 0: 0.5, 1: 0.6, 2: 0.75, 3: 0.9 };
+
+export function thresholdFor(strictness: number | undefined): number {
+  return THRESHOLD[strictness ?? 1] ?? 0.6;
+}
+
+/**
+ * Compare a transcription against what the procedure requires.
+ *
+ * Case and punctuation are ignored, because a label reading `X004-X2NVXZ` and a spec written
+ * `x004x2nvxz` are the same part and refusing that would train everyone to ignore the check.
+ * A `?` is NEVER a match: the Inspector is told to write one where a character is illegible,
+ * and treating an admitted gap as a wildcard would undo the reason it is asked for.
+ */
+export function transcriptionMatches(observed: string, target: string): boolean {
+  const normalise = (v: string) => v.toUpperCase().replace(/[^A-Z0-9?]/g, "");
+  const a = normalise(observed);
+  const b = normalise(target);
+  if (!a || !b) return false;
+  if (a.includes("?")) return false;
+  return a === b;
 }
 
 export type Effect =
@@ -23,7 +65,7 @@ export type Effect =
   | { kind: "hold"; why: string };
 
 export function decideOutcome(input: OutcomeInput): Effect {
-  const { inspector, skeptic, addFieldsUsed, maxAddFields } = input;
+  const { inspector, skeptic, addFieldsUsed, maxAddFields, strictness } = input;
 
   // A malformed answer is a finding, not an exception — and it advances nothing. runtime.py
   // hands validation failures back rather than raising for exactly this reason.
@@ -69,6 +111,59 @@ export function decideOutcome(input: OutcomeInput): Effect {
 
   if (verdict !== "PASS") {
     return { kind: "hold", why: `unrecognised verdict ${JSON.stringify(verdict)}` };
+  }
+
+  // A PASS below the strictness threshold is not a pass.
+  //
+  // Escalation rather than a hold, and the distinction matters: a hold waits for nobody, and
+  // an Inspector that passed a regulated step at 0.4 has produced a specific question a person
+  // can answer by looking at the same photograph. The numbers are put in the question because
+  // "the model was unsure" is not something a technician can act on and "0.40 against 0.90 on
+  // a regulated procedure" is.
+  const floor = thresholdFor(strictness);
+  const confidence = inspector.output.confidence;
+  if (typeof confidence !== "number" || Number.isNaN(confidence)) {
+    return { kind: "hold", why: "the Inspector passed without a usable confidence" };
+  }
+  if (confidence < floor) {
+    return {
+      kind: "escalate",
+      question:
+        `The Inspector passed this at ${confidence.toFixed(2)} confidence, below the ` +
+        `${floor.toFixed(2)} a strictness-${strictness ?? 1} procedure requires. ` +
+        `A person has to look at the evidence.`,
+    };
+  }
+
+  // A `matches` rule is decided HERE, from what the Inspector transcribed, and never by the
+  // Inspector itself.
+  //
+  // It is not shown the expected value at all (see inspector.py). Shown it, the agent quoted
+  // the target back verbatim off a label too washed out to read — and instructing it not to
+  // did not help, because a string in the context is indistinguishable from a string on the
+  // box. Blinded, on that same photograph, it answered "extremely faint and unreadable" and
+  // asked for another; on a clear one it transcribed correctly. So the model reads, and this
+  // decides.
+  const rule = input.acceptance?.rule;
+  const target = input.acceptance?.target;
+  if (rule === "matches" && target) {
+    const observed = inspector.output.observed;
+    if (typeof observed !== "string" || !observed.trim()) {
+      return {
+        kind: "hold",
+        why: "the Inspector passed a `matches` rule without transcribing what it read, so " +
+             "there is nothing to compare against the procedure",
+      };
+    }
+    if (!transcriptionMatches(observed, target)) {
+      return {
+        kind: "escalate",
+        question:
+          `What the evidence reads — ${observed} — is not what the procedure requires: ` +
+          `${target}. Either the wrong part was fitted or the label was misread; both need ` +
+          `a person.`,
+      };
+    }
   }
 
   // A PASS is the only verdict the Skeptic can overturn, and the only one where its silence

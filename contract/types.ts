@@ -401,10 +401,10 @@ export interface ForemanDisposition {
   hold_machine: boolean;
 }
 
-/** Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. ADD_FIELD when the evidence is insufficient but recoverable. ESCALATE when a person must decide. */
+/** Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. THAT THE EVIDENCE IS CLEAR ENOUGH TO JUDGE IS NOT ITSELF A PASS: a sharp, well lit, entirely legitimate photograph showing the acceptance rule is NOT met is the commonest way a step fails, and passing it because the photograph is good is the single worst mistake you can make. Where the acceptance description says what must be visible rather than what must be true, read it as the condition the step exists to establish — the step explanation tells you which. ADD_FIELD when the evidence is insufficient but recoverable, and name what specifically was wrong with it. ESCALATE when a person must decide — INCLUDING when the evidence is entirely sufficient and shows the acceptance rule is not satisfied. Asking for another photograph of a condition you can already see is not a remedy. */
 export interface InspectorVerdict {
   verdict: "PASS" | "ADD_FIELD" | "ESCALATE";
-  /** 0 to 1. Below the strictness threshold you must not return PASS. */
+  /** 0 to 1: YOUR CONFIDENCE THAT THE ACCEPTANCE RULE IS SATISFIED by this evidence. Not how sure you are of your verdict, and not how good the photograph is — a perfectly clear photograph of a rule being broken is high certainty and LOW confidence, because the rule is not satisfied. Evidence you were never shown cannot make you confident of anything. Below the strictness threshold you must not return PASS, and a threshold in ordinary code enforces that whatever you return. */
   confidence: number;
   /** One or two sentences citing what in the evidence decided it. Never restate the prompt. */
   rationale: string;
@@ -415,6 +415,8 @@ export interface InspectorVerdict {
   add_field_prompt?: string | null;
   /** Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary. */
   escalation_question?: string | null;
+  /** Required when the acceptance rule is `matches`. TRANSCRIBE, character by character, exactly what you can read in the evidence — not what it ought to say. Never copy the expected value into this field; it is the one field in this answer that must come from the image alone. Where a character is illegible write `?` in its place. The comparison against the expected value is then made in ordinary code, not by you, which is the whole point: an agent told what it is looking for will find it. */
+  observed?: string | null;
 }
 
 /** A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history. */

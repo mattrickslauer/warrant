@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "Return exactly one verdict for the evidence supplied against this step. PASS only if the acceptance rule is satisfied by what you can actually see. THAT THE EVIDENCE IS CLEAR ENOUGH TO JUDGE IS NOT ITSELF A PASS: a sharp, well lit, entirely legitimate photograph showing the acceptance rule is NOT met is the commonest way a step fails, and passing it because the photograph is good is the single worst mistake you can make. Where the acceptance description says what must be visible rather than what must be true, read it as the condition the step exists to establish \u2014 the step explanation tells you which. ADD_FIELD when the evidence is insufficient but recoverable, and name what specifically was wrong with it. ESCALATE when a person must decide \u2014 INCLUDING when the evidence is entirely sufficient and shows the acceptance rule is not satisfied. Asking for another photograph of a condition you can already see is not a remedy.\n\nReturn JSON with these fields:\n- verdict (one of PASS | ADD_FIELD | ESCALATE, required)\n- confidence (number, required): 0 to 1. Below the strictness threshold you must not return PASS.\n- rationale (string, required): One or two sentences citing what in the evidence decided it. Never restate the prompt.\n- add_field_key (string, null when it does not apply): Required when verdict is ADD_FIELD. A new key, not an existing one.\n- add_field_kind (one of measurement | photo | video | scan | choice | text | signature | location, null when it does not apply)\n- add_field_prompt (string, null when it does not apply): The specific next ask, e.g. 'the label is out of focus, photograph it again'. Never a generic retry.\n- escalation_question (string, null when it does not apply): Required when verdict is ESCALATE. The exact unresolved question for the person, not a summary.",
+  "parts": [
+    "t:08b19ecae1e9e962",
+    "t:8981bcb1449d7353",
+    "m:image/jpeg:f333b216b960a2cc"
+  ],
+  "labels": [
+    "",
+    "",
+    "brake/pads-seated-blurred.jpg"
+  ],
+  "output": {
+    "verdict": "ADD_FIELD",
+    "confidence": 0.9,
+    "rationale": "The caliper is held too far from the camera and the interior is in deep shadow, making it impossible to verify the thickness and condition of the friction material on the pad faces.",
+    "add_field_key": "front_pads_close_up",
+    "add_field_kind": "photo",
+    "add_field_prompt": "The inside of the caliper is too dark to see the pad faces. Please take a close-up photograph of the new pads seated in the front caliper with clear lighting so the thickness of the friction material is clearly visible.",
+    "escalation_question": null
+  },
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.9,\n  \"rationale\": \"The caliper is held too far from the camera and the interior is in deep shadow, making it impossible to verify the thickness and condition of the friction material on the pad faces.\",\n  \"add_field_key\": \"front_pads_close_up\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"The inside of the caliper is too dark to see the pad faces. Please take a close-up photograph of the new pads seated in the front caliper with clear lighting so the thickness of the friction material is clearly visible.\",\n  \"escalation_question\": null\n}",
+  "usage": {
+    "promptTokenCount": 2325,
+    "candidatesTokenCount": 160,
+    "totalTokenCount": 3258
+  }
+}

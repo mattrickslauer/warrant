@@ -1,7 +1,7 @@
 {
   "agent": "inspector",
   "title": "worn to backing plate fails the wear check",
-  "why": "The judgement the shop actually cares about. Pads worn through to metal must not pass a check asking whether usable material remains.",
+  "why": "The judgement the shop actually cares about. Pads worn through to metal must not pass a check asking whether usable material remains.\n\nTHE ACCEPTANCE RULE WAS THE DEFECT, not the agent. It read 'close enough to judge whether any usable thickness remains' \u2014 a requirement about the PHOTOGRAPH, which a sharp side-on shot of ruined pads satisfies to the letter. The Inspector said so: 'making it easy to judge that virtually no usable friction material remains', verdict PASS at 0.95. It saw the pads perfectly and answered the question the words asked. A rule that describes what must be VISIBLE instead of what must be TRUE cannot fail, and no prompt can rescue it without overriding the procedure, which is the one thing the Inspector must never do. This is the defect class the Auditor exists to find: a step everybody reads differently. Restated as a condition, in the same shape as the rule on the step that passes.",
   "input": {
     "step": {
       "title": "Check remaining pad material before deciding to replace",
@@ -15,7 +15,7 @@
       "prompt": "Photograph the pads in place so the remaining material can be judged",
       "required_at_strictness": 1,
       "acceptance_rule": "must_show",
-      "acceptance_description": "the friction material of the pads, close enough to judge whether any usable thickness remains above the backing plate",
+      "acceptance_description": "usable friction material still remaining above the backing plate, seen side on so the thickness can be judged",
       "guidance": "Side on to the pad edge is what shows thickness. Straight at the face shows nothing."
     },
     "capture": {

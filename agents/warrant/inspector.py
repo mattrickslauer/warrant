@@ -36,7 +36,24 @@ class Inspector(Agent):
             rule.append(f"accepts {fd.get('acceptance_min')} to {fd.get('acceptance_max')} {unit}".strip())
         if fd.get("acceptance_description"):
             rule.append(f"the media must show: {fd['acceptance_description']}")
-        if fd.get("acceptance_target"):
+        # THE TARGET IS WITHHELD FOR A `matches` RULE, and this is the whole mechanism.
+        #
+        # Telling an agent what the evidence is supposed to say and then asking whether it says
+        # that is not a check; it is an invitation. Shown a label washed out by glare and a
+        # target of `X004X2NVXZ`, this agent answered "the part number X004X2NVXZ is legible",
+        # from a photograph whose label actually reads ...NVX2.
+        #
+        # Instructing it not to copy the target DID NOT WORK. Told in as many words to
+        # transcribe character by character, to write `?` for anything illegible, and never to
+        # copy the expected value, it transcribed `X004X2NVXZ` — the target, exactly, final Z
+        # and all. A prompt cannot fix this, because the string is in the context and the model
+        # has no way to tell a memory from a reading.
+        #
+        # So it is not shown the string. It transcribes what it can see, and `outcome.ts`
+        # compares. This is the same move that makes the Skeptic worth asking — it never learns
+        # the Inspector's verdict, so its agreement means something — applied to transcription:
+        # you cannot confirm an answer you were never given.
+        if fd.get("acceptance_target") and fd.get("acceptance_rule") != "matches":
             rule.append(f"resolves against: {fd['acceptance_target']}")
 
         body = [
@@ -62,6 +79,58 @@ class Inspector(Agent):
         cap_note = (f"{used} of {cap} ADD FIELD requests on this step are already spent."
                     + (" You have none left: if the evidence is still insufficient you must ESCALATE."
                        if used >= cap else ""))
+
+        # What passing this field would actually assert, spelled out for THIS field.
+        #
+        # The standing instruction can say "the evidence being clear is not a pass" and still
+        # lose, because an acceptance description is often written as a photographic
+        # requirement rather than a condition — "close enough to judge whether any usable
+        # thickness remains" asks for a photograph, and a photograph of ruined pads satisfies
+        # it to the letter. Observed: a sharp side-on shot of pads worn through to the metal,
+        # rationale "allowing for an accurate assessment of the remaining friction material,
+        # which is extremely thin", verdict PASS. The model saw it. It answered the question
+        # the words asked instead of the question the step exists to settle.
+        #
+        # So the assertion is restated as a sentence about the world, next to the reason the
+        # step exists, and the answer is demanded before the verdict. This goes in the user
+        # turn and not the standing instruction for the same reason the Scoper's coverage
+        # block does: it is a fact about THIS field, not a rule about the job.
+        if fd.get("acceptance_rule") == "matches":
+            # AN AGENT TOLD WHAT IT IS LOOKING FOR WILL FIND IT.
+            #
+            # Observed, and it is the most dangerous thing this agent does: shown a label
+            # washed out by glare and an acceptance target of `X004X2NVXZ`, it answered "the
+            # part number X004X2NVXZ is visible and readable", quoting the expected string back
+            # verbatim — final Z and all — from a photograph whose label actually reads
+            # ...NVX2. It did not read the label. It confirmed the string it had been handed,
+            # which is exactly what a verification agent must never do, and the failure is
+            # invisible because the rationale reads like a careful observation.
+            #
+            # So the transcription is demanded separately from the judgement, and the
+            # comparison is taken away from the model entirely — `outcome.ts` compares
+            # `observed` against the target in ordinary code. The model reads; the code decides.
+            body.append(self.block("Transcribe. You have not been told the answer.", (
+                "This field's rule is `matches`, and you have DELIBERATELY NOT been shown what "
+                "the evidence is supposed to say. Nothing in this prompt contains it.\n\n"
+                "Put in `observed` exactly what you can read in the image, character by "
+                "character. Where a character is illegible, write `?` for it — a `?` is a "
+                "useful answer and a guessed character is a false one, because the comparison "
+                "is made in ordinary code from what you write here.\n\n"
+                "Your verdict is therefore NOT about whether it matches, which you cannot know. "
+                "It is about whether the evidence can be read at all: PASS if you could "
+                "transcribe it with confidence, ADD_FIELD if it is unreadable and another "
+                "photograph would fix that, ESCALATE if no photograph would."
+            )))
+
+        body.append(self.block("What a PASS would assert", (
+            f"That this is true of the machine: {fd.get('acceptance_description') or '; '.join(rule)}.\n"
+            f"The step exists because: {step.get('explanation', 'unstated')}.\n\n"
+            "State what the evidence shows about that assertion BEFORE you choose a verdict, "
+            "and put it in your rationale. If what you can see makes the assertion FALSE, the "
+            "verdict is not PASS — however sharp, well lit and honest the photograph is. "
+            "Asking for another photograph of a condition already visible is not a remedy, so "
+            "that case is an ESCALATE, not an ADD FIELD."
+        )))
         body.append(self.block("Conditions", {
             "strictness": f"{strictness} ({STRICTNESS_NAME.get(strictness, '?')})",
             "confidence a PASS must clear": THRESHOLD.get(strictness, 0.6),
@@ -120,4 +189,18 @@ class Inspector(Agent):
             for k in ("add_field_key", "add_field_prompt", "escalation_question"):
                 if out.get(k):
                     errs.append(f"{k}: must be null when the verdict is PASS")
+        return errs
+
+    def check_conditionals_for(self, out: dict[str, Any], field: dict[str, Any]) -> list[str]:
+        """The rules that need the FIELD as well as the answer.
+
+        `check_conditionals` sees only what the agent returned, and "required when the rule is
+        matches" is a statement about the question rather than the answer. Kept separate rather
+        than widening the base signature, which every other agent would then have to ignore.
+        """
+        errs = self.check_conditionals(out)
+        if field.get("acceptance_rule") == "matches" and out.get("verdict") == "PASS" \
+                and not (out.get("observed") or "").strip():
+            errs.append("observed: required to PASS a `matches` rule — the comparison is made "
+                        "from what you transcribed, and nothing was transcribed")
         return errs

@@ -1,0 +1,147 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:f9eded5b7d4e9711"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We roll, cut, and ship 321 and 309 stainless steel foil, ensuring the grade matches the mill tag to prevent furnace failures. Technicians wear cut gloves, cut the foil slightly long, and photograph the roll next to the mill tag and the label before shipping.",
+    "draft": {
+      "key": "stainless-foil-cut-and-pack",
+      "title": "Stainless Steel Foil Cut and Pack",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Coil missing mill tag"
+      ],
+      "releases": [
+        "Shipment of verified stainless steel tool wrap"
+      ],
+      "steps": [
+        {
+          "title": "Verify Coil Grade",
+          "explanation": "321 and 309 foil look identical but have different temperature limits; shipping the wrong grade will melt the wrap and ruin the customer's tool steel.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "mill_tag_present",
+              "kind": "choice",
+              "prompt": "Is the mill tag present on the coil?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Yes, tag is present",
+                "No, tag is missing"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, tag is present",
+              "acceptance_description": null,
+              "guidance": "If the mill tag is missing, the coil cannot be used. Stop the job immediately."
+            },
+            {
+              "key": "grade_match",
+              "kind": "choice",
+              "prompt": "Does the grade on the mill tag match the customer's order?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Yes, grade matches",
+                "No, grade mismatch"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, grade matches",
+              "acceptance_description": null,
+              "guidance": "Verify that the mill tag grade (321 or 309) matches the order exactly before pulling any foil."
+            }
+          ]
+        },
+        {
+          "title": "Pull and Cut Foil",
+          "explanation": "Foil edges are razor sharp and will cause severe cuts if handled without protection. The foil must be cut slightly long to prevent returns.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "gloves_worn",
+              "kind": "choice",
+              "prompt": "Are you wearing cut-resistant gloves?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Yes, wearing cut gloves",
+                "No"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, wearing cut gloves",
+              "acceptance_description": null,
+              "guidance": "Cut gloves must be worn for absolutely anything that touches the foil."
+            },
+            {
+              "key": "length_check",
+              "kind": "choice",
+              "prompt": "Is the cut length at least the ordered length (with a couple of inches extra)?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Yes, cut is slightly long",
+                "No, cut is short"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, cut is slightly long",
+              "acceptance_description": null,
+              "guidance": "Always cut a couple of inches long. Any length under the ordered amount is a return."
+            }
+          ]
+        },
+        {
+          "title": "Photograph Grade Evidence",
+          "explanation": "We must prove the correct grade was cut for this order before it is boxed.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "grade_evidence_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the cut roll right next to the coil's mill tag.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The photo must clearly show both the mill tag (with the grade visible) and the cut roll in the same shot.",
+              "guidance": "Position the cut roll next to the mill tag on the coil so both are clearly visible in a single photo."
+            }
+          ]
+        },
+        {
+          "title": "Box and Label",
+          "explanation": "Ensures the package is correctly labeled and documented before it is sealed and shipped.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "label_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the shipping label on the box before taping it.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The photo must show the shipping label clearly on the box before it is taped shut.",
+              "guidance": "Ensure the label details are legible in the photo before sealing the box."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"We roll, cut, and ship 321 and 309 stainless steel foil, ensuring the grade matches the mill tag to prevent furnace failures. Technicians wear cut gloves, cut the foil slightly long, and photograph the roll next to the mill tag and the label before shipping.\",\n  \"draft\": {\n    \"key\": \"stainless-foil-cut-and-pack\",\n    \"title\": \"Stainless Steel Foil Cut and Pack\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Coil missing mill tag\"\n    ],\n    \"releases\": [\n      \"Shipment of verified stainless steel tool wrap\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Verify Coil Grade\",\n        \"explanation\": \"321 and 309 foil look identical but have different temperature limits; shipping the wrong grade will melt the wrap and ruin the customer's tool steel.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"mill_tag_present\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is the mill tag present on the coil?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Yes, tag is present\",\n              \"No, tag is missing\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, tag is present\",\n            \"acceptance_description\": null,\n            \"guidance\": \"If the mill tag is missing, the coil cannot be used. Stop the job immediately.\"\n          },\n          {\n            \"key\": \"grade_match\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Does the grade on the mill tag match the customer's order?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Yes, grade matches\",\n              \"No, grade mismatch\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, grade matches\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Verify that the mill tag grade (321 or 309) matches the order exactly before pulling any foil.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Pull and Cut Foil\",\n        \"explanation\": \"Foil edges are razor sharp and will cause severe cuts if handled without protection. The foil must be cut slightly long to prevent returns.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"gloves_worn\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Are you wearing cut-resistant gloves?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Yes, wearing cut gloves\",\n              \"No\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, wearing cut gloves\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Cut gloves must be worn for absolutely anything that touches the foil.\"\n          },\n          {\n            \"key\": \"length_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is the cut length at least the ordered length (with a couple of inches extra)?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Yes, cut is slightly long\",\n              \"No, cut is short\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, cut is slightly long\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Always cut a couple of inches long. Any length under the ordered amount is a return.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Photograph Grade Evidence\",\n        \"explanation\": \"We must prove the correct grade was cut for this order before it is boxed.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"grade_evidence_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the cut roll right next to the coil's mill tag.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The photo must clearly show both the mill tag (with the grade visible) and the cut roll in the same shot.\",\n            \"guidance\": \"Position the cut roll next to the mill tag on the coil so both are clearly visible in a single photo.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Box and Label\",\n        \"explanation\": \"Ensures the package is correctly labeled and documented before it is sealed and shipped.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"label_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the shipping label on the box before taping it.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The photo must show the shipping label clearly on the box before it is taped shut.\",\n            \"guidance\": \"Ensure the label details are legible in the photo before sealing the box.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3512,
+    "candidatesTokenCount": 1332,
+    "totalTokenCount": 8049
+  }
+}
