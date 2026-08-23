@@ -13,7 +13,8 @@
 #   3. every fixture typechecks against the generated contract
 #   4. every surface renders from FixtureSource alone, with no backend
 #   5. tenancy holds, and a verdict becomes a decision — against the real rules engine
-#   6. the five agents obey their contracts, and the scenario corpus replays
+#   6. the seven agents obey their contracts, the scenario corpus replays, and Wright's
+#      drivers are COMPILED AND EXECUTED against the real Driver interface
 #   7. optionally, a real browser drives a procedure through to a sealed record
 
 set -euo pipefail
@@ -40,9 +41,9 @@ echo "ok — every fixture matches the generated types"
 # becomes a step transition, and every way a model can be wrong is a row in it.
 node --experimental-strip-types --conditions=react-server --import ./scripts/ts-resolve.mjs \
   --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs \
-       scripts/armor.test.mjs scripts/attest.test.mjs 2>&1 \
+       scripts/armor.test.mjs scripts/attest.test.mjs scripts/trace.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
-echo "ok — the outcome table, the cases, the fleet client, the armor screen and attestation hold"
+echo "ok — the outcome table, the cases, the fleet client, the armor screen, attestation and the reasoning trace hold"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null
@@ -74,19 +75,50 @@ if [ -n "$RULES_JAVA" ] && [ -x "$ROOT/web/node_modules/.bin/firebase" ]; then
   PATH="$(dirname "$RULES_JAVA"):$PATH" \
   "$ROOT/web/node_modules/.bin/firebase" emulators:exec \
       --project warrant-rules-test --only firestore --config "$ROOT/firebase.json" \
-      'node --experimental-strip-types --test web/scripts/rules.test.mjs
+      'node --experimental-strip-types --test web/scripts/rules.test.mjs web/scripts/audit-adversarial.test.mjs
        cd web && node --experimental-strip-types --conditions=react-server \
-         --import ./scripts/ts-resolve.mjs --test scripts/live-source.test.mjs scripts/adjudicate.test.mjs' \
+         --import ./scripts/ts-resolve.mjs --test scripts/live-source.test.mjs scripts/adjudicate.test.mjs scripts/dispose.test.mjs scripts/audit.test.mjs scripts/stock.test.mjs' \
     > /tmp/warrant-rules.log 2>&1 \
     || { echo "TENANCY FAILED — see the report below"; grep -E '^(not ok|  +error:)' /tmp/warrant-rules.log | head -20; exit 1; }
   grep -E '^# (tests|pass|fail)' /tmp/warrant-rules.log
-  echo "ok — no tenant reaches another's data, the catalogue is read-only, evidence is not forgeable"
+  echo "ok — no tenant reaches another's data, the catalogue is read-only, evidence is not forgeable,"
+  echo "     an adversarial audit of the rules holds, and a stalled step reaches the Instructor,"
+  echo "     the Foreman and a task without any client staying awake"
   cd "$ROOT/web"
 else
   echo "skipped — needs a JDK 21+ and web/node_modules/.bin/firebase"
 fi
 
 step "6/7  agents — contracts, conditional rules and the scenario corpus"
+
+# The anvil, if there is a JDK for it.
+#
+# Wright is the one agent whose output is CODE, and the claim that it writes a driver is a
+# claim about something that compiles and runs. tests/test_anvil_live.py compiles real Kotlin
+# against the real Driver interface and puts it through all five gates; it SKIPS loudly when
+# the anvil is not up rather than passing quietly, so a suite that stopped compiling anything
+# says so.
+ANVIL_PID=""
+if command -v javac >/dev/null 2>&1; then
+  "$ROOT/anvil/run.sh" > /tmp/warrant-anvil.log 2>&1 &
+  ANVIL_PID=$!
+  for _ in $(seq 1 40); do
+    curl -sf -o /dev/null http://127.0.0.1:8099/health && break
+    sleep 0.5
+  done
+  if curl -sf -o /dev/null http://127.0.0.1:8099/health; then
+    echo "ok — the anvil is up; Wright's drivers will be compiled and executed"
+  else
+    echo "anvil did not start — see /tmp/warrant-anvil.log"
+    head -20 /tmp/warrant-anvil.log
+    kill "$ANVIL_PID" 2>/dev/null || true
+    ANVIL_PID=""
+  fi
+else
+  echo "skipped the anvil — no javac on PATH"
+fi
+trap '[ -n "$ANVIL_PID" ] && kill "$ANVIL_PID" 2>/dev/null || true' EXIT
+
 cd "$ROOT/agents"
 if python3 -c "import jsonschema, pytest" 2>/dev/null; then
   python3 -m pytest tests/ -q
@@ -97,6 +129,8 @@ if python3 -c "import jsonschema, pytest" 2>/dev/null; then
 else
   echo "skipped — pip install -r agents/requirements.txt"
 fi
+[ -n "$ANVIL_PID" ] && kill "$ANVIL_PID" 2>/dev/null || true
+ANVIL_PID=""
 cd "$ROOT/web"
 
 step "7/7  a procedure, end to end, in a real browser"

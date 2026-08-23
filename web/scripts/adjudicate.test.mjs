@@ -12,7 +12,7 @@
 //
 // Requires the Firestore emulator; scripts/smoke.sh starts it.
 
-import { test, before, describe } from "node:test";
+import { test, before, after, describe } from "node:test";
 import assert from "node:assert/strict";
 
 process.env.FIRESTORE_EMULATOR_HOST ??= "127.0.0.1:8080";
@@ -75,6 +75,96 @@ const outcomeOf = (jobId) =>
 const decisionsFor = (jobId) =>
   db.collection(`tenants/${TENANT}/decisions`)
     .where("job_id", "==", `${TENANT}/${jobId}`).get();
+
+describe("prior captures — the Skeptic's memory", () => {
+  // A bucket, for the whole block. Without one `mediaUri` has nowhere to point and every
+  // assertion below would pass against an empty list — which is exactly the shape of vacuous
+  // green this file's own comments warn about elsewhere.
+  let previousBucket;
+  before(() => {
+    previousBucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = "warrant-test-evidence";
+  });
+  after(() => {
+    if (previousBucket === undefined) delete process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+    else process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = previousBucket;
+  });
+
+  /** Records the case each agent was handed, which is the only way to assert what it SAW. */
+  const spy = () => {
+    const seen = {};
+    return { seen, ask: async (agent, kase) => {
+      seen[agent] = kase;
+      return { output: agent === "inspector" ? PASS : BELONGS, valid: true, schemaErrors: [],
+               model: "gemini-3.5-flash", latencyMs: 10, usage: { totalTokenCount: 100 } };
+    } };
+  };
+
+  test("earlier captures for the SAME machine are put in front of it", async () => {
+    // Reuse is the cheat this catches: the same photograph submitted for a job never done.
+    // Until this was wired the list was empty, so the reuse question was being asked of an
+    // agent that had been shown nothing to compare against.
+    const ref = await seedJob("job_prior_a");
+    const older = db.doc(`tenants/${TENANT}/jobs/job_prior_old`);
+    await older.set({
+      id: `${TENANT}/job_prior_old`, tenant_id: TENANT, asset_id: "bike-04",
+      procedure_id: "front-brake-service", status: "sealed",
+      started_at: "2026-07-01T09:00:00Z",
+    });
+    await older.collection("captures").doc("cap_old").set({
+      id: "cap_old", field_id: "s3__pad_photo", kind: "photo",
+      created_at: "2026-07-01T10:00:00Z", adjudicated: true,
+    });
+
+    const s = spy();
+    await adjudicate(ref, { ask: s.ask, db });
+    assert.ok(s.seen.skeptic.prior_media.length >= 1,
+              "the Skeptic must be shown what is already on file for this machine");
+    assert.ok(s.seen.skeptic.prior_media.some((u) => u.includes("cap_old")));
+    // Never the frame being judged.
+    assert.ok(!s.seen.skeptic.prior_media.some((u) => u.includes("cap_1")));
+  });
+
+  test("a job for a DIFFERENT machine contributes nothing", async () => {
+    const ref = await seedJob("job_prior_b");
+    const other = db.doc(`tenants/${TENANT}/jobs/job_prior_other`);
+    await other.set({
+      id: `${TENANT}/job_prior_other`, tenant_id: TENANT, asset_id: "bike-99",
+      procedure_id: "front-brake-service", started_at: "2026-07-02T09:00:00Z",
+    });
+    await other.collection("captures").doc("cap_other").set({
+      id: "cap_other", field_id: "s3__pad_photo", kind: "photo",
+      created_at: "2026-07-02T10:00:00Z", adjudicated: true,
+    });
+
+    const s = spy();
+    await adjudicate(ref, { ask: s.ask, db });
+    assert.ok(!s.seen.skeptic.prior_media.some((u) => u.includes("cap_other")),
+              "another machine's history is not this machine's history");
+    // Positive control: bike-04 DOES have history by now, so an empty list here would mean
+    // the lookup was broken rather than correctly selective.
+    assert.ok(s.seen.skeptic.prior_media.length >= 1, "the lookup must not simply be returning nothing");
+  });
+
+  test("a typed answer on an earlier job is not offered as a photograph", async () => {
+    const ref = await seedJob("job_prior_c");
+    const older = db.doc(`tenants/${TENANT}/jobs/job_prior_typed`);
+    await older.set({
+      id: `${TENANT}/job_prior_typed`, tenant_id: TENANT, asset_id: "bike-04",
+      procedure_id: "front-brake-service", started_at: "2026-06-01T09:00:00Z",
+    });
+    await older.collection("captures").doc("cap_text").set({
+      id: "cap_text", field_id: "s3__name", kind: "text", media_ref: "A. Technician",
+      created_at: "2026-06-01T10:00:00Z", adjudicated: true,
+    });
+
+    const s = spy();
+    await adjudicate(ref, { ask: s.ask, db });
+    assert.ok(!s.seen.skeptic.prior_media.some((u) => u.includes("cap_text")),
+              "a signature is not evidence of a machine, and has no object to point at");
+    assert.ok(s.seen.skeptic.prior_media.length >= 1, "the lookup must not simply be returning nothing");
+  });
+});
 
 describe("adjudicate", () => {
   test("writes one decision per agent that answered", async () => {

@@ -20,6 +20,8 @@ import { verifyIntegrity } from "./attest";
 import { getStorage } from "firebase-admin/storage";
 import { adminApp } from "@/auth/admin";
 import { GoogleAuth } from "google-auth-library";
+import { newTrace, withSpan } from "@/server/trace";
+import { pinnedVersion } from "@/server/procedures";
 
 export interface AdjudicateRef {
   tenantId: string;
@@ -65,6 +67,9 @@ export async function adjudicate(
   const db = deps.db ?? adminDb();
   const ask = deps.ask ?? askFleet;
   const scopedJobId = `${ref.tenantId}/${ref.jobId}`;
+  // One trace per capture. Everything below hangs under it, so the reasoning trace has the
+  // shape of what actually happened rather than being a flat list of verdicts.
+  const trace = newTrace();
 
   const jobRef = db.doc(`tenants/${ref.tenantId}/jobs/${ref.jobId}`);
   const [jobSnap, capSnap, outSnap] = await Promise.all([
@@ -82,10 +87,16 @@ export async function adjudicate(
 
   // The PINNED version, never the live procedure. A job is judged against the rules it
   // started under, and this is the line where that promise is kept or quietly broken.
-  const versionSnap = await db
-    .doc(`tenants/${ref.tenantId}/procedure_versions/${job.procedure_id}`)
-    .get();
-  const version = versionSnap.exists ? versionSnap.data()! : { steps: [] };
+  //
+  // It WAS quietly broken: this asked for `procedure_versions/{procedure_id}`, with no version
+  // segment, while `publishProcedure` freezes `{id}:{n}`. So the job's own `procedure_version`
+  // — written at startJob precisely to record what it is pinned to — was never read, published
+  // versions were never found, and the only document that resolved was the mutable one the
+  // public-catalogue seed wrote. `pinnedVersion` honours the pin and falls back to the bare
+  // document rather than stranding a job pinned to a version nobody froze.
+  const version = (await pinnedVersion(
+    db, ref.tenantId, String(job.procedure_id), job.procedure_version,
+  )) ?? { steps: [] as any[] };
   const step = (version.steps ?? []).find((s: any) => s.id === ref.stepId);
   if (!step) throw new Error(`step ${ref.stepId} is not in the pinned procedure version`);
   const fieldDef = (step.fields ?? []).find((f: any) => f.key === ref.fieldKey);
@@ -156,9 +167,16 @@ export async function adjudicate(
       bucket && capture.kind !== "text"
         ? [mediaUri(bucket, capture as { id: string; kind: string }, ref.tenantId, ref.jobId)]
         : [],
-    // Empty for now. Reuse detection needs earlier captures for the same asset, which is a
-    // query worth its own task — and an empty list is honest, where a fabricated one is not.
-    priorMediaUris: [],
+    // Evidence already on file for this machine.
+    //
+    // Reuse is the cheat this system exists to catch — the same photograph submitted for a job
+    // that was never done — and the Skeptic cannot catch it without something to compare
+    // against. This was an empty list for a long time, honestly labelled as one, which meant
+    // the whole reuse question was being asked of an agent that had been shown nothing.
+    //
+    // Read here rather than passed in, like every other fact in this function: a caller that
+    // could nominate the prior frames could nominate frames that match.
+    priorMediaUris: await priorCaptures(db, ref, job.asset_id, bucket),
     referenceUris,
     asset: job.asset_id ? { id: job.asset_id } : null,
   };
@@ -183,7 +201,9 @@ export async function adjudicate(
   //
   // The Inspector is a model reading a picture chosen by the person being checked, which is
   // the textbook setting for prompt injection. A match means no model sees the image at all.
-  const armor = await screenCapture(sources.mediaUris[0] ?? null);
+  const armor = await withSpan(trace, "armor.screen",
+    { capture_id: ref.captureId, tenant: ref.tenantId },
+    () => screenCapture(sources.mediaUris[0] ?? null));
   await jobRef
     .collection("captures")
     .doc(ref.captureId)
@@ -237,9 +257,18 @@ export async function adjudicate(
   try {
     // Both questions at once. They are independent: one asks whether the evidence is good
     // enough, the other whether it is evidence of this machine at all.
+    // Two spans, started together and ending independently. A flat audit log cannot show
+    // that; a trace can, and "these two agents are asking different questions at the same
+    // time" is the whole shape of this system in one picture.
     [inspector, skeptic] = await Promise.all([
-      ask("inspector", inspectorCase(sources)),
-      ask("skeptic", skepticCase(sources)),
+      withSpan(trace, "agent.inspector",
+        { agent: "inspector", field: ref.fieldKey, step: ref.stepId,
+          strictness: job.strictness ?? 1 },
+        () => ask("inspector", inspectorCase(sources))),
+      withSpan(trace, "agent.skeptic",
+        { agent: "skeptic", field: ref.fieldKey, step: ref.stepId,
+          prior_media: sources.priorMediaUris.length },
+        () => ask("skeptic", skepticCase(sources))),
     ]);
   } catch (error) {
     // Never silent. An unreachable fleet is a fact about this capture, and the identity trap
@@ -283,9 +312,17 @@ export async function adjudicate(
     skeptic: skeptic ? { output: skeptic.output, valid: skeptic.valid } : null,
     addFieldsUsed,
     maxAddFields: step.max_add_fields ?? 2,
+    // Sets the confidence floor a PASS has to clear. The same number the Inspector was shown.
+    strictness: job.strictness ?? 1,
+    // The target the Inspector was deliberately NOT shown, so the comparison happens in code.
+    acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
   });
 
-  await applyEffect(db, ref, step, job.strictness ?? 1, effect);
+  await withSpan(trace, "gate.apply",
+    { effect: effect.kind, verdict: String(inspector.output.verdict ?? ""),
+      confidence: typeof inspector.output.confidence === "number"
+        ? inspector.output.confidence : null },
+    () => applyEffect(db, ref, step, job.strictness ?? 1, effect));
 
   // The sweep's flag, set only after the decisions are written. A crash mid-adjudication
   // therefore leaves the capture eligible to be picked up again rather than silently
@@ -402,6 +439,56 @@ async function applyEffect(
 
   // hold — the step does not move, and the reason is on the record rather than in a log.
   await outRef.set({ hold_reason: effect.why, adjudicated_at: nowIso() }, { merge: true });
+}
+
+/**
+ * Earlier captures for the same machine, newest first.
+ *
+ * Bounded at four on purpose. Every one is an image the model reads, so this is the difference
+ * between a second opinion that costs a fraction of a cent and one that costs real money on
+ * every capture — and a technician resubmitting an old photograph reaches for a recent one,
+ * not one from eighteen months ago. Four recent frames catch that; forty would mostly cost.
+ *
+ * Ordered in memory rather than by the query, so no composite index has to be deployed for a
+ * safety net to start working.
+ *
+ * A job with no asset gets nothing, and that is correct rather than a limitation: the public
+ * procedures name no machine, the Skeptic is told so, and it withdraws the asset question
+ * entirely (see `skeptic.py:_subject`).
+ */
+async function priorCaptures(
+  db: FirebaseFirestore.Firestore,
+  ref: AdjudicateRef,
+  assetId: string | null | undefined,
+  bucket: string,
+  limit = 4,
+): Promise<string[]> {
+  if (!assetId || !bucket) return [];
+
+  const jobs = await db
+    .collection(`tenants/${ref.tenantId}/jobs`)
+    .where("asset_id", "==", assetId)
+    .limit(12)
+    .get();
+
+  const earlier = jobs.docs
+    .filter((d) => d.id !== ref.jobId)
+    .sort((a, b) =>
+      String(b.data().started_at ?? "").localeCompare(String(a.data().started_at ?? "")))
+    .slice(0, limit);
+
+  const uris: string[] = [];
+  for (const jobDoc of earlier) {
+    const caps = await jobDoc.ref.collection("captures").limit(limit).get();
+    for (const cap of caps.docs) {
+      const data = cap.data() as { kind?: string };
+      // `text` has no object to point at, and a signature is not evidence of a machine.
+      if (!data.kind || data.kind === "text") continue;
+      uris.push(mediaUri(bucket, { id: cap.id, kind: data.kind }, ref.tenantId, jobDoc.id));
+      if (uris.length >= limit) return uris;
+    }
+  }
+  return uris;
 }
 
 /**
