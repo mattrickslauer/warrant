@@ -1,0 +1,6 @@
+{
+  "trade": "A two-person operation that buys large coils of annealed, oil-free stainless steel foil — tool wrap, used to stop tool steel scaling in a heat-treat furnace — and re-rolls them into retail rolls sold on Amazon",
+  "machines": "A simple re-roller and a boxing bench. Stock is 321 and 309 stainless foil, .002 inch thick and 20 inches wide, re-rolled into 10, 25, 50 and 100 foot rolls, boxed, labelled and shipped from the USA with tracking. Some customers are on monthly or quarterly auto-ship",
+  "technicians": 2,
+  "stakes": "321 is rated to 2000F and 309 to 2240F and the two foils look identical. Ship the wrong grade and the customer wraps a blade, runs the furnace above what that wrap can take, and their tool steel scales and decarburises — the workpiece is ruined and they do not find out until they open the foil, weeks after it left us. The mill number off the parent coil is kept against the order so that if a batch turns out bad we can trace which rolls came off it"
+}

@@ -66,6 +66,7 @@ export async function POST(request: Request) {
     shop: body.shop ?? {},
     conversation,
     asked_about: asked,
+    unanswered: shrugs(conversation),
     turns_left: Math.max(0, MAX_TURNS - conversation.filter((t) => t.who !== "shop").length),
     ...(body.existing_form ? { existing_form: body.existing_form } : {}),
     ...(body.catalogue ? { catalogue: body.catalogue } : {}),
@@ -96,6 +97,25 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+}
+
+/**
+ * How many questions this shop has been unable to answer.
+ *
+ * `scoper.py` reads this and it is doing real work: without it the Scoper cannot tell "they
+ * are being vague" from "they do not hold this", so it rewords the same question, then asks
+ * one level beneath it, and the unresolved list never empties — the shop is walked through an
+ * hour of questions and handed nothing. Absent here until now, which meant the web interview
+ * behaved WORSE than the eval harness that was used to tune the agent.
+ *
+ * The pattern is `agents/evals/talk.py:137` verbatim. Duplicated rather than shared for the
+ * same reason `askedAbout` is: this is a fact computed about a conversation, not a prompt, and
+ * a prompt is the thing that must never exist in two languages.
+ */
+const SHRUG = /\b(no idea|don'?t know|dunno|not sure|by feel|look it up)\b/i;
+
+function shrugs(conversation: Turn[]): number {
+  return conversation.filter((t) => t.who === "shop" && SHRUG.test(t.said)).length;
 }
 
 /**

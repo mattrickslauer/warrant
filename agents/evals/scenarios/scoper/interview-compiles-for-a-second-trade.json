@@ -1,0 +1,62 @@
+{
+  "agent": "scoper",
+  "kind": "interview",
+  "title": "interviews a re-roller to a compiled procedure, in a trade that measures nothing",
+  "why": "The Scoper's other interview scenario is a motorcycle workshop, and a fleet that only ever proves itself on motorcycles has proved itself on one shop. This one is a two-person operation that buys large coils of stainless tool wrap and re-rolls them into retail lengths — no machine under service, no technician at a bike, and the thing being judged is a product leaving the building rather than a vehicle returning to the road. The stake is a different shape too: nothing here fails in the shop, it fails weeks later in somebody else's furnace, which is exactly the case a record has to survive.\n\nWhat makes this scenario worth keeping is that THERE IS NO FIGURE TO FIND. The shop does not measure thickness, does not weigh anything, has no stated length tolerance, and never rejects stock. Every earlier version of this file invented one — a micrometer check and a return-to-mill workflow that this business does not have and has never had — which is the precise failure the product exists to abolish, committed in the corpus rather than by the agent. So the correct compiled procedure here contains no numeric acceptance bound at all, and the assertions say so. A procedure that comes back with a tolerance in it has had one fabricated, and `traceable` is the check that catches it.\n\nWhat this trade DOES have is provenance: the grade cannot be told by looking and is knowable only from the mill tag, and the mill number is carried onto the order so a bad batch can be traced to every roll that came off it. That is an evidence-and-identity procedure rather than a measurement one, and the fleet has to be able to compile that too.",
+  "input": {
+    "shop": {
+      "trade": "a two-person operation that buys large coils of annealed, oil-free stainless steel foil — tool wrap, used to stop tool steel scaling in a heat-treat furnace — and re-rolls them into retail rolls sold on Amazon",
+      "machines": "a simple re-roller and a boxing bench; 321 and 309 stainless foil, .002 inch thick and 20 inches wide, re-rolled into 10, 25, 50 and 100 foot rolls",
+      "technicians": 2,
+      "stakes": "321 is rated to 2000F and 309 to 2240F and the two look identical. Ship the wrong grade and the customer wraps a blade, runs the furnace above what that wrap can take, and their tool steel scales and decarburises — the workpiece is ruined and they do not find out until they open the foil, weeks after it left us"
+    },
+    "facts": {
+      "what the job is": "take a big coil off the mill, run it through the re-roller into a retail length, box it, label it and ship it — 10, 25, 50 and 100 foot rolls, sold on Amazon",
+      "how you tell the grades apart": "you cannot tell them apart by looking, ever. The grade is on the mill tag on the parent coil and nowhere else, so the tag is what you go by",
+      "the mill number": "we keep the mill number off the parent coil against the order. That is the whole point of it — if a batch turns out bad we can trace which rolls came off which coil",
+      "whether they check thickness": "no. We do not check thickness and never have. It comes off the mill at .002 and it is always perfect — there is nothing to check and nothing to reject",
+      "whether anything goes back to the mill": "no, never. We buy the coil, we re-roll it and we sell it. Nothing has ever gone back",
+      "the lengths": "10, 25, 50 and 100 feet. That is what the re-roller is set to and that is what goes in the box",
+      "the length tolerance": "I do not have a number for that. We set the re-roller and that is the length. I could not tell you what we would accept as over or under because it has never come up",
+      "evidence they already keep": "the mill tag is photographed with the roll so the grade and the roll are in the same shot, and the finished box is photographed with the label readable before it is taped",
+      "what stops the job dead": "if the mill tag does not match what the order says, everything stops until I look at it. And any oil or grease on the foil means that length is scrap — it is sold as oil-free and grease bakes into the customer's workpiece",
+      "who signs it off": "either of us can pack and sign off an ordinary order",
+      "safety": "the edges will open your hand up. Cut gloves on for anything that touches foil",
+      "the subscriptions": "a lot of it goes out on auto-ship, monthly or quarterly, on the same day of the month as the first order"
+    },
+    "max_turns": 14
+  },
+  "expect": {
+    "is_true": [
+      "compiled",
+      "traceable"
+    ],
+    "is_false": [
+      "hit_turn_cap"
+    ],
+    "absent": [
+      "invented_bounds"
+    ],
+    "lte": {
+      "turns": 14
+    },
+    "len_lte": {
+      "bounds": 0
+    },
+    "len_gte": {
+      "draft.steps": 2
+    },
+    "mentions_any": {
+      "asked_about": [
+        "evidence",
+        "failure"
+      ],
+      "draft.disqualifiers": [
+        "grade",
+        "tag",
+        "oil",
+        "grease"
+      ]
+    }
+  }
+}
