@@ -1,16 +1,7 @@
-import { Ground } from "@/components";
-import { Masthead, Footer } from "../../Masthead";
+import { AppShell } from "../../shell/AppShell";
 import { JobFlow } from "./JobFlow";
 
 export default async function JobPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  return (
-    <Ground tone="work">
-      <div className="page">
-        <Masthead />
-        <main className="page__body"><JobFlow jobId={id} /></main>
-        <Footer />
-      </div>
-    </Ground>
-  );
+  return <AppShell tone="work"><JobFlow jobId={id} /></AppShell>;
 }

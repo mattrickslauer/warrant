@@ -1,5 +1,4 @@
-import { Ground } from "@/components";
-import { Masthead, Footer } from "../../Masthead";
+import { AppShell } from "../../shell/AppShell";
 import { RecordView } from "./RecordView";
 import { PublicRecord } from "./PublicRecord";
 import { readPublicRecord } from "@/server/publish";
@@ -8,8 +7,8 @@ import { readPublicRecord } from "@/server/publish";
  * The paper ground: this is what survives the workshop.
  *
  * One URL, two readers. A stranger holding a shared link gets the redacted projection at
- * /records/{id} — no account, no session, no tenant. Anyone else gets the tenant-scoped view
- * they were already getting, read through the authenticated client so firestore.rules is what
+ * /r/{id} — no account, no session, no tenant. Anyone else gets the tenant-scoped view they
+ * were already getting, read through the authenticated client so firestore.rules is what
  * enforces access.
  *
  * The public lookup comes FIRST and deliberately: a capability id is unguessable, so finding
@@ -21,14 +20,8 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
   const published = await readPublicRecord(id);
 
   return (
-    <Ground tone="paper">
-      <div className="page">
-        <Masthead />
-        <main className="page__body">
-          {published ? <PublicRecord record={published} /> : <RecordView id={id} />}
-        </main>
-        <Footer />
-      </div>
-    </Ground>
+    <AppShell tone="paper">
+      {published ? <PublicRecord record={published} /> : <RecordView id={id} />}
+    </AppShell>
   );
 }

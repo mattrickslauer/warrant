@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { EvidenceChip, type ProvenanceClass } from "@/components";
 import { getDataSource } from "@/data";
+import { useSession } from "@/auth/session-context";
+import { currentTenantId } from "@/auth/current-tenant";
 import { DeviceStrip, type DeviceReport } from "./DeviceStrip";
 
 export interface Task {
@@ -24,8 +26,18 @@ function warrantUid(): string {
   return v;
 }
 
-export function TaskCarousel({ tasks }: { tasks: Task[] }) {
+/**
+ * @param children the quick actions, and only ever those.
+ *
+ * They are a child rather than a sibling because `.cta` is `position: sticky; bottom: 0` —
+ * anything rendered after the carousel lands BELOW the primary action and can only be found by
+ * scrolling past it. A shortcut you have to scroll to find is not a shortcut.
+ */
+export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: React.ReactNode }) {
   const router = useRouter();
+  // The tenant the job lands in. Hardcoding "anon" here is what used to put a signed-in
+  // technician's jobs somewhere their own records screen would never look.
+  const { session } = useSession();
   const rail = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -75,7 +87,7 @@ export function TaskCarousel({ tasks }: { tasks: Task[] }) {
     setBusy(true);
     warrantUid();
     const job = await getDataSource().startJob({
-      procedureId: task.procedureId, tenantId: "anon", tier: "open",
+      procedureId: task.procedureId, tenantId: currentTenantId(session), tier: "open",
     });
     router.push(`/job/${job.id}`);
   }
@@ -134,6 +146,8 @@ export function TaskCarousel({ tasks }: { tasks: Task[] }) {
       </div>
 
       <DeviceStrip onReport={setReport} />
+
+      {children}
 
       <div className="cta">
         <button className="w-btn w-btn--block cta__go" onClick={start} disabled={!task?.available || busy}>

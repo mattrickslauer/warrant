@@ -60,6 +60,11 @@ export class FixtureSource implements DataSource {
   async getRecord(rid: string) {
     return this.records.get(rid) ?? null;
   }
+  async listRecords(tenantId: string) {
+    return [...this.records.values()]
+      .filter((r) => tenantId === "*" || this.jobs.get(r.job_id)?.tenant_id === tenantId)
+      .sort((a, b) => (a.sealed_at < b.sealed_at ? 1 : -1));
+  }
   async listDecisions() {
     return [...this.decisions].sort((a, b) => (a.at < b.at ? 1 : -1));
   }

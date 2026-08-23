@@ -1,6 +1,6 @@
-import { Ground } from "@/components";
+import { AppShell } from "./shell/AppShell";
+import { QuickActions } from "./QuickActions";
 import { TaskCarousel, type Task } from "./TaskCarousel";
-import Link from "next/link";
 
 // No hero, no marketing. The page is the picker — the whole surface is one decision.
 // The explanation lives at /about, one tap away, for anyone who wants it after.
@@ -58,16 +58,10 @@ const TASKS: Task[] = [
 
 export default function Home() {
   return (
-    <Ground tone="work">
-      <div className="app">
-        <header className="topbar">
-          <span className="topbar__logo"><i aria-hidden />Warrant</span>
-          <nav className="topbar__nav">
-            <Link href="/about">What is this?</Link>
-          </nav>
-        </header>
-        <TaskCarousel tasks={TASKS} />
-      </div>
-    </Ground>
+    <AppShell tone="work" frame="app">
+      <TaskCarousel tasks={TASKS}>
+        <QuickActions />
+      </TaskCarousel>
+    </AppShell>
   );
 }

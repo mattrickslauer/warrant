@@ -75,6 +75,15 @@ export interface DataSource {
   declareBlocked(input: BlockedInput): Promise<StepOutcome>;
 
   getRecord(id: string): Promise<SealedRecord | null>;
+  /**
+   * Every record this tenant has sealed, newest first.
+   *
+   * Separate from listJobs() rather than derived from it, because the two answer different
+   * questions: a job is work that happened, a record is the artifact it left behind, and a job
+   * can exist with no record — that is precisely what "not sealed" means. A records screen that
+   * inferred one from the other would have to guess at that gap.
+   */
+  listRecords(tenantId: string): Promise<SealedRecord[]>;
   listDecisions(tenantId: string): Promise<Decision[]>;
 
   subscribe(jobId: string, onEvent: (e: JobEvent) => void): Unsubscribe;

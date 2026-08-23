@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Ground, Wrap, Rule, EvidenceChip, AgentStamp, type AgentName } from "@/components";
+import { Wrap, Rule, EvidenceChip, AgentStamp, type AgentName } from "@/components";
+import { AppShell } from "../shell/AppShell";
 
 // The B2B explainer. `/` is the product; this is what the product is for.
 // Deliberately not a marketing page — it answers, for someone who just cut a banana on a
@@ -17,12 +18,7 @@ const FLEET: Array<{ agent: AgentName; name: string; job: string }> = [
 
 export default function About() {
   return (
-    <Ground tone="work">
-      <div className="app">
-        <header className="topbar">
-          <Link className="topbar__logo" href="/"><i aria-hidden />Warrant</Link>
-          <nav className="topbar__nav"><Link href="/">Try a task</Link></nav>
-        </header>
+    <AppShell tone="work" frame="app">
 
         <main className="page__body">
           <Wrap>
@@ -127,7 +123,6 @@ export default function About() {
           <span>Fixture data — no backend connected yet</span>
           <Link href="/firmware">Instrument manual — build your own, MIT</Link>
         </footer>
-      </div>
-    </Ground>
+    </AppShell>
   );
 }

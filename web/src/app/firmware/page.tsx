@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Ground, Wrap, Rule } from "@/components";
+import { Wrap, Rule } from "@/components";
+import { AppShell } from "../shell/AppShell";
 
 // The instrument manual. Static, no client JS, no data — it is a document.
 //
@@ -78,12 +79,7 @@ function M({ children }: { children: React.ReactNode }) {
 
 export default function FirmwareManual() {
   return (
-    <Ground tone="work">
-      <div className="app">
-        <header className="topbar">
-          <Link className="topbar__logo" href="/"><i aria-hidden />Warrant</Link>
-          <nav className="topbar__nav"><Link href="/about">About</Link></nav>
-        </header>
+    <AppShell tone="work" frame="app">
 
         <main className="page__body">
           <Wrap>
@@ -560,7 +556,6 @@ cd warrant/firmware`}
           <span>Warrant</span>
           <span>Firmware and drivers are MIT licensed</span>
         </footer>
-      </div>
-    </Ground>
+    </AppShell>
   );
 }

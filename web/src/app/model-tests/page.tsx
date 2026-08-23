@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Ground, Wrap, Rule, AgentStamp, type AgentName } from "@/components";
+import { Rule, AgentStamp, type AgentName } from "@/components";
+import { AppShell } from "../shell/AppShell";
 import { AGENTS, grouped, run, totals } from "@/server/evals";
 import { StatusChip } from "./parts";
 import "./model-tests.css";
@@ -22,16 +23,16 @@ export const metadata: Metadata = {
 export default function ModelTests() {
   if (run.empty) {
     return (
-      <Ground tone="work">
-        <Wrap className="mt page__body">
+      <AppShell tone="work">
+        <div className="mt">
           <h1 className="mt-head__title">Model tests</h1>
           <p className="mt-empty">
             No run has been recorded yet. From <span className="mt-mono">agents/</span>, run{" "}
             <span className="mt-mono">python3 -m evals run --live</span>, then{" "}
             <span className="mt-mono">npm run gen</span> in <span className="mt-mono">web/</span>.
           </p>
-        </Wrap>
-      </Ground>
+        </div>
+      </AppShell>
     );
   }
 
@@ -39,8 +40,8 @@ export default function ModelTests() {
   const groups = grouped();
 
   return (
-    <Ground tone="work">
-      <Wrap className="mt page__body">
+    <AppShell tone="work">
+      <div className="mt">
         <div className="stack stack--lg">
           <header className="mt-head">
             <p className="eyebrow">How we know the agents work</p>
@@ -130,7 +131,7 @@ export default function ModelTests() {
             stale answer, and the scenarios it affects are exactly the ones that need calling again.
           </p>
         </div>
-      </Wrap>
-    </Ground>
+      </div>
+    </AppShell>
   );
 }

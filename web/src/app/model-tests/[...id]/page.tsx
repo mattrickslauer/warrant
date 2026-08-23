@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Ground, Wrap, AgentStamp, type AgentName } from "@/components";
+import { AgentStamp, type AgentName } from "@/components";
+import { AppShell } from "../../shell/AppShell";
 import { AGENTS, STATUS_MEANING, byId, run, type Result, type Turn } from "@/server/evals";
 import { Checks, Field, Json, PromptView, StatusChip } from "../parts";
 import "../model-tests.css";
@@ -23,8 +24,8 @@ export default async function ScenarioPage({ params }: { params: Promise<{ id: s
   if (!result) notFound();
 
   return (
-    <Ground tone="work">
-      <Wrap className="mt page__body">
+    <AppShell tone="work">
+      <div className="mt">
         <div className="stack stack--lg">
           <Link href="/model-tests" className="mt-back">← all model tests</Link>
 
@@ -100,8 +101,8 @@ export default async function ScenarioPage({ params }: { params: Promise<{ id: s
             </div>
           )}
         </div>
-      </Wrap>
-    </Ground>
+      </div>
+    </AppShell>
   );
 }
 

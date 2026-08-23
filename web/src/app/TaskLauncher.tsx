@@ -3,6 +3,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { EvidenceChip } from "@/components";
 import { getDataSource } from "@/data";
+import { useSession } from "@/auth/session-context";
+import { currentTenantId } from "@/auth/current-tenant";
 
 /** A tenant of one, created in the browser. No account, no wall — the only gate is optional. */
 function warrantUid(): string {
@@ -27,6 +29,7 @@ export interface TaskOption {
 
 export function TaskLauncher({ tasks }: { tasks: TaskOption[] }) {
   const router = useRouter();
+  const { session } = useSession();
   const [busy, setBusy] = useState<string | null>(null);
 
   async function start(t: TaskOption) {
@@ -36,7 +39,7 @@ export function TaskLauncher({ tasks }: { tasks: TaskOption[] }) {
     // The account row is created on the first meaningful write, never on page load.
     const job = await src.startJob({
       procedureId: t.procedureId,
-      tenantId: "anon",
+      tenantId: currentTenantId(session),
       tier: "open",
     });
     void warrantUid();

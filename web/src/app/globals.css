@@ -10,21 +10,47 @@
 .stack { display: flex; flex-direction: column; gap: var(--stack); }
 .stack--lg { gap: clamp(24px, 5vw, 40px); }
 
-/* ---------------------------------------------------------------- top app bar */
+/* ============================================================ the app shell
+ *
+ * One bar and one menu, on every screen. Before this existed the web surface had two
+ * half-shells — a masthead with marketing links that carried the only sign-in control, and a
+ * bare topbar on the screens a technician actually uses, which carried nothing.
+ *
+ * The drawer is the web's copy of android/…/ui/shell/Drawer.kt: sections by role, a 2px bar
+ * marking where you are, a badge on any row that cannot simply be opened, and an invitation
+ * standing in the free space when there is no account yet.
+ */
 
-.masthead {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+.shellbar {
+  display: flex; align-items: center; gap: 12px;
   min-height: 64px;
-  padding-top: env(safe-area-inset-top);
+  padding: max(8px, env(safe-area-inset-top)) var(--pad) 8px;
+  position: sticky; top: 0; z-index: 20;
+  background: var(--work);
+  transition: background var(--med) var(--ease), box-shadow var(--med) var(--ease);
 }
-.masthead__logo {
+.w-ground--paper .shellbar { background: var(--rec); }
+.shellbar__spacer { flex: 1; }
+
+/* 48px, like everything tappable on any surface. Dirty hands, small screen. */
+.shellbar__menu {
+  width: var(--tap); height: var(--tap); flex: none;
+  display: grid; place-items: center;
+  border: 0; background: none; cursor: pointer; border-radius: var(--r-full);
+  margin-inline-start: calc(var(--pad) * -1 + 4px);
+}
+.shellbar__menu:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); }
+.shellbar__menu > span {
+  width: 18px; height: 2px; background: var(--on-surface);
+  box-shadow: 0 -6px 0 var(--on-surface), 0 6px 0 var(--on-surface);
+}
+
+.shellbar__logo {
   display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
   font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 500;
   letter-spacing: 0;
 }
-/* The mark: Google's four colours on one disc. Four hues, four provenance classes — the
-   product's whole argument is that evidence comes in kinds, and the mark says so. */
-.masthead__logo i, .topbar__logo i {
+.shellbar__logo i, .topbar__logo i {
   width: 20px; height: 20px; border-radius: 50%; flex: none;
   background: conic-gradient(
     var(--primary) 0deg 90deg,
@@ -33,14 +59,104 @@
     var(--measured) 270deg 360deg
   );
 }
-.masthead__nav { display: flex; gap: 4px; }
-.masthead__nav a {
-  font-size: var(--t-label-lg); font-weight: 500; text-decoration: none;
-  color: var(--on-surface-2); padding: 10px 14px; border-radius: var(--r-full);
-  min-height: 40px; display: inline-flex; align-items: center;
-  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
+.shellbar__tenant { padding: 4px 10px; max-width: 22ch; }
+@media (max-width: 520px) { .shellbar__tenant { display: none; } }
+
+/* ---- the drawer ---- */
+
+.drawer { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+.drawer[aria-hidden="true"] { visibility: hidden; }
+.drawer--open { pointer-events: auto; }
+
+.drawer__scrim {
+  position: absolute; inset: 0; border: 0; padding: 0; cursor: pointer;
+  background: rgba(0, 0, 0, .55);
+  opacity: 0; transition: opacity var(--med) var(--ease);
 }
-.masthead__nav a:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); color: var(--on-surface); }
+.drawer--open .drawer__scrim { opacity: 1; }
+
+.drawer__panel {
+  position: absolute; inset-block: 0; inset-inline-start: 0;
+  width: min(320px, 88vw);
+  display: flex; flex-direction: column;
+  background: var(--work); color: var(--fg);
+  box-shadow: var(--e3);
+  transform: translateX(-100%);
+  transition: transform var(--med) var(--ease-out);
+  overflow-y: auto;
+}
+.drawer--open .drawer__panel { transform: none; }
+
+/* The same 64px bar the screen behind it has, so the ☰ does not move when the drawer opens. */
+.drawer__head {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 64px; padding: max(8px, env(safe-area-inset-top)) var(--pad) 8px;
+}
+.drawer__title { font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 500; }
+
+.drawer__body { display: flex; flex-direction: column; padding-bottom: 12px; }
+.drawer__section { display: flex; flex-direction: column; }
+.drawer__sectiontitle {
+  font-family: var(--mono); font-size: var(--t-label); letter-spacing: .06em;
+  text-transform: lowercase; color: var(--fg-3);
+  padding: 18px var(--pad) 6px;
+}
+
+.menurow {
+  display: flex; align-items: center; gap: 0;
+  min-height: var(--tap); text-decoration: none;
+  color: color-mix(in srgb, var(--fg) 78%, transparent);
+  font-size: var(--t-body-lg);
+}
+.menurow:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+.menurow__mark { width: 2px; align-self: stretch; background: transparent; flex: none; }
+.menurow__label { padding-inline-start: calc(var(--pad) - 2px); flex: 1; }
+.menurow__note {
+  font-size: var(--t-label); color: var(--fg-3); padding-inline-end: var(--pad);
+}
+.menurow--current { color: var(--fg); }
+.menurow--current .menurow__mark { background: var(--fg); }
+/* Dim, but never so dim it stops being an invitation — a gated row is how somebody finds out
+   what an account is for, so it has to stay readable while it says "not yet". */
+.menurow--gated { color: color-mix(in srgb, var(--fg) 55%, transparent); }
+.menurow--inert {
+  color: color-mix(in srgb, var(--fg) 42%, transparent);
+  cursor: default;
+}
+.menurow--inert:hover { background: none; }
+
+.drawer__cta {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 14px; padding: 24px var(--pad);
+  text-align: center;
+}
+.drawer__ctawhy { font-size: var(--t-body); color: var(--fg-2); }
+.drawer__ctanote { font-size: var(--t-label); color: var(--fg-3); }
+.drawer__cta .signin__google { width: 100%; justify-content: center; }
+
+.drawer__foot { margin-top: auto; padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+.drawer__identity {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px var(--pad); text-decoration: none;
+}
+.drawer__identity:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+/* An initial, not a photo. Loading the avatar would mean a network call on the one surface
+   that has to open instantly. */
+.drawer__avatar {
+  width: 32px; height: 32px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--work-4); color: var(--fg);
+  font-size: var(--t-label-lg); font-weight: 500;
+}
+.drawer__who { display: flex; flex-direction: column; min-width: 0; }
+.drawer__name {
+  font-size: var(--t-label-lg); font-weight: 500; color: var(--fg);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.drawer__tenant {
+  font-size: var(--t-label); color: var(--fg-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 
 /* An overline in the action colour. Material calls this a label; it labels, nothing more. */
 .eyebrow {
@@ -442,3 +558,109 @@ h1.hero {
   white-space: pre-wrap; overflow-wrap: anywhere;
   background: var(--surface-high); border-radius: var(--r-sm); padding: 12px;
 }
+
+/* ============================================================ quick actions
+ *
+ * The short list under the carousel. The menu is behind a hamburger, which is the right place
+ * for navigation and the wrong place for the three things a person actually does on their
+ * second visit. Tonal rows rather than a hairline list, so the group reads as a set of controls
+ * sitting UNDER the cards rather than as a menu that leaked onto the home screen.
+ */
+
+.quick {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 4px var(--gutter, var(--pad)) clamp(24px, 5vw, 40px);
+}
+.quick__label {
+  font-family: var(--mono); font-size: var(--t-label); letter-spacing: .06em;
+  color: var(--on-surface-3); padding-bottom: 2px;
+}
+.quick__row {
+  display: flex; align-items: center; gap: 12px;
+  min-height: var(--tap); padding: 8px 14px;
+  border-radius: var(--r-md); background: var(--surface);
+  text-decoration: none; color: var(--on-surface);
+}
+.quick__row:hover { background: color-mix(in srgb, var(--on-surface) 8%, var(--surface)); }
+.quick__text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+/* One line each, ellipsised rather than wrapped. A hint that wraps is a hint that was too
+   long to be a hint. */
+.quick__title,
+.quick__hint { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.quick__title { font-size: var(--t-label-lg); font-weight: 500; }
+.quick__hint { font-size: var(--t-body-sm); color: var(--on-surface-2); }
+.quick__note { font-size: var(--t-label); color: var(--on-surface-3); flex: none; }
+.quick__row--gated { opacity: .78; }
+.quick__row--inert { opacity: .55; cursor: default; }
+.quick__row--inert:hover { background: var(--surface); }
+
+/* ============================================================ the gate
+ *
+ * Every gate in the product is this screen, and the only thing that differs is the sentence
+ * explaining what you are about to be let into.
+ */
+
+.gate { max-width: 62ch; }
+.gate__note { font-size: var(--t-body); color: var(--on-surface-2); line-height: 1.6; }
+.gate__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ============================================================ account & settings */
+
+.account__email { font-size: var(--t-body-lg); color: var(--on-surface-2); }
+.account__tenant { font-size: var(--t-title); color: var(--on-surface); }
+.account__id { font-size: var(--t-label); color: var(--on-surface-3); }
+.account__note { font-size: var(--t-body); color: var(--on-surface-2); max-width: 62ch; line-height: 1.6; }
+.account__note--quiet { color: var(--on-surface-3); }
+
+.settings__value { font-size: var(--t-body-lg); color: var(--on-surface); }
+.settings__note { font-size: var(--t-body); color: var(--on-surface-2); max-width: 62ch; line-height: 1.6; }
+
+/* ============================================================ records */
+
+.records__empty { font-size: var(--t-body-lg); color: var(--on-surface-2); max-width: 62ch; }
+.records__row { display: flex; flex-direction: column; gap: 8px; }
+.records__open {
+  font-size: var(--t-body); color: var(--action); text-decoration: none;
+  display: inline-flex; gap: 8px; align-items: baseline;
+}
+.records__open:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* A job with no record says so, and says it in mono — it is a fact about the data, not a
+   sentence somebody wrote. */
+.records__note { font-size: var(--t-label); color: var(--on-surface-3); }
+
+.records__seals { display: flex; flex-direction: column; gap: 2px; }
+.records__seal {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  min-height: var(--tap); padding: 8px 12px; border-radius: var(--r-sm);
+  text-decoration: none; color: var(--on-surface);
+}
+.records__seal:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); }
+.records__sealid { font-size: var(--t-label); flex: 1; min-width: 12ch; }
+.records__sealwhen { font-size: var(--t-label); color: var(--on-surface-3); }
+
+/* ============================================================ pairing */
+
+.pair__why { font-size: var(--t-body); color: var(--on-surface-2); max-width: 62ch; line-height: 1.6; }
+.pair__paired { font-size: var(--t-title); color: var(--measured-lift); }
+
+.drivers { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.driver {
+  display: grid; gap: 2px 16px; padding: 12px;
+  border-radius: var(--r-sm); background: var(--surface);
+}
+@media (min-width: 620px) {
+  .driver { grid-template-columns: 1fr auto; align-items: baseline; }
+  .driver__produces { grid-column: 2; text-align: right; }
+}
+.driver__label { font-size: var(--t-label-lg); font-weight: 500; }
+.driver__id { font-size: var(--t-label); color: var(--on-surface-3); }
+.driver__produces { font-size: var(--t-label); color: var(--on-surface-2); }
+/* The generic driver is a GUESS, and it is labelled as one everywhere it surfaces. */
+.driver--generic { border: 1px dashed var(--outline); background: transparent; }
+
+/* ============================================================ model tests, unwrapped
+ *
+ * `.mt` used to carry `w-wrap page__body` from the page itself; the shell now supplies both,
+ * so this only has to be a block.
+ */
+.mt { display: block; }

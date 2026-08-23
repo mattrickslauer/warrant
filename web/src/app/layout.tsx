@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { SessionProvider } from "@/auth/session-context";
+import { InstrumentProvider } from "@/instrument/session";
 import { getSessionSafe } from "@/auth/session";
 import { Roboto, Google_Sans_Code } from "next/font/google";
 import "./globals.css";
@@ -52,7 +53,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${roboto.variable} ${googleSansCode.variable}`}>
       <body>
-        <SessionProvider initial={session}>{children}</SessionProvider>
+        {/* The instrument sits INSIDE the session and above the router: a technician pairs a
+            tool once and then walks several steps and several jobs with it in their hand, so the
+            connection has to outlive every page it is used on. */}
+        <SessionProvider initial={session}>
+          <InstrumentProvider>{children}</InstrumentProvider>
+        </SessionProvider>
       </body>
     </html>
   );

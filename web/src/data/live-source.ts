@@ -152,6 +152,18 @@ export class LiveSource implements DataSource {
     return snap.exists() ? (snap.data() as SealedRecord) : null;
   }
 
+  async listRecords(tenantId: string): Promise<SealedRecord[]> {
+    const snap = await getDocs(
+      query(tenantCol(this.db, tenantId, "records"), orderBy("sealed_at", "desc")),
+    );
+    // Scoped on the way out, the way a job header already is. A bare id from the document
+    // would not survive a round trip through getRecord(), which addresses by tenant.
+    return snap.docs.map((d) => {
+      const rec = d.data() as SealedRecord;
+      return { ...rec, id: scoped(tenantId, rec.id ?? d.id) };
+    });
+  }
+
   async listDecisions(tenantId: string): Promise<Decision[]> {
     const snap = await getDocs(
       query(tenantCol(this.db, tenantId, "decisions"), orderBy("at", "desc")),
@@ -418,7 +430,7 @@ export class LiveSource implements DataSource {
 // ---------------------------------------------------------------- assembly
 
 /** The job document as STORED: everything except the steps, which are subcollections. */
-type JobHeader = Omit<Job, "steps"> & {
+export type JobHeader = Omit<Job, "steps"> & {
   step_count?: number;
   performed_count?: number;
   field_count?: number;

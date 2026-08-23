@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Ground, Wrap, Rule, AgentStamp, type AgentName } from "@/components";
+import { Wrap, Rule, AgentStamp, type AgentName } from "@/components";
 import { fleetSummary } from "@/server/operator";
+import { AppShell } from "../shell/AppShell";
 
 // The operator view: what the fleet has decided, across every tenant.
 //
@@ -36,14 +37,7 @@ export default async function Fleet() {
   const summary = await fleetSummary();
 
   return (
-    <Ground tone="work">
-      <div className="app">
-        <header className="topbar">
-          <Link className="topbar__logo" href="/"><i aria-hidden />Warrant</Link>
-          <nav className="topbar__nav">
-            <Link href="/about">What this is for</Link>
-          </nav>
-        </header>
+    <AppShell tone="work" frame="app">
 
         <main className="page__body">
           <Wrap>
@@ -167,8 +161,7 @@ export default async function Fleet() {
             </div>
           </Wrap>
         </main>
-      </div>
-    </Ground>
+    </AppShell>
   );
 }
 

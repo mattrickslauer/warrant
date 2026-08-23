@@ -3,7 +3,7 @@ import {
   AgentTrace, AgentStamp, JobRow, Timeline, HoldBanner, ChatTurn, StepCard,
   type AgentName,
 } from "@/components";
-import { Masthead, Footer } from "../Masthead";
+import { AppShell } from "../shell/AppShell";
 
 // Every primitive, on both grounds, at whatever width you are holding.
 // This page is the reference build's contract with the agents fanning out on the surfaces:
@@ -140,11 +140,7 @@ function Specimens() {
 export default function LibraryPage() {
   return (
     <>
-      <Ground tone="work">
-        <div className="page">
-          <Masthead />
-          <main className="page__body">
-            <Wrap>
+      <AppShell tone="work" footer={false}>
               <div className="stack stack--lg">
                 <div className="stack">
                   <p className="eyebrow">The workshop ground</p>
@@ -157,10 +153,7 @@ export default function LibraryPage() {
                 <Rule />
                 <Specimens />
               </div>
-            </Wrap>
-          </main>
-        </div>
-      </Ground>
+      </AppShell>
 
       <Ground tone="paper">
         <div className="page">
@@ -180,7 +173,10 @@ export default function LibraryPage() {
               </div>
             </Wrap>
           </main>
-          <Footer />
+          <footer className="w-wrap footer">
+            <span>Warrant</span>
+            <span>Every screen is these arranged differently</span>
+          </footer>
         </div>
       </Ground>
     </>
