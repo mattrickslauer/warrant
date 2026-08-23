@@ -27,7 +27,32 @@ describe("readPayload", () => {
   test("a genuine device attests", () => {
     const a = readPayload(GENUINE, PKG);
     assert.equal(a.verdict, "MEETS_DEVICE_INTEGRITY");
-    assert.equal(a.deviceId, "abc123");
+  });
+
+  // THIS TEST USED TO ASSERT THE BUG.
+  //
+  // It expected `deviceId === "abc123"`, which is the `requestDetails.requestHash` in the
+  // fixture above — and a requestHash is a string the CLIENT puts in its own token request.
+  // So the field the tier ceiling is priced on was being filled from the party being attested,
+  // which is the exact fabrication attest.ts's own header says it never falls back to. (The
+  // line producing it was `licensed ? requestHash : requestHash`, identical in both branches,
+  // which is how it survived review.)
+  //
+  // Google's payload carries no stable per-install identifier, so there is nothing honest to
+  // put here. Null is the answer, and the VERDICT — which Google supplies and a client cannot
+  // forge — is what `Tier.ATTESTED` actually rests on.
+  test("no device id is invented from something the client chose", () => {
+    const a = readPayload(GENUINE, PKG);
+    assert.equal(a.deviceId, null,
+      "requestHash is client-supplied and must never be reported as a device identity");
+  });
+
+  test("a token that will not say which app it is for is not an attestation", () => {
+    const anonymous = structuredClone(GENUINE);
+    delete anonymous.tokenPayloadExternal.appIntegrity.packageName;
+    const a = readPayload(anonymous, PKG);
+    assert.equal(a.verdict, "UNATTESTED",
+      "an absent package name is the shape a truncated or forged payload has");
   });
 
   test("an unrecognised device FAILS rather than going quiet", () => {

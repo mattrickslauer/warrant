@@ -80,6 +80,27 @@ export interface IdentityInput {
   photoUrl: string | null;
 }
 
+/**
+ * Is this a URL Google serves profile photos from?
+ *
+ * Exact suffix match on a registrable domain, with the leading dot required — `endsWith` alone
+ * would accept `evilgoogleusercontent.com`, which is a domain anybody can register.
+ */
+export function isGoogleAvatarUrl(raw: string): boolean {
+  let url: URL;
+  try {
+    url = new URL(raw);
+  } catch {
+    return false;
+  }
+  if (url.protocol !== "https:") return false;
+  const host = url.hostname.toLowerCase();
+  return host === "googleusercontent.com"
+    || host.endsWith(".googleusercontent.com")
+    || host === "google.com"
+    || host.endsWith(".google.com");
+}
+
 /** Google returns a small default. The size hint is a query parameter, not a path segment. */
 export function sizedPhotoUrl(raw: string | null, px = 192): string | null {
   if (!raw) return null;
@@ -149,31 +170,43 @@ export async function ensureMember(tenant: TenantRef, identity: IdentityInput): 
     return { ...existing, ...patch } as MemberDoc;
   }
 
-  // First member of a tenant owns it. This is the entire provisioning model.
-  const isFirst = (await ref.parent.limit(1).get()).empty;
-  const role: Role = isFirst ? "owner" : "technician";
-
   const photoRef = photoUrl ? await copyAvatar(identity.uid, photoUrl) : null;
 
-  const member: MemberDoc = {
-    schema_version: SCHEMA_VERSION,
-    uid: identity.uid,
-    tenant_id: tenant.id,
-    email: identity.email,
-    email_verified: identity.emailVerified,
-    display_name: identity.displayName,
-    photo_url: photoUrl,
-    photo_ref: photoRef,
-    photo_fetched_at: photoRef ? now : null,
-    role,
-    standing: standingFor(role),
-    joined_at: now,
-    last_seen_at: now,
-    disabled: false,
-    calendar: null,
-  };
+  // First member of a tenant owns it. This is the entire provisioning model — and it is
+  // decided INSIDE a transaction, because it is a read-then-write on a contended key.
+  //
+  // Two people from the same new domain signing in together both saw an empty collection and
+  // both became owner, which hands a second unintended person `may_waive_to_strictness: 3` on
+  // the day the tenant is created. Rare, silent, and exactly the kind of thing nobody goes
+  // looking for afterwards. The transaction reads the sibling query and the write is
+  // contingent on it, so the second signer loses the race and joins as a technician.
+  const member = await adminDb().runTransaction(async (tx) => {
+    const mine = await tx.get(ref);
+    if (mine.exists) return withDefaults(mine.data() as MemberDoc);
 
-  await ref.set({ ...member, created_at: FieldValue.serverTimestamp() }, { merge: true });
+    const isFirst = (await tx.get(ref.parent.limit(1))).empty;
+    const role: Role = isFirst ? "owner" : "technician";
+
+    const fresh: MemberDoc = {
+      schema_version: SCHEMA_VERSION,
+      uid: identity.uid,
+      tenant_id: tenant.id,
+      email: identity.email,
+      email_verified: identity.emailVerified,
+      display_name: identity.displayName,
+      photo_url: photoUrl,
+      photo_ref: photoRef,
+      photo_fetched_at: photoRef ? now : null,
+      role,
+      standing: standingFor(role),
+      joined_at: now,
+      last_seen_at: now,
+      disabled: false,
+      calendar: null,
+    };
+    tx.set(ref, { ...fresh, created_at: FieldValue.serverTimestamp() }, { merge: true });
+    return fresh;
+  });
   return member;
 }
 
@@ -193,8 +226,25 @@ export async function copyAvatar(uid: string, photoUrl: string): Promise<string 
   const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
   if (!bucketName) return null;
 
+  // WHERE THE URL IS ALLOWED TO POINT, checked before anything is fetched.
+  //
+  // `picture` looks like a Google-issued claim and is not one: the Firebase client SDK lets a
+  // signed-in user set it to anything with `updateProfile({ photoURL })`, and the value lands
+  // in their next ID token. This function then fetched it — server-side, from Cloud Run, with
+  // no host restriction, because `sizedPhotoUrl` passes non-Google hosts through unchanged.
+  // That is an ordinary authenticated user aiming the server at http://169.254.169.254/ or at
+  // anything else inside the perimeter.
+  //
+  // The docstring already says what this is for — "our copy of the GOOGLE profile image" — so
+  // the allowlist is not a restriction on the feature, it is the feature written down.
+  if (!isGoogleAvatarUrl(photoUrl)) return null;
+
   try {
-    const response = await fetch(photoUrl, { signal: AbortSignal.timeout(5000) });
+    const response = await fetch(photoUrl, {
+      signal: AbortSignal.timeout(5000),
+      // A 30x to an internal address would walk straight back out of the allowlist.
+      redirect: "error",
+    });
     if (!response.ok) return null;
 
     const contentType = response.headers.get("content-type") ?? "image/jpeg";

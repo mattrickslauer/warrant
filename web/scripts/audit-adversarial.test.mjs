@@ -4,7 +4,7 @@ import { test, before, after, describe } from "node:test";
 import assert from "node:assert/strict";
 import { initializeTestEnvironment, assertFails, assertSucceeds } from "@firebase/rules-unit-testing";
 import { readFileSync } from "node:fs";
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, addDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, addDoc, getDocs } from "firebase/firestore";
 
 const RULES = new URL("../../firestore.rules", import.meta.url);
 let env;
@@ -213,5 +213,24 @@ describe("F. public record sharing", () => {
     });
     await assertFails(getDoc(doc(OUT(), "tenants/acme.com/records/rec_pub")));
     await assertFails(getDoc(doc(SOLO("stranger"), "tenants/acme.com/records/rec_pub")));
+  });
+
+  // THE CAPABILITY URL IS ONLY A CAPABILITY IF THE IDS MUST BE GUESSED.
+  //
+  // `/records/{publicId}` is world-readable by design — holding the link is the credential.
+  // But `allow read` is `get` PLUS `list`, and a list rule that does not depend on which
+  // document is being fetched grants the entire collection: one getDocs() and a stranger walks
+  // every record anybody ever shared, no id-guessing required. The unguessable 22 characters
+  // bought nothing. Split into `get` / `list`, and this is what pins it.
+  test("the published catalogue can be READ by link and never ENUMERATED", async () => {
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), "records/pub_abcdefghijklmnopqrstuv"),
+                   { id: "pub_abcdefghijklmnopqrstuv", revoked: false });
+    });
+    // Naming it works. That is the whole product feature.
+    await assertSucceeds(getDoc(doc(OUT(), "records/pub_abcdefghijklmnopqrstuv")));
+    // Asking for all of them does not.
+    await assertFails(getDocs(collection(OUT(), "records")));
+    await assertFails(getDocs(collection(SOLO("stranger"), "records")));
   });
 });

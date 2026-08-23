@@ -191,14 +191,21 @@ class Inspector(Agent):
                     errs.append(f"{k}: must be null when the verdict is PASS")
         return errs
 
-    def check_conditionals_for(self, out: dict[str, Any], field: dict[str, Any]) -> list[str]:
+    def check_conditionals_for_case(self, out: dict[str, Any],
+                                    case: dict[str, Any]) -> list[str]:
         """The rules that need the FIELD as well as the answer.
 
-        `check_conditionals` sees only what the agent returned, and "required when the rule is
-        matches" is a statement about the question rather than the answer. Kept separate rather
-        than widening the base signature, which every other agent would then have to ignore.
+        THIS USED TO BE DEAD CODE. It was written as `check_conditionals_for(out, field)`, a
+        name nothing in the repository ever called — so the one rule it exists to enforce never
+        ran, and an Inspector could PASS a `matches` field having transcribed nothing at all
+        while `Result.valid` reported the answer as conforming. `outcome.ts` catches that case
+        in the product, which is why it never surfaced as a bug; what it left broken was the
+        EVAL suite, where a run scored as a clean pass on an answer the contract forbids.
+
+        It is now reached through `Agent.validate`, which passes the case for exactly this.
         """
-        errs = self.check_conditionals(out)
+        field = case.get("field") or {}
+        errs: list[str] = []
         if field.get("acceptance_rule") == "matches" and out.get("verdict") == "PASS" \
                 and not (out.get("observed") or "").strip():
             errs.append("observed: required to PASS a `matches` rule — the comparison is made "

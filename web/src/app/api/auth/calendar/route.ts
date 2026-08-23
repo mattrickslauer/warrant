@@ -11,8 +11,11 @@
 // justify.
 
 import { NextResponse } from "next/server";
+import { randomBytes } from "node:crypto";
+import { cookies } from "next/headers";
 import { requireSession } from "@/auth/session";
-import { CALENDAR_SCOPE, hasCalendarLink, forgetRefreshToken } from "@/server/calendar";
+import { CALENDAR_SCOPE, CALENDAR_STATE_COOKIE, hasCalendarLink, forgetRefreshToken,
+         unlinkMember } from "@/server/calendar";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -53,9 +56,33 @@ export async function GET(request: Request) {
   url.searchParams.set("prompt", "consent");
   url.searchParams.set("include_granted_scopes", "true");
   url.searchParams.set("login_hint", session.email ?? "");
-  // The uid is carried in `state` and checked against the session on the way back, so a
-  // callback cannot attach somebody else's calendar to this account.
-  url.searchParams.set("state", session.uid);
+
+  // A RANDOM, SINGLE-USE STATE — not the uid, which is what this used to send.
+  //
+  // `state` is a CSRF token, and a CSRF token has to be unguessable to the attacker and known
+  // to this browser. The uid is neither: it is stable, it is visible to every colleague in the
+  // tenant, and the callback's `state === session.uid` check therefore passes for ANY request
+  // that reaches it in the victim's browser. So an attacker could start their own consent
+  // flow, take their own `code`, and get the victim to load
+  // `/api/auth/calendar/callback?code=<attacker's>&state=<victim's uid>` — the check passes,
+  // and the ATTACKER's refresh token is stored as the victim's calendar link. Every task the
+  // sweep schedules, with its title and detail, lands on the attacker's calendar.
+  //
+  // The nonce is held in an httpOnly cookie the attacker cannot read or set, so the callback
+  // is comparing something only this browser could have.
+  const state = randomBytes(32).toString("base64url");
+  const jar = await cookies();
+  jar.set({
+    name: CALENDAR_STATE_COOKIE,
+    value: state,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    // Long enough to read a consent screen, short enough that a stale one is not lying around.
+    maxAge: 600,
+  });
+  url.searchParams.set("state", state);
 
   return NextResponse.redirect(url.toString());
 }
@@ -69,5 +96,11 @@ export async function DELETE() {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
   await forgetRefreshToken(session.uid);
+  // AND the member document, which is what the UI reads. Deleting only the token left
+  // `calendar.linked: true` on the member forever, so the surface reported a link that no
+  // longer existed and `/api/auth/calendar` short-circuited with `{ linked: true }` — nobody
+  // could re-link. The same drift happens when `accessTokenFor` forgets a token Google has
+  // revoked, which is why `unlinkMember` is shared rather than inlined here.
+  await unlinkMember(session.tenant.id, session.uid);
   return NextResponse.json({ linked: false });
 }

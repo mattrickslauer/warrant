@@ -38,7 +38,8 @@ export async function POST(request: Request) {
 
   // null clears it, which is how you get back to the solo-tenant branch.
   const hd = body.hd === null ? null : normaliseHd(body.hd);
-  if (body.hd && !hd && body.hd !== null) {
+  // `body.hd &&` has already excluded null, so the third clause could never fire.
+  if (body.hd && !hd) {
     return NextResponse.json({ error: `Not a usable hosted domain: ${body.hd}` }, { status: 400 });
   }
 

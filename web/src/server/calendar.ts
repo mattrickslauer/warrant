@@ -19,6 +19,9 @@ import { adminDb } from "@/auth/admin";
 /** Write-only needs no read scope, and asking for one we do not use is a worse consent screen. */
 export const CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
 
+/** The single-use CSRF nonce for the consent round trip. httpOnly, so only this browser has it. */
+export const CALENDAR_STATE_COOKIE = "warrant_calendar_state";
+
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const EVENTS_URL = (calendarId: string) =>
   `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events`;
@@ -55,6 +58,26 @@ export async function hasCalendarLink(uid: string): Promise<boolean> {
 
 export async function forgetRefreshToken(uid: string): Promise<void> {
   await secretRef(uid).delete();
+}
+
+/**
+ * Clear the member document's record that a calendar is linked.
+ *
+ * Separate from the token because they live in different places for a good reason — the token
+ * is at /user_secrets/{uid} where no colleague can reach it, the flag is on the member where
+ * the UI can — and because the two drift the moment one is cleared without the other. Never
+ * throws: a member row that is briefly out of date is a cosmetic problem, and an unlink that
+ * failed because a document was missing would leave the token behind, which is not.
+ */
+export async function unlinkMember(tenantId: string, uid: string): Promise<void> {
+  try {
+    await adminDb()
+      .collection("tenants").doc(tenantId).collection("members").doc(uid)
+      .set({ calendar: { linked: false, linked_at: null, calendar_id: "primary" } },
+           { merge: true });
+  } catch {
+    // Nothing to do. The token is what grants access, and it is already gone.
+  }
 }
 
 /** Raised when Calendar says slow down. The caller leaves the task for the next sweep. */

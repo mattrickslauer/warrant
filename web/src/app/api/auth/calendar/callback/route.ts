@@ -7,7 +7,9 @@
 
 import { NextResponse } from "next/server";
 import { requireSession } from "@/auth/session";
-import { CALENDAR_SCOPE, storeRefreshToken } from "@/server/calendar";
+import { CALENDAR_SCOPE, CALENDAR_STATE_COOKIE, storeRefreshToken } from "@/server/calendar";
+import { cookies } from "next/headers";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { adminDb } from "@/auth/admin";
 
 export const runtime = "nodejs";
@@ -34,9 +36,17 @@ export async function GET(request: Request) {
   if (!code) {
     return NextResponse.json({ error: "No authorisation code." }, { status: 400 });
   }
-  // The linkage that makes this safe: the flow must have been started by the account that is
-  // finishing it. Without this check a crafted callback could attach an attacker's calendar.
-  if (state !== session.uid) {
+  // The linkage that makes this safe: the flow must have been STARTED BY THIS BROWSER.
+  //
+  // This compared `state` against `session.uid`, which is not a secret — it is stable and
+  // visible to colleagues — so the check passed for any callback an attacker could get the
+  // victim to load, and the attacker's own `code` would then bind the attacker's calendar to
+  // the victim's account. The nonce is set httpOnly by `/api/auth/calendar` and cleared here,
+  // so it is single-use and unforgeable by anyone but this browser.
+  const jar = await cookies();
+  const expected = jar.get(CALENDAR_STATE_COOKIE)?.value;
+  jar.set({ name: CALENDAR_STATE_COOKIE, value: "", path: "/", maxAge: 0 });
+  if (!expected || !state || state.length < 32 || !timingSafeEqualStr(state, expected)) {
     return NextResponse.json({ error: "This callback does not belong to this session." }, { status: 401 });
   }
 
@@ -79,4 +89,12 @@ export async function GET(request: Request) {
          { merge: true });
 
   return NextResponse.redirect(new URL("/?calendar=linked", request.url));
+}
+
+/** Constant time, and length-safe: timingSafeEqual throws on a mismatch, which is its own oracle. */
+function timingSafeEqualStr(a: string, b: string): boolean {
+  return timingSafeEqual(
+    createHash("sha256").update(a).digest(),
+    createHash("sha256").update(b).digest(),
+  );
 }

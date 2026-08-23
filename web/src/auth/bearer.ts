@@ -17,10 +17,16 @@ import { getSession, toSession, type Session } from "@/auth/session";
 /**
  * Resolve who is calling, or null.
  *
- * The cookie is tried first because it is the common case and costs no round trip; a bearer
- * token is verified against Firebase, with `checkRevoked` left off deliberately — it costs a
- * network call on every request, and these routes are not the place a revoked session does
- * damage. The session-cookie path already checks revocation where it matters.
+ * The cookie is tried first because it is the common case and costs no round trip; the bearer
+ * token is verified against Firebase WITH `checkRevoked`, like the cookie path.
+ *
+ * It used to be left off, on the argument that "these routes are not the place a revoked
+ * session does damage". They are exactly that place. The bearer path is how the phone reaches
+ * `/api/adjudicate`, `/api/jobs/seal`, `/api/procedures/seed` and `/api/scoper/turn` — it
+ * writes evidence, seals records and wakes the fleet. And the README promises that when an
+ * employer disables an account the technician's access ends the same instant; a promise that
+ * holds for the browser and not for the handset is not the promise that was made. It costs one
+ * lookup, which is what `session.ts` already decided that promise is worth.
  */
 export async function callerSession(request: Request): Promise<Session | null> {
   const cookie = await getSession().catch(() => null);
@@ -31,7 +37,7 @@ export async function callerSession(request: Request): Promise<Session | null> {
   if (!match) return null;
 
   try {
-    const decoded = await adminAuth().verifyIdToken(match[1]);
+    const decoded = await adminAuth().verifyIdToken(match[1], true);
     return toSession(decoded);
   } catch {
     // An unverifiable token is not an error to report in detail. Saying which part failed

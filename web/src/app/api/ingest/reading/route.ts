@@ -25,7 +25,6 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 interface Body {
-  tenant_id?: string;
   job_id?: string;
   step_id?: string;
   field_key?: string;
@@ -33,8 +32,6 @@ interface Body {
   key?: string;
   value?: number;
   unit?: string;
-  tool_id?: string;
-  at?: string;
 }
 
 /**
@@ -43,19 +40,44 @@ interface Body {
  * A paired instrument has no Google account. It presents a secret issued when it was paired,
  * and the comparison is constant-time because a timing oracle on this check would let someone
  * discover the secret that mints measured values.
+ *
+ * THE KEY IS PER DEVICE, and it did not used to be. One global `WARRANT_INSTRUMENT_KEY`
+ * authenticated every instrument in every tenant, and the caller then NAMED its own tool_id in
+ * a header — so the identity of the instrument, which is the only thing separating a measured
+ * number from a typed one, was self-asserted by whoever held one shared secret. Pairing means
+ * a device has an identity; a shared password is not one.
+ *
+ * `WARRANT_INSTRUMENT_KEYS` is `toolId:secret` pairs, comma-separated. The tool_id is looked
+ * UP from the secret rather than read off the request, so a device can only ever speak as
+ * itself. The old single-key variable is still honoured as `tool_id` = `WARRANT_INSTRUMENT_ID`
+ * (or `instrument-0`) so an existing deployment keeps working, but it names one device now
+ * rather than authorising any.
  */
 function pairedDevice(request: Request): string | null {
   const presented = request.headers.get("x-warrant-tool-key");
-  const expected = process.env.WARRANT_INSTRUMENT_KEY;
-  if (!presented || !expected) return null;
+  if (!presented) return null;
+
+  const pairs: Array<[string, string]> = [];
+  for (const entry of (process.env.WARRANT_INSTRUMENT_KEYS ?? "").split(",")) {
+    const colon = entry.indexOf(":");
+    if (colon <= 0) continue;
+    const toolId = entry.slice(0, colon).trim();
+    const secret = entry.slice(colon + 1).trim();
+    if (toolId && secret) pairs.push([toolId, secret]);
+  }
+  const legacy = process.env.WARRANT_INSTRUMENT_KEY;
+  if (legacy) pairs.push([process.env.WARRANT_INSTRUMENT_ID ?? "instrument-0", legacy]);
 
   // Hash both sides first so the compared buffers are always the same length — timingSafeEqual
-  // throws on a length mismatch, and that throw is itself an oracle.
+  // throws on a length mismatch, and that throw is itself an oracle. Every candidate is
+  // compared even after a match, so the number of configured devices does not leak either.
   const a = createHash("sha256").update(presented).digest();
-  const b = createHash("sha256").update(expected).digest();
-  if (!timingSafeEqual(a, b)) return null;
-
-  return request.headers.get("x-warrant-tool-id");
+  let matched: string | null = null;
+  for (const [toolId, secret] of pairs) {
+    const b = createHash("sha256").update(secret).digest();
+    if (timingSafeEqual(a, b)) matched = matched ?? toolId;
+  }
+  return matched;
 }
 
 export async function POST(request: Request) {
@@ -71,10 +93,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Body must be JSON." }, { status: 400 });
   }
 
-  const { tenant_id, job_id, step_id, field_key, key, value, unit } = body;
-  if (!tenant_id || !job_id || !step_id || !field_key || !key || !unit) {
+  const { job_id, step_id, field_key, key, value, unit } = body;
+  if (!job_id || !step_id || !field_key || !key || !unit) {
     return NextResponse.json(
-      { error: "tenant_id, job_id, step_id, field_key, key and unit are required." },
+      { error: "job_id, step_id, field_key, key and unit are required." },
       { status: 400 },
     );
   }
@@ -82,11 +104,37 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "value must be a finite number." }, { status: 400 });
   }
 
-  const at = body.at ?? new Date().toISOString();
+  // THE TENANT IS NOT IN THE BODY, and that is the fix this handler most needed.
+  //
+  // It used to be: `tenant_id` arrived as a field and was used unchecked to address the write.
+  // Admin credentials bypass firestore.rules, so anyone holding the instrument key could mint
+  // a measured reading into ANY tenant, on any job id — a cross-tenant write behind one shared
+  // secret. The tenant now comes from the job id, exactly as `/api/adjudicate` takes it, and
+  // the job has to exist before anything is written to it.
+  const slash = job_id.indexOf("/");
+  if (slash <= 0) {
+    return NextResponse.json({ error: "job_id must be tenant-scoped." }, { status: 400 });
+  }
+  const tenantId = job_id.slice(0, slash);
+  const bareJobId = job_id.slice(slash + 1);
+  if (!bareJobId || bareJobId.includes("/")) {
+    return NextResponse.json({ error: "job_id must be tenant-scoped." }, { status: 400 });
+  }
+
+  // The timestamp is OURS. It used to be `body.at ?? now`, which let the device date its own
+  // measurement — and "when was this measured" is half of what a reading proves.
+  const at = new Date().toISOString();
   const fieldId = `${step_id}__${field_key}`;
   const db = adminDb();
-  const tenantRef = db.collection("tenants").doc(tenant_id);
-  const jobRef = tenantRef.collection("jobs").doc(job_id);
+  const tenantRef = db.collection("tenants").doc(tenantId);
+  const jobRef = tenantRef.collection("jobs").doc(bareJobId);
+
+  const jobSnap = await jobRef.get();
+  if (!jobSnap.exists) {
+    // Deliberately the same answer as an unknown tenant. A device probing for which tenants
+    // exist learns nothing from the difference.
+    return NextResponse.json({ error: "No such job." }, { status: 404 });
+  }
 
   // The reading is FLAT, at /tenants/{t}/readings, not nested under a component. A nested
   // collection binds a {document=**} wildcard to its OUTER name and would escape the
@@ -101,6 +149,12 @@ export async function POST(request: Request) {
   batch.set(readingRef, {
     schema_version: 1,
     id: readingRef.id,
+    // THE JOB. Without it a reading is addressable only by `field_id`, which is
+    // `{stepId}__{fieldKey}` — identical for every job running the same procedure. The Seal
+    // and the Inspector both look a reading up by field, so one job's instrument reading was
+    // being credited to another job's field. The number that separates `measured` from typed
+    // has to know which job it measured.
+    job_id: bareJobId,
     field_id: fieldId,
     component_id: body.component_id ?? null,
     key, value, unit,
@@ -120,6 +174,11 @@ export async function POST(request: Request) {
     attestation_play_integrity: null,
     redacted: true,
     armor_verdict: null,
+    // FALSE, not absent. Firestore cannot query for a missing field, so `where("adjudicated",
+    // "==", false)` does not match a document that never had the key — and this route was the
+    // one writer that omitted it, which made every instrument capture invisible to the sweep
+    // that exists to catch evidence no client stayed alive to have judged.
+    adjudicated: false,
     created_at: at,
   });
 

@@ -31,7 +31,14 @@ export type AttestationVerdict =
 
 export interface Attestation {
   verdict: AttestationVerdict;
-  /** Google's per-app-install stable identifier, when it gave one. Never invented. */
+  /**
+   * Always null today, and deliberately so.
+   *
+   * Play Integrity's payload carries no stable per-install identifier. What it does carry is
+   * `requestDetails.requestHash`, which this file used to report here and which the CLIENT
+   * chooses — see `readPayload`. Kept on the interface because the capture document has the
+   * field and a future nonce-bound flow would fill it honestly.
+   */
   deviceId: string | null;
   detail: string;
 }
@@ -50,6 +57,14 @@ export async function verifyIntegrity(
   packageName: string,
   fetchImpl: typeof fetch = fetch,
 ): Promise<Attestation> {
+  // NOTE, and it is a real limit rather than a defect being hidden: this verifies that Google
+  // issued the token for this app and what it says about the device. It does NOT bind the token
+  // to THIS capture, because that requires a server-issued nonce echoed back in `requestHash`,
+  // and the phone has no round trip to collect one before it shoots. So a valid token can be
+  // replayed across captures from the same install. That raises the tier ceiling on evidence it
+  // did not accompany, and nothing more — it cannot make a photograph honest, which is the
+  // point `Tier.ATTESTED` is careful to make. Issuing a nonce at step start would close it.
+
   if (!token) {
     return {
       verdict: "UNATTESTED",
@@ -105,17 +120,37 @@ export function readPayload(body: unknown, packageName: string): Attestation {
 
   // The token is issued FOR a package. A token minted for another app is not evidence about
   // this one, however genuine it is.
+  //
+  // An ABSENT package name is refused too, and that is the change: `named && named !== ...`
+  // accepted a payload that simply did not say which app it was for, which is the one shape a
+  // forged or truncated payload is most likely to have. An attestation that cannot say what it
+  // attests is not an attestation.
   const named = payload.appIntegrity?.packageName;
-  if (named && named !== packageName) {
+  if (named !== packageName) {
     return { verdict: "UNATTESTED", deviceId: null,
-             detail: `The token was issued for ${named}, not ${packageName}.` };
+             detail: named
+               ? `The token was issued for ${named}, not ${packageName}.`
+               : "The token did not say which app it was issued for." };
   }
 
   const device: string[] = payload.deviceIntegrity?.deviceRecognitionVerdict ?? [];
-  const deviceId: string | null =
-    payload.accountDetails?.appLicensingVerdict === "LICENSED"
-      ? (payload.requestDetails?.requestHash ?? null)
-      : (payload.requestDetails?.requestHash ?? null);
+
+  // WHAT A DEVICE ID IS, AND WHAT `requestHash` IS NOT.
+  //
+  // This field used to read `appLicensingVerdict === "LICENSED" ? requestHash : requestHash` —
+  // a ternary whose branches are identical, which is a bug on its own, but the smaller one.
+  // `requestDetails.requestHash` is a hash the CLIENT chooses and puts in the token request. So
+  // `attestation_device_id` — the field the whole tier ceiling is priced on — was a value
+  // supplied by the party being attested, which is precisely what the header of this file says
+  // it never falls back to.
+  //
+  // Google's stable per-app-install identifier is `accountDetails.appLicensingVerdict`-gated
+  // and does not appear in the standard payload at all; what does is
+  // `deviceIntegrity.deviceAttributes`, and nothing in it is a stable id either. So there is no
+  // device id to report, and the honest answer is to report none rather than to report the
+  // client's own string. `Tier.ATTESTED` rests on the VERDICT, which Google does supply and the
+  // client cannot forge — that is the part that was always doing the work.
+  const deviceId: string | null = null;
 
   if (device.includes("MEETS_DEVICE_INTEGRITY")) {
     return { verdict: "MEETS_DEVICE_INTEGRITY", deviceId,

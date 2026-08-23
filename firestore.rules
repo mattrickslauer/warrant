@@ -109,13 +109,6 @@ service cloud.firestore {
           && !(request.resource.data.get('capture_surface', '') == 'app_instrument'
                && changing('capture_surface'))
           && !(request.resource.data.get('status', '') == 'sealed' && changing('status'))
-          // AND a document that is ALREADY sealed is closed, not merely un-sealable. The
-          // `changing()` form above asks whether this write sets the status, which is the right
-          // question for a client trying to seal something — and the wrong one for a client
-          // editing a job that was sealed last week, where the status is unchanged because it
-          // was already there. "Written once by the Seal, never updated" is that second
-          // sentence, and only this clause says it.
-          && !(resource != null && resource.data.get('status', '') == 'sealed')
           && !changing('tool_id')
           && !changing('attestation_play_integrity')
           && !changing('attestation_device_id')

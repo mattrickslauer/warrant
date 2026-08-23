@@ -80,11 +80,16 @@ class Agent:
                              temperature=temperature, live=live,
                              **({"model": model} if model else {}))
         return Result(output=call.output, call=call,
-                      schema_errors=self.validate(call.output),
+                      schema_errors=self.validate(call.output, case),
                       prompt=describe(instruction, parts))
 
-    def validate(self, output: dict[str, Any]) -> list[str]:
-        """Structural conformance, before anything is asked about the answer's content."""
+    def validate(self, output: dict[str, Any],
+                 case: dict[str, Any] | None = None) -> list[str]:
+        """Structural conformance, before anything is asked about the answer's content.
+
+        `case` is optional so a test can validate a bare answer, and passed by `run` so the
+        rules that need the QUESTION as well as the answer can fire.
+        """
         validator = Draft202012Validator(validation_schema(self.schema_name))
         errors = [f"{'.'.join(str(p) for p in e.path) or '<root>'}: {e.message}"
                   for e in validator.iter_errors(output)]
@@ -92,12 +97,25 @@ class Agent:
             if key not in output:
                 errors.append(f"{key}: required by the contract and absent")
         errors.extend(self.check_conditionals(output))
+        if case is not None:
+            errors.extend(self.check_conditionals_for_case(output, case))
         return errors
 
     def check_conditionals(self, output: dict[str, Any]) -> list[str]:
         """`nullable` cannot say "required when verdict is ADD_FIELD"; the contract says it
         in prose and each agent enforces it here. Vertex has no way to express it either,
         which is exactly why it is worth testing."""
+        return []
+
+    def check_conditionals_for_case(self, output: dict[str, Any],
+                                    case: dict[str, Any]) -> list[str]:
+        """The rules that need the QUESTION as well as the answer.
+
+        Separate from `check_conditionals` because most agents do not need the case and should
+        not have to accept it. The Inspector does: "observed is required to PASS a `matches`
+        rule" is a statement about the field being judged, not about the verdict returned, and
+        there is no way to say it from the answer alone.
+        """
         return []
 
     # --- helpers for subclasses -----------------------------------------------------

@@ -94,6 +94,64 @@ export async function screenEvidence(
   return readVerdict(body);
 }
 
+/**
+ * Screen TEXT, on the same template, before any model is shown it.
+ *
+ * The image path was the only one that existed, and images were never the whole attack
+ * surface. A technician who cannot perform a step records a reason in their own words, and
+ * that transcript is handed VERBATIM to the Instructor and then to the Foreman — `cases.ts`
+ * says so in as many words, and it is right to, because the words somebody chooses when a bolt
+ * is round are evidence about the blocker. But the Foreman's answer is written straight onto
+ * the step as `status: "impossible"` and a `disposition_action`, and `impossible` is one of the
+ * three statuses that SETTLE a step. firestore.rules refuses all three from a client precisely
+ * because the person being checked must not settle their own work — and an unscreened
+ * transcript handed to the agent that settles it is the same authority by a longer route.
+ *
+ * So the transcript is screened too. Same template, same `pi_and_jailbreak` filter, same rule
+ * that a failure to screen is NOT a pass.
+ */
+export async function screenText(
+  text: string,
+  accessToken: string | null,
+  fetchImpl: typeof fetch = fetch,
+): Promise<ArmorResult> {
+  const url = endpoint();
+  if (!url) {
+    return { verdict: "NOT_SCREENED", detail: "Model Armor is not configured for this build." };
+  }
+  if (!accessToken) {
+    return { verdict: "NOT_SCREENED", detail: "No credential with which to reach Model Armor." };
+  }
+  if (!text.trim()) {
+    return { verdict: "NO_MATCH_FOUND", detail: "There was no text to screen." };
+  }
+
+  let body: unknown;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    const response = await fetchImpl(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
+      body: JSON.stringify({ userPromptData: { text } }),
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timer));
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      return {
+        verdict: "NOT_SCREENED",
+        detail: `Model Armor returned ${response.status}: ${detail.slice(0, 200)}`,
+      };
+    }
+    body = await response.json();
+  } catch (error) {
+    return { verdict: "NOT_SCREENED", detail: `Model Armor was unreachable: ${String(error)}` };
+  }
+
+  return readVerdict(body);
+}
+
 /** Exported for test. The envelope is nested enough to be worth pinning. */
 export function readVerdict(body: unknown): ArmorResult {
   const results = (body as any)?.sanitizationResult?.filterResults;
