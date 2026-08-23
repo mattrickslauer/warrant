@@ -48,3 +48,6 @@ android/app/google-services.json
 # Worktrees this session created under the repo itself. The branches are the durable thing;
 # the checkouts are scratch, and committing one would nest the whole tree inside itself.
 .claude/worktrees/
+
+# The anvil compiles itself on demand; the classes are not an artifact.
+anvil/build/
