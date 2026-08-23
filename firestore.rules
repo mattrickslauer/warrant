@@ -95,11 +95,57 @@ service cloud.firestore {
     // This is defence in depth, NOT the primary control. A rule can only refuse what a client
     // sends. The Seal recomputes every field's class from the server-written `readings`
     // collection and never trusts what arrived on the field document.
+    // Every clause asks "is this client SETTING it", never "is it set" — for the merge reason
+    // spelled out in `changing()` below, which had been applied to the step-settling clauses
+    // and not to these. The difference is not academic: a MERGE write presents the whole
+    // post-merge document, so once the Seal stamped `provenance_class` or the ingest route
+    // stamped `tool_id`, the absolute form refused every subsequent client write to that
+    // document — a technician could not re-capture a field an instrument had touched. The
+    // protection is unchanged, because a client cannot set these values and cannot change one
+    // the server set; what it may now do is leave them alone.
     function clientMayNotClaim() {
-      return request.resource.data.get('provenance_class', '') != 'measured'
-          && request.resource.data.get('capture_surface', '') != 'app_instrument'
-          && request.resource.data.get('status', '') != 'sealed'
-          && request.resource.data.get('tool_id', '') == ''
+      return !(request.resource.data.get('provenance_class', '') == 'measured'
+               && changing('provenance_class'))
+          && !(request.resource.data.get('capture_surface', '') == 'app_instrument'
+               && changing('capture_surface'))
+          && !(request.resource.data.get('status', '') == 'sealed' && changing('status'))
+          // AND a document that is ALREADY sealed is closed, not merely un-sealable. The
+          // `changing()` form above asks whether this write sets the status, which is the right
+          // question for a client trying to seal something — and the wrong one for a client
+          // editing a job that was sealed last week, where the status is unchanged because it
+          // was already there. "Written once by the Seal, never updated" is that second
+          // sentence, and only this clause says it.
+          && !(resource != null && resource.data.get('status', '') == 'sealed')
+          && !changing('tool_id')
+          && !changing('attestation_play_integrity')
+          && !changing('attestation_device_id')
+          && !changing('armor_verdict')
+          // `adjudicated` is the sweep's flag, and the client MUST be able to write `false` on
+          // create — a capture without it is invisible to the net that catches an undecided
+          // one. What it may not do is mark its own evidence decided, which would delete that
+          // capture from the sweep's query and leave it judged by nobody.
+          && !(request.resource.data.get('adjudicated', false) == true
+               && changing('adjudicated'))
+          // The tier is the ceiling a job SETS OUT to reach, so a client names it at startJob.
+          // It may not be raised afterwards, and the Seal recomputes what was actually earned
+          // from attestations and readings regardless of what is written here.
+          && !(resource != null && changing('tier'))
+          // A SEALED JOB IS FINISHED, and nothing a client sends may touch it again.
+          //
+          // Stated outright rather than left to the clauses above. Until `changing()` was
+          // applied to them, `status != 'sealed'` was ABSOLUTE and incidentally refused every
+          // write to an already-sealed document; asking instead whether the client is CHANGING
+          // the status — which is right, and fixes a real bug where the Seal's own stamp locked
+          // a technician out of re-capturing — quietly dropped that side effect. A client could
+          // then rewrite a sealed job's contents freely, provided it left `status` alone.
+          //
+          // web/scripts/audit-adversarial.test.mjs caught it: "provenance_class 'measured'
+          // cannot be forged with no instrument" writes a sealed job whose forged class sits
+          // inside a steps[] array, where no rule can see it. The Seal recomputes provenance
+          // from the server-written `readings` collection and never trusts the document, so the
+          // sealed RECORD was never at risk — but a finished job being rewritable at all is not
+          // a property worth arguing about, and this is one clause.
+          && !(resource != null && resource.data.get('status', '') == 'sealed')
           && clientMayNotSettleAStep();
     }
 
@@ -172,8 +218,17 @@ service cloud.firestore {
     // deletes this document, and because media is proxied rather than signed (§6.3), every
     // image URL dies with it.
 
+    // GET, NOT READ. `read` is `get` + `list`, and a `list` rule that does not depend on the
+    // document being fetched is a rule that grants the WHOLE COLLECTION: any client could run
+    // getDocs(collection(db, "records")) and walk every record anybody had ever shared. That
+    // defeats the paragraph above entirely — an unguessable id buys nothing if the ids do not
+    // have to be guessed — and it is the reason `get` and `list` are separable at all.
+    //
+    // So the capability is honoured only when the holder NAMES the document, which is what
+    // holding the link means.
     match /records/{publicId} {
-      allow read: if true;
+      allow get: if true;
+      allow list: if false;
       allow write: if false;
     }
 
