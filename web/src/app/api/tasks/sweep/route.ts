@@ -10,8 +10,12 @@
 // The query is one equality and one inequality on one field — see tasks.ts on `notify_after`.
 
 import { NextResponse } from "next/server";
-import { dueTasks, markNotified, attachCalendarEvent, undecidedCaptures } from "@/server/tasks";
+import { dueTasks, markNotified, attachCalendarEvent, undecidedCaptures,
+         stalledSteps } from "@/server/tasks";
 import { adjudicate } from "@/server/adjudicate/run";
+import { dispose } from "@/server/adjudicate/dispose";
+import { audit } from "@/server/adjudicate/audit";
+import { proceduresDueAnAudit } from "@/server/tasks";
 import { pushTask } from "@/server/notify";
 import { upsertEvent, RateLimited } from "@/server/calendar";
 
@@ -125,8 +129,65 @@ export async function POST(request: Request) {
     );
   }
 
+  // Steps a technician could not perform, and nobody has ruled on.
+  //
+  // The Instructor and the Foreman are reached from here rather than from a phone on purpose:
+  // somebody who defers a step is walking away from the machine, and what happens to the job
+  // next must not depend on their handset staying awake. This is the long-horizon half of the
+  // fleet — the half whose unit of time is a purchase-order lead time rather than a step.
+  //
+  // Failures leave the step undisposed, exactly as a failed adjudication leaves a capture
+  // undecided: it keeps turning up here until an agent actually rules on it.
+  let disposed = 0;
+  let stillStalled = 0;
+  try {
+    for (const stall of await stalledSteps()) {
+      try {
+        const out = await dispose(stall);
+        if (out.action) disposed += 1;
+        else stillStalled += 1;
+      } catch {
+        stillStalled += 1;
+      }
+    }
+  } catch (error) {
+    return NextResponse.json(
+      { due: tasks.length, pushed, scheduled, deferred, adjudicated, stillUndecided,
+        error: "Could not read stalled steps. Is the COLLECTION_GROUP index on " +
+               "`step_outcomes` deployed?",
+        detail: String(error) },
+      { status: 500 },
+    );
+  }
+
+  // The procedure itself, read across weeks of finished jobs.
+  //
+  // The longest horizon in the system, and the only agent whose subject is the document every
+  // other agent measures against. It cannot be triggered by a person finishing a job: a
+  // procedure defect is visible only in the aggregate, and the aggregate does not exist until
+  // enough jobs have run. So it lives here, on a cadence, which is what "across weeks of
+  // asynchronous operations" actually looks like in code.
+  let audited = 0;
+  const findings: string[] = [];
+  try {
+    for (const due of await proceduresDueAnAudit()) {
+      try {
+        const out = await audit(due);
+        if (out.decisionId) audited += 1;
+        findings.push(...out.findingIds);
+      } catch {
+        // An audit that failed is retried on the next sweep. Nothing was written, so nothing
+        // is half-done — unlike a stalled step, there is no state to leave inconsistent.
+      }
+    }
+  } catch {
+    // A missing index on `jobs` must not take the rest of the sweep down with it: the push and
+    // calendar legs above have already run, and they are what reaches a person today.
+  }
+
   return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
-                             adjudicated, stillUndecided });
+                             adjudicated, stillUndecided, disposed, stillStalled,
+                             audited, findings: findings.length });
 }
 
 /** Convenience for a human checking the cron is wired, without firing notifications. */

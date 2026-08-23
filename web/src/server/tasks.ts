@@ -343,3 +343,100 @@ export async function undecidedCaptures(
     }];
   });
 }
+
+/**
+ * Steps a technician walked away from that no Foreman has ruled on.
+ *
+ * `deferred` keeps the job open and the machine held, and the contract is explicit that a step
+ * "can never be silently abandoned". Until something read this, that promise rested on a
+ * technician remembering — the step sat deferred, the machine sat held, and nobody was raised.
+ *
+ * THE QUERY IS ON `reason_kind`, NOT ON STATUS, and that is not a detail.
+ * `LiveSource.declareBlocked` deliberately writes no status at all — its comment says why:
+ * choosing between deferred, waived and impossible is the Foreman's disposition, and a client
+ * writing one would be deciding something it has no standing to decide. So a step a technician
+ * walked away from is still `pending`, and a sweep that looked for `deferred` would find only
+ * the steps a Foreman had ALREADY ruled on, which is precisely the set that needs nothing.
+ * What marks a stall is that somebody gave a reason.
+ *
+ * One `in` on one field, so the automatic single-field index serves it; no composite to deploy.
+ * The two exclusions are applied HERE rather than in the query because a step written before
+ * those fields existed has no key for them at all, and Firestore's `== null` matches an
+ * explicit null but not an absent field — a query that looked right would silently skip exactly
+ * the oldest stalls, which are the ones that most need raising.
+ */
+export interface StalledStep {
+  tenantId: string;
+  jobId: string;
+  stepId: string;
+}
+
+/** The three statuses that finish a step. A settled step is not a stall, whatever was said. */
+const SETTLED = new Set(["performed", "waived", "impossible"]);
+
+export async function stalledSteps(limit = 25): Promise<StalledStep[]> {
+  const snap = await adminDb()
+    .collectionGroup("step_outcomes")
+    .where("reason_kind", "in", ["voice", "text"])
+    .limit(limit)
+    .get();
+
+  return snap.docs.flatMap((doc) => {
+    const data = doc.data();
+    if (data.disposition_action) return [];
+    if (SETTLED.has(String(data.status))) return [];
+    // tenants/{t}/jobs/{j}/step_outcomes/{s}
+    const parts = doc.ref.path.split("/");
+    if (parts.length !== 6) return [];
+    return [{ tenantId: parts[1], jobId: parts[3], stepId: doc.id }];
+  });
+}
+
+/**
+ * Procedures with enough finished work behind them to be worth reading, and no recent audit.
+ *
+ * The cadence is deliberately crude — a procedure is re-read when a week has passed. Auditing
+ * on every sweep would ask a model to re-derive the same conclusion from the same forty jobs
+ * every ten minutes, and the aggregate does not change that fast.
+ *
+ * Distinct procedures are found from the jobs rather than from a procedures collection,
+ * because a procedure with no finished jobs is not auditable and would only be filtered out
+ * again. One equality on one field; no composite index.
+ */
+export interface AuditDue {
+  tenantId: string;
+  procedureId: string;
+}
+
+const AUDIT_EVERY_MS = 7 * 24 * 60 * 60 * 1000;
+
+export async function proceduresDueAnAudit(limit = 3): Promise<AuditDue[]> {
+  const snap = await adminDb()
+    .collectionGroup("jobs")
+    .where("status", "==", "sealed")
+    .limit(300)
+    .get();
+
+  const seen = new Map<string, AuditDue>();
+  for (const doc of snap.docs) {
+    // tenants/{t}/jobs/{j}
+    const parts = doc.ref.path.split("/");
+    if (parts.length !== 4) continue;
+    const procedureId = String(doc.data().procedure_id ?? "");
+    if (!procedureId) continue;
+    seen.set(`${parts[1]}/${procedureId}`, { tenantId: parts[1], procedureId });
+  }
+
+  const cutoff = Date.now() - AUDIT_EVERY_MS;
+  const due: AuditDue[] = [];
+  for (const candidate of seen.values()) {
+    const last = await adminDb()
+      .doc(`tenants/${candidate.tenantId}/audits/${candidate.procedureId}`)
+      .get();
+    const at = last.exists ? Date.parse(String(last.data()?.at ?? "")) : NaN;
+    if (!Number.isNaN(at) && at > cutoff) continue;
+    due.push(candidate);
+    if (due.length >= limit) break;
+  }
+  return due;
+}
