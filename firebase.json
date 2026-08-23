@@ -5,7 +5,9 @@
     "indexes": "firestore.indexes.json"
   },
   "storage": {
-    "//": "Evidence media and avatars. There were no storage rules at all until 2026-08-20, while storageBucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded.",
+    "//": "Evidence media, avatars and uploaded paper forms. There were no storage rules at all until 2026-08-20, while storageBucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded.",
+    "//bucket": "NAMED, because this project has no default bucket. Firebase Storage was never 'Get Started'-ed here; the bucket is the one bootstrap.sh makes, ${PROJECT}-evidence. Without this line `firebase deploy --only storage` looks for the default, does not find it, and fails with 'Firebase Storage has not been set up on project' — which reads as the rules never having been deployed rather than as the CLI looking in the wrong place. They had been deployed. Change this when the project changes.",
+    "bucket": "warrent-505918-evidence",
     "rules": "storage.rules"
   },
   "emulators": {
