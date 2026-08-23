@@ -9,6 +9,7 @@
 
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
+import { getStorage, type FirebaseStorage } from "firebase/storage";
 import {
   getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
   type Firestore,
@@ -21,6 +22,19 @@ export function clientApp(): FirebaseApp {
 
 export function clientAuth(): Auth {
   return getAuth(clientApp());
+}
+
+/**
+ * The browser's Cloud Storage, for the one thing a browser is allowed to put there.
+ *
+ * Client-side and under `storage.rules`, exactly like a capture — that rule is what actually
+ * enforces the size and the type, and it is the only write path for user bytes in this system.
+ * Going through the server instead would mean granting `warrant-web` object-create on the
+ * evidence bucket, and that principal mints session cookies; it holds objectViewer and nothing
+ * more on purpose (infra/bootstrap.sh).
+ */
+export function clientStorage(): FirebaseStorage {
+  return getStorage(clientApp());
 }
 
 let db: Firestore | null = null;

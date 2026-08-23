@@ -19,8 +19,12 @@ from .model import Call, Part, generate_json
 
 MEDIA_DIR = Path(__file__).resolve().parents[1] / "evals" / "media"
 
+#: What an agent may be handed. Mostly evidence — but `.pdf` is here for the authoring desk,
+#: where a shop uploads the paper form it already uses and the Scoper reads it directly. A
+#: document is not evidence and never becomes any; see `Scoper.parts`.
 _MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-         ".webp": "image/webp", ".gif": "image/gif", ".mp4": "video/mp4"}
+         ".webp": "image/webp", ".gif": "image/gif", ".mp4": "video/mp4",
+         ".pdf": "application/pdf"}
 
 
 class MediaMissing(RuntimeError):

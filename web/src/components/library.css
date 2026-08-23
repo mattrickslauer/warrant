@@ -523,3 +523,64 @@ body { --surface: var(--work-2); --surface-high: var(--work-3); --surface-highes
 }
 /* Italic, never mono: a person asserted this, no machine produced it. */
 .w-sign__name { font-family: var(--brand); font-size: var(--t-title-lg); font-style: italic; }
+
+/* ---------------------------------------------------------------- Paper form upload
+
+   The authoring desk only. Deliberately unlike `.w-capture`, which is a camera and looks
+   like one: this is a place to hand over a document, and nothing that arrives through it is
+   evidence. Dashed rather than solid for exactly that reason — it reads as a tray, not a
+   frame. */
+
+.w-paper {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 22px 16px; width: 100%;
+  border: 1px dashed var(--outline); border-radius: var(--r-md);
+  background: transparent; color: inherit; cursor: pointer; text-align: center;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+.w-paper:hover:not(:disabled) { border-color: var(--action); }
+.w-paper--over {
+  border-color: var(--action); border-style: solid;
+  background: color-mix(in srgb, var(--action) 8%, transparent);
+}
+.w-paper:disabled { opacity: .5; cursor: not-allowed; }
+.w-paper__call { font-size: var(--t-body-lg); }
+.w-paper__kinds { font-size: var(--t-body); color: var(--on-surface-2); }
+
+.w-paper__row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--on-surface) 5%, transparent);
+}
+.w-paper__name { flex: 1; font-size: var(--t-body); overflow-wrap: anywhere; }
+
+/* ---------------------------------------------------------------- Definition row
+
+   A term and what it means: a compiled field on the authoring desk, a fact about a published
+   procedure. Same hairline rhythm as `.w-trace__row` so the two read as siblings on a screen
+   that shows both — but ONE column, because nothing here was decided by an agent and there is
+   no stamp to set in a gutter.
+
+   That gutter is why this block exists. `.w-trace__row` is `grid-template-columns: 30px 1fr`
+   built around `AgentStamp` occupying the first cell; three screens borrowed it for rows that
+   have no stamp, so the term auto-placed into the 30px column and wrapped one character per
+   line. The row was not styled wrongly, it was the wrong row. */
+
+.w-def {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 14px 0; border-top: 1px solid var(--outline);
+}
+.w-def:first-child { border-top: 0; }
+.w-def__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;
+  font-size: var(--t-label-lg);
+}
+.w-def__term { font-weight: 500; overflow-wrap: anywhere; }
+/* What kind of thing it is and where it comes from. Machine facts, so mono — the house rule
+   holds here exactly as it does on a record. */
+.w-def__meta {
+  font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-3);
+  overflow-wrap: anywhere;
+}
+@media (min-width: 560px) { .w-def__meta { margin-left: auto; } }
+.w-def__note { font-size: var(--t-body); color: var(--on-surface-2); max-width: 70ch; }

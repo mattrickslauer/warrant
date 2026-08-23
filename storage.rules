@@ -57,6 +57,30 @@ service firebase.storage {
     // record points here rather than at lh3.googleusercontent.com, because that URL rotates
     // when someone changes their photo and can 404 — and a record has to render years later.
 
+    // --- Paper forms -------------------------------------------------------------------
+    //
+    // What a shop already fills in, uploaded at /author so the Scoper can read the sheet
+    // rather than somebody's typed-up version of it. Written by the browser under these
+    // rules, like a capture — so the size and the type below are the enforcement and not a
+    // courtesy, and the server never gains a permission it does not otherwise need.
+    //
+    // Smaller than a capture at 10MB, and narrower: a PDF or a photograph of a sheet. There
+    // is no video of a form.
+    //
+    // Not under `captures/`, and the distinction is the point. Evidence is append-only
+    // because a technician must not replace a photograph that failed inspection. A form the
+    // shop wrote before Warrant existed is not evidence, is never sealed, and no record ever
+    // points at it — so it gets its own prefix and its own rule instead of borrowing one that
+    // would say something untrue about what it is.
+
+    match /tenants/{t}/forms/{file} {
+      allow read: if signedIn() && tenantOf() == t;
+      allow create: if signedIn() && tenantOf() == t
+                    && request.resource.size < 10 * 1024 * 1024
+                    && request.resource.contentType.matches('application/pdf|image/.*');
+      allow update, delete: if false;
+    }
+
     match /avatars/{uid} {
       allow read: if signedIn();
       allow write: if false;

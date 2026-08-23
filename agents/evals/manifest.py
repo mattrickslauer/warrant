@@ -130,6 +130,12 @@ MANIFEST: dict[str, tuple[str, str]] = {
 SUPPLIED = {
     "brake/caliper-editorial-stockish.webp":
         "generated for the landing page; stands in for a stock photograph passed off as evidence",
+    # Not a photograph, and not held to the rule above, because it is not evidence. A shop's
+    # check sheet is a document somebody typed — which is exactly what `evals/gen_form.py`
+    # produces. Nothing in it is measured and no record will ever point at it; what it has to
+    # be is ambiguous the way real forms are, and that is authored, not observed.
+    "form/hire-check-sheet.pdf":
+        "written by evals/gen_form.py; the paper form a shop uploads at /author, not evidence",
 }
 
 

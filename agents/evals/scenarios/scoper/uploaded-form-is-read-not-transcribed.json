@@ -1,0 +1,29 @@
+{
+  "agent": "scoper",
+  "title": "an uploaded form is read, and its blanks are still blanks",
+  "why": "The adoption path is now a file, not a paste. A shop that hands over the sheet itself has transcribed nothing, so every ambiguity on it is still on it — 'Pads ______ mm' names a unit and no limit, 'Front brake OK' names no acceptance rule at all. Compiling those verbatim reproduces the tick in the box the product exists to replace, and inventing the missing figure is worse: it would enter every future record as though a person had set it.",
+  "input": {
+    "shop": {
+      "trade": "bicycle hire",
+      "machines": "40 hybrid bikes, 12 e-bikes",
+      "technicians": 3,
+      "stakes": "hire bikes on city streets; a wheel coming loose is a serious injury and we have had one near miss"
+    },
+    "existing_form_media": ["form/hire-check-sheet.pdf"],
+    "conversation": [
+      {
+        "who": "shop",
+        "said": "I've uploaded the sheet we fill in every morning. Just turn that into the app."
+      }
+    ]
+  },
+  "expect": {
+    "equals": { "mode": "ask" },
+    "absent": ["draft"],
+    "len_gte": { "unresolved": 2 },
+    "mentions_any": {
+      "unresolved": ["mm", "psi", "pressure", "wear", "limit", "OK", "mean", "accept", "pass"]
+    },
+    "min_words": { "understanding": 10 }
+  }
+}

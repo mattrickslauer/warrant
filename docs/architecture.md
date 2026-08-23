@@ -531,7 +531,7 @@ be**, not because we ran out of time.
 | Traces and audit logs | **Agent Observability** |
 | Services and transport | **Cloud Run**, **Pub/Sub** |
 | Source of truth | **Firestore** — tenancy enforced by rules, not by application code (§8) |
-| Evidence media and avatars | **Cloud Storage** — `storage.rules`; captures are append-only |
+| Evidence media, avatars, uploaded paper forms | **Cloud Storage** — `storage.rules`; captures are append-only, and a form is not a capture |
 | Task alerts on a schedule | **Cloud Scheduler** → Cloud Run `/api/tasks/sweep`, one cron for every tenant |
 | Push to a person in a workshop | **Firebase Cloud Messaging** |
 | Dated work on a technician's calendar | **Google Calendar API** — `calendar.events`, write only |

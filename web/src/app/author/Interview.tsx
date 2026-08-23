@@ -17,9 +17,12 @@
 //   * **The unresolved list.** Empty is the only condition under which the Scoper may compile,
 //     so this list IS the progress bar. Nothing else here is one.
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { ref as storageRef, uploadBytes } from "firebase/storage";
 import { Wrap, Rule, ChatTurn, HoldBanner, AgentStamp } from "@/components";
 import { useSession } from "@/auth/session-context";
+import { authConfigured, firebaseWebConfig } from "@/auth/config";
+import { clientStorage } from "@/auth/firebase-client";
 
 /**
  * Mirrors CLASSES in `/api/scoper/turn`. Duplicated deliberately rather than shared: the route
@@ -37,6 +40,31 @@ const CLASSES = [
   ["safety", "what could hurt someone"],
 ] as const;
 
+/**
+ * What the Scoper can read off a document, keyed by extension.
+ *
+ * The extension is load-bearing on the far side rather than decoration: `Agent.media()`
+ * derives the MIME type from the suffix of the `gs://` name and refuses what it cannot decode,
+ * so the stored object is named from a type on this list rather than from whatever the file
+ * was called.
+ *
+ * `storage.rules` allows exactly `application/pdf|image/.*` here and that rule is the
+ * enforcement — this list is how a person finds out early and in a sentence they can act on.
+ */
+const DOCUMENT_FORM: Record<string, string> = {
+  pdf: "application/pdf",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  png: "image/png",
+  webp: "image/webp",
+};
+
+/** Forms that are already text. Read in the browser, shown to the shop, uploaded nowhere. */
+const TEXT_FORM = new Set(["txt", "md", "csv"]);
+
+/** Matches `storage.rules`. Big enough for a scanned service sheet; a form is not a video. */
+const MAX_FORM_BYTES = 10 * 1024 * 1024;
+
 interface Turn { who: string; said: string; }
 
 interface ScoperTurn {
@@ -52,6 +80,15 @@ interface Shop {
   trade: string; machines: string; technicians: number; stakes: string;
 }
 
+/**
+ * A paper form the shop uploaded, by reference.
+ *
+ * The bytes left this browser for Cloud Storage and did not come back: what is held here is a
+ * `gs://` name the fleet opens under its own credential, and the file name to show a person.
+ * The interview stays as cheap to hold as a conversation, which is what it is.
+ */
+interface FormDoc { name: string; ref: string; }
+
 type Stage = "shop" | "interview" | "published";
 
 interface Published { procedure_id: string; version: number; minimum_tier: string; tenant: string; }
@@ -61,6 +98,7 @@ export function Interview() {
   const [stage, setStage] = useState<Stage>("shop");
   const [shop, setShop] = useState<Shop>({ trade: "", machines: "", technicians: 1, stakes: "" });
   const [existingForm, setExistingForm] = useState("");
+  const [formDocs, setFormDocs] = useState<FormDoc[]>([]);
   const [conversation, setConversation] = useState<Turn[]>([]);
   const [turn, setTurn] = useState<ScoperTurn | null>(null);
   const [answer, setAnswer] = useState("");
@@ -96,6 +134,10 @@ export function Interview() {
         body: JSON.stringify({
           shop, conversation: next,
           ...(existingForm.trim() ? { existing_form: existingForm.trim() } : {}),
+          // Sent EVERY turn, not just the first. Nothing is kept on the server between turns —
+          // the interview lives in this component — so a form dropped after the opening
+          // question would be a form the Scoper stopped being able to see mid-interview.
+          ...(formDocs.length ? { existing_form_media: formDocs.map((d) => d.ref) } : {}),
         }),
       });
       const body = await res.json();
@@ -104,7 +146,18 @@ export function Interview() {
         setError(body.error ?? "The interview could not continue.");
         // A malformed turn is a finding about the agent, not a crash — the route returns the
         // schema errors rather than throwing, and hiding them here would waste that.
-        setDetail(body.schema_errors ?? (body.principal ? [`Principal: ${body.principal}`] : []));
+        //
+        // `detail` is here because leaving it out cost an afternoon. The route already sends
+        // the reason the fleet refused, and the reason is nearly always the identity trap
+        // `server/fleet.ts` warns about — but it arrives as a 403 body with `principal` null,
+        // because when nobody is being impersonated there is no principal to name. So the
+        // screen said "The Scoper could not be reached" and, underneath, that nothing was
+        // written: true, reassuring, and silent about the one fact that fixes it.
+        setDetail([
+          ...(body.schema_errors ?? []),
+          ...(body.principal ? [`Principal: ${body.principal}`] : []),
+          ...(body.detail ? [String(body.detail).slice(0, 300)] : []),
+        ]);
         setConversation(next);
         return;
       }
@@ -228,6 +281,11 @@ export function Interview() {
           <ShopIntake
             shop={shop} setShop={setShop}
             existingForm={existingForm} setExistingForm={setExistingForm}
+            tenant={session.tenant.id} docs={formDocs} setDocs={setFormDocs}
+            // A text file IS its own transcription, so it lands in the box where the shop can
+            // read and correct every word before the Scoper is shown it. Appended rather than
+            // replacing, because a shop with two sheets has two sheets.
+            onFormText={(text) => setExistingForm((prev) => prev.trim() ? `${prev.trim()}\n\n${text}` : text)}
             busy={busy} onStart={() => void ask(null)}
           />
         )}
@@ -312,10 +370,13 @@ const stripMarker = (said: string) => said.replace(/^\[[a-z_]+\]\s*/, "");
 const SPEAKER: Record<string, string> = { shop: "You", scoper: "Scoper", compiler: "Compiler" };
 
 function ShopIntake({
-  shop, setShop, existingForm, setExistingForm, busy, onStart,
+  shop, setShop, existingForm, setExistingForm, tenant, docs, setDocs, onFormText, busy, onStart,
 }: {
   shop: Shop; setShop: (s: Shop) => void;
   existingForm: string; setExistingForm: (s: string) => void;
+  tenant: string;
+  docs: FormDoc[]; setDocs: React.Dispatch<React.SetStateAction<FormDoc[]>>;
+  onFormText: (text: string) => void;
   busy: boolean; onStart: () => void;
 }) {
   const ready = shop.trade.trim() && shop.machines.trim() && shop.stakes.trim();
@@ -339,8 +400,10 @@ function ShopIntake({
                   onChange={(e) => setShop({ ...shop, stakes: e.target.value })} />
       </Field>
       <Field label="A paper form you use today (optional)"
-             hint="Paste it. It will be compiled where it is unambiguous and asked about everywhere it is not — a tick box on paper almost never states its own acceptance rule.">
+             hint="Hand over the sheet itself and the Scoper reads it — the columns, the units printed above them, the box somebody has been ticking for a year. A typed-up version has already decided what those meant, which is the decision this interview exists to make out loud. It will be compiled where it is unambiguous and asked about everywhere it is not.">
+        <PaperForm tenant={tenant} docs={docs} setDocs={setDocs} onText={onFormText} busy={busy} />
         <textarea className="w-reason__text" value={existingForm} disabled={busy}
+                  placeholder="…or type it out here."
                   onChange={(e) => setExistingForm(e.target.value)} />
       </Field>
       <button className="w-btn" disabled={busy || !ready} onClick={onStart}>
@@ -356,6 +419,148 @@ function Field({ label, hint, children }: { label: string; hint: string; childre
       <label className="w-sign__label">{label}</label>
       {children}
       <p className="w-sign__note">{hint}</p>
+    </div>
+  );
+}
+
+/**
+ * The paper form, handed over rather than typed out.
+ *
+ * This is the one file input in Warrant and it is worth saying why it is allowed to exist,
+ * because the job surface refuses uploads on purpose — `CaptureTile` will not fall back to one
+ * even when there is no camera, since a file says nothing about when it was made, where, or by
+ * whom. That test is the right test for EVIDENCE. A checklist the shop has been filling in
+ * since before Warrant existed is not evidence: it is never sealed, no record points at it,
+ * and it is under no obligation to prove when it was made. It is the input to a conversation.
+ *
+ * The bytes go straight from this browser to Cloud Storage under `storage.rules`, exactly the
+ * way a capture does, and never through the app server. That is not a shortcut: routing them
+ * through would mean granting `warrant-web` object-create on the evidence bucket, and that is
+ * the principal which mints session cookies. It holds read and nothing more, deliberately.
+ *
+ * Uploads on selection rather than at submit. A shop that discovers its scan is too large
+ * after answering fourteen questions has been wasted; the failure belongs here, beside the
+ * file, while nothing else has been spent.
+ */
+function PaperForm({ tenant, docs, setDocs, onText, busy }: {
+  tenant: string;
+  docs: FormDoc[];
+  setDocs: React.Dispatch<React.SetStateAction<FormDoc[]>>;
+  onText: (text: string) => void;
+  busy: boolean;
+}) {
+  const [over, setOver] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [problem, setProblem] = useState<string | null>(null);
+  const picker = useRef<HTMLInputElement>(null);
+
+  async function take(files: FileList | null) {
+    if (!files || files.length === 0) return;
+    setProblem(null);
+    setUploading(true);
+    try {
+      // One at a time, and a refusal does not abandon the rest. A shop dropping four pages of
+      // a service sheet should not lose three of them because the second was a .docx.
+      for (const file of Array.from(files)) {
+        const ext = (file.name.split(".").pop() ?? "").toLowerCase();
+
+        // A text file IS its own transcription. It goes into the box below rather than into
+        // storage, where the shop reads what the Scoper is about to be shown before it is
+        // shown it — and can correct it, which is the whole difference.
+        if (TEXT_FORM.has(ext)) {
+          const text = (await file.text()).trim();
+          if (text) onText(text);
+          else setProblem(`${file.name} is empty.`);
+          continue;
+        }
+
+        const mime = DOCUMENT_FORM[ext];
+        if (!mime) {
+          setProblem(`Warrant cannot read ${file.name} here. A PDF, a photograph of the ` +
+                     `sheet, or a plain text file.`);
+          continue;
+        }
+        if (file.size > MAX_FORM_BYTES) {
+          setProblem(`${file.name} is ${Math.round(file.size / 1024 / 1024)}MB and the limit ` +
+                     `is ${MAX_FORM_BYTES / 1024 / 1024}MB. Photograph the pages rather than ` +
+                     `scanning them at print resolution.`);
+          continue;
+        }
+        if (!authConfigured) {
+          // Said plainly rather than thrown. Without a project behind this build the paste box
+          // still works, and a shop told that carries on instead of concluding it is broken.
+          setProblem("This build has no document store behind it. Type the form out below.");
+          continue;
+        }
+
+        try {
+          // `tenants/{t}/forms/{id}.{ext}`, deliberately NOT under `captures/`. That prefix is
+          // append-only because a technician must not be able to replace a photograph which
+          // failed inspection; this is a different kind of object and gets its own rule rather
+          // than borrowing one that would say something untrue about what it is.
+          const object = `tenants/${tenant}/forms/${crypto.randomUUID()}.${ext}`;
+          await uploadBytes(storageRef(clientStorage(), object), file, { contentType: mime });
+          const doc = { name: file.name, ref: `gs://${firebaseWebConfig().storageBucket}/${object}` };
+          setDocs((prev) => prev.some((d) => d.ref === doc.ref) ? prev : [...prev, doc]);
+        } catch (e) {
+          setProblem(`${file.name} could not be stored. ` +
+                     (e instanceof Error ? e.message : String(e)));
+        }
+      }
+    } finally {
+      setUploading(false);
+      // Cleared so choosing the same file twice fires a change event the second time.
+      if (picker.current) picker.current.value = "";
+    }
+  }
+
+  const disabled = busy || uploading;
+
+  return (
+    <div className="stack">
+      <input ref={picker} type="file" multiple hidden
+             accept=".pdf,.jpg,.jpeg,.png,.webp,.txt,.md,.csv,application/pdf,image/*,text/plain"
+             onChange={(e) => void take(e.target.files)} />
+
+      <button type="button"
+              className={`w-paper${over ? " w-paper--over" : ""}`}
+              disabled={disabled}
+              onClick={() => picker.current?.click()}
+              onDragOver={(e) => { e.preventDefault(); if (!disabled) setOver(true); }}
+              onDragLeave={() => setOver(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setOver(false);
+                if (!disabled) void take(e.dataTransfer.files);
+              }}>
+        <span className="w-paper__call">
+          {uploading ? "Reading it…" : "Upload the form, or drop it here"}
+        </span>
+        <span className="w-paper__kinds">
+          A PDF, a photograph of the sheet, or a plain text file. Up to 10MB.
+        </span>
+      </button>
+
+      {docs.map((d) => (
+        <div className="w-paper__row" key={d.ref}>
+          <span className="w-chip">form</span>
+          <span className="w-paper__name">{d.name}</span>
+          {/* Drops the reference, and the Scoper stops being shown it from the next turn on.
+              The object itself stays where it was put — `storage.rules` grants no delete on
+              this prefix, and an unreferenced private form is a smaller thing than a browser
+              that can erase what it uploaded. */}
+          <button type="button" className="w-btn w-btn--text" disabled={busy}
+                  onClick={() => setDocs((prev) => prev.filter((x) => x.ref !== d.ref))}>
+            Remove
+          </button>
+        </div>
+      ))}
+
+      {problem && (
+        <HoldBanner kind="fixture" title={problem}>
+          Nothing else was lost. Try another file, or type the form out below.
+        </HoldBanner>
+      )}
     </div>
   );
 }
@@ -429,7 +634,7 @@ interface DraftView {
       key?: string; kind?: string; source?: string; prompt?: string;
       acceptance_rule?: string; acceptance_min?: number | null; acceptance_max?: number | null;
       acceptance_unit?: string | null; acceptance_target?: string | null;
-      acceptance_description?: string | null;
+      acceptance_description?: string | null; guidance?: string | null;
     }>;
   }>;
 }
@@ -463,13 +668,13 @@ function DraftReview({ draft }: { draft: DraftView }) {
           <p className="w-step__why">{s.explanation}</p>
           <div className="stack">
             {(s.fields ?? []).map((f, j) => (
-              <div className="w-trace__row" key={j}>
-                <div className="w-trace__head">
-                  <span className="w-trace__agent w-mono">{f.key}</span>
-                  <span className="w-trace__meta">{f.kind} · {f.source}</span>
+              <div className="w-def" key={j}>
+                <div className="w-def__head">
+                  <span className="w-def__term w-mono">{f.key}</span>
+                  <span className="w-def__meta">{f.kind} · {f.source}</span>
                 </div>
-                <p className="w-trace__why">{f.prompt}</p>
-                <p className="w-step__guide">{describeRule(f)}</p>
+                <p className="w-def__note">{f.prompt}</p>
+                {fieldRule(f) && <p className="w-step__guide">{fieldRule(f)}</p>}
               </div>
             ))}
           </div>
@@ -486,7 +691,22 @@ function DraftReview({ draft }: { draft: DraftView }) {
   );
 }
 
-/** The acceptance rule in a sentence, with its figure. A rule you cannot read is a rule you cannot dispute. */
+/**
+ * The acceptance rule in a sentence, with its figure. A rule you cannot read is a rule you
+ * cannot dispute.
+ *
+ * `acceptance_target` and `acceptance_description` are nullable in the contract and are
+ * legitimately null — a `signed_by` with nobody named is a shop where the technician signs for
+ * their own work, which is most of them. Interpolating the field regardless printed "Must be
+ * signed by undefined." on the last screen before publishing, which reads as a broken page
+ * rather than as the true statement it was standing in for.
+ *
+ * Where the figure is absent the sentence is shortened rather than filled in. This screen is
+ * the one place a shop can say "that is not our number", so a plausible number it never gave
+ * is the single worst thing that could appear here — the same reason the Scoper is forbidden
+ * to invent one. `fieldRule` below falls back to the Scoper's own `guidance`, which is a
+ * sentence somebody actually wrote, not one this function guessed.
+ */
 function describeRule(f: NonNullable<NonNullable<DraftView["steps"]>[number]["fields"]>[number]): string {
   const unit = f.acceptance_unit ? ` ${f.acceptance_unit}` : "";
   switch (f.acceptance_rule) {
@@ -494,20 +714,28 @@ function describeRule(f: NonNullable<NonNullable<DraftView["steps"]>[number]["fi
       if (typeof f.acceptance_min === "number" && typeof f.acceptance_max === "number")
         return `Passes between ${f.acceptance_min} and ${f.acceptance_max}${unit}.`;
       if (typeof f.acceptance_min === "number") return `Passes at or above ${f.acceptance_min}${unit}.`;
-      return `Passes at or below ${f.acceptance_max}${unit}.`;
+      if (typeof f.acceptance_max === "number") return `Passes at or below ${f.acceptance_max}${unit}.`;
+      return "";
     case "matches":
-      return `Must match ${f.acceptance_target}.`;
+      return f.acceptance_target ? `Must match ${f.acceptance_target}.` : "";
     case "per_spec":
-      return `Judged against the figure printed on ${f.acceptance_target} — this procedure carries no number of its own.`;
+      return f.acceptance_target
+        ? `Judged against the figure printed on ${f.acceptance_target} — this procedure carries no number of its own.`
+        : "";
     case "must_show":
-      return `The capture must show ${f.acceptance_description}.`;
+      return f.acceptance_description ? `The capture must show ${f.acceptance_description}.` : "";
     case "consistent_with":
-      return `Must be consistent with ${f.acceptance_target}.`;
+      return f.acceptance_target ? `Must be consistent with ${f.acceptance_target}.` : "";
     case "signed_by":
-      return `Must be signed by ${f.acceptance_target}.`;
+      return f.acceptance_target ? `Must be signed by ${f.acceptance_target}.` : "Must be signed.";
     default:
       return "";
   }
+}
+
+/** The rule as stated, or the Scoper's own words for it. Never a figure nobody gave. */
+function fieldRule(f: NonNullable<NonNullable<DraftView["steps"]>[number]["fields"]>[number]): string {
+  return describeRule(f) || (f.guidance ?? "").trim();
 }
 
 function Published({ published, title }: { published: Published; title: string }) {
@@ -523,22 +751,22 @@ function Published({ published, title }: { published: Published; title: string }
         </p>
       </div>
       <div className="stack">
-        <div className="w-trace__row">
-          <div className="w-trace__head">
-            <span className="w-trace__agent">Tenant</span>
-            <span className="w-trace__meta w-mono">{published.tenant}</span>
+        <div className="w-def">
+          <div className="w-def__head">
+            <span className="w-def__term">Tenant</span>
+            <span className="w-def__meta">{published.tenant}</span>
           </div>
-          <p className="w-trace__why">
+          <p className="w-def__note">
             It lives under this tenant and nowhere else. No visibility flag is doing that work —
             firestore.rules makes the subtree unreachable to anyone outside the organisation.
           </p>
         </div>
-        <div className="w-trace__row">
-          <div className="w-trace__head">
-            <span className="w-trace__agent">Needs a surface that can reach</span>
-            <span className="w-trace__meta w-mono">{published.minimum_tier}</span>
+        <div className="w-def">
+          <div className="w-def__head">
+            <span className="w-def__term">Needs a surface that can reach</span>
+            <span className="w-def__meta">{published.minimum_tier}</span>
           </div>
-          <p className="w-trace__why">
+          <p className="w-def__note">
             Derived from the fields, never chosen. A surface below this is refused before the job
             starts rather than downgraded to let it through.
           </p>

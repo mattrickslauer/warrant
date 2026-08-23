@@ -53,7 +53,33 @@ class Scoper(Agent):
         coverage = self._coverage(case)
         if coverage:
             body.append(coverage)
-        return [self.text("\n\n".join(body))]
+
+        parts: list[Part] = [self.text("\n\n".join(body))]
+
+        # The paper form as the shop actually holds it, rather than as somebody typed it up.
+        #
+        # A form reaches this agent two ways and they are not equivalent. Pasted text has
+        # already been through a transcription, and whoever did it silently decided what each
+        # tick box meant. A photograph or a PDF has not: the model sees the ruled columns, the
+        # unit printed above one of them, the box a technician has been writing "OK" in for a
+        # year. Attached rather than described for the same reason the Inspector is shown
+        # pixels — a description of a document is somebody's reading of it, and this agent's
+        # whole job is to refuse to inherit a reading nobody stated.
+        #
+        # It is a document, not evidence. Nothing here becomes a capture and nothing here is
+        # sealed; the job surface refuses uploads on purpose and that is untouched.
+        docs = case.get("existing_form_media") or []
+        if docs:
+            many = len(docs) > 1
+            parts.append(self.text(
+                f"## The paper form itself\nThe {str(len(docs)) + ' documents' if many else 'document'} "
+                f"below {'are' if many else 'is'} the form this shop fills in today. Compile "
+                "from it where it is unambiguous and ask about every part of it that is not. A "
+                "tick box on paper almost never states its own acceptance rule, and a column "
+                "headed only 'pressure' does not say in what unit or between which figures it "
+                "passes. Read no bound into it that is not printed on it."))
+            parts.extend(self.media(ref, label=ref) for ref in docs)
+        return parts
 
     @staticmethod
     def _coverage(case: dict[str, Any]) -> str:

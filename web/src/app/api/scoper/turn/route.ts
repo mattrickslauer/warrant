@@ -31,6 +31,7 @@ interface Body {
   shop?: { trade?: string; machines?: string; technicians?: number; stakes?: string };
   conversation?: Turn[];
   existing_form?: string;
+  existing_form_media?: unknown;
   catalogue?: unknown;
 }
 
@@ -62,6 +63,16 @@ export async function POST(request: Request) {
   // about this conversation with the conversation.
   const asked = askedAbout(conversation);
 
+  // Uploaded paper forms, confined to this caller's own prefix.
+  //
+  // The fleet reads a `gs://` reference under ITS credential, not the caller's, so an
+  // unchecked reference here is an instruction to a privileged reader to open any object in
+  // the bucket and describe it back — and the references arrive from a browser, which can say
+  // anything. `storage.rules` already stops that browser WRITING outside its tenant; this is
+  // the other half, and it is the half that matters, because naming an object is not writing
+  // one.
+  const forms = ownForms(body.existing_form_media, session.tenant.id);
+
   const kase = {
     shop: body.shop ?? {},
     conversation,
@@ -69,6 +80,7 @@ export async function POST(request: Request) {
     unanswered: shrugs(conversation),
     turns_left: Math.max(0, MAX_TURNS - conversation.filter((t) => t.who !== "shop").length),
     ...(body.existing_form ? { existing_form: body.existing_form } : {}),
+    ...(forms.length ? { existing_form_media: forms } : {}),
     ...(body.catalogue ? { catalogue: body.catalogue } : {}),
   };
 
@@ -97,6 +109,23 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+}
+
+/**
+ * Which of the references the caller sent are theirs to have.
+ *
+ * Silently dropped rather than refused, because there is exactly one way a foreign reference
+ * gets here and it is not a shop mistyping: the interview only ever sends back what this
+ * browser itself uploaded, under its own tenant, moments earlier. An interview must not die
+ * over it either — the transcript is the expensive thing on this screen.
+ */
+function ownForms(refs: unknown, tenantId: string): string[] {
+  if (!Array.isArray(refs)) return [];
+  const bucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+  if (!bucket) return [];
+  const prefix = `gs://${bucket}/tenants/${tenantId}/forms/`;
+  return refs.filter((r): r is string =>
+    typeof r === "string" && r.startsWith(prefix) && !r.slice(prefix.length).includes("/"));
 }
 
 /**
