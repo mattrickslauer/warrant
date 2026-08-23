@@ -76,7 +76,11 @@ service cloud.firestore {
     // name and silently escapes this list. Anything that must be write-protected has to sit
     // directly under /tenants/{t}/. See specs/2026-08-20-firestore-design.md §14.5.
     function serverWritten(collection) {
-      return collection in ['members', 'records', 'decisions', 'readings', 'procedure_versions'];
+      // `findings` and `audits` join the list for the same reason `decisions` is on it: they
+      // are what an agent concluded, and a conclusion the subject of it can edit is not a
+      // finding. A shop that could delete "this step is ambiguous" would delete it.
+      return collection in ['members', 'records', 'decisions', 'readings', 'procedure_versions',
+                            'findings', 'audits'];
     }
 
     // Claims a client may never make for itself, at any depth in the tenant subtree.
@@ -95,7 +99,50 @@ service cloud.firestore {
       return request.resource.data.get('provenance_class', '') != 'measured'
           && request.resource.data.get('capture_surface', '') != 'app_instrument'
           && request.resource.data.get('status', '') != 'sealed'
-          && request.resource.data.get('tool_id', '') == '';
+          && request.resource.data.get('tool_id', '') == ''
+          && clientMayNotSettleAStep();
+    }
+
+    // Did this write change a field, as opposed to leaving what was already there?
+    //
+    // A MERGE write presents `request.resource.data` as the whole document AFTER the merge, so
+    // a naive "this field must be absent" check would refuse a technician adding a blocker
+    // reason to a step the fleet had already partly accepted. Comparing against `resource`
+    // asks the question that is actually meant: not "is this field set" but "is this client
+    // setting it". `resource` is null on a create, where anything present is by definition new.
+    function changing(field) {
+      return resource == null
+          ? request.resource.data.get(field, null) != null
+          : request.resource.data.get(field, null) != resource.data.get(field, null);
+    }
+
+    // A CLIENT MAY NOT SETTLE A STEP.
+    //
+    // This is the tick in the box, and it is the whole product. `performed`, `waived` and
+    // `impossible` are the three statuses that finish a step, and every one of them is a
+    // conclusion the fleet reaches from evidence: `performed` when every required field has
+    // been accepted by an Inspector, `waived` only on a named person who holds standing, and
+    // `impossible` on a Foreman's disposition. A technician writing any of them directly is an
+    // interested party recording their own verdict, which is the exact practice this system
+    // exists to replace.
+    //
+    // Until this existed, `web/scripts/audit-adversarial.test.mjs` could write a `performed`
+    // step outcome with no evidence, and a `waived` one naming the CEO, from an ordinary
+    // signed-in technician account. That file was not in scripts/smoke.sh, so nothing ran it.
+    //
+    // `pending` and `deferred` are deliberately still writable. Neither settles anything and
+    // neither releases a machine — `deferred` keeps the job open and the machine held, which
+    // is the conservative direction, and refusing it would break a technician deferring a step
+    // the fleet had already ruled on once.
+    //
+    // The three server-written fields are compared rather than forbidden, for the merge reason
+    // in `changing()` above.
+    function clientMayNotSettleAStep() {
+      return !(request.resource.data.get('status', '') in ['performed', 'waived', 'impossible']
+               && changing('status'))
+          && !changing('waived_by')
+          && !changing('disposition_action')
+          && !changing('accepted_fields');
     }
 
     // --- Type space --------------------------------------------------------------------

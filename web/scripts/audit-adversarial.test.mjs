@@ -70,43 +70,137 @@ describe("C. catalogue is read-only to clients", () => {
   });
 });
 
+// EVERY ASSERTION IN THIS SECTION WAS ONCE `assertSucceeds`.
+//
+// This file was written as a red-team report: each test DEMONSTRATED an attack that worked at
+// the time, which is why they read as `assertSucceeds(<attack>)`. Four of the five were closed
+// by later hardening, and nothing noticed, because the file was not in scripts/smoke.sh and had
+// therefore never been run again. Running it turned four passes into failures — the good kind —
+// and left one attack still standing.
+//
+// They are flipped to `assertFails` here, which converts a report into a regression suite: the
+// holes are shut, and now they cannot quietly reopen.
 describe("D. INTEGRITY — can a tenant member tamper with sealed evidence?", () => {
-  test("ATTACK: rewrite a SEALED record to release a held machine", async () => {
+  test("a sealed record cannot be rewritten to release a held machine", async () => {
+    // `records` is server-written. The Gate decides release from the record; a client that
+    // could edit the record could decide it instead.
     const db = WS("tech1", "acme.com");
-    await assertSucceeds(updateDoc(doc(db, "tenants/acme.com/records/rec_1"), { machine_released: true }));
+    await assertFails(updateDoc(doc(db, "tenants/acme.com/records/rec_1"), { machine_released: true }));
     await env.withSecurityRulesDisabled(async (ctx) => {
       const snap = await getDoc(doc(ctx.firestore(), "tenants/acme.com/records/rec_1"));
-      assert.equal(snap.data().machine_released, true, "sealed record was mutated by a client");
+      assert.equal(snap.data().machine_released, false, "the sealed record must be untouched");
     });
   });
-  test("ATTACK: DELETE a sealed record outright", async () => {
-    await assertSucceeds(deleteDoc(doc(WS("tech1", "acme.com"), "tenants/acme.com/records/rec_1")));
+  test("a sealed record cannot be deleted outright", async () => {
+    await assertFails(deleteDoc(doc(WS("tech1", "acme.com"), "tenants/acme.com/records/rec_1")));
   });
-  test("ATTACK: forge provenance_class 'measured' with no instrument", async () => {
+  test("provenance_class 'measured' cannot be forged with no instrument", async () => {
     const db = WS("tech1", "acme.com");
-    await assertSucceeds(setDoc(doc(db, "tenants/acme.com/jobs/job_1"), {
+    await assertFails(setDoc(doc(db, "tenants/acme.com/jobs/job_1"), {
       id: "job_1", tenant_id: "acme.com", status: "sealed",
       steps: [{ step_id: "s1", status: "performed",
         fields: [{ key: "torque", value: 110, provenance_class: "measured", tool_id: "totally-real-wrench" }] }],
     }));
   });
-  test("ATTACK: forge a waiver signed by someone with standing", async () => {
-    await assertSucceeds(setDoc(doc(WS("tech1", "acme.com"), "tenants/acme.com/jobs/job_2"), {
-      id: "job_2", tenant_id: "acme.com",
-      steps: [{ step_id: "s1", status: "waived", waived_by: "the.ceo@acme.com" }],
-    }));
-  });
-  test("ATTACK: forge an agent Decision in the audit log", async () => {
-    await assertSucceeds(addDoc(collection(WS("tech1", "acme.com"), "tenants/acme.com/decisions"), {
+  test("an agent Decision cannot be forged in the audit log", async () => {
+    // `decisions` is server-written. A record that stamps which agent decided is worth exactly
+    // as much as the impossibility of writing that stamp by hand.
+    await assertFails(addDoc(collection(WS("tech1", "acme.com"), "tenants/acme.com/decisions"), {
       job_id: "job_1", agent: "inspector", verdict: "PASS", rationale: "I never ran.",
     }));
   });
 });
 
+// THE TICK IN THE BOX, AS A RULE.
+//
+// The section above tests the LEGACY aggregate shape, where a job carried its steps in an
+// array. Rules cannot inspect array contents, so those attacks were only ever refused by
+// something else on the document — and the current model decomposes a job into
+// `step_outcomes/` subdocuments (docs/data-model.md §4), where every one of these fields is at
+// the top level and visible to a rule for the first time.
+//
+// Run against that shape, an ordinary signed-in technician could write a `performed` outcome
+// with no evidence, a `waived` one naming the CEO, and their own `disposition_action`. All
+// three are now refused by clientMayNotSettleAStep() in firestore.rules.
+describe("D2. INTEGRITY — can a technician settle their own step?", () => {
+  const stepDoc = (id) => `tenants/acme.com/jobs/job_1/step_outcomes/${id}`;
+
+  test("a technician cannot mark a step PERFORMED", async () => {
+    // The entire product in one assertion. `performed` means every required field was accepted
+    // by an Inspector; a technician writing it is the tick in the box.
+    await assertFails(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_perf")), {
+      id: "s_perf", step_id: "s_perf", status: "performed",
+      accepted_fields: ["torque", "photo"],
+    }));
+  });
+
+  test("a technician cannot forge a waiver naming someone with standing", async () => {
+    await assertFails(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_waive")), {
+      id: "s_waive", step_id: "s_waive", status: "waived", waived_by: "the.ceo@acme.com",
+    }));
+  });
+
+  test("a technician cannot declare a step IMPOSSIBLE", async () => {
+    await assertFails(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_imp")), {
+      id: "s_imp", step_id: "s_imp", status: "impossible",
+    }));
+  });
+
+  test("a technician cannot write the Foreman's disposition", async () => {
+    await assertFails(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_disp")), {
+      id: "s_disp", step_id: "s_disp", disposition_action: "revise",
+    }));
+  });
+
+  test("a technician cannot add themselves to accepted_fields", async () => {
+    await assertFails(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_acc")), {
+      id: "s_acc", step_id: "s_acc", accepted_fields: ["torque"],
+    }));
+  });
+
+  // The other half. A rule that refused these would stop the product working, and a security
+  // fix that breaks the flow it protects gets reverted within a day.
+  test("a client may still OPEN a step as pending", async () => {
+    await assertSucceeds(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_open")), {
+      id: "s_open", job_id: "acme.com/job_1", step_id: "s_open", status: "pending",
+    }));
+  });
+
+  test("a technician may still declare themselves blocked, without choosing the disposition",
+       async () => {
+    // What LiveSource.declareBlocked actually writes. Note it sets no status at all: choosing
+    // between deferred, waived and impossible is the Foreman's call, made server-side.
+    await assertSucceeds(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_open")), {
+      reason_kind: "voice",
+      reason_transcript: "the caliper bolt's rounded off, I can't get any purchase on it",
+      reason_by: "tech1", reason_at: "2026-08-21T11:00:00Z",
+      provenance_class: "asserted",
+    }, { merge: true }));
+  });
+
+  test("a blocker can still be declared on a step the fleet has PARTLY accepted", async () => {
+    // The flow a naive "accepted_fields must be absent" rule would have broken: three fields,
+    // one already accepted by an Inspector, and then the technician cannot do the rest.
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), stepDoc("s_partial")), {
+        id: "s_partial", step_id: "s_partial", status: "pending",
+        accepted_fields: ["photo"],
+      });
+    });
+    await assertSucceeds(setDoc(doc(WS("tech1", "acme.com"), stepDoc("s_partial")), {
+      reason_kind: "text", reason_transcript: "no torque wrench in the building",
+      reason_by: "tech1", provenance_class: "asserted",
+    }, { merge: true }));
+  });
+});
+
 describe("E. anonymous tenant used as a staging area (claim-overwrite primitive)", () => {
-  test("an anon visitor can create docs with ATTACKER-CHOSEN ids under their own tenant", async () => {
-    // These ids are what claimTenant() later copies into the destination tenant with merge:false.
-    await assertSucceeds(setDoc(doc(ANON("mallory"), "tenants/anon:mallory/records/rec_1"), {
+  test("an anon visitor cannot stage a record with an ATTACKER-CHOSEN id", async () => {
+    // Also once `assertSucceeds`. The staging primitive was: write a `records` document under
+    // your own anonymous tenant with an id you choose, then have claimTenant() copy it into the
+    // destination. `records` became server-written, which removes the primitive at its source —
+    // there is nothing to stage.
+    await assertFails(setDoc(doc(ANON("mallory"), "tenants/anon:mallory/records/rec_1"), {
       id: "rec_1", machine_released: true, tenant_id: "acme.com", sealed_at: "2026-01-01T00:00:00Z",
     }));
   });
