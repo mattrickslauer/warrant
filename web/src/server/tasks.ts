@@ -374,22 +374,43 @@ export interface StalledStep {
 /** The three statuses that finish a step. A settled step is not a stall, whatever was said. */
 const SETTLED = new Set(["performed", "waived", "impossible"]);
 
-export async function stalledSteps(limit = 25): Promise<StalledStep[]> {
+export async function stalledSteps(limit = 25, scan = 300): Promise<StalledStep[]> {
   const snap = await adminDb()
     .collectionGroup("step_outcomes")
-    .where("reason_kind", "in", ["voice", "text"])
-    .limit(limit)
+    // NEWEST FIRST, AND THIS IS THE WHOLE FIX.
+    //
+    // The first version filtered a page of 25 in code. A step a Foreman has already ruled on
+    // still carries its reason forever, so it still matched — and once 25 disposed stalls
+    // existed anywhere in the system the page came back full of them, every one was filtered
+    // out, and NO NEW STALL WAS EVER PROCESSED AGAIN. The Foreman would have gone silent as the
+    // product was used, with the sweep reporting a clean run the whole time. Starvation, and
+    // the worst shape of it: it gets likelier the more the system works.
+    //
+    // Ordering by `reason_at` descending puts the newest deferral at the top, so a technician
+    // who just walked away from a machine is picked up whatever the history behind them looks
+    // like. It also does the filtering the `in` clause used to: a document with no `reason_at`
+    // is not returned by an orderBy on that field at all, and "a technician gave a reason" is
+    // exactly what having one means.
+    //
+    // One orderBy on one field, so the automatic single-field index serves it — a composite
+    // would have to be deployed before the sweep worked, and a safety net nobody can turn on
+    // is not a safety net.
+    .orderBy("reason_at", "desc")
+    .limit(scan)
     .get();
 
-  return snap.docs.flatMap((doc) => {
+  const found: StalledStep[] = [];
+  for (const doc of snap.docs) {
+    if (found.length >= limit) break;
     const data = doc.data();
-    if (data.disposition_action) return [];
-    if (SETTLED.has(String(data.status))) return [];
+    if (data.disposition_action) continue;
+    if (SETTLED.has(String(data.status))) continue;
     // tenants/{t}/jobs/{j}/step_outcomes/{s}
     const parts = doc.ref.path.split("/");
-    if (parts.length !== 6) return [];
-    return [{ tenantId: parts[1], jobId: parts[3], stepId: doc.id }];
-  });
+    if (parts.length !== 6) continue;
+    found.push({ tenantId: parts[1], jobId: parts[3], stepId: doc.id });
+  }
+  return found;
 }
 
 /**
@@ -439,4 +460,41 @@ export async function proceduresDueAnAudit(limit = 3): Promise<AuditDue[]> {
     if (due.length >= limit) break;
   }
   return due;
+}
+
+/**
+ * Jobs whose every step has settled and which nobody sealed.
+ *
+ * The same net that catches an undecided capture, one level up. A technician finishing the
+ * last step and closing the app would otherwise leave a job that is complete, unsealed, and
+ * therefore has no record — and the machine stays held by a Gate reading a record that was
+ * never written.
+ *
+ * `status == "open"` and the pending check in memory, for the reason `stalledSteps` explains:
+ * an inequality on a second field would need a composite index, and the set is small.
+ */
+export interface SealableJob {
+  tenantId: string;
+  jobId: string;
+}
+
+export async function sealableJobs(limit = 10): Promise<SealableJob[]> {
+  const snap = await adminDb()
+    .collectionGroup("jobs")
+    .where("status", "==", "open")
+    .limit(200)
+    .get();
+
+  const out: SealableJob[] = [];
+  for (const doc of snap.docs) {
+    // tenants/{t}/jobs/{j}
+    const parts = doc.ref.path.split("/");
+    if (parts.length !== 4) continue;
+    const outcomes = await doc.ref.collection("step_outcomes").get();
+    if (outcomes.empty) continue;
+    if (outcomes.docs.some((o) => String(o.data().status ?? "pending") === "pending")) continue;
+    out.push({ tenantId: parts[1], jobId: parts[3] });
+    if (out.length >= limit) break;
+  }
+  return out;
 }

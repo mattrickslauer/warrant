@@ -34,7 +34,7 @@ const db = adminDb();
 // same emulator and the same tenant, so sharing a procedure id means whichever writes its
 // version document last silently decides the other's steps — which fails as a broken assertion
 // somewhere unrelated, in the file that did nothing wrong.
-async function seedStall(jobId, { transcript, status = "deferred", disposition } = {}) {
+async function seedStall(jobId, { transcript, status = "deferred", disposition, reasonAt } = {}) {
   const job = db.doc(`tenants/${TENANT}/jobs/${jobId}`);
   await job.set({
     id: `${TENANT}/${jobId}`, tenant_id: TENANT, procedure_id: "caliper-torque-service",
@@ -48,7 +48,7 @@ async function seedStall(jobId, { transcript, status = "deferred", disposition }
     reason_transcript: transcript ??
       "the caliper bolt's rounded off, I can't get any purchase on it at all",
     reason_by: "uid_tech_1",
-    reason_at: "2026-08-21T11:00:00Z",
+    reason_at: reasonAt ?? "2026-08-21T11:00:00Z",
     ...(disposition ? { disposition_action: disposition } : {}),
   });
   // A settled step alongside it, so `steps_outstanding` is a count and not a constant.
@@ -316,6 +316,30 @@ describe("stalledSteps", () => {
   test("a step already disposed of is not raised twice", async () => {
     await seedStall("stall_r", { disposition: "chase" });
     assert.ok(!(await stalledSteps(200)).some((s) => s.jobId === "stall_r"));
+  });
+
+  test("a backlog of disposed stalls does not starve a new one", async () => {
+    // The bug this pins would have made the Foreman go silent as the product was used, with
+    // the sweep reporting a clean run throughout. A disposed step keeps its reason forever, so
+    // it keeps matching; a page filtered in code fills up with them and nothing new is seen.
+    //
+    // THE JOB IDS MATTER. Without an orderBy, a collection-group query comes back in document
+    // PATH order, so a backlog only starves what sorts after it. The first version of this
+    // test used ids that sorted BEFORE the backlog and passed against the broken
+    // implementation — proving nothing. `aaa_` and `zzz_` are what make the page fill up
+    // ahead of the new stall, which is the situation a real backlog produces and the one the
+    // fix is for.
+    for (let i = 0; i < 30; i++) {
+      await seedStall(`aaa_starved_${String(i).padStart(2, "0")}`, {
+        disposition: "chase",
+        reasonAt: `2026-08-01T${String(i % 24).padStart(2, "0")}:00:00Z`,
+      });
+    }
+    await seedStall("zzz_fresh", { reasonAt: "2026-08-22T09:00:00Z" });
+
+    const found = await stalledSteps(25);
+    assert.ok(found.some((s) => s.jobId === "zzz_fresh"),
+              "a fresh stall behind a backlog of disposed ones must still be found");
   });
 
   test("a performed step is not a stall", async () => {
