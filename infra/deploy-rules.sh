@@ -216,6 +216,32 @@ curl -sS -X PATCH "$FIELD?updateMask=indexConfig" "${API[@]}" -d '{"indexConfig"
 ]}}' >/dev/null
 echo "  decisions.at (COLLECTION_GROUP desc) — requested"
 
+# The sweep's Foreman leg: steps a technician gave a reason for, newest first, across every
+# tenant. stalledSteps() in web/src/server/tasks.ts orders by `reason_at` on a COLLECTION GROUP,
+# so without this it fails with FAILED_PRECONDITION and the Instructor and the Foreman are never
+# reached — the sweep reports a clean run while nobody is raised for a stalled step.
+#
+# The COLLECTION entries are restated deliberately: this write REPLACES indexConfig, so leaving
+# them out deletes the automatic ones.
+FIELD="https://firestore.googleapis.com/v1/projects/$PROJECT/databases/(default)/collectionGroups/step_outcomes/fields/reason_at"
+curl -sS -X PATCH "$FIELD?updateMask=indexConfig" "${API[@]}" -d '{"indexConfig":{"indexes":[
+  {"fields":[{"fieldPath":"reason_at","order":"ASCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"reason_at","order":"DESCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"reason_at","order":"DESCENDING"}],"queryScope":"COLLECTION_GROUP"}
+]}}' >/dev/null
+echo "  step_outcomes.reason_at (COLLECTION_GROUP desc) — requested"
+
+# The sweep's Auditor leg: every sealed job in every tenant, to find which procedures have
+# enough finished work behind them to be worth reading. proceduresDueAnAudit() queries
+# `status == "sealed"` on a COLLECTION GROUP.
+FIELD="https://firestore.googleapis.com/v1/projects/$PROJECT/databases/(default)/collectionGroups/jobs/fields/status"
+curl -sS -X PATCH "$FIELD?updateMask=indexConfig" "${API[@]}" -d '{"indexConfig":{"indexes":[
+  {"fields":[{"fieldPath":"status","order":"ASCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"status","order":"DESCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"status","order":"ASCENDING"}],"queryScope":"COLLECTION_GROUP"}
+]}}' >/dev/null
+echo "  jobs.status (COLLECTION_GROUP asc) — requested"
+
 echo
 echo "done."
 echo
