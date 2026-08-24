@@ -6,7 +6,8 @@
   },
   "storage": {
     "//": "Evidence media, avatars and uploaded paper forms. There were no storage rules at all until 2026-08-20, while storageBucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded.",
-    "//bucket": "NAMED, because this project has no default bucket. Firebase Storage was never 'Get Started'-ed here; the bucket is the one bootstrap.sh makes, ${PROJECT}-evidence. Without this line `firebase deploy --only storage` looks for the default, does not find it, and fails with 'Firebase Storage has not been set up on project' — which reads as the rules never having been deployed rather than as the CLI looking in the wrong place. They had been deployed. Change this when the project changes.",
+    "//bucket": "The bucket these rules govern: the one bootstrap.sh makes, ${PROJECT}-evidence. Named because this project has no DEFAULT bucket — Firebase Storage was never 'Get Started'-ed here, and the evidence bucket was made with gcloud and registered afterwards. Change it when the project changes.",
+    "//deploy": "NAMING IT IS NOT ENOUGH TO DEPLOY IT. `firebase deploy --only storage` fails here with 'Firebase Storage has not been set up on project' whatever this file says, because the CLI checks for a default bucket BEFORE it reads any of this — and there is none, though the evidence bucket is registered and its rules release exists. So storage rules are published against the Rules API directly, by PUTting a ruleset and pointing projects/${PROJECT}/releases/firebase.storage/${BUCKET} at it. Firestore deploys normally: `firebase deploy --only firestore:rules`. Run both from a shell with GOOGLE_APPLICATION_CREDENTIALS UNSET, or the CLI authenticates as warrant-web, which may not write rules.",
     "bucket": "warrent-505918-evidence",
     "rules": "storage.rules"
   },
