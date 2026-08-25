@@ -10,8 +10,18 @@
 
 export interface OutcomeInput {
   inspector: { output: Record<string, any>; valid: boolean; schemaErrors: string[] };
-  /** Null when the Skeptic could not be asked. Absence is never agreement. */
-  skeptic: { output: Record<string, any>; valid: boolean } | null;
+  /**
+   * What became of the second question. Three states, and the third is not a convenience.
+   *
+   *  * **a reply** — the Skeptic was asked and answered.
+   *  * **`null`** — it could not be asked. Absence is never agreement, so this HOLDS.
+   *  * **`"not_applicable"`** — there is no scene for this evidence to belong to, so
+   *    belonging is not a question that can be put. See the note where it is consumed.
+   *
+   * `null` and `"not_applicable"` are opposite conclusions and were once the same value,
+   * which is how a typed answer came to be held for failing a question about photographs.
+   */
+  skeptic: { output: Record<string, any>; valid: boolean } | null | "not_applicable";
   addFieldsUsed: number;
   maxAddFields: number;
   /** The job's strictness, which sets the confidence a PASS has to clear. Defaults to 1. */
@@ -23,6 +33,22 @@ export interface OutcomeInput {
    * the comparison has to happen here. That is not tidiness; it is the only thing that works.
    */
   acceptance?: { rule?: string | null; target?: string | null };
+  /**
+   * The literal answer, when the evidence IS one — a choice tapped, a note typed, a name
+   * signed. Null for a photograph.
+   *
+   * A `matches` rule is settled by comparing what the evidence says against what the
+   * procedure requires, and for a photograph the only way to learn the first half is to have
+   * a model read it — which is why `observed` exists and why the Inspector is blinded to the
+   * target while producing it. An answer has no such gap. The string is already here, exactly
+   * as it was submitted, and asking a model to type it back introduces a chance of error into
+   * a comparison that had none.
+   *
+   * So the code reads it directly. This is the same principle `observed` serves, arriving at
+   * the opposite implementation because the evidence is a different kind of thing: the model
+   * reads, the code decides — and where there is nothing to read, the code simply decides.
+   */
+  answer?: string | null;
 }
 
 /**
@@ -159,7 +185,16 @@ export function decideOutcome(input: OutcomeInput): Effect {
     };
   }
   if (rule === "matches" && target) {
-    const observed = inspector.output.observed;
+    // The answer itself where there is one, and the transcription only where reading was
+    // required. Without the first branch every CHOICE field judged `matches` held: the
+    // Inspector is told to "put in `observed` exactly what you can read in the image,
+    // character by character", there is no image behind a tapped answer, and a model asked
+    // to transcribe nothing returns nothing — so the field failed for want of a transcription
+    // of a string the server was holding all along.
+    const answer = typeof input.answer === "string" && input.answer.trim()
+      ? input.answer
+      : null;
+    const observed = answer ?? inspector.output.observed;
     if (typeof observed !== "string" || !observed.trim()) {
       return {
         kind: "hold",
@@ -182,6 +217,28 @@ export function decideOutcome(input: OutcomeInput): Effect {
   // matters. The Inspector judged whether the evidence is good enough; the Skeptic judged
   // whether it is evidence of THIS machine, on THIS job, at THIS moment. A step advanced on
   // an unanswered second question is exactly the tick in the box this product abolishes.
+  // The one case where silence is not a failure.
+  //
+  // The Skeptic asks whether a frame is of THIS machine, on THIS job, at THIS moment, and it
+  // answers from image content, from capture metadata and from perceptual distance to earlier
+  // photographs. A technician tapping "Responsive and quiet" produces none of those. There is
+  // no scene, so there is nothing for the evidence to fail to belong to — and the agent is
+  // instructed that if it cannot establish identity it must dissent, which made dissent the
+  // only honest answer to a question nobody should have asked.
+  //
+  // That is not hypothetical. Every choice, text and signature answer in the product reached
+  // the Skeptic with an empty media list, came back "you cannot establish identity from an
+  // absence", and escalated a step the technician had answered correctly. `cases.ts` already
+  // makes exactly this argument about a job that names no asset, where an empty shell "would
+  // read as an asset it was handed and could not identify". The same reasoning, applied to
+  // the media it was never given.
+  //
+  // What still guards a typed answer: Model Armor screens it before any model sees it, the
+  // Inspector judges it, and a `matches` rule is compared in code above. Belonging is the one
+  // question of the four that has no meaning here.
+  if (skeptic === "not_applicable") {
+    return { kind: "accept_field" };
+  }
   if (skeptic === null) {
     return { kind: "hold", why: "the Skeptic could not be asked, so belonging is unestablished" };
   }

@@ -332,6 +332,10 @@ export async function adjudicate(
         maxAddFields: step.max_add_fields ?? 2,
         strictness: job.strictness ?? 1,
         acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
+    // Set only for a `text` capture — see `sources.answer`. It is what makes a `matches` rule
+    // decidable on an answer at all, without a model being asked to read something that was
+    // never a picture.
+    answer: sources.answer ?? null,
       });
       await withSpan(trace, "gate.apply",
         { effect: screenEffect.kind, verdict: "ADD_FIELD", screened_by: screened.model },
@@ -347,6 +351,25 @@ export async function adjudicate(
     }
   }
 
+  // Whether belonging is a question that can be put about this capture at all.
+  //
+  // A `text` capture is an ANSWER — a choice tapped, a note typed, a name signed — and it
+  // carries no frame, no place and no moment to compare against anything. The Skeptic reasons
+  // from image content, capture metadata and perceptual distance to earlier photographs, and
+  // is instructed to dissent when it cannot establish identity. Handed an answer it therefore
+  // dissented every single time, and escalated steps that had been answered correctly: a
+  // technician tapped "Responsive and quiet" and was told the evidence might not belong to
+  // the job. It also cost a model call per answer to produce that.
+  //
+  // The discriminator is the capture KIND and deliberately not "did any media arrive". A
+  // photo field whose capture reached us with nothing attached is a real anomaly and the
+  // Skeptic must still be asked and must still dissent — there is an eval scenario pinning
+  // exactly that. What is excluded here is the kind of evidence that never has a scene, not
+  // the occasion where a scene went missing.
+  //
+  // Same discriminator the Model Armor branch above already uses, for the same reason.
+  const isAnswer = capture.kind === "text";
+
   let inspector: FleetReply;
   let skeptic: FleetReply | null = null;
   try {
@@ -360,10 +383,12 @@ export async function adjudicate(
         { agent: "inspector", field: ref.fieldKey, step: ref.stepId,
           strictness: job.strictness ?? 1 },
         () => ask("inspector", inspectorCase(sources))),
-      withSpan(trace, "agent.skeptic",
-        { agent: "skeptic", field: ref.fieldKey, step: ref.stepId,
-          prior_media: sources.priorMediaUris.length },
-        () => ask("skeptic", skepticCase(sources))),
+      isAnswer
+        ? Promise.resolve(null)
+        : withSpan(trace, "agent.skeptic",
+          { agent: "skeptic", field: ref.fieldKey, step: ref.stepId,
+            prior_media: sources.priorMediaUris.length },
+          () => ask("skeptic", skepticCase(sources))),
     ]);
   } catch (error) {
     // Never silent. An unreachable fleet is a fact about this capture, and the identity trap
@@ -404,13 +429,21 @@ export async function adjudicate(
       valid: inspector.valid,
       schemaErrors: inspector.schemaErrors,
     },
-    skeptic: skeptic ? { output: skeptic.output, valid: skeptic.valid } : null,
+    // "Not applicable" and "could not be asked" are opposite conclusions — the first accepts,
+    // the second holds — so an answer must never fall through to the null branch.
+    skeptic: isAnswer
+      ? "not_applicable"
+      : skeptic ? { output: skeptic.output, valid: skeptic.valid } : null,
     addFieldsUsed,
     maxAddFields: step.max_add_fields ?? 2,
     // Sets the confidence floor a PASS has to clear. The same number the Inspector was shown.
     strictness: job.strictness ?? 1,
     // The target the Inspector was deliberately NOT shown, so the comparison happens in code.
     acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
+    // Set only for a `text` capture — see `sources.answer`. It is what makes a `matches` rule
+    // decidable on an answer at all, without a model being asked to read something that was
+    // never a picture.
+    answer: sources.answer ?? null,
   });
 
   await withSpan(trace, "gate.apply",

@@ -24,6 +24,84 @@ describe("decideOutcome", () => {
     assert.equal(e.kind, "accept_field");
   });
 
+  test("an answer has no scene, so belonging does not hold it", () => {
+    // The failure this pins reached a technician. Every choice, text and signature answer
+    // arrives as a `text` capture with no media, the Skeptic was asked anyway, and — being
+    // instructed to dissent when it cannot establish identity — it dissented every time. So
+    // tapping "Responsive and quiet" on a brake service escalated the step, telling somebody
+    // their correct answer might not belong to the job. It also bought a model call to say it.
+    const e = decideOutcome({ inspector: pass, skeptic: "not_applicable",
+                              addFieldsUsed: 0, maxAddFields: 2 });
+    assert.equal(e.kind, "accept_field");
+  });
+
+  test("`not applicable` and `could not be asked` stay opposite conclusions", () => {
+    // The whole reason this is a third state rather than a second use of null. One means
+    // there was no question to put; the other means the question went unanswered. Collapsing
+    // them either holds every typed answer, or advances a photograph nobody vouched for.
+    const notAsked = decideOutcome({ inspector: pass, skeptic: null,
+                                     addFieldsUsed: 0, maxAddFields: 2 });
+    const noQuestion = decideOutcome({ inspector: pass, skeptic: "not_applicable",
+                                       addFieldsUsed: 0, maxAddFields: 2 });
+    assert.equal(notAsked.kind, "hold");
+    assert.equal(noQuestion.kind, "accept_field");
+  });
+
+  test("belonging being moot does not rescue a failing answer", () => {
+    // `not_applicable` retires ONE of the four questions. Model Armor still screened the
+    // string, the Inspector still judged it, and everything the Inspector can refuse it still
+    // refuses — otherwise this would be a way to pass a step by typing into it.
+    const fail = {
+      output: { verdict: "FAIL", confidence: 0.9, rationale: "The answer contradicts the reading." },
+      valid: true, schemaErrors: [],
+    };
+    const e = decideOutcome({ inspector: fail, skeptic: "not_applicable",
+                              addFieldsUsed: 0, maxAddFields: 2 });
+    assert.notEqual(e.kind, "accept_field");
+  });
+
+  test("a `matches` rule is compared from the answer itself", () => {
+    // No `observed` in the verdict, because there was no image to read one off. Every CHOICE
+    // field judged `matches` held on exactly this: the Inspector is told to transcribe what
+    // it can see, a tapped answer shows it nothing, and the field then failed for want of a
+    // transcription of a string the server already had.
+    const read = {
+      output: { verdict: "PASS", confidence: 0.9, rationale: "the rider reported it" },
+      valid: true, schemaErrors: [],
+    };
+    const ok = decideOutcome({
+      inspector: read, skeptic: "not_applicable",
+      addFieldsUsed: 0, maxAddFields: 2,
+      answer: "Responsive and quiet",
+      acceptance: { rule: "matches", target: "Responsive and quiet" },
+    });
+    assert.equal(ok.kind, "accept_field");
+
+    // And it is a real comparison, not a wave-through. Choosing the wrong answer escalates.
+    const wrong = decideOutcome({
+      inspector: read, skeptic: "not_applicable",
+      addFieldsUsed: 0, maxAddFields: 2,
+      answer: "Scraping or noisy",
+      acceptance: { rule: "matches", target: "Responsive and quiet" },
+    });
+    assert.equal(wrong.kind, "escalate");
+  });
+
+  test("a photograph still has to be read, and the answer never stands in for one", () => {
+    // The narrowness that keeps this honest. `answer` is set only for a `text` capture, so a
+    // photo judged `matches` reaches the same hold it always did when nothing was transcribed.
+    const read = {
+      output: { verdict: "PASS", confidence: 0.9, rationale: "clear enough" },
+      valid: true, schemaErrors: [],
+    };
+    const e = decideOutcome({
+      inspector: read, skeptic: { output: { belongs: true }, valid: true },
+      addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: { rule: "matches", target: "X004-X2NVXZ" },
+    });
+    assert.equal(e.kind, "hold");
+  });
+
   test("a Skeptic dissent escalates, and names what did not match", () => {
     // The contract is explicit: "Dissent is a deterministic escalation trigger: the step
     // does not pass and a named person is raised the same day."

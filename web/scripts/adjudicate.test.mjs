@@ -206,6 +206,70 @@ describe("adjudicate", () => {
     assert.ok(d.agent_version);
   });
 
+  test("an answer is never put to the Skeptic, and a photograph still is", async () => {
+    // The failure this pins was reported from a workshop. A CHOICE field has no frame, no
+    // place and no moment, so the Skeptic — which reasons from image content, capture
+    // metadata and perceptual distance to earlier photographs, and is instructed to dissent
+    // when it cannot establish identity — dissented on every answer the product ever took.
+    // The technician tapped "Responsive and quiet", which was one of the three answers the
+    // procedure itself offered, and the step escalated saying the evidence might not belong
+    // to the job. It cost a model call each time to reach that.
+    //
+    // Both halves are asserted together deliberately. "The Skeptic was not asked" proves
+    // nothing on its own — that is also what a broken dispatch looks like — so the same run
+    // checks a photograph still gets both questions put to it.
+    const called = [];
+    const watch = async (agent) => {
+      called.push(agent);
+      return {
+        output: agent === "inspector"
+          // No `observed`, deliberately. The Inspector is instructed to transcribe what it
+          // can read in the IMAGE, and there is no image behind a tapped answer — so a real
+          // one returns nothing here, and the comparison has to come from the answer itself.
+          ? { verdict: "PASS", confidence: 0.95, rationale: "the rider reported it" }
+          : BELONGS,
+        valid: true, schemaErrors: [], model: "gemini-3.5-flash",
+        latencyMs: 1, usage: { totalTokenCount: 1 },
+      };
+    };
+
+    const ref = await seedJob("job_no_scene", {
+      fields: [
+        { key: "pad_photo", kind: "photo", prompt: "Photograph the pad edge",
+          source: "camera", required_at_strictness: 0, acceptance_rule: "must_show" },
+        { key: "test_ride_performance", kind: "choice",
+          prompt: "How do the brakes perform?", source: "human",
+          required_at_strictness: 0, acceptance_rule: "matches",
+          acceptance_target: "Responsive and quiet",
+          choices: ["Responsive and quiet", "Scraping or noisy", "Unresponsive or soft"] },
+      ],
+    });
+
+    await db.doc(`tenants/${TENANT}/jobs/job_no_scene/captures/cap_choice`).set({
+      id: "cap_choice", field_id: "s3__test_ride_performance", kind: "text",
+      media_ref: "Responsive and quiet", capture_mode: "live", capture_surface: "app",
+      created_at: "2026-08-21T10:05:00Z", armor_verdict: null, adjudicated: false,
+    });
+
+    called.length = 0;
+    const answer = await adjudicate(
+      { ...ref, fieldKey: "test_ride_performance", captureId: "cap_choice" },
+      { screen: noScreen, ask: watch, db },
+    );
+    assert.deepEqual(called, ["inspector"], "an answer has no scene to belong to");
+    assert.equal(answer.effect.kind, "accept_field",
+      "and the step the technician answered correctly must advance");
+
+    // No decision row invents a verdict for an agent that was never consulted. A record
+    // naming the Skeptic on a question it was not asked is a lie the seal would carry.
+    const rows = (await decisionsFor("job_no_scene")).docs.map((d) => d.data());
+    assert.deepEqual(rows.filter((d) => d.agent === "skeptic"), []);
+
+    called.length = 0;
+    await adjudicate(ref, { screen: noScreen, ask: watch, db });
+    assert.ok(called.includes("skeptic"), "a photograph still has to belong to something");
+  });
+
   test("a typed answer is sent AS the answer, and no media URI is built for it", async () => {
     // The bug this pins reached a phone. `capture.kind` had no `text` member, so a signature
     // went out labelled `scan`; the server built a gs:// URI for it; Gemini was asked for a
