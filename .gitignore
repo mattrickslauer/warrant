@@ -51,3 +51,4 @@ android/app/google-services.json
 
 # The anvil compiles itself on demand; the classes are not an artifact.
 anvil/build/
+Retakes.zip

@@ -1,0 +1,5 @@
+# Footage. The harness is the durable thing; a take is a moment, and a 40-second ProRes
+# split is 400MB that git should never see.
+takes/
+__pycache__/
+footage/

@@ -1,0 +1,6 @@
+# Footage is a moment; the manifest is the durable thing. Same rule as harness/.gitignore —
+# a 40-second ProRes take is 400MB that git must never see.
+*
+!.gitignore
+!*/
+!*/.gitkeep

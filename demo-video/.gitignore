@@ -1,0 +1,9 @@
+# 2.2 GB of footage lives here. The SCRIPTS are the durable thing — a take is a moment.
+# Ignore everything, then re-admit the code and the provenance records.
+*
+!*/
+!.gitignore
+!.gitkeep
+!*.py
+!*.md
+!generated/PROVENANCE.json
