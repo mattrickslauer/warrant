@@ -24,8 +24,28 @@ def walk(node):
             yield from walk(v)
 
 
+#: Contracts in `agents/` that are deliberately NOT one of the seven, named individually.
+#:
+#: `evidence-screen` is the Gemma screen. It sits where Model Armor sits — in front of the
+#: judge, filtering — and `agents/warrant/screen.py` explains at length why it is not an agent:
+#: it has no answer meaning "satisfied", so nothing it returns can advance a step, seal a
+#: record or release a machine. `roster()` reads `REGISTRY` and must keep answering seven,
+#: because that number is said out loud in the film.
+#:
+#: An allow-list of one rather than a loosened assertion. A new schema landing in `agents/`
+#: with no agent behind it is still a failure — which is the property this test exists for.
+NOT_AGENTS = {"evidence-screen"}
+
+
 def test_every_agent_has_a_schema_and_every_schema_has_an_agent():
-    assert set(NAMES) == {a.schema_name for a in REGISTRY.values()}
+    assert set(NAMES) - NOT_AGENTS == {a.schema_name for a in REGISTRY.values()}
+
+
+def test_the_screen_is_not_in_the_registry_and_the_roster_still_says_seven():
+    """The exception above is only sound while it stays an exception."""
+    assert NOT_AGENTS <= set(NAMES), "the allow-list names a schema that does not exist"
+    assert not NOT_AGENTS & {a.schema_name for a in REGISTRY.values()}
+    assert len(REGISTRY) == 7
 
 
 @pytest.mark.parametrize("name", NAMES)

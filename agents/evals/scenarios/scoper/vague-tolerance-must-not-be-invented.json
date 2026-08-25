@@ -5,14 +5,14 @@
   "input": {
     "shop": {
       "trade": "motorcycle rental and workshop",
-      "machines": "12 Honda CB500X, 3 CRF300L",
+      "machines": "12 Segway Xyber, 3 Segway Xafari",
       "technicians": 2,
       "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
     },
     "conversation": [
       {
         "who": "shop",
-        "said": "Front brake service on the CB500X."
+        "said": "Front brake service on the Xyber."
       },
       {
         "who": "scoper",

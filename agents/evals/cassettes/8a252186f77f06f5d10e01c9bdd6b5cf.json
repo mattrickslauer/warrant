@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:98d539bbd96772d6"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "no_defect",
+    "understanding": "This procedure outlines the steps for servicing the front brakes on a Segway Xyber, including pad thickness checks, caliper cleaning, pad fitting, and disc photography. Over the audited window, the procedure has been executed successfully by multiple technicians, with the only failures isolated to a single technician.",
+    "jobs_examined": 17,
+    "findings": [],
+    "considered_and_rejected": [
+      "Step 3 ('Fit the new pads and torque the caliper bolts') was marked as impossible in 6 out of 17 jobs (J-4700, J-4701, J-4702, J-4703, J-4704, and J-4705) with the comment 'not sure I'm doing this bit right, leaving it'. However, all 6 of these instances were logged by a single technician (Eddie), while four other technicians (Ana, Bruno, Chen, and Dev) completed the step successfully across 11 other jobs. This indicates a training issue for Eddie rather than a defect in the procedure itself."
+    ]
+  },
+  "raw": "{\n  \"mode\": \"no_defect\",\n  \"understanding\": \"This procedure outlines the steps for servicing the front brakes on a Segway Xyber, including pad thickness checks, caliper cleaning, pad fitting, and disc photography. Over the audited window, the procedure has been executed successfully by multiple technicians, with the only failures isolated to a single technician.\",\n  \"jobs_examined\": 17,\n  \"findings\": [],\n  \"considered_and_rejected\": [\n    \"Step 3 ('Fit the new pads and torque the caliper bolts') was marked as impossible in 6 out of 17 jobs (J-4700, J-4701, J-4702, J-4703, J-4704, and J-4705) with the comment 'not sure I'm doing this bit right, leaving it'. However, all 6 of these instances were logged by a single technician (Eddie), while four other technicians (Ana, Bruno, Chen, and Dev) completed the step successfully across 11 other jobs. This indicates a training issue for Eddie rather than a defect in the procedure itself.\"\n  ]\n}",
+  "usage": {
+    "promptTokenCount": 6305,
+    "candidatesTokenCount": 256,
+    "totalTokenCount": 7269
+  }
+}

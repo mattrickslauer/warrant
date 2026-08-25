@@ -1,0 +1,35 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:ad1ee8a0858856b8",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9689abdeae39500a",
+    "m:image/jpeg:fec84c25c92b2496",
+    "t:0f3fa5ac560e28f7",
+    "m:video/mp4:a8284fb0d15c8804"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:torque/wrench-on-fastener.jpg",
+    "prior:brake/pads-seated-sharp.jpg",
+    "",
+    "fraud/generated-wrench-on-fastener.mp4"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The submitted video shows a dark grey/black brake caliper being serviced, whereas the prior evidence on file for the asset XYBER-07 clearly shows it is equipped with distinctive red brake calipers. This indicates the video is of a different vehicle.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The submitted video shows a dark grey/black brake caliper being serviced, whereas the prior evidence on file for the asset XYBER-07 clearly shows it is equipped with distinctive red brake calipers. This indicates the video is of a different vehicle.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3681,
+    "candidatesTokenCount": 98,
+    "totalTokenCount": 4572
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:53032df95ac65cdb",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9689abdeae39500a",
+    "m:image/jpeg:fec84c25c92b2496",
+    "t:0f3fa5ac560e28f7",
+    "m:video/mp4:a8284fb0d15c8804"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:torque/wrench-on-fastener.jpg",
+    "prior:brake/pads-seated-sharp.jpg",
+    "",
+    "fraud/generated-wrench-on-fastener.mp4"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.98,
+    "rationale": "The brake caliper shown in the submitted video is dark grey/black, whereas the evidence on file for the Segway Xyber (XYBER-07) clearly shows it has a distinctive bright red brake caliper.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.98,\n  \"rationale\": \"The brake caliper shown in the submitted video is dark grey/black, whereas the evidence on file for the Segway Xyber (XYBER-07) clearly shows it has a distinctive bright red brake caliper.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3559,
+    "candidatesTokenCount": 93,
+    "totalTokenCount": 4290
+  }
+}

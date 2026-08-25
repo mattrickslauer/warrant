@@ -21,8 +21,16 @@ def main() -> int:
         pg.wait_for_timeout(800)
 
         pg.click(".cta__go")
-        pg.wait_for_timeout(1800)
-        assert "/job/" in pg.url, f"did not open a job: {pg.url}"
+        # Wait for the condition, not for a guessed number of milliseconds. Starting the
+        # first job establishes the anonymous session and seeds the public catalogue into
+        # the brand-new tenant before it can write anything, so the first click is slow in a
+        # way the second never is — and a fixed sleep here reported that as "did not open a
+        # job", which is a very misleading way to describe waiting.
+        pg.wait_for_url("**/job/**", timeout=60_000)
+        # The job page resolves the job and its pinned procedure before it can draw a step,
+        # and the camera stream attaches after the tile renders — so wait for the LIVE class
+        # rather than for the tile and then asserting on a class that has not arrived yet.
+        pg.wait_for_selector(".w-capture--live", timeout=60_000)
         assert "w-capture--live" in (pg.get_attribute(".w-capture", "class") or ""), \
             "capture is not a live camera — an upload would prove nothing about liveness"
 

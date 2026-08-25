@@ -4,9 +4,9 @@
   "why": "Nothing identifying is visible and there is no prior capture to compare against. The contract is explicit: if you cannot establish identity, dissent. Confident agreement here is the failure.",
   "input": {
     "asset": {
-      "id": "CB500X-07",
-      "type": "motorcycle",
-      "model": "Honda CB500X 2021",
+      "id": "XYBER-07",
+      "type": "e-bike",
+      "model": "Segway Xyber",
       "marks": [
         "none recorded"
       ],
@@ -18,7 +18,7 @@
     },
     "job": {
       "id": "J-4471",
-      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "procedure": "Front brake service \u2014 Segway Xyber v3",
       "opened_at": "2026-08-19T09:00:00Z",
       "location": "Workshop, El Chalt\u00e9n"
     },

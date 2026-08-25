@@ -3,7 +3,7 @@
 
     python3 agents/evals/gen_form.py
 
-Every other file under `evals/media/` is a photograph and has to be — see SHOTS.md. This one
+Every other file under `evals/media/` is a photograph and has to be — see `evals/manifest.py`. This one
 is generated, and the distinction is not a loophole. Those images are EVIDENCE: an agent that
 judges a workshop photograph must be tested on workshop photographs, and a generated
 instrument display would be a fabricated reading in a corpus whose whole claim is that records

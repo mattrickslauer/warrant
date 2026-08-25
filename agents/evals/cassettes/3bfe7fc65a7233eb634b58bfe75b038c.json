@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:c8de1233d9145dd8"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "There's no lower bolt on this one. It's the sliding pin type, always has been. Whoever wrote this was looking at the older model.",
+    "blocker_kind": "procedure_wrong",
+    "recommended_action": "Stop and hand off to the Foreman to update the procedure and obtain the correct torque specification for the sliding pin caliper configuration.",
+    "proposed_status": "impossible",
+    "blocking_part": null,
+    "safety_flag": true
+  },
+  "raw": "{\n  \"reason_summary\": \"There's no lower bolt on this one. It's the sliding pin type, always has been. Whoever wrote this was looking at the older model.\",\n  \"blocker_kind\": \"procedure_wrong\",\n  \"recommended_action\": \"Stop and hand off to the Foreman to update the procedure and obtain the correct torque specification for the sliding pin caliper configuration.\",\n  \"proposed_status\": \"impossible\",\n  \"blocking_part\": null,\n  \"safety_flag\": true\n}",
+  "usage": {
+    "promptTokenCount": 1045,
+    "candidatesTokenCount": 115,
+    "totalTokenCount": 1846
+  }
+}

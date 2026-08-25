@@ -5,7 +5,7 @@
   "input": {
     "procedure": {
       "key": "front-brake-service",
-      "title": "Front brake service \u2014 Honda CB500X",
+      "title": "Front brake service \u2014 Segway Xyber",
       "version": 3,
       "strictness": 2,
       "in_service_since": "2026-06-01",
@@ -48,8 +48,8 @@
               "key": "caliper_bolt_torque",
               "kind": "measurement",
               "acceptance_rule": "within",
-              "acceptance_min": 27,
-              "acceptance_max": 33,
+              "acceptance_min": 6,
+              "acceptance_max": 9,
               "acceptance_unit": "Nm",
               "prompt": "Torque both caliper bolts and record the reading"
             }
@@ -79,7 +79,7 @@
       {
         "id": "J-4600",
         "sealed_at": "2026-08-01",
-        "asset_id": "CB500X-00",
+        "asset_id": "XYBER-00",
         "steps": [
           {
             "index": 1,
@@ -106,7 +106,7 @@
       {
         "id": "J-4601",
         "sealed_at": "2026-08-02",
-        "asset_id": "CB500X-01",
+        "asset_id": "XYBER-01",
         "steps": [
           {
             "index": 1,
@@ -133,7 +133,7 @@
       {
         "id": "J-4602",
         "sealed_at": "2026-08-03",
-        "asset_id": "CB500X-02",
+        "asset_id": "XYBER-02",
         "steps": [
           {
             "index": 1,
@@ -160,7 +160,7 @@
       {
         "id": "J-4603",
         "sealed_at": "2026-08-04",
-        "asset_id": "CB500X-03",
+        "asset_id": "XYBER-03",
         "steps": [
           {
             "index": 1,
@@ -187,7 +187,7 @@
       {
         "id": "J-4604",
         "sealed_at": "2026-08-05",
-        "asset_id": "CB500X-04",
+        "asset_id": "XYBER-04",
         "steps": [
           {
             "index": 1,
@@ -214,7 +214,7 @@
       {
         "id": "J-4605",
         "sealed_at": "2026-08-06",
-        "asset_id": "CB500X-05",
+        "asset_id": "XYBER-05",
         "steps": [
           {
             "index": 1,
@@ -241,7 +241,7 @@
       {
         "id": "J-4606",
         "sealed_at": "2026-08-07",
-        "asset_id": "CB500X-06",
+        "asset_id": "XYBER-06",
         "steps": [
           {
             "index": 1,
@@ -268,7 +268,7 @@
       {
         "id": "J-4607",
         "sealed_at": "2026-08-08",
-        "asset_id": "CB500X-07",
+        "asset_id": "XYBER-07",
         "steps": [
           {
             "index": 1,
@@ -295,7 +295,7 @@
       {
         "id": "J-4608",
         "sealed_at": "2026-08-09",
-        "asset_id": "CB500X-08",
+        "asset_id": "XYBER-08",
         "steps": [
           {
             "index": 1,
@@ -322,7 +322,7 @@
       {
         "id": "J-4609",
         "sealed_at": "2026-08-10",
-        "asset_id": "CB500X-09",
+        "asset_id": "XYBER-09",
         "steps": [
           {
             "index": 1,
@@ -349,7 +349,7 @@
       {
         "id": "J-4610",
         "sealed_at": "2026-08-11",
-        "asset_id": "CB500X-10",
+        "asset_id": "XYBER-10",
         "steps": [
           {
             "index": 1,
@@ -376,7 +376,7 @@
       {
         "id": "J-4611",
         "sealed_at": "2026-08-12",
-        "asset_id": "CB500X-11",
+        "asset_id": "XYBER-11",
         "steps": [
           {
             "index": 1,
@@ -403,7 +403,7 @@
       {
         "id": "J-4612",
         "sealed_at": "2026-08-13",
-        "asset_id": "CB500X-12",
+        "asset_id": "XYBER-12",
         "steps": [
           {
             "index": 1,
@@ -430,7 +430,7 @@
       {
         "id": "J-4613",
         "sealed_at": "2026-08-14",
-        "asset_id": "CB500X-13",
+        "asset_id": "XYBER-13",
         "steps": [
           {
             "index": 1,
@@ -457,7 +457,7 @@
       {
         "id": "J-4614",
         "sealed_at": "2026-08-15",
-        "asset_id": "CB500X-14",
+        "asset_id": "XYBER-14",
         "steps": [
           {
             "index": 1,
@@ -484,7 +484,7 @@
       {
         "id": "J-4615",
         "sealed_at": "2026-08-16",
-        "asset_id": "CB500X-15",
+        "asset_id": "XYBER-15",
         "steps": [
           {
             "index": 1,
@@ -511,7 +511,7 @@
       {
         "id": "J-4616",
         "sealed_at": "2026-08-17",
-        "asset_id": "CB500X-16",
+        "asset_id": "XYBER-16",
         "steps": [
           {
             "index": 1,
@@ -538,7 +538,7 @@
       {
         "id": "J-4617",
         "sealed_at": "2026-08-18",
-        "asset_id": "CB500X-17",
+        "asset_id": "XYBER-17",
         "steps": [
           {
             "index": 1,
@@ -565,7 +565,7 @@
       {
         "id": "J-4618",
         "sealed_at": "2026-08-19",
-        "asset_id": "CB500X-18",
+        "asset_id": "XYBER-18",
         "steps": [
           {
             "index": 1,
@@ -592,7 +592,7 @@
       {
         "id": "J-4619",
         "sealed_at": "2026-08-01",
-        "asset_id": "CB500X-19",
+        "asset_id": "XYBER-19",
         "steps": [
           {
             "index": 1,
@@ -619,7 +619,7 @@
       {
         "id": "J-4620",
         "sealed_at": "2026-08-02",
-        "asset_id": "CB500X-20",
+        "asset_id": "XYBER-20",
         "steps": [
           {
             "index": 1,
@@ -646,7 +646,7 @@
       {
         "id": "J-4621",
         "sealed_at": "2026-08-03",
-        "asset_id": "CB500X-21",
+        "asset_id": "XYBER-21",
         "steps": [
           {
             "index": 1,
@@ -673,7 +673,7 @@
       {
         "id": "J-4622",
         "sealed_at": "2026-08-04",
-        "asset_id": "CB500X-22",
+        "asset_id": "XYBER-22",
         "steps": [
           {
             "index": 1,
@@ -700,7 +700,7 @@
       {
         "id": "J-4623",
         "sealed_at": "2026-08-05",
-        "asset_id": "CB500X-23",
+        "asset_id": "XYBER-23",
         "steps": [
           {
             "index": 1,
@@ -727,7 +727,7 @@
       {
         "id": "J-4624",
         "sealed_at": "2026-08-06",
-        "asset_id": "CB500X-24",
+        "asset_id": "XYBER-24",
         "steps": [
           {
             "index": 1,
@@ -754,7 +754,7 @@
       {
         "id": "J-4625",
         "sealed_at": "2026-08-07",
-        "asset_id": "CB500X-25",
+        "asset_id": "XYBER-25",
         "steps": [
           {
             "index": 1,
@@ -781,7 +781,7 @@
       {
         "id": "J-4626",
         "sealed_at": "2026-08-08",
-        "asset_id": "CB500X-26",
+        "asset_id": "XYBER-26",
         "steps": [
           {
             "index": 1,
@@ -808,7 +808,7 @@
       {
         "id": "J-4627",
         "sealed_at": "2026-08-09",
-        "asset_id": "CB500X-27",
+        "asset_id": "XYBER-27",
         "steps": [
           {
             "index": 1,
@@ -835,7 +835,7 @@
       {
         "id": "J-4628",
         "sealed_at": "2026-08-10",
-        "asset_id": "CB500X-28",
+        "asset_id": "XYBER-28",
         "steps": [
           {
             "index": 1,
@@ -862,7 +862,7 @@
       {
         "id": "J-4629",
         "sealed_at": "2026-08-11",
-        "asset_id": "CB500X-29",
+        "asset_id": "XYBER-29",
         "steps": [
           {
             "index": 1,
@@ -889,7 +889,7 @@
       {
         "id": "J-4630",
         "sealed_at": "2026-08-12",
-        "asset_id": "CB500X-30",
+        "asset_id": "XYBER-30",
         "steps": [
           {
             "index": 1,
@@ -916,7 +916,7 @@
       {
         "id": "J-4631",
         "sealed_at": "2026-08-13",
-        "asset_id": "CB500X-31",
+        "asset_id": "XYBER-31",
         "steps": [
           {
             "index": 1,
@@ -943,7 +943,7 @@
       {
         "id": "J-4632",
         "sealed_at": "2026-08-14",
-        "asset_id": "CB500X-32",
+        "asset_id": "XYBER-32",
         "steps": [
           {
             "index": 1,
@@ -970,7 +970,7 @@
       {
         "id": "J-4633",
         "sealed_at": "2026-08-15",
-        "asset_id": "CB500X-33",
+        "asset_id": "XYBER-33",
         "steps": [
           {
             "index": 1,
@@ -997,7 +997,7 @@
       {
         "id": "J-4634",
         "sealed_at": "2026-08-16",
-        "asset_id": "CB500X-34",
+        "asset_id": "XYBER-34",
         "steps": [
           {
             "index": 1,
@@ -1024,7 +1024,7 @@
       {
         "id": "J-4635",
         "sealed_at": "2026-08-17",
-        "asset_id": "CB500X-35",
+        "asset_id": "XYBER-35",
         "steps": [
           {
             "index": 1,
@@ -1051,7 +1051,7 @@
       {
         "id": "J-4636",
         "sealed_at": "2026-08-18",
-        "asset_id": "CB500X-36",
+        "asset_id": "XYBER-36",
         "steps": [
           {
             "index": 1,
@@ -1078,7 +1078,7 @@
       {
         "id": "J-4637",
         "sealed_at": "2026-08-19",
-        "asset_id": "CB500X-37",
+        "asset_id": "XYBER-37",
         "steps": [
           {
             "index": 1,
@@ -1105,7 +1105,7 @@
       {
         "id": "J-4638",
         "sealed_at": "2026-08-01",
-        "asset_id": "CB500X-38",
+        "asset_id": "XYBER-38",
         "steps": [
           {
             "index": 1,
@@ -1132,7 +1132,7 @@
       {
         "id": "J-4699",
         "sealed_at": "2026-08-20",
-        "asset_id": "CB500X-99",
+        "asset_id": "XYBER-99",
         "steps": [
           {
             "index": 1,

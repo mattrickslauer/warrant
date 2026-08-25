@@ -16,17 +16,17 @@
   "output": {
     "verdict": "ESCALATE",
     "confidence": 0.95,
-    "rationale": "The photograph clearly shows the pads from a side-on perspective, but they are extremely worn with almost no usable friction material remaining above the backing plates.",
+    "rationale": "The photograph clearly shows the pads side-on, but they are worn down to the backing plates with virtually no usable friction material remaining.",
     "add_field_key": null,
     "add_field_kind": "photo",
     "add_field_prompt": null,
-    "escalation_question": "The brake pads are worn down almost entirely to the backing plates with virtually no usable friction material remaining. Should they be replaced?",
+    "escalation_question": "The brake pads are worn down to the backing plates with no usable friction material remaining. Should they be replaced?",
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"ESCALATE\",\n  \"confidence\": 0.95,\n  \"rationale\": \"The photograph clearly shows the pads from a side-on perspective, but they are extremely worn with almost no usable friction material remaining above the backing plates.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": \"The brake pads are worn down almost entirely to the backing plates with virtually no usable friction material remaining. Should they be replaced?\",\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"ESCALATE\",\n  \"confidence\": 0.95,\n  \"rationale\": \"The photograph clearly shows the pads side-on, but they are worn down to the backing plates with virtually no usable friction material remaining.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": \"The brake pads are worn down to the backing plates with no usable friction material remaining. Should they be replaced?\",\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 2892,
-    "candidatesTokenCount": 136,
-    "totalTokenCount": 3905
+    "candidatesTokenCount": 130,
+    "totalTokenCount": 3719
   }
 }

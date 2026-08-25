@@ -11,22 +11,22 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "What specific brake job are we focusing on today\u2014is it replacing the brake pads, mounting a new caliper, or a regular safety check on the caliper bolts?",
+    "question": "Which specific brake job on your Segway Xyber are we writing down today\u2014are we replacing the pads, mounting a new caliper, or doing a full system bleed?",
     "asks_about": "scope",
     "unresolved": [
       "specific brake job scope",
-      "sequence of steps",
-      "torque tolerances for caliper bolts",
-      "evidence of correct installation",
-      "disqualifying failures"
+      "step sequence",
+      "torque specs for caliper mounting bolts",
+      "wear limits or tolerances",
+      "verification/evidence of correct assembly"
     ],
-    "understanding": "You are maintaining your Segway Xyber e-bike at home to ensure it is safe for city traffic and gravel. We are defining a critical brake maintenance procedure to prevent a caliper from coming loose.",
+    "understanding": "You are maintaining your own Segway Xyber e-bike at home, where a loose brake caliper could lead to a fatal accident in city traffic. We are establishing a reliable procedure to make sure your brake work is done perfectly every time.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"What specific brake job are we focusing on today\u2014is it replacing the brake pads, mounting a new caliper, or a regular safety check on the caliper bolts?\",\n  \"asks_about\": \"scope\",\n  \"unresolved\": [\n    \"specific brake job scope\",\n    \"sequence of steps\",\n    \"torque tolerances for caliper bolts\",\n    \"evidence of correct installation\",\n    \"disqualifying failures\"\n  ],\n  \"understanding\": \"You are maintaining your Segway Xyber e-bike at home to ensure it is safe for city traffic and gravel. We are defining a critical brake maintenance procedure to prevent a caliper from coming loose.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Which specific brake job on your Segway Xyber are we writing down today\u2014are we replacing the pads, mounting a new caliper, or doing a full system bleed?\",\n  \"asks_about\": \"scope\",\n  \"unresolved\": [\n    \"specific brake job scope\",\n    \"step sequence\",\n    \"torque specs for caliper mounting bolts\",\n    \"wear limits or tolerances\",\n    \"verification/evidence of correct assembly\"\n  ],\n  \"understanding\": \"You are maintaining your own Segway Xyber e-bike at home, where a loose brake caliper could lead to a fatal accident in city traffic. We are establishing a reliable procedure to make sure your brake work is done perfectly every time.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 2490,
-    "candidatesTokenCount": 162,
-    "totalTokenCount": 2918
+    "candidatesTokenCount": 175,
+    "totalTokenCount": 3208
   }
 }

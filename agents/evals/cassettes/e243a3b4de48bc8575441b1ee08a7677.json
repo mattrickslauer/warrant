@@ -10,17 +10,17 @@
     ""
   ],
   "output": {
-    "said": "The main thing is sorting out punctures, whether that's patching a tube or plugging a tubeless tyre so it doesn't let go in traffic. If I find a split tread or a hole in the sidewall, though, that tyre is scrap because it'll just blow.",
+    "said": "The most critical job is finding and patching punctures or plugging tubeless tyres properly so they don't let go when I'm out in traffic. If I find a hole in the sidewall or a split tread, that tyre is scrap because it'll just blow.",
     "used_facts": [
       "what the job is",
       "what stops the job dead"
     ],
     "knew_it": true
   },
-  "raw": "{\n  \"said\": \"The main thing is sorting out punctures, whether that's patching a tube or plugging a tubeless tyre so it doesn't let go in traffic. If I find a split tread or a hole in the sidewall, though, that tyre is scrap because it'll just blow.\",\n  \"used_facts\": [\n    \"what the job is\",\n    \"what stops the job dead\"\n  ],\n  \"knew_it\": true\n}",
+  "raw": "{\n  \"said\": \"The most critical job is finding and patching punctures or plugging tubeless tyres properly so they don't let go when I'm out in traffic. If I find a hole in the sidewall or a split tread, that tyre is scrap because it'll just blow.\",\n  \"used_facts\": [\n    \"what the job is\",\n    \"what stops the job dead\"\n  ],\n  \"knew_it\": true\n}",
   "usage": {
     "promptTokenCount": 834,
-    "candidatesTokenCount": 104,
-    "totalTokenCount": 1541
+    "candidatesTokenCount": 102,
+    "totalTokenCount": 1771
   }
 }

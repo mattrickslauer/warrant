@@ -1,0 +1,112 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:1eb9f4c23b9666fc"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is replacing the front and back brake fluid on an e-bike and bicycles to ensure the levers feel completely solid and do not leak. We will verify the correct fluid type via a photo of the lever stamp and confirm the system is dry and solid on the stand.",
+    "draft": {
+      "key": "brake-fluid-bleed",
+      "title": "Brake Fluid Replacement and Bleed",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Lever remains spongy after two bleed attempts",
+        "Any fluid weeping observed at hoses or fittings"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Verify Fluid Type",
+          "explanation": "Using the wrong fluid type swells the seals and ruins the brakes, risking complete brake failure in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_type_stamp",
+              "kind": "photo",
+              "prompt": "Take a photo of the fluid type stamp on the lever body or reservoir cap.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "lever body or reservoir cap stamp",
+              "guidance": "The photo must clearly show the manufacturer's stamp specifying either Mineral Oil or DOT fluid."
+            },
+            {
+              "key": "fluid_comparison",
+              "kind": "photo",
+              "prompt": "Take a photo of the old fluid next to the new fluid.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "Old fluid and new fluid side-by-side to confirm fluid replacement.",
+              "guidance": "The photo must show both the dark, contaminated old fluid and the clean new fluid to prove a complete flush."
+            }
+          ]
+        },
+        {
+          "title": "Bleed and Test Lever Feel",
+          "explanation": "Air in the lines causes a spongy lever that can pull to the bar, leaving the rider without brakes in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Pull the brake lever hard. Does it feel solid or spongy?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Solid (does not pull to bar)",
+                "Spongy (pulls to bar or squishy)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Solid (does not pull to bar)",
+              "guidance": "The lever must feel rock solid and stop well before reaching the handlebar grip."
+            }
+          ]
+        },
+        {
+          "title": "Inspect for Leaks",
+          "explanation": "Any fluid weeping from connections will lead to loss of pressure and brake failure on the road.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "leak_inspection",
+              "kind": "choice",
+              "prompt": "Inspect all hoses, fittings, and connections by eye.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Bone dry",
+                "Fluid weeping"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Bone dry",
+              "guidance": "All connections must be completely dry with no trace of fluid."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is replacing the front and back brake fluid on an e-bike and bicycles to ensure the levers feel completely solid and do not leak. We will verify the correct fluid type via a photo of the lever stamp and confirm the system is dry and solid on the stand.\",\n  \"draft\": {\n    \"key\": \"brake-fluid-bleed\",\n    \"title\": \"Brake Fluid Replacement and Bleed\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Lever remains spongy after two bleed attempts\",\n      \"Any fluid weeping observed at hoses or fittings\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Verify Fluid Type\",\n        \"explanation\": \"Using the wrong fluid type swells the seals and ruins the brakes, risking complete brake failure in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_type_stamp\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the fluid type stamp on the lever body or reservoir cap.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"lever body or reservoir cap stamp\",\n            \"guidance\": \"The photo must clearly show the manufacturer's stamp specifying either Mineral Oil or DOT fluid.\"\n          },\n          {\n            \"key\": \"fluid_comparison\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old fluid next to the new fluid.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"Old fluid and new fluid side-by-side to confirm fluid replacement.\",\n            \"guidance\": \"The photo must show both the dark, contaminated old fluid and the clean new fluid to prove a complete flush.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bleed and Test Lever Feel\",\n        \"explanation\": \"Air in the lines causes a spongy lever that can pull to the bar, leaving the rider without brakes in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pull the brake lever hard. Does it feel solid or spongy?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Solid (does not pull to bar)\",\n              \"Spongy (pulls to bar or squishy)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Solid (does not pull to bar)\",\n            \"guidance\": \"The lever must feel rock solid and stop well before reaching the handlebar grip.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inspect for Leaks\",\n        \"explanation\": \"Any fluid weeping from connections will lead to loss of pressure and brake failure on the road.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"leak_inspection\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect all hoses, fittings, and connections by eye.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Bone dry\",\n              \"Fluid weeping\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Bone dry\",\n            \"guidance\": \"All connections must be completely dry with no trace of fluid.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3363,
+    "candidatesTokenCount": 950,
+    "totalTokenCount": 8261
+  }
+}

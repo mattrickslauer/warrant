@@ -120,7 +120,7 @@ class FixtureSourceTest {
         val reading = src.submitReading(
             ReadingInput(
                 jobId = job.id, stepId = "b3", fieldKey = "pad_torque",
-                value = 28.4, unit = "Nm", toolId = "esp32-A19",
+                value = 7.4, unit = "Nm", toolId = "esp32-A19",
             ),
         )
         advanceUntilIdle()
@@ -128,7 +128,7 @@ class FixtureSourceTest {
         assertEquals("esp32-A19", reading.toolId)
 
         val field = src.getJob(job.id)!!.steps.first { it.stepId == "b3" }.fields.single()
-        assertEquals(28.4, field.valueNumber!!, 0.0001)
+        assertEquals(7.4, field.valueNumber!!, 0.0001)
         assertNotNull(
             "without a tool id the value is typed, not measured",
             field.toolId,

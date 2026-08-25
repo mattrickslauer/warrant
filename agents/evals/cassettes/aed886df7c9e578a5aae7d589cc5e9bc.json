@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:477afad417c88dd1",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:afaa5abc5248644f",
+    "t:0f3fa5ac560e28f7",
+    "m:image/webp:95396cd3d1d002dc"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:scene/workshop-interior.jpg",
+    "",
+    "brake/caliper-editorial-stockish.webp"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The submitted photo shows only a brake caliper and rotor in isolation. It does not show the e-bike itself, preventing verification of the distinguishing marks (the single spiral cable wrap on the right fork leg and the unpainted light grey front mudguard) required to identify asset XYBER-07.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The submitted photo shows only a brake caliper and rotor in isolation. It does not show the e-bike itself, preventing verification of the distinguishing marks (the single spiral cable wrap on the right fork leg and the unpainted light grey front mudguard) required to identify asset XYBER-07.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3160,
+    "candidatesTokenCount": 109,
+    "totalTokenCount": 3719
+  }
+}

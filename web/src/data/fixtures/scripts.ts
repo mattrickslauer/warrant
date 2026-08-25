@@ -85,7 +85,7 @@ export const scripts: Record<string, DemoScript> = {
       { at: 2600, kind: "status", status: "performed" },
     ]],
     b3: [[
-      { at: 400, kind: "decision", agent: "inspector", verdict: "PASS", rationale: "28.4 Nm from tool #A19, inside 26-30. No model was asked — this is arithmetic.", model: null, cost: 0 },
+      { at: 400, kind: "decision", agent: "inspector", verdict: "PASS", rationale: "7.4 Nm from tool #A19, inside 6-9. No model was asked — this is arithmetic.", model: null, cost: 0 },
       { at: 900, kind: "status", status: "performed" },
     ]],
     b4: [[

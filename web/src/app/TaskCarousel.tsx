@@ -37,7 +37,7 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
   const router = useRouter();
   // The tenant the job lands in. Hardcoding "anon" here is what used to put a signed-in
   // technician's jobs somewhere their own records screen would never look.
-  const { session } = useSession();
+  const { ensureSession } = useSession();
   const rail = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -85,11 +85,28 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
   async function start() {
     if (!task?.available || busy) return;
     setBusy(true);
-    warrantUid();
-    const job = await getDataSource().startJob({
-      procedureId: task.procedureId, tenantId: currentTenantId(session), tier: "open",
-    });
-    router.push(`/job/${job.id}`);
+    try {
+      warrantUid();
+      // Sign the visitor in anonymously first. Without a Firebase user there is no uid to
+      // name a tenant after, so the job would be written as VISITOR_TENANT — which
+      // current-tenant.ts documents as never reaching Firestore, and which the rules
+      // correctly refuse. This is the line that makes "no account, no install" true.
+      const active = await ensureSession();
+      const job = await getDataSource().startJob({
+        procedureId: task.procedureId, tenantId: currentTenantId(active), tier: "open",
+      });
+      // A scoped id is `tenant/doc` and carries a slash, so it must be one encoded path segment
+      // rather than two. `/job/[id]` and `/r/[id]` each take a single segment and Next decodes
+      // the param back, which is why the pages split it themselves. Unencoded, the job is
+      // written to Firestore correctly and the technician still lands on a 404.
+      router.push(`/job/${encodeURIComponent(job.id)}`);
+    } catch (e) {
+      // Leaving the button on "Opening…" forever is how this failure hid: the write was
+      // refused and the screen said nothing at all. Say it out loud and give the button
+      // back, so the next person to hit this sees a cause rather than a dead control.
+      console.error("Could not start the job:", e);
+      setBusy(false);
+    }
   }
 
   return (

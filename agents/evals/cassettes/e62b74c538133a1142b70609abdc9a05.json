@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:a6360635548c2301",
+    "t:0f3fa5ac560e28f7",
+    "m:image/jpeg:ea16f6ff657d040f"
+  ],
+  "labels": [
+    "",
+    "",
+    "desk/object-on-desk.jpg"
+  ],
+  "output": {
+    "belongs": true,
+    "confidence": 0.9,
+    "rationale": "The image shows a yellow foam object with a zip tie on a reflective surface, which is consistent with the task of picking up an object. The capture time is 1 minute after the job opened, which is consistent with a live capture during the job. There are no indications of reuse or scene mismatch.",
+    "mismatch_kind": "none",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": true,\n  \"confidence\": 0.9,\n  \"rationale\": \"The image shows a yellow foam object with a zip tie on a reflective surface, which is consistent with the task of picking up an object. The capture time is 1 minute after the job opened, which is consistent with a live capture during the job. There are no indications of reuse or scene mismatch.\",\n  \"mismatch_kind\": \"none\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 1861,
+    "candidatesTokenCount": 109,
+    "totalTokenCount": 2278
+  }
+}

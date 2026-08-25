@@ -81,14 +81,14 @@ path**, not as nested subcollections:
 {
   "node_urn": "spec/ose/ceb-press-v6/main-cylinder/directional-valve",
   "key": "mounting_torque",
-  "kind": "range", "min": 26, "max": 30, "unit": "Nm",
-  "cite": { "doc_id": "…", "section": "4.2", "page": 61, "quote": "Torque to 26–30 N·m" }
+  "kind": "range", "min": 6, "max": 9, "unit": "Nm",
+  "cite": { "doc_id": "…", "section": "4.2", "page": 61, "quote": "Torque to 6–9 N·m" }
 }
 ```
 
 This introduces a **fourth provenance class** to `architecture.md` §1, which currently has
 three (measured, inferred, asserted) across five rules. An acceptance rule of
-`within(26, 30, "Nm")` is no longer invented in a Scoper conversation — it is **cited**, and
+`within(6, 9, "Nm")` is no longer invented in a Scoper conversation — it is **cited**, and
 the sealed record carries the citation.
 
 | Rule | Resolves against | Class |
@@ -218,7 +218,7 @@ are the reason wear *rate* is computable at all.
 { "step_id": "s4", "key": "pad_torque", "kind": "measurement",
   "value": 28, "unit": "Nm", "tool_id": "esp32-…",
   "component_ref": "caliper-88213",       // evidence attaches to the component
-  "acceptance": { "rule": "within", "min": 26, "max": 30, "unit": "Nm" },
+  "acceptance": { "rule": "within", "min": 6, "max": 9, "unit": "Nm" },
   "resolved_from": { "order": "spec",     // see §5
                      "spec_value_ref": "spec_values/…",
                      "cite": { "doc_id": "…", "section": "4.2", "page": 61 } },

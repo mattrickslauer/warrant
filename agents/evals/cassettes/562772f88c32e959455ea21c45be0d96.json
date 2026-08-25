@@ -10,17 +10,17 @@
     ""
   ],
   "output": {
-    "said": "Before every ride, I check and pump up both the front and back tyres so they don't let go on me in traffic. I always give them a proper look first for any glass or thorns stuck in the tread before putting any air in.",
+    "said": "Every single time before I head out, I check and pump up both tyres, front and back. I always inspect them first for any glass or thorns, because if a tyre lets go at speed in traffic, I'm going straight under a car.",
     "used_facts": [
       "what the job is",
       "what I do first"
     ],
     "knew_it": true
   },
-  "raw": "{\n  \"said\": \"Before every ride, I check and pump up both the front and back tyres so they don't let go on me in traffic. I always give them a proper look first for any glass or thorns stuck in the tread before putting any air in.\",\n  \"used_facts\": [\n    \"what the job is\",\n    \"what I do first\"\n  ],\n  \"knew_it\": true\n}",
+  "raw": "{\n  \"said\": \"Every single time before I head out, I check and pump up both tyres, front and back. I always inspect them first for any glass or thorns, because if a tyre lets go at speed in traffic, I'm going straight under a car.\",\n  \"used_facts\": [\n    \"what the job is\",\n    \"what I do first\"\n  ],\n  \"knew_it\": true\n}",
   "usage": {
     "promptTokenCount": 812,
-    "candidatesTokenCount": 95,
-    "totalTokenCount": 1505
+    "candidatesTokenCount": 97,
+    "totalTokenCount": 1903
   }
 }

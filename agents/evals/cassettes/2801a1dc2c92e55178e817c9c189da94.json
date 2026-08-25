@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:decab0f3748404b4",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9d1b10202f1354dd",
+    "t:0f3fa5ac560e28f7",
+    "m:image/jpeg:d30a4752f9c4405e"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:asset/bike-a-fork.jpg",
+    "",
+    "asset/bike-b-fork.jpg"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The distinguishing marks of XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare. However, the submitted image shows spiral cable wraps on both the left and right fork legs, indicating this is a different vehicle.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The distinguishing marks of XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare. However, the submitted image shows spiral cable wraps on both the left and right fork legs, indicating this is a different vehicle.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3090,
+    "candidatesTokenCount": 100,
+    "totalTokenCount": 4413
+  }
+}

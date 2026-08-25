@@ -25,7 +25,11 @@ DEFAULT_AGENT = "foreman"
 
 
 class WarrantFleet:
-    """Warrant's seven agents behind one Agent Runtime operation.
+    """Warrant's seven agents behind one Agent Runtime operation, and one screen in front.
+
+    Three operations, and the third is not a fourth agent: `screen` runs Gemma over a capture
+    to decide whether Flash has to be asked at all. It is outside `REGISTRY` on purpose, so
+    `roster()` answers seven — see `screen.py`.
 
     Constructed locally and pickled to the remote, so `__init__` stores plain strings and
     nothing else. Everything that needs an import happens in `set_up`, which the runtime
@@ -53,8 +57,12 @@ class WarrantFleet:
         os.environ.setdefault("WARRANT_CASSETTES", "/tmp/warrant-cassettes")
 
         from . import REGISTRY
+        from .screen import Screener
 
         self._registry = REGISTRY
+        # NOT in the registry, and not reachable through `query`. See `screen.py` for why the
+        # cheap model is deliberately not one of the seven.
+        self._screener = Screener
 
     # --- operations --------------------------------------------------------------------
     def query(self, *, case: dict[str, Any], agent: str = DEFAULT_AGENT,
@@ -85,6 +93,37 @@ class WarrantFleet:
             "usage": result.call.usage,
         }
 
+    def screen(self, *, case: dict[str, Any],
+               temperature: float = 0.0) -> dict[str, Any]:
+        """Look at one capture cheaply, on Gemma, before the judge is asked.
+
+        A separate operation rather than an eighth entry in `query`'s registry, because it is
+        not an agent and `roster()` must keep saying seven. The reply is shaped exactly like
+        `query`'s so the caller reads both the same way — including `model`, which is what
+        makes the saving auditable: a decision row that names `gemma-3-4b` is a Flash call
+        that never had to happen.
+
+        `acts_on` travels with the answer. Whether a screen is strong enough to stop a capture
+        is a policy question in ordinary code, and the caller must not have to re-derive it
+        from the fields — but it is returned rather than enforced here, because the thing that
+        knows the ADD FIELD budget is the adjudication spine, not this process.
+        """
+        from .screen import SCREENING_MODEL, acts_on
+
+        result = self._screener().run(case, live=True, temperature=temperature,
+                                      model=SCREENING_MODEL)
+        return {
+            "agent": "screen",
+            "output": result.output,
+            "valid": result.valid,
+            "schema_errors": result.schema_errors,
+            "model": result.call.model,
+            "latency_ms": result.call.latency_ms,
+            "usage": result.call.usage,
+            # An answer that failed its own schema is never acted on, whatever it says.
+            "acts_on": bool(result.valid and acts_on(result.output)),
+        }
+
     def register_operations(self) -> dict[str, list[str]]:
         """Which methods Agent Runtime actually exposes over HTTP.
 
@@ -93,7 +132,7 @@ class WarrantFleet:
         the sealed record stamps which agent version made a decision, being able to ask a
         running engine for its roster is how that stamp stays checkable from outside.
         """
-        return {"": ["query", "roster"]}
+        return {"": ["query", "roster", "screen"]}
 
     def roster(self) -> dict[str, Any]:
         """Who is deployed, and which contract each one answers under.

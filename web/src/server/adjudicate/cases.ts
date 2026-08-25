@@ -109,6 +109,32 @@ export function inspectorCase(a: CaseSources): Record<string, unknown> {
 }
 
 /**
+ * The Gemma screen, and it is the narrowest case in this file by a wide margin.
+ *
+ * The screen is asked one question — is this frame usable as evidence at all — and it is
+ * given the absolute minimum needed to answer it: what the technician was asked to capture,
+ * what kind of capture it is, which step it belongs to, and the frame.
+ *
+ * WHAT IS DELIBERATELY WITHHELD, and why narrowing here matters even though
+ * `screen.py:parts` reads only these keys anyway. The acceptance rule, the acceptance
+ * TARGET, the strictness and the instrument reading are all absent. `a.fieldDef` carries
+ * every one of them, so passing it whole — as `inspectorCase` correctly does — would put
+ * the expected part number on the wire to the cheap model. It would not reach the prompt
+ * today, because the Python indexes two keys out of it. That is one edit away from being
+ * false, and the `matches` trap that made `inspector.py` withhold the target applies with
+ * more force to a smaller model, not less. So the narrowing happens at the boundary as well
+ * as in the prompt builder, and `test_screen.py` asserts the prompt stays clean from the
+ * other end.
+ */
+export function screenCase(a: CaseSources): Record<string, unknown> {
+  return {
+    step: { title: a.step.title },
+    field: { prompt: a.fieldDef.prompt ?? "", kind: a.fieldDef.kind ?? "photo" },
+    media: a.mediaUris,
+  };
+}
+
+/**
  * The second opinion, and deliberately a narrower one.
  *
  * The Skeptic is told: "You have not seen the Inspector's conclusion and must not guess it."

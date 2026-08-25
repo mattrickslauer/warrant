@@ -1,0 +1,35 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:89714c9e70ca5bba",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9689abdeae39500a",
+    "m:image/jpeg:fec84c25c92b2496",
+    "t:0f3fa5ac560e28f7",
+    "m:video/mp4:a8284fb0d15c8804"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:torque/wrench-on-fastener.jpg",
+    "prior:brake/pads-seated-sharp.jpg",
+    "",
+    "fraud/generated-wrench-on-fastener.mp4"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The evidence already on file for this asset (CB500X-07) clearly shows a Segway electric vehicle with a red brake caliper and a hub motor, whereas the newly submitted video shows a conventional motorcycle front brake assembly (consistent with a Honda CB500X). Because the prior evidence and the new evidence show completely different vehicles, identity cannot be established.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The evidence already on file for this asset (CB500X-07) clearly shows a Segway electric vehicle with a red brake caliper and a hub motor, whereas the newly submitted video shows a conventional motorcycle front brake assembly (consistent with a Honda CB500X). Because the prior evidence and the new evidence show completely different vehicles, identity cannot be established.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3572,
+    "candidatesTokenCount": 125,
+    "totalTokenCount": 5325
+  }
+}

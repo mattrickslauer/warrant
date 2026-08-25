@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:6523f4b9e18b980f",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9d1b10202f1354dd",
+    "t:0f3fa5ac560e28f7",
+    "m:image/jpeg:9d1b10202f1354dd"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:asset/bike-a-fork.jpg",
+    "",
+    "asset/bike-a-fork.jpg"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.99,
+    "rationale": "The submitted image is identical to the prior capture cap-2026-05-02-fork with an embedding distance of 0.004, indicating reuse of a previously captured photo from May 2026.",
+    "mismatch_kind": "reuse",
+    "prior_capture_ref": "cap-2026-05-02-fork"
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.99,\n  \"rationale\": \"The submitted image is identical to the prior capture cap-2026-05-02-fork with an embedding distance of 0.004, indicating reuse of a previously captured photo from May 2026.\",\n  \"mismatch_kind\": \"reuse\",\n  \"prior_capture_ref\": \"cap-2026-05-02-fork\"\n}",
+  "usage": {
+    "promptTokenCount": 3091,
+    "candidatesTokenCount": 114,
+    "totalTokenCount": 3615
+  }
+}

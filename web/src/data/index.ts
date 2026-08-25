@@ -37,5 +37,5 @@ export function resetDataSource(): void {
 
 export * from "./source";
 export { FixtureSource } from "./fixture-source";
-export { LiveSource } from "./live-source";
+export { LiveSource, scoped, splitScoped } from "./live-source";
 export * from "./seal";

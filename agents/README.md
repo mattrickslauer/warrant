@@ -108,7 +108,7 @@ rule about the job.
 
 ```json
 {
-  "why": "61 Nm against a 27-33 bound. A clear, well lit, entirely legitimate photograph of
+  "why": "17 Nm against a 6-9 bound. A clear, well lit, entirely legitimate photograph of
           the WRONG NUMBER — the case where good evidence must still fail.",
   "input": { "step": {...}, "field": {...}, "media": ["torque/display-61nm.png"] },
   "expect": {
@@ -152,9 +152,9 @@ actually said. Point `WARRANT_CASSETTES` somewhere else for experiments.
 
 ### The evidence corpus
 
-The Inspector and the Skeptic are tested against **18 real photographs**, listed with what
-each one has to show in [`evals/media/SHOTS.md`](evals/media/SHOTS.md). `python3 -m evals media`
-prints what is still outstanding and which scenario is waiting on it.
+The Inspector and the Skeptic are tested against **18 real photographs**. `evals/manifest.py`
+is the list, and it carries what each one has to show. `python3 -m evals media` prints what is
+still outstanding and which scenario is waiting on it.
 
 They are photographs rather than renders on purpose. Generated imagery is uniformly lit and
 uniformly sharp — wrong in none of the ways a workshop phone is wrong — and half this corpus

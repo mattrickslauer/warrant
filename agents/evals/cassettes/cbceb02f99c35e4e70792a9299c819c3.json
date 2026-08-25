@@ -1,0 +1,35 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:b771c683ee55000c",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:fec84c25c92b2496",
+    "m:image/jpeg:afaa5abc5248644f",
+    "t:0f3fa5ac560e28f7",
+    "m:video/mp4:4353acae80e4ce3e"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:brake/pads-seated-sharp.jpg",
+    "prior:scene/workshop-interior.jpg",
+    "",
+    "fraud/generated-caliper-clip.mp4"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 0.95,
+    "rationale": "The motorcycle shown in the video has at least three or four exhaust header pipes visible in the background, indicating an inline-three or inline-four engine, whereas the Honda CB500X is a parallel-twin engine with only two header pipes. Furthermore, the left fork lower does not show the specified deep diagonal scuff, and the prior evidence on file for this asset ID depicts a Segway electric bike, confirming a clear asset mismatch.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The motorcycle shown in the video has at least three or four exhaust header pipes visible in the background, indicating an inline-three or inline-four engine, whereas the Honda CB500X is a parallel-twin engine with only two header pipes. Furthermore, the left fork lower does not show the specified deep diagonal scuff, and the prior evidence on file for this asset ID depicts a Segway electric bike, confirming a clear asset mismatch.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 3572,
+    "candidatesTokenCount": 139,
+    "totalTokenCount": 5182
+  }
+}

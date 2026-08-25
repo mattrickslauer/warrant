@@ -1,0 +1,47 @@
+{
+  "title": "EvidenceScreen",
+  "type": "object",
+  "description": "You are a SCREEN, not a judge. One question only: is this capture so obviously unusable as evidence that asking a stronger model to judge it would be waste? YOU CANNOT PASS ANYTHING. There is no verdict here that advances a step, releases a machine, or puts anything on a record. Nothing you return is ever treated as agreement that the work was done. Return UNUSABLE only for a defect visible in the frame itself — nothing in it, too dark to make out, too blurred to read, the subject that was asked for simply absent, the subject obstructed, or a photograph of a screen rather than of the thing. Return NEEDS_JUDGEMENT for everything else, INCLUDING every case where the frame is fine but you suspect the work is wrong, where you are unsure, where the subject is present but looks incorrect, and where you have any doubt at all. Whether the work satisfies the procedure is NOT YOUR QUESTION and you must not attempt it: a clear, well lit photograph showing a job done badly is NEEDS_JUDGEMENT, because deciding that is the judge's whole purpose. When in doubt, always NEEDS_JUDGEMENT — it costs a fraction of a cent and it is the only answer that cannot be wrong.",
+  "properties": {
+    "screen": {
+      "type": "string",
+      "enum": [
+        "UNUSABLE",
+        "NEEDS_JUDGEMENT"
+      ],
+      "description": "UNUSABLE only for a defect in the frame itself. NEEDS_JUDGEMENT for everything else, including everything you are unsure about."
+    },
+    "confidence": {
+      "type": "number",
+      "description": "0 to 1: how sure you are that the defect you named is really there. Only read when you return UNUSABLE, and a floor in ordinary code decides whether it is high enough to act on — below it the capture goes to the judge anyway. Never inflate it: a wrong UNUSABLE sends a technician back to a machine for a photograph that was already good enough."
+    },
+    "defect": {
+      "type": "string",
+      "enum": [
+        "none",
+        "nothing_in_frame",
+        "too_dark",
+        "too_blurred",
+        "subject_absent",
+        "subject_obstructed",
+        "photograph_of_a_screen"
+      ],
+      "description": "Which visible defect, and `none` when there is not one. ALWAYS answer this field: `none` is the correct and expected answer whenever the screen is NEEDS_JUDGEMENT, and naming a defect there contradicts your own verdict. Every other member describes the FRAME and never the work: a sharp, well lit photograph of a job done badly has defect `none`, because how the job was done is not your question. If the screen is UNUSABLE this must name the defect you saw."
+    },
+    "retake_prompt": {
+      "type": "string",
+      "nullable": true,
+      "description": "Required when the screen is UNUSABLE. The specific next ask, naming what was wrong and what to do about it, e.g. 'the caliper is out of focus — photograph it again with the wheel area in the light'. Never a generic retry, and never a request for a photograph of a condition already visible."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "One sentence citing what in the frame decided it. Never restate the prompt."
+    }
+  },
+  "required": [
+    "screen",
+    "confidence",
+    "defect",
+    "rationale"
+  ]
+}

@@ -49,7 +49,11 @@ export class FixtureSource implements DataSource {
     return procedures.filter((p) => p.tenant_id === tenantId || tenantId === "*");
   }
   async getProcedure(pid: string) {
-    return procedures.find((p) => p.id === pid) ?? null;
+    // Bare or `{tenant}/{procedure}`. The fixture layer has one tenant, so the prefix is
+    // noise here — but accepting it is what lets a caller scope an id unconditionally
+    // instead of branching on which source it happens to be running against.
+    const bare = pid.slice(pid.lastIndexOf("/") + 1);
+    return procedures.find((p) => p.id === bare) ?? null;
   }
   async getJob(jid: string) {
     return this.jobs.get(jid) ?? null;

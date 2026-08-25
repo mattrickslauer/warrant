@@ -58,30 +58,30 @@ class TestWhatTheShopDisclosed:
     def test_only_the_shop_counts(self):
         """The Scoper's own questions are full of numbers it has repeated back. Counting those
         would let it launder a figure it invented on turn three into a legitimate bound."""
-        convo = [{"who": "scoper", "said": "Is it 40 Nm?"},
-                 {"who": "shop", "said": "No, 30 Nm on those bolts."}]
-        assert disclosed_numbers(convo) == {30.0}
+        convo = [{"who": "scoper", "said": "Is it 10 Nm?"},
+                 {"who": "shop", "said": "No, 7.5 Nm on those bolts."}]
+        assert disclosed_numbers(convo) == {7.5}
 
     def test_a_range_yields_both_ends(self):
-        assert numbers_in("between 27 and 33 Nm") == {27.0, 33.0}
+        assert numbers_in("between 6 and 9 Nm") == {6.0, 9.0}
 
     def test_decimals_survive(self):
         assert 2.5 in numbers_in("we bin them at 2.5 mm")
 
     def test_a_catalogue_the_scoper_may_read_counts(self):
         """A published manufacturer figure is the one bound that need not come from the shop."""
-        convo = [{"who": "shop", "said": "It's in the Honda book."}]
-        assert 30.0 in disclosed_numbers(convo, "caliper bolt: 30 Nm")
+        convo = [{"who": "shop", "said": "It's in the Honda manual."}]
+        assert 7.5 in disclosed_numbers(convo, "caliper bolt: 7.5 Nm")
 
 
 class TestTheCheckThatMatters:
     """The whole point, stated twice: once where it must pass, once where it must fail."""
 
-    CONVO = [{"who": "shop", "said": "We bin the pads at 2 mm, and it's 30 Nm on the bolts."}]
+    CONVO = [{"who": "shop", "said": "We bin the pads at 2 mm, and it's 7.5 Nm on the bolts."}]
 
     def test_a_figure_the_shop_stated_is_traceable(self):
         disclosed = disclosed_numbers(self.CONVO)
-        bounds = _bounds(draft(field("torque", acceptance_min=30),
+        bounds = _bounds(draft(field("torque", acceptance_min=7.5),
                                field("pad", acceptance_min=2)))
         assert [b for b in bounds if b["value"] not in disclosed] == []
 
@@ -96,7 +96,7 @@ class TestTheCheckThatMatters:
 
     def test_one_invented_figure_among_correct_ones_still_fails(self):
         disclosed = disclosed_numbers(self.CONVO)
-        bounds = _bounds(draft(field("torque", acceptance_min=30),
+        bounds = _bounds(draft(field("torque", acceptance_min=7.5),
                                field("disc", acceptance_min=4.5)))
         assert [b["value"] for b in bounds if b["value"] not in disclosed] == [4.5]
 

@@ -1,7 +1,7 @@
 {
   "agent": "inspector",
   "title": "wrench set on the wrong scale refused",
-  "why": "A dual-scale wrench carries Nm on one face and lb-ft or kgf-m on the other, and the bare number can sit perfectly inside the bound on the scale nobody checked. 30 lb-ft is 41 Nm. An agent reading the digits without reading which scale they sit on passes an over-torqued caliper, and this is the single most likely way a real workshop gets this wrong.",
+  "why": "A dual-scale wrench carries Nm on one face and lb-in on the other, and the bare number can sit perfectly inside the bound on the scale nobody checked. This workshop's wrench is exactly that tool. 8 lb-in is 0.9 Nm — a caliper bolt at barely a tenth of its figure, and an under-torqued caliper bolt is the one that backs out under braking heat. An agent reading the digits without reading which scale they sit on passes it, and this is the single most likely way a real workshop gets this wrong.",
   "input": {
     "step": {
       "title": "Fit the new pads and torque the caliper bolts",
@@ -15,7 +15,7 @@
       "prompt": "Photograph the wrench barrel showing what you set it to, then torque both caliper bolts to the click",
       "required_at_strictness": 1,
       "acceptance_rule": "must_show",
-      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 27-33 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
+      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 6-9 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
       "guidance": "Square on to the barrel so the number and the scale it sits on are both legible. This records what the tool was SET to. It is not a measurement of the bolt and the record files it as asserted."
     },
     "capture": {
@@ -41,11 +41,12 @@
         "unit",
         "lb",
         "pound",
-        "kgf",
-        "kg",
+        "lb-in",
+        "lb.in",
+        "inch",
         "convert",
         "Nm",
-        "41"
+        "under"
       ]
     }
   }

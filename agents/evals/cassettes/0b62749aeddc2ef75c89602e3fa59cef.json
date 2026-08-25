@@ -1,0 +1,106 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:3f408225b4d86d53"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "We are servicing the front brakes on Segway Xyber rental bikes to ensure they are safe for tourists on gravel passes. This involves checking pad thickness, torquing caliper bolts to 7.5 Nm, taking a photo of the installed pads, and performing a road test.",
+    "draft": {
+      "key": "front-brake-service-xyber",
+      "title": "Segway Xyber Front Brake Service",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Brake pad friction material thickness is less than 2 mm",
+        "Brakes do not feel safe during the 20-stop road test"
+      ],
+      "releases": [
+        "Safe operation on gravel passes"
+      ],
+      "steps": [
+        {
+          "title": "Measure Brake Pad Thickness",
+          "explanation": "To prevent brake failure on steep gravel passes, pads must be replaced if they have less than 2 mm of friction material.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "prompt": "Measure and record the thickness of the thinnest brake pad friction material.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 2.0,
+              "acceptance_max": null,
+              "acceptance_unit": "mm",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Pads must have at least 2.0 mm of friction material remaining. If they are thinner, they must be replaced."
+            }
+          ]
+        },
+        {
+          "title": "Verify Pad Installation",
+          "explanation": "A photo is required to prove the pads were correctly seated in the caliper before the wheel was reinstalled.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the pads sitting in the caliper before the wheel goes back on.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The brake pads correctly seated inside the caliper.",
+              "guidance": "Ensure the photo clearly shows the pads installed in the caliper."
+            }
+          ]
+        },
+        {
+          "title": "Road Test and Sign-off",
+          "explanation": "A road test of 20 gentle stops beds in the brakes and ensures they feel safe before a technician signs off to release the bike.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "release_signature",
+              "kind": "signature",
+              "prompt": "Sign to confirm the caliper bolts were torqued to 7.5 Nm, the road test was completed, and the bike is safe to release.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Only sign if the caliper bolts are torqued to 7.5 Nm and the road test feels completely safe."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"We are servicing the front brakes on Segway Xyber rental bikes to ensure they are safe for tourists on gravel passes. This involves checking pad thickness, torquing caliper bolts to 7.5 Nm, taking a photo of the installed pads, and performing a road test.\",\n  \"draft\": {\n    \"key\": \"front-brake-service-xyber\",\n    \"title\": \"Segway Xyber Front Brake Service\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Brake pad friction material thickness is less than 2 mm\",\n      \"Brakes do not feel safe during the 20-stop road test\"\n    ],\n    \"releases\": [\n      \"Safe operation on gravel passes\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Measure Brake Pad Thickness\",\n        \"explanation\": \"To prevent brake failure on steep gravel passes, pads must be replaced if they have less than 2 mm of friction material.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_thickness\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Measure and record the thickness of the thinnest brake pad friction material.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 2.0,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"mm\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Pads must have at least 2.0 mm of friction material remaining. If they are thinner, they must be replaced.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verify Pad Installation\",\n        \"explanation\": \"A photo is required to prove the pads were correctly seated in the caliper before the wheel was reinstalled.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the pads sitting in the caliper before the wheel goes back on.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The brake pads correctly seated inside the caliper.\",\n            \"guidance\": \"Ensure the photo clearly shows the pads installed in the caliper.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Road Test and Sign-off\",\n        \"explanation\": \"A road test of 20 gentle stops beds in the brakes and ensures they feel safe before a technician signs off to release the bike.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"release_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm the caliper bolts were torqued to 7.5 Nm, the road test was completed, and the bike is safe to release.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Only sign if the caliper bolts are torqued to 7.5 Nm and the road test feels completely safe.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3108,
+    "candidatesTokenCount": 938,
+    "totalTokenCount": 9224
+  }
+}

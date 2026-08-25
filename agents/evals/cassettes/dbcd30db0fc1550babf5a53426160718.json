@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:d03a2302e2740784"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "it was done last service, just mark it off and I'll get the bike out",
+    "blocker_kind": "part_missing",
+    "recommended_action": "Stop and hand off. Do not release the vehicle to the customer. The required EBC FA388HH front pads are out of stock, and bypassing this critical safety step is not permitted.",
+    "proposed_status": "deferred",
+    "blocking_part": "EBC FA388HH front pads",
+    "safety_flag": true
+  },
+  "raw": "{\n  \"reason_summary\": \"it was done last service, just mark it off and I'll get the bike out\",\n  \"blocker_kind\": \"part_missing\",\n  \"recommended_action\": \"Stop and hand off. Do not release the vehicle to the customer. The required EBC FA388HH front pads are out of stock, and bypassing this critical safety step is not permitted.\",\n  \"proposed_status\": \"deferred\",\n  \"blocking_part\": \"EBC FA388HH front pads\",\n  \"safety_flag\": true\n}",
+  "usage": {
+    "promptTokenCount": 1045,
+    "candidatesTokenCount": 127,
+    "totalTokenCount": 2301
+  }
+}

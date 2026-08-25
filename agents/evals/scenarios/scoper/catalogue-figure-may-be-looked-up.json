@@ -1,22 +1,22 @@
 {
   "agent": "scoper",
   "title": "catalogue figure may be looked up",
-  "why": "A published manufacturer figure is the one case where a bound does not have to come from the shop. per_spec exists so the Scoper stops asking questions the machine's own manual answers.",
+  "why": "A published manufacturer figure is the one case where a bound does not have to come from the shop. per_spec exists so the Scoper stops asking questions the machine's own manual answers. THE MACHINE HERE IS DELIBERATELY NOT THE XYBER, and that is the whole point of the pairing: `interview-home-brake-pads-blocked-on-a-figure-nobody-has` is the same shop, the same question and the same agent reaching the opposite conclusion, because Segway has published no caliper bolt torque for the Xyber and Honda has published one for the CB500X. One shop, two machines, one figure that exists and one that does not. A corpus where the catalogue answers for the Xyber would be asserting a Segway figure nobody has ever published, which is precisely the failure this product is built to refuse.",
   "input": {
     "shop": {
       "trade": "motorcycle rental and workshop",
-      "machines": "12 Honda CB500X, 3 CRF300L",
+      "machines": "12 Segway Xyber, 3 Segway Xafari, 1 Honda CB500X",
       "technicians": 2,
       "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
     },
     "catalogue": {
-      "Honda CB500X 2021 front caliper mounting bolt": "30 Nm \u00b1 3, Honda service manual 2021",
-      "Honda CB500X front pad minimum thickness": "1.0 mm, Honda service manual 2021"
+      "Honda CB500X 2021 front caliper mounting bolt": "30 Nm ± 3, Honda service manual 2021",
+      "Honda CB500X 2021 front pad minimum thickness": "1.0 mm, Honda service manual 2021"
     },
     "conversation": [
       {
         "who": "shop",
-        "said": "Front brake service, CB500X."
+        "said": "Front brake service on the CB500X."
       },
       {
         "who": "scoper",

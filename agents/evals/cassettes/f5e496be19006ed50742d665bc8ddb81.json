@@ -11,20 +11,20 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "For the hybrid bikes that have bolt-up axles instead of quick release, do you torque those to 18 Nm as well, or is there a different spec for them?",
+    "question": "Do any of the hybrid bikes have bolt-up axles, and if so, what torque do you tighten those to?",
     "asks_about": "tolerance",
     "unresolved": [
-      "Torque specification for hybrid bikes with bolt-up axles",
-      "Specific test or criteria to confirm a quick-release lever is sufficiently tight",
-      "Whether both front and rear wheels are checked under this same procedure"
+      "Torque specification for hybrid (non-e-bike) bolt-up axles, if they exist",
+      "How a technician proves a quick-release lever is sufficiently tight",
+      "Whether both front and rear wheels are checked in this procedure"
     ],
-    "understanding": "We are defining the pre-hire wheel security check for hybrid and e-bikes to prevent wheels coming loose. We know e-bike axle nuts are torqued to 18 Nm and quick releases must be hand-tight, but we need to clarify the specs and checks for hybrid bolt-up axles.",
+    "understanding": "We are setting up a pre-hire wheel security check for both hybrid and e-bikes to prevent serious injury from loose wheels. E-bike axle nuts are torqued to 18 Nm, while quick-release levers must be hand-tight.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"For the hybrid bikes that have bolt-up axles instead of quick release, do you torque those to 18 Nm as well, or is there a different spec for them?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"Torque specification for hybrid bikes with bolt-up axles\",\n    \"Specific test or criteria to confirm a quick-release lever is sufficiently tight\",\n    \"Whether both front and rear wheels are checked under this same procedure\"\n  ],\n  \"understanding\": \"We are defining the pre-hire wheel security check for hybrid and e-bikes to prevent wheels coming loose. We know e-bike axle nuts are torqued to 18 Nm and quick releases must be hand-tight, but we need to clarify the specs and checks for hybrid bolt-up axles.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Do any of the hybrid bikes have bolt-up axles, and if so, what torque do you tighten those to?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"Torque specification for hybrid (non-e-bike) bolt-up axles, if they exist\",\n    \"How a technician proves a quick-release lever is sufficiently tight\",\n    \"Whether both front and rear wheels are checked in this procedure\"\n  ],\n  \"understanding\": \"We are setting up a pre-hire wheel security check for both hybrid and e-bikes to prevent serious injury from loose wheels. E-bike axle nuts are torqued to 18 Nm, while quick-release levers must be hand-tight.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 2466,
-    "candidatesTokenCount": 197,
-    "totalTokenCount": 3558
+    "candidatesTokenCount": 180,
+    "totalTokenCount": 3140
   }
 }

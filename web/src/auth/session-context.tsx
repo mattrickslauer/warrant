@@ -34,11 +34,33 @@ interface SessionState {
   configured: boolean;
   error: string | null;
   signIn: () => Promise<void>;
-  startAnonymously: () => Promise<void>;
+  startAnonymously: () => Promise<SessionView | null>;
+  /** The session a job is about to be written under, signing in anonymously if needed. */
+  ensureSession: () => Promise<SessionView | null>;
   signOut: () => Promise<void>;
 }
 
 const Ctx = createContext<SessionState | null>(null);
+
+/**
+ * Write the public catalogue into a brand-new tenant.
+ *
+ * The five public tasks are bundled into every surface's picker, but a bundled PICKER is not
+ * a bundled PROCEDURE: a job is judged against a version frozen in Firestore, and
+ * `procedure_versions` is one of the collections `firestore.rules` refuses to every client.
+ * So the catalogue has to be written server-side, once, before a fresh tenant has anything
+ * to run.
+ *
+ * Without this the picker offers five tasks and every one of them fails with
+ * `no such procedure` — which is what "Do it now. No account, no install." was doing.
+ */
+async function seedPublicCatalogue(): Promise<void> {
+  const res = await fetch("/api/procedures/seed", { method: "POST" });
+  if (!res.ok) {
+    const data = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(data.error ?? "Could not prepare the public tasks.");
+  }
+}
 
 async function postSession(body: unknown) {
   const res = await fetch("/api/auth/session", {
@@ -84,7 +106,7 @@ export function SessionProvider({
    * browser predates it. Refreshing and re-posting is what puts `hd` into the token that
    * Firestore rules will see.
    */
-  const establish = useCallback(async (user: User, googleIdToken?: string) => {
+  const establish = useCallback(async (user: User, googleIdToken?: string): Promise<SessionView | null> => {
     let idToken = await user.getIdToken();
     let res = await postSession({ idToken, googleIdToken });
 
@@ -96,7 +118,9 @@ export function SessionProvider({
     if (res.status >= 400) {
       throw new Error((res.body.error as string) ?? "Could not establish a session.");
     }
-    setSession((res.body.session as SessionView) ?? null);
+    const view = (res.body.session as SessionView) ?? null;
+    setSession(view);
+    return view;
   }, []);
 
   const signIn = useCallback(async () => {
@@ -158,19 +182,45 @@ export function SessionProvider({
     }
   }, [establish]);
 
-  const startAnonymously = useCallback(async () => {
-    if (busy.current) return;
+  const startAnonymously = useCallback(async (): Promise<SessionView | null> => {
+    if (busy.current) return null;
     busy.current = true;
     setError(null);
     try {
       const { user } = await signInAnonymously(clientAuth());
-      await establish(user);
+      const view = await establish(user);
+      // A brand-new anonymous user owns a brand-new, empty tenant.
+      if (view) await seedPublicCatalogue();
+      return view;
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
+      return null;
     } finally {
       busy.current = false;
     }
   }, [establish]);
+
+  /**
+   * The session the work about to be written belongs to, creating one if there is none.
+   *
+   * A visitor who has pressed nothing has no Firebase user, so there is no uid to name a
+   * tenant after and `firestore.rules` has nothing to authorise — which is why
+   * `VISITOR_TENANT` is documented as never being written to Firestore. Every screen that
+   * starts a job calls this first, and that is what makes *"running a procedure needs no
+   * account"* true rather than merely advertised.
+   *
+   * On a build with no Firebase project it returns null on purpose: the fixture layer owns
+   * the visitor tenant and there is nothing to sign in to.
+   */
+  const ensureSession = useCallback(async (): Promise<SessionView | null> => {
+    if (session) return session;
+    if (!authConfigured) return null;
+    // A user the SDK has already restored but whose server session has not been posted yet
+    // — reload with a live Firebase user is the ordinary way to arrive here.
+    const restored = clientAuth().currentUser;
+    if (restored) return await establish(restored);
+    return await startAnonymously();
+  }, [session, establish, startAnonymously]);
 
   const signOut = useCallback(async () => {
     setError(null);
@@ -180,8 +230,9 @@ export function SessionProvider({
   }, []);
 
   const value = useMemo<SessionState>(
-    () => ({ session, loading, configured: authConfigured, error, signIn, startAnonymously, signOut }),
-    [session, loading, error, signIn, startAnonymously, signOut],
+    () => ({ session, loading, configured: authConfigured, error, signIn, startAnonymously,
+             ensureSession, signOut }),
+    [session, loading, error, signIn, startAnonymously, ensureSession, signOut],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

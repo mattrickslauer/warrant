@@ -15,10 +15,11 @@ a scenario. They are kept because the session is not repeatable — the bike wen
 | `rear-disc-and-swingarm-clean.jpg` | The rear disc and swingarm, caliper off, disc clean and dry | Was shot toward `brake/disc-contaminated-fluid.jpg`, but there is no fluid on it. A clean disc is not that test |
 | `fleet-identical-machines.jpg` | Ten-plus identical machines racked in a row, wheels numbered | No slot, and it is the single best illustration of the problem the Skeptic exists to solve |
 | `workshop-interior-alt.jpg` | The same bike on the stand, a slightly higher angle | Alternate `scene/workshop-interior.jpg` |
+| `wrench-whole-on-concrete.jpg` | The entire click wrench laid on the workshop floor, ratchet head to handle | No slot, and deliberately so: the barrel scale is unreadable at this distance, which is the exact failure the three filed barrel shots exist to avoid. Kept because it is the only frame showing the whole tool, and §7 may want it as an establishing cut before it goes in close |
 
 ## The torque shots
 
 `torque-wrench-on-caliper-bolt.jpg` was promoted out of here to
 `torque/wrench-on-fastener.jpg` when the torque slots were rewritten around a click wrench
-rather than a digital display. See *The torque shots* in `../SHOTS.md` for why that rewrite
+rather than a digital display. See `../../manifest.py` for why that rewrite
 makes the corpus stronger instead of poorer, and for the three barrel shots still to take.

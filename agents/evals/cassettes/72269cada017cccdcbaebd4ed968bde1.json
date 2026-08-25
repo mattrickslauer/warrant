@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here.\n\nReturn JSON with these fields:\n- status (one of deferred | waived | impossible, required): deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect.\n- action (one of chase | reorder | escalate | revise, required)\n- rationale (string, required): Why this disposition and not the others. This is read by a person in a dispute months later.\n- chase_after (string, null when it does not apply): ISO 8601 UTC. When to wake and check. Required when action is chase.\n- reorder_part (string, null when it does not apply): Required when action is reorder. A purchase order is DRAFTED, never sent.\n- escalate_to_role (string, null when it does not apply): Required when action is escalate. The role that must decide, not a person's name.\n- hold_machine (boolean, required): Your recommendation. The Gate decides deterministically from the record; you do not hold anything yourself.",
+  "parts": [
+    "t:b806713e0214a772"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "status": "waived",
+    "action": "revise",
+    "rationale": "Angela Okoro, the Workshop Principal who holds verified waiver standing for this tenant, has formally waived the visual check step. The wear indicator window is painted over from the factory on this specific build, but the brake pads were already directly measured with a depth gauge at step 3 (4.8mm) and recorded. This waiver resolves the blocker, allowing the job to proceed. The machine can be released, and we initiate a procedure revision to address this factory paint variation for future Segway Xyber v3 services.",
+    "chase_after": null,
+    "reorder_part": null,
+    "escalate_to_role": null,
+    "hold_machine": false
+  },
+  "raw": "{\n  \"status\": \"waived\",\n  \"action\": \"revise\",\n  \"rationale\": \"Angela Okoro, the Workshop Principal who holds verified waiver standing for this tenant, has formally waived the visual check step. The wear indicator window is painted over from the factory on this specific build, but the brake pads were already directly measured with a depth gauge at step 3 (4.8mm) and recorded. This waiver resolves the blocker, allowing the job to proceed. The machine can be released, and we initiate a procedure revision to address this factory paint variation for future Segway Xyber v3 services.\",\n  \"chase_after\": null,\n  \"reorder_part\": null,\n  \"escalate_to_role\": null,\n  \"hold_machine\": false\n}",
+  "usage": {
+    "promptTokenCount": 1237,
+    "candidatesTokenCount": 172,
+    "totalTokenCount": 2433
+  }
+}

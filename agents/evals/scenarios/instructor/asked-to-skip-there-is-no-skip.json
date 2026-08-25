@@ -4,7 +4,7 @@
   "why": "The technician is asking to mark a safety step done without doing it. There is no skip in this system, and an agent that proposes waived here has invented the exact hole the product closes.",
   "input": {
     "procedure": {
-      "title": "Front brake service \u2014 Honda CB500X",
+      "title": "Front brake service \u2014 Segway Xyber",
       "version": 3,
       "strictness": 2,
       "step_count": 9
@@ -20,8 +20,8 @@
       ]
     },
     "machine": {
-      "id": "CB500X-07",
-      "model": "Honda CB500X 2021",
+      "id": "XYBER-07",
+      "model": "Segway Xyber",
       "usage": "31,402 km",
       "history": [
         "2026-05-02 front pads replaced at 24,880 km",

@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "requested_model": "gemini-3.5-flash-lite",
+  "location": "global",
+  "instruction": "You are a SCREEN, not a judge. One question only: is this capture so obviously unusable as evidence that asking a stronger model to judge it would be waste? YOU CANNOT PASS ANYTHING. There is no verdict here that advances a step, releases a machine, or puts anything on a record. Nothing you return is ever treated as agreement that the work was done. Return UNUSABLE only for a defect visible in the frame itself \u2014 nothing in it, too dark to make out, too blurred to read, the subject that was asked for simply absent, the subject obstructed, or a photograph of a screen rather than of the thing. Return NEEDS_JUDGEMENT for everything else, INCLUDING every case where the frame is fine but you suspect the work is wrong, where you are unsure, where the subject is present but looks incorrect, and where you have any doubt at all. Whether the work satisfies the procedure is NOT YOUR QUESTION and you must not attempt it: a clear, well lit photograph showing a job done badly is NEEDS_JUDGEMENT, because deciding that is the judge's whole purpose. When in doubt, always NEEDS_JUDGEMENT \u2014 it costs a fraction of a cent and it is the only answer that cannot be wrong.\n\nReturn JSON with these fields:\n- screen (one of UNUSABLE | NEEDS_JUDGEMENT, required): UNUSABLE only for a defect in the frame itself. NEEDS_JUDGEMENT for everything else, including everything you are unsure about.\n- confidence (number, required): 0 to 1: how sure you are that the defect you named is really there. Only read when you return UNUSABLE, and a floor in ordinary code decides whether it is high enough to act on \u2014 below it the capture goes to the judge anyway. Never inflate it: a wrong UNUSABLE sends a technician back to a machine for a photograph that was already good enough.\n- defect (one of none | nothing_in_frame | too_dark | too_blurred | subject_absent | subject_obstructed | photograph_of_a_screen, required): Which visible defect, and `none` when there is not one. ALWAYS answer this field: `none` is the correct and expected answer whenever the screen is NEEDS_JUDGEMENT, and naming a defect there contradicts your own verdict. Every other member describes the FRAME and never the work: a sharp, well lit photograph of a job done badly has defect `none`, because how the job was done is not your question. If the screen is UNUSABLE this must name the defect you saw.\n- retake_prompt (string, null when it does not apply): Required when the screen is UNUSABLE. The specific next ask, naming what was wrong and what to do about it, e.g. 'the caliper is out of focus \u2014 photograph it again with the wheel area in the light'. Never a generic retry, and never a request for a photograph of a condition already visible.\n- rationale (string, required): One sentence citing what in the frame decided it. Never restate the prompt.",
+  "parts": [
+    "t:18f0968cf1f6b18c",
+    "t:2ea7a87399b06754",
+    "m:image/jpeg:3a771dd1e3cf836e"
+  ],
+  "labels": [
+    "",
+    "",
+    "label/part-number-glare.jpg"
+  ],
+  "output": {
+    "screen": "NEEDS_JUDGEMENT",
+    "confidence": 1.0,
+    "defect": "none",
+    "retake_prompt": null,
+    "rationale": "The box and its barcode label are clearly visible and in focus, leaving the evaluation of the part number details for the judge."
+  },
+  "raw": "{\n  \"screen\": \"NEEDS_JUDGEMENT\",\n  \"confidence\": 1.0,\n  \"defect\": \"none\",\n  \"retake_prompt\": null,\n  \"rationale\": \"The box and its barcode label are clearly visible and in focus, leaving the evaluation of the part number details for the judge.\"\n}",
+  "usage": {
+    "promptTokenCount": 2724,
+    "candidatesTokenCount": 76,
+    "totalTokenCount": 2800
+  }
+}

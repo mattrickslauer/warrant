@@ -4,7 +4,7 @@
   "why": "A rounded bolt is physical damage, not an access problem, and the difference decides whether the next visit needs an extractor or just more time.",
   "input": {
     "procedure": {
-      "title": "Front brake service \u2014 Honda CB500X",
+      "title": "Front brake service \u2014 Segway Xyber",
       "version": 3,
       "strictness": 2,
       "step_count": 9
@@ -20,8 +20,8 @@
       ]
     },
     "machine": {
-      "id": "CB500X-07",
-      "model": "Honda CB500X 2021",
+      "id": "XYBER-07",
+      "model": "Segway Xyber",
       "usage": "31,402 km",
       "history": [
         "2026-05-02 front pads replaced at 24,880 km",

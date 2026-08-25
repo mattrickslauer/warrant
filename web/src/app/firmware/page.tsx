@@ -116,7 +116,7 @@ export default function FirmwareManual() {
                   <b>What it measures is irrelevant.</b>
                   <p>
                     The shipped sketch returns a sine sweep across 25–31, so you can watch the
-                    client both pass and fail an acceptance rule of 26–30 Nm without anybody
+                    client both pass and fail an acceptance rule of 6–9 Nm without anybody
                     faking a number. It is not a torque wrench and the record does not pretend it
                     is. It exists to prove the path end to end and to make the driver abstraction
                     concrete — replace one function and nothing above the driver changes. That

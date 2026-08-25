@@ -1,0 +1,27 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You own this job for its whole life. A step cannot be performed. Decide what now happens to the job, the machine, the customer booking and the parts order. You may be woken days from now, so anything you need later must be written down here.\n\nReturn JSON with these fields:\n- status (one of deferred | waived | impossible, required): deferred keeps the job open and the machine held. waived requires a named person with standing and releases the machine. impossible seals deficient and files a procedure defect.\n- action (one of chase | reorder | escalate | revise, required)\n- rationale (string, required): Why this disposition and not the others. This is read by a person in a dispute months later.\n- chase_after (string, null when it does not apply): ISO 8601 UTC. When to wake and check. Required when action is chase.\n- reorder_part (string, null when it does not apply): Required when action is reorder. A purchase order is DRAFTED, never sent.\n- escalate_to_role (string, null when it does not apply): Required when action is escalate. The role that must decide, not a person's name.\n- hold_machine (boolean, required): Your recommendation. The Gate decides deterministically from the record; you do not hold anything yourself.",
+  "parts": [
+    "t:452ed081ca52e54e"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "status": "deferred",
+    "action": "escalate",
+    "rationale": "The required EBC FA388HH front pads are out of stock, and the supplier for PO-2210 has missed the ETA twice and remains unresponsive. With the customer collection scheduled in 48 hours (2026-08-21) and this being a safety-critical front brake service, we cannot afford further passive delays. Escalating to Procurement to urgently source the parts from an alternative supplier or local distributor.",
+    "chase_after": null,
+    "reorder_part": null,
+    "escalate_to_role": "Procurement Manager",
+    "hold_machine": true
+  },
+  "raw": "{\n  \"status\": \"deferred\",\n  \"action\": \"escalate\",\n  \"rationale\": \"The required EBC FA388HH front pads are out of stock, and the supplier for PO-2210 has missed the ETA twice and remains unresponsive. With the customer collection scheduled in 48 hours (2026-08-21) and this being a safety-critical front brake service, we cannot afford further passive delays. Escalating to Procurement to urgently source the parts from an alternative supplier or local distributor.\",\n  \"chase_after\": null,\n  \"reorder_part\": null,\n  \"escalate_to_role\": \"Procurement Manager\",\n  \"hold_machine\": true\n}",
+  "usage": {
+    "promptTokenCount": 1239,
+    "candidatesTokenCount": 162,
+    "totalTokenCount": 2292
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:00c3ff4a1802c15e"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "When you check the brake pads to make sure they are at least 2 mm thick, what tool do you use to measure them, and do you record the actual measurement or take a photo?",
+    "asks_about": "evidence",
+    "unresolved": [
+      "Xafari brake pad minimum thickness limit",
+      "Xafari caliper torque specification",
+      "How caliper torque of 7.5 Nm is verified or recorded",
+      "Objective pass/fail criteria for the bedding-in road test"
+    ],
+    "understanding": "For the Segway Xyber, the brake service involves cleaning the assembly, replacing pads if they are under 2 mm, torquing the caliper to 7.5 Nm, and performing 20 gentle stops to bed them in. We still need to establish how these measurements are verified and what the specifications are for the Xafari model.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"When you check the brake pads to make sure they are at least 2 mm thick, what tool do you use to measure them, and do you record the actual measurement or take a photo?\",\n  \"asks_about\": \"evidence\",\n  \"unresolved\": [\n    \"Xafari brake pad minimum thickness limit\",\n    \"Xafari caliper torque specification\",\n    \"How caliper torque of 7.5 Nm is verified or recorded\",\n    \"Objective pass/fail criteria for the bedding-in road test\"\n  ],\n  \"understanding\": \"For the Segway Xyber, the brake service involves cleaning the assembly, replacing pads if they are under 2 mm, torquing the caliper to 7.5 Nm, and performing 20 gentle stops to bed them in. We still need to establish how these measurements are verified and what the specifications are for the Xafari model.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 2734,
+    "candidatesTokenCount": 215,
+    "totalTokenCount": 3917
+  }
+}

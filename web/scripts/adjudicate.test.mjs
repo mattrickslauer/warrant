@@ -66,6 +66,27 @@ const ask = (inspectorOut, skepticOut, opts = {}) => async (agent) => ({
   usage: { totalTokenCount: 900 },
 });
 
+/**
+ * The Gemma-position screen, stubbed OFF for every test in this file.
+ *
+ * `adjudicate` gained a screen in front of the judge (`adjudicate/screen.ts`), and it is a
+ * second fleet operation — so a test that stubs `ask` and not `screen` is not hermetic: it
+ * reaches the real engine, spends ~900ms on a network round trip and, when that round trip
+ * 403s, takes the emulator's timing with it. That is exactly how it announced itself — the two
+ * POSITIVE CONTROLS in "prior captures" started reporting an empty prior-media list, which
+ * reads as the lookup being broken rather than as the spine having grown a collaborator.
+ *
+ * NEEDS_JUDGEMENT is the right stub because it is the pass-through: every assertion in this
+ * file is about what the JUDGE did, and this is the answer that guarantees the judge is asked.
+ * The screen's own behaviour is tested in `screen.test.mjs`, hermetically, with no emulator.
+ */
+const noScreen = async () => ({
+  output: { screen: "NEEDS_JUDGEMENT", confidence: 0.0, defect: "none",
+            rationale: "stubbed: the judge is always asked in this file" },
+  valid: true, schemaErrors: [], model: "stub-screen", latencyMs: 0,
+  usage: { totalTokenCount: 0 }, actsOn: false,
+});
+
 const PASS = { verdict: "PASS", confidence: 0.9, rationale: "Pads clearly visible." };
 const BELONGS = { belongs: true, confidence: 0.9, mismatch_kind: "none",
                   rationale: "Matches bike-04's fork." };
@@ -117,7 +138,7 @@ describe("prior captures — the Skeptic's memory", () => {
     });
 
     const s = spy();
-    await adjudicate(ref, { ask: s.ask, db });
+    await adjudicate(ref, { screen: noScreen, ask: s.ask, db });
     assert.ok(s.seen.skeptic.prior_media.length >= 1,
               "the Skeptic must be shown what is already on file for this machine");
     assert.ok(s.seen.skeptic.prior_media.some((u) => u.includes("cap_old")));
@@ -138,7 +159,7 @@ describe("prior captures — the Skeptic's memory", () => {
     });
 
     const s = spy();
-    await adjudicate(ref, { ask: s.ask, db });
+    await adjudicate(ref, { screen: noScreen, ask: s.ask, db });
     assert.ok(!s.seen.skeptic.prior_media.some((u) => u.includes("cap_other")),
               "another machine's history is not this machine's history");
     // Positive control: bike-04 DOES have history by now, so an empty list here would mean
@@ -159,7 +180,7 @@ describe("prior captures — the Skeptic's memory", () => {
     });
 
     const s = spy();
-    await adjudicate(ref, { ask: s.ask, db });
+    await adjudicate(ref, { screen: noScreen, ask: s.ask, db });
     assert.ok(!s.seen.skeptic.prior_media.some((u) => u.includes("cap_text")),
               "a signature is not evidence of a machine, and has no object to point at");
     assert.ok(s.seen.skeptic.prior_media.length >= 1, "the lookup must not simply be returning nothing");
@@ -169,7 +190,7 @@ describe("prior captures — the Skeptic's memory", () => {
 describe("adjudicate", () => {
   test("writes one decision per agent that answered", async () => {
     const ref = await seedJob("job_a");
-    const result = await adjudicate(ref, { ask: ask(PASS, BELONGS), db });
+    const result = await adjudicate(ref, { screen: noScreen, ask: ask(PASS, BELONGS), db });
     assert.equal(result.decisionIds.length, 2);
     const agents = (await decisionsFor("job_a")).docs.map((d) => d.data().agent).sort();
     assert.deepEqual(agents, ["inspector", "skeptic"]);
@@ -225,10 +246,10 @@ describe("adjudicate", () => {
         created_at: "2026-08-21T10:05:00Z", armor_verdict: null, adjudicated: false,
       });
 
-      await adjudicate(ref, { ask: watch, db });
+      await adjudicate(ref, { screen: noScreen, ask: watch, db });
       await adjudicate(
         { ...ref, fieldKey: "knife_stored", captureId: "cap_text" },
-        { ask: watch, db },
+        { screen: noScreen, ask: watch, db },
       );
 
       // The photograph still gets one, so the empty list below means something.
@@ -264,7 +285,7 @@ describe("adjudicate", () => {
           source: "camera", required_at_strictness: 0, acceptance_rule: "must_show" },
       ],
     });
-    await adjudicate(ref, { ask: ask(PASS, BELONGS), db });
+    await adjudicate(ref, { screen: noScreen, ask: ask(PASS, BELONGS), db });
     const o = await outcomeOf("job_b");
     assert.deepEqual(o.accepted_fields, ["pad_photo"]);
     assert.equal(o.status, "pending", "a step with evidence still owed is not performed");
@@ -272,7 +293,7 @@ describe("adjudicate", () => {
 
   test("ADD_FIELD appends the field and spends one of the budget", async () => {
     const ref = await seedJob("job_c");
-    await adjudicate(ref, {
+    await adjudicate(ref, { screen: noScreen,
       ask: ask({ verdict: "ADD_FIELD", confidence: 0.4, rationale: "Edge is out of frame.",
                  add_field_key: "pad_edge_retry", add_field_kind: "photo",
                  add_field_prompt: "Photograph the pad edge square on" }, BELONGS),
@@ -287,7 +308,7 @@ describe("adjudicate", () => {
 
   test("a Skeptic dissent keeps the step pending and records the question", async () => {
     const ref = await seedJob("job_d");
-    const result = await adjudicate(ref, {
+    const result = await adjudicate(ref, { screen: noScreen,
       ask: ask(PASS, { belongs: false, confidence: 0.8, mismatch_kind: "asset",
                        rationale: "The fork is the wrong colour for bike-04." }),
       db,
@@ -302,7 +323,7 @@ describe("adjudicate", () => {
 
   test("a schema-invalid verdict is written and moves no step", async () => {
     const ref = await seedJob("job_e");
-    const result = await adjudicate(ref, {
+    const result = await adjudicate(ref, { screen: noScreen,
       ask: ask({ verdict: "PASS" }, BELONGS,
                { inspectorValid: false,
                  inspectorErrors: ["confidence: required by the contract and absent"] }),
@@ -319,7 +340,7 @@ describe("adjudicate", () => {
 
   test("an unreachable fleet is recorded, and the capture stays eligible for the sweep", async () => {
     const ref = await seedJob("job_f");
-    const result = await adjudicate(ref, {
+    const result = await adjudicate(ref, { screen: noScreen,
       ask: async () => {
         throw new FleetUnreachable("fleet returned 403: denied",
                                    "warrant-web@warrent-505918.iam.gserviceaccount.com");
@@ -353,7 +374,7 @@ describe("adjudicate", () => {
   test("the Skeptic is never shown the Inspector's conclusion", async () => {
     const ref = await seedJob("job_g");
     let skepticCase = null;
-    await adjudicate(ref, {
+    await adjudicate(ref, { screen: noScreen,
       ask: async (agent, kase) => {
         if (agent === "skeptic") skepticCase = kase;
         return { output: agent === "inspector" ? PASS : BELONGS, valid: true,
@@ -393,7 +414,7 @@ describe("adjudicate", () => {
         armor_verdict: null, adjudicated: true,
       });
 
-      await adjudicate(ref, { ask: watch, db });
+      await adjudicate(ref, { screen: noScreen, ask: watch, db });
 
       assert.equal(seen.reference.target, "s1.object_before");
       assert.equal(seen.reference.media.length, 1);
@@ -414,7 +435,7 @@ describe("adjudicate", () => {
                model: "gemini-3.5-flash", latencyMs: 1, usage: { totalTokenCount: 1 } };
     };
     const ref = await seedJob("job_noref");
-    await adjudicate(ref, { ask: watch, db });
+    await adjudicate(ref, { screen: noScreen, ask: watch, db });
     assert.ok(!("reference" in seen));
   });
 

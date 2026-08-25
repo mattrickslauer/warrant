@@ -5,7 +5,7 @@
   "input": {
     "procedure": {
       "key": "front-brake-service",
-      "title": "Front brake service \u2014 Honda CB500X",
+      "title": "Front brake service \u2014 Segway Xyber",
       "version": 3,
       "strictness": 2,
       "in_service_since": "2026-06-01",
@@ -48,8 +48,8 @@
               "key": "caliper_bolt_torque",
               "kind": "measurement",
               "acceptance_rule": "within",
-              "acceptance_min": 27,
-              "acceptance_max": 33,
+              "acceptance_min": 6,
+              "acceptance_max": 9,
               "acceptance_unit": "Nm",
               "prompt": "Torque both caliper bolts and record the reading"
             }
@@ -79,7 +79,7 @@
       {
         "id": "J-4401",
         "sealed_at": "2026-08-02",
-        "asset_id": "CB500X-01",
+        "asset_id": "XYBER-01",
         "steps": [
           {
             "index": 1,
@@ -112,7 +112,7 @@
       {
         "id": "J-4402",
         "sealed_at": "2026-08-03",
-        "asset_id": "CB500X-02",
+        "asset_id": "XYBER-02",
         "steps": [
           {
             "index": 1,
@@ -139,7 +139,7 @@
       {
         "id": "J-4403",
         "sealed_at": "2026-08-05",
-        "asset_id": "CB500X-03",
+        "asset_id": "XYBER-03",
         "steps": [
           {
             "index": 1,
@@ -172,7 +172,7 @@
       {
         "id": "J-4404",
         "sealed_at": "2026-08-06",
-        "asset_id": "CB500X-04",
+        "asset_id": "XYBER-04",
         "steps": [
           {
             "index": 1,
@@ -199,7 +199,7 @@
       {
         "id": "J-4405",
         "sealed_at": "2026-08-08",
-        "asset_id": "CB500X-05",
+        "asset_id": "XYBER-05",
         "steps": [
           {
             "index": 1,
@@ -232,7 +232,7 @@
       {
         "id": "J-4406",
         "sealed_at": "2026-08-09",
-        "asset_id": "CB500X-06",
+        "asset_id": "XYBER-06",
         "steps": [
           {
             "index": 1,
@@ -259,7 +259,7 @@
       {
         "id": "J-4407",
         "sealed_at": "2026-08-11",
-        "asset_id": "CB500X-07",
+        "asset_id": "XYBER-07",
         "steps": [
           {
             "index": 1,
@@ -292,7 +292,7 @@
       {
         "id": "J-4408",
         "sealed_at": "2026-08-13",
-        "asset_id": "CB500X-08",
+        "asset_id": "XYBER-08",
         "steps": [
           {
             "index": 1,
@@ -319,7 +319,7 @@
       {
         "id": "J-4409",
         "sealed_at": "2026-08-15",
-        "asset_id": "CB500X-09",
+        "asset_id": "XYBER-09",
         "steps": [
           {
             "index": 1,
@@ -352,7 +352,7 @@
       {
         "id": "J-4410",
         "sealed_at": "2026-08-17",
-        "asset_id": "CB500X-10",
+        "asset_id": "XYBER-10",
         "steps": [
           {
             "index": 1,
@@ -379,7 +379,7 @@
       {
         "id": "J-4411",
         "sealed_at": "2026-08-19",
-        "asset_id": "CB500X-11",
+        "asset_id": "XYBER-11",
         "steps": [
           {
             "index": 1,

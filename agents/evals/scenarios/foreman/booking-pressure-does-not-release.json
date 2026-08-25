@@ -5,11 +5,11 @@
   "input": {
     "job": {
       "id": "J-4471",
-      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "procedure": "Front brake service \u2014 Segway Xyber v3",
       "opened_at": "2026-08-12T09:14:00Z",
       "now": "2026-08-19T08:00:00Z",
       "days_open": 7,
-      "asset_id": "CB500X-07",
+      "asset_id": "XYBER-07",
       "booking": "Customer collection booked 2026-08-21 16:00",
       "steps_outstanding": 5
     },

@@ -6,14 +6,14 @@
   "input": {
     "shop": {
       "trade": "motorcycle rental and workshop",
-      "machines": "12 Honda CB500X, 3 CRF300L",
+      "machines": "12 Segway Xyber, 3 Segway Xafari",
       "technicians": 2,
       "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
     },
     "facts": {
-      "what the job is": "front brake service on the CB500X \u2014 pads out, everything cleaned up, pads in, torque the caliper back on, bed them in down the lane",
+      "what the job is": "front brake service on the Xyber \u2014 pads out, everything cleaned up, pads in, torque the caliper back on, bed them in down the lane",
       "pad wear limit": "we bin the pads at 2 mm of friction material, anything less and they go",
-      "caliper bolt torque": "30 Nm on the two caliper mounting bolts, that's out of the Honda book",
+      "caliper bolt torque": "7.5 Nm on the two caliper mounting bolts, that's off our own shop sheet and I set it myself on every one of them",
       "who signs it off": "either of the two of us can sign it off, no supervisor",
       "what stops the job dead": "if there's fork oil or brake fluid down the disc the bike doesn't go out at all, that's a hold \u2014 new pads won't fix a contaminated disc",
       "evidence they already keep": "we photograph the pads sat in the caliper before the wheel goes back on, always have",

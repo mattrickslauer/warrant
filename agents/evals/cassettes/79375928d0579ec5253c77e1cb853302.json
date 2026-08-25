@@ -11,22 +11,23 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "Since a loose wheel is your biggest safety risk, how does the technician actually check that the wheels are secure before a bike goes out?",
-    "asks_about": "sequence",
+    "question": "To prevent another near miss with a loose wheel, what specific test does the technician do to confirm the wheels are secure?",
+    "asks_about": "safety",
     "unresolved": [
-      "How to verify brakes are OK",
-      "How to verify tyres are OK",
-      "How to verify wheels are secure",
-      "How to verify lights are working",
-      "How to verify battery charge level for e-bikes"
+      "How 'Brakes OK' is verified and what constitutes a failure",
+      "How 'Tyres OK' is verified (e.g., minimum pressure or tread check)",
+      "How 'Wheels secure' is verified to prevent loose wheels",
+      "How 'Lights working' is verified",
+      "The minimum charge level required for e-bike batteries to pass",
+      "Who has the authority to sign off on these daily checks"
     ],
-    "understanding": "This is a daily pre-hire safety check for a fleet of hybrid and electric bicycles to prevent on-street failures. Because a loose wheel has already caused a near-miss, we need clear, repeatable checks for the wheels and other critical components rather than simple tick boxes.",
+    "understanding": "I understand we are digitizing your daily pre-hire safety check for your fleet of hybrid and e-bikes to prevent critical failures like loose wheels on city streets. We need to turn the simple paper tick-boxes into clear, repeatable checks that any technician can perform identically.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Since a loose wheel is your biggest safety risk, how does the technician actually check that the wheels are secure before a bike goes out?\",\n  \"asks_about\": \"sequence\",\n  \"unresolved\": [\n    \"How to verify brakes are OK\",\n    \"How to verify tyres are OK\",\n    \"How to verify wheels are secure\",\n    \"How to verify lights are working\",\n    \"How to verify battery charge level for e-bikes\"\n  ],\n  \"understanding\": \"This is a daily pre-hire safety check for a fleet of hybrid and electric bicycles to prevent on-street failures. Because a loose wheel has already caused a near-miss, we need clear, repeatable checks for the wheels and other critical components rather than simple tick boxes.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"To prevent another near miss with a loose wheel, what specific test does the technician do to confirm the wheels are secure?\",\n  \"asks_about\": \"safety\",\n  \"unresolved\": [\n    \"How 'Brakes OK' is verified and what constitutes a failure\",\n    \"How 'Tyres OK' is verified (e.g., minimum pressure or tread check)\",\n    \"How 'Wheels secure' is verified to prevent loose wheels\",\n    \"How 'Lights working' is verified\",\n    \"The minimum charge level required for e-bike batteries to pass\",\n    \"Who has the authority to sign off on these daily checks\"\n  ],\n  \"understanding\": \"I understand we are digitizing your daily pre-hire safety check for your fleet of hybrid and e-bikes to prevent critical failures like loose wheels on city streets. We need to turn the simple paper tick-boxes into clear, repeatable checks that any technician can perform identically.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 2481,
-    "candidatesTokenCount": 186,
-    "totalTokenCount": 3115
+    "candidatesTokenCount": 225,
+    "totalTokenCount": 3697
   }
 }

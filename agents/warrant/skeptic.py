@@ -83,7 +83,30 @@ class Skeptic(Agent):
                 "asset id": asset.get("id"), "type": asset.get("type"),
                 "make and model": asset.get("model"),
                 "distinguishing marks": asset.get("marks", []),
-                "known history": asset.get("history", [])})
+                "known history": asset.get("history", []),
+                # THE MODEL IS NOT THE UNIT, and this sentence exists because the agent
+                # conflated them on camera-quality evidence.
+                #
+                # Observed 24 Aug: handed a wide workshop photograph with nothing
+                # individually identifying in it and no prior capture to compare against,
+                # the Skeptic answered `belongs: true` at 0.9 — reasoning that the frame
+                # showed "a Segway Xyber e-bike on a lift in a workshop", which is a
+                # statement about the MODEL. Every machine in this shop is that model. The
+                # answer would have been identical for any of the twelve, which is precisely
+                # the substitution the Skeptic exists to refuse.
+                #
+                # It went unnoticed for as long as the corpus fiction was a Honda while the
+                # photographs were of an e-bike: the agent dissented on the make mismatch and
+                # scored as correct. Making the fiction match the machine is what exposed it.
+                "what recognising the model does NOT establish":
+                    "Confirming the make and model is not identifying this unit. The shop "
+                    "runs several machines of this exact model and colour, so a frame that "
+                    "would look the same photographed on any of them establishes nothing "
+                    "about which one this is. Identity comes from the distinguishing marks "
+                    "above, from a prior capture of this same unit, or from something in the "
+                    "frame unique to it. If none of those is present and there is nothing to "
+                    "compare against, you have not established identity, and the contract "
+                    "tells you what to do then: dissent, and say what was missing."})
         return Skeptic.block("What this evidence is claimed to be of", {
             "registered asset": None,
             "note": "This job names no registered asset, and the procedure it runs is not "

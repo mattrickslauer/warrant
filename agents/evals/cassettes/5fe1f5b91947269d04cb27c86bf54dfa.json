@@ -1,0 +1,55 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:c999e63308545cca"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "revise",
+    "understanding": "This procedure outlines the front brake service for the Segway Xyber, including pad thickness measurement, caliper cleaning, and bolt torquing. Over the two-week window, all twelve recorded jobs failed at the bolt torquing step because the torque readings consistently registered at 5.8 Nm, which is below the specified 6 Nm minimum.",
+    "jobs_examined": 12,
+    "findings": [
+      {
+        "step_title": "Fit the new pads and torque the caliper bolts",
+        "field_key": "caliper_bolt_torque",
+        "defect": "bound_wrong",
+        "what": "The lower torque limit of 6 Nm is incorrect for the caliper bolts, causing all 12 jobs to fail at 5.8 Nm despite correct execution.",
+        "jobs_cited": [
+          "J-4900",
+          "J-4901",
+          "J-4902",
+          "J-4903",
+          "J-4904",
+          "J-4905",
+          "J-4906",
+          "J-4907",
+          "J-4908",
+          "J-4909",
+          "J-4910",
+          "J-4911"
+        ],
+        "quotes": [
+          "technician confirmed the wrench clicked and the bolt is correct"
+        ],
+        "jobs_affected": 12,
+        "proposed_revision": "The shop must specify the correct lower torque limit for the caliper bolts, as the current 6 Nm limit is too high and causes false failures.",
+        "needs_the_shop": true,
+        "confidence": 1.0
+      }
+    ],
+    "considered_and_rejected": [
+      "We considered whether the failures were caused by a single technician or a faulty torque wrench, but rejected this because the issue occurred consistently across all 12 jobs with explicit confirmation that the wrench clicked and the correct bolt was used."
+    ]
+  },
+  "raw": "{\"mode\":\"revise\",\"understanding\":\"This procedure outlines the front brake service for the Segway Xyber, including pad thickness measurement, caliper cleaning, and bolt torquing. Over the two-week window, all twelve recorded jobs failed at the bolt torquing step because the torque readings consistently registered at 5.8 Nm, which is below the specified 6 Nm minimum.\",\"jobs_examined\":12,\"findings\":[{\"step_title\":\"Fit the new pads and torque the caliper bolts\",\"field_key\":\"caliper_bolt_torque\",\"defect\":\"bound_wrong\",\"what\":\"The lower torque limit of 6 Nm is incorrect for the caliper bolts, causing all 12 jobs to fail at 5.8 Nm despite correct execution.\",\"jobs_cited\":[\"J-4900\",\"J-4901\",\"J-4902\",\"J-4903\",\"J-4904\",\"J-4905\",\"J-4906\",\"J-4907\",\"J-4908\",\"J-4909\",\"J-4910\",\"J-4911\"],\"quotes\":[\"technician confirmed the wrench clicked and the bolt is correct\"],\"jobs_affected\":12,\"proposed_revision\":\"The shop must specify the correct lower torque limit for the caliper bolts, as the current 6 Nm limit is too high and causes false failures.\",\"needs_the_shop\":true,\"confidence\":1.0}],\"considered_and_rejected\":[\"We considered whether the failures were caused by a single technician or a faulty torque wrench, but rejected this because the issue occurred consistently across all 12 jobs with explicit confirmation that the wrench clicked and the correct bolt was used.\"]}",
+  "usage": {
+    "promptTokenCount": 5736,
+    "candidatesTokenCount": 365,
+    "totalTokenCount": 8325
+  }
+}

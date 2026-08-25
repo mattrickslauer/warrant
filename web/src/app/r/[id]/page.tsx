@@ -16,7 +16,11 @@ import { readPublicRecord } from "@/server/publish";
  * stranger's link depend on a session they do not have.
  */
 export default async function RecordPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+  // A tenant-scoped id is `tenant/doc` and arrives as one segment with the slash
+  // percent-encoded; a public capability id has no slash and no percent, so decoding is a
+  // no-op on that path and the stranger's link is unaffected.
+  const { id: raw } = await params;
+  const id = decodeURIComponent(raw);
   const published = await readPublicRecord(id);
 
   return (

@@ -219,10 +219,10 @@ class TestScoper:
 def _inspector_case(strictness=2, used=0, source="instrument"):
     return {"step": {"title": "t", "explanation": "e", "max_add_fields": 2},
             "field": {"key": "k", "kind": "measurement", "prompt": "p", "source": "instrument",
-                      "acceptance_rule": "within", "acceptance_min": 27, "acceptance_max": 33,
+                      "acceptance_rule": "within", "acceptance_min": 6, "acceptance_max": 9,
                       "acceptance_unit": "Nm", "guidance": "g"},
             "capture": {"capture_mode": "live", "capture_surface": "app_instrument"},
-            "reading": {"value": 30.0, "unit": "Nm", "source": source},
+            "reading": {"value": 7.5, "unit": "Nm", "source": source},
             "strictness": strictness, "add_fields_used": used, "media": []}
 
 

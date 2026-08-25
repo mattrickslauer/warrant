@@ -1,0 +1,184 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:ec80443495da1e27"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [
+      "Manufacturer torque specifications for the front axle bolt",
+      "Manufacturer torque specifications for the caliper mounting bolts"
+    ],
+    "understanding": "You are replacing the front brake pads on your Segway Xyber e-bike, ensuring the rotor is uncontaminated and the new pads match the old ones. Since no official torque specs exist, you tighten the fasteners by feel, verify lever pressure at a standstill, and bed the pads in with a dozen gentle stops before signing off.",
+    "draft": {
+      "key": "front-brake-pad-swap",
+      "title": "Front Brake Pad Replacement",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Oil or brake fluid on the brake rotor"
+      ],
+      "releases": [
+        "Safe operation of the e-bike in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Rotor for Contamination",
+          "explanation": "Oil or brake fluid on the disc will contaminate new pads, destroying stopping power and putting the rider in danger.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "rotor_contamination",
+              "kind": "choice",
+              "prompt": "Inspect the brake rotor. Is there any oil, grease, or brake fluid on it?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No oil or fluid detected",
+                "Yes, oil or fluid is present"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No oil or fluid detected",
+              "acceptance_description": null,
+              "guidance": "The rotor must be completely dry and free of any oily residue. Any contamination will ruin the new pads."
+            }
+          ]
+        },
+        {
+          "title": "Compare Brake Pads",
+          "explanation": "Installing the wrong pads can lead to brake failure or improper fitment in the caliper.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_photo",
+              "kind": "photo",
+              "prompt": "Place the old and new brake pads side-by-side and take a photo.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Both old and new pads side-by-side, showing identical backing plate shapes and alignment tabs.",
+              "guidance": "Ensure the backing plate shape, mounting holes, and overall dimensions match exactly before installing."
+            }
+          ]
+        },
+        {
+          "title": "Reassemble and Tighten Fasteners",
+          "explanation": "The axle and caliper bolts must be tightened securely by feel to prevent them from backing out on gravel.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fastener_tightening",
+              "kind": "choice",
+              "prompt": "Tighten the front axle bolt and caliper mounting bolts firmly by feel. Are they secure?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, tightened firmly by feel",
+                "No, not fully tightened"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, tightened firmly by feel",
+              "acceptance_description": null,
+              "guidance": "Since no torque specs are published, tighten firmly by feel so they cannot back out under gravel riding vibrations."
+            }
+          ]
+        },
+        {
+          "title": "Standstill Pressure Check",
+          "explanation": "Pumping the lever ensures the pistons have pushed the pads into contact with the rotor before you try to ride.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Pump the front brake lever several times. Does it feel firm and hold pressure?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, lever is firm",
+                "No, lever is spongy or pulls to the grip"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, lever is firm",
+              "acceptance_description": null,
+              "guidance": "The lever must not feel spongy or pull all the way to the handlebar grip. Pumping seats the pads against the rotor."
+            }
+          ]
+        },
+        {
+          "title": "Bedding-In Ride",
+          "explanation": "New pads require a dozen gentle stops to transfer friction material to the rotor and achieve full stopping power.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bed_in_stops",
+              "kind": "choice",
+              "prompt": "Perform approximately 12 gentle stops from moderate speed. Do the brakes have full stopping power?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, full stopping power achieved",
+                "No, brakes are still weak"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, full stopping power achieved",
+              "acceptance_description": null,
+              "guidance": "Perform gentle, controlled stops to transfer pad material to the rotor. Do not enter heavy traffic until stopping power is fully established."
+            }
+          ]
+        },
+        {
+          "title": "Sign-Off",
+          "explanation": "As the sole rider and technician, you must personally sign off to clear the bike for road use.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "technician_signature",
+              "kind": "signature",
+              "prompt": "Sign to certify that the front brake pads have been replaced, tested, and the bike is safe to ride.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Your signature confirms you have personally verified the safety of the front brake system."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [\n    \"Manufacturer torque specifications for the front axle bolt\",\n    \"Manufacturer torque specifications for the caliper mounting bolts\"\n  ],\n  \"understanding\": \"You are replacing the front brake pads on your Segway Xyber e-bike, ensuring the rotor is uncontaminated and the new pads match the old ones. Since no official torque specs exist, you tighten the fasteners by feel, verify lever pressure at a standstill, and bed the pads in with a dozen gentle stops before signing off.\",\n  \"draft\": {\n    \"key\": \"front-brake-pad-swap\",\n    \"title\": \"Front Brake Pad Replacement\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Oil or brake fluid on the brake rotor\"\n    ],\n    \"releases\": [\n      \"Safe operation of the e-bike in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Rotor for Contamination\",\n        \"explanation\": \"Oil or brake fluid on the disc will contaminate new pads, destroying stopping power and putting the rider in danger.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"rotor_contamination\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the brake rotor. Is there any oil, grease, or brake fluid on it?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No oil or fluid detected\",\n              \"Yes, oil or fluid is present\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No oil or fluid detected\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The rotor must be completely dry and free of any oily residue. Any contamination will ruin the new pads.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Compare Brake Pads\",\n        \"explanation\": \"Installing the wrong pads can lead to brake failure or improper fitment in the caliper.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Place the old and new brake pads side-by-side and take a photo.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Both old and new pads side-by-side, showing identical backing plate shapes and alignment tabs.\",\n            \"guidance\": \"Ensure the backing plate shape, mounting holes, and overall dimensions match exactly before installing.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reassemble and Tighten Fasteners\",\n        \"explanation\": \"The axle and caliper bolts must be tightened securely by feel to prevent them from backing out on gravel.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fastener_tightening\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Tighten the front axle bolt and caliper mounting bolts firmly by feel. Are they secure?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, tightened firmly by feel\",\n              \"No, not fully tightened\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, tightened firmly by feel\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Since no torque specs are published, tighten firmly by feel so they cannot back out under gravel riding vibrations.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Standstill Pressure Check\",\n        \"explanation\": \"Pumping the lever ensures the pistons have pushed the pads into contact with the rotor before you try to ride.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pump the front brake lever several times. Does it feel firm and hold pressure?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, lever is firm\",\n              \"No, lever is spongy or pulls to the grip\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, lever is firm\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The lever must not feel spongy or pull all the way to the handlebar grip. Pumping seats the pads against the rotor.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bedding-In Ride\",\n        \"explanation\": \"New pads require a dozen gentle stops to transfer friction material to the rotor and achieve full stopping power.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bed_in_stops\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform approximately 12 gentle stops from moderate speed. Do the brakes have full stopping power?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, full stopping power achieved\",\n              \"No, brakes are still weak\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, full stopping power achieved\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Perform gentle, controlled stops to transfer pad material to the rotor. Do not enter heavy traffic until stopping power is fully established.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Sign-Off\",\n        \"explanation\": \"As the sole rider and technician, you must personally sign off to clear the bike for road use.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"technician_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to certify that the front brake pads have been replaced, tested, and the bike is safe to ride.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Your signature confirms you have personally verified the safety of the front brake system.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3156,
+    "candidatesTokenCount": 1717,
+    "totalTokenCount": 8328
+  }
+}

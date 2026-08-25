@@ -11,27 +11,28 @@
   ],
   "output": {
     "mode": "abandon",
-    "understanding": "This device uses a completely custom service and characteristic with no descriptive metadata or standard UUIDs. The notified values increment steadily by 10, which is highly characteristic of a sequence counter or timer rather than a physical reading.",
+    "understanding": "This is an unidentified device with a custom service and characteristic that streams values increasing by 10 (e.g., 10000 to 10050 in little-endian). Without any descriptors, standard UUIDs, or device name, the physical unit of this reading cannot be determined.",
     "evidence": [
       "Service UUID a1b2c3d4-0000-4000-8000-0123456789ab is vendor-specific",
-      "Characteristic UUID a1b2c3d5-0000-4000-8000-0123456789ab has no 0x2901 or 0x2904 descriptors",
-      "Notified frames decode to 10000, 10010, 10020, 10030, 10040, 10050 in little-endian, indicating a monotonic counter"
+      "Characteristic UUID a1b2c3d5-0000-4000-8000-0123456789ab is vendor-specific",
+      "No 0x2904 or 0x2901 descriptors are present in the GATT tree",
+      "No manufacturer data or local name is advertised"
     ],
     "unresolved": [
-      "The physical quantity being measured (if any) is completely unknown",
-      "The unit of measurement and scale factor cannot be determined"
+      "The physical unit of the measurement",
+      "The scale factor and meaning of the transmitted values"
     ],
     "probe": null,
     "driver": null,
     "abandon": {
       "reason": "no_unit_derivable",
-      "detail": "The device advertises a custom service (a1b2c3d4-0000-4000-8000-0123456789ab) and characteristic (a1b2c3d5-0000-4000-8000-0123456789ab) with no GATT descriptors to indicate format or unit. The captured frames show a steady linear increase (10000, 10010, 10020, 10030, 10040, 10050 when parsed as uint16 little-endian), which strongly suggests a sequence counter, timer, or test ramp rather than a physical sensor reading. Without vendor documentation or a standard GATT profile, no physical unit can be derived."
+      "detail": "The device uses a completely custom service (a1b2c3d4-0000-4000-8000-0123456789ab) and characteristic (a1b2c3d5-0000-4000-8000-0123456789ab) with no GATT descriptors (0x2901 or 0x2904) to describe the format or unit. The advertised data contains no name or manufacturer data, and the captured frames (interpretable as 10000 to 10050 in little-endian) do not map to any known standard unit or sensor type without documentation."
     }
   },
-  "raw": "{\"mode\":\"abandon\",\"understanding\":\"This device uses a completely custom service and characteristic with no descriptive metadata or standard UUIDs. The notified values increment steadily by 10, which is highly characteristic of a sequence counter or timer rather than a physical reading.\",\"evidence\":[\"Service UUID a1b2c3d4-0000-4000-8000-0123456789ab is vendor-specific\",\"Characteristic UUID a1b2c3d5-0000-4000-8000-0123456789ab has no 0x2901 or 0x2904 descriptors\",\"Notified frames decode to 10000, 10010, 10020, 10030, 10040, 10050 in little-endian, indicating a monotonic counter\"],\"unresolved\":[\"The physical quantity being measured (if any) is completely unknown\",\"The unit of measurement and scale factor cannot be determined\"],\"probe\":null,\"driver\":null,\"abandon\":{\"reason\":\"no_unit_derivable\",\"detail\":\"The device advertises a custom service (a1b2c3d4-0000-4000-8000-0123456789ab) and characteristic (a1b2c3d5-0000-4000-8000-0123456789ab) with no GATT descriptors to indicate format or unit. The captured frames show a steady linear increase (10000, 10010, 10020, 10030, 10040, 10050 when parsed as uint16 little-endian), which strongly suggests a sequence counter, timer, or test ramp rather than a physical sensor reading. Without vendor documentation or a standard GATT profile, no physical unit can be derived.\"}}",
+  "raw": "{\n  \"mode\": \"abandon\",\n  \"understanding\": \"This is an unidentified device with a custom service and characteristic that streams values increasing by 10 (e.g., 10000 to 10050 in little-endian). Without any descriptors, standard UUIDs, or device name, the physical unit of this reading cannot be determined.\",\n  \"evidence\": [\n    \"Service UUID a1b2c3d4-0000-4000-8000-0123456789ab is vendor-specific\",\n    \"Characteristic UUID a1b2c3d5-0000-4000-8000-0123456789ab is vendor-specific\",\n    \"No 0x2904 or 0x2901 descriptors are present in the GATT tree\",\n    \"No manufacturer data or local name is advertised\"\n  ],\n  \"unresolved\": [\n    \"The physical unit of the measurement\",\n    \"The scale factor and meaning of the transmitted values\"\n  ],\n  \"probe\": null,\n  \"driver\": null,\n  \"abandon\": {\n    \"reason\": \"no_unit_derivable\",\n    \"detail\": \"The device uses a completely custom service (a1b2c3d4-0000-4000-8000-0123456789ab) and characteristic (a1b2c3d5-0000-4000-8000-0123456789ab) with no GATT descriptors (0x2901 or 0x2904) to describe the format or unit. The advertised data contains no name or manufacturer data, and the captured frames (interpretable as 10000 to 10050 in little-endian) do not map to any known standard unit or sensor type without documentation.\"\n  }\n}",
   "usage": {
     "promptTokenCount": 3592,
-    "candidatesTokenCount": 444,
-    "totalTokenCount": 6630
+    "candidatesTokenCount": 454,
+    "totalTokenCount": 5698
   }
 }

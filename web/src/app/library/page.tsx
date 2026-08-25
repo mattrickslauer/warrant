@@ -53,7 +53,7 @@ function Specimens() {
 
       <Block label="ReadingBadge — the thesis, and the only thing that gets this treatment">
         <div className="gallery__row">
-          <ReadingBadge value={28.4} unit="Nm" at="2026-08-18T14:32:07Z" toolId="A19" />
+          <ReadingBadge value={7.4} unit="Nm" at="2026-08-18T14:32:07Z" toolId="A19" />
         </div>
       </Block>
 

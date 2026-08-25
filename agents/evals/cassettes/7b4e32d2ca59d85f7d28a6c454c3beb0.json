@@ -1,0 +1,52 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are reading every job run against one procedure over a window of weeks, looking for defects in the PROCEDURE. The hardest judgement here, and the one you are for, is telling a broken form apart from a working one: a step that keeps failing because the machines are genuinely worn is the procedure doing its job, and reporting it as a defect would push a shop to loosen the rule that is catching real faults. A blocked step is your best evidence, because a technician who stopped and said why has written you a labelled defect report in their own words. Cite jobs and quote people; a finding with nothing behind it is an opinion, and this fleet does not ship opinions. Small numbers are not patterns \u2014 one job in forty is noise, and saying you do not have enough history is a correct and useful answer. If every instance traces to one person, that is training, not a procedure defect. Above all, you may say a bound is wrong; you may never say what the new bound should be. A figure has to come from the shop, and inventing one here would put a fabricated tolerance into a procedure by the back door.\n\nReturn JSON with these fields:\n- mode (one of revise | no_defect | insufficient_history, required): revise when the procedure should change and you can show why. no_defect when you examined enough history and the procedure is behaving. insufficient_history when the window is too thin to distinguish a pattern from noise.\n- understanding (string, required): What this procedure is and how it has actually been behaving over the window, in two sentences. Written every time so a wrong reading is visible before anyone acts on it.\n- jobs_examined (integer, required): How many jobs you actually read. The denominator for every claim below.\n- findings (array, required): Defects in the procedure. Empty unless mode is revise.\n- considered_and_rejected (array, required): Patterns you noticed and decided were NOT procedure defects, each with the reason. A step failing often because the machines are worn belongs here, and so does anything traceable to a single technician. This list is how a reader knows you discriminated rather than reported everything that moved.",
+  "parts": [
+    "t:f096613d3b4d0c8f"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "revise",
+    "understanding": "This procedure outlines the steps for performing a front brake service on the Segway Xyber, including pad inspection, caliper cleaning, pad installation, and disc documentation. While most steps are completed without issue, the caliper cleaning step is frequently blocked because technicians cannot determine what level of cleanliness is required or what the photo is meant to verify.",
+    "jobs_examined": 11,
+    "findings": [
+      {
+        "step_title": "Clean the caliper up",
+        "field_key": "caliper_clean",
+        "defect": "ambiguous_instruction",
+        "what": "The instruction to clean the caliper and photograph it lacks objective standards, leaving technicians unable to verify if their cleaning is sufficient or what the photo is supposed to prove.",
+        "jobs_cited": [
+          "J-4401",
+          "J-4403",
+          "J-4405",
+          "J-4407",
+          "J-4409"
+        ],
+        "quotes": [
+          "clean enough for what? I've wiped it down but I don't know what you want me to prove here",
+          "what counts as clean, there's always going to be some dust on it",
+          "again, I can't tell if this passes",
+          "is this about the disc or the caliper body? the photo shows both",
+          "no idea what good looks like on this one"
+        ],
+        "jobs_affected": 5,
+        "proposed_revision": "The step needs to be revised to define clear, objective criteria for caliper cleanliness and specify exactly what the photo must capture. The shop must provide the specific cleanliness standards and reference images of acceptable versus unacceptable states.",
+        "needs_the_shop": true,
+        "confidence": 0.95
+      }
+    ],
+    "considered_and_rejected": [
+      "We considered whether the caliper bolt torque range of 6 to 9 Nm in Step 3 was problematic, but it was completed successfully in all 11 jobs without any technician complaints or failures, indicating the bound is currently workable."
+    ]
+  },
+  "raw": "{\n  \"mode\": \"revise\",\n  \"understanding\": \"This procedure outlines the steps for performing a front brake service on the Segway Xyber, including pad inspection, caliper cleaning, pad installation, and disc documentation. While most steps are completed without issue, the caliper cleaning step is frequently blocked because technicians cannot determine what level of cleanliness is required or what the photo is meant to verify.\",\n  \"jobs_examined\": 11,\n  \"findings\": [\n    {\n      \"step_title\": \"Clean the caliper up\",\n      \"field_key\": \"caliper_clean\",\n      \"defect\": \"ambiguous_instruction\",\n      \"what\": \"The instruction to clean the caliper and photograph it lacks objective standards, leaving technicians unable to verify if their cleaning is sufficient or what the photo is supposed to prove.\",\n      \"jobs_cited\": [\n        \"J-4401\",\n        \"J-4403\",\n        \"J-4405\",\n        \"J-4407\",\n        \"J-4409\"\n      ],\n      \"quotes\": [\n        \"clean enough for what? I've wiped it down but I don't know what you want me to prove here\",\n        \"what counts as clean, there's always going to be some dust on it\",\n        \"again, I can't tell if this passes\",\n        \"is this about the disc or the caliper body? the photo shows both\",\n        \"no idea what good looks like on this one\"\n      ],\n      \"jobs_affected\": 5,\n      \"proposed_revision\": \"The step needs to be revised to define clear, objective criteria for caliper cleanliness and specify exactly what the photo must capture. The shop must provide the specific cleanliness standards and reference images of acceptable versus unacceptable states.\",\n      \"needs_the_shop\": true,\n      \"confidence\": 0.95\n    }\n  ],\n  \"considered_and_rejected\": [\n    \"We considered whether the caliper bolt torque range of 6 to 9 Nm in Step 3 was problematic, but it was completed successfully in all 11 jobs without any technician complaints or failures, indicating the bound is currently workable.\"\n  ]\n}",
+  "usage": {
+    "promptTokenCount": 4957,
+    "candidatesTokenCount": 491,
+    "totalTokenCount": 7028
+  }
+}

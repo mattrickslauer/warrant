@@ -15,18 +15,18 @@
   ],
   "output": {
     "verdict": "ADD_FIELD",
-    "confidence": 0.1,
-    "rationale": "The barcode label has significant glare and reflection, making the printed part number code extremely faint and unreadable.",
+    "confidence": 0.3,
+    "rationale": "The barcode sticker has significant glare, making the alphanumeric code underneath the barcode faint and illegible.",
     "add_field_key": "part_label_clear",
     "add_field_kind": "photo",
-    "add_field_prompt": "The barcode label has too much glare, making the part number unreadable. Please take another photograph of the label from an angle that avoids reflection.",
+    "add_field_prompt": "The barcode sticker has glare on it making the code illegible. Please take another photo of the label from an angle that avoids light reflection.",
     "escalation_question": null,
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.1,\n  \"rationale\": \"The barcode label has significant glare and reflection, making the printed part number code extremely faint and unreadable.\",\n  \"add_field_key\": \"part_label_clear\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"The barcode label has too much glare, making the part number unreadable. Please take another photograph of the label from an angle that avoids reflection.\",\n  \"escalation_question\": null,\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.3,\n  \"rationale\": \"The barcode sticker has significant glare, making the alphanumeric code underneath the barcode faint and illegible.\",\n  \"add_field_key\": \"part_label_clear\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"The barcode sticker has glare on it making the code illegible. Please take another photo of the label from an angle that avoids light reflection.\",\n  \"escalation_question\": null,\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 2999,
-    "candidatesTokenCount": 135,
-    "totalTokenCount": 3983
+    "candidatesTokenCount": 132,
+    "totalTokenCount": 4706
   }
 }

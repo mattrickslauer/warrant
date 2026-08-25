@@ -15,22 +15,23 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "What is the minimum brake pad thickness in millimeters for a bike to pass the daily check?",
+    "question": "What is the minimum brake pad thickness in millimeters that you accept before a bike fails the check?",
     "asks_about": "tolerance",
     "unresolved": [
-      "minimum brake pad thickness in mm",
-      "acceptable tyre pressure range (PSI) for front and rear tyres",
+      "minimum acceptable brake pad thickness in mm",
+      "acceptable PSI range for front and rear tyres",
+      "how 'wheels secure' is verified to prevent loose wheels",
       "maximum acceptable chain wear in mm",
-      "minimum battery charge percentage for e-bikes",
-      "how 'wheels secure' is verified to prevent loose wheels"
+      "minimum battery charge percentage for e-bikes to be hired out",
+      "how the motor cut-out test is performed and verified"
     ],
-    "understanding": "We are setting up the daily safety check for your hire fleet to prevent mechanical failures on the street. We need to establish the exact pass/fail limits for the measurements on your paper form so all three technicians inspect the bikes identically.",
+    "understanding": "This is a daily safety and maintenance check for a fleet of hybrid and electric hire bikes to ensure they are roadworthy before being rented. Because a loose wheel or brake failure could cause serious injury on city streets, we need clear, measurable limits for every check on the sheet.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"What is the minimum brake pad thickness in millimeters for a bike to pass the daily check?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"minimum brake pad thickness in mm\",\n    \"acceptable tyre pressure range (PSI) for front and rear tyres\",\n    \"maximum acceptable chain wear in mm\",\n    \"minimum battery charge percentage for e-bikes\",\n    \"how 'wheels secure' is verified to prevent loose wheels\"\n  ],\n  \"understanding\": \"We are setting up the daily safety check for your hire fleet to prevent mechanical failures on the street. We need to establish the exact pass/fail limits for the measurements on your paper form so all three technicians inspect the bikes identically.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"What is the minimum brake pad thickness in millimeters that you accept before a bike fails the check?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"minimum acceptable brake pad thickness in mm\",\n    \"acceptable PSI range for front and rear tyres\",\n    \"how 'wheels secure' is verified to prevent loose wheels\",\n    \"maximum acceptable chain wear in mm\",\n    \"minimum battery charge percentage for e-bikes to be hired out\",\n    \"how the motor cut-out test is performed and verified\"\n  ],\n  \"understanding\": \"This is a daily safety and maintenance check for a fleet of hybrid and electric hire bikes to ensure they are roadworthy before being rented. Because a loose wheel or brake failure could cause serious injury on city streets, we need clear, measurable limits for every check on the sheet.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 3006,
-    "candidatesTokenCount": 176,
-    "totalTokenCount": 4028
+    "candidatesTokenCount": 202,
+    "totalTokenCount": 3817
   }
 }

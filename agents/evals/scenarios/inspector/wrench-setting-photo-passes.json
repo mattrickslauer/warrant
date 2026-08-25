@@ -15,7 +15,7 @@
       "prompt": "Photograph the wrench barrel showing what you set it to, then torque both caliper bolts to the click",
       "required_at_strictness": 1,
       "acceptance_rule": "must_show",
-      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 27-33 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
+      "acceptance_description": "the barrel of a click-type torque wrench set to a value inside 6-9 Nm, read on the wrench's Nm scale, with the number and the scale both legible",
       "guidance": "Square on to the barrel so the number and the scale it sits on are both legible. This records what the tool was SET to. It is not a measurement of the bolt and the record files it as asserted."
     },
     "capture": {

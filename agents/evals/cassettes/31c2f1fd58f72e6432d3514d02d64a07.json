@@ -1,0 +1,30 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:4469ea53b1a1bf35"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "When you've finished bleeding, how can you show in a single photo that the lever doesn't pull all the way back to the handlebar grip under pressure?",
+    "asks_about": "evidence",
+    "unresolved": [
+      "How to document that the correct fluid type (matching the reservoir stamp) was actually used",
+      "How to verify the lever firmness and clearance without a numeric gap measurement",
+      "Any safety steps required to prevent brake pad contamination during the bleed"
+    ],
+    "understanding": "You are servicing the hydraulic brakes on your Segway Xyber to ensure they are completely solid and safe for city traffic. Since you follow the manufacturer's manual for the exact bleed steps, the critical safety checks are verifying the fluid type from the lever stamp and ensuring the lever cannot be pulled back to the bar.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"When you've finished bleeding, how can you show in a single photo that the lever doesn't pull all the way back to the handlebar grip under pressure?\",\n  \"asks_about\": \"evidence\",\n  \"unresolved\": [\n    \"How to document that the correct fluid type (matching the reservoir stamp) was actually used\",\n    \"How to verify the lever firmness and clearance without a numeric gap measurement\",\n    \"Any safety steps required to prevent brake pad contamination during the bleed\"\n  ],\n  \"understanding\": \"You are servicing the hydraulic brakes on your Segway Xyber to ensure they are completely solid and safe for city traffic. Since you follow the manufacturer's manual for the exact bleed steps, the critical safety checks are verifying the fluid type from the lever stamp and ensuring the lever cannot be pulled back to the bar.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 2927,
+    "candidatesTokenCount": 200,
+    "totalTokenCount": 3851
+  }
+}

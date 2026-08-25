@@ -5,14 +5,14 @@
   "input": {
     "shop": {
       "trade": "motorcycle rental and workshop",
-      "machines": "12 Honda CB500X, 3 CRF300L",
+      "machines": "12 Segway Xyber, 3 Segway Xafari",
       "technicians": 2,
       "stakes": "the bikes are rented to tourists who ride them on gravel passes; a brake failure is a fatality and an insurance claim"
     },
     "conversation": [
       {
         "who": "shop",
-        "said": "Front brake service on the CB500X. Two steps really: pads in, bolts torqued."
+        "said": "Front brake service on the Xyber. Two steps really: pads in, bolts torqued."
       },
       {
         "who": "scoper",
@@ -20,7 +20,7 @@
       },
       {
         "who": "shop",
-        "said": "30 Nm, plus or minus 3. We've got a Bluetooth torque wrench, it reads out on the phone."
+        "said": "7.5 Nm, plus or minus 1.5. We've got a Bluetooth torque wrench, it reads out on the phone."
       },
       {
         "who": "scoper",
@@ -48,7 +48,7 @@
       },
       {
         "who": "scoper",
-        "said": "Which bolts get torqued to 30 Nm?"
+        "said": "Which bolts get torqued to 7.5 Nm?"
       },
       {
         "who": "shop",

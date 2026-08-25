@@ -11,21 +11,22 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "When you pull a giant master coil of foil to start a job, how do you prove to yourself whether it's 321 or 309 before it goes onto the re-roller?",
+    "question": "Since the 321 and 309 foils look identical but have different temperature ratings, how do you verify and keep track of the grade of a coil when you set it up on the re-roller?",
     "asks_about": "parts",
     "unresolved": [
-      "How the correct foil grade (321 vs 309) is verified before re-rolling",
-      "How roll length is measured and what tolerance is allowed",
-      "How finished rolls are labeled and checked to prevent mix-ups at the boxing bench",
-      "What visual defects (like tears or wrinkles) disqualify a roll from being boxed"
+      "How the foil grade (321 vs 309) is verified and tracked during re-rolling",
+      "The steps and sequence of the re-rolling and boxing process",
+      "How the length of the retail rolls is measured and its tolerance",
+      "What constitutes a failure or rejection during inspection",
+      "What evidence is recorded to prove the correct grade and length were shipped"
     ],
-    "understanding": "The shop re-rolls 321 and 309 stainless steel tool wrap from large master coils into smaller retail rolls. Because the two grades look identical but have different temperature limits, preventing a mix-up is critical to avoid ruining customer workpieces.",
+    "understanding": "The shop re-rolls 321 and 309 stainless steel foil into retail lengths. Because the two grades look identical but have different temperature limits, preventing a mix-up is critical to avoid ruining customer workpieces.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"When you pull a giant master coil of foil to start a job, how do you prove to yourself whether it's 321 or 309 before it goes onto the re-roller?\",\n  \"asks_about\": \"parts\",\n  \"unresolved\": [\n    \"How the correct foil grade (321 vs 309) is verified before re-rolling\",\n    \"How roll length is measured and what tolerance is allowed\",\n    \"How finished rolls are labeled and checked to prevent mix-ups at the boxing bench\",\n    \"What visual defects (like tears or wrinkles) disqualify a roll from being boxed\"\n  ],\n  \"understanding\": \"The shop re-rolls 321 and 309 stainless steel tool wrap from large master coils into smaller retail rolls. Because the two grades look identical but have different temperature limits, preventing a mix-up is critical to avoid ruining customer workpieces.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Since the 321 and 309 foils look identical but have different temperature ratings, how do you verify and keep track of the grade of a coil when you set it up on the re-roller?\",\n  \"asks_about\": \"parts\",\n  \"unresolved\": [\n    \"How the foil grade (321 vs 309) is verified and tracked during re-rolling\",\n    \"The steps and sequence of the re-rolling and boxing process\",\n    \"How the length of the retail rolls is measured and its tolerance\",\n    \"What constitutes a failure or rejection during inspection\",\n    \"What evidence is recorded to prove the correct grade and length were shipped\"\n  ],\n  \"understanding\": \"The shop re-rolls 321 and 309 stainless steel foil into retail lengths. Because the two grades look identical but have different temperature limits, preventing a mix-up is critical to avoid ruining customer workpieces.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 2647,
-    "candidatesTokenCount": 222,
-    "totalTokenCount": 3642
+    "candidatesTokenCount": 227,
+    "totalTokenCount": 3559
   }
 }

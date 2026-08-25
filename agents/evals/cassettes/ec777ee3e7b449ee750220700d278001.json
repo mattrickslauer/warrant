@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:9a5edab1d9fd1e2f",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:afaa5abc5248644f",
+    "t:0f3fa5ac560e28f7",
+    "m:video/mp4:05bde7ffe418a964"
+  ],
+  "labels": [
+    "",
+    "",
+    "prior:scene/workshop-interior.jpg",
+    "",
+    "fraud/generated-workshop-scene.mp4"
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 1.0,
+    "rationale": "The motorcycle shown in the submitted video is a vintage/classic motorcycle (with spoked wheels, dual rear shocks, and classic styling, likely a CB series cafe racer), which does not match the claimed asset, a modern 2021 Honda CB500X adventure motorcycle.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"The motorcycle shown in the submitted video is a vintage/classic motorcycle (with spoked wheels, dual rear shocks, and classic styling, likely a CB series cafe racer), which does not match the claimed asset, a modern 2021 Honda CB500X adventure motorcycle.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 2508,
+    "candidatesTokenCount": 106,
+    "totalTokenCount": 3260
+  }
+}

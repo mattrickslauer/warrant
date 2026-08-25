@@ -144,7 +144,15 @@ class Agent:
 
         path = (MEDIA_DIR / ref) if not Path(ref).is_absolute() else Path(ref)
         if not path.exists():
-            raise MediaMissing(f"{ref} is not in {MEDIA_DIR}; run evals/gen_media.py")
+            # `evals/gen_media.py` has never existed, and pointing at it was worse than saying
+            # nothing: it reads as a script somebody deleted, when in fact almost every slot in
+            # this corpus is a PHOTOGRAPH somebody still has to take. `evals/manifest.py` says
+            # what each one is and why it cannot be generated, and `evals media` says which are
+            # outstanding. The one exception is the synthetic fraud, which is generated on
+            # purpose and has its own generator.
+            how = ("python3 -m evals.gen_fraud" if ref.startswith("fraud/")
+                   else "python3 -m evals media")
+            raise MediaMissing(f"{ref} is not in {MEDIA_DIR}; {how}")
         mime = _MIME.get(path.suffix.lower())
         if mime is None:
             raise MediaMissing(f"{ref}: unsupported media type {path.suffix}")

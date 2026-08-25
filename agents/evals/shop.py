@@ -112,7 +112,7 @@ _WORD_RE = re.compile(r"\b(" + "|".join(_WORDS) + r")\b", re.I)
 def numbers_in(text: str) -> set[float]:
     """Every figure a piece of text contains, written either way.
 
-    Ranges need no special handling: "27-33 Nm" yields both ends, which is exactly the pair
+    Ranges need no special handling: "6-9 Nm" yields both ends, which is exactly the pair
     a `within` rule is entitled to use.
     """
     out: set[float] = set()

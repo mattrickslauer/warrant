@@ -11,22 +11,22 @@
   ],
   "output": {
     "mode": "ask",
-    "question": "Which specific job on your Segway Xyber are we focusing on today\u2014like a brake bleed, pad replacement, or tyre pressure check?",
+    "question": "What is the most critical routine job you do on your Segway Xyber to make sure the brakes or tyres don't fail on you in traffic?",
     "asks_about": "scope",
     "unresolved": [
-      "specific job to document",
-      "sequence of steps for the chosen job",
-      "tolerances and wear limits",
-      "how failure or wear is measured",
-      "required parts or tools"
+      "The specific job being documented",
+      "The steps and sequence of the job",
+      "The safety tolerances and limits",
+      "How we verify the job was done right",
+      "What defines a failure that stops the ride"
     ],
-    "understanding": "You are a home mechanic maintaining a Segway Xyber e-bike and some bicycles for high-stakes city and gravel riding. We want to document one critical safety-related job so it is done consistently every time.",
+    "understanding": "You are a home mechanic maintaining a Segway Xyber e-bike and some bicycles where a brake or tyre failure in traffic could be catastrophic. We need to define a clear, repeatable safety routine for your most critical maintenance task.",
     "draft": null
   },
-  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Which specific job on your Segway Xyber are we focusing on today\u2014like a brake bleed, pad replacement, or tyre pressure check?\",\n  \"asks_about\": \"scope\",\n  \"unresolved\": [\n    \"specific job to document\",\n    \"sequence of steps for the chosen job\",\n    \"tolerances and wear limits\",\n    \"how failure or wear is measured\",\n    \"required parts or tools\"\n  ],\n  \"understanding\": \"You are a home mechanic maintaining a Segway Xyber e-bike and some bicycles for high-stakes city and gravel riding. We want to document one critical safety-related job so it is done consistently every time.\",\n  \"draft\": null\n}",
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"What is the most critical routine job you do on your Segway Xyber to make sure the brakes or tyres don't fail on you in traffic?\",\n  \"asks_about\": \"scope\",\n  \"unresolved\": [\n    \"The specific job being documented\",\n    \"The steps and sequence of the job\",\n    \"The safety tolerances and limits\",\n    \"How we verify the job was done right\",\n    \"What defines a failure that stops the ride\"\n  ],\n  \"understanding\": \"You are a home mechanic maintaining a Segway Xyber e-bike and some bicycles where a brake or tyre failure in traffic could be catastrophic. We need to define a clear, repeatable safety routine for your most critical maintenance task.\",\n  \"draft\": null\n}",
   "usage": {
     "promptTokenCount": 2500,
-    "candidatesTokenCount": 169,
-    "totalTokenCount": 2977
+    "candidatesTokenCount": 181,
+    "totalTokenCount": 3162
   }
 }

@@ -114,7 +114,7 @@ export function Records() {
                   onOpen={() => router.push(record ? `/r/${record.id}` : `/job/${job.id}`)}
                 />
                 {record ? (
-                  <Link className="records__open" href={`/r/${record.id}`}>
+                  <Link className="records__open" href={`/r/${encodeURIComponent(record.id)}`}>
                     Open the record <span className="w-mono">{record.id}</span>
                   </Link>
                 ) : (
@@ -132,7 +132,7 @@ export function Records() {
           <p className="gallery__label">Sealed</p>
           <div className="records__seals">
             {records.map((r) => (
-              <Link className="records__seal" key={r.id} href={`/r/${r.id}`}>
+              <Link className="records__seal" key={r.id} href={`/r/${encodeURIComponent(r.id)}`}>
                 <StatusPill status={r.machine_released ? "sealed" : "held"} />
                 <span className="records__sealid w-mono">{r.id}</span>
                 <span className="records__sealwhen w-mono">

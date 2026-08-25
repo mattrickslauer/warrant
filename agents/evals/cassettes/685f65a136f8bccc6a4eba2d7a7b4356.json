@@ -1,0 +1,131 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:7d51de76991d8c19"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "This procedure covers the front brake service for the Segway Xyber, focusing on installing new EBC FA388HH pads and torquing the caliper mounting bolts. It ensures safety on gravel passes by verifying pad seating via photo, torque via Bluetooth wrench, and checking for fluid contamination before release.",
+    "draft": {
+      "key": "front-brake-service-xyber",
+      "title": "Segway Xyber Front Brake Service",
+      "strictness": 2,
+      "minimum_tier": "instrumented",
+      "disqualifiers": [
+        "Any fluid on the disc"
+      ],
+      "releases": [
+        "Puts the bike back on hire"
+      ],
+      "steps": [
+        {
+          "title": "Install New Brake Pads",
+          "explanation": "Ensures new EBC FA388HH pads are correctly seated to prevent uneven wear or brake failure on steep descents.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the new EBC FA388HH pads seated in the caliper before the wheel goes back on.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Both pad faces visible against the disc, close enough to see they're sat flat in the caliper.",
+              "guidance": "Ensure both pad faces are visible against the disc and clearly sat flat in the caliper."
+            }
+          ]
+        },
+        {
+          "title": "Torque Caliper Mounting Bolts",
+          "explanation": "Torquing the two caliper mounting bolts prevents them from backing out, which would cause catastrophic brake failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_torque",
+              "kind": "measurement",
+              "prompt": "Record the torque reading from the Bluetooth torque wrench for the caliper mounting bolts.",
+              "source": "instrument",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 6.0,
+              "acceptance_max": 9.0,
+              "acceptance_unit": "Nm",
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Torque must be between 6.0 and 9.0 Nm (7.5 Nm +/- 1.5 Nm)."
+            }
+          ]
+        },
+        {
+          "title": "Check for Fluid Contamination",
+          "explanation": "Any fluid on the brake disc will contaminate the pads and cause immediate brake failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "fluid_check",
+              "kind": "choice",
+              "prompt": "Is there any fluid on the brake disc?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No fluid on disc",
+                "Fluid detected on disc"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No fluid on disc",
+              "acceptance_description": null,
+              "guidance": "The disc must be completely dry and free of any fluid."
+            }
+          ]
+        },
+        {
+          "title": "Mechanic Sign-off",
+          "explanation": "An authorized mechanic must sign off to release the bike back for hire.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "mechanic_sign",
+              "kind": "signature",
+              "prompt": "Sign to confirm the front brake service is complete and correct.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Must be signed by one of the two authorized mechanics."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"This procedure covers the front brake service for the Segway Xyber, focusing on installing new EBC FA388HH pads and torquing the caliper mounting bolts. It ensures safety on gravel passes by verifying pad seating via photo, torque via Bluetooth wrench, and checking for fluid contamination before release.\",\n  \"draft\": {\n    \"key\": \"front-brake-service-xyber\",\n    \"title\": \"Segway Xyber Front Brake Service\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"instrumented\",\n    \"disqualifiers\": [\n      \"Any fluid on the disc\"\n    ],\n    \"releases\": [\n      \"Puts the bike back on hire\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Install New Brake Pads\",\n        \"explanation\": \"Ensures new EBC FA388HH pads are correctly seated to prevent uneven wear or brake failure on steep descents.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the new EBC FA388HH pads seated in the caliper before the wheel goes back on.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Both pad faces visible against the disc, close enough to see they're sat flat in the caliper.\",\n            \"guidance\": \"Ensure both pad faces are visible against the disc and clearly sat flat in the caliper.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Torque Caliper Mounting Bolts\",\n        \"explanation\": \"Torquing the two caliper mounting bolts prevents them from backing out, which would cause catastrophic brake failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"caliper_torque\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Record the torque reading from the Bluetooth torque wrench for the caliper mounting bolts.\",\n            \"source\": \"instrument\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 6.0,\n            \"acceptance_max\": 9.0,\n            \"acceptance_unit\": \"Nm\",\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Torque must be between 6.0 and 9.0 Nm (7.5 Nm +/- 1.5 Nm).\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Check for Fluid Contamination\",\n        \"explanation\": \"Any fluid on the brake disc will contaminate the pads and cause immediate brake failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"fluid_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is there any fluid on the brake disc?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No fluid on disc\",\n              \"Fluid detected on disc\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"No fluid on disc\",\n            \"acceptance_description\": null,\n            \"guidance\": \"The disc must be completely dry and free of any fluid.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Mechanic Sign-off\",\n        \"explanation\": \"An authorized mechanic must sign off to release the bike back for hire.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"mechanic_sign\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm the front brake service is complete and correct.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": null,\n            \"guidance\": \"Must be signed by one of the two authorized mechanics.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 2709,
+    "candidatesTokenCount": 1138,
+    "totalTokenCount": 6767
+  }
+}

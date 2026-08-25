@@ -26,6 +26,12 @@ export interface FleetReply {
   model: string | null;
   latencyMs: number;
   usage: { totalTokenCount?: number } | null;
+  /**
+   * Whether the remote judged this answer strong enough to act on. Only the `screen`
+   * operation sets it; `query` leaves it undefined, because an agent's verdict is acted on
+   * by `decideOutcome` and never by the agent itself.
+   */
+  actsOn?: boolean;
 }
 
 /**
@@ -88,6 +94,33 @@ export async function askFleet(
   kase: Record<string, unknown>,
   fetchImpl: typeof fetch = fetch,
 ): Promise<FleetReply> {
+  return callFleet("query", { agent, case: kase }, fetchImpl);
+}
+
+/**
+ * The Gemma screen, on one capture, before the judge is asked.
+ *
+ * A separate operation rather than another agent name through `askFleet`, because the screen
+ * is not one of the seven — `roster()` says seven and `REGISTRY` does not contain it. See
+ * `agents/warrant/screen.py` for why the cheap model is deliberately on the side of the
+ * decision where being wrong costs a retake rather than a released machine.
+ *
+ * `actsOn` comes back from the remote, which applies the same floor `screen.ts` states here.
+ * Both are read: the remote's answer is treated as advice and re-checked locally, because a
+ * capture must not be short-circuited on the strength of a field the caller never validated.
+ */
+export async function askScreen(
+  kase: Record<string, unknown>,
+  fetchImpl: typeof fetch = fetch,
+): Promise<FleetReply> {
+  return callFleet("screen", { case: kase }, fetchImpl);
+}
+
+async function callFleet(
+  classMethod: "query" | "screen",
+  input: Record<string, unknown>,
+  fetchImpl: typeof fetch = fetch,
+): Promise<FleetReply> {
   const engine = process.env.WARRANT_FLEET_ENGINE;
   if (!engine) {
     throw new FleetUnreachable(
@@ -113,7 +146,7 @@ export async function askFleet(
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
-    body: JSON.stringify({ classMethod: "query", input: { agent, case: kase } }),
+    body: JSON.stringify({ classMethod, input }),
   });
 
   if (!response.ok) {
@@ -140,5 +173,6 @@ export async function askFleet(
     model: typeof envelope.model === "string" ? envelope.model : null,
     latencyMs: typeof envelope.latency_ms === "number" ? envelope.latency_ms : 0,
     usage: (envelope.usage ?? null) as FleetReply["usage"],
+    ...(typeof envelope.acts_on === "boolean" ? { actsOn: envelope.acts_on } : {}),
   };
 }

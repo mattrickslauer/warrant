@@ -12,9 +12,11 @@ import "server-only";
 
 import { randomUUID } from "node:crypto";
 import { adminDb } from "@/auth/admin";
-import { askFleet, FleetUnreachable, type FleetReply } from "@/server/fleet";
+import { askFleet, askScreen, FleetUnreachable, type FleetReply } from "@/server/fleet";
 import { decideOutcome, type Effect } from "./outcome";
-import { inspectorCase, skepticCase, mediaUri, referenceFieldId, type CaseSources } from "./cases";
+import { inspectorCase, skepticCase, screenCase, mediaUri, referenceFieldId,
+         type CaseSources } from "./cases";
+import { actsOnScreen, inspectorVerdictFromScreen } from "./screen";
 import { screenEvidence, type ArmorVerdict } from "./armor";
 import { verifyIntegrity } from "./attest";
 import { getStorage } from "firebase-admin/storage";
@@ -41,6 +43,9 @@ export interface AdjudicateRef {
 
 export interface Deps {
   ask?: typeof askFleet;
+  /** The Gemma screen. A separate seam from `ask` because it is a separate fleet operation,
+   *  and because a test needs to be able to disable the screen without stubbing the judge. */
+  screen?: typeof askScreen;
   db?: FirebaseFirestore.Firestore;
 }
 
@@ -66,6 +71,7 @@ export async function adjudicate(
 ): Promise<{ decisionIds: string[]; effect: Effect }> {
   const db = deps.db ?? adminDb();
   const ask = deps.ask ?? askFleet;
+  const screen = deps.screen ?? askScreen;
   const scopedJobId = `${ref.tenantId}/${ref.jobId}`;
   // One trace per capture. Everything below hangs under it, so the reasoning trace has the
   // shape of what actually happened rather than being a flat list of verdicts.
@@ -259,6 +265,73 @@ export async function adjudicate(
     });
     decisionIds.push(id);
   };
+
+  // The Gemma screen, between Model Armor and the judge.
+  //
+  // ORDER IS NOT NEGOTIABLE: Armor, then the screen, then Flash. Gemma is a model reading a
+  // picture chosen by the person being checked, so an image carrying an injection must not
+  // reach it either — putting the cheap screen first to "save the Armor call" would hand the
+  // untrusted frame straight to a model.
+  //
+  // What this buys and what it risks. The commonest reason a capture fails is not fraud, it is
+  // a frame nobody could judge — dark, blurred, the subject out of shot. Those cost two Flash
+  // calls and 40× the tokens to reach a conclusion a small model reaches by looking. So the
+  // screen runs first and, when it is confident about a defect in the FRAME, the capture is
+  // sent back and Flash is never asked. The risk is bounded by the schema: `EvidenceScreen`
+  // has no answer meaning "satisfied", so the worst a wrong screen can do is ask a technician
+  // for a photograph that was already good enough. It cannot pass a step.
+  //
+  // Only when there is something to look at. A field with no media has no frame to find a
+  // defect in, and the Inspector's own "no media was captured" path is the one that should run.
+  if (sources.mediaUris.length > 0) {
+    let screened: FleetReply | null = null;
+    try {
+      screened = await withSpan(trace, "screen.gemma",
+        { model: process.env.SCREENING_MODEL ?? "gemma-3-4b", field: ref.fieldKey,
+          step: ref.stepId },
+        () => screen(screenCase(sources)));
+    } catch {
+      // An unreachable screen is not a finding about the capture — unlike an unreachable
+      // fleet, which is. Flash is asked exactly as it would have been and the only thing lost
+      // is the saving, so this swallows deliberately rather than holding the step.
+      screened = null;
+    }
+
+    if (screened && actsOnScreen(screened)) {
+      await write(
+        "screen",
+        `UNUSABLE·${String(screened.output.defect ?? "unstated")}`,
+        String(screened.output.rationale ?? "no rationale returned"),
+        screened,
+      );
+      // Through the SAME gate as every Inspector verdict. The screen gets no gate of its own,
+      // no budget of its own and no escalation path of its own — so a screen firing on a step
+      // whose ADD FIELD budget is spent escalates to a person exactly as the Inspector would,
+      // and the circuit breaker never has to know the screen exists.
+      const screenEffect = decideOutcome({
+        inspector: inspectorVerdictFromScreen(
+          screened, { key: ref.fieldKey, kind: String(fieldDef.kind ?? "photo") }, addFieldsUsed),
+        // Never asked, and it does not matter: `decideOutcome` consults the Skeptic only on a
+        // PASS, and this path cannot produce one.
+        skeptic: null,
+        addFieldsUsed,
+        maxAddFields: step.max_add_fields ?? 2,
+        strictness: job.strictness ?? 1,
+        acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
+      });
+      await withSpan(trace, "gate.apply",
+        { effect: screenEffect.kind, verdict: "ADD_FIELD", screened_by: screened.model },
+        () => applyEffect(db, ref, step, job.strictness ?? 1, screenEffect));
+      await jobRef
+        .collection("captures")
+        .doc(ref.captureId)
+        .set({ adjudicated: true, adjudicated_at: nowIso(),
+               // What the ledger totals to show the saving: this capture was settled without
+               // the judgement model being asked at all.
+               screened_by: screened.model ?? null }, { merge: true });
+      return { decisionIds, effect: screenEffect };
+    }
+  }
 
   let inspector: FleetReply;
   let skeptic: FleetReply | null = null;

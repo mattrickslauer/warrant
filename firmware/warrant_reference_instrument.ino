@@ -36,15 +36,16 @@ static const char* SERVICE_UUID        = "6e1a0001-b5a3-f393-e0a9-e50e24dcca9e";
 static const char* CHARACTERISTIC_UUID = "6e1a0002-b5a3-f393-e0a9-e50e24dcca9e";
 static const char* DEVICE_NAME         = "Warrant Ref 01";
 
-// The demo procedure torques a caliper bolt to 26-30 Nm, so the reference instrument reports
+// The demo procedure torques a caliper bolt to 6-9 Nm, so the reference instrument reports
 // a value in that band. Swap this function for a real sensor read and nothing else changes —
 // that substitution is the entire point of the exercise.
 static float readSensor() {
   // A slow sweep across the acceptance band and slightly outside it, so the client can be seen
-  // both passing and failing the `within(26, 30, "Nm")` rule without anybody faking a number.
+  // both passing and failing the `within(6, 9, "Nm")` rule without anybody faking a number.
+  // 7.5 ± 2.0 sweeps 5.5 → 9.5, which clears the band at both ends.
   static float t = 0.0f;
   t += 0.05f;
-  return 28.0f + 3.0f * sinf(t);
+  return 7.5f + 2.0f * sinf(t);
 }
 
 BLECharacteristic* characteristic = nullptr;

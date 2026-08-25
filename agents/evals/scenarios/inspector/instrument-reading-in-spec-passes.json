@@ -15,8 +15,8 @@
       "prompt": "Torque both caliper bolts and record the reading from the paired instrument",
       "required_at_strictness": 1,
       "acceptance_rule": "within",
-      "acceptance_min": 27,
-      "acceptance_max": 33,
+      "acceptance_min": 6,
+      "acceptance_max": 9,
       "acceptance_unit": "Nm",
       "guidance": "The number must arrive from a paired instrument. A click wrench cannot satisfy this field: it reports nothing, it is set to a bound and pulled until it clicks."
     },
@@ -29,7 +29,7 @@
     "strictness": 2,
     "media": [],
     "reading": {
-      "value": 30.4,
+      "value": 7.4,
       "unit": "Nm",
       "source": "instrument"
     }

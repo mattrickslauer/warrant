@@ -1,0 +1,158 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:2433598b27ddda71"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is a front brake service on the Segway Xyber, which involves inspecting and measuring the pads, checking the rotor for contamination, torquing the caliper bolts, and bedding in the brakes. This service is critical to prevent brake failure and ensure tourist safety on steep gravel passes.",
+    "draft": {
+      "key": "segway-xyber-front-brake-service",
+      "title": "Segway Xyber Front Brake Service",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Fork oil or brake fluid contamination on the rotor or caliper"
+      ],
+      "releases": [
+        "Ready for rental and operation on gravel passes"
+      ],
+      "steps": [
+        {
+          "title": "Brake Pad Inspection",
+          "explanation": "Worn brake pads reduce stopping power and can damage the rotor, leading to catastrophic brake failure on steep descents.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "prompt": "Measure the thickness of the remaining friction material on the thinnest pad.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "within",
+              "acceptance_min": 2.0,
+              "acceptance_unit": "mm",
+              "guidance": "Pads must have at least 2 mm of friction material left. If they are thinner, they must be replaced with new pads."
+            }
+          ]
+        },
+        {
+          "title": "Rotor and Fluid Inspection",
+          "explanation": "Any fluid contamination on the rotor will ruin the pads and cause immediate loss of braking force.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "rotor_contamination",
+              "kind": "choice",
+              "prompt": "Inspect the rotor and caliper for any signs of fork oil or brake fluid.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "clean",
+                "contaminated"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "clean",
+              "guidance": "The rotor must be completely clean. Any contamination grounds the bike immediately."
+            },
+            {
+              "key": "rotor_thickness",
+              "kind": "measurement",
+              "prompt": "Measure the rotor thickness.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "Segway manual",
+              "guidance": "Refer to the Segway manual to ensure the rotor thickness is within allowable limits."
+            }
+          ]
+        },
+        {
+          "title": "Caliper Installation and Torque",
+          "explanation": "Incorrectly torqued caliper bolts can back out, causing the caliper to detach and lock the wheel or lose braking entirely.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_torque",
+              "kind": "measurement",
+              "prompt": "Torque both caliper mounting bolts and record the torque value.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "within",
+              "acceptance_min": 7.5,
+              "acceptance_max": 7.5,
+              "acceptance_unit": "Nm",
+              "guidance": "Both caliper mounting bolts must be torqued to exactly 7.5 Nm as specified in the Segway manual."
+            }
+          ]
+        },
+        {
+          "title": "Pre-Ride Safety Check",
+          "explanation": "Pumping the lever ensures hydraulic pressure is restored so the technician has brakes when they begin the test ride.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Pump the brake lever until it is firm. How does the lever feel?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "firm",
+                "spongy"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "firm",
+              "guidance": "The lever must feel firm before pushing the bike out of the bay."
+            }
+          ]
+        },
+        {
+          "title": "Bedding In and Sign-Off",
+          "explanation": "Bedding in the pads ensures they mate with the rotor for full stopping power, and a final sign-off confirms the bike is safe for tourists.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_performance",
+              "kind": "choice",
+              "prompt": "Perform 20 gentle stops down the lane. Do the brakes bite correctly?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "bites correctly",
+                "poor bite"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "bites correctly",
+              "guidance": "The brakes must bite firmly and feel right after the 20 gentle stops."
+            },
+            {
+              "key": "technician_signature",
+              "kind": "signature",
+              "prompt": "Sign to certify that the front brakes have been serviced, tested, and are safe for rental.",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "signed_by",
+              "guidance": "Your signature certifies that the front brakes are fully functional and safe for tourist use on gravel passes."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\"mode\":\"compile\",\"question\":null,\"asks_about\":\"tolerance\",\"unresolved\":[],\"understanding\":\"The job is a front brake service on the Segway Xyber, which involves inspecting and measuring the pads, checking the rotor for contamination, torquing the caliper bolts, and bedding in the brakes. This service is critical to prevent brake failure and ensure tourist safety on steep gravel passes.\",\"draft\":{\"key\":\"segway-xyber-front-brake-service\",\"title\":\"Segway Xyber Front Brake Service\",\"strictness\":2,\"minimum_tier\":\"attested\",\"disqualifiers\":[\"Fork oil or brake fluid contamination on the rotor or caliper\"],\"releases\":[\"Ready for rental and operation on gravel passes\"],\"steps\":[{\"title\":\"Brake Pad Inspection\",\"explanation\":\"Worn brake pads reduce stopping power and can damage the rotor, leading to catastrophic brake failure on steep descents.\",\"max_add_fields\":2,\"fields\":[{\"key\":\"pad_thickness\",\"kind\":\"measurement\",\"prompt\":\"Measure the thickness of the remaining friction material on the thinnest pad.\",\"source\":\"human\",\"required_at_strictness\":1,\"acceptance_rule\":\"within\",\"acceptance_min\":2.0,\"acceptance_unit\":\"mm\",\"guidance\":\"Pads must have at least 2 mm of friction material left. If they are thinner, they must be replaced with new pads.\"}]},{\"title\":\"Rotor and Fluid Inspection\",\"explanation\":\"Any fluid contamination on the rotor will ruin the pads and cause immediate loss of braking force.\",\"max_add_fields\":2,\"fields\":[{\"key\":\"rotor_contamination\",\"kind\":\"choice\",\"prompt\":\"Inspect the rotor and caliper for any signs of fork oil or brake fluid.\",\"source\":\"human\",\"required_at_strictness\":1,\"choices\":[\"clean\",\"contaminated\"],\"acceptance_rule\":\"matches\",\"acceptance_target\":\"clean\",\"guidance\":\"The rotor must be completely clean. Any contamination grounds the bike immediately.\"},{\"key\":\"rotor_thickness\",\"kind\":\"measurement\",\"prompt\":\"Measure the rotor thickness.\",\"source\":\"human\",\"required_at_strictness\":1,\"acceptance_rule\":\"per_spec\",\"acceptance_target\":\"Segway manual\",\"guidance\":\"Refer to the Segway manual to ensure the rotor thickness is within allowable limits.\"}]},{\"title\":\"Caliper Installation and Torque\",\"explanation\":\"Incorrectly torqued caliper bolts can back out, causing the caliper to detach and lock the wheel or lose braking entirely.\",\"max_add_fields\":2,\"fields\":[{\"key\":\"caliper_torque\",\"kind\":\"measurement\",\"prompt\":\"Torque both caliper mounting bolts and record the torque value.\",\"source\":\"human\",\"required_at_strictness\":1,\"acceptance_rule\":\"within\",\"acceptance_min\":7.5,\"acceptance_max\":7.5,\"acceptance_unit\":\"Nm\",\"guidance\":\"Both caliper mounting bolts must be torqued to exactly 7.5 Nm as specified in the Segway manual.\"}]},{\"title\":\"Pre-Ride Safety Check\",\"explanation\":\"Pumping the lever ensures hydraulic pressure is restored so the technician has brakes when they begin the test ride.\",\"max_add_fields\":2,\"fields\":[{\"key\":\"lever_feel\",\"kind\":\"choice\",\"prompt\":\"Pump the brake lever until it is firm. How does the lever feel?\",\"source\":\"human\",\"required_at_strictness\":1,\"choices\":[\"firm\",\"spongy\"],\"acceptance_rule\":\"matches\",\"acceptance_target\":\"firm\",\"guidance\":\"The lever must feel firm before pushing the bike out of the bay.\"}]},{\"title\":\"Bedding In and Sign-Off\",\"explanation\":\"Bedding in the pads ensures they mate with the rotor for full stopping power, and a final sign-off confirms the bike is safe for tourists.\",\"max_add_fields\":2,\"fields\":[{\"key\":\"bedding_performance\",\"kind\":\"choice\",\"prompt\":\"Perform 20 gentle stops down the lane. Do the brakes bite correctly?\",\"source\":\"human\",\"required_at_strictness\":1,\"choices\":[\"bites correctly\",\"poor bite\"],\"acceptance_rule\":\"matches\",\"acceptance_target\":\"bites correctly\",\"guidance\":\"The brakes must bite firmly and feel right after the 20 gentle stops.\"},{\"key\":\"technician_signature\",\"kind\":\"signature\",\"prompt\":\"Sign to certify that the front brakes have been serviced, tested, and are safe for rental.\",\"source\":\"human\",\"required_at_strictness\":1,\"acceptance_rule\":\"signed_by\",\"guidance\":\"Your signature certifies that the front brakes are fully functional and safe for tourist use on gravel passes.\"}]}]}}",
+  "usage": {
+    "promptTokenCount": 3206,
+    "candidatesTokenCount": 952,
+    "totalTokenCount": 10106
+  }
+}

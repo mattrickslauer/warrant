@@ -5,7 +5,7 @@ import {
   StepCard, CaptureTile, ReasonCapture, SignatureInput, AgentTrace, HoldBanner,
   StatusPill, Rule, Wrap, EvidenceChip, type JobStatus,
 } from "@/components";
-import { getDataSource, surfaceCanRun, type JobEvent } from "@/data";
+import { getDataSource, scoped, surfaceCanRun, type JobEvent } from "@/data";
 import type { Decision, FieldDef, Job, Procedure } from "@/generated/types";
 
 type Exit = "capture" | "reason";
@@ -35,7 +35,11 @@ export function JobFlow({ jobId }: { jobId: string }) {
       if (!alive) return;
       if (!j) { setMissing(true); return; }
       setJob(j);
-      setProc(await src.getProcedure(j.procedure_id));
+      // A job stores its procedure id BARE, and a procedure is addressed
+      // `{tenant}/{procedure}`. Handing the bare id straight over resolved to null against
+      // Firestore and left the screen on "Opening…" forever, with the job loaded and
+      // nothing to render it against.
+      setProc(await src.getProcedure(scoped(j.tenant_id, j.procedure_id)));
     })();
     return () => { alive = false; };
   }, [src, jobId]);
@@ -51,7 +55,7 @@ export function JobFlow({ jobId }: { jobId: string }) {
         setAdded((a) => ({ ...a, [e.stepId]: [...(a[e.stepId] ?? []), e.field] }));
       if (e.kind === "step_status") setStatuses((s) => ({ ...s, [e.stepId]: e.status }));
       if (e.kind === "held") setHeld(e.reason);
-      if (e.kind === "sealed") router.push(`/r/${e.recordId}`);
+      if (e.kind === "sealed") router.push(`/r/${encodeURIComponent(e.recordId)}`);
     });
   }, [src, job, router]);
 

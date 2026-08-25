@@ -266,7 +266,7 @@ def cmd_media(args: argparse.Namespace) -> int:
         ok = (MEDIA / path).exists()
         print(f"  {rep.GREEN + 'have' + rep.RESET if ok else rep.RED + 'GONE' + rep.RESET}  "
               f"{path}  {rep.DIM}{note}{rep.RESET}")
-    print(f"\n{len(present)}/{len(MANIFEST)} taken — see evals/media/SHOTS.md")
+    print(f"\n{len(present)}/{len(MANIFEST)} taken — see evals/manifest.py")
     return 0
 
 

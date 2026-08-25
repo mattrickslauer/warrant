@@ -20,7 +20,7 @@ Procedure
       kind           measurement | photo | video | scan | choice |
                      text | signature | location
       prompt         "Torque the caliper bolts"
-      acceptance     within(26, 30, "Nm")
+      acceptance     within(6, 9, "Nm")
       required_at    strictness >= 1
       source         instrument | camera | human
 ```
@@ -508,26 +508,60 @@ be**, not because we ran out of time.
 | Layer | Model | When |
 |---|---|---|
 | Inline validation | local rules | every capture — free, never blocks |
-| Routine evidence | **Gemma** | asynchronously, every step at strictness ≥ 1 |
-| Judgement | **Gemini 3.5 Flash** | contested steps, and everything at high strictness |
+| Evidence screening | **Gemma** (`gemma-3-4b`) | every capture with media, after Model Armor and before the judge |
+| Judgement | **Gemini 3.5 Flash** | every capture the screen did not send back |
 | Questions on the button | STT → **Gemini 3.5 Flash** → TTS | when held |
 | Adversarial corpus | **Veo** | offline, generating synthetic fraudulent evidence |
+
+### The screen, and the one direction it is allowed to be wrong in
+
+`agents/warrant/screen.py` runs Gemma over every capture that has media, and it can do exactly
+one thing: send the capture back for another photograph. It cannot pass a step.
+
+That is a property of the request, not of the prompt. `EvidenceScreen` has two members in its
+verdict enum — `UNUSABLE` and `NEEDS_JUDGEMENT` — and no third meaning "satisfied". So the
+strongest possible answer from the cheap model ends with either the technician being asked
+again or Flash being asked, and **no sequence of screen answers can advance a step, seal a
+record or release a machine.**
+
+The asymmetry is the whole reason a small model is allowed on this path:
+
+| The screen is wrong by… | Cost |
+|---|---|
+| a false `UNUSABLE` | a technician re-photographs something that was already good enough |
+| a false `NEEDS_JUDGEMENT` | one Flash call that was going to happen anyway |
+
+Neither failure releases a machine, which is the only failure this architecture treats as
+unrecoverable. And the screen is shown **less** than the judge, not the same: no acceptance
+rule, no acceptance target, no strictness, no reading. It cannot usurp a judgement it was never
+told the terms of, and the `matches` trap that made `inspector.py` withhold the target from
+Flash applies with more force to a smaller model, not less.
+
+When it does fire, the answer is turned into an ordinary `ADD_FIELD` and passed through
+`decideOutcome` unchanged — so it borrows the Inspector's ADD FIELD budget, the Inspector's
+circuit breaker and the Inspector's escalation path rather than having any of its own. A screen
+firing on a step whose budget is spent escalates to a person exactly as the Inspector would.
 
 ---
 
 ## 11. Google Cloud mapping
 
-| Concern | Service |
-|---|---|
-| Reasoning | **Gemini 3.5 Flash** via Vertex AI |
-| Volume classification | **Gemma** |
-| Framework | **Google GenAI SDK** (`google-genai`), Vertex AI backend |
-| Long-running jobs spanning days | **Agent Runtime** — up to 7 days continuous |
-| Publishing and versioning agents | **Agent Registry** |
-| Asset history across services | **Memory Bank** |
-| Per-agent zero-trust access | **Agent Identity** |
-| Routing and policy | **Agent Gateway** |
-| Guardrails on model I/O | **Model Armor** — image modality, `us` multi-region (§8) |
+Every row is either running or says so. See `README.md` for why an aspirational row in this
+table would be the one mistake this project cannot afford to make in writing.
+
+| Concern | Service | State |
+|---|---|---|
+| Reasoning | **Gemini 3.5 Flash** via Vertex AI | running |
+| Screening every capture | **Gemma** (`gemma-3-4b`) | running — `warrant/screen.py`, §10 above |
+| Framework | **Google GenAI SDK** (`google-genai`), Vertex AI backend | running |
+| Long-running jobs spanning days | **Agent Runtime** — up to 7 days continuous | running — `query`, `roster`, `screen` |
+| Guardrails on model I/O | **Model Armor** — image and text, `us` multi-region (§8) | running |
+| Reasoning traces and audit logs | **OpenTelemetry** → Cloud Trace, structured logs → Cloud Logging | running — `server/trace.ts` |
+| Adversarial corpus | **Veo** | offline — `evals/gen_fraud.py` |
+| Per-agent least privilege | service-account impersonation, not **Agent Identity** | running — `warrant-web` cannot call Vertex |
+| Asset history across weeks | the `readings` series, **not Memory Bank** | deliberately not adopted — §4 |
+| Agent discovery | the fleet's own `roster()`, **not Agent Registry** | not adopted — it publishes agents, and procedures are what need versioning |
+| Routing and policy | one client, one engine — **no Agent Gateway** | not adopted — nothing here routes between engines |
 | Traces and audit logs | **Agent Observability** |
 | Services and transport | **Cloud Run**, **Pub/Sub** |
 | Source of truth | **Firestore** — tenancy enforced by rules, not by application code (§8) |

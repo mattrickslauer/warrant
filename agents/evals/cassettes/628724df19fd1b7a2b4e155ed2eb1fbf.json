@@ -1,0 +1,156 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:986d48a4c93aecd8"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is to repair a punctured tyre or tube on a Segway Xyber e-bike and verify it holds air before reinstalling the wheel. The repair is validated by a one-hour squeeze test, and reinstallation relies on manufacturer manual specifications for safety steps, alignment, and torque.",
+    "draft": {
+      "key": "segway-xyber-tyre-repair",
+      "title": "Segway Xyber Tyre Repair and Leak Test",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Hole in the tyre sidewall",
+        "Split tyre tread"
+      ],
+      "releases": [
+        "Safe operation of the e-bike in traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Preparation and Safety",
+          "explanation": "Disconnecting the motor cable and powering down prevents accidental acceleration or cable damage during wheel removal.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "power_and_cable",
+              "kind": "choice",
+              "prompt": "Power down the bike and disconnect the hub motor cable according to the manufacturer manual.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Disconnected per manual",
+                "Not disconnected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Disconnected per manual",
+              "guidance": "Ensure the bike is completely off and the motor cable is unplugged before removing the wheel."
+            }
+          ]
+        },
+        {
+          "title": "Tyre and Tube Inspection",
+          "explanation": "Sidewall punctures or split treads cannot be patched safely because they flex too much and will blow out.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "casing_integrity",
+              "kind": "choice",
+              "prompt": "Inspect the tyre casing for sidewall holes or split tread.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No sidewall holes or split tread",
+                "Sidewall hole or split tread detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No sidewall holes or split tread",
+              "guidance": "Any puncture in the sidewall or split in the tread disqualifies the tyre from repair."
+            }
+          ]
+        },
+        {
+          "title": "Reassembly and Inflation",
+          "explanation": "Inflating to the manufacturer's specified pressure ensures the tyre can carry the rider's weight without rolling off the rim.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "inflation_pressure",
+              "kind": "measurement",
+              "prompt": "Inflate the tyre and record the final pressure.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "Tyre sidewall",
+              "acceptance_description": "Pressure printed on the tyre sidewall",
+              "guidance": "Pump the tyre to the pressure printed directly on its sidewall."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Leak Test",
+          "explanation": "Leaving the tyre for an hour ensures there are no slow leaks that could cause a sudden flat during a ride.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "firmness_check",
+              "kind": "choice",
+              "prompt": "After letting the inflated tyre sit for one hour, squeeze it to check firmness.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Still rock solid",
+                "Soft or losing air"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Still rock solid",
+              "guidance": "The tyre must feel rock solid after one hour to pass."
+            }
+          ]
+        },
+        {
+          "title": "Wheel Reinstallation",
+          "explanation": "Proper alignment and torque prevent the wheel from rubbing, wobbling, or coming loose at speed.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "alignment_and_spin",
+              "kind": "choice",
+              "prompt": "Spin the wheel to check alignment and ensure nothing rubs.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Spins freely without rubbing",
+                "Rubs or wobbles"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Spins freely without rubbing",
+              "guidance": "The wheel must spin freely with no rubbing against the frame or brakes."
+            },
+            {
+              "key": "bolt_torque",
+              "kind": "choice",
+              "prompt": "Tighten the wheel bolts to the specification in the manual.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Tightened to manual spec",
+                "Not tightened to spec"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Tightened to manual spec",
+              "guidance": "Refer to the Segway Xyber manual for the correct torque spec to ensure the wheel is locked down tight."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to repair a punctured tyre or tube on a Segway Xyber e-bike and verify it holds air before reinstalling the wheel. The repair is validated by a one-hour squeeze test, and reinstallation relies on manufacturer manual specifications for safety steps, alignment, and torque.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-tyre-repair\",\n    \"title\": \"Segway Xyber Tyre Repair and Leak Test\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Hole in the tyre sidewall\",\n      \"Split tyre tread\"\n    ],\n    \"releases\": [\n      \"Safe operation of the e-bike in traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Preparation and Safety\",\n        \"explanation\": \"Disconnecting the motor cable and powering down prevents accidental acceleration or cable damage during wheel removal.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"power_and_cable\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Power down the bike and disconnect the hub motor cable according to the manufacturer manual.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Disconnected per manual\",\n              \"Not disconnected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Disconnected per manual\",\n            \"guidance\": \"Ensure the bike is completely off and the motor cable is unplugged before removing the wheel.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Tyre and Tube Inspection\",\n        \"explanation\": \"Sidewall punctures or split treads cannot be patched safely because they flex too much and will blow out.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"casing_integrity\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the tyre casing for sidewall holes or split tread.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No sidewall holes or split tread\",\n              \"Sidewall hole or split tread detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No sidewall holes or split tread\",\n            \"guidance\": \"Any puncture in the sidewall or split in the tread disqualifies the tyre from repair.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reassembly and Inflation\",\n        \"explanation\": \"Inflating to the manufacturer's specified pressure ensures the tyre can carry the rider's weight without rolling off the rim.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"inflation_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Inflate the tyre and record the final pressure.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"Tyre sidewall\",\n            \"acceptance_description\": \"Pressure printed on the tyre sidewall\",\n            \"guidance\": \"Pump the tyre to the pressure printed directly on its sidewall.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Leak Test\",\n        \"explanation\": \"Leaving the tyre for an hour ensures there are no slow leaks that could cause a sudden flat during a ride.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"firmness_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"After letting the inflated tyre sit for one hour, squeeze it to check firmness.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Still rock solid\",\n              \"Soft or losing air\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Still rock solid\",\n            \"guidance\": \"The tyre must feel rock solid after one hour to pass.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Wheel Reinstallation\",\n        \"explanation\": \"Proper alignment and torque prevent the wheel from rubbing, wobbling, or coming loose at speed.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"alignment_and_spin\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Spin the wheel to check alignment and ensure nothing rubs.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Spins freely without rubbing\",\n              \"Rubs or wobbles\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Spins freely without rubbing\",\n            \"guidance\": \"The wheel must spin freely with no rubbing against the frame or brakes.\"\n          },\n          {\n            \"key\": \"bolt_torque\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Tighten the wheel bolts to the specification in the manual.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Tightened to manual spec\",\n              \"Not tightened to spec\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Tightened to manual spec\",\n            \"guidance\": \"Refer to the Segway Xyber manual for the correct torque spec to ensure the wheel is locked down tight.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3314,
+    "candidatesTokenCount": 1370,
+    "totalTokenCount": 8292
+  }
+}

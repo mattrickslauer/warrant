@@ -29,21 +29,24 @@ export interface TaskOption {
 
 export function TaskLauncher({ tasks }: { tasks: TaskOption[] }) {
   const router = useRouter();
-  const { session } = useSession();
+  const { ensureSession } = useSession();
   const [busy, setBusy] = useState<string | null>(null);
 
   async function start(t: TaskOption) {
     if (!t.available) return;
     setBusy(t.procedureId);
     const src = getDataSource();
-    // The account row is created on the first meaningful write, never on page load.
+    // The account row is created on the first meaningful write, never on page load — and
+    // the anonymous session is established at that same moment, for the same reason.
+    const active = await ensureSession();
     const job = await src.startJob({
       procedureId: t.procedureId,
-      tenantId: currentTenantId(session),
+      tenantId: currentTenantId(active),
       tier: "open",
     });
     void warrantUid();
-    router.push(`/job/${job.id}`);
+    // A scoped id is `tenant/doc`; one encoded segment, not two. See TaskCarousel.
+    router.push(`/job/${encodeURIComponent(job.id)}`);
   }
 
   return (

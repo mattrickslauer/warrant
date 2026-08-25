@@ -4,12 +4,12 @@
   "why": "An absence is not a match. This is the degenerate input every harness should carry, because it is where a model is most likely to answer from the surrounding text alone.",
   "input": {
     "asset": {
-      "id": "CB500X-07",
-      "type": "motorcycle",
-      "model": "Honda CB500X 2021",
+      "id": "XYBER-07",
+      "type": "e-bike",
+      "model": "Segway Xyber",
       "marks": [
-        "deep diagonal scuff across the left fork lower, from a drop in 2025",
-        "plain circular sticker on the left yoke"
+        "a single spiral cable wrap on the right fork leg, the left leg bare",
+        "unpainted light grey front mudguard"
       ],
       "history": [
         "2026-05-02 front pads replaced",
@@ -19,9 +19,9 @@
     },
     "job": {
       "id": "J-4471",
-      "procedure": "Front brake service \u2014 Honda CB500X v3",
+      "procedure": "Front brake service — Segway Xyber v3",
       "opened_at": "2026-08-19T09:00:00Z",
-      "location": "Workshop, El Chalt\u00e9n"
+      "location": "Workshop, El Chaltén"
     },
     "capture": {
       "kind": "photo",

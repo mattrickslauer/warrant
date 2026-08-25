@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "A technician has said they cannot complete this step. Turn what they said into a structured reason and recommend the next action for the person standing there right now, knowing the procedure, the machine and its history.\n\nReturn JSON with these fields:\n- reason_summary (string, required): Their reason in one clause, in their terms. Do not sanitise it.\n- blocker_kind (one of part_missing | tool_missing | access | seized_or_damaged | unsafe | machine_absent | procedure_wrong | other, required)\n- recommended_action (string, required): What to do next. Concrete and doable now, or explicitly 'stop and hand off'.\n- proposed_status (one of deferred | waived | impossible, required): A proposal only. The Foreman disposes and a waiver needs a named person with standing. There is no skip.\n- blocking_part (string, null when it does not apply): Part number or description when blocker_kind is part_missing.\n- safety_flag (boolean, required): True if continuing would put someone at risk. Overrides everything else.",
+  "parts": [
+    "t:73877a4f4deffb30"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "reason_summary": "The pin's welded itself in there, the heat gun's done nothing, I've soaked it twice, and I'm not putting any more force through it because the last one I did that to snapped",
+    "blocker_kind": "seized_or_damaged",
+    "recommended_action": "Stop and hand off to a senior technician or specialist to extract the seized caliper pin.",
+    "proposed_status": "deferred",
+    "blocking_part": null,
+    "safety_flag": false
+  },
+  "raw": "{\n  \"reason_summary\": \"The pin's welded itself in there, the heat gun's done nothing, I've soaked it twice, and I'm not putting any more force through it because the last one I did that to snapped\",\n  \"blocker_kind\": \"seized_or_damaged\",\n  \"recommended_action\": \"Stop and hand off to a senior technician or specialist to extract the seized caliper pin.\",\n  \"proposed_status\": \"deferred\",\n  \"blocking_part\": null,\n  \"safety_flag\": false\n}",
+  "usage": {
+    "promptTokenCount": 1092,
+    "candidatesTokenCount": 124,
+    "totalTokenCount": 2294
+  }
+}

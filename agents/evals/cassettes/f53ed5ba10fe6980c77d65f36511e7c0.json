@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:c911ddd9e6905440"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "When you pump the tyre back up, what pressure (PSI) do you target for the Segway Xyber, and what is the acceptable range you allow?",
+    "asks_about": "tolerance",
+    "unresolved": [
+      "whether we are writing this for tubed tubes, tubeless plugs, or both",
+      "how you verify the patch or plug is not leaking before mounting the wheel",
+      "the target tyre pressure and acceptable tolerance for the Segway Xyber and the bicycles",
+      "any safety checks or torque limits when reinstalling the wheel on the e-bike"
+    ],
+    "understanding": "You want to document how you fix a flat tyre\u2014either by patching a tube or plugging a tubeless tyre\u2014and get it safely back on the road. Since a failure at speed is highly dangerous in traffic, we need to make sure the repair is leak-free and inflated correctly.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"When you pump the tyre back up, what pressure (PSI) do you target for the Segway Xyber, and what is the acceptable range you allow?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"whether we are writing this for tubed tubes, tubeless plugs, or both\",\n    \"how you verify the patch or plug is not leaking before mounting the wheel\",\n    \"the target tyre pressure and acceptable tolerance for the Segway Xyber and the bicycles\",\n    \"any safety checks or torque limits when reinstalling the wheel on the e-bike\"\n  ],\n  \"understanding\": \"You want to document how you fix a flat tyre\u2014either by patching a tube or plugging a tubeless tyre\u2014and get it safely back on the road. Since a failure at speed is highly dangerous in traffic, we need to make sure the repair is leak-free and inflated correctly.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 2570,
+    "candidatesTokenCount": 219,
+    "totalTokenCount": 3407
+  }
+}

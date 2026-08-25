@@ -1,0 +1,145 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:69ed1092663e7c5c"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We are establishing the front brake inspection and bedding-in procedure for the Segway Xyber rental bikes. The process involves visually checking the pads for at least 2mm of thickness, ensuring there are no fluid leaks on the disc, and performing 20 gentle stops to bed the pads in.",
+    "draft": {
+      "key": "segway-xyber-front-brake-service",
+      "title": "Segway Xyber Front Brake Service",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Fork oil or brake fluid leaking onto the brake disc"
+      ],
+      "releases": [
+        "Ready for rental"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Pads and Disc",
+          "explanation": "To prevent brake failure on steep gravel passes, we must ensure the pads have sufficient friction material and the disc is completely free of oil or fluid contamination.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_thickness_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the front brake pads sitting in the caliper before reinstalling the wheel.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The photo must clearly show the brake pads positioned inside the caliper to verify their condition.",
+              "guidance": "Position the camera to get a clear view of the friction material on the pads inside the caliper."
+            },
+            {
+              "key": "pad_thickness_check",
+              "kind": "choice",
+              "prompt": "Are the front brake pads at least 2 mm thick, or do they need to be replaced?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "At least 2 mm thick",
+                "Under 2 mm (binned and replaced with new pads)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "At least 2 mm thick",
+              "acceptance_description": null,
+              "guidance": "Pads with less than 2 mm of friction material must be binned and replaced with new ones from stock."
+            },
+            {
+              "key": "disc_leak_check",
+              "kind": "choice",
+              "prompt": "Is there any fork oil or brake fluid leaking onto the brake disc?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No leaks detected",
+                "Leak detected (fork oil or brake fluid on disc)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "No leaks detected",
+              "acceptance_description": null,
+              "guidance": "Any sign of fork oil or brake fluid on the disc will put the bike on an immediate hold."
+            }
+          ]
+        },
+        {
+          "title": "Bed in the Pads",
+          "explanation": "Bedding in the pads ensures the brakes have proper lever pressure and stopping power before the bike is rented.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_stops",
+              "kind": "choice",
+              "prompt": "Perform 20 gentle stops down the lane to bed the pads in and verify lever feel.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Completed 20 gentle stops and lever pressure feels right",
+                "Lever pressure feels soft or stops not completed"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Completed 20 gentle stops and lever pressure feels right",
+              "acceptance_description": null,
+              "guidance": "Ride the bike down the lane, performing 20 gentle stops to ensure the pads are bedded and the lever pressure is firm."
+            }
+          ]
+        },
+        {
+          "title": "Sign-off",
+          "explanation": "A qualified technician must sign off to confirm the front brake is safe for rental.",
+          "condition": null,
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "technician_signature",
+              "kind": "signature",
+              "prompt": "Sign to confirm the front brake service is complete and the bike is safe to ride.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": null,
+              "guidance": "Your signature confirms that the pads are sufficient, there are no leaks, and the brakes have been bedded in."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\"mode\":\"compile\",\"question\":null,\"asks_about\":\"scope\",\"unresolved\":[],\"understanding\":\"We are establishing the front brake inspection and bedding-in procedure for the Segway Xyber rental bikes. The process involves visually checking the pads for at least 2mm of thickness, ensuring there are no fluid leaks on the disc, and performing 20 gentle stops to bed the pads in.\",\"draft\":{\"key\":\"segway-xyber-front-brake-service\",\"title\":\"Segway Xyber Front Brake Service\",\"strictness\":2,\"minimum_tier\":\"open\",\"disqualifiers\":[\"Fork oil or brake fluid leaking onto the brake disc\"],\"releases\":[\"Ready for rental\"],\"steps\":[{\"title\":\"Inspect Pads and Disc\",\"explanation\":\"To prevent brake failure on steep gravel passes, we must ensure the pads have sufficient friction material and the disc is completely free of oil or fluid contamination.\",\"condition\":null,\"max_add_fields\":2,\"fields\":[{\"key\":\"pad_thickness_photo\",\"kind\":\"photo\",\"prompt\":\"Take a photo of the front brake pads sitting in the caliper before reinstalling the wheel.\",\"source\":\"camera\",\"required_at_strictness\":2,\"acceptance_rule\":\"must_show\",\"acceptance_min\":null,\"acceptance_max\":null,\"acceptance_unit\":null,\"acceptance_target\":null,\"acceptance_description\":\"The photo must clearly show the brake pads positioned inside the caliper to verify their condition.\",\"guidance\":\"Position the camera to get a clear view of the friction material on the pads inside the caliper.\"},{\"key\":\"pad_thickness_check\",\"kind\":\"choice\",\"prompt\":\"Are the front brake pads at least 2 mm thick, or do they need to be replaced?\",\"source\":\"human\",\"required_at_strictness\":2,\"choices\":[\"At least 2 mm thick\",\"Under 2 mm (binned and replaced with new pads)\"],\"acceptance_rule\":\"matches\",\"acceptance_min\":null,\"acceptance_max\":null,\"acceptance_unit\":null,\"acceptance_target\":\"At least 2 mm thick\",\"acceptance_description\":null,\"guidance\":\"Pads with less than 2 mm of friction material must be binned and replaced with new ones from stock.\"},{\"key\":\"disc_leak_check\",\"kind\":\"choice\",\"prompt\":\"Is there any fork oil or brake fluid leaking onto the brake disc?\",\"source\":\"human\",\"required_at_strictness\":2,\"choices\":[\"No leaks detected\",\"Leak detected (fork oil or brake fluid on disc)\"],\"acceptance_rule\":\"matches\",\"acceptance_min\":null,\"acceptance_max\":null,\"acceptance_unit\":null,\"acceptance_target\":\"No leaks detected\",\"acceptance_description\":null,\"guidance\":\"Any sign of fork oil or brake fluid on the disc will put the bike on an immediate hold.\"}]},{\"title\":\"Bed in the Pads\",\"explanation\":\"Bedding in the pads ensures the brakes have proper lever pressure and stopping power before the bike is rented.\",\"condition\":null,\"max_add_fields\":2,\"fields\":[{\"key\":\"bedding_stops\",\"kind\":\"choice\",\"prompt\":\"Perform 20 gentle stops down the lane to bed the pads in and verify lever feel.\",\"source\":\"human\",\"required_at_strictness\":2,\"choices\":[\"Completed 20 gentle stops and lever pressure feels right\",\"Lever pressure feels soft or stops not completed\"],\"acceptance_rule\":\"matches\",\"acceptance_min\":null,\"acceptance_max\":null,\"acceptance_unit\":null,\"acceptance_target\":\"Completed 20 gentle stops and lever pressure feels right\",\"acceptance_description\":null,\"guidance\":\"Ride the bike down the lane, performing 20 gentle stops to ensure the pads are bedded and the lever pressure is firm.\"}]},{\"title\":\"Sign-off\",\"explanation\":\"A qualified technician must sign off to confirm the front brake is safe for rental.\",\"condition\":null,\"max_add_fields\":2,\"fields\":[{\"key\":\"technician_signature\",\"kind\":\"signature\",\"prompt\":\"Sign to confirm the front brake service is complete and the bike is safe to ride.\",\"source\":\"human\",\"required_at_strictness\":2,\"acceptance_rule\":\"signed_by\",\"acceptance_min\":null,\"acceptance_max\":null,\"acceptance_unit\":null,\"acceptance_target\":null,\"acceptance_description\":null,\"guidance\":\"Your signature confirms that the pads are sufficient, there are no leaks, and the brakes have been bedded in.\"}]}]}}",
+  "usage": {
+    "promptTokenCount": 3226,
+    "candidatesTokenCount": 926,
+    "totalTokenCount": 7805
+  }
+}
