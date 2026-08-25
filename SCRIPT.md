@@ -151,6 +151,61 @@ The media should stay out, but the scripts should not. Back the directory up ton
 | 13, 14 | The split screen, courier flow vs the paper sheet | Drawn by `courier_pane()` in `gen_shots.py`, over shot 12's plate. Code, not a camera |
 | 1–7 | **The cold open** — five phones, five costumes, one desk | Interior, controlled light. **Doable tonight if you have the props.** Mark the floor and note the lens — shot 50 must match shot 6 exactly |
 
+### Banked — Scoper session, 24 Aug
+
+Source `demo-video/bank/01-screens/scoper.mp4`, 6:11. Two cuts made from it:
+
+| File | Length | Covers |
+|---|---|---|
+| `shot-15-18__take-1__author-fast.mp4` | **14.4s** | §4 entire — the form, the first question, the torque exchange, "i dont know", Compiled, published v1 |
+| `shot-36__take-1__google-signin.mp4` | **5.5s** | the Google sign-in, **account list blurred** |
+
+Both are cropped to the content column at **1.66x** and re-scaled to 1920x1080, so the text
+reads and the account-badge email is cropped out of frame entirely. The six beats are also in
+`01-screens/beats/` as separate files, so any one can be re-timed without rebuilding the cut.
+
+**The account list had a third party in it** — another person's name and email address, which
+`rules.md:149` bars. Blurred in the clip. **The master `scoper.mp4` still contains it, so never
+cut from the master for this shot.** Your own address appears top-right on every `/author` frame
+and is cropped out by the 1.66x framing; if you ever reframe wider, blur it.
+
+**Your editor is on screen from 369s.** Anything cut past 368s shows the timeline.
+
+**Shot 17 has no footage.** The compiler did not refuse in this take — it went from the last
+answer straight to `Compiled`. Either re-run with a deliberately bad phrasing to provoke a real
+refusal, or cut §4 without shot 17.
+
+**What the take caught that is worth more than the shot list asked for:**
+- *"What is the torque specification for the caliper bolts when you reinstall them?"* → **7.5nm**.
+  The shop stating its own figure, on camera, which is the whole provenance argument.
+- *"What specific brand or part number of replacement brake pads do you use?"* → **"i dont know
+  that right now"**, and the input's own placeholder reads *"'I don't know' is a real answer and
+  it will be recorded as one."* Then **Still unresolved — 2** lists it underneath.
+- On compile: *"Nothing left unresolved — every step has a reason, every field has a rule ... and
+  **every bound came from you**."* That is `traceable` rendered on screen in the product's own words.
+
+### ⚠ Two defects in the procedure it compiled — read before running jobs against it
+
+`Segway Xyber Brake Pad Replacement — v1` · `standard` · **`attested`** · three steps: *Remove and
+Inspect Pads*, *Reinstall Caliper*, *Test Ride and Sign-off*. It correctly does **not** take the
+wheel off.
+
+1. **`caliper_torque` reads "Passes between 7.5 and 7.5 Nm."** A zero-width band — min equals max.
+   No real wrench ever reports exactly 7.5000, so **every torque capture against this procedure
+   refuses**, on camera, forever. The Scoper took the single figure "7.5nm" and made it both
+   bounds instead of a band.
+2. **`caliper_torque` is `measurement · human`, not `instrument`.** The technician types the
+   number. That can never reach the `measured` class, which is why the procedure came out
+   `attested` rather than `instrumented` — **so §7, the paired-wrench beat, cannot be filmed
+   against it at all.**
+
+**For tonight's three runs, use `proc_front_brake_v3`** — `within(6, 9, "Nm")`, `source:
+instrument`, `minimum_tier: instrumented`. It is the only procedure that can demo the wrench.
+
+**Then author a v2 of yours when there is time**, saying the torque as a *range* and saying the
+reading comes off the wrench. Still your figure, still traceable — and it makes your own procedure
+the one that carries §7.
+
 ### Session 2 — tomorrow, in the shop, on the Android app
 
 Everything here is you at a machine. **Roll on real work, including the dull parts.**
