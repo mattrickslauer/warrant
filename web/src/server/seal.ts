@@ -32,7 +32,7 @@ import { getMember } from "@/auth/members";
 import { pinnedVersion } from "@/server/procedures";
 import { verificationCeiling, deficienciesOf, machineReleased, readyToSeal } from "@/data/seal";
 import type { Tier } from "@/data/source";
-import type { Job, StepOutcome, Field, Decision } from "@/generated/types";
+import type { Job, StepOutcome, Field, Decision, FieldDef, Procedure } from "@/generated/types";
 import { assemble, type JobHeader } from "@/data/live-source";
 
 export class NotSealable extends Error {}
@@ -79,7 +79,13 @@ export function earnedTier(
 }
 
 export interface ProvenanceSources {
-  field: Pick<Field, "key" | "step_id" | "kind" | "resolved_from_order">;
+  field: Pick<Field, "key" | "step_id" | "kind">;
+  /**
+   * This field's declaration in the PINNED, FROZEN procedure version — not the live document
+   * and never the field document the client wrote. Null when the version could not be loaded
+   * or the step/key is not in it, and a null definition can only ever weaken the class.
+   */
+  def: Pick<FieldDef, "acceptance_rule" | "acceptance_target"> | null;
   /** Server-written readings for THIS job and THIS field. Nothing else can make one. */
   readings: Array<{ tool_id?: string | null }>;
   /** The capture the field points at, if it still exists. */
@@ -109,12 +115,39 @@ export function classify(s: ProvenanceSources): "measured" | "specified" | "infe
     s.reachable.includes(c) ? c : "asserted";
 
   if (s.readings.some((r) => Boolean(r.tool_id))) return clamp("measured");
-  if (s.field.resolved_from_order === "spec") return clamp("specified");
+  // `specified` is derived from the FROZEN procedure's acceptance rule, never from the field
+  // document. This rung used to read `field.resolved_from_order === "spec"`, which is a value
+  // the client writes: firestore.rules refuses a forged `provenance_class` and a forged
+  // `capture_surface`, but it has never refused this one, so a technician could have stamped
+  // `spec` on a typed-in number and had the Seal promote it out of `asserted`. It also made
+  // the class UNREACHABLE in practice — nothing in the product ever wrote the field, so no
+  // record has ever carried `specified` despite the class being on screen in the taxonomy.
+  //
+  // A `per_spec` rule means the figure is printed on the machine or published in a manual and
+  // `acceptance_target` says where to read it; the technician transcribes rather than decides.
+  // That is exactly "resolved from a published figure rather than observed", and it is now
+  // anchored to a document only `publishProcedure` can write.
+  if (s.def?.acceptance_rule === "per_spec") return clamp("specified");
   // A model read it, and Model Armor said the image carried no instruction. NOT_SCREENED is
   // deliberately not enough: a class asserted off an unscreened image is a conclusion drawn
   // from evidence nobody checked.
   if (s.capture && s.capture.armor_verdict === "NO_MATCH_FOUND") return clamp("inferred");
   return "asserted";
+}
+
+/**
+ * Every field declaration in a frozen procedure, keyed the way a Field is keyed.
+ *
+ * `{stepId}__{key}` is the same identity `readings.field_id` uses, so one map answers both
+ * questions. A version that failed to load yields an empty map, and an empty map means every
+ * field falls through to the weaker rungs — the safe direction.
+ */
+export function fieldDefsOf(version: Procedure | null): Map<string, FieldDef> {
+  const out = new Map<string, FieldDef>();
+  for (const step of version?.steps ?? []) {
+    for (const def of step.fields ?? []) out.set(`${step.id}__${def.key}`, def);
+  }
+  return out;
 }
 
 /**
@@ -160,19 +193,41 @@ export async function sealJobLive(
   const tier = earnedTier(claimed, captures, readings);
   const ceiling = verificationCeiling(tier);
 
+  // The frozen version this job pinned. Loaded HERE rather than further down, because
+  // provenance now derives from it: `specified` is a property of what the procedure declared,
+  // and the procedure is the one document in this computation the technician cannot edit.
+  const version = await pinnedVersion(
+    db, tenantId, String(header.procedure_id), header.procedure_version,
+  );
+  const defs = fieldDefsOf(version);
+
   // --- provenance, recomputed -----------------------------------------------------------
   const fields: Field[] = fieldSnap.docs.map((d) => {
     const field = d.data() as Field;
     const fieldId = `${field.step_id}__${field.key}`;
-    return {
-      ...field,
-      provenance_class: classify({
-        field,
-        readings: readings.filter((r) => r.field_id === fieldId),
-        capture: field.media_ref ? (captureById.get(field.media_ref) ?? null) : null,
-        reachable: ceiling.reachable,
-      }),
-    };
+    const def = defs.get(fieldId) ?? null;
+    const provenance_class = classify({
+      field,
+      def,
+      readings: readings.filter((r) => r.field_id === fieldId),
+      capture: field.media_ref ? (captureById.get(field.media_ref) ?? null) : null,
+      reachable: ceiling.reachable,
+    });
+    // The citation, and it is written ONLY when the class actually came out `specified`.
+    // Recording where a figure was published on a field that did not resolve that way would
+    // be a provenance claim by another name — `resolved_from_cite` is read as "this is the
+    // document the value came from", and it must not appear beside a value nobody looked one
+    // up for. Clamping is why this is checked against the RESULT and not against the rule:
+    // an `open` job cannot reach `specified`, and the citation goes with the class.
+    const resolved = provenance_class === "specified"
+      ? {
+          resolved_from_order: "spec" as const,
+          // Where the figure is printed. `compile.ts` refuses to publish a `per_spec` field
+          // that does not say, so on a compiled procedure this is never empty.
+          resolved_from_cite: (def?.acceptance_target ?? "").trim() || null,
+        }
+      : {};
+    return { ...field, provenance_class, ...resolved };
   });
 
   const outcomes = outcomeSnap.docs.map((d) => {
@@ -215,9 +270,6 @@ export async function sealJobLive(
     });
   }
 
-  const version = await pinnedVersion(
-    db, tenantId, String(header.procedure_id), header.procedure_version,
-  );
   const tenant = (await tenantRef.get()).data() ?? {};
   const sealed_at = new Date().toISOString();
   const recordId = jobId;
@@ -252,6 +304,12 @@ export async function sealJobLive(
   for (const field of fields) {
     batch.set(jobRef.collection("fields").doc(field.id), {
       provenance_class: field.provenance_class,
+      // Written unconditionally, including as null. A field that resolved from a spec on one
+      // seal and does not on a re-seal must lose the citation rather than keep a stale one:
+      // `merge: true` leaves absent keys alone, so omitting these would strand the old value
+      // beside a class that no longer supports it.
+      resolved_from_order: field.resolved_from_order ?? null,
+      resolved_from_cite: field.resolved_from_cite ?? null,
     }, { merge: true });
   }
   batch.set(jobRef, { status: "sealed", sealed_at, tier }, { merge: true });

@@ -47,10 +47,13 @@ echo "ok — every fixture matches the generated types"
 node --experimental-strip-types --conditions=react-server --import ./scripts/ts-resolve.mjs \
   --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs \
        scripts/armor.test.mjs scripts/attest.test.mjs scripts/trace.test.mjs \
-       scripts/nav.test.mjs scripts/compile.test.mjs 2>&1 \
+       scripts/nav.test.mjs scripts/compile.test.mjs scripts/screen.test.mjs \
+       scripts/seal.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
 echo "ok — the outcome table, the cases, the fleet client, the armor screen, attestation,"
-echo "     the reasoning trace and the menu's gating rules hold"
+echo "     and the Seal's provenance classifier,"
+echo "     the reasoning trace, the Gemma screen's bounded authority and the menu's gating"
+echo "     rules hold"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null
