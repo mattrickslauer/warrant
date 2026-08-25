@@ -73,6 +73,14 @@ $ENG push "$IMAGE" >/dev/null
 # bundle has it inlined, but the adjudicator reads it on the server to work out where a
 # capture's bytes live.
 #
+# WARRANT_SWEEP_SECRET has to be listed HERE, not set once by hand, because --set-env-vars
+# REPLACES the whole set rather than merging into it. Setting the secret on the service and
+# then deploying again would silently drop it, and a dropped secret does not fail loudly: the
+# route falls back to `NODE_ENV !== "production"`, which is false here, so every sweep would
+# 401 and the seal/adjudicate/task legs would simply stop running with nothing in the logs
+# saying why. It comes from .env, which is gitignored — an empty value is the same 401, which
+# is the right way round.
+#
 # Scale to zero: no request, no container, no charge.
 gcloud run deploy "$SERVICE" \
   --image "$IMAGE" \
@@ -87,7 +95,7 @@ gcloud run deploy "$SERVICE" \
   --cpu 1 \
   --memory 512Mi \
   --service-account "$RUN_SA" \
-  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-},WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-},WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com},NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-}" \
+  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-},WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-},WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com},NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-},WARRANT_SWEEP_SECRET=${WARRANT_SWEEP_SECRET:-}" \
   --quiet
 
 URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
