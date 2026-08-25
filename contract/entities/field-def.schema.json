@@ -10,7 +10,7 @@
     "prompt": { "type": "string", "description": "What to do. Shown as the instruction." },
     "source": { "type": "string", "enum": ["instrument", "camera", "human"],
                 "description": "instrument is the only source that can yield the measured class." },
-    "required_at_strictness": { "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated. The field is required at or above this." },
+    "required_at_strictness": { "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated; 4 means never required. The field is required at or above this. Strictness tops out at 3, so 4 is unreachable by construction rather than by a flag some reader might forget to check \u2014 the ONE filter at web/src/server/adjudicate/run.ts already excludes it. An optional field is still captured and still judged; it simply cannot hold the step." },
     "choices": { "type": "array", "items": { "type": "string" }, "description": "Only meaningful when kind is choice." },
     "acceptance_rule": { "type": "string", "enum": ["within", "matches", "must_show", "consistent_with", "per_spec", "signed_by"],
                          "description": "Decides the provenance class. within/matches/per_spec resolve without a model." },

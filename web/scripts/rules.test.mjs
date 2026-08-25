@@ -20,7 +20,7 @@ import {
   initializeTestEnvironment, assertFails, assertSucceeds,
 } from "@firebase/rules-unit-testing";
 import { readFileSync } from "node:fs";
-import { doc, getDoc, getDocs, setDoc, collection } from "firebase/firestore";
+import { doc, getDoc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { tenantFromClaims } from "../src/auth/tenant.ts";
 
 const RULES = new URL("../../firestore.rules", import.meta.url);
@@ -362,5 +362,92 @@ describe("an OAuth refresh token is reachable by nobody", () => {
 
   test("nor by an unauthenticated caller", async () => {
     await assertFails(getDoc(doc(env.unauthenticatedContext().firestore(), "user_secrets", "tech-1")));
+  });
+});
+
+// ---------------------------------------------------------------------------------------
+// The one destructive act a client gets, and where it stops.
+//
+// Until this rule existed no client could delete anything — not by decision but by accident:
+// the recursive grant said `allow write`, `write` covers delete, and on a delete
+// `request.resource` is null, so `clientMayNotClaim()` dereferenced null and errored. These
+// tests exist because the replacement is a deliberate grant, and a deliberate grant is only
+// as good as the line it draws.
+
+describe("an unsealed job may be abandoned, a sealed one may not", () => {
+  const sam = IDENTITIES[0];
+  const path = (...rest) => ["tenants", sam.tenant, "jobs", ...rest];
+
+  test("a member deletes their own job that never sealed", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(setDoc(doc(db, ...path("abandon-1")), { status: "open" }));
+    await assertSucceeds(deleteDoc(doc(db, ...path("abandon-1"))));
+  });
+
+  test("a HELD job is still an attempt, so it goes too", async () => {
+    // Held is the status most likely to be sitting in the list forever. If this were refused
+    // the feature would fail on the exact rows people want gone.
+    const db = asUser(sam);
+    await assertSucceeds(setDoc(doc(db, ...path("abandon-2")), { status: "held" }));
+    await assertSucceeds(deleteDoc(doc(db, ...path("abandon-2"))));
+  });
+
+  test("A SEALED JOB CANNOT BE DELETED", async () => {
+    // The whole line. Everything above is only defensible because this holds.
+    const db = asUser(sam);
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), ...path("finished")), { status: "sealed" });
+    });
+    await assertFails(deleteDoc(doc(db, ...path("finished"))));
+  });
+
+  test("nor may its evidence be deleted out from under it", async () => {
+    // A step outcome carries its OWN status and has no idea the job above it sealed, so the
+    // rule reads the parent. Without that read this delete succeeds and a sealed job keeps a
+    // header nobody can touch over evidence anybody can empty.
+    const db = asUser(sam);
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      const f = ctx.firestore();
+      await setDoc(doc(f, ...path("finished")), { status: "sealed" });
+      await setDoc(doc(f, ...path("finished", "step_outcomes", "s1")), { status: "performed" });
+      await setDoc(doc(f, ...path("finished", "captures", "c1")), { kind: "photo" });
+    });
+    await assertFails(deleteDoc(doc(db, ...path("finished", "step_outcomes", "s1"))));
+    await assertFails(deleteDoc(doc(db, ...path("finished", "captures", "c1"))));
+  });
+
+  test("an unsealed job's evidence goes with it", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(setDoc(doc(db, ...path("abandon-3")), { status: "open" }));
+    await assertSucceeds(
+      setDoc(doc(db, ...path("abandon-3", "step_outcomes", "s1")), { status: "pending" }));
+    await assertSucceeds(
+      setDoc(doc(db, ...path("abandon-3", "captures", "c1")), { kind: "photo" }));
+    await assertSucceeds(deleteDoc(doc(db, ...path("abandon-3", "step_outcomes", "s1"))));
+    await assertSucceeds(deleteDoc(doc(db, ...path("abandon-3", "captures", "c1"))));
+    await assertSucceeds(deleteDoc(doc(db, ...path("abandon-3"))));
+  });
+
+  test("a rival tenant cannot abandon somebody else's job", async () => {
+    const rival = IDENTITIES[2];
+    await assertSucceeds(setDoc(doc(asUser(sam), ...path("mine")), { status: "open" }));
+    await assertFails(deleteDoc(doc(asUser(rival), ...path("mine"))));
+  });
+
+  test("the grant does not leak to the server-written collections", async () => {
+    // A sealed RECORD is the artifact a stranger was sent a link to. It is not under /jobs,
+    // and the recursive grant no longer carries a delete at all, so there is nothing to
+    // narrow — this is the test that says so out loud.
+    const db = asUser(sam);
+    for (const name of PROTECTED) {
+      await assertFails(deleteDoc(doc(db, "tenants", sam.tenant, name, "x1")));
+    }
+  });
+
+  test("nor to anything else under the tenant", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "components", "comp-1"), { name: "hub" }));
+    await assertFails(deleteDoc(doc(db, "tenants", sam.tenant, "components", "comp-1")));
   });
 });

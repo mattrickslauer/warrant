@@ -41,6 +41,12 @@ enum class AuthPurpose(val label: String, val why: String) {
         "Running a procedure needs no account. Authoring one does — a procedure governs " +
             "every job that is ever run against it, so it has to belong to somebody.",
     ),
+    YOUR_PROCEDURES(
+        "Your procedures",
+        "A procedure belongs to a tenant, and there is no tenant without an identity. Sign " +
+            "in and this is where what you have written appears — and where you decide which " +
+            "of it the world may read.",
+    ),
     ACCOUNT(
         "Account",
         "There is nothing to show until you sign in. Your account is what decides which " +

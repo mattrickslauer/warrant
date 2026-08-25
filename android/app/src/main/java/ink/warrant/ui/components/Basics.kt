@@ -1,14 +1,17 @@
 package ink.warrant.ui.components
 
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,10 +31,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ink.warrant.contract.JobStatus
 import ink.warrant.contract.ProvenanceClass
+import ink.warrant.design.Tokens
 import ink.warrant.design.WarrantTheme
 import ink.warrant.instrument.formatReading
 
@@ -136,6 +143,134 @@ private fun beatAlpha(): Float {
         label = "beat",
     )
     return a
+}
+
+/**
+ * The one thing on this device that says work is happening RIGHT NOW.
+ *
+ * Distinct from [SkeletonBar] and [Loading], which stand in for something being read, and
+ * distinct again from the `beatAlpha` heartbeat, which says a state persists — a held machine,
+ * an open lens. This turns, and a turning ring is the only shape a person reads as "it is
+ * still going" rather than "it has stopped here".
+ *
+ * It is used where the alternative is a screen that looks broken: between the shutter and the
+ * frame, and while that frame is being masked on device. Both of those are real seconds of
+ * real work, and neither of them used to draw anything at all — the primary bar simply went
+ * grey, which reads as a dead button, not as a busy one. It is deliberately NOT used for a
+ * verdict: capture never waits on a model, and a spinner over the agents would be a promise
+ * this product does not make.
+ *
+ * The track behind the sweep is what keeps it legible on a live camera frame, where a bare arc
+ * disappears against anything pale.
+ */
+@Composable
+fun BusyRing(
+    color: Color = WarrantTheme.colors.fg,
+    diameter: Dp = 18.dp,
+    modifier: Modifier = Modifier,
+) {
+    val transition = androidx.compose.animation.core.rememberInfiniteTransition(label = "busy")
+    val start by transition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        // Linear, and one turn per 900ms — the same tempo as the heartbeat, so the two do not
+        // read as two different clocks running on one screen.
+        animationSpec = infiniteRepeatable(tween(900, easing = LinearEasing), RepeatMode.Restart),
+        label = "sweep",
+    )
+
+    Canvas(modifier.size(diameter)) {
+        val stroke = Stroke(width = size.minDimension * 0.13f, cap = StrokeCap.Round)
+        val inset = stroke.width / 2f
+        val box = androidx.compose.ui.geometry.Size(
+            size.width - stroke.width,
+            size.height - stroke.width,
+        )
+        val at = androidx.compose.ui.geometry.Offset(inset, inset)
+        drawArc(
+            color = color.copy(alpha = 0.22f),
+            startAngle = 0f,
+            sweepAngle = 360f,
+            useCenter = false,
+            topLeft = at,
+            size = box,
+            style = stroke,
+        )
+        drawArc(
+            color = color,
+            startAngle = start,
+            sweepAngle = 96f,
+            useCenter = false,
+            topLeft = at,
+            size = box,
+            style = stroke,
+        )
+    }
+}
+
+/**
+ * A bar standing in for a line that has not arrived yet.
+ *
+ * Deliberately the size of the text it is holding a place for, so nothing on the page moves
+ * when the real thing lands. A layout that jumps at the end of a read is how a person ends up
+ * tapping the row below the one they aimed at.
+ */
+@Composable
+fun SkeletonBar(
+    fraction: Float = 1f,
+    height: Dp = 14.dp,
+    modifier: Modifier = Modifier,
+) {
+    val colors = WarrantTheme.colors
+    Box(
+        modifier
+            .fillMaxWidth(fraction)
+            .height(height)
+            .alpha(beatAlpha())
+            .background(colors.surfaceHighest, RoundedCornerShape(Tokens.Shape.rXs)),
+    )
+}
+
+/**
+ * What a screen shows while its read is still in flight.
+ *
+ * This exists because the alternative here was worse than a spinner. Every list on this device
+ * renders its EMPTY state during the read, so a records list that is merely slow says "Nothing
+ * yet" and a record that is merely slow says "No record with that id on this device." Both are
+ * false, and both are the kind of false somebody acts on: they back out, or they conclude the
+ * seal never took. A record is the one thing in this product that has to be trustworthy when
+ * it is looked at, and telling a technician it does not exist for the second and a half
+ * Firestore is thinking is exactly the wrong lie to tell.
+ *
+ * [what] is said in plain language and names the read, not the spinner — "Reading this
+ * device's jobs", not "Loading…". If it takes long enough to read, the sentence should be
+ * worth having read.
+ *
+ * The bars breathe on [beatAlpha], the same slow pulse a held job and a live camera use. One
+ * heartbeat in the app rather than three different ideas about what waiting looks like.
+ */
+@Composable
+fun Loading(
+    what: String,
+    modifier: Modifier = Modifier,
+    rows: Int = 3,
+) {
+    // Fixed rather than random: a skeleton that reshuffles on every recomposition reads as a
+    // page loading twice.
+    val widths = listOf(0.66f, 0.31f, 0.82f, 0.24f, 0.58f, 0.37f, 0.74f, 0.29f)
+    Column(
+        modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(WarrantTheme.dim.stack),
+    ) {
+        MonoLabel(what)
+        repeat(rows) { row ->
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                SkeletonBar(widths[(row * 2) % widths.size], 16.dp)
+                SkeletonBar(widths[(row * 2 + 1) % widths.size], 12.dp)
+            }
+            Rule()
+        }
+    }
 }
 
 /**

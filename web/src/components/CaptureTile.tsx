@@ -23,7 +23,13 @@ export function CaptureTile({
   hint: string;
   facing?: "environment" | "user";
   provenance?: ProvenanceClass;
-  onCapture: (blob: Blob, objectUrl: string) => void;
+  /**
+   * May return a promise, and if it does this tile WAITS ON IT — visibly. What the handler
+   * does with the frame (encode it, write it, put it somewhere) is work the person standing
+   * here is waiting on whether or not anything says so, and a still photograph with a Retake
+   * button under it looks exactly like a capture that has already landed.
+   */
+  onCapture: (blob: Blob, objectUrl: string) => void | Promise<void>;
   disabled?: boolean;
 }) {
   const video = useRef<HTMLVideoElement>(null);
@@ -39,6 +45,17 @@ export function CaptureTile({
   const geometry = useRef<{ w: number; h: number } | null>(null);
   const [phase, setPhase] = useState<Phase>("starting");
   const [shot, setShot] = useState<string | null>(null);
+  /**
+   * What this tile is doing right now, in the person's own words, or null when it is idle.
+   *
+   * There are two real waits between the shutter and a capture that has landed — encoding the
+   * frame off the canvas, and whatever the handler does with it — and neither of them used to
+   * draw anything. The tile simply went from a live picture to a still one, which is what it
+   * also looks like when everything is finished, so the honest signal was missing exactly
+   * where it was needed. Named work rather than a boolean: "Saving…" and "Capturing…" are
+   * different seconds and the person is entitled to know which one they are in.
+   */
+  const [working, setWorking] = useState<string | null>(null);
 
   const stop = useCallback(() => {
     stream.current?.getTracks().forEach((t) => t.stop());
@@ -124,6 +141,10 @@ export function CaptureTile({
   function grab() {
     const v = video.current;
     if (!v || !v.videoWidth) return;
+    // Said before the encode, not after it. toBlob on a 1280×960 frame is the first of the two
+    // waits, and it is the one during which the viewfinder is still showing a live picture —
+    // so without this the shutter appears to have done nothing at all.
+    setWorking("Capturing…");
     // If a device managed to re-cut the track anyway, the photograph is still the picture the
     // viewfinder was showing: centre-cropped into the shape the stream opened with, never a
     // sideways frame the technician never framed.
@@ -135,13 +156,23 @@ export function CaptureTile({
     const dw = v.videoWidth * fill;
     const dh = v.videoHeight * fill;
     c.getContext("2d")?.drawImage(v, (base.w - dw) / 2, (base.h - dh) / 2, dw, dh);
-    c.toBlob((blob) => {
-      if (!blob) return;
+    c.toBlob(async (blob) => {
+      if (!blob) {
+        setWorking(null);
+        return;
+      }
       const url = URL.createObjectURL(blob);
       setShot(url);
       setPhase("captured");
       stop();
-      onCapture(blob, url);
+      setWorking("Saving this capture…");
+      try {
+        await onCapture(blob, url);
+      } finally {
+        // Cleared even when the handler throws. A tile stuck reading "Saving…" over a capture
+        // that failed is a worse lie than the silence this replaced.
+        setWorking(null);
+      }
     }, "image/jpeg", 0.9);
   }
 
@@ -174,7 +205,7 @@ export function CaptureTile({
             type="button"
             className="w-capture__shutter"
             onClick={grab}
-            disabled={disabled}
+            disabled={disabled || working !== null}
             aria-label={`Capture: ${hint}`}
           >
             <span aria-hidden />
@@ -183,12 +214,22 @@ export function CaptureTile({
         </>
       )}
 
+      {working && (
+        <span className="w-capture__busy" role="status" aria-live="polite">
+          {working}
+        </span>
+      )}
+
       {phase === "captured" && (
         <span className="w-capture__flag">
           {provenance && <EvidenceChip cls={provenance} />}
           <button
             type="button"
             className="w-btn w-btn--ghost w-capture__retake"
+            // Not while the frame is still being written. Retake during that second throws
+            // away a capture that is already on its way, and leaves the record holding one
+            // the technician believes they discarded.
+            disabled={working !== null}
             onClick={() => { setShot(null); setPhase("starting"); start(); }}
           >
             Retake

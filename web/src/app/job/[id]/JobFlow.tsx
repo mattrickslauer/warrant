@@ -110,6 +110,18 @@ export function JobFlow({ jobId }: { jobId: string }) {
   const fields: FieldDef[] = [...step.fields, ...extra];
   const done = statuses[step.id] === "performed";
 
+  // What this job does not actually need.
+  //
+  // A procedure may declare a step or a capture optional — `required_at_strictness: 4`, the
+  // level strictness cannot reach — and the seal honours it. Saying so HERE is what makes it
+  // real for the person standing at the machine: an optional capture the screen presented
+  // exactly like a required one would be taken every time, which is the same as not having
+  // marked it optional at all. Judged against the job's own strictness, because a capture
+  // required at 3 is mandatory on a regulated job and optional on a standard one.
+  const optionalField = (f: FieldDef) => f.required_at_strictness > job.strictness;
+  const optionalStep = (s: Procedure["steps"][number]) =>
+    (s.required_at_strictness ?? 0) > job.strictness;
+
   // Capture never waits, so you WILL walk away from a step before its verdict lands — and
   // sometimes the verdict grows a field that was not there when you passed through. Those
   // steps stay open and the job cannot seal until they are resolved. This is the mechanism
@@ -121,6 +133,9 @@ export function JobFlow({ jobId }: { jobId: string }) {
     .filter((x) =>
       x.status === "pending" &&
       x.i !== cursor &&
+      // An optional step left undone is not outstanding — the job seals without it, and
+      // listing it under "cannot seal until every step passes" would be false.
+      !optionalStep(x.step) &&
       (x.i < furthest || (added[x.step.id]?.length ?? 0) > 0)
     );
 
@@ -215,12 +230,22 @@ export function JobFlow({ jobId }: { jobId: string }) {
         >
           {exit === "capture" ? (
             <div className="stack">
+              {optionalStep(step) && (
+                <p className="w-step__num">
+                  Optional on this job — do it if it is worth doing. The job seals without it.
+                </p>
+              )}
               {fields.map((f) => (
                 <div className="stack" key={f.key}>
                   {extra.includes(f) && (
                     <p className="w-step__num" style={{ color: "var(--inferred-lift)" }}>
                       Added just now — the Inspector asked for this
                     </p>
+                  )}
+                  {/* An added field is never optional: an agent does not ask for evidence it
+                      is willing to do without. So this can only mark a declared one. */}
+                  {!extra.includes(f) && optionalField(f) && (
+                    <p className="w-step__num">Optional — the step does not wait for this</p>
                   )}
                   {controlFor(f)}
                 </div>

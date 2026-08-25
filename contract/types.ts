@@ -54,7 +54,7 @@ export interface FieldDef {
   prompt: string;
   /** instrument is the only source that can yield the measured class. */
   source: "instrument" | "camera" | "human";
-  /** 0 log, 1 standard, 2 assured, 3 regulated. The field is required at or above this. */
+  /** 0 log, 1 standard, 2 assured, 3 regulated; 4 means never required. The field is required at or above this. Strictness tops out at 3, so 4 is unreachable by construction rather than by a flag some reader might forget to check — the ONE filter at web/src/server/adjudicate/run.ts already excludes it. An optional field is still captured and still judged; it simply cannot hold the step. */
   required_at_strictness: number;
   /** Only meaningful when kind is choice. */
   choices?: string[];
@@ -118,6 +118,8 @@ export interface Job {
   tier: "open" | "attested" | "instrumented";
   started_at: string;
   sealed_at?: string | null;
+  /** The record this job sealed into, TENANT-SCOPED, written by the Seal and by nothing else. Null until it seals. It is on the header because that is where a client watching the job learns that its record exists — the alternative is every surface guessing that the record id equals the job id, which is true today and is not the clients' to know. */
+  record_id?: string | null;
   steps: StepOutcome[];
   finalized_at?: string | null;
   /** Who said go. The draft gate is a named act, not a timeout. */
@@ -188,7 +190,7 @@ export interface Procedure {
   published_at?: string | null;
   published_by?: string | null;
   updated_at?: string | null;
-  origin?: "scoper" | "imported" | "forked" | null;
+  origin?: "scoper" | "authored" | "imported" | "forked" | null;
   /** For catalogue imports. See docs/data-model.md section 8. */
   source_doc_ref?: string | null;
   /** Where the world-readable copy of this procedure lives, at /public_procedures/{public_id}, or null when it is private. A POINTER, never a permission: the tenant subtree is unreachable to outsiders whatever this says, so what makes a procedure public is the existence of that other document and nothing else. Mirrors record.public_id. */
@@ -285,6 +287,11 @@ export interface StepOutcome {
   accepted_fields?: string[];
   /** The unresolved question an agent raised for a person. The step stays pending: an escalation is a decision awaited, not a status of its own, and a step that is escalated has still not been performed. */
   escalation_question?: string | null;
+  /** What a person answered when asked. Written beside the question and NEVER over it: the record has to carry both halves, because an answer with the question deleted is unreadable to the stranger checking this years later. Answering does not settle the step — the fleet still rules. */
+  escalation_answer?: string | null;
+  /** Who answered. A named human, or the warrant_uid on the open tier. */
+  escalation_answered_by?: string | null;
+  escalation_answered_at?: string | null;
   /** Why the step did not advance. Written when an agent answered but the answer could not be acted on — a malformed verdict, an unreachable fleet, an unestablished belonging. On the record rather than in a log. */
   hold_reason?: string | null;
   /** When the fleet last ruled on this step. */
@@ -303,6 +310,8 @@ export interface Step {
   explanation: string;
   /** Hard cap on Inspector ADD FIELD. On exhaustion the step escalates with the unresolved question. */
   max_add_fields: number;
+  /** 0 log, 1 standard, 2 assured, 3 regulated; 4 means never required. The step is required at or above this. Absent reads as 0 — a step that does not say otherwise is required, because the safe default for a maintenance step is that somebody has to do it. A step below the job's strictness is still SHOWN and still performable; what it loses is the power to hold the seal open. */
+  required_at_strictness?: number;
   fields: FieldDef[];
 }
 
@@ -475,6 +484,7 @@ export interface ScoperTurn {
     explanation: string;
     condition?: string | null;
     max_add_fields: number;
+    required_at_strictness?: number;
     fields: ({
     key: string;
     kind: "measurement" | "photo" | "video" | "scan" | "choice" | "text" | "signature" | "location";

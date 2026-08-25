@@ -15,6 +15,15 @@ import ink.warrant.auth.AuthState
  */
 enum class Dest(val route: String, val label: String) {
     PROCEDURES("procedures", "Procedures"),
+    /**
+     * Where you go to see what you have WRITTEN, as opposed to [PROCEDURES], where you go to
+     * run something.
+     *
+     * Two verbs, so two rows. The picker was carrying both and could only ever show one of
+     * them, which is why a procedure you published appeared to vanish the moment the authoring
+     * desk closed behind it.
+     */
+    YOUR_PROCEDURES("procedures/yours", "Your procedures"),
     RECORDS("records", "Records"),
     CREATE("procedure/create", "Create a procedure"),
     INSTRUMENTS("instruments", "Instruments"),
@@ -76,6 +85,10 @@ fun menu(auth: AuthState): List<MenuSection> {
                 // A procedure governs every job ever run against it, so it must belong to a
                 // tenant, and there is no tenant without an identity.
                 MenuItem(Dest.CREATE, gated),
+                // Gated for the same reason CREATE is, and it must be: this is the row that
+                // decides who may read your work, and there is nobody to decide for until
+                // there is a tenant.
+                MenuItem(Dest.YOUR_PROCEDURES, gated),
                 MenuItem(Dest.INSTRUMENTS, Reach.OPEN),
             ),
         ),
@@ -148,6 +161,14 @@ fun quickActions(auth: AuthState): List<QuickAction> {
             dest = Dest.CREATE,
             label = "Create a procedure",
             hint = "A spec of your own.",
+            reach = gated,
+        ),
+        QuickAction(
+            dest = Dest.YOUR_PROCEDURES,
+            // The deed, not the place. Sharing is the thing this screen can do that neither
+            // the picker nor the authoring desk can, so it is what the row is named after.
+            label = "Share what you have written",
+            hint = "Who may read your procedures.",
             reach = gated,
         ),
     )

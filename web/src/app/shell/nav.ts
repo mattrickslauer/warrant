@@ -12,8 +12,8 @@
 // page behind it.
 
 export type DestId =
-  | "procedures" | "yourProcedures" | "records" | "create" | "instruments" | "fleet"
-  | "account" | "settings" | "about" | "library" | "modelTests" | "manual";
+  | "procedures" | "publicProcedures" | "yourProcedures" | "records" | "create" | "instruments"
+  | "fleet" | "account" | "settings" | "about" | "library" | "modelTests" | "manual";
 
 export interface Dest {
   readonly id: DestId;
@@ -34,6 +34,13 @@ export const DEST: Record<DestId, Dest> = {
   // and could only ever show one of them, which is why a published procedure appeared to
   // vanish the moment the authoring desk was closed.
   yourProcedures: { id: "yourProcedures", route: "/procedures/yours", label: "Your procedures" },
+  // The other half of that pair: everything anybody has published, not just this tenant. The
+  // picker at `/` is the three bundled tasks and will always be a short, curated list — it is
+  // the first decision a stranger makes and it must stay small. This is where the list stops
+  // being curated, so it is a second place rather than a longer carousel.
+  publicProcedures: {
+    id: "publicProcedures", route: "/procedures/public", label: "Published procedures",
+  },
   records: { id: "records", route: "/records", label: "Records" },
   create: { id: "create", route: "/author", label: "Create a procedure" },
   instruments: { id: "instruments", route: "/instruments", label: "Instruments" },
@@ -96,6 +103,10 @@ export function menu(signedIn: boolean): MenuSection[] {
       title: "Work",
       items: [
         { dest: DEST.procedures, reach: "open" },
+        // Not gated, because `public_procedures` is world-readable by design — being found is
+        // the point of publishing, and asking a stranger for an account before they may read
+        // what somebody else chose to broadcast would be a lock on an open door.
+        { dest: DEST.publicProcedures, reach: "open" },
         { dest: DEST.records, reach: "open" },
       ],
     },

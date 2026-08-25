@@ -22,7 +22,13 @@ import ink.warrant.contract.AcceptanceRule
 import ink.warrant.contract.Job
 import ink.warrant.contract.JobStatus
 import ink.warrant.contract.Procedure
+import ink.warrant.contract.ProcedureStatus
+import ink.warrant.contract.CeilingUnreachable
+import ink.warrant.contract.Deficiency
+import ink.warrant.contract.ProvenanceClass
 import ink.warrant.contract.Reading
+import ink.warrant.contract.RecordIssuer
+import ink.warrant.contract.RecordActor
 import ink.warrant.contract.ReasonKind
 import ink.warrant.contract.SealedRecord
 import ink.warrant.contract.StepOutcome
@@ -211,6 +217,38 @@ class LiveSource(
             }
     }
 
+    /**
+     * Subcollections first, header LAST, and the order is load-bearing.
+     *
+     * `firestore.rules` decides whether a step outcome, field or capture may be deleted by
+     * reading the status of its PARENT JOB. Delete the header first and that read finds
+     * nothing, every remaining delete is refused, and what is left is a shell of orphaned
+     * evidence with no row in any list to reach it from — undeletable, because the document
+     * the rule needs to consult is the one already gone.
+     *
+     * Doing it the other way round has the failure mode you want: the header is what makes a
+     * job visible, so a delete that dies half way through leaves a job that is still whole,
+     * still listed, and still deletable on a second tap.
+     *
+     * The status is read off the header rather than trusted from the caller. The rules refuse
+     * a sealed job independently, so this check is not the control — it is what turns a
+     * PERMISSION_DENIED into a sentence a person can act on.
+     */
+    override suspend fun deleteJob(id: String) {
+        ready()
+        val (t, j) = split(id)
+        val ref = jobDoc(t, j)
+        val header = ref.get().await()
+        // Already gone is a success. See the note on DataSource.deleteJob.
+        if (!header.exists()) return
+        require(header.getString("status") != "sealed") { "a sealed job cannot be deleted: $id" }
+
+        for (sub in listOf("step_outcomes", "fields", "captures")) {
+            ref.collection(sub).get().await().documents.forEach { it.reference.delete().await() }
+        }
+        ref.delete().await()
+    }
+
     // ------------------------------------------------------------------ evidence
 
     override suspend fun capture(input: CaptureInput): Capture {
@@ -323,15 +361,10 @@ class LiveSource(
         // caller keeps the typed value in media_ref — see capture.schema.json.
         if (!input.kind.hasObject) return null
 
-        val ext = when (input.kind) {
-            // Guarded above. Kept exhaustive so a kind added later has to be classified here
-            // as well as on hasObject, rather than silently taking a default extension.
-            CaptureKind.TEXT -> return null
-            CaptureKind.PHOTO, CaptureKind.SCAN -> "jpg"
-            CaptureKind.VIDEO -> "mp4"
-            CaptureKind.AUDIO -> "m4a"
-        }
-        val path = "tenants/$tenant/captures/$job/$captureId.$ext"
+        // The same builder the record screen reads through. Written and read in one spelling
+        // or the evidence is only findable by the surface that stored it.
+        val ext = Media.extension(input.kind) ?: return null
+        val path = Media.path(tenant, job, captureId, ext)
         val local = File(input.mediaRef)
         val uri = if (local.exists()) Uri.fromFile(local) else Uri.parse(input.mediaRef)
 
@@ -423,11 +456,91 @@ class LiveSource(
             ?: error("step outcome vanished after being written")
     }
 
+    /**
+     * An answer to a question an agent asked. Beside the question, never over it.
+     *
+     * Note what is NOT written: no status. `firestore.rules` refuses `performed`, `waived` and
+     * `impossible` from every client (`clientMayNotSettleAStep`), and this path does not try —
+     * a person answering a question about their own work is an interested party, and the fleet
+     * still rules. The answer is an assertion, and it is stamped as one.
+     *
+     * `escalation_question` is deliberately left standing. A record that kept the answer and
+     * dropped the question is unreadable to whoever checks it years later, and that reader is
+     * the only one this document exists for. `hold_reason` DOES clear: it means "the fleet
+     * could not act", and a person having now spoken is exactly the condition that ends it.
+     */
+    override suspend fun respond(input: ResponseInput): StepOutcome {
+        ready()
+        val (t, j) = split(input.jobId)
+        val ref = jobDoc(t, j).collection("step_outcomes").document(input.stepId)
+        val at = now()
+        ref.set(
+            mapOf(
+                "escalation_answer" to input.answer,
+                "escalation_answered_by" to input.by,
+                "escalation_answered_at" to at,
+                // A stated answer is asserted, exactly like a stated reason: a named human
+                // said it, at this time, and nothing checked it.
+                "provenance_class" to "asserted",
+                "hold_reason" to null,
+            ),
+            com.google.firebase.firestore.SetOptions.merge(),
+        ).await()
+        return ref.get().await().toStepOutcome(emptyList())
+            ?: error("step outcome vanished after being answered")
+    }
+
+    /**
+     * A signed download URL for a stored object.
+     *
+     * Storage refuses an unauthenticated read, so the path on the capture document is not
+     * something an `<img>` — or a `BitmapFactory` — can open. This exchanges it for a URL
+     * carrying a token, which is why it is a suspend call and not a string concatenation.
+     *
+     * A failure returns null rather than throwing. Evidence that cannot be fetched is a gap in
+     * what this screen can show, not a reason to fail the whole record: the rest of it — the
+     * decisions, the deficiencies, the ceiling — is still exactly as true.
+     */
+    override suspend fun mediaUrl(jobId: String, captureId: String, kind: FieldKind): String? {
+        if (captureId.isBlank() || jobId.isBlank()) return null
+        // A kind with no object behind it — text, a choice, a number. Null is the honest
+        // answer, and asking Storage for it would build a path out of somebody's sentence.
+        val ext = Media.extension(kind) ?: return null
+        val (t, j) = runCatching { split(jobId) }.getOrNull() ?: return null
+        ready()
+        val path = Media.path(t, j, captureId, ext)
+        return runCatching { storage.reference.child(path).downloadUrl.await().toString() }
+            .onFailure { Log.i(TAG, "no download url for $path", it) }
+            .getOrNull()
+    }
+
     // ------------------------------------------------------------------ records
 
-    override suspend fun getRecord(id: String): SealedRecord? = null
+    /**
+     * The sealed artifact.
+     *
+     * `records` is on the `serverWritten` list in firestore.rules — readable inside the tenant,
+     * writable by nobody with a client. So this reads, and only reads, and the immutability the
+     * record claims on its face is enforced by the database rather than by everyone remembering.
+     *
+     * The document id is the job id; `id` inside it is bare, so it is scoped on the way out the
+     * way a job header already is. A bare id would not survive a round trip back through here,
+     * which addresses by tenant.
+     */
+    override suspend fun getRecord(id: String): SealedRecord? {
+        ready()
+        val (t, r) = split(id)
+        return db.collection("tenants").document(t).collection("records").document(r)
+            .get().await().toSealedRecord(t)
+    }
 
-    override suspend fun listRecords(tenantId: String): List<SealedRecord> = emptyList()
+    override suspend fun listRecords(tenantId: String): List<SealedRecord> {
+        ready()
+        val t = if (tenantId == "*") this.tenantId() else tenantId
+        return db.collection("tenants").document(t).collection("records")
+            .orderBy("sealed_at", Query.Direction.DESCENDING)
+            .get().await().documents.mapNotNull { it.toSealedRecord(t) }
+    }
 
     override suspend fun listDecisions(tenantId: String): List<Decision> {
         ready()
@@ -583,10 +696,170 @@ class LiveSource(
             addedFields = added,
             acceptedFields = (get("accepted_fields") as? List<*>).orEmpty().map { it.toString() },
             escalationQuestion = getString("escalation_question"),
+            escalationAnswer = getString("escalation_answer"),
+            escalationAnsweredBy = getString("escalation_answered_by"),
+            escalationAnsweredAt = getString("escalation_answered_at"),
             holdReason = getString("hold_reason"),
             adjudicatedAt = getString("adjudicated_at"),
             fields = fields,
         )
+    }
+
+    /**
+     * A sealed record, out of the one document the Seal wrote.
+     *
+     * Everything is embedded — steps, decisions, the ceiling, the people — because a record is
+     * read by strangers who hold nothing but a link, and a document that needed six more reads
+     * to render would be six more chances for one of them to be refused. `web/src/server/seal.ts`
+     * writes this shape; this reads it, and the two are the same list in the same order.
+     *
+     * A record whose `sealed_at` cannot be read is dropped rather than defaulted to now(). The
+     * date is the claim — "this was true at this moment" — and inventing one would be forging
+     * the only part of the record that fixes it in time.
+     */
+    @Suppress("UNCHECKED_CAST")
+    private fun DocumentSnapshot.toSealedRecord(tenant: String): SealedRecord? {
+        if (!exists()) return null
+        val sealedAt = getString("sealed_at") ?: return null
+
+        val steps = (get("steps") as? List<Map<*, *>>).orEmpty().map(::stepOutcomeOf)
+        val decisions = (get("decisions") as? List<Map<*, *>>).orEmpty().mapNotNull(::decisionOf)
+
+        val unreachable = (get("ceiling_unreachable") as? List<Map<*, *>>).orEmpty().mapNotNull { m ->
+            val cls = classOf(m["class"]?.toString()) ?: return@mapNotNull null
+            CeilingUnreachable(cls, m["reason"]?.toString().orEmpty())
+        }
+        val deficiencies = (get("deficiencies") as? List<Map<*, *>>).orEmpty().map { m ->
+            Deficiency(
+                stepId = m["step_id"]?.toString().orEmpty(),
+                status = statusOf(m["status"]?.toString()),
+                reason = m["reason"]?.toString() ?: "no reason recorded",
+            )
+        }
+
+        return SealedRecord(
+            // Scoped on the way out. The bare id in the document would not survive a round
+            // trip back through getRecord(), which addresses by tenant.
+            id = "$tenant/${getString("id") ?: id}",
+            jobId = getString("job_id").orEmpty(),
+            tenantId = getString("tenant_id") ?: tenant,
+            public = getBoolean("public") ?: false,
+            sealedAt = sealedAt,
+            ceilingTier = tierOf(getString("ceiling_tier")),
+            ceilingReachable = (get("ceiling_reachable") as? List<*>).orEmpty()
+                .mapNotNull { classOf(it?.toString()) },
+            ceilingUnreachable = unreachable,
+            deficiencies = deficiencies,
+            // Absent reads as HELD, never as released. A release is the one claim on this
+            // document that can put a machine back into service, and a value we failed to
+            // read must fall on the side that keeps somebody safe.
+            machineReleased = getBoolean("machine_released") ?: false,
+            steps = steps,
+            decisions = decisions,
+            publicId = getString("public_id"),
+            issuer = (get("issuer") as? Map<*, *>)?.let { m ->
+                RecordIssuer(displayName = m["display_name"]?.toString() ?: "an unnamed issuer")
+            },
+            actors = (get("actors") as? List<Map<*, *>>).orEmpty().mapNotNull { m ->
+                val uid = m["uid"]?.toString() ?: return@mapNotNull null
+                RecordActor(
+                    uid = uid,
+                    displayName = m["display_name"]?.toString() ?: "a technician",
+                    photoRef = m["photo_ref"]?.toString(),
+                    role = m["role"]?.toString(),
+                )
+            },
+        )
+    }
+
+    /**
+     * A step outcome out of a MAP rather than a document.
+     *
+     * The seal embeds the outcomes in the record, so they arrive as plain maps and cannot go
+     * through [toStepOutcome], which reads a snapshot. Same fields, same defaults, deliberately
+     * kept adjacent so the two cannot drift.
+     */
+    @Suppress("UNCHECKED_CAST")
+    private fun stepOutcomeOf(m: Map<*, *>): StepOutcome {
+        val fields = (m["fields"] as? List<Map<*, *>>).orEmpty().mapNotNull(::fieldOf)
+        return StepOutcome(
+            id = m["id"]?.toString().orEmpty(),
+            jobId = m["job_id"]?.toString().orEmpty(),
+            stepId = m["step_id"]?.toString().orEmpty(),
+            status = statusOf(m["status"]?.toString()),
+            reasonKind = when (m["reason_kind"]?.toString()) {
+                "voice" -> ReasonKind.VOICE
+                "text" -> ReasonKind.TEXT
+                else -> null
+            },
+            reasonTranscript = m["reason_transcript"]?.toString(),
+            reasonAudioRef = m["reason_audio_ref"]?.toString(),
+            reasonBy = m["reason_by"]?.toString(),
+            reasonAt = m["reason_at"]?.toString(),
+            recommendationText = m["recommendation_text"]?.toString(),
+            recommendationModel = m["recommendation_model"]?.toString(),
+            waivedBy = m["waived_by"]?.toString(),
+            addFieldsUsed = (m["add_fields_used"] as? Number)?.toInt() ?: 0,
+            addedFields = (m["added_fields"] as? List<Map<*, *>>).orEmpty().map(::fieldDefOf),
+            acceptedFields = (m["accepted_fields"] as? List<*>).orEmpty().map { it.toString() },
+            escalationQuestion = m["escalation_question"]?.toString(),
+            escalationAnswer = m["escalation_answer"]?.toString(),
+            escalationAnsweredBy = m["escalation_answered_by"]?.toString(),
+            escalationAnsweredAt = m["escalation_answered_at"]?.toString(),
+            holdReason = m["hold_reason"]?.toString(),
+            adjudicatedAt = m["adjudicated_at"]?.toString(),
+            fields = fields,
+        )
+    }
+
+    private fun fieldOf(m: Map<*, *>): Field? {
+        val stepId = m["step_id"]?.toString() ?: return null
+        val key = m["key"]?.toString() ?: return null
+        return Field(
+            id = m["id"]?.toString() ?: "${stepId}__$key",
+            stepId = stepId,
+            key = key,
+            kind = kindOf(m["kind"]?.toString()),
+            valueNumber = (m["value_number"] as? Number)?.toDouble(),
+            valueText = m["value_text"]?.toString(),
+            valueChoice = m["value_choice"]?.toString(),
+            unit = m["unit"]?.toString(),
+            mediaRef = m["media_ref"]?.toString(),
+            toolId = m["tool_id"]?.toString(),
+            capturedAt = m["captured_at"]?.toString(),
+            provenanceClass = classOf(m["provenance_class"]?.toString()),
+        )
+    }
+
+    private fun decisionOf(m: Map<*, *>): Decision? {
+        val agent = agentOf(m["agent"]?.toString()) ?: return null
+        return Decision(
+            id = m["id"]?.toString().orEmpty(),
+            jobId = m["job_id"]?.toString().orEmpty(),
+            stepId = m["step_id"]?.toString(),
+            agent = agent,
+            agentVersion = m["agent_version"]?.toString() ?: "unknown",
+            model = m["model"]?.toString(),
+            verdict = m["verdict"]?.toString().orEmpty(),
+            rationale = m["rationale"]?.toString().orEmpty(),
+            costUsd = (m["cost_usd"] as? Number)?.toDouble(),
+            at = m["at"]?.toString() ?: now(),
+        )
+    }
+
+    /**
+     * Null for an unknown class, never a default.
+     *
+     * Every other `…Of` here falls back to the weakest member, which is right when the value is
+     * a mode or a kind. This one is the provenance class — the product — and quietly reading an
+     * unrecognised string as `asserted` would put a claim on the record nobody made.
+     */
+    private fun classOf(raw: String?) = when (raw) {
+        "measured" -> ProvenanceClass.MEASURED
+        "specified" -> ProvenanceClass.SPECIFIED
+        "inferred" -> ProvenanceClass.INFERRED
+        "asserted" -> ProvenanceClass.ASSERTED
+        else -> null
     }
 
     private fun DocumentSnapshot.toField(): Field? {
@@ -634,8 +907,27 @@ class LiveSource(
             strictness = (getLong("strictness") ?: 1L).toInt(),
             minimumTier = tierOf(getString("minimum_tier")),
             steps = raw.map(::stepOf),
+            // Read rather than left to default. `Your procedures` decides what it may offer
+            // from exactly these three, and a draft that read as published would offer to
+            // show the world a version nobody had frozen.
+            status = procedureStatusOf(getString("status")),
+            currentVersion = (getLong("current_version") ?: getLong("version") ?: 1L).toInt(),
+            publicId = getString("public_id"),
             createdAt = getString("created_at") ?: now(),
         )
+    }
+
+    /**
+     * Unknown reads as drafting, deliberately.
+     *
+     * The permissive default would be `published`, and it is the wrong one: every act this
+     * status gates — sharing above all — is refused for a draft, so a value we failed to
+     * understand must fall on the side that offers less, not more.
+     */
+    private fun procedureStatusOf(raw: String?): ProcedureStatus = when (raw) {
+        "published" -> ProcedureStatus.PUBLISHED
+        "archived" -> ProcedureStatus.ARCHIVED
+        else -> ProcedureStatus.DRAFTING
     }
 
     private fun stepOf(m: Map<*, *>): ink.warrant.contract.Step {
@@ -647,6 +939,7 @@ class LiveSource(
             title = m["title"]?.toString().orEmpty(),
             explanation = m["explanation"]?.toString().orEmpty(),
             maxAddFields = (m["max_add_fields"] as? Number)?.toInt() ?: 2,
+            requiredAtStrictness = (m["required_at_strictness"] as? Number)?.toInt() ?: 0,
             fields = fields,
         )
     }

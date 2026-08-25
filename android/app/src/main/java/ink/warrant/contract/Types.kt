@@ -172,6 +172,8 @@ enum class ProcedureStatus {
 @Serializable
 enum class ProcedureOrigin {
     @SerialName("scoper") SCOPER,
+    /** Written directly in the editor, rather than compiled out of a Scoper interview. */
+    @SerialName("authored") AUTHORED,
     @SerialName("imported") IMPORTED,
     @SerialName("forked") FORKED,
 }
@@ -296,6 +298,15 @@ data class Step(
      * question — never silently, never another request (architecture.md §3).
      */
     @SerialName("max_add_fields") val maxAddFields: Int,
+    /**
+     * 0 log, 1 standard, 2 assured, 3 regulated; 4 means never required. The step is required
+     * at or above this. Absent reads as 0 — a step that does not say otherwise is required.
+     *
+     * The phone cannot author this (the editor is on the web), but it MUST read it: a step the
+     * shop marked optional has to show as optional to the person holding the handset, or the
+     * one surface where the work actually happens is the one surface that does not know.
+     */
+    @SerialName("required_at_strictness") val requiredAtStrictness: Int = 0,
     val fields: List<FieldDef>,
 )
 
@@ -328,6 +339,15 @@ data class Procedure(
     val origin: ProcedureOrigin? = null,
     /** For catalogue imports. */
     @SerialName("source_doc_ref") val sourceDocRef: String? = null,
+    /**
+     * Where the world-readable copy lives, at `/public_procedures/{public_id}`, or null when
+     * this is private.
+     *
+     * A POINTER, never a permission. The tenant subtree is unreachable to an outsider whatever
+     * this field says, so what makes a procedure public is the existence of that OTHER
+     * document and nothing else — which is why only a server can cause it to be true.
+     */
+    @SerialName("public_id") val publicId: String? = null,
     @SerialName("created_at") val createdAt: String,
 )
 
@@ -379,6 +399,22 @@ data class StepOutcome(
      * a question outstanding has still not been performed.
      */
     @SerialName("escalation_question") val escalationQuestion: String? = null,
+    /**
+     * What a person answered when the fleet asked.
+     *
+     * Written BESIDE [escalationQuestion] and never over it. A record that kept the answer and
+     * dropped the question is unreadable to the stranger checking it years later, which is the
+     * only reader that matters — so both halves stay, and the pair is the evidence.
+     *
+     * Answering does not settle the step. The client may not write `performed`, `waived` or
+     * `impossible` (firestore.rules, `clientMayNotSettleAStep`), and that refusal is the whole
+     * point: a person answering a question about their own work is an interested party, and
+     * the fleet still has to rule on what they said.
+     */
+    @SerialName("escalation_answer") val escalationAnswer: String? = null,
+    /** Who answered. A named human, or the warrant_uid on the open tier. */
+    @SerialName("escalation_answered_by") val escalationAnsweredBy: String? = null,
+    @SerialName("escalation_answered_at") val escalationAnsweredAt: String? = null,
     /**
      * Why the step did not advance when an agent DID answer — a malformed verdict, an
      * unreachable fleet, an unestablished belonging. On the record rather than in a log.

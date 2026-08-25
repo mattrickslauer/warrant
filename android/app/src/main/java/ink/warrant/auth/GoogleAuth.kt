@@ -70,6 +70,31 @@ class GoogleAuth(
     private val clientId: String get() = clientIdOf()
 
     /**
+     * Drop a stored identity whose Firebase half did not survive.
+     *
+     * A session is kept in TWO stores and only one of them is ours: the identity in [store],
+     * and the Firebase user in Firebase's own encrypted preferences. Nothing keeps them in
+     * step, so they can disagree — and when they do, this class restores a signed-in identity
+     * over an anonymous Firebase user.
+     *
+     * That combination is the worst one available. `tenantOf()` resolves an anonymous user to
+     * `anon:<uid>`, so the app renders a signed-in drawer with the person's name and photo on
+     * it while every read goes to a tenant that is not theirs. Nothing errors and nothing is
+     * empty — the anonymous tenant is seeded with the bundled catalogue — so it looks like a
+     * working account whose authored procedures have vanished.
+     *
+     * Signed out is the honest answer, and it is cheap to undo: signing in again links to the
+     * same uid and lands back in `u:<uid>`, where the work already is.
+     *
+     * @param firebaseSessionIsReal whether Firebase holds a NON-anonymous user right now.
+     */
+    fun reconcile(firebaseSessionIsReal: Boolean) {
+        if (_state.value !is AuthState.SignedIn || firebaseSessionIsReal) return
+        store.clear()
+        _state.value = AuthState.SignedOut
+    }
+
+    /**
      * What to do with Google's token once it has been obtained.
      *
      * A Google ID token proves who somebody is to Google and means NOTHING to Firestore, whose

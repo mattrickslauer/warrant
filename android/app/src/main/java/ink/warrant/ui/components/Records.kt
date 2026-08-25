@@ -20,6 +20,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
@@ -276,6 +280,80 @@ fun SignedName(name: String, modifier: Modifier = Modifier) {
                 "Recorded as an assertion, attributed to this name — not as something the " +
                     "system checked.",
                 style = WarrantTheme.type.bodySmall.copy(color = colors.fg.copy(alpha = 0.58f)),
+            )
+        }
+    }
+}
+
+/**
+ * Throw away a job that never sealed.
+ *
+ * ## Why it asks twice
+ *
+ * Not a dialog, and not a single tap either. A dialog would be the heavier apology — this is
+ * not a dangerous act, because a job that never sealed produced no record and nobody outside
+ * the shop has ever seen it. But it is an irreversible one on a phone held in a glove, and the
+ * unarmed state is deliberately quiet: grey, small, and sat below everything that matters, so
+ * a thumb finds it when it is looking for it and not while scrolling past.
+ *
+ * Arming is what makes the second tap a decision rather than a reflex. The armed state says
+ * what goes and what does not, because "delete" on a screen full of photographs reads as
+ * "delete the evidence" — and the sentence that stops somebody's heart is the one that has to
+ * be on screen before they answer.
+ *
+ * ## Why "keep it" is the wider target
+ *
+ * The confirm is the narrower of the two, in the hold colour, on the right. If a glove hits
+ * the wrong one the job survives. That asymmetry is the entire safety argument, and it costs
+ * nothing.
+ *
+ * [busy] disables both while the delete is in flight, so a slow list cannot be told twice.
+ */
+@Composable
+fun AbandonJob(
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier,
+    busy: Boolean = false,
+    /** What the quiet, unarmed affordance says. Shorter in a list than on a job's own page. */
+    label: String = "Delete this job",
+) {
+    val colors = WarrantTheme.colors
+    var armed by remember { mutableStateOf(false) }
+
+    if (!armed) {
+        Text(
+            label,
+            modifier = modifier
+                .clickable(enabled = !busy) { armed = true }
+                .padding(vertical = 10.dp),
+            style = WarrantTheme.type.label.copy(color = colors.fg3),
+        )
+        return
+    }
+
+    Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(
+            // Names the thing that survives. Somebody about to delete a job wants to know, in
+            // this order, whether their evidence is going — and it is not, because a job that
+            // never sealed never produced any that left the shop.
+            "This job and everything captured on it goes, and it does not come back. " +
+                "No sealed record is touched — a job that never sealed never made one.",
+            style = WarrantTheme.type.bodySmall.copy(color = colors.fg2),
+        )
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            WarrantButton(
+                "Keep it",
+                ghost = true,
+                enabled = !busy,
+                onClick = { armed = false },
+                modifier = Modifier.weight(1f),
+            )
+            Text(
+                if (busy) "Deleting…" else "Delete",
+                modifier = Modifier
+                    .clickable(enabled = !busy) { onDelete() }
+                    .padding(horizontal = 16.dp, vertical = 14.dp),
+                style = WarrantTheme.type.label.copy(color = colors.held),
             )
         }
     }

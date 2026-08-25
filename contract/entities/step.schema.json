@@ -10,6 +10,7 @@
     "condition": { "type": "string", "nullable": true, "description": "Show only if. Null means always." },
     "explanation": { "type": "string", "description": "WHY this step exists and what goes wrong without it. Authored by the Scoper during the interview." },
     "max_add_fields": { "type": "integer", "description": "Hard cap on Inspector ADD FIELD. On exhaustion the step escalates with the unresolved question." },
+    "required_at_strictness": { "type": "integer", "description": "0 log, 1 standard, 2 assured, 3 regulated; 4 means never required. The step is required at or above this. Absent reads as 0 \u2014 a step that does not say otherwise is required, because the safe default for a maintenance step is that somebody has to do it. A step below the job's strictness is still SHOWN and still performable; what it loses is the power to hold the seal open." },
     "fields": { "type": "array", "items": { "$ref": "field-def" } }
   },
   "required": ["id", "index", "title", "explanation", "max_add_fields", "fields"]

@@ -57,6 +57,51 @@ class IdentityPersistenceTest {
         assertEquals(AuthState.SignedOut, auth(FakeStore()).state.value)
     }
 
+    /**
+     * A session is two halves in two stores, and only one of them is ours.
+     *
+     * Restoring the identity without the Firebase user behind it is how the app came to render
+     * a signed-in drawer over an anonymous session: `tenantOf()` resolved to `anon:<uid>`, the
+     * seed filled that tenant with the bundled catalogue, and the procedures the person had
+     * actually authored sat unreachable in `u:<uid>`. Nothing errored, so it read as an
+     * account whose work had disappeared.
+     */
+    @Test
+    fun `an identity with no firebase session behind it is not signed in`() {
+        val store = FakeStore(solo)
+        val auth = auth(store)
+        assertEquals(AuthState.SignedIn(solo), auth.state.value)
+
+        auth.reconcile(firebaseSessionIsReal = false)
+
+        assertEquals(AuthState.SignedOut, auth.state.value)
+        // Cleared, not merely forgotten: a stored identity that survives would restore the
+        // same lie on the next launch.
+        assertNull(store.read())
+    }
+
+    @Test
+    fun `a real firebase session leaves the restored identity alone`() {
+        val store = FakeStore(ana)
+        val auth = auth(store)
+
+        auth.reconcile(firebaseSessionIsReal = true)
+
+        assertEquals(AuthState.SignedIn(ana), auth.state.value)
+        assertEquals(ana, store.read())
+    }
+
+    @Test
+    fun `reconciling a signed-out app does nothing`() {
+        val store = FakeStore()
+        val auth = auth(store)
+
+        auth.reconcile(firebaseSessionIsReal = false)
+
+        assertEquals(AuthState.SignedOut, auth.state.value)
+        assertNull(store.read())
+    }
+
     @Test
     fun `the tenant survives the restore, not just the name`() {
         // The hd claim is the whole identity model — restoring a person into the wrong tenant

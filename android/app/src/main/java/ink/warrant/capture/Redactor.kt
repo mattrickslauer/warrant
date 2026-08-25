@@ -10,7 +10,9 @@ import android.util.Log
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetectorOptions
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import kotlin.coroutines.resume
@@ -63,22 +65,34 @@ object Redactor {
      *
      * In place is deliberate — an unredacted original left on disk is exactly the artifact this
      * is meant not to produce.
+     *
+     * OFF THE MAIN THREAD, and not as a tidiness point. Decoding a 12MP JPEG, copying it to
+     * ARGB_8888, drawing over it and re-compressing it is on the order of a second on a
+     * mid-range phone, and this is a `suspend` function that used to do all of it on whatever
+     * dispatcher it was called from — which, from a Compose `rememberCoroutineScope`, is the
+     * main one. The screen was frozen solid for that second: no frame drawn, no indicator
+     * animating, nothing to distinguish "working" from "the app has hung". The caller shows a
+     * busy indicator over the frame while this runs, and an indicator that cannot be painted
+     * is worse than none — so the work is moved here, once, where it belongs.
+     *
+     * Default rather than IO: this is bounded CPU work on one frame. The two file touches are
+     * a single read and a single write of a few megabytes either side of it.
      */
-    suspend fun redactInPlace(source: File): Redaction {
+    suspend fun redactInPlace(source: File): Redaction = withContext(Dispatchers.Default) {
         val bitmap = BitmapFactory.decodeFile(source.absolutePath)
-            ?: return Redaction(source, 0, ran = false)
+            ?: return@withContext Redaction(source, 0, ran = false)
 
         val faces = try {
             detect(bitmap)
         } catch (e: Exception) {
             Log.w(TAG, "face detection failed; leaving the capture unmasked and saying so", e)
             bitmap.recycle()
-            return Redaction(source, 0, ran = false)
+            return@withContext Redaction(source, 0, ran = false)
         }
 
         if (faces.isEmpty()) {
             bitmap.recycle()
-            return Redaction(source, 0, ran = true)
+            return@withContext Redaction(source, 0, ran = true)
         }
 
         val masked = bitmap.copy(Bitmap.Config.ARGB_8888, true)
@@ -98,7 +112,7 @@ object Redactor {
         }
         masked.recycle()
 
-        return Redaction(source, faces.size, ran = true)
+        Redaction(source, faces.size, ran = true)
     }
 
     private suspend fun detect(bitmap: Bitmap): List<Rect> =

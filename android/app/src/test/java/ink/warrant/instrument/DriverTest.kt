@@ -76,7 +76,14 @@ class DriverTest {
         // prevent.
         assertTrue(FakeDriver.TOOL_ID_PREFIX.isNotBlank())
         assertEquals("fake-", FakeDriver.TOOL_ID_PREFIX)
-        assertTrue(FakeDriver.sample() in 26.0..30.0)
+    }
+
+    @Test
+    fun `the simulator claims no unit of its own`() {
+        // It used to claim "Nm", which is how a procedure asking for pad thickness on a pair
+        // of calipers got a torque figure back. It has no hardware, so it has no unit; the
+        // unit comes from the field — see SimulatedReadingTest.
+        assertEquals("", FakeDriver.produces.unit)
     }
 
     @Test

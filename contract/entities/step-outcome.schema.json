@@ -30,6 +30,9 @@
     "added_fields":    { "type": "array", "items": { "$ref": "field-def" }, "description": "Fields an agent appended because the declared evidence was insufficient. They are as required as the declared ones." },
     "accepted_fields": { "type": "array", "items": { "type": "string" }, "description": "Field keys whose evidence has been accepted. A step is performed when every required field appears here — never before, and never because one field passed." },
     "escalation_question": { "type": "string", "nullable": true, "description": "The unresolved question an agent raised for a person. The step stays pending: an escalation is a decision awaited, not a status of its own, and a step that is escalated has still not been performed." },
+    "escalation_answer":      { "type": "string", "nullable": true, "description": "What a person answered when asked. Written beside the question and NEVER over it: the record has to carry both halves, because an answer with the question deleted is unreadable to the stranger checking this years later. Answering does not settle the step — the fleet still rules." },
+    "escalation_answered_by": { "type": "string", "nullable": true, "description": "Who answered. A named human, or the warrant_uid on the open tier." },
+    "escalation_answered_at": { "type": "string", "nullable": true },
     "hold_reason":   { "type": "string", "nullable": true, "description": "Why the step did not advance. Written when an agent answered but the answer could not be acted on — a malformed verdict, an unreachable fleet, an unestablished belonging. On the record rather than in a log." },
     "adjudicated_at": { "type": "string", "nullable": true, "description": "When the fleet last ruled on this step." },
     "fields": { "type": "array", "items": { "$ref": "field" } }

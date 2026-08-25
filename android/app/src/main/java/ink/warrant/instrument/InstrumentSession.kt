@@ -1,5 +1,6 @@
 package ink.warrant.instrument
 
+import ink.warrant.contract.FieldDef
 import ink.warrant.contract.Tier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -116,19 +117,37 @@ class InstrumentSession(
      * value everywhere it goes. A simulated reading must never be able to pass itself off as a
      * measurement — that would forge exactly the evidence this system exists to make checkable.
      */
-    fun simulate() {
+    fun simulate(field: FieldDef? = null) {
         connection?.cancel()
-        val toolId = "${FakeDriver.TOOL_ID_PREFIX}sim"
-        _state.value = State(
-            link = Link.Simulated(toolId),
-            latest = InstrumentEvent.Value(
-                value = FakeDriver.sample(),
-                unit = FakeDriver.produces.unit,
-                toolId = toolId,
-                plausible = true,
-                driverId = FakeDriver.id,
-            ),
+        _state.value = State(link = Link.Simulated(SIM_TOOL_ID), latest = reading(field))
+    }
+
+    /**
+     * Re-read, for the measurement field now in front of the technician.
+     *
+     * A real tool is held against one thing at a time and reports that thing. The simulator has
+     * to be told, because it has no thing — so every screen that puts a measurement field up
+     * aims it first. Only the reading changes: this is not a reconnection, and it must not
+     * disturb a live pairing, so it does nothing at all unless the link is already simulated.
+     */
+    fun aim(field: FieldDef?) {
+        if (_state.value.link !is Link.Simulated) return
+        _state.value = _state.value.copy(latest = reading(field))
+    }
+
+    private fun reading(field: FieldDef?): InstrumentEvent.Value {
+        val sample = FakeDriver.sample(field)
+        return InstrumentEvent.Value(
+            value = sample.value,
+            unit = sample.unit,
+            toolId = SIM_TOOL_ID,
+            plausible = true,
+            driverId = FakeDriver.id,
         )
+    }
+
+    private companion object {
+        const val SIM_TOOL_ID = "${FakeDriver.TOOL_ID_PREFIX}sim"
     }
 }
 

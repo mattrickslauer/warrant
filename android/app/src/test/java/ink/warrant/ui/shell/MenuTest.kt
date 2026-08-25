@@ -129,6 +129,39 @@ class MenuTest {
         }
     }
 
+    /**
+     * The row that was missing entirely.
+     *
+     * `Your procedures` existed on the web and had no Kotlin counterpart at all, so a shop
+     * that authored on the handset could not see what it had written or decide who could read
+     * it. Pinned here because the failure mode is silence: nothing is broken, there is simply
+     * one fewer thing the phone can do than the web, and only a side-by-side read finds it.
+     */
+    @Test
+    fun `what you have written is reachable, and gated like authoring`() {
+        assertEquals(
+            Reach.NEEDS_ACCOUNT,
+            itemFor(AuthState.SignedOut, Dest.YOUR_PROCEDURES).reach,
+        )
+        assertEquals(Reach.OPEN, itemFor(signedIn, Dest.YOUR_PROCEDURES).reach)
+        assertTrue(
+            "a gated row still leads to the gate",
+            itemFor(AuthState.SignedOut, Dest.YOUR_PROCEDURES).enabled,
+        )
+    }
+
+    /**
+     * Running and authoring are two verbs, so they are two rows.
+     *
+     * One row carrying both is exactly the arrangement that made a published procedure appear
+     * to vanish: the picker can only show one of the two lists.
+     */
+    @Test
+    fun `the picker and the library are different destinations`() {
+        assertTrue(Dest.PROCEDURES != Dest.YOUR_PROCEDURES)
+        assertTrue(Dest.PROCEDURES.route != Dest.YOUR_PROCEDURES.route)
+    }
+
     @Test
     fun `routes are unique`() {
         val routes = Dest.entries.map { it.route }

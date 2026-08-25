@@ -141,6 +141,15 @@ class JobViewModel(
     val instrumentState get() = instruments.state
 
     /**
+     * Point the simulated instrument at the field now being asked for.
+     *
+     * A paired tool already knows what it is reading; this exists only so the SIMULATED one
+     * answers in the unit the step declared rather than in whatever the last step wanted. It is
+     * a no-op unless the link is simulated — see [InstrumentSession.aim].
+     */
+    fun aimInstrument(field: FieldDef?) = instruments.aim(field)
+
+    /**
      * Begin a job — including the second, third and fourth run of a procedure already sealed.
      *
      * This view model is scoped to the activity rather than the route (see `MainActivity`),
@@ -166,6 +175,58 @@ class JobViewModel(
             }
 
             _state.value = newJobState(procedure, job, source.fabricated)
+            observe(job.id)
+        }
+    }
+
+    /**
+     * Pick up a job that is already open, from the records surface.
+     *
+     * Not [start]. That one WRITES a new job, which is exactly wrong here: a technician tapping
+     * back into the brake service they left half-done wants the evidence they already captured,
+     * not a second job against the same machine and a record that splits in two.
+     *
+     * The state is rebuilt from what the job has, rather than from nothing — `filled` from the
+     * fields already on the outcomes, `statuses` from the outcomes themselves — so a resumed job
+     * does not present captured steps as empty and invite them to be done again.
+     *
+     * It lands on the first step that still owes something rather than on step one. Walking a
+     * technician back through four completed steps to reach the one that needs a photograph is
+     * how a resume feature stops being used.
+     */
+    fun resume(jobId: String) {
+        viewModelScope.launch {
+            val job = source.getJob(jobId)
+            if (job == null) {
+                _state.value = _state.value.copy(error = "No job with that id on this device.")
+                return@launch
+            }
+            val procedure = source.getProcedure(job.procedureId)
+            if (procedure == null) {
+                _state.value = _state.value.copy(
+                    error = "The procedure this job ran against is not on this device.",
+                )
+                return@launch
+            }
+
+            val added = job.steps
+                .filter { it.addedFields.isNotEmpty() }
+                .associate { it.stepId to it.addedFields }
+            val filled = job.steps
+                .flatMap { outcome -> outcome.fields.filter { it.isFilled }.map { "${outcome.stepId}:${it.key}" } }
+                .toSet()
+
+            val base = newJobState(procedure, job, source.fabricated).copy(
+                addedFields = added,
+                filled = filled,
+                statuses = job.steps.associate { it.stepId to it.status },
+            )
+            // Computed off `base` rather than off the job, because "still owes something" is
+            // decided by the strictness rule in UiState and not by the step's status.
+            val landing = base.outstanding.firstOrNull()
+            _state.value = base.copy(
+                stepIndex = procedure.steps.indexOfFirst { it.id == landing?.id }.coerceAtLeast(0),
+            )
             observe(job.id)
         }
     }

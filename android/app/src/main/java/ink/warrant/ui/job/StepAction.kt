@@ -40,11 +40,40 @@ data class PrimaryAction(
     val label: String,
     val kind: ActionKind,
     val enabled: Boolean,
+    /**
+     * The device is doing the thing the last tap asked for, and has not finished.
+     *
+     * Separate from `!enabled`, which this also implies, because the two mean different things
+     * to the person looking at the button. "Waiting for the tool" is disabled and idle: nothing
+     * is happening, and nothing will until the tool reports. A capture being masked is disabled
+     * and *working*. Rendered identically — a grey bar — the second one reads as a hung app,
+     * which is exactly the complaint this exists to answer. See [working].
+     */
+    val busy: Boolean = false,
 )
 
 /** Whether this field is satisfied through the lens rather than through a keyboard. */
 fun FieldDef.usesCamera(): Boolean =
     kind == FieldKind.PHOTO || kind == FieldKind.VIDEO || source == FieldSource.CAMERA
+
+/**
+ * Whether this field is satisfied by typing.
+ *
+ * Stated as its own rule for the same reason the measurement branch of [primaryActionFor] is:
+ * the keyboard is a claim about what kind of answer a field takes, and the two kinds that must
+ * never see one are easy to reach by accident. A measurement typed by hand is a lie about
+ * provenance. A CHOICE typed by hand is subtler and was live: the step page had no branch for
+ * it, so a field carrying three fixed answers fell through to the generic text box — a blank
+ * line reading "Type the value" under "How do the brakes perform?", indistinguishable from the
+ * signature box below it. The technician typed their name into it, which was then judged
+ * against "Responsive and quiet" and escalated. The options were there in [FieldDef.choices]
+ * the whole time; nothing drew them.
+ *
+ * So this answers a keyboard question with a keyboard rule, and everything else — scan on a
+ * human source, location — keeps the free text box it always had.
+ */
+fun FieldDef.usesKeyboard(): Boolean =
+    !usesCamera() && kind != FieldKind.MEASUREMENT && kind != FieldKind.CHOICE
 
 /**
  * The field the page is currently pointed at.
@@ -142,3 +171,20 @@ fun primaryActionFor(
         )
     }
 }
+
+/**
+ * The bar while the device is finishing what the last tap started.
+ *
+ * [what] is the work, named in plain language — "Masking faces…", not "Loading…". Null means
+ * nothing is in flight and the bar is left exactly as [primaryActionFor] computed it.
+ *
+ * Here rather than in the composable for the same reason everything else in this file is:
+ * the label on the one big button is a claim about what the device is doing, and a claim that
+ * outlives the work — a bar still reading "Masking faces…" over a finished capture — is a lie
+ * a screenshot would not catch. The disable is not belt-and-braces either: the shutter fires
+ * on the *camera handle*, which is still wired up while the frame is being processed, so a
+ * second tap during that second would take a second photograph into a slot that already has
+ * one under review.
+ */
+fun PrimaryAction.working(what: String?): PrimaryAction =
+    if (what == null) this else copy(label = what, enabled = false, busy = true)

@@ -12,7 +12,7 @@ import java.net.URL
  *
  * Almost everything this app does goes straight to Firestore through the authenticated client,
  * so that `firestore.rules` is what enforces tenancy rather than a server we have to trust to
- * remember. Three things cannot work that way, and each is here for a specific reason:
+ * remember. Four kinds of thing cannot work that way, and each is here for a specific reason:
  *
  *  1. **Adjudication** calls a deployed model fleet. A client that could call it directly could
  *     also choose not to, and could hand it a case of its own devising.
@@ -21,9 +21,13 @@ import java.net.URL
  *     with this tool_id" a claim only a paired instrument can cause to be true.
  *  3. **The session exchange** sets the `hd` custom claim, which is what `tenantOf()` in
  *     firestore.rules reads. A client cannot mint its own claim, which is the entire point.
+ *  4. **Writing outside the tenant subtree** — seeding the catalogue, and publishing a
+ *     procedure to the world. `procedure_versions` and `/public_procedures` are refused to
+ *     every client, and that refusal is what makes a frozen version and a public copy mean
+ *     something: neither can exist unless a server checked who asked for it.
  *
- * Plain `HttpURLConnection`. This app has three endpoints to call and no other networking; an
- * HTTP stack would be a dependency carried for nothing.
+ * Plain `HttpURLConnection`. This app has a handful of endpoints to call and no other
+ * networking; an HTTP stack would be a dependency carried for nothing.
  */
 class Api(private val baseUrl: String) {
 
@@ -111,6 +115,32 @@ class Api(private val baseUrl: String) {
         runCatching { post("/api/procedures/seed", JSONObject(), idToken) }
             .onFailure { Log.w(TAG, "could not seed the public catalogue", it) }
             .isSuccess
+
+    /**
+     * Show a procedure to the world, or take it back down.
+     *
+     * Server-side for the same reason seeding is: `/public_procedures` is world-readable and
+     * nobody-writable, so there is no client path to it at all. The server checks that the
+     * caller's tenant owns the procedure and that the version it is about to copy was actually
+     * frozen — a draft would change under whoever was reading it.
+     *
+     * NOT fire and forget, unlike [adjudicate]. This is a person deciding who may read their
+     * work, and someone told the switch flipped when it did not has been told something false.
+     * The caller surfaces the throw.
+     *
+     * @return the new `public_id`, or null when the procedure was taken back down.
+     */
+    suspend fun shareProcedure(idToken: String?, procedureId: String, public: Boolean): String? {
+        val body = JSONObject()
+            .put("procedure_id", procedureId)
+            // Explicit rather than defaulted, matching the route, which rejects a body without
+            // it: the direction of this call is the whole decision it carries.
+            .put("public", public)
+        val text = post("/api/procedures/share", body, idToken)
+        // Absent when taken down. `optString` returns "" for JSON null as well as for a
+        // missing key, and both mean private here.
+        return JSONObject(text).optString("public_id").takeIf { it.isNotBlank() }
+    }
 
     /**
      * Exchange a freshly minted Firebase token for the tenant claim.

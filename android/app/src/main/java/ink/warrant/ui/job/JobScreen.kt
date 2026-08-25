@@ -3,10 +3,12 @@ package ink.warrant.ui.job
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -15,10 +17,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -37,13 +41,17 @@ import ink.warrant.contract.ProvenanceClass
 import ink.warrant.design.Ground
 import ink.warrant.design.WarrantTheme
 import ink.warrant.instrument.InstrumentEvent
+import ink.warrant.instrument.formatReading
+import ink.warrant.ui.components.BusyRing
 import ink.warrant.ui.components.CameraLayer
 import ink.warrant.ui.components.FlashChip
 import ink.warrant.ui.components.FlashMode
 import ink.warrant.ui.components.LiveMark
 import ink.warrant.ui.components.ReadingBadge
 import ink.warrant.ui.components.rememberCameraHandle
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
@@ -131,6 +139,17 @@ fun JobScreen(
     val active = activeFieldFor(fields, strictness, selected) { key -> state.isFilled(step.id, key) }
     val camera = rememberCameraHandle()
 
+    // Aim the simulated instrument at whatever this page is asking for.
+    //
+    // A tool in a hand is held against one thing and reports that thing; the simulator has to be
+    // told, or it answers every field with the unit of whichever one it was told about first.
+    // That is how a caliper step used to come back in newton-metres. Keyed on the field, so
+    // moving between fields re-reads exactly as picking the tool back up would, and no-op unless
+    // the link is simulated — a paired instrument is never touched by this.
+    LaunchedEffect(step.id, active?.key, instrument.simulated) {
+        if (instrument.simulated && active?.kind == FieldKind.MEASUREMENT) vm.aimInstrument(active)
+    }
+
     // The frame on the backdrop, and which field it belongs to. Two cases, one answer: the
     // picture under review while that field is still the one in front of you, or the step's
     // last frame resting behind "Next step" once nothing is outstanding — so you can still see
@@ -168,7 +187,22 @@ fun JobScreen(
         else -> state.isFilled(step.id, active.key)
     }
 
-    val busy = redacting || camera.busy
+    // What this device is doing, right now, between the tap and the frame being accepted.
+    //
+    // Two real waits live in here and neither of them used to draw anything: the shutter
+    // itself, and the on-device face mask that runs before a single byte is allowed to leave
+    // the phone. Together they are on the order of a second and a half on a mid-range handset,
+    // during which the page showed a live preview and a bar that had gone grey — which is
+    // indistinguishable from a hung app, and is exactly the confusion this names.
+    //
+    // A string rather than a boolean because the bar and the overlay both say it out loud, and
+    // two independent spellings of the same second is how they end up disagreeing. Ordered the
+    // way the work happens: the lens first, then what is done to what it caught.
+    val working: String? = when {
+        camera.busy -> "Capturing…"
+        redacting -> "Masking faces…"
+        else -> null
+    }
     val action = primaryActionFor(
         field = active,
         fieldFilled = activeFilled,
@@ -176,7 +210,7 @@ fun JobScreen(
         instrumentConnected = instrument.connected,
         instrumentHasReading = instrument.latest != null,
         inputReady = typed.isNotBlank(),
-    ).let { if (busy) it.copy(enabled = false) else it }
+    ).working(working)
 
     StepPage(
         modifier = modifier,
@@ -286,6 +320,7 @@ fun JobScreen(
                 latest = instrument.latest,
                 typed = typed,
                 onTyped = { typed = it },
+                capturing = camera.busy,
                 redacting = redacting,
                 redactNote = redactNote,
                 flash = state.flashFor(step.id),
@@ -357,13 +392,27 @@ private fun noticesFor(state: JobViewModel.UiState, vm: JobViewModel): List<Noti
     }
 }
 
-/** The frame under review, or the last one taken on this step. */
+/**
+ * The frame under review, or the last one taken on this step.
+ *
+ * The decode happens OFF the composition. Even sampled down, pulling a 12MP JPEG off disk is a
+ * few hundred milliseconds, and it used to run inside `remember` — on the main thread, at the
+ * exact moment the shutter had just fired and the busy indicator was trying to draw its first
+ * turn. The indicator lost. Read on [Dispatchers.Default], keyed on the file, so the frame
+ * appears when it is ready and the ring keeps moving until it does.
+ */
 @Composable
 private fun ReviewFrame(file: File, description: String) {
-    val bitmap = remember(file) { decodeSampled(file) }
-    if (bitmap != null) {
+    val bitmap by produceState<android.graphics.Bitmap?>(initialValue = null, file) {
+        value = withContext(Dispatchers.Default) { decodeSampled(file) }
+    }
+
+    // Nothing, rather than a placeholder, for the fraction of a second before it lands. The
+    // backdrop behind this is black and the overlay is already saying what is happening; a
+    // grey box appearing and vanishing under that would be one more thing moving.
+    bitmap?.let {
         Image(
-            bitmap = bitmap.asImageBitmap(),
+            bitmap = it.asImageBitmap(),
             contentDescription = description,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize(),
@@ -409,6 +458,7 @@ private fun BoxScope.StepCenter(
     latest: InstrumentEvent.Value?,
     typed: String,
     onTyped: (String) -> Unit,
+    capturing: Boolean,
     redacting: Boolean,
     redactNote: String?,
     flash: FlashMode,
@@ -445,14 +495,33 @@ private fun BoxScope.StepCenter(
                 placeholder = "Your name",
             )
 
-            else -> OverlayInput(
+            // The answers the procedure actually offers, drawn as answers. `typed` still
+            // carries the pending value, so the bar below and `vm.fillByHand` are untouched —
+            // the only thing that changes is where the value comes from: a tap on a stated
+            // option rather than anything at all a keyboard could produce.
+            field.kind == FieldKind.CHOICE -> OverlayChoices(
+                choices = field.choices,
+                selected = typed,
+                onSelect = onTyped,
+            )
+
+            field.usesKeyboard() -> OverlayInput(
                 value = typed,
                 onValueChange = onTyped,
                 placeholder = "Type the value",
             )
+
+            // Reached only by a kind that is neither camera, instrument, keyboard nor choice.
+            // Drawing nothing is the honest answer; inventing a text box here is exactly how
+            // a choice field came to be answered with somebody's name.
+            else -> Unit
         }
 
-        if (redacting) OverlayNote("Masking faces on device…", colors.inferred)
+        // Said with a turning ring, not as a line of text. A sentence that appears and then
+        // sits perfectly still for a second and a half is a caption, and a caption does not
+        // tell you whether the thing it describes is still running or has died halfway.
+        if (capturing) OverlayBusy("Taking the photograph…", Color.White)
+        if (redacting) OverlayBusy("Masking faces on device…", colors.inferred)
         redactNote?.let { OverlayNote(it, colors.fg2) }
     }
 
@@ -485,10 +554,19 @@ private fun MeasurementCenter(
     latest: InstrumentEvent.Value?,
 ) {
     val colors = WarrantTheme.colors
-    val band = buildString {
-        field.acceptanceMin?.let { append(it.toInt()) }
-        field.acceptanceMax?.let { append("–").append(it.toInt()) }
-        field.acceptanceUnit?.let { append(" ").append(it) }
+    // Written the way the reading below it is written. Truncating to whole numbers here — which
+    // this did — turns a 0.5–1.5 mm pad limit into "Accepts 0–1 mm", which is a different and
+    // wrong rule printed over the frame the technician is working in.
+    val lo = field.acceptanceMin
+    val hi = field.acceptanceMax
+    val unit = field.acceptanceUnit?.takeIf { it.isNotBlank() }?.let { " $it" } ?: ""
+    val band = when {
+        lo != null && hi != null -> "${formatReading(lo)}–${formatReading(hi)}$unit"
+        // A one-sided limit read as a bare number is a different rule. "3 mm" looks like a
+        // target; the step said no less than three.
+        lo != null -> "at least ${formatReading(lo)}$unit"
+        hi != null -> "no more than ${formatReading(hi)}$unit"
+        else -> ""
     }
 
     Column(
@@ -549,6 +627,98 @@ private fun OverlayNote(text: String, color: Color) {
             .background(Color(0xCC202124), RoundedCornerShape(WarrantTheme.dim.rSm))
             .padding(horizontal = 14.dp, vertical = 10.dp),
     )
+}
+
+/**
+ * The same line, with the device's work turning beside it.
+ *
+ * Used for the two waits the technician has to sit through — the shutter, and the mask — and
+ * never for a verdict. Capture does not wait on a model, and a ring turning over the agents
+ * would be this screen promising to hold still until they answer, which is the one thing it
+ * must not do.
+ */
+@Composable
+private fun OverlayBusy(text: String, color: Color) {
+    Row(
+        Modifier
+            .background(Color(0xCC202124), RoundedCornerShape(WarrantTheme.dim.rSm))
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        BusyRing(color = color, diameter = 16.dp)
+        Text(
+            text,
+            style = WarrantTheme.type.bodySmall.copy(color = color),
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+/**
+ * The answers a choice field offers, as tappable answers.
+ *
+ * There is no text input on this branch, and that is the whole point. A CHOICE field states
+ * the answers it accepts; a keyboard in front of it accepts everything else too, and what
+ * comes back then gets judged against a target it was never going to match. The technician is
+ * not wrong in that exchange — they were handed a blank line and asked a question.
+ *
+ * The selected option is held in the same `typed` slot a text answer uses, so the bar reads
+ * "Record", enables itself the moment something is chosen, and commits through the same path.
+ */
+@Composable
+private fun OverlayChoices(
+    choices: List<String>,
+    selected: String,
+    onSelect: (String) -> Unit,
+) {
+    val colors = WarrantTheme.colors
+
+    // A choice with nothing to choose from is an authoring fault, and `faults()` now refuses
+    // to compile one. Said out loud rather than quietly falling back to a keyboard: the
+    // fallback is what produced the wrong answer in the first place.
+    if (choices.isEmpty()) {
+        OverlayNote(
+            "This step accepts one of a fixed set of answers and the procedure lists none. " +
+                "It cannot be answered here.",
+            colors.held,
+        )
+        return
+    }
+
+    Column(
+        Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        choices.forEach { choice ->
+            val chosen = choice == selected
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = WarrantTheme.dim.tap)
+                    .background(
+                        if (chosen) colors.measured else Color(0xE6202124),
+                        RoundedCornerShape(WarrantTheme.dim.radius),
+                    )
+                    .border(
+                        1.dp,
+                        if (chosen) colors.measured else Color.White.copy(alpha = 0.2f),
+                        RoundedCornerShape(WarrantTheme.dim.radius),
+                    )
+                    .clickable { onSelect(choice) }
+                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    choice,
+                    style = WarrantTheme.type.body.copy(
+                        color = if (chosen) Color(0xFF202124) else Color.White,
+                    ),
+                    textAlign = TextAlign.Center,
+                )
+            }
+        }
+    }
 }
 
 /** The only keyboard on this screen, and it can never be reached from a measurement field. */

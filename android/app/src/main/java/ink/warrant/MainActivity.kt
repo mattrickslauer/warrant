@@ -1,5 +1,6 @@
 package ink.warrant
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.compose.ui.Modifier
+import ink.warrant.auth.AuthState
 import ink.warrant.design.Tokens
 import ink.warrant.design.WarrantTheme
 import ink.warrant.instrument.tierOf
@@ -31,6 +33,8 @@ import ink.warrant.ui.instrument.PairScreen
 import ink.warrant.ui.job.JobScreen
 import ink.warrant.ui.job.JobViewModel
 import ink.warrant.ui.procedure.CreateProcedureScreen
+import ink.warrant.ui.procedure.YourProceduresScreen
+import ink.warrant.ui.records.JobRecordScreen
 import ink.warrant.ui.records.RecordScreen
 import ink.warrant.ui.records.RecordsScreen
 import ink.warrant.ui.settings.SettingsScreen
@@ -104,7 +108,10 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
             Shelled(Dest.RECORDS, nav, container) {
                 RecordsScreen(
                     source = container.source,
-                    onOpenRecord = { id -> nav.navigate("record/$id") },
+                    // Two destinations, because a sealed record and an open job are genuinely
+                    // different documents. What matters is that neither row goes nowhere.
+                    onOpenRecord = { id -> nav.navigate("record/${Uri.encode(id)}") },
+                    onOpenJob = { id -> nav.navigate("jobrecord/${Uri.encode(id)}") },
                 )
             }
         }
@@ -122,12 +129,62 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
             }
         }
 
+        // A job that has not sealed: where it stands, what it has captured, and the questions
+        // the fleet raised on it. Shelled, unlike the live job screen — somebody reading this
+        // is checking rather than capturing, and there is no shutter to protect.
+        composable(
+            "jobrecord/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.StringType }),
+        ) { entry ->
+            val auth by container.auth.state.collectAsState()
+            Shelled(Dest.RECORDS, nav, container) {
+                JobRecordScreen(
+                    source = container.source,
+                    jobId = entry.arguments?.getString("id").orEmpty(),
+                    // An answer is an assertion and has to carry a name. Signed out there is
+                    // no name to carry, and "technician" is what the second exit already
+                    // writes — the same honest placeholder rather than a second one.
+                    by = (auth as? AuthState.SignedIn)
+                        ?.identity?.displayName
+                        ?.takeIf { it.isNotBlank() }
+                        ?: "technician",
+                    onBack = { nav.popBackStack() },
+                    // Picking a job back up puts it in the hands of the live job screen, which
+                    // owns the camera. `resume`, never `start`: starting would write a SECOND
+                    // job against the same machine and split the record in two.
+                    onResume = { id -> jobVm.resume(id); nav.navigate(JOB) },
+                    onOpenRecord = { id -> nav.navigate("record/${Uri.encode(id)}") },
+                )
+            }
+        }
+
         // Authoring is gated: a procedure belongs to a tenant, and there is no tenant
         // without an identity. Running a public procedure stays open to anyone.
         composable(Dest.CREATE.route) {
             Shelled(Dest.CREATE, nav, container) {
                 CreateProcedureScreen(
                     auth = container.auth,
+                    onBack = { nav.popBackStack() },
+                )
+            }
+        }
+
+        // Gated like CREATE, and for the same reason: this is where you decide who may read
+        // your work, and there is nobody to decide for until there is a tenant.
+        composable(Dest.YOUR_PROCEDURES.route) {
+            Shelled(Dest.YOUR_PROCEDURES, nav, container) {
+                YourProceduresScreen(
+                    auth = container.auth,
+                    session = container.firebase,
+                    api = container.api,
+                    source = container.source,
+                    // The same start path the picker uses, so an authored procedure and a
+                    // bundled one open the identical job screen.
+                    onStart = { procedure, tier ->
+                        jobVm.start(procedure.id, procedure.tenantId, tier)
+                        nav.navigate(JOB)
+                    },
+                    onCreate = { nav.go(Dest.CREATE) },
                     onBack = { nav.popBackStack() },
                 )
             }

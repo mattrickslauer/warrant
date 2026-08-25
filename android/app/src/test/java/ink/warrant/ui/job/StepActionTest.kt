@@ -230,4 +230,77 @@ class StepActionTest {
         assertEquals("front_plate", framedFieldFor(fields, active = photo) { true }?.key)
         assertEquals("rear_plate", framedFieldFor(fields, active = rear) { true }?.key)
     }
+
+    // ------------------------------------------------------------------- what takes a keyboard
+
+    private val choice = field(
+        "test_ride_performance", FieldKind.CHOICE, FieldSource.HUMAN, AcceptanceRule.MATCHES,
+    )
+
+    @Test
+    fun `a choice field never reaches a keyboard`() {
+        // The regression this rule exists for. `test_ride_performance` shipped as a CHOICE
+        // carrying three stated answers, the step page had no branch for it, and it fell
+        // through to the generic text box — where it was answered with a technician's name and
+        // judged against "Responsive and quiet". The options were in the field the whole time.
+        assertFalse(choice.usesKeyboard())
+    }
+
+    @Test
+    fun `the keyboard rule excludes a measurement too`() {
+        // Same rule, older reason: a typed number wearing the measured chip is not a
+        // measurement. The bar already refuses it in every state (above); this asserts the
+        // page-level rule agrees, so the two cannot drift apart.
+        assertFalse(torque.usesKeyboard())
+    }
+
+    @Test
+    fun `text and signature are what the keyboard is for`() {
+        assertTrue(note.usesKeyboard())
+        assertTrue(signature.usesKeyboard())
+    }
+
+    @Test
+    fun `a field answered through the lens is not answered by typing`() {
+        assertFalse(photo.usesKeyboard())
+    }
+
+    @Test
+    fun `a bar with work behind it says so and cannot be fired again`() {
+        // The complaint this answers: between the shutter and the frame being accepted the
+        // device does a second and a half of real work — take the picture, mask the faces on
+        // device — and the page said nothing about it. The bar went grey, which is what a dead
+        // button looks like, and a second tap on the shutter would have taken a second
+        // photograph into a slot that already held one under review.
+        val capture = action(photo)
+        assertEquals("Capture", capture.label)
+        assertFalse(capture.busy)
+
+        val busy = capture.working("Masking faces…")
+        assertEquals("Masking faces…", busy.label)
+        assertTrue(busy.busy)
+        assertFalse(busy.enabled)
+        // The KIND is untouched: this is the same decision, still in flight. Rewriting it
+        // would change what the tap after it does.
+        assertEquals(ActionKind.CAPTURE, busy.kind)
+    }
+
+    @Test
+    fun `nothing in flight leaves the bar exactly as it was`() {
+        // Null is the ordinary case — the overwhelming majority of frames this bar is drawn
+        // in — and it must not cost the bar its label, its kind or its tap.
+        val capture = action(photo)
+        assertEquals(capture, capture.working(null))
+    }
+
+    @Test
+    fun `a choice bar commits only once something has been chosen`() {
+        // `inputReady` carries the selection rather than the contents of a text box, so the
+        // bar is dead until an option is tapped and reads "Record" when one is.
+        assertFalse(action(choice, inputReady = false).enabled)
+        val ready = action(choice, inputReady = true)
+        assertTrue(ready.enabled)
+        assertEquals(ActionKind.RECORD, ready.kind)
+        assertEquals("Record", ready.label)
+    }
 }

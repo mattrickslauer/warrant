@@ -15,18 +15,20 @@
 import { NextResponse } from "next/server";
 import { callerSession } from "@/auth/bearer";
 import { adminDb } from "@/auth/admin";
-import { cutABanana, pickUpAnObject, frontBrakeService } from "@/data/fixtures/procedures";
+import { PUBLIC_CATALOGUE } from "@/data/catalogue";
 import type { Procedure } from "@/generated/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** The public catalogue, by id. Nothing outside this map can be seeded by this route. */
-const PUBLIC: Record<string, Procedure> = {
-  proc_banana_v1: cutABanana,
-  proc_pickup_v1: pickUpAnObject,
-  proc_front_brake_v3: frontBrakeService,
-};
+/**
+ * The public catalogue, by id. Nothing outside this map can be seeded by this route.
+ *
+ * It lives in `@/data/catalogue` rather than here because `Your procedures` has to subtract
+ * exactly this set to answer what a tenant has written, and a second copy of the list is a
+ * second answer to that question.
+ */
+const PUBLIC: Record<string, Procedure> = PUBLIC_CATALOGUE;
 
 export async function POST(request: Request) {
   // An anonymous session is fine and is the point: running a public task needs no account.

@@ -162,3 +162,33 @@ export async function unshareProcedure(
   if (publicId) await db.collection("public_procedures").doc(publicId).delete();
   await procRef.set({ public_id: null, updated_at: new Date().toISOString() }, { merge: true });
 }
+
+
+/**
+ * Every procedure anybody has chosen to publish, newest first.
+ *
+ * This is the read side of `shareProcedure`, and the reason `public_procedures` is a top-level
+ * collection rather than a flag on a tenant document: being FOUND is the point of publishing,
+ * and a listable collection is what makes finding possible without handing out a link. The
+ * documents carry no tenant id and no uid, so listing them enumerates published work rather
+ * than the shops using Warrant — see `PublicProcedure` above for why that matters.
+ *
+ * Never throws, for the reason `readPublicRecord` never throws: this page must render for a
+ * reader with no session, no project credentials, and no network to Google. An unreachable
+ * Admin SDK means "nothing published yet", not an error page — the empty state says which of
+ * the two you are looking at.
+ */
+export async function listPublicProcedures(limit = 60): Promise<PublicProcedure[]> {
+  try {
+    const { adminConfigured } = await import("@/auth/admin");
+    if (!adminConfigured()) return [];
+    const snap = await adminDb()
+      .collection("public_procedures")
+      .orderBy("shared_at", "desc")
+      .limit(limit)
+      .get();
+    return snap.docs.map((d) => d.data() as PublicProcedure);
+  } catch {
+    return [];
+  }
+}

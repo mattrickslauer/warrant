@@ -53,6 +53,12 @@ class WarrantApplication : Application() {
                 firebase.signIn(googleIdToken, identity)
             }
             auth.onSignOut = { firebase.signOut() }
+
+            // The two halves of a session are persisted by two different stores, and only one
+            // of them is ours. If the Firebase half did not survive, a restored identity would
+            // render a signed-in drawer over an anonymous session — reading `anon:<uid>` while
+            // showing somebody their own name. Better to ask them to sign in again.
+            auth.reconcile(firebase.isSignedIn && !firebase.isAnonymous)
         }
 
         /**

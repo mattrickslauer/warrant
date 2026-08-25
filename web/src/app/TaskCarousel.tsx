@@ -2,11 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { EvidenceChip, type ProvenanceClass } from "@/components";
 import { getDataSource } from "@/data";
 import { useSession } from "@/auth/session-context";
 import { currentTenantId } from "@/auth/current-tenant";
 import { DeviceStrip, type DeviceReport } from "./DeviceStrip";
+import { DEST } from "./shell/nav";
 
 export interface Task {
   procedureId: string;
@@ -80,10 +82,23 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
     card?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
   };
 
-  const task = tasks[active];
+  // The rail is the tasks plus one card at the end that is not a task: the way out to
+  // everything else people have published. It lives IN the rail rather than under it because
+  // the carousel is the only thing on this screen a person is looking at, and a link below the
+  // sticky CTA can only be found by scrolling past the button you were meant to press.
+  //
+  // Which means `active` can point one past the end, and every read of `tasks[active]` below
+  // has to survive that — the first cut did not, and landing on the last card left the CTA
+  // reading "Not ready yet" with nothing to press.
+  const browsing = active === tasks.length;
+  const task = browsing ? undefined : tasks[active];
 
   async function start() {
-    if (!task?.available || busy) return;
+    if (busy) return;
+    // The browse card has nothing to seal and no tenant to write to. It is navigation, so it
+    // does not touch the session and cannot fail the way starting a job can.
+    if (browsing) { router.push(DEST.publicProcedures.route); return; }
+    if (!task?.available) return;
     setBusy(true);
     try {
       warrantUid();
@@ -147,6 +162,36 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
             </div>
           </article>
         ))}
+
+        {/* The last card, and the only one that is not a task.
+            
+            A real `<a href>` rather than a card that calls `router.push`, so it can be opened
+            in a new tab, copied, and read by a crawler — the published catalogue is the one
+            thing on this screen that is worth being found from outside. `role="option"` keeps
+            it inside the listbox it is visually part of; without it the rail would announce
+            five options and show six cards. */}
+        <Link
+          className={`card card--browse${browsing ? " card--active" : ""}`}
+          href={DEST.publicProcedures.route}
+          data-i={tasks.length}
+          role="option"
+          aria-selected={browsing}
+        >
+          <div className="card__art card__art--browse">
+            <span className="card__glyph" aria-hidden>→</span>
+          </div>
+          <div className="card__foot">
+            <h2 className="card__name">Everything else</h2>
+            <p className="card__note">
+              The tasks above are the three that ship with Warrant. Every other procedure here
+              was written by somebody and published on purpose — read the steps before you
+              trust one.
+            </p>
+            <div className="card__chips">
+              <span className="w-chip">Published by everyone</span>
+            </div>
+          </div>
+        </Link>
       </div>
 
       <div className="dots" role="tablist" aria-label="Choose a task">
@@ -160,6 +205,16 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
             onClick={() => goto(i)}
           />
         ))}
+        {/* The browse card is a page of this carousel like any other, so it gets a dot. One
+            fewer dot than there are cards is how an indicator starts lying about how far the
+            rail goes. */}
+        <button
+          className={`dot${browsing ? " dot--on" : ""}`}
+          aria-label={DEST.publicProcedures.label}
+          aria-selected={browsing}
+          role="tab"
+          onClick={() => goto(tasks.length)}
+        />
       </div>
 
       <DeviceStrip onReport={setReport} />
@@ -167,13 +222,23 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
       {children}
 
       <div className="cta">
-        <button className="w-btn w-btn--block cta__go" onClick={start} disabled={!task?.available || busy}>
-          {busy ? "Opening…" : task?.available ? `Start — ${task.name}` : "Not ready yet"}
+        <button
+          className="w-btn w-btn--block cta__go"
+          onClick={start}
+          disabled={busy || (!browsing && !task?.available)}
+        >
+          {busy
+            ? "Opening…"
+            : browsing
+              ? "See every published procedure"
+              : task?.available ? `Start — ${task.name}` : "Not ready yet"}
         </button>
         <p className="cta__meta">
-          {task?.available
-            ? `${task.steps} steps · about a minute · ends in a sealed record you can share`
-            : "Pick another task"}
+          {browsing
+            ? "Everything anybody has chosen to show the world · newest first"
+            : task?.available
+              ? `${task.steps} steps · about a minute · ends in a sealed record you can share`
+              : "Pick another task"}
         </p>
       </div>
     </div>

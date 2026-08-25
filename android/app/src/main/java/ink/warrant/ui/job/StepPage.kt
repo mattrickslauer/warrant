@@ -44,6 +44,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ink.warrant.contract.ProvenanceClass
 import ink.warrant.design.WarrantTheme
+import ink.warrant.ui.components.BusyRing
 import ink.warrant.ui.components.EvidenceChip
 
 /**
@@ -471,7 +472,14 @@ private fun PrimaryBar(action: PrimaryAction, onClick: () -> Unit, modifier: Mod
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        if (shutter) {
+        // Busy wins the slot the shutter ring would have had. The bar is where the thumb is
+        // already resting and where the eye already is, so it is the right place to say the
+        // device is still working — and a turning ring where the shutter was is unambiguous
+        // about which tap is still being honoured.
+        if (action.busy) {
+            BusyRing(color = content, diameter = 22.dp)
+            Spacer(Modifier.width(12.dp))
+        } else if (shutter) {
             // Drawn, not an icon. Two concentric rings is what a shutter is, and it is the
             // one control on this screen that has to read as a camera before it reads as text.
             Box(

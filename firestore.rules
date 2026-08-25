@@ -301,7 +301,61 @@ service cloud.firestore {
     // web/scripts/rules.test.mjs is what caught this, and is what keeps it caught.
     match /tenants/{t}/{collection}/{document=**} {
       allow read: if inTenant(t);
-      allow write: if inTenant(t) && !serverWritten(collection) && clientMayNotClaim();
+      // `create, update` rather than `write`, and the split is load-bearing rather than
+      // stylistic. `write` covers DELETE, and on a delete `request.resource` is null — so
+      // `clientMayNotClaim()` was dereferencing null, erroring, and refusing every delete in
+      // the instance. The protection was real but it was an accident, and an accident cannot
+      // be reasoned about: nothing here said whether a client was ever meant to delete
+      // anything, so nothing said which deletes were the dangerous ones.
+      //
+      // Naming create and update leaves delete UNGRANTED here and decided on purpose below.
+      // Everything not named there — every capture, field and outcome under a sealed job,
+      // every document in a collection nobody has thought about yet — stays undeletable by
+      // the same default that catches an unwritten rule.
+      allow create, update: if inTenant(t) && !serverWritten(collection) && clientMayNotClaim();
+    }
+
+    // --- The one destructive act a client gets ------------------------------------------
+    //
+    // ABANDONING A JOB THAT NEVER SEALED.
+    //
+    // A shop accumulates half-finished runs: a job started against the wrong machine, a demo,
+    // a phone that came out of a pocket mid-procedure. None became evidence, all of them sit
+    // in the records list forever, and the job that genuinely wants an answer ends up three
+    // screens down. Refusing every delete protects no record — it just makes the list useless,
+    // and a list nobody reads is how a waiting question goes unanswered for a week.
+    //
+    // So the line is drawn AT THE SEAL, which is where every other line in this file is drawn.
+    // Before it a job is an attempt and its owner may throw it away. After it the job is
+    // finished, and `resource.data.status == 'sealed'` refuses the delete outright — the same
+    // clause `clientMayNotClaim()` already uses to refuse rewriting one.
+    //
+    // Note what is NOT reachable even so: `records` is server-written and untouched by this,
+    // so the artifact a stranger was sent a link to survives regardless of what happens to the
+    // job it came from. Deleting an unsealed job destroys an attempt, never a record.
+    match /tenants/{t}/jobs/{jobId} {
+      allow delete: if inTenant(t)
+                    && resource != null
+                    && resource.data.get('status', '') != 'sealed';
+    }
+
+    // The job's own evidence, deletable on exactly the same condition — read off the PARENT,
+    // because a step outcome carries its own `status` ('performed', 'pending') and has no idea
+    // whether the job above it sealed. Without the `get()` a client could delete the outcomes
+    // out from under a sealed job while the header sat there refusing to be touched.
+    //
+    // This costs one document read per delete. That is the correct price for the question
+    // being asked, and a job is abandoned once.
+    //
+    // Order matters on the client and is documented where it is relied on: subcollections
+    // first, header last. Delete the header first and this `get()` finds nothing, every
+    // remaining delete is refused, and what is left is orphaned evidence with no row in any
+    // list to reach it from.
+    match /tenants/{t}/jobs/{jobId}/{sub}/{docId} {
+      allow delete: if inTenant(t)
+                    && !serverWritten(sub)
+                    && get(/databases/$(database)/documents/tenants/$(t)/jobs/$(jobId))
+                         .data.get('status', '') != 'sealed';
     }
 
     // Anything not named above is denied. Stated rather than implied, because a reader

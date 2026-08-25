@@ -15,7 +15,8 @@ import {
   createContext, useCallback, useContext, useEffect, useMemo, useRef, useState,
 } from "react";
 import {
-  DRIVERS, FakeDriver, TOOL_ID_PREFIX_FAKE, fakeSample, genericGattDriver, plausible,
+  AcceptanceBand, DRIVERS, FakeDriver, TOOL_ID_PREFIX_FAKE, fakeSample, genericGattDriver,
+  plausible,
   type Driver,
 } from "./drivers";
 
@@ -82,7 +83,10 @@ export interface InstrumentSession extends InstrumentState {
   /** The refusal, if the last attempt was refused. */
   readonly error: string | null;
   pair(): Promise<void>;
-  simulate(): void;
+  /** Attach a simulated instrument, reading for `field` if one is in front of the technician. */
+  simulate(field?: AcceptanceBand | null): void;
+  /** Point an already-simulated instrument at the measurement field now being asked for. */
+  aim(field?: AcceptanceBand | null): void;
   disconnect(): void;
 }
 
@@ -266,14 +270,17 @@ export function InstrumentProvider({ children }: { children: React.ReactNode }) 
    * everywhere it goes. A simulated reading must never be able to pass itself off as a
    * measurement — that would forge exactly the evidence this system exists to make checkable.
    */
-  const simulate = useCallback(() => {
+  const simulate = useCallback((field?: AcceptanceBand | null) => {
     disconnect();
     const toolId = `${TOOL_ID_PREFIX_FAKE}sim`;
+    const sample = fakeSample(field);
     setState({
       link: { kind: "simulated", toolId },
       latest: {
-        value: fakeSample(),
-        unit: FakeDriver.produces.unit,
+        value: sample.value,
+        // The unit the FIELD declared, not one the driver claims — it has no hardware and so no
+        // unit of its own. See `simulatedReadingFor`.
+        unit: sample.unit,
         toolId,
         plausible: true,
         driverId: FakeDriver.id,
@@ -281,6 +288,32 @@ export function InstrumentProvider({ children }: { children: React.ReactNode }) 
       },
     });
   }, [disconnect]);
+
+  /**
+   * Re-read, for the measurement field now in front of the technician.
+   *
+   * A real tool is held against one thing at a time and reports that thing. The simulator has to
+   * be told, because it has no thing — so a screen putting a measurement field up aims it first.
+   * Only the reading changes, and only when the link is already simulated: this must never
+   * disturb a live pairing.
+   */
+  const aim = useCallback((field?: AcceptanceBand | null) => {
+    setState((prev) => {
+      if (prev.link.kind !== "simulated") return prev;
+      const sample = fakeSample(field);
+      return {
+        ...prev,
+        latest: {
+          value: sample.value,
+          unit: sample.unit,
+          toolId: prev.link.toolId,
+          plausible: true,
+          driverId: FakeDriver.id,
+          at: new Date().toISOString(),
+        },
+      };
+    });
+  }, []);
 
   const value = useMemo<InstrumentSession>(() => {
     const { link } = state;
@@ -297,9 +330,10 @@ export function InstrumentProvider({ children }: { children: React.ReactNode }) 
       error: link.kind === "rejected" ? link.reason : null,
       pair,
       simulate,
+      aim,
       disconnect,
     };
-  }, [state, transports, pair, simulate, disconnect]);
+  }, [state, transports, pair, simulate, aim, disconnect]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

@@ -265,6 +265,26 @@ h1.hero {
 }
 .card--soon .card__art { filter: grayscale(.75) brightness(.6); }
 
+/* The last card: the way out to everything anybody has published. It is an `<a>`, so it needs
+   the link defaults undone — and it carries no photograph, because there is no one task to
+   photograph. A tonal panel and an arrow stand in, which also makes it read as a different
+   KIND of card at a glance rather than a sixth task with a missing image. */
+.card--browse { color: inherit; text-decoration: none; }
+.card__art--browse {
+  display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--surface-highest), var(--surface-high));
+  border-bottom: 1px solid var(--outline);
+}
+.card__glyph {
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 4rem); line-height: 1;
+  color: var(--action);
+  transition: transform var(--med) var(--ease);
+}
+.card--browse:hover .card__glyph { transform: translateX(6px); }
+@media (prefers-reduced-motion: reduce) {
+  .card--browse:hover .card__glyph { transform: none; }
+}
+
 .card__art { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--surface-highest); }
 @media (min-width: 700px) { .card__art { aspect-ratio: 1 / 1; } }
 /* A Material assist chip floated on the artwork. */
@@ -664,3 +684,68 @@ h1.hero {
  * so this only has to be a block.
  */
 .mt { display: block; }
+
+/* ============================================================ the procedure editor
+ *
+ * A form, and deliberately a dense one. The alternative — one question per screen, the way
+ * the Scoper interview works — is right when you are being ASKED what your procedure should
+ * say and wrong when you already know and want to change a torque figure. So everything a
+ * step declares is visible at once, and the page is scannable rather than conversational.
+ *
+ * Scoped to `.pe`, because inputs elsewhere in this product are still the interview's.
+ */
+.pe__head { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.pe__title {
+  font-family: var(--brand); font-size: var(--t-title-lg); font-weight: 500;
+  letter-spacing: -.01em; width: 100%; max-width: 28ch;
+  background: transparent; border: 0; border-bottom: 1px solid var(--outline);
+  padding: 4px 0;
+}
+.pe__title:focus { outline: none; border-bottom-color: var(--action); }
+
+.pe__step {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 16px; border-radius: var(--r-md); background: var(--surface);
+}
+/* A step the job does not need reads as one at a glance, rather than only in its dropdown. */
+.pe__step--optional { background: transparent; border: 1px dashed var(--outline); }
+.pe__stephead { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.pe__num { font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-3); flex: none; }
+.pe__tools { display: flex; gap: 6px; flex-wrap: wrap; }
+.pe__mini {
+  min-height: 32px; padding: 0 12px; border-radius: var(--r-xs);
+  background: transparent; border: 1px solid var(--outline); color: inherit;
+  font-size: var(--t-label); cursor: pointer;
+}
+.pe__mini:hover:not(:disabled) { border-color: var(--action); }
+.pe__mini:disabled { opacity: .4; cursor: default; }
+.pe__mini--danger:hover:not(:disabled) { border-color: var(--c-held); color: var(--c-held); }
+
+.pe__field {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 14px; border-radius: var(--r-sm);
+  border: 1px solid var(--outline); background: color-mix(in srgb, var(--on-surface) 3%, transparent);
+}
+.pe__field--optional { border-style: dashed; background: transparent; }
+
+.pe__grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .pe__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pe__cell { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pe__cell--wide { grid-column: 1 / -1; }
+.pe__label {
+  font-size: var(--t-label); letter-spacing: .04em; text-transform: uppercase;
+  color: var(--on-surface-3);
+}
+.pe__input, .pe__select, .pe__text {
+  width: 100%; padding: 8px 10px; background: transparent; color: inherit;
+  border: 1px solid var(--outline); border-radius: var(--r-xs);
+  font-size: var(--t-body); font-family: inherit;
+}
+.pe__select { min-height: 38px; }
+.pe__text { min-height: 68px; resize: vertical; line-height: 1.5; }
+.pe__input:focus, .pe__select:focus, .pe__text:focus { outline: none; border-color: var(--action); }
+.pe__hint { font-size: var(--t-label); color: var(--on-surface-3); max-width: 62ch; }
+
+/* Why publishing was refused. A list, because `faults()` returns every reason at once. */
+.pe__faults { display: flex; flex-direction: column; gap: 6px; margin: 0; padding-inline-start: 18px; }
+.pe__faults li { font-size: var(--t-body); }

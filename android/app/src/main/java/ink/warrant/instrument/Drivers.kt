@@ -1,5 +1,6 @@
 package ink.warrant.instrument
 
+import ink.warrant.contract.FieldDef
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.UUID
@@ -117,13 +118,30 @@ object FakeDriver : Driver {
 
     override val id = "fake@1"
     override val label = "Simulated instrument (no hardware)"
-    override val produces = Produces(unit = "Nm", min = 26.0, max = 30.0)
+
+    /**
+     * No unit, and a range wide enough to hold any field's.
+     *
+     * Every other driver's unit is a fact about its hardware, which is exactly why it is fixed
+     * here and never chosen by a person. This one has no hardware, so it has no unit of its
+     * own; it answers in whatever unit the step it is standing in for declared. Claiming "Nm"
+     * here — which it used to — meant a procedure asking for pad thickness on a pair of
+     * calipers got a torque reading back, and got it flagged implausible for good measure.
+     * See [simulatedReadingFor].
+     */
+    override val produces = Produces(unit = "", min = -1e9, max = 1e9)
     override val matches = Match()
 
     override fun characteristicFor(services: List<UUID>): CharacteristicRef? = null
 
     override fun decode(raw: ByteArray): Double? = null
 
-    /** A value inside the demo procedure's acceptance band, with a little jitter. */
-    fun sample(): Double = 28.4 + ((System.nanoTime() % 7) - 3) / 10.0
+    /**
+     * A reading for [field], in the unit that field declared and inside the band it accepts.
+     *
+     * Null means no measurement field is in front of us — the pairing screen wants something to
+     * show — and the answer is a bare unitless number rather than a confident wrong unit.
+     */
+    fun sample(field: FieldDef? = null): SimulatedReading =
+        simulatedReadingFor(field, System.nanoTime())
 }

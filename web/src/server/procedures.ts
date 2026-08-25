@@ -17,6 +17,7 @@ import "server-only";
 
 import { adminDb } from "@/auth/admin";
 import { getMember } from "@/auth/members";
+import { faults, NotCompilable } from "@/server/procedure-faults";
 import type { Procedure } from "@/generated/types";
 
 export class NotAllowed extends Error {}
@@ -47,6 +48,22 @@ export async function publishProcedure(
     if (!snap.exists) throw new NotAllowed(`No such procedure: ${procedureId}`);
 
     const procedure = snap.data() as Procedure;
+
+    // The gate, applied HERE rather than only on the Scoper's path.
+    //
+    // `compileProcedure` has always run this before calling us, so an interview could not
+    // freeze a draft with a `within` rule and no bound. The hand editor writes the same
+    // document by a different door, and until this check moved onto the publish path that door
+    // had no lock on it: a step with no title, a field with no acceptance rule, a choice
+    // offering only the answer that means the job went well — all freezable, all then
+    // unfixable, because a frozen version is immutable by design.
+    //
+    // Refused with its reasons rather than a status code, because the person is looking at the
+    // very form that can fix each one. Draft-time validity was never required and still is not;
+    // this is the one moment it becomes required, which is the moment it starts to matter.
+    const problems = faults(procedure);
+    if (problems.length) throw new NotCompilable(problems);
+
     const version = (procedure.current_version ?? procedure.version ?? 0) + 1;
     const frozenRef = tenantRef.collection("procedure_versions").doc(versionId(procedureId, version));
 

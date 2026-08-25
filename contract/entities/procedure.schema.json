@@ -87,6 +87,7 @@
       "type": "string",
       "enum": [
         "scoper",
+        "authored",
         "imported",
         "forked"
       ],

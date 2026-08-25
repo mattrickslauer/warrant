@@ -239,12 +239,16 @@ export class FixtureSource implements DataSource {
   }
 
   private maybeSeal(job: Job) {
-    if (job.status === "sealed" || !readyToSeal(job)) return;
+    // The fixture runs the SAME seal logic as the server, which is the whole point of
+    // data/seal.ts — so it owes `readyToSeal` the same procedure the server owes it, or an
+    // optional step would hold a fixture job open while sealing the live one.
+    const procedure = procedures.find((p) => p.id === job.procedure_id) ?? null;
+    if (job.status === "sealed" || !readyToSeal(job, procedure)) return;
     job.status = "sealed";
     job.sealed_at = now();
     const rec = sealJob(job, this.decisions.filter((d) => d.job_id === job.id), { public: job.tenant_id === "anon" });
     this.records.set(rec.id, rec);
-    if (!machineReleased(job)) this.emit(job.id, { kind: "held", reason: "a step was explained rather than performed" });
+    if (!machineReleased(job, procedure)) this.emit(job.id, { kind: "held", reason: "a step was explained rather than performed" });
     this.emit(job.id, { kind: "sealed", recordId: rec.id });
   }
 }

@@ -55,6 +55,13 @@ class FixtureSource(
     private val mutex = Mutex()
 
     private val jobs = mutableMapOf<String, Job>()
+    /**
+     * Kept for the same reason the live path keeps a `captures` subcollection: a field points
+     * at a capture, and the capture is what knows where the bytes are. Without this the
+     * fixture could store a photograph and then have no way back to it — which is exactly the
+     * gap that made records render "evidence stored, not reachable from here".
+     */
+    private val captures = mutableMapOf<String, Capture>()
     private val records = mutableMapOf<String, SealedRecord>()
     private val decisions = mutableListOf<Decision>()
     private val attempts = mutableMapOf<String, Int>()
@@ -86,6 +93,42 @@ class FixtureSource(
                 .filter { it.tenantId == tenantId || tenantId == "*" }
                 .sortedByDescending { it.startedAt }
         }
+
+    /**
+     * Gone from the map, and gone from the stream.
+     *
+     * Dropping the flow matters as much as dropping the job. The fixture's whole point is that
+     * verdicts arrive on a timer after the technician has walked away, so a deleted job leaves
+     * beats already scheduled against it. They all re-read `jobs[jobId]` and fall out when it
+     * is missing — but a subscriber still holding the old flow would sit there forever waiting
+     * for events that can no longer be produced, which on screen looks exactly like a job that
+     * is thinking rather than one that is gone.
+     */
+    override suspend fun deleteJob(id: String) {
+        mutex.withLock {
+            // Already gone is a success. See the note on DataSource.deleteJob.
+            val job = jobs[id] ?: return@withLock
+            require(job.status != JobStatus.SEALED) { "a sealed job cannot be deleted: $id" }
+            jobs.remove(id)
+            streams.remove(id)
+        }
+    }
+
+    /**
+     * The same two hops the live path makes — capture id to capture, capture to bytes — with
+     * the second landing on this device instead of in Cloud Storage. There is nothing to
+     * exchange for a signed URL here, only the check that the file is really there.
+     *
+     * A capture that has been cleaned up, or one this fixture never saw, is null, exactly as a
+     * missing object is on the live path. The screens cannot tell the difference, which is the
+     * test that the seam is in the right place.
+     */
+    override suspend fun mediaUrl(jobId: String, captureId: String, kind: FieldKind): String? {
+        // A kind with no object behind it. Same answer as live, for the same reason.
+        if (Media.extension(kind) == null) return null
+        val capture = mutex.withLock { captures[captureId] } ?: return null
+        return capture.mediaRef.takeIf { it.isNotBlank() && java.io.File(it).exists() }
+    }
 
     override suspend fun getRecord(id: String): SealedRecord? = mutex.withLock { records[id] }
 
@@ -152,6 +195,7 @@ class FixtureSource(
         )
 
         val job = mutex.withLock {
+            captures[cap.id] = cap
             val j = jobs[input.jobId] ?: throw IllegalArgumentException("no such job: ${input.jobId}")
             val field = Field(
                 id = id("fld"),
@@ -299,6 +343,65 @@ class FixtureSource(
                 "gemini-3.5-flash", 0.00062,
             )
             emit(input.jobId, JobEvent.StepStatusChanged(input.stepId, StepStatus.DEFERRED))
+            maybeSeal(input.jobId)
+        }
+
+        return outcome
+    }
+
+    /**
+     * An answer to a question an agent asked. Beside the question, never over it.
+     *
+     * The step is left PENDING on purpose. The person has spoken; the fleet has not ruled yet,
+     * and a screen that flipped the step to performed the moment somebody typed would be the
+     * tick in the box this product exists to replace. The Skeptic below is what settles it,
+     * and it is allowed to disagree.
+     */
+    override suspend fun respond(input: ResponseInput): StepOutcome {
+        val at = nowIso()
+        val outcome = mutex.withLock {
+            val j = jobs[input.jobId] ?: throw IllegalArgumentException("no such job: ${input.jobId}")
+            val o = j.steps.firstOrNull { it.stepId == input.stepId }
+                ?: throw IllegalArgumentException("no such step: ${input.stepId}")
+            val updated = o.copy(
+                escalationAnswer = input.answer,
+                escalationAnsweredBy = input.by,
+                escalationAnsweredAt = at,
+                // A stated answer is asserted, exactly like a stated reason: a named human
+                // said it, at this time, and nothing checked it.
+                provenanceClass = ProvenanceClass.ASSERTED,
+                // The fleet could not act, and now a person has spoken. Clearing this is what
+                // takes the step off the "stuck" list without claiming it passed.
+                holdReason = null,
+            )
+            jobs[j.id] = j.copy(steps = j.steps.map { if (it.stepId == input.stepId) updated else it })
+            updated
+        }
+
+        scope.launch {
+            beat(900)
+            decide(
+                input.jobId, input.stepId, Agent.SKEPTIC, "ANSWER_ACCEPTED",
+                "The answer names the thing I could not see in the evidence: " +
+                    "\"${input.answer.take(80)}\". Asserted, not measured — I am recording " +
+                    "whose word it is.",
+                "gemini-3.5-flash", 0.00051,
+            )
+
+            beat(1100)
+            mutex.withLock {
+                val j = jobs[input.jobId] ?: return@withLock
+                jobs[j.id] = j.copy(
+                    steps = j.steps.map {
+                        if (it.stepId == input.stepId) {
+                            it.copy(status = StepStatus.PERFORMED, adjudicatedAt = nowIso())
+                        } else {
+                            it
+                        }
+                    },
+                )
+            }
+            emit(input.jobId, JobEvent.StepStatusChanged(input.stepId, StepStatus.PERFORMED))
             maybeSeal(input.jobId)
         }
 

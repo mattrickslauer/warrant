@@ -131,16 +131,195 @@ export const TOOL_ID_PREFIX_FAKE = "fake-";
 export const FakeDriver: Driver = {
   id: "fake@1",
   label: "Simulated instrument (no hardware)",
-  produces: { unit: "Nm", min: 26, max: 30 },
+  /**
+   * No unit, and a range wide enough to hold any field's.
+   *
+   * Every other driver's unit is a fact about its hardware, which is why it is fixed here and
+   * never chosen by a person. This one has no hardware, so it has no unit of its own; it answers
+   * in whatever unit the step it is standing in for declared. Claiming "Nm" here — which it used
+   * to — meant a procedure asking for pad thickness on a pair of calipers got a torque reading
+   * back. See `simulatedReadingFor`, and its Kotlin twin in instrument/SimulatedReading.kt.
+   */
+  produces: { unit: "", min: -1e9, max: 1e9 },
   service: "",
   characteristic: "",
   namePrefixes: [],
   decode: () => null,
 };
 
-/** A value inside the demo procedure's acceptance band, with a little jitter. */
-export function fakeSample(): number {
-  return 28.4 + ((Date.now() % 7) - 3) / 10;
+/**
+ * What a simulated instrument reports, for the field it is standing in for.
+ *
+ * The simulator used to hold ONE number and hand it to whatever asked, so a caliper step got a
+ * torque figure in a unit it never mentioned and outside a band it could not satisfy. A real
+ * instrument's unit comes from the tool; the simulator has no tool, so it takes the unit from
+ * the only other place that legitimately knows one — what the step DECLARED it accepts. That is
+ * not cheating the check: the reading still carries the `fake-` tool id and still cannot seal as
+ * measured. It just looks like the measurement the step asked for.
+ */
+export interface SimulatedReading {
+  value: number;
+  unit: string;
+}
+
+/** The subset of a field definition the simulator reads. */
+export interface AcceptanceBand {
+  acceptance_min?: number | null;
+  acceptance_max?: number | null;
+  acceptance_unit?: string | null;
+}
+
+/**
+ * A unit's own idea of scale and resolution.
+ *
+ * `decimals` is the more important half: calipers read hundredths of a millimetre, a click
+ * wrench does not pretend to more than a tenth of a newton-metre, nobody reports 1834.27 rpm.
+ * `min`/`max` are reached only when a field declares a unit and no band, which the compiler
+ * forbids for `within` but not for the other rules.
+ *
+ * Matched case-sensitively FIRST, because `Nm` is torque and `nm` is a nanometre.
+ */
+interface Scale { min: number; max: number; decimals: number }
+
+const SCALES: Readonly<Record<string, Scale>> = {
+  // Length, as a workshop measures it.
+  "mm": { min: 1, max: 12, decimals: 2 },
+  "cm": { min: 1, max: 30, decimals: 1 },
+  "m": { min: 0.1, max: 5, decimals: 2 },
+  "µm": { min: 10, max: 500, decimals: 0 },
+  "um": { min: 10, max: 500, decimals: 0 },
+  "nm": { min: 50, max: 2000, decimals: 0 },
+  "in": { min: 0.05, max: 2, decimals: 3 },
+  "thou": { min: 1, max: 60, decimals: 0 },
+  // Torque.
+  "Nm": { min: 2, max: 40, decimals: 1 },
+  "N·m": { min: 2, max: 40, decimals: 1 },
+  "ft-lb": { min: 2, max: 30, decimals: 1 },
+  "ft·lb": { min: 2, max: 30, decimals: 1 },
+  "lb-ft": { min: 2, max: 30, decimals: 1 },
+  "in-lb": { min: 10, max: 200, decimals: 0 },
+  // Pressure.
+  "psi": { min: 20, max: 45, decimals: 1 },
+  "bar": { min: 1.5, max: 3, decimals: 2 },
+  "kPa": { min: 150, max: 320, decimals: 0 },
+  // Electrical.
+  "V": { min: 11, max: 14.5, decimals: 2 },
+  "mV": { min: 10, max: 900, decimals: 0 },
+  "A": { min: 0.1, max: 20, decimals: 2 },
+  "mA": { min: 1, max: 900, decimals: 0 },
+  "Ω": { min: 0.1, max: 100, decimals: 2 },
+  "ohm": { min: 0.1, max: 100, decimals: 2 },
+  "Wh": { min: 50, max: 600, decimals: 0 },
+  // Temperature, rotation, the rest.
+  "°C": { min: 15, max: 40, decimals: 1 },
+  "°F": { min: 60, max: 105, decimals: 1 },
+  "rpm": { min: 500, max: 4000, decimals: 0 },
+  "Hz": { min: 10, max: 500, decimals: 1 },
+  "dB": { min: 40, max: 95, decimals: 1 },
+  "%": { min: 20, max: 95, decimals: 0 },
+  "kg": { min: 1, max: 50, decimals: 2 },
+  "g": { min: 5, max: 900, decimals: 1 },
+  "L": { min: 0.5, max: 8, decimals: 2 },
+  "mL": { min: 50, max: 900, decimals: 0 },
+  "s": { min: 1, max: 60, decimals: 1 },
+  "ms": { min: 10, max: 900, decimals: 0 },
+};
+
+/** The last resort: no unit, no band, nothing declared. Deliberately unremarkable. */
+const UNITLESS: Scale = { min: 0, max: 100, decimals: 2 };
+
+/**
+ * The units whose case can safely be ignored, so "RPM" and "Bar" still find their scale.
+ *
+ * Word-like names only. An SI symbol's case is part of the symbol — `Nm` is torque, `nm` is a
+ * nanometre, `S` is siemens and `s` is seconds — and folding those together is the same class of
+ * mistake as answering a caliper in newton-metres.
+ */
+const WORD_UNITS: Readonly<Record<string, Scale>> = Object.fromEntries(
+  Object.entries(SCALES)
+    .filter(([k]) => k.length >= 3 && /^[a-z]+$/i.test(k))
+    .map(([k, v]) => [k.toLowerCase(), v]),
+);
+
+function scaleFor(unit: string): Scale | undefined {
+  return SCALES[unit] ?? WORD_UNITS[unit.toLowerCase()];
+}
+
+/** Resolution inferred from band width, for a unit the table has never heard of. */
+function decimalsForSpan(span: number): number {
+  if (span <= 0) return 2;
+  if (span < 1) return 3;
+  if (span < 10) return 2;
+  if (span < 100) return 1;
+  return 0;
+}
+
+/**
+ * The window a simulated value is drawn from, in the field's own terms.
+ *
+ * A two-sided band is used as declared. A one-sided one is opened out on the missing side, so
+ * "at least 3 mm" produces something comfortably over three rather than three point nothing — a
+ * demo where every reading sits on the limit is a demo that looks rigged.
+ */
+function windowFor(field: AcceptanceBand | null | undefined): [number, number, number] {
+  const unit = (field?.acceptance_unit ?? "").trim();
+  const scale = scaleFor(unit);
+  const fallback = scale ?? UNITLESS;
+  const span = Math.max(fallback.max - fallback.min, 1e-9);
+  const lo = Number.isFinite(field?.acceptance_min) ? (field!.acceptance_min as number) : null;
+  const hi = Number.isFinite(field?.acceptance_max) ? (field!.acceptance_max as number) : null;
+
+  let from: number;
+  let to: number;
+  if (lo !== null && hi !== null) {
+    // Equal bounds are a target, not a band. Honour it exactly — inventing slop around a stated
+    // target would be the lie, not hitting it.
+    [from, to] = [lo, hi];
+  } else if (lo !== null) {
+    [from, to] = [lo, lo + Math.max(span, Math.abs(lo) * 0.5)];
+  } else if (hi !== null) {
+    const opened = hi - Math.max(span, Math.abs(hi) * 0.5);
+    // Thickness, pressure and voltage do not go negative.
+    [from, to] = [hi > 0 ? Math.max(0, opened) : opened, hi];
+  } else {
+    [from, to] = [fallback.min, fallback.max];
+  }
+
+  return [from, to, scale?.decimals ?? decimalsForSpan(to - from)];
+}
+
+/** A stable pseudo-random fraction in [0, 1). Seeded, so a test can pin the arithmetic. */
+function fractionOf(seed: number): number {
+  let x = (seed ^ 0x9e3779b9) >>> 0;
+  x = Math.imul(x ^ (x >>> 16), 0x21f0aaad) >>> 0;
+  x = Math.imul(x ^ (x >>> 15), 0x735a2d97) >>> 0;
+  return ((x ^ (x >>> 15)) >>> 0) / 4294967296;
+}
+
+/**
+ * The reading a simulated instrument should produce for `field`.
+ *
+ * Lands in the middle 40% of the window, so a demo does not spend its life on the edge of the
+ * acceptance band and so consecutive reads move a little, the way a real tool settling does. The
+ * result is rounded to the unit's resolution, because a caliper that reports 3.4172 mm is not a
+ * caliper.
+ */
+export function simulatedReadingFor(
+  field: AcceptanceBand | null | undefined,
+  seed: number,
+): SimulatedReading {
+  const [lo, hi, decimals] = windowFor(field);
+  const value = lo + (hi - lo) * (0.3 + 0.4 * fractionOf(seed));
+  const factor = 10 ** decimals;
+  return {
+    value: Math.round(value * factor) / factor,
+    unit: (field?.acceptance_unit ?? "").trim(),
+  };
+}
+
+/** A reading for the field in front of the technician, in the unit that field declared. */
+export function fakeSample(field?: AcceptanceBand | null): SimulatedReading {
+  return simulatedReadingFor(field, Date.now());
 }
 
 /** The vetted drivers, in the order a device is matched against them. */
