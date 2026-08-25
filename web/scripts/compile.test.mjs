@@ -10,7 +10,7 @@
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
-import { faults, tierFor } from "../src/server/compile.ts";
+import { faults, prune, tierFor } from "../src/server/compile.ts";
 
 /** A draft with nothing wrong with it. Each test below breaks exactly one thing. */
 const good = () => ({
@@ -135,6 +135,141 @@ describe("faults", () => {
     d.steps[0].explanation = "";
     d.steps[0].fields[1].acceptance_unit = null;
     assert.equal(faults(d).length, 3);
+  });
+});
+
+describe("prune", () => {
+  // The failure this whole mechanism answers.
+  //
+  // `proc_segway_xyber_brake_pad_replacement` shipped a `choice` field with an empty
+  // `choices` array. On the step page that is a question with nothing to tap, and the bar —
+  // which is the only way forward on a step — had nothing to offer. The run stopped on that
+  // step, every step behind it became unreachable, and a refusal at publish would not have
+  // helped the technician standing there: the version was already frozen, and frozen versions
+  // do not change.
+  //
+  // So the unperformable part goes and the rest of the procedure runs, with a list of what
+  // went. These tests pin both halves — that it is removed, and that the removal is said.
+  const choiceField = (choices) => ({
+    key: "test_ride_performance", kind: "choice", prompt: "How do the brakes perform?",
+    source: "human", required_at_strictness: 0,
+    acceptance_rule: "matches", acceptance_target: "the shop's road test",
+    choices,
+    guidance: "Ride it at walking pace and stop hard once.",
+  });
+
+  test("a complete draft is returned untouched with nothing dropped", () => {
+    const { draft, dropped } = prune(good());
+    assert.deepEqual(dropped, []);
+    assert.equal(draft.steps[0].fields.length, 2);
+  });
+
+  test("a choice with no answers is removed rather than refused", () => {
+    const d = good();
+    d.steps[0].fields.push(choiceField([]));
+
+    const { draft, dropped } = prune(d);
+    assert.equal(draft.steps[0].fields.length, 2, "the two good fields survive");
+    assert.equal(dropped.length, 1);
+    assert.match(dropped[0], /test_ride_performance/);
+    assert.match(dropped[0], /could never have been satisfied/);
+
+    // And the point of the whole exercise: what is left publishes.
+    assert.deepEqual(faults(draft), []);
+  });
+
+  test("a choice with one answer goes the same way — it cannot record a failure", () => {
+    const d = good();
+    d.steps[0].fields.push(choiceField(["Fine"]));
+    const { draft, dropped } = prune(d);
+    assert.equal(draft.steps[0].fields.length, 2);
+    assert.match(dropped.join(" "), /cannot record the job going wrong/);
+  });
+
+  test("a choice that offers a real answer and a real failure is kept", () => {
+    const d = good();
+    d.steps[0].fields.push(choiceField(["Responsive and quiet", "Grabs", "Squeals"]));
+    const { draft, dropped } = prune(d);
+    assert.deepEqual(dropped, []);
+    assert.equal(draft.steps[0].fields.length, 3);
+  });
+
+  test("a numeric band on a photograph is removed — nothing can read a number off one", () => {
+    // Not hypothetical either: v3 of the same Segway procedure shipped `caliper_torque` as a
+    // photo judged `within` 7.5 Nm, and no run of it was ever able to satisfy the step.
+    const d = good();
+    d.steps[0].fields[0] = {
+      ...d.steps[0].fields[0],
+      acceptance_rule: "within", acceptance_min: 7, acceptance_max: 8, acceptance_unit: "Nm",
+    };
+    const { draft, dropped } = prune(d);
+    assert.equal(draft.steps[0].fields.length, 1);
+    assert.match(dropped.join(" "), /nothing can read a number off one/);
+  });
+
+  test("a backwards band is removed — no reading is above the floor and below the ceiling", () => {
+    const { draft, dropped } = prune(withField({ acceptance_min: 0.9, acceptance_max: 0.1 }));
+    assert.equal(draft.steps[0].fields.length, 1);
+    assert.match(dropped.join(" "), /backwards/);
+  });
+
+  test("a band of exactly one figure is removed — a real tool never lands on it", () => {
+    const { dropped } = prune(withField({ acceptance_min: 0.002, acceptance_max: 0.002 }));
+    assert.match(dropped.join(" "), /accepts exactly 0.002/);
+  });
+
+  test("a `within` with no figure at all is NOT pruned — it is still refused", () => {
+    // The mirror image, and the reason `prune` is narrow. A missing bound cannot FAIL, so
+    // everything sent to it files as a pass. Dropping it would silently delete the check;
+    // refusing it makes somebody type the figure the shop actually works to.
+    const d = withField({ acceptance_min: null, acceptance_max: null });
+    const { draft, dropped } = prune(d);
+    assert.deepEqual(dropped, []);
+    assert.match(faults(draft).join(" "), /nobody stated a figure/);
+  });
+
+  test("a step emptied by pruning goes too, and says so", () => {
+    const d = good();
+    d.steps.push({
+      title: "Test ride it",
+      explanation: "A pad that grabs is only found by riding it, and it is found in the bay or on the road.",
+      max_add_fields: 1,
+      fields: [choiceField([])],
+    });
+
+    const { draft, dropped } = prune(d);
+    assert.equal(draft.steps.length, 1, "the emptied step is gone");
+    assert.match(dropped.join(" "), /had nothing left to capture/);
+    assert.match(dropped.join(" "), /Test ride it/);
+    assert.deepEqual(faults(draft), []);
+  });
+
+  test("a step authored with no fields is left for `faults` to name", () => {
+    // Two different mistakes. Pruning emptied one of them; the other arrived empty, and
+    // quietly deleting it takes away the one message that tells the author what they did.
+    const d = good();
+    d.steps[0].fields = [];
+    const { draft, dropped } = prune(d);
+    assert.deepEqual(dropped, []);
+    assert.equal(draft.steps.length, 1);
+    assert.match(faults(draft).join(" "), /captures nothing/);
+  });
+
+  test("pruning does not rescue a procedure that was wrong in a fixable way", () => {
+    // The boundary. A missing explanation is a question for a person, not something to delete.
+    const d = good();
+    d.steps[0].explanation = "";
+    d.steps[0].fields.push(choiceField([]));
+    const { draft, dropped } = prune(d);
+    assert.equal(dropped.length, 1);
+    assert.match(faults(draft).join(" "), /does not say why it exists/);
+  });
+
+  test("the input draft is not mutated", () => {
+    const d = good();
+    d.steps[0].fields.push(choiceField([]));
+    prune(d);
+    assert.equal(d.steps[0].fields.length, 3, "the caller's draft is left alone");
   });
 });
 

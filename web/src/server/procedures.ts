@@ -17,7 +17,7 @@ import "server-only";
 
 import { adminDb } from "@/auth/admin";
 import { getMember } from "@/auth/members";
-import { faults, NotCompilable } from "@/server/procedure-faults";
+import { faults, prune, NotCompilable, type Draft } from "@/server/procedure-faults";
 import type { Procedure } from "@/generated/types";
 
 export class NotAllowed extends Error {}
@@ -33,7 +33,7 @@ export const versionId = (procedureId: string, version: number) => `${procedureI
  */
 export async function publishProcedure(
   tenantId: string, procedureId: string, byUid: string,
-): Promise<{ version: number }> {
+): Promise<{ version: number; dropped: string[] }> {
   const member = await getMember(tenantId, byUid);
   if (!member || member.disabled || !member.standing.may_publish_procedures) {
     throw new NotAllowed("You do not have standing to publish procedures.");
@@ -47,7 +47,24 @@ export async function publishProcedure(
     const snap = await tx.get(procRef);
     if (!snap.exists) throw new NotAllowed(`No such procedure: ${procedureId}`);
 
-    const procedure = snap.data() as Procedure;
+    const stored = snap.data() as Procedure;
+
+    // Pruned first, for the same reason and with the same consequences as on the Scoper's
+    // path — see `prune`. The hand editor is if anything the likelier source: somebody sets a
+    // field to `choice` and publishes before writing the answers, and what freezes is a step
+    // no technician can get past.
+    //
+    // The prune happens on the way INTO the frozen version and is also written back to the
+    // live draft below, so the editor shows what actually shipped rather than a field that
+    // silently stopped being part of the procedure. `index` is renumbered so the steps read
+    // 1..n on a page; the step IDS are left exactly alone, because a job pins step ids and
+    // renumbering those would orphan every outcome already written against them.
+    const { draft: cleaned, dropped } = prune(stored as unknown as Draft);
+    const procedure: Procedure = {
+      ...(cleaned as unknown as Procedure),
+      steps: (cleaned.steps ?? []).map((step, i) => ({ ...step, index: i + 1 })) as Procedure["steps"],
+      dropped,
+    };
 
     // The gate, applied HERE rather than only on the Scoper's path.
     //
@@ -92,9 +109,15 @@ export async function publishProcedure(
       published_by: byUid,
       updated_at: now,
       schema_version: 1,
+      // The live draft is brought into line with what was frozen. Leaving it alone would put
+      // the editor and the published version out of step on exactly the fields somebody needs
+      // to see to fix them: the author would keep editing a choice field that no longer
+      // exists in anything anyone runs.
+      steps: procedure.steps,
+      dropped,
     }, { merge: true });
 
-    return { version };
+    return { version, dropped };
   });
 }
 

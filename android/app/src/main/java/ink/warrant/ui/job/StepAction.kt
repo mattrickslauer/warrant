@@ -29,6 +29,19 @@ enum class ActionKind {
     /** Commit a name. */
     SIGN,
 
+    /**
+     * The procedure asked for something this screen can never produce, so the only honest
+     * move is exit two.
+     *
+     * Not a skip. It opens the same ⚠ sheet the bottom bar already offers and the technician
+     * states, in their words, what the procedure asked them for and why it could not be
+     * given. The difference from tapping the ⚠ themselves is that the BAR says it — because a
+     * grey bar over a question with no answers is indistinguishable from a broken app, and
+     * the person standing there stops rather than reaching for a control they have no reason
+     * to think is relevant.
+     */
+    DECLARE,
+
     /** Every required field is filled. Move on. */
     ADVANCE,
 
@@ -76,21 +89,84 @@ fun FieldDef.usesKeyboard(): Boolean =
     !usesCamera() && kind != FieldKind.MEASUREMENT && kind != FieldKind.CHOICE
 
 /**
+ * Why nobody could answer this field on any surface, in the shop's words — or null if they can.
+ *
+ * The distinction this draws is not "hard" versus "easy". A measurement with no instrument in
+ * the room is not in here: pairing a tool is a real move a real person can go and make, and
+ * the bar says so. What is in here is a field the PROCEDURE has made unperformable, where no
+ * amount of effort, tooling or goodwill produces a value — the question has no answers.
+ *
+ * That case was live and it wedged a job. `proc_segway_xyber_brake_pad_replacement` shipped a
+ * `choice` field whose `choices` array was empty. The page drew a sentence saying it could not
+ * be answered and left the bar grey; the bar is the only way forward on a step, so the run
+ * stopped there. Every step after it was unreachable, the job could never reach an outcome,
+ * and the technician's only remaining option was to close the app — which loses the four
+ * captures they had already made.
+ *
+ * A procedure is allowed to be wrong. It is NOT allowed to trap the person performing it, and
+ * those are separate promises: this names the fault so the bar can offer exit two, and the
+ * fault itself is then on the record for the fleet to rule on.
+ *
+ * The final branch is the one that has no known case, and that is why it is there. Every kind
+ * the page can draw is listed above it, so a kind added to the contract without a branch on
+ * the step page arrives here as a stated fault instead of as a dead button.
+ */
+fun FieldDef.unanswerable(): String? = when {
+    usesCamera() -> null
+    kind == FieldKind.MEASUREMENT -> null
+    kind == FieldKind.SIGNATURE -> null
+    kind == FieldKind.CHOICE ->
+        if (choices.isEmpty()) {
+            "This step accepts one of a fixed set of answers and the procedure lists none."
+        } else {
+            null
+        }
+    usesKeyboard() -> null
+    else -> "Nothing on this screen can produce a \"${kind.name.lowercase()}\" answer."
+}
+
+/**
+ * Whether this field is still holding the step open.
+ *
+ * Required and empty, in the ordinary case. The exception is the whole point of this function
+ * existing separately from [FieldDef.requiredAt]: a field the procedure made [unanswerable]
+ * stops holding the step once the technician has stated why — [reasoned].
+ *
+ * That is not the same as marking it satisfied, and the difference is the product. Nothing is
+ * filled, nothing is accepted, and no capture is invented. What changes is who the step is
+ * waiting on: before the reason it was waiting on a person who could never produce one, and
+ * after it, on the fleet, which will read the reason and rule. The client cannot write
+ * `performed`, `waived` or `impossible` — firestore.rules refuses all three — so releasing the
+ * hands here cannot release the seal, which is exactly the property that makes it safe.
+ */
+fun FieldDef.holdsStep(strictness: Int, reasoned: Boolean, filled: Boolean): Boolean {
+    if (!requiredAt(strictness)) return false
+    if (filled) return false
+    return !(reasoned && unanswerable() != null)
+}
+
+/**
  * The field the page is currently pointed at.
  *
  * Normally the first required field that is still empty — the technician is walked forward and
  * never has to choose. [selected] overrides it, which is how the field strip lets somebody go
  * back and retake something already filled. Null means nothing is outstanding, and the bar
  * becomes the way out of the step.
+ *
+ * [reasoned] is whether exit two has already been taken on this step. It is passed in rather
+ * than inferred because it is the one thing that can retire an unanswerable field: without it
+ * the page points at the same impossible question forever, and a technician who has already
+ * said why they cannot answer it is asked again on every return to the step.
  */
 fun activeFieldFor(
     fields: List<FieldDef>,
     strictness: Int,
     selected: String?,
+    reasoned: Boolean = false,
     isFilled: (String) -> Boolean,
 ): FieldDef? {
     selected?.let { key -> fields.firstOrNull { it.key == key }?.let { return it } }
-    return fields.firstOrNull { it.requiredAt(strictness) && !isFilled(it.key) }
+    return fields.firstOrNull { it.holdsStep(strictness, reasoned, isFilled(it.key)) }
 }
 
 /**
@@ -135,6 +211,16 @@ fun primaryActionFor(
         } else {
             PrimaryAction("Next step", ActionKind.ADVANCE, enabled = true)
         }
+    }
+
+    // Before anything else, including the lens.
+    //
+    // A field nobody can answer must never reach the branches below, because every one of
+    // them ends in a control that does nothing: a keyboard for a question with no answers, a
+    // "Record" that stays grey however long you look at it. The bar names the fault and opens
+    // the way out instead. See [FieldDef.unanswerable].
+    if (field.unanswerable() != null) {
+        return PrimaryAction("This can't be answered", ActionKind.DECLARE, enabled = true)
     }
 
     if (field.usesCamera()) {

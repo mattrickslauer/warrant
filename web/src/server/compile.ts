@@ -31,7 +31,7 @@ import "server-only";
 // outcome: the shop is still sitting there and can answer the question that was missed.
 
 import { adminDb } from "@/auth/admin";
-import { faults, tierFor, NotCompilable, type Draft } from "@/server/procedure-faults";
+import { faults, prune, tierFor, NotCompilable, type Draft } from "@/server/procedure-faults";
 import { publishProcedure } from "@/server/procedures";
 import type { FieldDef, Procedure, Step } from "@/generated/types";
 import type { TenantRef } from "@/auth/tenant";
@@ -41,8 +41,8 @@ import type { TenantRef } from "@/auth/tenant";
 // because every existing caller and test imports them from here, and moving a file is not a
 // reason to make somebody else edit their import.
 export {
-  NotCompilable, faults, tierFor,
-  type Draft, type DraftStep, type DraftField,
+  NotCompilable, faults, prune, tierFor,
+  type Draft, type DraftStep, type DraftField, type Pruned,
 } from "@/server/procedure-faults";
 
 /** Ids and ordering, assigned here so that two compiles of the same interview agree. */
@@ -88,12 +88,21 @@ const idForKey = (key: string) => `proc_${key.replace(/-/g, "_")}`;
  */
 export async function compileProcedure(
   tenant: TenantRef, byUid: string, draft: Draft,
-): Promise<{ procedureId: string; version: number; tier: string }> {
-  const problems = faults(draft);
+): Promise<{ procedureId: string; version: number; tier: string; dropped: string[] }> {
+  // Pruned BEFORE it is judged, and that order is the whole behaviour.
+  //
+  // What comes out of `prune` is a procedure with its unperformable parts removed rather than
+  // a refusal, so an interview that produced one malformed field still compiles into thirteen
+  // steps a technician can actually walk. `faults()` then judges what is left — and everything
+  // it still refuses is something a person at the editor can go and fix, which is the only
+  // kind of fault a refusal helps with. See `prune` for the job this cost us.
+  const { draft: pruned, dropped } = prune(draft);
+
+  const problems = faults(pruned);
   if (problems.length) throw new NotCompilable(problems);
 
   const db = adminDb();
-  const key = draft.key!.trim();
+  const key = pruned.key!.trim();
   const procedures = db.collection("tenants").doc(tenant.id).collection("procedures");
 
   // The id is derived from the key, so re-authoring the same job lands on the same document
@@ -102,8 +111,8 @@ export async function compileProcedure(
   const existing = await procedures.where("key", "==", key).limit(1).get();
   const procedureId = existing.empty ? idForKey(key) : existing.docs[0].id;
 
-  const steps = toSteps(draft);
-  const tier = tierFor(draft.steps ?? []);
+  const steps = toSteps(pruned);
+  const tier = tierFor(pruned.steps ?? []);
   const now = new Date().toISOString();
 
   const doc: Partial<Procedure> = {
@@ -111,12 +120,15 @@ export async function compileProcedure(
     id: procedureId,
     tenant_id: tenant.id,
     key,
-    title: draft.title!.trim(),
-    strictness: draft.strictness!,
+    title: pruned.title!.trim(),
+    strictness: pruned.strictness!,
     minimum_tier: tier,
-    disqualifiers: draft.disqualifiers ?? [],
-    releases: draft.releases ?? [],
+    disqualifiers: pruned.disqualifiers ?? [],
+    releases: pruned.releases ?? [],
     steps,
+    // Written even when empty, so that re-authoring a procedure that HAD drops clears them.
+    // A stale list is worse than no list: it accuses this version of the last one's holes.
+    dropped,
     status: "drafting",
     origin: "scoper",
     updated_at: now,
@@ -128,5 +140,5 @@ export async function compileProcedure(
   // Publishing is a separate, audited act with a standing check on it, and it stays that way
   // here. Compiling writes a draft nobody can run; this is the line the procedure crosses.
   const { version } = await publishProcedure(tenant.id, procedureId, byUid);
-  return { procedureId, version, tier };
+  return { procedureId, version, tier, dropped };
 }

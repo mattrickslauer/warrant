@@ -34,8 +34,12 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { version } = await publishProcedure(session.tenant.id, body.procedure_id, session.uid);
-    return NextResponse.json({ published: true, version });
+    const { version, dropped } =
+      await publishProcedure(session.tenant.id, body.procedure_id, session.uid);
+    // Returned on the way out even though the publish succeeded — see `prune`. A field that
+    // could never have been satisfied is removed rather than refused, and the author is
+    // entitled to know it is not in the version they just froze.
+    return NextResponse.json({ published: true, version, dropped });
   } catch (error) {
     // Every reason at once, not the first one. Somebody is looking at a form with seven steps
     // in it, and finding out about one fault per attempt is how you lose them — the same

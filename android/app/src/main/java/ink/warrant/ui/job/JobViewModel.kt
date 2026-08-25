@@ -62,6 +62,19 @@ class JobViewModel(
         val filled: Set<String> = emptySet(),
         val decisions: List<Decision> = emptyList(),
         val statuses: Map<String, StepStatus> = emptyMap(),
+        /**
+         * Steps on which exit two has been taken — the technician has stated, in their words,
+         * why they could not do it.
+         *
+         * Held here rather than read off [statuses] because the two are not the same fact and
+         * cannot be. `firestore.rules` refuses `performed`, `waived` and `impossible` from
+         * every client, so stating a reason does NOT change the step's status: the outcome
+         * keeps saying `pending` until the fleet rules on what was said, which is the whole
+         * point of that refusal. Meanwhile the person is still standing in the workshop with
+         * a bar to tap. This is what the screen knows that the status does not yet: a reason
+         * exists, so this step is no longer waiting on the hands.
+         */
+        val reasoned: Set<String> = emptySet(),
         val alerts: List<Alert> = emptyList(),
         val heldReason: String? = null,
         val sealedRecordId: String? = null,
@@ -111,9 +124,23 @@ class JobViewModel(
         /** A step is complete when every field required at this strictness has been filled. */
         fun stepComplete(stepId: String): Boolean {
             val strictness = job?.strictness ?: 0
-            return fieldsFor(stepId)
-                .filter { it.requiredAt(strictness) }
-                .all { isFilled(stepId, it.key) }
+            val reasoned = stepId in this.reasoned
+            return fieldsFor(stepId).none {
+                it.holdsStep(strictness, reasoned, isFilled(stepId, it.key))
+            }
+        }
+
+        /**
+         * Whether this step has reached an outcome that is not the technician's to advance.
+         *
+         * `deferred`, `waived` and `impossible` are the three ways a step ends without being
+         * performed, and every one of them is written by the fleet. A step carrying one is
+         * finished as far as the hands are concerned — listing it under "Still owed" sends
+         * somebody back to a step that has already been decided.
+         */
+        fun stepSettled(stepId: String): Boolean = when (statuses[stepId]) {
+            StepStatus.DEFERRED, StepStatus.WAIVED, StepStatus.IMPOSSIBLE -> true
+            else -> false
         }
 
         /**
@@ -122,8 +149,36 @@ class JobViewModel(
          * Not just the last one. A field the Inspector appended three steps back leaves that
          * step incomplete however far forward the technician has walked, and the handover has
          * to name it rather than let the job quietly fail to seal.
+         *
+         * A step that has been settled or reasoned is not owed. It was: the handover counted
+         * every incomplete step regardless of outcome, so a step declared impossible sat
+         * under "Still owed" forever and the job read OUTSTANDING for the rest of its life —
+         * which meant a procedure carrying one unperformable step could never reach a
+         * handover at all. Owed means "a person could still do this", and neither of these is.
          */
-        val outstanding: List<Step> get() = steps.filterNot { stepComplete(it.id) }
+        val outstanding: List<Step> get() =
+            steps.filterNot { stepComplete(it.id) || stepSettled(it.id) }
+
+        /**
+         * Every step that ended with a stated reason rather than with evidence.
+         *
+         * The counterweight to dropping these out of [outstanding]. A step that leaves the
+         * "Still owed" list has to appear somewhere else or it has been quietly disappeared,
+         * and a step nobody can see is a hole in the record that looks like nothing happened
+         * — which is the exact failure this product exists to abolish. So the handover names
+         * them under their own heading, and the technician can see what their job is actually
+         * going to seal with.
+         */
+        val explained: List<Step> get() = steps.filter { step ->
+            if (!stepSettled(step.id) && step.id !in reasoned) return@filter false
+            // Not everything that carried a reason ended on one. A technician can say why
+            // they cannot do a step, walk on, and then come back with the tool and do it
+            // properly — and a step that ended with the evidence it asked for is performed,
+            // whatever was said in the middle. Filing it under "Explained, not performed"
+            // would tell them their finished work does not count.
+            val strictness = job?.strictness ?: 0
+            fieldsFor(step.id).any { it.requiredAt(strictness) && !isFilled(step.id, it.key) }
+        }
     }
 
     private val _state = MutableStateFlow(UiState(fabricated = source.fabricated))
@@ -220,6 +275,15 @@ class JobViewModel(
                 addedFields = added,
                 filled = filled,
                 statuses = job.steps.associate { it.stepId to it.status },
+                // Rebuilt from the transcripts rather than started empty. A technician who
+                // said why they could not do step three, closed the app and came back must
+                // not be asked again — and without this they would be, because the status
+                // the server wrote is still `pending` and always will be until the fleet
+                // rules. The transcript is the durable record that a reason was given.
+                reasoned = job.steps
+                    .filter { !it.reasonTranscript.isNullOrBlank() }
+                    .map { it.stepId }
+                    .toSet(),
             )
             // Computed off `base` rather than off the job, because "still owes something" is
             // decided by the strictness rule in UiState and not by the step's status.
@@ -373,9 +437,23 @@ class JobViewModel(
         return true
     }
 
-    /** Exit two. There is no skip. */
+    /**
+     * Exit two. There is no skip.
+     *
+     * The reason is recorded on this device the moment it is given, BEFORE the write is
+     * confirmed, and it is not rolled back if the write fails. That is deliberate and it is
+     * the fix for a job that could not be finished: the alternative leaves the technician
+     * looking at the same unanswerable question with a grey bar, having already explained
+     * themselves, because a network they cannot see did not come back. A failed write surfaces
+     * as `error` and the transcript is still in hand; what must not happen is that the person
+     * is held on the step by it.
+     *
+     * The status is untouched, here and on the server. Saying why is not settling — see
+     * [UiState.reasoned].
+     */
     fun declareBlocked(stepId: String, kind: ReasonKind, transcript: String, audio: File?) {
         val jobId = _state.value.job?.id ?: return
+        _state.value = _state.value.copy(reasoned = _state.value.reasoned + stepId)
         viewModelScope.launch {
             runCatching {
                 source.declareBlocked(
@@ -455,6 +533,9 @@ fun newJobState(
     filled = emptySet(),
     decisions = emptyList(),
     statuses = job.steps.associate { it.stepId to it.status },
+    // Named for the same reason as the three below: a reason belongs to the job it was given
+    // on. Carried forward, run two would open with run one's excuses already accepted.
+    reasoned = emptySet(),
     alerts = emptyList(),
     // The three that blocked the second run. A hold and a record belong to the job that
     // earned them; carrying them forward accuses this job of the last one's outcome.

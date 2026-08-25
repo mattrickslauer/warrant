@@ -48,4 +48,26 @@ class HandoverTest {
         assertEquals("Handed to the fleet", head)
         assertTrue("waiting must not claim a seal: $why", !why.contains("Sealed"))
     }
+
+    @Test
+    fun `waiting says so when steps ended with a reason instead of evidence`() {
+        // The sentence used to read "Everything this procedure asked for is captured" on every
+        // waiting job, which on a job carrying an unperformable step was simply false — and
+        // false in the reassuring direction, which is the one that matters. The technician
+        // walks off believing it will seal clean and it is going to seal deficient.
+        val (head, why) = handoverHeadline(HandoverState.WAITING, outstanding = 0, explained = 1)
+        assertEquals("Handed to the fleet", head)
+        assertTrue("must not claim everything was captured: $why", !why.contains("Everything"))
+        assertTrue("must say how many: $why", why.contains("1 step "))
+        assertTrue("must not promise a clean seal: $why", why.contains("deficient"))
+
+        val (_, plural) = handoverHeadline(HandoverState.WAITING, outstanding = 0, explained = 3)
+        assertTrue("plural must be pluralised: $plural", plural.contains("3 steps "))
+    }
+
+    @Test
+    fun `a job with nothing explained keeps the sentence it always had`() {
+        val (_, why) = handoverHeadline(HandoverState.WAITING, outstanding = 0, explained = 0)
+        assertTrue("the ordinary case is unchanged: $why", why.startsWith("Everything"))
+    }
 }

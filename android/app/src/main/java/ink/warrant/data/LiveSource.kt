@@ -907,6 +907,10 @@ class LiveSource(
             strictness = (getLong("strictness") ?: 1L).toInt(),
             minimumTier = tierOf(getString("minimum_tier")),
             steps = raw.map(::stepOf),
+            // What this version went out without. Read rather than dropped on the floor: the
+            // technician is entitled to know a check was removed from the procedure they are
+            // about to run, and a list nobody parses is the same as no list.
+            dropped = (get("dropped") as? List<*>).orEmpty().mapNotNull { it as? String },
             // Read rather than left to default. `Your procedures` decides what it may offer
             // from exactly these three, and a draft that read as published would offer to
             // show the world a version nobody had frozen.
@@ -944,38 +948,6 @@ class LiveSource(
         )
     }
 
-    private fun fieldDefOf(m: Map<*, *>) = FieldDef(
-        key = m["key"]?.toString().orEmpty(),
-        kind = kindOf(m["kind"]?.toString()),
-        prompt = m["prompt"]?.toString().orEmpty(),
-        source = when (m["source"]?.toString()) {
-            "instrument" -> FieldSource.INSTRUMENT
-            "human" -> FieldSource.HUMAN
-            else -> FieldSource.CAMERA
-        },
-        requiredAtStrictness = (m["required_at_strictness"] as? Number)?.toInt() ?: 0,
-        acceptanceRule = when (m["acceptance_rule"]?.toString()) {
-            "within" -> AcceptanceRule.WITHIN
-            "matches" -> AcceptanceRule.MATCHES
-            "consistent_with" -> AcceptanceRule.CONSISTENT_WITH
-            "per_spec" -> AcceptanceRule.PER_SPEC
-            "signed_by" -> AcceptanceRule.SIGNED_BY
-            else -> AcceptanceRule.MUST_SHOW
-        },
-        acceptanceDescription = m["acceptance_description"]?.toString(),
-        guidance = m["guidance"]?.toString().orEmpty(),
-    )
-
-    private fun kindOf(raw: String?) = when (raw) {
-        "measurement" -> FieldKind.MEASUREMENT
-        "video" -> FieldKind.VIDEO
-        "scan" -> FieldKind.SCAN
-        "choice" -> FieldKind.CHOICE
-        "text" -> FieldKind.TEXT
-        "signature" -> FieldKind.SIGNATURE
-        "location" -> FieldKind.LOCATION
-        else -> FieldKind.PHOTO
-    }
 
     private fun statusOf(raw: String?) = when (raw) {
         "performed" -> StepStatus.PERFORMED
@@ -1001,4 +973,79 @@ class LiveSource(
         "wright" -> Agent.WRIGHT
         else -> null
     }
+}
+
+// ------------------------------------------------------------------ wire readers
+//
+// Top level and `internal` rather than private members of [LiveSource], so that a unit test
+// can hand them a map and check what comes back. That is not a tidiness preference: the bug
+// these carry a regression test for — a CHOICE field arriving with its answers stripped —
+// was invisible from every other seam in the app, because the procedure was correct, the
+// step page was correct, and the only wrong thing in the chain was one missing key in a
+// mapper that no test could reach without a Firebase connection.
+
+/**
+ * A declared field, off the wire.
+ *
+ * Five keys used to be missing from here, and every one of them was a value the procedure
+ * had actually stated and this client threw on the floor. They are grouped and named
+ * below rather than left as a flat list, because the failure they caused was not a typo:
+ * each omission turned a procedure that said something into an app that said nothing.
+ *
+ *  * **`choices`** was the expensive one. Without it every CHOICE field arrives with an
+ *    empty answer list whatever the procedure declared, and the step page — correctly —
+ *    says "the procedure lists none" and cannot offer an answer. So a Segway brake service
+ *    whose published version carries "Responsive and quiet / Scraping or noisy /
+ *    Unresponsive or soft" presented, on the handset, as a question with no answers. The
+ *    procedure was never wrong. The reader was.
+ *
+ *  * **`acceptance_min`, `acceptance_max`, `acceptance_unit`** are the band. `Accepts…`
+ *    under a measurement reads off exactly these, so without them the technician is asked
+ *    for a reading and told nothing about what would be a good one — while the Inspector
+ *    judges it against the band anyway. Being marked down against a figure nobody showed
+ *    you is the specific unfairness `guidance` exists to prevent.
+ *
+ *  * **`acceptance_target`** is what a `matches` or `per_spec` field resolves against.
+ *
+ * The band is read through `Number`, never `as? Double`. Firestore hands back a `Long`
+ * for a whole number and a `Double` otherwise, so a bound of 7 and a bound of 7.5 arrive
+ * as different types — and `as? Double` would silently drop every round figure, which is
+ * a band that quietly loses one of its two ends.
+ */
+internal fun fieldDefOf(m: Map<*, *>) = FieldDef(
+    key = m["key"]?.toString().orEmpty(),
+    kind = kindOf(m["kind"]?.toString()),
+    prompt = m["prompt"]?.toString().orEmpty(),
+    source = when (m["source"]?.toString()) {
+        "instrument" -> FieldSource.INSTRUMENT
+        "human" -> FieldSource.HUMAN
+        else -> FieldSource.CAMERA
+    },
+    requiredAtStrictness = (m["required_at_strictness"] as? Number)?.toInt() ?: 0,
+    choices = (m["choices"] as? List<*>).orEmpty().mapNotNull { it?.toString() },
+    acceptanceRule = when (m["acceptance_rule"]?.toString()) {
+        "within" -> AcceptanceRule.WITHIN
+        "matches" -> AcceptanceRule.MATCHES
+        "consistent_with" -> AcceptanceRule.CONSISTENT_WITH
+        "per_spec" -> AcceptanceRule.PER_SPEC
+        "signed_by" -> AcceptanceRule.SIGNED_BY
+        else -> AcceptanceRule.MUST_SHOW
+    },
+    acceptanceMin = (m["acceptance_min"] as? Number)?.toDouble(),
+    acceptanceMax = (m["acceptance_max"] as? Number)?.toDouble(),
+    acceptanceUnit = m["acceptance_unit"]?.toString(),
+    acceptanceTarget = m["acceptance_target"]?.toString(),
+    acceptanceDescription = m["acceptance_description"]?.toString(),
+    guidance = m["guidance"]?.toString().orEmpty(),
+)
+
+internal fun kindOf(raw: String?) = when (raw) {
+    "measurement" -> FieldKind.MEASUREMENT
+    "video" -> FieldKind.VIDEO
+    "scan" -> FieldKind.SCAN
+    "choice" -> FieldKind.CHOICE
+    "text" -> FieldKind.TEXT
+    "signature" -> FieldKind.SIGNATURE
+    "location" -> FieldKind.LOCATION
+    else -> FieldKind.PHOTO
 }

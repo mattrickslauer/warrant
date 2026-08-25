@@ -80,6 +80,109 @@ export function tierFor(steps: DraftStep[]): "open" | "attested" | "instrumented
 }
 
 /**
+ * Why nobody could ever satisfy this field, or null if somebody could.
+ *
+ * The line this draws is narrow on purpose: not "wrong", not "sloppy", but *unperformable* —
+ * there is no capture, no reading and no answer that makes it pass, so a technician handed it
+ * is being handed a box that cannot be ticked. Every case below was already refused by
+ * `faults()`; what changes is what happens next, and see [prune] for why that matters.
+ *
+ * Deliberately NOT in here: a `within` rule with no bound. That one is the mirror image — it
+ * cannot FAIL, so everything sent to it files as a pass — and it is fixed by somebody typing
+ * the figure the shop works to. Refusing it keeps the pressure where it belongs. Dropping it
+ * would silently delete the check.
+ */
+function unperformable(f: DraftField, where: string): string | null {
+  // A choice offering one answer, or none, cannot record the job going wrong — and with none
+  // there is nothing on the screen to tap at all.
+  if (f.kind === "choice" && (f.choices ?? []).length < 2)
+    return `${where} offers fewer than two answers, so it cannot record the job going wrong.`;
+
+  if (f.acceptance_rule === "within") {
+    // A band belongs on a field that can produce a number, and only an instrument does.
+    if (f.kind !== "measurement")
+      return `${where} is judged "within" a numeric band but is a "${f.kind ?? "?"}" field, and nothing can read a number off one.`;
+
+    const lo = f.acceptance_min;
+    const hi = f.acceptance_max;
+    if (typeof lo === "number" && typeof hi === "number") {
+      if (lo > hi)
+        return `${where} accepts ${lo} to ${hi}, which is backwards — no reading is both above the floor and below the ceiling.`;
+      if (lo === hi)
+        return `${where} accepts exactly ${lo} and nothing else, and a real tool almost never lands on a figure to the decimal.`;
+    }
+  }
+
+  return null;
+}
+
+/** A draft with its unperformable parts taken out, and the list of what went. */
+export interface Pruned {
+  draft: Draft;
+  dropped: string[];
+}
+
+/**
+ * Take out what cannot be performed, rather than refusing the whole procedure over it.
+ *
+ * ## Why this exists
+ *
+ * `faults()` used to be the only answer to an unperformable field, and its answer was to
+ * refuse the publish. That is right when somebody is sitting at the editor and can fix the
+ * thing — and it is the wrong shape entirely for the failure it actually produced.
+ *
+ * `proc_segway_xyber_brake_pad_replacement` reached a technician carrying a `choice` field
+ * with an empty `choices` array. The step could not be answered, the step page's bar had
+ * nothing to offer, and every step after it was unreachable — a fourteen-step brake service
+ * stopped dead on step six, on a machine up on a stand, over a question the procedure had
+ * forgotten to write the answers to. One malformed field took the whole job with it.
+ *
+ * Refusing the publish would not have helped that technician either. The version was already
+ * frozen and frozen versions are immutable by design; the refusal only arrives for whoever
+ * tries to publish the NEXT one, which is a different person on a different day. Meanwhile
+ * thirteen good steps sit behind a bad one.
+ *
+ * So: the bad field goes, and the rest of the procedure runs. A step left with nothing to
+ * capture goes with it, because a step that captures nothing proves nothing.
+ *
+ * ## Why this is not a quiet deletion
+ *
+ * Every drop comes back in [Pruned.dropped] and is written onto the procedure, so the record
+ * a stranger reads years from now says which checks this version was published without and
+ * why. A dropped torque check is a real loss of assurance; it is not made better by hiding,
+ * and it is not made worse by a procedure that at least runs. The shop can see the list and
+ * author the check properly in the next version.
+ */
+export function prune(draft: Draft): Pruned {
+  const dropped: string[] = [];
+
+  const steps = (draft.steps ?? []).flatMap((step, i) => {
+    const where = `Step ${i + 1}`;
+    const before = step.fields ?? [];
+
+    const fields = before.filter((f) => {
+      const why = unperformable(f, `${where}, "${f.key ?? "unnamed field"}"`);
+      if (why) dropped.push(`${why} Dropped — it could never have been satisfied.`);
+      return !why;
+    });
+
+    // A step is only dropped when pruning is what emptied it. A step authored with no fields
+    // at all is a different mistake, and `faults()` still refuses it by name — quietly
+    // deleting it here would take the one message that tells the author what they did.
+    if (fields.length === 0 && before.length > 0) {
+      dropped.push(
+        `${where} ("${(step.title ?? "").trim() || "untitled"}") had nothing left to capture once those were dropped, so the step went too.`,
+      );
+      return [];
+    }
+
+    return [{ ...step, fields }];
+  });
+
+  return { draft: { ...draft, steps }, dropped };
+}
+
+/**
  * Everything wrong with this draft, in the shop's terms rather than the schema's.
  *
  * Returned as a list rather than thrown one at a time: somebody is standing at a screen at the

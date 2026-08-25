@@ -326,6 +326,20 @@ data class Procedure(
     val disqualifiers: List<String> = emptyList(),
     val releases: List<String> = emptyList(),
     val steps: List<Step>,
+    /**
+     * What this version was published WITHOUT, and why, in the shop's words.
+     *
+     * A field nobody could ever have satisfied — a choice offering no answers, a numeric band
+     * on a photograph — is REMOVED at publish rather than refused. Refusing freezes nothing
+     * and helps nobody standing in a workshop: the bad version is already out, and a field
+     * that cannot be answered stops the technician dead on the step that carries it, taking
+     * every step behind it with it.
+     *
+     * The removal is never silent, and this is why. A dropped torque check is a real loss of
+     * assurance, and the stranger reading this record in five years is entitled to know the
+     * procedure went out without it.
+     */
+    val dropped: List<String> = emptyList(),
     /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
     @SerialName("schema_version") val schemaVersion: Int = 1,
     /** A procedure mid-Scoper-interview is drafting. Compiling publishes v1. */
@@ -440,6 +454,15 @@ data class Job(
     val tier: Tier,
     @SerialName("started_at") val startedAt: String,
     @SerialName("sealed_at") val sealedAt: String? = null,
+    /**
+     * The record this job sealed into, tenant-scoped. Null until it seals.
+     *
+     * Written by the Seal and by nothing else. It is on the header because that is where a
+     * client watching the job learns that its record exists — the alternative is every
+     * surface guessing that the record id equals the job id, which is true today and is not
+     * the clients' to know.
+     */
+    @SerialName("record_id") val recordId: String? = null,
     /** 1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place. */
     @SerialName("schema_version") val schemaVersion: Int = 1,
     @SerialName("finalized_at") val finalizedAt: String? = null,

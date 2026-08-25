@@ -182,6 +182,8 @@ export interface Procedure {
   disqualifiers?: string[];
   releases?: string[];
   steps: Step[];
+  /** What this version was published WITHOUT, and why, in the shop's words. A field that could never have been satisfied — a choice offering no answers, a numeric band on a photograph — is removed at publish rather than refused, because refusing freezes nothing while a malformed field left in place stops the technician dead on the step that carries it. The removal is never silent: this is the list, it is written on every publish including when it is empty, and a stranger reading the record years later can see which checks this procedure went out missing. */
+  dropped?: string[];
   created_at: string;
   /** A procedure mid-Scoper-interview is drafting. Compiling publishes v1. */
   status?: "drafting" | "published" | "archived";

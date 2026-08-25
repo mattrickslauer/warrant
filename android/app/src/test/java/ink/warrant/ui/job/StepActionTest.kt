@@ -6,6 +6,7 @@ import ink.warrant.contract.FieldKind
 import ink.warrant.contract.FieldSource
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -235,6 +236,17 @@ class StepActionTest {
 
     private val choice = field(
         "test_ride_performance", FieldKind.CHOICE, FieldSource.HUMAN, AcceptanceRule.MATCHES,
+    ).copy(choices = listOf("Responsive and quiet", "Grabs", "Squeals under load"))
+
+    /**
+     * The same field as it actually shipped: a fixed set of answers, and the set is empty.
+     *
+     * Not a hypothetical. `proc_segway_xyber_brake_pad_replacement` carried exactly this, and
+     * what it produced was not a bad answer but no answer at all — the run stopped on the step
+     * and every step behind it became unreachable.
+     */
+    private val choiceWithNoAnswers = field(
+        "test_ride_performance", FieldKind.CHOICE, FieldSource.HUMAN, AcceptanceRule.MATCHES,
     )
 
     @Test
@@ -302,5 +314,124 @@ class StepActionTest {
         assertTrue(ready.enabled)
         assertEquals(ActionKind.RECORD, ready.kind)
         assertEquals("Record", ready.label)
+    }
+
+    // ------------------------------------------------- the question that has no answers
+
+    @Test
+    fun `a choice with answers is answerable`() {
+        assertNull(choice.unanswerable())
+    }
+
+    @Test
+    fun `a choice with no answers names the fault`() {
+        val why = choiceWithNoAnswers.unanswerable()
+        assertNotNull("an empty choice must be reported as unanswerable", why)
+        assertTrue("the sentence must say what is wrong: $why", why!!.contains("lists none"))
+    }
+
+    @Test
+    fun `effort is not the same as impossibility`() {
+        // The distinction the whole mechanism rests on. A measurement with no instrument in
+        // the room is HARD — the bar says "Pair an instrument" and somebody goes and does it.
+        // Routing it through exit two instead would hand the technician an excuse for every
+        // torque they could not be bothered to take, which is the opposite of the point.
+        assertNull(torque.unanswerable())
+        assertEquals(ActionKind.PAIR, action(torque, connected = false).kind)
+        assertNull(photo.unanswerable())
+        assertNull(signature.unanswerable())
+        assertNull(note.unanswerable())
+    }
+
+    @Test
+    fun `an unanswerable field gets a live bar, never a dead one`() {
+        // The bug, stated as an assertion. Before this the bar fell through to RECORD, which
+        // is enabled only when something has been typed — and nothing can be typed at a
+        // question with no answers and no keyboard. So it was permanently grey, and the bar
+        // is the only way forward on a step: the job could not be finished or abandoned, only
+        // force-quit, which loses every capture already made.
+        val a = action(choiceWithNoAnswers, inputReady = false)
+        assertEquals(ActionKind.DECLARE, a.kind)
+        assertTrue("the way out must always be tappable", a.enabled)
+        assertEquals("This can't be answered", a.label)
+    }
+
+    @Test
+    fun `the way out is offered on the last step too`() {
+        // Nothing about being last makes a question answerable, and a job that cannot reach
+        // its own handover is stuck just as badly as one that cannot reach step seven.
+        assertEquals(ActionKind.DECLARE, action(choiceWithNoAnswers, lastStep = true).kind)
+    }
+
+    @Test
+    fun `an unanswerable field holds the step until a reason is given`() {
+        assertTrue(
+            "before a reason it is still owed",
+            choiceWithNoAnswers.holdsStep(strictness = 1, reasoned = false, filled = false),
+        )
+        assertFalse(
+            "after a reason it is the fleet's problem, not the technician's",
+            choiceWithNoAnswers.holdsStep(strictness = 1, reasoned = true, filled = false),
+        )
+    }
+
+    @Test
+    fun `a reason does not release a field that could have been answered`() {
+        // The refusal that keeps exit two from becoming a skip. Saying "I could not do it"
+        // retires a question nobody could answer; it does not retire the photograph you were
+        // asked for and did not take. That one is still owed, and the page still points at it.
+        assertTrue(photo.holdsStep(strictness = 1, reasoned = true, filled = false))
+        assertTrue(torque.holdsStep(strictness = 1, reasoned = true, filled = false))
+    }
+
+    @Test
+    fun `an optional field never holds the step whatever else is true`() {
+        val optional = field("nice_to_have", FieldKind.TEXT, FieldSource.HUMAN, requiredAt = 4)
+        assertFalse(optional.holdsStep(strictness = 3, reasoned = false, filled = false))
+    }
+
+    @Test
+    fun `the page walks past an unanswerable field once it has been explained`() {
+        val fields = listOf(choiceWithNoAnswers, photo)
+
+        // Before: the page points at the question, so the technician can see what is being
+        // asked and say why they cannot answer it.
+        assertEquals(
+            "test_ride_performance",
+            activeFieldFor(fields, strictness = 1, selected = null, reasoned = false) { false }?.key,
+        )
+
+        // After: it moves on to the work that can still be done. This is the difference
+        // between a run that continues and a run that ends here.
+        assertEquals(
+            "front_plate",
+            activeFieldFor(fields, strictness = 1, selected = null, reasoned = true) { false }?.key,
+        )
+    }
+
+    @Test
+    fun `a step whose only field was unanswerable becomes the way forward`() {
+        // Nothing left to point at, so the bar becomes ADVANCE and the job carries on. Note
+        // what has NOT happened: no capture was invented, no field was marked filled, and the
+        // step's status is still whatever the fleet last said it was.
+        val fields = listOf(choiceWithNoAnswers)
+        val active =
+            activeFieldFor(fields, strictness = 1, selected = null, reasoned = true) { false }
+        assertNull(active)
+        assertEquals(ActionKind.ADVANCE, action(active).kind)
+    }
+
+    @Test
+    fun `the field strip can still point back at an explained question`() {
+        // Selection wins over the walk-forward rule, as it does everywhere else. Somebody who
+        // taps the pip wants to look at the question again — perhaps to say something better
+        // about why it could not be answered — and must not be bounced off it.
+        val fields = listOf(choiceWithNoAnswers, photo)
+        assertEquals(
+            "test_ride_performance",
+            activeFieldFor(
+                fields, strictness = 1, selected = "test_ride_performance", reasoned = true,
+            ) { false }?.key,
+        )
     }
 }

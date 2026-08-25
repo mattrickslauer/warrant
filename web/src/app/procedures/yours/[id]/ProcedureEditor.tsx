@@ -77,6 +77,16 @@ export function ProcedureEditor({ procedureId }: { procedureId: string }) {
   const [refused, setRefused] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [faults, setFaults] = useState<string[]>([]);
+  /**
+   * What the publish REMOVED, on a publish that succeeded.
+   *
+   * Separate from [faults] because it is the opposite kind of news. A fault is a refusal —
+   * nothing was published and the author has to go and fix it. This is a list of things that
+   * could never have been performed and so are not in the version that just froze: the
+   * procedure is live, and it is live without them. Merging the two would either hide a
+   * removal behind "Published" or make a successful publish read as a failure.
+   */
+  const [dropped, setDropped] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<string | null>(null);
 
@@ -139,6 +149,7 @@ export function ProcedureEditor({ procedureId }: { procedureId: string }) {
     setBusy(true);
     setError(null);
     setFaults([]);
+    setDropped([]);
     setNote(null);
     try {
       const res = await fetch("/api/procedures/publish", {
@@ -158,6 +169,7 @@ export function ProcedureEditor({ procedureId }: { procedureId: string }) {
       // does not already hold — the version number was minted server-side.
       const fresh = await src.getProcedure(scoped(tenantId, procedureId));
       setProcedure(fresh);
+      if (Array.isArray(json.dropped)) setDropped(json.dropped as string[]);
       setNote(`Frozen as v${json.version}. Jobs already running are untouched — they are pinned to the version they started under.`);
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
@@ -249,6 +261,25 @@ export function ProcedureEditor({ procedureId }: { procedureId: string }) {
       )}
 
       {note && <HoldBanner kind="fixture" title="Published">{note}</HoldBanner>}
+
+      {/*
+        Shown ALONGSIDE "Published", never instead of it. The procedure is live; these are the
+        parts of it that could never have been satisfied by anybody and are not in the frozen
+        version. Refusing the publish over them was the old behaviour and it helped nobody —
+        a field with no possible answer stops the technician dead on the step that carries it,
+        and every step behind it with them. So it goes, and it is named here.
+      */}
+      {dropped.length > 0 && (
+        <HoldBanner title="Published without these">
+          Nobody could have satisfied {dropped.length === 1 ? "this" : "these"}, so
+          {dropped.length === 1 ? " it is" : " they are"} not in the version you just froze. A
+          technician handed a box that cannot be ticked cannot finish the job. Author
+          {dropped.length === 1 ? " it" : " them"} properly and publish again if the check matters.
+          <ul className="pe__faults">
+            {dropped.map((d) => <li key={d}>{d}</li>)}
+          </ul>
+        </HoldBanner>
+      )}
 
       {/* --- what the procedure itself declares ------------------------------------- */}
       <div className="pe__grid">

@@ -31,8 +31,21 @@ fun handoverStateFor(outstanding: Int, sealedRecordId: String?): HandoverState =
     else -> HandoverState.WAITING
 }
 
-/** The heading, and the sentence under it. Never "Done" — nothing here is done by itself. */
-fun handoverHeadline(state: HandoverState, outstanding: Int): Pair<String, String> = when (state) {
+/**
+ * The heading, and the sentence under it. Never "Done" — nothing here is done by itself.
+ *
+ * [explained] is how many steps ended with a stated reason instead of with evidence, and it
+ * only changes the WAITING sentence — which used to read "Everything this procedure asked for
+ * is captured" whatever had happened. On a job where a step could not be performed that was
+ * false, and falsely reassuring in the one direction that matters: the technician walks away
+ * believing the job will seal clean when it is going to seal deficient. The count is said
+ * plainly instead, and the seal is still the fleet's to decide.
+ */
+fun handoverHeadline(
+    state: HandoverState,
+    outstanding: Int,
+    explained: Int = 0,
+): Pair<String, String> = when (state) {
     HandoverState.OUTSTANDING -> "Not finished yet" to
         "$outstanding step${if (outstanding == 1) "" else "s"} still ${
             if (outstanding == 1) "has" else "have"
@@ -40,8 +53,16 @@ fun handoverHeadline(state: HandoverState, outstanding: Int): Pair<String, Strin
         "outcome. Nothing you captured is lost — go back and finish it whenever you like."
 
     HandoverState.WAITING -> "Handed to the fleet" to
-        "Everything this procedure asked for is captured. Verification runs behind you, and " +
-        "the record seals when the last step has a verdict. You can leave; it will not stop."
+        if (explained > 0) {
+            "Nothing is left for you to do. $explained step${if (explained == 1) "" else "s"} " +
+                "ended with a stated reason rather than with evidence, and the fleet rules on " +
+                "${if (explained == 1) "it" else "those"} — the record may well seal deficient. " +
+                "Verification runs behind you. You can leave; it will not stop."
+        } else {
+            "Everything this procedure asked for is captured. Verification runs behind you, " +
+                "and the record seals when the last step has a verdict. You can leave; it " +
+                "will not stop."
+        }
 
     HandoverState.SEALED -> "Sealed" to
         "The record is written and cannot be changed. It carries what went right and what " +

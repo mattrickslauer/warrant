@@ -42,6 +42,7 @@ import ink.warrant.ui.components.WarrantButton
 @Composable
 fun HandoverPage(
     outstanding: List<Step>,
+    explained: List<Step>,
     sealedRecordId: String?,
     heldReason: String?,
     decisions: List<Decision>,
@@ -53,7 +54,7 @@ fun HandoverPage(
     modifier: Modifier = Modifier,
 ) {
     val state = handoverStateFor(outstanding.size, sealedRecordId)
-    val (headline, why) = handoverHeadline(state, outstanding.size)
+    val (headline, why) = handoverHeadline(state, outstanding.size, explained.size)
     val colors = WarrantTheme.colors
     val dim = WarrantTheme.dim
 
@@ -83,6 +84,34 @@ fun HandoverPage(
             if (outstanding.isNotEmpty()) {
                 MonoLabel("Still owed")
                 outstanding.forEach { step ->
+                    WarrantButton(
+                        text = "Step ${step.index} — ${step.title}",
+                        onClick = { onReopen(step.id) },
+                        ghost = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            }
+
+            // Steps that ended with a sentence instead of a capture. Drawn separately and
+            // never folded into "Still owed", because they are two different asks: one is
+            // work a person can go and do, and this is work a person has already said they
+            // could not. Listing them together is how a technician gets sent back to a step
+            // that has already been explained — and leaving them off the page entirely is how
+            // a job that will seal deficient looks, on the last screen anybody reads, exactly
+            // like one that will not.
+            //
+            // Still tappable. Reopening is how somebody goes back and does it after all, when
+            // the part turns up or the tool comes back from the van.
+            if (explained.isNotEmpty()) {
+                MonoLabel("Explained, not performed")
+                Text(
+                    "You said why ${if (explained.size == 1) "this one" else "these"} could " +
+                        "not be done. The reason is on the record and the fleet decides what " +
+                        "it costs the seal.",
+                    style = WarrantTheme.type.bodySmall.copy(color = colors.fg2),
+                )
+                explained.forEach { step ->
                     WarrantButton(
                         text = "Step ${step.index} — ${step.title}",
                         onClick = { onReopen(step.id) },

@@ -35,10 +35,15 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { procedureId, version, tier } =
+    const { procedureId, version, tier, dropped } =
       await compileProcedure(session.tenant, session.uid, body.draft);
+    // `dropped` comes back on a SUCCESS, which is the unusual part and the point. The
+    // procedure published; some of what the interview produced could never have been
+    // performed and is not in it. The shop is still sitting there, so they are told now
+    // rather than finding out from a technician stuck in a bay next week.
     return NextResponse.json({
       procedure_id: procedureId, version, minimum_tier: tier, tenant: session.tenant.id,
+      dropped,
     });
   } catch (error) {
     // 422, not 400: the request was well formed and the draft was refused on its merits. The

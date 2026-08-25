@@ -6,7 +6,7 @@
   "properties": {
     "schema_version": {
       "type": "integer",
-      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place \u2014 see specs/2026-08-20-firestore-design.md section 9.1."
+      "description": "1. Absent reads as 1. Sealed evidence is upgraded on read, never migrated in place — see specs/2026-08-20-firestore-design.md section 9.1."
     },
     "id": {
       "type": "string"
@@ -54,6 +54,13 @@
       "items": {
         "$ref": "step"
       }
+    },
+    "dropped": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What this version was published WITHOUT, and why, in the shop's words. A field that could never have been satisfied — a choice offering no answers, a numeric band on a photograph — is removed at publish rather than refused, because refusing freezes nothing while a malformed field left in place stops the technician dead on the step that carries it. The removal is never silent: this is the list, it is written on every publish including when it is empty, and a stranger reading the record years later can see which checks this procedure went out missing."
     },
     "created_at": {
       "type": "string"

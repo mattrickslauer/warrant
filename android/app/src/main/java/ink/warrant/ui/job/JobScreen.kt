@@ -93,6 +93,7 @@ fun JobScreen(
     if (state.handedOver) {
         HandoverPage(
             outstanding = state.outstanding,
+            explained = state.explained,
             sealedRecordId = state.sealedRecordId,
             heldReason = state.heldReason,
             decisions = state.decisions,
@@ -136,7 +137,10 @@ fun JobScreen(
 
     val fields = state.fieldsFor(step.id)
     val strictness = state.job?.strictness ?: 0
-    val active = activeFieldFor(fields, strictness, selected) { key -> state.isFilled(step.id, key) }
+    val reasoned = step.id in state.reasoned
+    val active = activeFieldFor(fields, strictness, selected, reasoned) { key ->
+        state.isFilled(step.id, key)
+    }
     val camera = rememberCameraHandle()
 
     // Aim the simulated instrument at whatever this page is asking for.
@@ -265,6 +269,13 @@ fun JobScreen(
 
                 ActionKind.PAIR -> onOpenPairing()
 
+                // The bar's own way out, for a question that has no answers. Same sheet the
+                // ⚠ opens — there is still exactly one second exit, and this is a second door
+                // onto it rather than a third way out of the step.
+                ActionKind.DECLARE -> {
+                    blocked = true
+                }
+
                 ActionKind.RECORD, ActionKind.SIGN -> {
                     active?.let { vm.fillByHand(step.id, it, typed.trim()) }
                     typed = ""
@@ -345,6 +356,17 @@ fun JobScreen(
                 ?.recommendationText,
             onSubmit = { kind, transcript, audio ->
                 vm.declareBlocked(step.id, kind, transcript, audio)
+                // And then move. Stating a reason used to leave the technician exactly where
+                // they were — same step, same grey bar, the sheet closing onto the question
+                // they had just finished explaining they could not answer. On a step whose
+                // field was unanswerable that was a dead end with no other exit, and the run
+                // stopped there for good.
+                //
+                // What moves is the SCREEN, not the step's status. The outcome is still
+                // `pending` and the fleet still has to rule on the reason; the record can
+                // still seal deficient because of it. Nothing here forgives the step. It just
+                // stops standing in front of the next one.
+                if (state.stepIndex == state.steps.lastIndex) vm.finish() else vm.next()
             },
             onDismiss = { blocked = false },
         )
@@ -478,6 +500,20 @@ private fun BoxScope.StepCenter(
             )
 
             field == null -> Unit
+
+            // Before every kind branch, because none of them can draw this honestly.
+            //
+            // The question the procedure asked has no possible answer — see
+            // [FieldDef.unanswerable]. What goes in the middle of the frame is the fault
+            // itself and the way out, and the bar below already reads "This can't be
+            // answered". Saying only what is wrong is what wedged a job: the sentence was
+            // there, correct, and left the technician looking at a grey bar with no reason
+            // to think the run could continue at all.
+            field.unanswerable() != null -> OverlayNote(
+                "${field.unanswerable()} Say so with the bar below and carry on — the reason " +
+                    "goes on the record and the fleet rules on it.",
+                colors.held,
+            )
 
             field.kind == FieldKind.MEASUREMENT -> MeasurementCenter(
                 field = field,
@@ -674,17 +710,11 @@ private fun OverlayChoices(
 ) {
     val colors = WarrantTheme.colors
 
-    // A choice with nothing to choose from is an authoring fault, and `faults()` now refuses
-    // to compile one. Said out loud rather than quietly falling back to a keyboard: the
-    // fallback is what produced the wrong answer in the first place.
-    if (choices.isEmpty()) {
-        OverlayNote(
-            "This step accepts one of a fixed set of answers and the procedure lists none. " +
-                "It cannot be answered here.",
-            colors.held,
-        )
-        return
-    }
+    // Unreachable, and kept anyway. `StepCenter` sends an empty choice to the unanswerable
+    // branch above this function, and `faults()` refuses to compile one — but a keyboard
+    // fallback here is exactly what once let a CHOICE field be answered with a technician's
+    // name, and an empty Column is a cheaper wrong answer than a text box.
+    if (choices.isEmpty()) return
 
     Column(
         Modifier.fillMaxWidth(),
