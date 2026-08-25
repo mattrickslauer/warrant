@@ -25,6 +25,7 @@ import { stockFor } from "@/server/stock";
 import type { Role } from "@/auth/members";
 import { newTrace, withSpan } from "@/server/trace";
 import { pinnedVersion } from "@/server/procedures";
+import { sealIfFinished } from "@/server/seal";
 import { screenText } from "./armor";
 import { GoogleAuth } from "google-auth-library";
 import type { Procedure } from "@/generated/types";
@@ -295,6 +296,13 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
     escalateToRole: escalateTo,
     technicianUid: outcome.reason_by ?? null,
   });
+
+  // The step is settled — `deferred` or `impossible`, never pending — so this may have been
+  // the last one open. A job that finishes on a DEFICIENCY seals exactly like one that
+  // finishes clean; the difference is that the record names what was not done and the Gate
+  // reads it and holds the machine. Sealed after the task is raised, so the record and the
+  // person chasing it come into existence together.
+  await sealIfFinished(ref.tenantId, ref.jobId, db);
 
   return { decisionIds, action: effectiveAction, status, taskId: task?.id ?? null,
            ...(refused ? { refused } : {}) };

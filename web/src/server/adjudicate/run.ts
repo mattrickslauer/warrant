@@ -24,6 +24,7 @@ import { adminApp } from "@/auth/admin";
 import { GoogleAuth } from "google-auth-library";
 import { newTrace, withSpan } from "@/server/trace";
 import { pinnedVersion } from "@/server/procedures";
+import { sealIfFinished } from "@/server/seal";
 
 export interface AdjudicateRef {
   tenantId: string;
@@ -105,7 +106,20 @@ export async function adjudicate(
   )) ?? { steps: [] as any[] };
   const step = (version.steps ?? []).find((s: any) => s.id === ref.stepId);
   if (!step) throw new Error(`step ${ref.stepId} is not in the pinned procedure version`);
-  const fieldDef = (step.fields ?? []).find((f: any) => f.key === ref.fieldKey);
+  // The pinned version AND whatever this job's own adjudication has since added.
+  //
+  // A field the fleet asked for mid-job lives on the step outcome, not in the frozen
+  // procedure — `added_fields` is written a few hundred lines below and was, until now, only
+  // ever read back to count it. So this lookup searched the pinned version alone, and every
+  // capture answering an added field threw "not declared on step" before it could be judged:
+  // the capture stayed `adjudicated: false`, the outcome stayed `pending`, and the job could
+  // never reach a performed step however many photographs the technician sent. The fleet asked
+  // for one more picture and then could not look at it.
+  //
+  // Declared first on purpose. An added field can never shadow the procedure's own — the
+  // version a job pinned stays the thing it is judged against.
+  const fieldDef = ((step.fields ?? []) as any[]).find((f: any) => f.key === ref.fieldKey)
+    ?? ((outcome.added_fields ?? []) as any[]).find((f: any) => f.key === ref.fieldKey);
   if (!fieldDef) throw new Error(`field ${ref.fieldKey} is not declared on step ${ref.stepId}`);
 
   // A reading, if a paired instrument produced one. Server-written and server-read; a client
@@ -440,6 +454,11 @@ async function applyEffect(
     `tenants/${ref.tenantId}/jobs/${ref.jobId}/step_outcomes/${ref.stepId}`,
   );
 
+  // Set inside the transaction, read after it commits. A step that just reached `performed`
+  // may be the last one the job was waiting for, and the seal that follows is triggered from
+  // here rather than from a phone — see `sealIfFinished`.
+  let settled = false;
+
   if (effect.kind === "accept_field") {
     // One field passing is not a step passing. A step is performed only when EVERY field
     // required at this strictness has been accepted — including the ones an agent appended,
@@ -455,7 +474,13 @@ async function applyEffect(
         .map((f: any) => f.key);
       const added = (data.added_fields ?? []).map((f: any) => f.key);
       const required = [...new Set<string>([...declared, ...added])];
-      const complete = required.length > 0 && required.every((k) => accepted.has(k));
+      // A step whose fields are ALL optional at this strictness has nothing in `required`, and
+      // the old `required.length > 0 &&` made that step impossible to perform: every capture
+      // was accepted and the step stayed pending for ever. Inside this branch a field has just
+      // been accepted, so the step demonstrably has fields and somebody demonstrably did the
+      // work — one accepted capture is the whole of what was asked for, and the step is done.
+      const complete = required.length === 0 || required.every((k) => accepted.has(k));
+      settled = complete;
 
       tx.set(
         outRef,
@@ -469,6 +494,9 @@ async function applyEffect(
         { merge: true },
       );
     });
+    // The last step of the job may have just landed. Nothing downstream depends on this
+    // returning, and a job with steps still pending is the ordinary answer.
+    if (settled) await sealIfFinished(ref.tenantId, ref.jobId, db);
     return;
   }
 

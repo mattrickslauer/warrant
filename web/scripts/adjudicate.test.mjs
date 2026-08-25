@@ -275,6 +275,54 @@ describe("adjudicate", () => {
     assert.equal(o.status, "performed");
   });
 
+  test("performing the LAST step seals the job, with no client asking", async () => {
+    // The hole this closes. `/api/jobs/seal` had no caller in either client — Android's Api.kt
+    // never had a method for it and the web app never fetched it — so the only path to a
+    // record was the sweep's net, over a cron that was never scheduled. Every step went green
+    // and the record never arrived.
+    //
+    // Nothing in this test asks for a seal. `adjudicate` does it, because `adjudicate` is what
+    // moved the step, and a step's status is decided on the server for both surfaces at once.
+    const ref = await seedJob("job_seals");
+    await adjudicate(ref, { screen: noScreen, ask: ask(PASS, BELONGS), db });
+
+    const header = (await db.doc(`tenants/${TENANT}/jobs/job_seals`).get()).data();
+    assert.equal(header.status, "sealed", "a finished job must not sit open for ever");
+    assert.ok(header.sealed_at, "a seal says when");
+    // TENANT-SCOPED, and asserted as a literal because Android's `split()` does
+    // `require(i > 0)` on this exact string — a bare id there throws on the record screen
+    // rather than merely looking the wrong record up.
+    assert.equal(header.record_id, `${TENANT}/job_seals`);
+
+    const record = (await db.doc(`tenants/${TENANT}/records/job_seals`).get()).data();
+    assert.ok(record, "a job marked sealed with no record behind it is the worst of both");
+    assert.equal(record.job_id, `${TENANT}/job_seals`);
+    assert.equal(record.machine_released, true, "one performed step releases the machine");
+    assert.deepEqual(record.deficiencies, [],
+                     "nothing here was explained rather than performed");
+  });
+
+  test("a job with evidence still owed does NOT seal", async () => {
+    // The other half, and the one that matters more. A trigger on every step settle is only
+    // safe if it is silent on all but the last — a record sealed early claims work that has
+    // not happened, which is the single thing this product exists not to do.
+    const ref = await seedJob("job_not_yet", {
+      fields: [
+        { key: "pad_photo", kind: "photo", prompt: "Photograph the pad edge",
+          source: "camera", required_at_strictness: 0, acceptance_rule: "must_show" },
+        { key: "disc_photo", kind: "photo", prompt: "Photograph the disc face",
+          source: "camera", required_at_strictness: 0, acceptance_rule: "must_show" },
+      ],
+    });
+    await adjudicate(ref, { screen: noScreen, ask: ask(PASS, BELONGS), db });
+
+    const header = (await db.doc(`tenants/${TENANT}/jobs/job_not_yet`).get()).data();
+    assert.equal(header.status, "open", "one photograph of two is not a finished job");
+    assert.equal(header.record_id ?? null, null);
+    assert.equal((await db.doc(`tenants/${TENANT}/records/job_not_yet`).get()).exists, false,
+                 "no record may exist for a job that is not finished");
+  });
+
   test("one field passing does NOT perform a two-field step", async () => {
     // The failure this guards is a seven-field step sealing on its first photograph.
     const ref = await seedJob("job_b", {

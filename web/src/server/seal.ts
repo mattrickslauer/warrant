@@ -30,7 +30,7 @@ import "server-only";
 import { adminDb } from "@/auth/admin";
 import { getMember } from "@/auth/members";
 import { pinnedVersion } from "@/server/procedures";
-import { verificationCeiling, deficienciesOf, machineReleased, readyToSeal } from "@/data/seal";
+import { bindingSteps, verificationCeiling, deficienciesOf, machineReleased, readyToSeal } from "@/data/seal";
 import type { Tier } from "@/data/source";
 import type { Job, StepOutcome, Field, Decision, FieldDef, Procedure } from "@/generated/types";
 import { assemble, type JobHeader } from "@/data/live-source";
@@ -239,8 +239,13 @@ export async function sealJobLive(
 
   const job: Job = assemble({ ...header, tier }, outcomes, fields);
 
-  if (!readyToSeal(job)) {
-    const pending = job.steps.filter((s) => s.status === "pending").map((s) => s.step_id);
+  // `version` is the FROZEN procedure this job pinned, read above. Passing it is what lets a
+  // step the procedure declared optional stay pending without holding the job open — see
+  // `bindingSteps` in web/src/data/seal.ts for why the frozen version is the only acceptable
+  // answer to "was this step optional".
+  if (!readyToSeal(job, version)) {
+    const pending = bindingSteps(job, version)
+      .filter((s) => s.status === "pending").map((s) => s.step_id);
     throw new NotSealable(
       `This job is not finished. ${pending.length} step(s) are still pending: ${pending.join(", ")}.`,
     );
@@ -291,7 +296,7 @@ export async function sealJobLive(
     ceiling_reachable: ceiling.reachable,
     ceiling_unreachable: ceiling.unreachable,
     deficiencies: deficienciesOf(job),
-    machine_released: machineReleased(job),
+    machine_released: machineReleased(job, version),
     steps: job.steps,
     decisions,
   };
@@ -312,8 +317,74 @@ export async function sealJobLive(
       resolved_from_cite: field.resolved_from_cite ?? null,
     }, { merge: true });
   }
-  batch.set(jobRef, { status: "sealed", sealed_at, tier }, { merge: true });
+  // `record_id` is on the header because that is where the CLIENTS look for it. Android's
+  // job-header listener reads `snap.getString("record_id")` and emits nothing when it is
+  // absent — so before this line the phone could watch a job go `sealed` and never be told
+  // where the record it just earned had landed. It equals the job id today; the clients are
+  // not required to know that, and should not have to guess it.
+  // TENANT-SCOPED, like every other id that crosses the DataSource seam. `record.id` stays
+  // bare because it is the document id; this one is an ADDRESS a client hands straight back to
+  // `getRecord`, and Android's `split()` does `require(i > 0)` — a bare id there is not a
+  // wrong lookup, it is a thrown exception on the screen the technician just earned.
+  batch.set(jobRef, {
+    status: "sealed", sealed_at, tier, record_id: `${tenantId}/${recordId}`,
+  }, { merge: true });
   await batch.commit();
 
   return { recordId, tier, machineReleased: record.machine_released };
+}
+
+/**
+ * Seal this job IF it is finished, and stay quiet if it is not.
+ *
+ * The Seal could always run. Nothing ever ASKED it to. `/api/jobs/seal` had no caller in
+ * either client — Android's `Api.kt` never had a method for it and the web app never fetched
+ * it — so the only path to a record was the sweep's safety net, and a net is not a mechanism.
+ * A technician watched the last step go green and the record simply never arrived.
+ *
+ * So every server-side path that SETTLES a step now calls this: the Inspector accepting the
+ * last field, the Foreman disposing a stalled step, a foreman signing a waiver. That covers
+ * both surfaces at once and for the same reason the adjudicator does — a step's status is
+ * decided on the server, so the seal that follows from it belongs on the server too. Neither
+ * client needs a line of code, and neither client can forget.
+ *
+ * It is deliberately QUIET. On every call but the last the job still has pending steps, and
+ * that is the ordinary case rather than an error. It is also deliberately UNTHROWN: the caller
+ * has already durably settled a step, and failing their request because the seal could not run
+ * would lose the step in order to save the record. The sweep remains the net for the settle
+ * that died before it reached this line.
+ *
+ * Already-sealed is checked FIRST. A record is immutable — the artifact a stranger reads years
+ * later — and a second `sealed_at` stamped over it by a late retry is exactly the kind of
+ * quiet rewrite the rest of this file exists to prevent. `sealJobLive` itself still permits a
+ * deliberate re-seal through `/api/jobs/seal`; this path never asks for one.
+ */
+export async function sealIfFinished(
+  tenantId: string,
+  jobId: string,
+  db: FirebaseFirestore.Firestore = adminDb(),
+): Promise<Sealed | null> {
+  try {
+    const snap = await db
+      .collection("tenants").doc(tenantId)
+      .collection("jobs").doc(jobId)
+      .get();
+    if (!snap.exists) return null;
+    // `draft` is held back from the fleet and must not seal; `sealed` is already done. The
+    // middle three are jobs the fleet can see, which is exactly the set that may finish.
+    const status = String((snap.data() as JobHeader | undefined)?.status ?? "");
+    if (status !== "open" && status !== "waiting" && status !== "held") return null;
+
+    // Whether the job is FINISHED is not decided here. `sealJobLive` answers it against the
+    // frozen procedure version, which is the only thing that knows which steps were optional
+    // — a cheap "any outcome still pending?" pre-check would be stricter than the real rule
+    // and would hold open exactly the jobs `bindingSteps` was written to release.
+    return await sealJobLive(tenantId, jobId, db);
+  } catch (error) {
+    if (error instanceof NotSealable) return null;
+    // Logged, not raised. The next settle on this job tries again, and the sweep tries after
+    // that; what must not happen is the technician's write failing because of this.
+    console.warn(`[seal] ${tenantId}/${jobId} did not seal:`, error);
+    return null;
+  }
 }

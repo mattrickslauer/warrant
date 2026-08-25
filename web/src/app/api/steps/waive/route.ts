@@ -27,6 +27,7 @@ import { callerSession } from "@/auth/bearer";
 import { adminDb } from "@/auth/admin";
 import { getMember, mayWaive } from "@/auth/members";
 import { pinnedVersion } from "@/server/procedures";
+import { sealIfFinished } from "@/server/seal";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -151,7 +152,16 @@ export async function POST(request: Request) {
     throw error;
   }
 
-  return NextResponse.json({ waived: true, step_id, waived_by: session.uid, at: now });
+  // A signed waiver settles the step, and the step it settles may be the last one. The waiver
+  // is already durable above; this cannot fail the request — see `sealIfFinished`.
+  const sealed = await sealIfFinished(tenantId, jobId, db);
+
+  return NextResponse.json({
+    waived: true, step_id, waived_by: session.uid, at: now,
+    // Told, not inferred. The caller who signed the last waiver on a job should learn that a
+    // record now exists rather than discover it by polling for one.
+    sealed: sealed ? { record_id: sealed.recordId, machine_released: sealed.machineReleased } : null,
+  });
 }
 
 class AlreadySettled extends Error {

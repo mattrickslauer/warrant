@@ -59,6 +59,11 @@
       "type": "string",
       "nullable": true
     },
+    "record_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "The record this job sealed into, TENANT-SCOPED, written by the Seal and by nothing else. Null until it seals. It is on the header because that is where a client watching the job learns that its record exists — the alternative is every surface guessing that the record id equals the job id, which is true today and is not the clients' to know."
+    },
     "steps": {
       "type": "array",
       "items": {

@@ -178,6 +178,7 @@ export async function POST(request: Request) {
   // adjudicates a capture whose client died. Failures leave the job unsealed and it turns up
   // here again, which is the whole value of the net.
   let sealed = 0;
+  let sealError: string | null = null;
   try {
     for (const job of await sealableJobs()) {
       try {
@@ -188,8 +189,15 @@ export async function POST(request: Request) {
         // batch — so there is no half-sealed state to reconcile.
       }
     }
-  } catch {
-    // A missing index on `jobs` must not take the rest of the sweep down with it.
+  } catch (error) {
+    // A missing index on `jobs` must not take the rest of the sweep down with it — but it must
+    // not be SILENT either, and it was. `sealableJobs()` runs an equality on a COLLECTION
+    // GROUP, which needs `jobs.status` (COLLECTION_GROUP asc) that `infra/deploy-rules.sh`
+    // requests; without it this throws FAILED_PRECONDITION on every sweep and the bare `catch`
+    // reported `sealed: 0` — a clean run that had sealed nothing and could never seal anything.
+    // A net that cannot say it is torn is worse than no net.
+    sealError = "Could not read sealable jobs. Is the COLLECTION_GROUP index on " +
+                "`jobs.status` deployed? Run infra/deploy-rules.sh. Detail: " + String(error);
   }
 
   // The procedure itself, read across weeks of finished jobs.
@@ -219,7 +227,8 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
                              adjudicated, stillUndecided, disposed, stillStalled, sealed,
-                             audited, findings: findings.length });
+                             audited, findings: findings.length,
+                             ...(sealError ? { sealError } : {}) });
 }
 
 /** Convenience for a human checking the cron is wired, without firing notifications. */
