@@ -59,10 +59,10 @@ procedure: front-brake-service · v3
   step 1  remove wheel          photo — wheel off, caliper visible
   step 2  identify old pad      photo — wear consistent with logged interval
   step 3  present new part      photo — label legible, matches work order
-  step 4  fit and torque        MEASUREMENT — 90° ±5 past snug, from a paired tool
+  step 4  fit and torque        MEASUREMENT — within(6, 9, "Nm"), from a paired tool
   step 5  function check        video — lever travel and return
   disqualifies: step elapsed under 12 min · part number mismatch
-  releases: return to service · consume 1× pad set · reorder below 2
+  releases: return to service
 ```
 
 That document is the product. Everything else is machinery.
@@ -241,18 +241,34 @@ has ground truth for free.
 
 ## Architecture
 
-| Layer | Service |
-|---|---|
-| Reasoning | **Gemini 3.5 Flash** via Vertex AI |
-| Volume classification | **Gemma** |
-| Framework | **Google GenAI SDK** — the live path in `agents/warrant/model.py` |
-| Long-running jobs spanning days | **Agent Runtime** — up to 7 days of continuous execution |
-| Publishing and versioning agents | **Agent Registry** |
-| Asset history across services | **Memory Bank** |
-| Per-agent zero-trust access | **Agent Identity** |
-| Routing and policy | **Agent Gateway** |
-| Guardrails on model input and output | **Model Armor** |
-| Traces and audit logs | **Agent Observability** |
+Every row below is either running or says plainly that it is not. A table claiming a service
+this system does not actually call would be a tick in a box, in the README of a product whose
+entire argument is that a tick in a box is not evidence.
+
+| Layer | Service | State |
+|---|---|---|
+| Reasoning | **Gemini 3.5 Flash** via Vertex AI | running — `agents/warrant/model.py`, the one call site |
+| Screening every capture | **Gemma** (`gemma-3-4b`) | running — `agents/warrant/screen.py`, in front of the judge |
+| Framework | **Google GenAI SDK** (`google-genai`) | running — the live path in `model.py` |
+| Long-running jobs spanning days | **Agent Runtime** (Vertex AI Agent Engine) | running — `infra/deploy-agents.py`, three operations |
+| Guardrails on model input and output | **Model Armor** | running — image and text, `us` multi-region |
+| Traces and reasoning chains | **OpenTelemetry** → Cloud Logging / Cloud Trace | running — `web/src/server/trace.ts` |
+| Adversarial corpus | **Veo** | offline — `agents/evals/gen_fraud.py`, generates the fraud the Skeptic is tested against |
+| Per-agent least privilege | service-account impersonation | running — `warrant-web` may not call Vertex; see `server/fleet.ts` |
+| Asset history across weeks | the `readings` series in Firestore, **not Memory Bank** | **deliberately not adopted** — see below |
+| Agent discovery | the fleet's own `roster()`, **not Agent Registry** | **not adopted** — it would publish agents, and procedures are what need versioning |
+
+**Memory Bank is the one absence worth reading.** Memory Bank consolidation is LLM-judged and
+treats two readings of one field as a contradiction to reconcile — which destroys exactly the
+series a wear rate is computed from. `consistent_with` resolves against the `readings` series
+instead, and `docs/architecture.md` §4 sets out the argument. Adopting a memory product to have
+one in this table would contradict the best architectural decision in the repository.
+
+**Agent Gateway and Agent Identity are not in here either**, because nothing in this system
+calls them. Routing is one client (`server/fleet.ts`) against one engine, and identity is
+Google Sign-In plus service-account impersonation. Both are named in the track's recommended
+stack; neither is load-bearing here, and inventing a use for them would cost more than the row
+is worth.
 | Services and transport | **Cloud Run**, **Pub/Sub** |
 | Source of truth | **Firestore** |
 | Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |

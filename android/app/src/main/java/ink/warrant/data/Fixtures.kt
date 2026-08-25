@@ -159,22 +159,24 @@ val frontBrakeService = Procedure(
     strictness = 2,
     minimumTier = Tier.INSTRUMENTED,
     disqualifiers = listOf("step elapsed under 12 min", "part number mismatch"),
-    releases = listOf("return to service", "consume 1x pad set", "reorder below 2"),
+    // Nothing consumes stock and there is no below-floor trigger. See server/stock.ts.
+    releases = listOf("return to service"),
     createdAt = "2026-08-14T11:20:00Z",
     steps = listOf(
         Step(
-            id = "b1", index = 1, title = "Remove the wheel", condition = null,
-            explanation = "Establishes the machine is the one on the work order and the caliper " +
-                "is actually accessible.",
+            id = "b1", index = 1, title = "Remove the caliper", condition = null,
+            explanation = "Establishes the machine is the one on the work order and the pads are " +
+                "actually accessible. The wheel stays on — you unbolt the caliper off its mount " +
+                "and the pads come out of it.",
             maxAddFields = 3,
             fields = listOf(
                 FieldDef(
-                    key = "wheel_off", kind = FieldKind.PHOTO,
-                    prompt = "Photograph the wheel off, caliper visible",
+                    key = "caliper_off", kind = FieldKind.PHOTO,
+                    prompt = "Photograph the caliper off the mount, disc visible",
                     source = FieldSource.CAMERA, requiredAtStrictness = 0,
                     acceptanceRule = AcceptanceRule.MUST_SHOW,
-                    acceptanceDescription = "wheel removed, caliper in frame",
-                    guidance = "Caliper and disc both in frame. Registration plate out of shot.",
+                    acceptanceDescription = "caliper off its mount, disc in frame",
+                    guidance = "Caliper and disc both in frame.",
                 ),
             ),
         ),
@@ -208,8 +210,10 @@ val frontBrakeService = Procedure(
                     prompt = "Torque the caliper bolts",
                     source = FieldSource.INSTRUMENT, requiredAtStrictness = 1,
                     acceptanceRule = AcceptanceRule.WITHIN,
-                    acceptanceMin = 26.0, acceptanceMax = 30.0, acceptanceUnit = "Nm",
-                    guidance = "26-30 Nm, cited from the manufacturer's figure. The reading " +
+                    acceptanceMin = 6.0, acceptanceMax = 9.0, acceptanceUnit = "Nm",
+                    // NOT a manufacturer figure — Segway has published no caliper bolt torque for the
+                    // Xyber. This band is the SHOP'S OWN, stated by whoever does the job.
+                    guidance = "6-9 Nm, the figure this shop works to. The reading " +
                         "arrives from the wrench; there is nothing to type.",
                 ),
             ),
@@ -374,13 +378,13 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
                 DemoBeat.Status(2600, StepStatus.PERFORMED),
             ),
         ),
-        // No model is asked here at all. 28.4 Nm inside 26-30 is arithmetic, and the record
+        // No model is asked here at all. 7.4 Nm inside 6-9 is arithmetic, and the record
         // says so — this is the step that makes the measured class legible.
         "b3" to listOf(
             listOf(
                 DemoBeat.Decide(
                     at = 400, agent = ink.warrant.contract.Agent.INSPECTOR, verdict = "PASS",
-                    rationale = "Reading from a paired tool, inside 26-30 Nm. No model was " +
+                    rationale = "Reading from a paired tool, inside 6-9 Nm. No model was " +
                         "asked — this is arithmetic.",
                     model = null, cost = 0.0,
                 ),

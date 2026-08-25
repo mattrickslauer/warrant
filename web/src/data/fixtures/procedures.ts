@@ -166,19 +166,22 @@ export const frontBrakeService: Procedure = {
   strictness: 2,
   minimum_tier: "instrumented",
   disqualifiers: ["step elapsed under 12 min", "part number mismatch"],
-  releases: ["return to service", "consume 1x pad set", "reorder below 2"],
+  // Nothing consumes stock and there is no below-floor trigger — see server/stock.ts, which is a
+  // read path by design. "consume 1x pad set" and "reorder below 2" were advertised here and in
+  // README.md and were true in neither.
+  releases: ["return to service"],
   created_at: "2026-08-14T11:20:00Z",
   steps: [
     {
-      id: "b1", index: 1, title: "Remove the wheel", condition: null,
-      explanation: "Establishes the machine is the one on the work order and the caliper is actually accessible.",
+      id: "b1", index: 1, title: "Remove the caliper", condition: null,
+      explanation: "Establishes the machine is the one on the work order and the pads are actually accessible. The wheel stays on — you unbolt the caliper off its mount and the pads come out of it.",
       max_add_fields: 3,
       fields: [{
-        key: "wheel_off", kind: "photo", prompt: "Photograph the wheel off, caliper visible",
+        key: "caliper_off", kind: "photo", prompt: "Photograph the caliper off the mount, disc visible",
         source: "camera", required_at_strictness: 0, acceptance_rule: "must_show",
-        acceptance_description: "wheel removed, caliper in frame",
+        acceptance_description: "caliper off its mount, disc in frame",
         acceptance_min: null, acceptance_max: null, acceptance_unit: null, acceptance_target: null,
-        guidance: "Caliper and disc both in frame. Registration plate out of shot.",
+        guidance: "Caliper and disc both in frame.",
       }],
     },
     {
@@ -200,9 +203,14 @@ export const frontBrakeService: Procedure = {
       fields: [{
         key: "pad_torque", kind: "measurement", prompt: "Torque the caliper bolts",
         source: "instrument", required_at_strictness: 1, acceptance_rule: "within",
-        acceptance_min: 26, acceptance_max: 30, acceptance_unit: "Nm",
+        acceptance_min: 6, acceptance_max: 9, acceptance_unit: "Nm",
         acceptance_target: null, acceptance_description: null,
-        guidance: "26-30 Nm, cited from the manufacturer's figure. The reading arrives from the wrench; there is nothing to type.",
+        // NOT a manufacturer figure. Segway has published no caliper bolt torque for the Xyber —
+        // the whole point of `interview-home-brake-pads-blocked-on-a-figure-nobody-has`. This band
+        // is the SHOP'S OWN, stated by the person who does the job and set on their own wrench,
+        // which is a bound the Scoper is allowed to accept. Saying "cited from the manufacturer"
+        // here put a provenance claim in the guidance text that nothing in the world supports.
+        guidance: "6-9 Nm, the figure this shop works to. The reading arrives from the wrench; there is nothing to type.",
       }],
     },
     {
