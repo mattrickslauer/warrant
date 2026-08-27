@@ -34,9 +34,17 @@ const googleSansCode = Google_Sans_Code({
  * is mapped separately from the deploy: until DNS and the certificate are live, the canonical
  * origin is still the Cloud Run hostname, and pinning the wrong one silently breaks every
  * preview card — the image 404s against a host that is not serving yet. Set
- * NEXT_PUBLIC_SITE_URL on the revision the day the domain answers.
+ * NEXT_PUBLIC_SITE_URL at BUILD time — infra/deploy-web.sh passes it as a --build-arg, because
+ * Next inlines NEXT_PUBLIC_* during the build and setting it on a running revision does nothing.
+ *
+ * `||` AND NOT `??`, and the difference is a broken deploy rather than a style preference.
+ * Dockerfile.web declares this as an ARG with an empty default and promotes it to an ENV, so in
+ * the image the variable is SET AND EMPTY rather than absent. `??` only falls back on null and
+ * undefined, so it kept the empty string, `new URL("")` threw ERR_INVALID_URL, and the build
+ * died collecting page data for /account. It passed locally because there the variable is
+ * genuinely unset. Empty must mean "no domain yet", which is exactly what `||` reads it as.
  */
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://warrant-zq2l2kwg3q-uc.a.run.app";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://warrant-zq2l2kwg3q-uc.a.run.app";
 
 const TITLE = "Warrant — maintenance records that are evidence, not paperwork";
 const DESCRIPTION =
