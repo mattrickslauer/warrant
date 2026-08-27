@@ -27,10 +27,45 @@ const googleSansCode = Google_Sans_Code({
   display: "swap",
 });
 
+/**
+ * Where this site is actually served from, which decides where a share card fetches its image.
+ *
+ * It is read from the environment rather than hard-coded to warrant.tools, because the domain
+ * is mapped separately from the deploy: until DNS and the certificate are live, the canonical
+ * origin is still the Cloud Run hostname, and pinning the wrong one silently breaks every
+ * preview card — the image 404s against a host that is not serving yet. Set
+ * NEXT_PUBLIC_SITE_URL on the revision the day the domain answers.
+ */
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://warrant-zq2l2kwg3q-uc.a.run.app";
+
+const TITLE = "Warrant — maintenance records that are evidence, not paperwork";
+const DESCRIPTION =
+  "A procedure compiles to a form. A technician fills it by capturing, not typing. Agents verify what arrives, and nothing is released until every step holds up.";
+
 export const metadata: Metadata = {
-  title: "Warrant — maintenance records that are evidence, not paperwork",
-  description:
-    "A procedure compiles to a form. A technician fills it by capturing, not typing. Agents verify what arrives, and nothing is released until every step holds up.",
+  metadataBase: new URL(SITE),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "Warrant",
+  openGraph: {
+    type: "website",
+    siteName: "Warrant",
+    url: SITE,
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [{
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Warrant — a torque wrench on a machine housing, over the words maintenance records that are evidence, not paperwork.",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export const viewport: Viewport = {
