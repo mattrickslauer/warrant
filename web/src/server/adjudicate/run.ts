@@ -13,11 +13,11 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { adminDb } from "@/auth/admin";
 import { askFleet, askScreen, FleetUnreachable, type FleetReply } from "@/server/fleet";
-import { decideOutcome, type Effect } from "./outcome";
+import { decideOutcome, type Effect, type DecidedEffect } from "./outcome";
 import { inspectorCase, skepticCase, screenCase, mediaUri, referenceFieldId,
          type CaseSources } from "./cases";
 import { actsOnScreen, inspectorVerdictFromScreen } from "./screen";
-import { screenEvidence, type ArmorVerdict } from "./armor";
+import { screenEvidence, screenText, type ArmorVerdict } from "./armor";
 import { verifyIntegrity } from "./attest";
 import { getStorage } from "firebase-admin/storage";
 import { adminApp } from "@/auth/admin";
@@ -44,7 +44,7 @@ export interface AdjudicateRef {
 
 export interface Deps {
   ask?: typeof askFleet;
-  /** The Gemma screen. A separate seam from `ask` because it is a separate fleet operation,
+  /** The screen. A separate seam from `ask` because it is a separate fleet operation,
    *  and because a test needs to be able to disable the screen without stubbing the judge. */
   screen?: typeof askScreen;
   db?: FirebaseFirestore.Firestore;
@@ -65,6 +65,30 @@ function costOf(reply: FleetReply): number {
 }
 
 const nowIso = () => new Date().toISOString();
+
+/**
+ * How many times one capture may fail to reach a verdict before a person is raised instead.
+ *
+ * THE SWEEP NEVER GAVE UP, AND THAT IS A COST, NOT A VIRTUE.
+ *
+ * `undecidedCaptures()` selects `adjudicated == false` oldest-first, and a failed adjudication
+ * deliberately leaves the flag false — correctly, for the ordinary case of a fleet that was
+ * briefly unreachable. But nothing distinguished "briefly" from "never". A capture that can
+ * NEVER be judged — the object is not in the bucket, so Vertex answers 404 for as long as the
+ * bucket stays the way it is — came back every sweep, for ever, and each attempt spent Model
+ * Armor, a screen, an Inspector and a Skeptic on the same doomed frame. That is a
+ * per-minute quota being paid, every ten minutes, to learn the same thing.
+ *
+ * It also starves the queue it is in. Oldest-first is the fair order for work that drains, and
+ * these do not drain: fifty permanently-failing captures at the head of the queue are fifty
+ * slots a new capture never reaches, so the safety net stops catching the thing it is for.
+ *
+ * The ceiling is therefore not a way to drop evidence quietly — `tasks.ts` is explicit that
+ * nothing may be — it is the point where an automatic retry is admitted to be the wrong tool
+ * and a named person is raised instead. The capture is marked decided so it leaves the queue,
+ * and the decision on the record says exactly why, in the words of the last failure.
+ */
+const MAX_ADJUDICATION_ATTEMPTS = 4;
 
 export async function adjudicate(
   ref: AdjudicateRef,
@@ -89,6 +113,29 @@ export async function adjudicate(
 
   const job = jobSnap.data()!;
   const capture: Record<string, any> = { id: capSnap.id, ...capSnap.data()! };
+
+  // ALREADY DECIDED IS DECIDED.
+  //
+  // Nothing read this flag before running, so the same capture id could be submitted again and
+  // again and each call re-ran Model Armor, the screen, the Inspector and the Skeptic. A
+  // client is allowed to trigger adjudication — that is the whole design — which means a client
+  // is also allowed to trigger it twice, and a retry after a dropped response is the ordinary
+  // case rather than an attack.
+  //
+  // Safe against the sweep, which is the other caller: `undecidedCaptures()` selects on
+  // `adjudicated == false`, and a failed adjudication deliberately leaves the flag false so it
+  // is picked up again. Only a capture that reached a verdict is skipped here.
+  if (capture.adjudicated === true) {
+    const prior = await db
+      .collection(`tenants/${ref.tenantId}/decisions`)
+      .where("job_id", "==", scopedJobId)
+      .where("capture_id", "==", ref.captureId)
+      .get();
+    return {
+      decisionIds: prior.docs.map((d) => d.id),
+      effect: { kind: "already_decided" } as const,
+    };
+  }
   const outcome = outSnap.exists ? outSnap.data()! : {};
   const addFieldsUsed = outcome.add_fields_used ?? 0;
 
@@ -227,11 +274,27 @@ export async function adjudicate(
 
   // Model Armor, BEFORE any model is shown the evidence.
   //
-  // The Inspector is a model reading a picture chosen by the person being checked, which is
-  // the textbook setting for prompt injection. A match means no model sees the image at all.
+  // The Inspector is a model reading evidence chosen by the person being checked, which is the
+  // textbook setting for prompt injection. A match means no model sees it at all.
+  //
+  // BOTH KINDS OF EVIDENCE, and for a while it was only one. `screenCapture` takes a `gs://`
+  // URI, and a `text` capture has none — `mediaUris` is empty for it — so the screen returned
+  // NOT_SCREENED and waved it through, while `sources.answer` carried the technician's typed
+  // string VERBATIM into the Inspector's prompt (cases.ts renders it as "What the technician
+  // entered"). So the one capture kind whose content is free-form attacker-chosen text was the
+  // one kind that was never screened for attacker-chosen text.
+  //
+  // That matters more here than anywhere else in the system: the Inspector's verdict is what
+  // turns a step `performed`, and `performed` is what releases a machine. firestore.rules
+  // refuses `performed` from every client precisely so the person being checked cannot settle
+  // their own work — and steering the model that settles it is the same authority by a longer
+  // route. `dispose.ts` already screens a blocker transcript for exactly this reason; this is
+  // the same argument applied to the evidence itself.
   const armor = await withSpan(trace, "armor.screen",
-    { capture_id: ref.captureId, tenant: ref.tenantId },
-    () => screenCapture(sources.mediaUris[0] ?? null));
+    { capture_id: ref.captureId, tenant: ref.tenantId, kind: String(capture.kind ?? "") },
+    () => (capture.kind === "text"
+      ? screenAnswer(sources.answer ?? "")
+      : screenCapture(sources.mediaUris[0] ?? null)));
   await jobRef
     .collection("captures")
     .doc(ref.captureId)
@@ -280,9 +343,9 @@ export async function adjudicate(
     decisionIds.push(id);
   };
 
-  // The Gemma screen, between Model Armor and the judge.
+  // The screen, between Model Armor and the judge.
   //
-  // ORDER IS NOT NEGOTIABLE: Armor, then the screen, then Flash. Gemma is a model reading a
+  // ORDER IS NOT NEGOTIABLE: Armor, then the screen, then Flash. The screen is a model reading a
   // picture chosen by the person being checked, so an image carrying an injection must not
   // reach it either — putting the cheap screen first to "save the Armor call" would hand the
   // untrusted frame straight to a model.
@@ -300,8 +363,8 @@ export async function adjudicate(
   if (sources.mediaUris.length > 0) {
     let screened: FleetReply | null = null;
     try {
-      screened = await withSpan(trace, "screen.gemma",
-        { model: process.env.SCREENING_MODEL ?? "gemma-3-4b", field: ref.fieldKey,
+      screened = await withSpan(trace, "screen",
+        { model: process.env.SCREENING_MODEL ?? "gemini-3.5-flash-lite", field: ref.fieldKey,
           step: ref.stepId },
         () => screen(screenCase(sources)));
     } catch {
@@ -331,11 +394,11 @@ export async function adjudicate(
         addFieldsUsed,
         maxAddFields: step.max_add_fields ?? 2,
         strictness: job.strictness ?? 1,
-        acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
-    // Set only for a `text` capture — see `sources.answer`. It is what makes a `matches` rule
-    // decidable on an answer at all, without a model being asked to read something that was
-    // never a picture.
-    answer: sources.answer ?? null,
+        acceptance: {
+          rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target,
+          min: fieldDef.acceptance_min, max: fieldDef.acceptance_max,
+          unit: fieldDef.acceptance_unit,
+        },
       });
       await withSpan(trace, "gate.apply",
         { effect: screenEffect.kind, verdict: "ADD_FIELD", screened_by: screened.model },
@@ -394,14 +457,41 @@ export async function adjudicate(
     // Never silent. An unreachable fleet is a fact about this capture, and the identity trap
     // makes a 403 look exactly like a model that does not exist.
     const principal = error instanceof FleetUnreachable ? error.principal : null;
-    await write(
-      "inspector",
-      "engine_unreachable",
-      `The fleet could not be reached${principal ? ` as ${principal}` : ""}: ${
-        error instanceof Error ? error.message : String(error)}`,
-      null,
-    );
-    // Deliberately NOT marked adjudicated — the sweep must pick this up and try again.
+    const why = `The fleet could not be reached${principal ? ` as ${principal}` : ""}: ${
+      error instanceof Error ? error.message : String(error)}`;
+    await write("inspector", "engine_unreachable", why, null);
+
+    // Count it. See MAX_ADJUDICATION_ATTEMPTS for why a retry that never ends is not free.
+    const attempts = Number(capture.adjudication_attempts ?? 0) + 1;
+    const capRef = jobRef.collection("captures").doc(ref.captureId);
+
+    if (attempts >= MAX_ADJUDICATION_ATTEMPTS) {
+      // Out of retries, so this stops being a machine's problem and becomes a person's. The
+      // capture leaves the sweep's queue — `adjudicated: true` — but nothing about it is
+      // accepted: the step does not pass, the question is on the record, and the reason is
+      // the last failure verbatim rather than a tidy summary of it.
+      await write(
+        "inspector",
+        "unjudgeable",
+        `This evidence could not be judged after ${attempts} attempts, so it has been raised ` +
+          `for a person rather than retried again. Last failure: ${why}`,
+        null,
+      );
+      const question =
+        `This capture could not be judged after ${attempts} attempts and needs a person. ${why}`;
+      await withSpan(trace, "gate.apply",
+        { effect: "escalate", verdict: "unjudgeable", confidence: null },
+        () => applyEffect(db, ref, step, job.strictness ?? 1,
+          { kind: "escalate", question }));
+      await capRef.set(
+        { adjudicated: true, adjudicated_at: nowIso(), adjudication_attempts: attempts },
+        { merge: true },
+      );
+      return { decisionIds, effect: { kind: "escalate", question } };
+    }
+
+    // Still within budget: NOT marked adjudicated, so the sweep picks this up and tries again.
+    await capRef.set({ adjudication_attempts: attempts }, { merge: true });
     return { decisionIds, effect: { kind: "hold", why: "the fleet could not be reached" } };
   }
 
@@ -438,8 +528,17 @@ export async function adjudicate(
     maxAddFields: step.max_add_fields ?? 2,
     // Sets the confidence floor a PASS has to clear. The same number the Inspector was shown.
     strictness: job.strictness ?? 1,
-    // The target the Inspector was deliberately NOT shown, so the comparison happens in code.
-    acceptance: { rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target },
+    // The target the Inspector was deliberately NOT shown, so the comparison happens in code —
+    // and the BAND, which it was shown and which nothing ever checked. See the `within` block
+    // in outcome.ts: a measured value the model was free to wave through was not measured.
+    acceptance: {
+      rule: fieldDef.acceptance_rule, target: fieldDef.acceptance_target,
+      min: fieldDef.acceptance_min, max: fieldDef.acceptance_max,
+      unit: fieldDef.acceptance_unit,
+    },
+    // What the instrument actually reported, so `within` is settled by arithmetic here rather
+    // than by the Inspector's opinion of a number a tool had already answered exactly.
+    reading: sources.reading ?? null,
     // Set only for a `text` capture — see `sources.answer`. It is what makes a `matches` rule
     // decidable on an answer at all, without a model being asked to read something that was
     // never a picture.
@@ -481,7 +580,7 @@ async function applyEffect(
   ref: AdjudicateRef,
   step: any,
   strictness: number,
-  effect: Effect,
+  effect: DecidedEffect,
 ): Promise<void> {
   const outRef = db.doc(
     `tenants/${ref.tenantId}/jobs/${ref.jobId}/step_outcomes/${ref.stepId}`,
@@ -644,6 +743,33 @@ async function priorCaptures(
  * Every failure path returns NOT_SCREENED. An unscreened capture recorded as clean is a lie
  * the record carries forever.
  */
+/**
+ * Screen a TYPED answer, on the same template as a photograph.
+ *
+ * Same posture as `screenCapture` in every respect that matters: every failure path returns
+ * NOT_SCREENED, and NOT_SCREENED is not a pass — it is an admitted gap recorded on the capture.
+ * An empty answer is genuinely nothing to screen and says so rather than reporting a gap.
+ */
+async function screenAnswer(text: string): Promise<{ verdict: ArmorVerdict; detail: string }> {
+  if (!text.trim()) {
+    return { verdict: "NO_MATCH_FOUND", detail: "There was no answer to screen." };
+  }
+  return screenText(text, await armorToken());
+}
+
+/** The credential Model Armor is reached with. Absent is an ordinary state, not an error. */
+async function armorToken(): Promise<string | null> {
+  try {
+    const client = await new GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+    }).getClient();
+    const t = await client.getAccessToken();
+    return typeof t === "string" ? t : (t?.token ?? null);
+  } catch {
+    return null;
+  }
+}
+
 async function screenCapture(
   gsUri: string | null,
 ): Promise<{ verdict: ArmorVerdict; detail: string }> {
@@ -667,16 +793,5 @@ async function screenCapture(
     return { verdict: "NOT_SCREENED", detail: `Could not read the evidence: ${String(error)}` };
   }
 
-  let token: string | null = null;
-  try {
-    const client = await new GoogleAuth({
-      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
-    }).getClient();
-    const t = await client.getAccessToken();
-    token = typeof t === "string" ? t : (t?.token ?? null);
-  } catch {
-    token = null;
-  }
-
-  return screenEvidence(bytes, token);
+  return screenEvidence(bytes, await armorToken());
 }

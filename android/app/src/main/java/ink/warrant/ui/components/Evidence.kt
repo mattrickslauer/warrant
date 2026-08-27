@@ -221,6 +221,14 @@ fun StepEvidence(
     step: StepOutcome,
     title: String,
     modifier: Modifier = Modifier,
+    /**
+     * Do this step again, when there is a job still open to do it in.
+     *
+     * Null on a sealed record, and that is not a styling decision. A sealed record is what
+     * SURVIVES the workshop; offering to redo a step of it would be offering to change the one
+     * artifact whose whole value is that it cannot be changed after the fact.
+     */
+    onRedo: (() -> Unit)? = null,
 ) {
     val colors = WarrantTheme.colors
     val type = WarrantTheme.type
@@ -262,6 +270,18 @@ fun StepEvidence(
             // photograph is fetched from cannot drift from the step it is rendered under.
             filled.forEach { field -> FieldEvidence(source, step.jobId, field) }
         }
+
+        // Under the evidence rather than over it, because the question this answers is asked
+        // by looking: you read what the step produced, decide it will not do, and the way to
+        // do it again is where your eye already is.
+        onRedo?.let { redo ->
+            WarrantButton(
+                "Redo this step",
+                ghost = true,
+                onClick = redo,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
     }
 }
 
@@ -297,7 +317,23 @@ fun OpenItemCard(
     item: OpenItem,
     stepTitle: String,
     onAnswer: (String) -> Unit,
-    onOpenJob: () -> Unit,
+    /**
+     * Open the job AT THIS STEP.
+     *
+     * It used to be `onOpenJob`, and that is the whole bug: the job opened on the first step
+     * that still owed something, which is very often not the step the card is about. You tapped
+     * an ask about step two and arrived at step five with nothing on screen that mentioned it,
+     * which is indistinguishable from a button that does nothing.
+     */
+    onGoToStep: () -> Unit,
+    /**
+     * Open the job at this step AND empty it, for a rejection rather than an addition.
+     *
+     * Null when there is nothing to redo. Both are offered because the card cannot tell which
+     * the verdict means — an appended field is more evidence beside what is there, a hold is
+     * usually the evidence itself being wrong — and the person reading the ask can.
+     */
+    onRedoStep: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     val colors = WarrantTheme.colors
@@ -388,13 +424,28 @@ fun OpenItemCard(
                         "in words from here.",
                     style = type.bodySmall.copy(color = colors.fg2),
                 )
-                WarrantButton(
-                    "Open the job",
-                    ghost = true,
-                    onClick = onOpenJob,
-                    modifier = Modifier.fillMaxWidth(),
-                )
             }
+        }
+
+        // Under every kind, not just the one that needs a camera.
+        //
+        // A typed answer settles nothing on its own — the card says so two lines up — and a
+        // question the fleet raised about step two is very often best answered by going and
+        // looking at step two. Withholding the way there from the kinds that happen to have a
+        // text box made the keyboard look like the only move available.
+        WarrantButton(
+            "Go to that step",
+            ghost = true,
+            onClick = onGoToStep,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        onRedoStep?.let { redo ->
+            WarrantButton(
+                "Redo that step",
+                ghost = true,
+                onClick = redo,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

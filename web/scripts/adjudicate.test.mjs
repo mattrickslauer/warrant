@@ -470,6 +470,51 @@ describe("adjudicate", () => {
       "an unreachable fleet must leave the capture for the sweep to retry");
   });
 
+  // THE RETRY THAT NEVER ENDED.
+  //
+  // Leaving the capture for the sweep is right for a fleet that was briefly unreachable, and
+  // wrong for one that will refuse this capture for ever — a photograph whose bytes are not in
+  // the bucket answers 404 every time. That case came back every sweep, spending Model Armor,
+  // a Gemma screen, an Inspector and a Skeptic each time to learn the same thing, and — the
+  // queue being oldest-first — sat at the head of it where new captures never got a turn.
+  //
+  // So the retries are counted, and the ceiling is where an automatic retry is admitted to be
+  // the wrong tool. Nothing is dropped: a person is raised, and the reason is on the record.
+  test("a capture that can never be judged stops being retried, and raises a person", async () => {
+    const ref = await seedJob("job_starve");
+    const boom = async () => {
+      throw new FleetUnreachable("fleet returned 404: no such object");
+    };
+
+    // The first three are holds, and leave the capture for the sweep exactly as before.
+    for (let i = 1; i <= 3; i += 1) {
+      const r = await adjudicate(ref, { screen: noScreen, ask: boom, db });
+      assert.equal(r.effect.kind, "hold", `attempt ${i} should still be a retry`);
+      const cap = await db.doc(`tenants/${TENANT}/jobs/job_starve/captures/cap_1`).get();
+      assert.notEqual(cap.data().adjudicated, true,
+        `attempt ${i} gave up early — a transient failure must still be retried`);
+      assert.equal(cap.data().adjudication_attempts, i, "the attempt was not counted");
+    }
+
+    // The fourth stops the bleeding.
+    const last = await adjudicate(ref, { screen: noScreen, ask: boom, db });
+    assert.equal(last.effect.kind, "escalate",
+      "out of retries, this must become a person's problem rather than another model call");
+
+    const cap = await db.doc(`tenants/${TENANT}/jobs/job_starve/captures/cap_1`).get();
+    assert.equal(cap.data().adjudicated, true,
+      "the capture is still in the sweep's queue, and will be re-judged for ever");
+
+    const verdicts = (await decisionsFor("job_starve")).docs.map((x) => x.data().verdict);
+    assert.ok(verdicts.includes("unjudgeable"),
+      "the record does not say why this evidence was never judged");
+
+    // And the step did NOT pass. Leaving the queue is not the same as being accepted.
+    const out = await db.doc(`tenants/${TENANT}/jobs/job_starve/step_outcomes/s3`).get();
+    assert.notEqual(out.data().status, "performed",
+      "evidence nobody could judge advanced a step");
+  });
+
   test("an unscreened capture records NOT_SCREENED, never a clean verdict", async () => {
     // The capture in these tests has no media in a reachable bucket, so Model Armor cannot
     // have run. What must never happen is the record claiming it did.

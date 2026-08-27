@@ -71,7 +71,24 @@ fun JobRecordScreen(
     /** Who the answer is attributed to. A named human, or the warrant_uid on the open tier. */
     by: String,
     onBack: () -> Unit,
-    onResume: (String) -> Unit,
+    /**
+     * Open this job, at a step when one is named and wherever it left off when it is not.
+     *
+     * The step id is the whole point of the second parameter. Every ask on this screen is about
+     * a particular step, and the button under it used to open the job and land on the first step
+     * that still owed something — which is a different step most of the time, so the ask you
+     * tapped was not on the screen you arrived at.
+     */
+    onResume: (String, String?) -> Unit,
+    /**
+     * Open this job at a step and empty that step, so it can be done again.
+     *
+     * Separate from [onResume] because it is a different intent and only the person can pick:
+     * an agent that appended a field wants more evidence beside what is there, and one that
+     * held the step usually means the evidence itself will not do. Nothing is retracted either
+     * way — see `JobViewModel.UiState.withStepRedone`.
+     */
+    onRedoStep: (String, String) -> Unit,
     onOpenRecord: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -194,7 +211,14 @@ fun JobRecordScreen(
                                         .onFailure { error = it.message }
                                 }
                             },
-                            onOpenJob = { onResume(j.id) },
+                            onGoToStep = { onResume(j.id, item.stepId) },
+                            // Only while there is a job left to do it in. A sealed job's steps
+                            // are history, and this screen must not offer to rewrite history.
+                            onRedoStep = if (j.status == JobStatus.SEALED) {
+                                null
+                            } else {
+                                { onRedoStep(j.id, item.stepId) }
+                            },
                         )
                     }
                 }
@@ -226,6 +250,16 @@ fun JobRecordScreen(
                                 source = source,
                                 step = outcome,
                                 title = titles[outcome.stepId] ?: outcome.stepId,
+                                // Every step of an unsealed job, not only the ones something is
+                                // waiting on. A technician who looks at what step three captured
+                                // and decides it will not do is the person best placed to say so,
+                                // and until now the only step they could return to was one an
+                                // agent had already objected to.
+                                onRedo = if (j.status == JobStatus.SEALED) {
+                                    null
+                                } else {
+                                    { onRedoStep(j.id, outcome.stepId) }
+                                },
                             )
                             Rule()
                         }
@@ -245,7 +279,7 @@ fun JobRecordScreen(
                     WarrantButton(
                         "Pick this job back up",
                         tonal = true,
-                        onClick = { onResume(j.id) },
+                        onClick = { onResume(j.id, null) },
                         modifier = Modifier.fillMaxWidth(),
                     )
 

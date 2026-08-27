@@ -20,6 +20,9 @@ export interface FixtureOptions {
   speed?: number;
 }
 
+/** The id without its tenant prefix. `{tenant}/{id}` and `{id}` both answer `{id}`. */
+const bare = (id: string) => id.slice(id.lastIndexOf("/") + 1);
+
 export class FixtureSource implements DataSource {
   readonly name = "fixture" as const;
   readonly fabricated = true;
@@ -56,13 +59,18 @@ export class FixtureSource implements DataSource {
     return procedures.find((p) => p.id === bare) ?? null;
   }
   async getJob(jid: string) {
-    return this.jobs.get(jid) ?? null;
+    // Bare or `{tenant}/{job}`, for the reason `getProcedure` above already gives: a caller
+    // should be able to scope an id unconditionally instead of branching on which source it
+    // is talking to. LiveSource REQUIRES the scoped form (`splitScoped` returns null for a
+    // bare id and it answers null), so a caller written against the interface scopes — and
+    // this map is keyed bare, which made every such call miss here and only here.
+    return this.jobs.get(jid) ?? this.jobs.get(bare(jid)) ?? null;
   }
   async listJobs(tenantId: string) {
     return [...this.jobs.values()].filter((j) => j.tenant_id === tenantId);
   }
   async getRecord(rid: string) {
-    return this.records.get(rid) ?? null;
+    return this.records.get(rid) ?? this.records.get(bare(rid)) ?? null;
   }
   async listRecords(tenantId: string) {
     return [...this.records.values()]
@@ -106,13 +114,13 @@ export class FixtureSource implements DataSource {
    * screen cannot tell the two apart, so a draft gate in one implementation and not the other
    * would be exactly the divergence this interface exists to prevent.
    */
-  async finalize(jobId: string, by: string): Promise<void> {
+  async finalize(jobId: string): Promise<void> {
     const job = this.jobs.get(jobId);
     if (!job) throw new Error(`no such job: ${jobId}`);
     if (job.status !== "draft") return;
     job.status = "open";
     job.finalized_at = now();
-    job.finalized_by = by;
+    job.finalized_by = "fixture-technician";
   }
 
   /** Returns immediately. The verdict arrives later, over subscribe(). */
@@ -160,7 +168,7 @@ export class FixtureSource implements DataSource {
     outcome.reason_kind = input.reasonKind;
     outcome.reason_transcript = input.transcript;
     outcome.reason_audio_ref = input.audioRef ?? null;
-    outcome.reason_by = input.by;
+    outcome.reason_by = "fixture-technician";
     outcome.reason_at = now();
     outcome.provenance_class = "asserted";
 

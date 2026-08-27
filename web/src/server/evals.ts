@@ -159,6 +159,38 @@ export function grouped(): AgentGroup[] {
     }));
 }
 
+/**
+ * Why the never-asked ones were never asked.
+ *
+ * The page used to tell a reader this was "almost always a photograph the corpus is still
+ * waiting on". On the run actually in front of it that was untrue by a wide margin — two
+ * thirds were a missing CASSETTE, which is a re-run rather than a camera, and the two are
+ * different asks of very different size. Computing the split here means the sentence on the
+ * page is read off the run instead of remembered from an older one.
+ */
+export function notAsked(): { media: number; cassette: number; other: number } {
+  const out = { media: 0, cassette: 0, other: 0 };
+  for (const r of run.results) {
+    if (r.status !== "error") continue;
+    const e = r.error ?? "";
+    if (e.startsWith("media:")) out.media += 1;
+    else if (e.includes("no cassette")) out.cassette += 1;
+    else out.other += 1;
+  }
+  return out;
+}
+
+/** That split as a sentence, so the page states the real reason and not a stale one. */
+export function notAskedSentence(): string {
+  const n = notAsked();
+  const p: string[] = [];
+  const be = (k: number) => (k === 1 ? "is" : "are");
+  if (n.cassette) p.push(`${n.cassette} ${be(n.cassette)} waiting on a recorded cassette, which is a re-run rather than a camera`);
+  if (n.media) p.push(`${n.media} ${be(n.media)} waiting on a photograph the corpus does not have yet`);
+  if (n.other) p.push(`${n.other} ${be(n.other)} unasked for another reason`);
+  return p.join("; ");
+}
+
 export function totals() {
   const t: Record<Status, number> = { pass: 0, fail: 0, invalid: 0, error: 0 };
   let tokens = 0;

@@ -508,15 +508,28 @@ be**, not because we ran out of time.
 | Layer | Model | When |
 |---|---|---|
 | Inline validation | local rules | every capture — free, never blocks |
-| Evidence screening | **Gemma** (`gemma-3-4b`) | every capture with media, after Model Armor and before the judge |
+| Evidence screening | **Gemini 3.5 Flash-Lite** | every capture with media, after Model Armor and before the judge |
 | Judgement | **Gemini 3.5 Flash** | every capture the screen did not send back |
 | Questions on the button | STT → **Gemini 3.5 Flash** → TTS | when held |
 | Adversarial corpus | **Veo** | offline, generating synthetic fraudulent evidence |
 
 ### The screen, and the one direction it is allowed to be wrong in
 
-`agents/warrant/screen.py` runs Gemma over every capture that has media, and it can do exactly
-one thing: send the capture back for another photograph. It cannot pass a step.
+**It is Flash-Lite, and it was going to be Gemma.** Worth stating plainly, because the contest
+awards a bonus for integrating Gemma and this project does not claim it. `gemma-3-4b` sat in
+`.env` for days and named a model this project cannot reach: every spelling — `gemma-3-4b`,
+`gemma-3-4b-it`, `gemma-3-27b-it`, `gemma-3n-e4b-it`, `google/gemma-3-4b-it` — returns a flat
+404 in both `global` and `us-central1`, and `models.list()` on this project returns 23 models,
+not one of them a Gemma. Gemma is not a publisher model on Vertex; it is a Model Garden *open*
+model, which means deploying the weights to a GPU-backed Endpoint that bills per hour and has
+to still be running when somebody watches the film. So the screen runs on `gemini-3.5-flash-lite`,
+which is available, is cheaper than the judge by the margin this section is about, and is a
+real call rather than a table row. `SCREENING_MODEL` takes an endpoint resource name, so
+pointing this at a deployed Gemma later is one environment variable and no code.
+`agents/warrant/screen.py` carries the full account.
+
+`agents/warrant/screen.py` runs Flash-Lite over every capture that has media, and it can do
+exactly one thing: send the capture back for another photograph. It cannot pass a step.
 
 That is a property of the request, not of the prompt. `EvidenceScreen` has two members in its
 verdict enum — `UNUSABLE` and `NEEDS_JUDGEMENT` — and no third meaning "satisfied". So the
@@ -552,7 +565,7 @@ table would be the one mistake this project cannot afford to make in writing.
 | Concern | Service | State |
 |---|---|---|
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI | running |
-| Screening every capture | **Gemma** (`gemma-3-4b`) | running — `warrant/screen.py`, §10 above |
+| Screening every capture | **Gemini 3.5 Flash-Lite** | running — `warrant/screen.py`, §10 above |
 | Framework | **Google GenAI SDK** (`google-genai`), Vertex AI backend | running |
 | Long-running jobs spanning days | **Agent Runtime** — up to 7 days continuous | running — `query`, `roster`, `screen` |
 | Guardrails on model I/O | **Model Armor** — image and text, `us` multi-region (§8) | running |

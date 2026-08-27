@@ -13,6 +13,7 @@ import "server-only";
 //
 // See specs/2026-08-20-firestore-design.md §8.
 
+import { FieldPath } from "firebase-admin/firestore";
 import { adminDb } from "@/auth/admin";
 import type { Role } from "@/auth/members";
 
@@ -265,6 +266,93 @@ export interface DueTask extends TaskDoc {
   tenant_id: string;
 }
 
+
+// --- Fair scanning ---------------------------------------------------------------------
+//
+// Every query below is system-wide, bounded by `limit()`, and had NO `orderBy`. That is not a
+// performance nicety — it is a correctness bug that only appears once there is enough work to
+// matter, and then never goes away.
+//
+// Firestore returns an unordered limited query in key order, DETERMINISTICALLY. So the moment a
+// collection holds more documents than the limit, the sweep reads the same prefix on every run,
+// for ever, and everything sorting after it is never seen again. A busy tenant permanently
+// starves every tenant whose id sorts later. Nothing errors and nothing is empty; the sweep
+// reports a clean run having silently skipped most of the system.
+//
+// Two different fixes, because there are two different kinds of query here:
+//
+//   DRAINING     `tasks` and `captures` leave the result set once handled — `markNotified`
+//                pushes `notify_after` forward, adjudication sets `adjudicated: true`. Ordering
+//                by the field that ages (oldest first) is enough: the queue drains, and the
+//                thing that has waited longest is served first, which is also the fair answer.
+//
+//   NON-DRAINING `jobs` do not. An open job that is not finishable stays open, and a sealed job
+//                stays sealed for ever — so `sealableJobs` and `proceduresDueAnAudit` scan a
+//                population that only grows, and no ordering can help: the first N by any fixed
+//                order are the only N ever examined. These need a CURSOR that advances every
+//                sweep and wraps around, so every document is eventually reached.
+
+/** Where each rotating scan got to. Admin-only; see firestore.rules. */
+const SWEEP_CURSORS = "sweep_cursors";
+
+/**
+ * One turn of a rotating scan over a population that does not drain.
+ *
+ * Ordered by document id — the only ordering available on every collection without deploying an
+ * index per query — and resumed from where the last sweep stopped. When the window comes back
+ * empty the cursor has run off the end, so it starts again from the beginning; that wrap is what
+ * makes the scan a cycle rather than a prefix.
+ *
+ * The cursor is advanced even when nothing in the window was actionable. That is the whole
+ * point: a sweep that only advanced on success would sit on the same unfinishable jobs for ever,
+ * which is the behaviour this replaces.
+ */
+async function rotatingWindow(
+  key: string,
+  build: (
+    start: FirebaseFirestore.QueryDocumentSnapshot | null,
+  ) => FirebaseFirestore.Query,
+  scan: number,
+): Promise<FirebaseFirestore.QueryDocumentSnapshot[]> {
+  const db = adminDb();
+  const cursorRef = db.collection(SWEEP_CURSORS).doc(key);
+
+  let start: FirebaseFirestore.QueryDocumentSnapshot | null = null;
+  const stored = (await cursorRef.get()).data()?.after as string | undefined;
+  if (stored) {
+    const snap = await db.doc(stored).get();
+    // A cursor pointing at a document that has since been deleted is not an error; it is an
+    // ordinary consequence of jobs being abandoned. Starting the cycle over is the safe answer.
+    if (snap.exists) start = snap as FirebaseFirestore.QueryDocumentSnapshot;
+  }
+
+  let docs = (await build(start).limit(scan).get()).docs;
+
+  // WRAP INSIDE THE CALL, not just between calls.
+  //
+  // A short window means the cursor has reached the end of the population, so the rest of the
+  // window is filled from the beginning. This matters for correctness and not only for tidiness:
+  // without it, a caller asking "which procedures are due an audit" would see a slice of the
+  // system and conclude that everything outside the slice was not due. Any deployment smaller
+  // than `scan` is therefore covered COMPLETELY on every sweep — which is every deployment for
+  // a long time — and rotation only starts to bite once there is genuinely more work than one
+  // window can hold, which is the case it exists for.
+  if (docs.length < scan) {
+    const seen = new Set(docs.map((d) => d.ref.path));
+    const head = (await build(null).limit(scan).get()).docs;
+    for (const d of head) {
+      if (docs.length >= scan) break;
+      if (!seen.has(d.ref.path)) docs.push(d);
+    }
+  }
+
+  await cursorRef.set(
+    { after: docs.length ? docs[docs.length - 1].ref.path : null, at: new Date().toISOString() },
+    { merge: true },
+  );
+  return docs;
+}
+
 /**
  * Every task, in every tenant, that wants attention now.
  *
@@ -282,6 +370,10 @@ export async function dueTasks(limit = 200): Promise<DueTask[]> {
     .collectionGroup("tasks")
     .where("status", "==", "open")
     .where("notify_after", "<=", new Date().toISOString())
+    // OLDEST FIRST, and without this the limit silently became a permanent prefix — see "Fair
+    // scanning" above. Served by the existing COLLECTION_GROUP index on (status, notify_after);
+    // the inequality field must lead the ordering anyway, so this costs nothing new.
+    .orderBy("notify_after", "asc")
     .limit(limit)
     .get();
 
@@ -322,6 +414,9 @@ export async function undecidedCaptures(
     .collectionGroup("captures")
     .where("adjudicated", "==", false)
     .where("created_at", "<", cutoff)
+    // Oldest evidence first. Served by the existing COLLECTION_GROUP index on
+    // (adjudicated, created_at).
+    .orderBy("created_at", "asc")
     .limit(limit)
     .get();
 
@@ -395,7 +490,10 @@ export async function stalledSteps(limit = 25, scan = 300): Promise<StalledStep[
     // One orderBy on one field, so the automatic single-field index serves it — a composite
     // would have to be deployed before the sweep worked, and a safety net nobody can turn on
     // is not a safety net.
-    .orderBy("reason_at", "desc")
+    // ASCENDING. It was `desc`, which serves the newest stall first — so once there were more
+    // stalls than one window, the technician who has been waiting longest was the one who never
+    // got a ruling. A queue is fair from the front.
+    .orderBy("reason_at", "asc")
     .limit(scan)
     .get();
 
@@ -432,14 +530,23 @@ export interface AuditDue {
 const AUDIT_EVERY_MS = 7 * 24 * 60 * 60 * 1000;
 
 export async function proceduresDueAnAudit(limit = 3): Promise<AuditDue[]> {
-  const snap = await adminDb()
-    .collectionGroup("jobs")
-    .where("status", "==", "sealed")
-    .limit(300)
-    .get();
+  // The worst of the non-draining scans: a sealed job stays sealed for ever, so this population
+  // only grows and a fixed prefix of 300 is frozen on the oldest 300 records the system ever
+  // wrote. Every procedure first used after that point would never be audited at all.
+  const docs = await rotatingWindow(
+    "audit_jobs",
+    (start) => {
+      const q = adminDb()
+        .collectionGroup("jobs")
+        .where("status", "==", "sealed")
+        .orderBy(FieldPath.documentId());
+      return start ? q.startAfter(start) : q;
+    },
+    300,
+  );
 
   const seen = new Map<string, AuditDue>();
-  for (const doc of snap.docs) {
+  for (const doc of docs) {
     // tenants/{t}/jobs/{j}
     const parts = doc.ref.path.split("/");
     if (parts.length !== 4) continue;
@@ -479,14 +586,23 @@ export interface SealableJob {
 }
 
 export async function sealableJobs(limit = 10): Promise<SealableJob[]> {
-  const snap = await adminDb()
-    .collectionGroup("jobs")
-    .where("status", "==", "open")
-    .limit(200)
-    .get();
+  // A ROTATING WINDOW, because open jobs do not drain. A job that is open and not finishable
+  // stays open indefinitely, so a fixed prefix of 200 fills with exactly the jobs that will
+  // never seal and the ones that could are never reached. See "Fair scanning" above.
+  const docs = await rotatingWindow(
+    "sealable_jobs",
+    (start) => {
+      const q = adminDb()
+        .collectionGroup("jobs")
+        .where("status", "==", "open")
+        .orderBy(FieldPath.documentId());
+      return start ? q.startAfter(start) : q;
+    },
+    200,
+  );
 
   const out: SealableJob[] = [];
-  for (const doc of snap.docs) {
+  for (const doc of docs) {
     // tenants/{t}/jobs/{j}
     const parts = doc.ref.path.split("/");
     if (parts.length !== 4) continue;

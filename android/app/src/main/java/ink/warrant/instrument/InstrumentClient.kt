@@ -45,6 +45,9 @@ class InstrumentClient(private val context: Context) {
         /** Characteristic Presentation Format — where a device states its own encoding. */
         private val CPF: UUID = UUID.fromString("00002904-0000-1000-8000-00805f9b34fb")
 
+        /** counter u32 LE | value 4 bytes | HMAC-SHA256 32 bytes. */
+        internal const val ATTESTED_FRAME_BYTES = 40
+
         /**
          * How long to wait for a presentation-format descriptor before giving up on it.
          *
@@ -380,6 +383,20 @@ class InstrumentClient(private val context: Context) {
 
                 trySend(InstrumentEvent.Connected(toolId = toolIdFor(device, chosen), driver = chosen))
 
+                // Optional, and asked for BEFORE the value subscription so a frame is never
+                // published for a value the app has not yet started listening for. A device
+                // without it is not a failure: it pairs, it reads, and its numbers record as
+                // unattested.
+                g.getService(Esp32ReferenceDriver.SERVICE)
+                    ?.getCharacteristic(Esp32ReferenceDriver.ATTESTATION)
+                    ?.let { att ->
+                        if (att.supportsNotify()) {
+                            g.setCharacteristicNotification(att, true)
+                            att.getDescriptor(CCCD)?.let { d -> enableNotifications(g, d) }
+                            Log.i(TAG, "device signs its readings; relaying attestation")
+                        }
+                    }
+
                 if (characteristic.supportsNotify()) {
                     g.setCharacteristicNotification(characteristic, true)
                     characteristic.getDescriptor(CCCD)?.let { d -> enableNotifications(g, d) }
@@ -396,12 +413,12 @@ class InstrumentClient(private val context: Context) {
                 g: BluetoothGatt,
                 c: BluetoothGattCharacteristic,
                 value: ByteArray,
-            ) = emit(value)
+            ) = emit(c, value)
 
             @Deprecated("Pre-33 path", ReplaceWith(""))
             @Suppress("DEPRECATION")
             override fun onCharacteristicChanged(g: BluetoothGatt, c: BluetoothGattCharacteristic) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) emit(c.value ?: return)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) emit(c, c.value ?: return)
             }
 
             override fun onCharacteristicRead(
@@ -410,7 +427,7 @@ class InstrumentClient(private val context: Context) {
                 value: ByteArray,
                 status: Int,
             ) {
-                if (status == BluetoothGatt.GATT_SUCCESS) emit(value)
+                if (status == BluetoothGatt.GATT_SUCCESS) emit(c, value)
             }
 
             @Deprecated("Pre-33 path", ReplaceWith(""))
@@ -423,12 +440,22 @@ class InstrumentClient(private val context: Context) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU &&
                     status == BluetoothGatt.GATT_SUCCESS
                 ) {
-                    emit(c.value ?: return)
+                    emit(c, c.value ?: return)
                 }
             }
 
-            private fun emit(raw: ByteArray) {
+            private fun emit(c: BluetoothGattCharacteristic, raw: ByteArray) {
                 val d = driver ?: return
+
+                // A SIGNED FRAME IS NOT A READING, and decoding it as one would be the exact
+                // mistake `decode()` warns about: 40 bytes of counter and HMAC will happily
+                // yield a plausible float from its first four bytes. Routed by characteristic
+                // so the two can never be confused.
+                if (c.uuid == Esp32ReferenceDriver.ATTESTATION) {
+                    emitAttested(d, raw)
+                    return
+                }
+
                 val value = d.decode(raw)
                 if (value == null) {
                     // Not a reading. A keep-alive or a truncated frame. Saying nothing is
@@ -443,6 +470,44 @@ class InstrumentClient(private val context: Context) {
                         toolId = toolIdFor(device, d),
                         plausible = d.produces.plausible(value),
                         driverId = d.id,
+                    ),
+                )
+            }
+
+            /**
+             * The same number, carrying what the device signed for it.
+             *
+             * The value is decoded from the frame's OWN bytes rather than from the plain
+             * characteristic, so what the technician sees and what the server verifies are the
+             * same four bytes. The server decodes them again for itself and never trusts the
+             * number this app reports — see web/src/server/instruments.ts.
+             */
+            private fun emitAttested(d: Driver, frame: ByteArray) {
+                if (frame.size != ATTESTED_FRAME_BYTES) {
+                    Log.d(TAG, "ignored a ${frame.size}-byte attestation frame")
+                    return
+                }
+                val counter = (frame[0].toLong() and 0xff) or
+                    ((frame[1].toLong() and 0xff) shl 8) or
+                    ((frame[2].toLong() and 0xff) shl 16) or
+                    ((frame[3].toLong() and 0xff) shl 24)
+                val raw = frame.copyOfRange(4, 8)
+                val value = d.decode(raw) ?: run {
+                    Log.d(TAG, "attestation frame carried bytes that did not decode")
+                    return
+                }
+                trySend(
+                    InstrumentEvent.Value(
+                        value = value,
+                        unit = d.produces.unit,
+                        toolId = toolIdFor(device, d),
+                        plausible = d.produces.plausible(value),
+                        driverId = d.id,
+                        frame = SignedFrame(
+                            counter = counter,
+                            rawHex = raw.toHex(),
+                            signature = frame.copyOfRange(8, ATTESTED_FRAME_BYTES).toHex(),
+                        ),
                     ),
                 )
             }
@@ -523,6 +588,25 @@ class InstrumentClient(private val context: Context) {
     }
 }
 
+/**
+ * What a device signed, on its way to the server.
+ *
+ * The handset RELAYS this and cannot produce it: the signing key lives on the instrument and
+ * never reaches the app. `web/src/server/instruments.ts` decodes the value from `rawHex` rather
+ * than believing any number the phone reports, so there is no field here the relay can change
+ * without invalidating `signature`.
+ *
+ * Absent when the device does not sign. That is not an error — the reading still reaches the
+ * form, it simply cannot be called `measured`.
+ */
+data class SignedFrame(
+    val counter: Long,
+    /** The device's own value bytes, hex. */
+    val rawHex: String,
+    /** HMAC-SHA256 over "warrant-reading-v1|<toolId>|<counter>|" + raw bytes, hex. */
+    val signature: String,
+)
+
 sealed interface InstrumentEvent {
     data object Connecting : InstrumentEvent
     data class Connected(val toolId: String, val driver: Driver) : InstrumentEvent
@@ -538,8 +622,18 @@ sealed interface InstrumentEvent {
          */
         val plausible: Boolean,
         val driverId: String,
+        /**
+         * The device's signature over this reading, when it signs. Null for a device that does
+         * not, and for the simulator — which is why a simulated value can no longer seal as
+         * measured, as SimulatedReading's own comment has always claimed it could not.
+         */
+        val frame: SignedFrame? = null,
     ) : InstrumentEvent
 
     data class Failed(val reason: String) : InstrumentEvent
     data object Disconnected : InstrumentEvent
 }
+
+/** Lower-case hex. The wire form the reading endpoint parses. */
+internal fun ByteArray.toHex(): String =
+    joinToString("") { "%02x".format(it) }

@@ -1,7 +1,8 @@
 """The screen in front of the judge, and the reason it is not an agent.
 
-Every capture is looked at twice: once cheaply, by **Gemma**, and then — usually — by
-Gemini 3.5 Flash. This module is the first look.
+Every capture is looked at twice: once cheaply, by **Gemini 3.5 Flash-Lite**, and then —
+usually — by Gemini 3.5 Flash. This module is the first look. It is NOT Gemma, and the note
+on SCREENING_MODEL below is the whole account of why it could not be.
 
 WHY THIS IS NOT AN EIGHTH AGENT. An agent here returns a verdict that lands on a record and
 that a person can argue with months later. This returns nothing of the kind. It answers one

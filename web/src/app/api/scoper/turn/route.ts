@@ -9,7 +9,8 @@
 
 import { NextResponse } from "next/server";
 import { callerSession } from "@/auth/bearer";
-import { askFleet, FleetUnreachable } from "@/server/fleet";
+import { askFleet, FleetUnreachable, INTERVIEW_TIMEOUT_MS } from "@/server/fleet";
+import { take, INTERVIEW_LIMIT } from "@/server/ratelimit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,6 +22,14 @@ const CLASSES = [
 
 /** An interview is finite. A shop that has told you everything will not know more on turn 12. */
 const MAX_TURNS = 14;
+
+/**
+ * And a finite SIZE. Roughly forty pages of transcript.
+ *
+ * Turn count bounds how many things were said, not how long they were — and the whole
+ * transcript is re-sent on every turn, so length is what the bill is actually made of.
+ */
+const MAX_TRANSCRIPT_CHARS = 120_000;
 
 interface Turn {
   who: string;
@@ -48,10 +57,39 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Body must be JSON." }, { status: 400 });
   }
 
+  // A ceiling per caller. This route needs no Firestore state at all — a bare POST reaches
+  // Gemini — so it is the cheapest thing in the system to abuse and had no limit on it.
+  const spend = take(`scoper:${session.uid}`, INTERVIEW_LIMIT);
+  if (!spend.allowed) {
+    return NextResponse.json(
+      { error: "Too many interview turns at once. Give it a moment." },
+      { status: 429, headers: { "retry-after": String(spend.retryAfter) } },
+    );
+  }
+
   const conversation = Array.isArray(body.conversation) ? body.conversation : [];
   if (conversation.length > MAX_TURNS * 2) {
     return NextResponse.json({ error: "This interview is over its turn budget." },
                              { status: 409 });
+  }
+
+  // AND A SIZE CAP, which the turn budget is not.
+  //
+  // Counting turns bounds how MANY things were said and nothing about how long they were: 28
+  // turns of a megabyte each is a legal interview by the check above, and every turn is sent to
+  // the model in full, so the cost of the last one grows with everything before it. The limit is
+  // on the whole transcript rather than per turn because that is what actually gets billed.
+  //
+  // Generous on purpose — a shop describing a gnarly procedure should never hit this — and it is
+  // a refusal rather than a truncation, because silently dropping the middle of what somebody
+  // told you produces a procedure compiled from half an answer.
+  const transcript = conversation.reduce((n, t) => n + String(t?.said ?? "").length, 0)
+    + String(body.existing_form ?? "").length;
+  if (transcript > MAX_TRANSCRIPT_CHARS) {
+    return NextResponse.json(
+      { error: "This interview is longer than the Scoper can read in one go. " +
+               "Compile what you have and refine the procedure in the editor." },
+      { status: 413 });
   }
 
   // The coverage list the agent depends on.
@@ -85,7 +123,11 @@ export async function POST(request: Request) {
   };
 
   try {
-    const reply = await askFleet("scoper", kase);
+    // The interview gets a longer budget than a mechanic's step does, and the reason is in
+    // `fleet.ts`: the default used to equal the engine's own per-call timeout, so a slow turn
+    // was abandoned here at the instant the engine would have retried it. Turns get slower as
+    // the transcript grows, which is why it was always the END of a long interview that died.
+    const reply = await askFleet("scoper", kase, fetch, { timeoutMs: INTERVIEW_TIMEOUT_MS });
     if (!reply.valid) {
       // Returned, not thrown. A malformed turn is a finding about the agent, and an interview
       // that dies with a 500 loses the whole transcript with it.

@@ -60,6 +60,7 @@ $ENG build --platform linux/amd64 -f "$ROOT/infra/Dockerfile.web" -t "$IMAGE" \
   --build-arg "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:-}" \
   --build-arg "NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID:-}" \
   --build-arg "NEXT_PUBLIC_WARRANT_DATA_SOURCE=${NEXT_PUBLIC_WARRANT_DATA_SOURCE:-fixture}" \
+  --build-arg "NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-}" \
   "$ROOT"
 echo "pushing…"
 $ENG push "$IMAGE" >/dev/null
@@ -81,6 +82,42 @@ $ENG push "$IMAGE" >/dev/null
 # saying why. It comes from .env, which is gitignored — an empty value is the same 401, which
 # is the right way round.
 #
+# MODEL_ARMOR_LOCATION and MODEL_ARMOR_TEMPLATE were missing, and their absence was silent in
+# the worst possible way. `armor.ts:endpoint()` returns null when either is unset, every capture
+# records NOT_SCREENED, and NOT_SCREENED is deliberately not a pass — so `classify()` could never
+# reach `inferred`. Combined with the instrument keys below being absent too (no `measured`), the
+# whole provenance ladder collapsed to its floor: every field on every record sealed by the
+# deployed service came out `asserted`, while the taxonomy sat on screen claiming four rungs.
+# The ladder was built and tested; the deploy simply never provisioned the inputs that let a
+# field climb it.
+#
+# WARRANT_INSTRUMENT_KEYS is `tenant|toolId|secret` — the tenant is not optional, see
+# web/src/server/instruments.ts. Absent, no reading can ever be attested and `measured` is
+# unreachable; that is an honest state rather than a broken one, but it should be a CHOSEN state.
+#
+# GOOGLE_OAUTH_CLIENT_SECRET is what the calendar callback exchanges the code with. Without it
+# /api/auth/calendar/callback returns 503 and linking a calendar silently cannot work.
+#
+# A CUSTOM DELIMITER, and it is not decoration. `--set-env-vars` splits on commas, and
+# WARRANT_INSTRUMENT_KEYS is itself a comma-separated list — so the default parsing would tear a
+# two-instrument registry into fragments and set garbage. `;;` is used rather than `@` or `|`
+# because both of those appear inside real values here: `@` in the adjudicator service account,
+# `|` inside every instrument key.
+#
+# WHAT IS NOT SET, SAID OUT LOUD. Each of these fails silently and identically — the feature
+# simply never happens — and the deployed build ran for weeks with the first two absent.
+for v in MODEL_ARMOR_LOCATION MODEL_ARMOR_TEMPLATE WARRANT_INSTRUMENT_KEYS \
+         GOOGLE_OAUTH_CLIENT_SECRET WARRANT_SWEEP_SECRET; do
+  if [ -z "${!v:-}" ]; then
+    case "$v" in
+      MODEL_ARMOR_*)  echo "note: $v unset — evidence records NOT_SCREENED, so no field can reach 'inferred'." ;;
+      WARRANT_INSTRUMENT_KEYS) echo "note: $v unset — no reading can be attested, so no field can reach 'measured'." ;;
+      GOOGLE_OAUTH_CLIENT_SECRET) echo "note: $v unset — linking a calendar will return 503." ;;
+      WARRANT_SWEEP_SECRET) echo "note: $v unset — every sweep will 401 and nothing scheduled will run." ;;
+    esac
+  fi
+done
+
 # Scale to zero: no request, no container, no charge.
 gcloud run deploy "$SERVICE" \
   --image "$IMAGE" \
@@ -95,12 +132,78 @@ gcloud run deploy "$SERVICE" \
   --cpu 1 \
   --memory 512Mi \
   --service-account "$RUN_SA" \
-  --set-env-vars "GCP_PROJECT=${PROJECT},WARRANT_REGION=${WARRANT_REGION:-us},GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-},WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-},WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com},NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-},WARRANT_SWEEP_SECRET=${WARRANT_SWEEP_SECRET:-}" \
+  --set-env-vars "^;;^GCP_PROJECT=${PROJECT};;WARRANT_REGION=${WARRANT_REGION:-us};;GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-};;GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET:-};;WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-};;WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com};;NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-};;WARRANT_SWEEP_SECRET=${WARRANT_SWEEP_SECRET:-};;MODEL_ARMOR_LOCATION=${MODEL_ARMOR_LOCATION:-};;MODEL_ARMOR_TEMPLATE=${MODEL_ARMOR_TEMPLATE:-};;WARRANT_INSTRUMENT_KEYS=${WARRANT_INSTRUMENT_KEYS:-}" \
   --quiet
 
 URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"
 echo
 echo "live: $URL"
+
+# --- the sweep, on a clock ---------------------------------------------------------------
+#
+# THE ASYNCHRONOUS HALF OF THIS SYSTEM DOES NOT EXIST WITHOUT THIS.
+#
+# `/api/tasks/sweep` is what makes the fleet run unattended: it adjudicates captures a dying
+# client never triggered, rules on steps a technician walked away from, seals jobs whose last
+# step passed after everyone went home, re-notifies escalations nobody claimed, and audits
+# procedures against the records behind them. Every one of those is a promise the README makes
+# about days, not about clicks.
+#
+# It was documented in `docs/architecture.md`, referenced by the route, described in the spec —
+# and created by NOTHING. A judge following the spin-up instructions got a system that never
+# swept, and the failure is invisible: no error, no empty screen, just a fleet that quietly
+# never wakes. So it is created here, next to the service it calls, and it is idempotent.
+#
+# Once a minute, which is what specs/2026-08-20-firestore-design.md section 8 says and what the
+# two-minute undecided-capture net assumes. The route takes a LEASE, so a sweep running long
+# does not stack: an overlapping call returns 200 with `skipped`, because Cloud Scheduler
+# retries a non-2xx and a retry here would be another overlapping sweep.
+SWEEP_CRON="${WARRANT_SWEEP_CRON:-* * * * *}"
+SWEEP_JOB="${WARRANT_SWEEP_JOB:-warrant-sweep}"
+
+if [ -z "${WARRANT_SWEEP_SECRET:-}" ]; then
+  # Refused rather than created broken. The sweep authorises on this header and would 401 on
+  # every single firing, which looks exactly like a scheduler that is working.
+  echo
+  echo "skipping the sweep schedule — WARRANT_SWEEP_SECRET is unset, so every firing would 401."
+  echo "  set it in .env and re-run, or the fleet will never wake on its own."
+else
+  echo
+  echo "scheduling the sweep — $SWEEP_CRON"
+  gcloud services enable cloudscheduler.googleapis.com --project "$PROJECT" --quiet >/dev/null 2>&1 || true
+
+  # create-or-update, because a redeploy must not fail on an existing job and must not leave a
+  # stale URL behind when the service hostname changes.
+  # `create` spells it --headers and `update` spells it --update-headers. Same field, two
+  # names, and using the wrong one fails with "unrecognized arguments" rather than anything
+  # about scheduling.
+  if gcloud scheduler jobs describe "$SWEEP_JOB" --location "$REGION" --project "$PROJECT" >/dev/null 2>&1; then
+    SCHED_VERB=update
+    SCHED_HEADER_FLAG=--update-headers
+  else
+    SCHED_VERB=create
+    SCHED_HEADER_FLAG=--headers
+  fi
+
+  gcloud scheduler jobs "$SCHED_VERB" http "$SWEEP_JOB" \
+    --location "$REGION" \
+    --project "$PROJECT" \
+    --schedule "$SWEEP_CRON" \
+    --time-zone "Etc/UTC" \
+    --uri "$URL/api/tasks/sweep" \
+    --http-method POST \
+    "$SCHED_HEADER_FLAG" "x-warrant-sweep=${WARRANT_SWEEP_SECRET}" \
+    --attempt-deadline 320s \
+    --max-retry-attempts 0 \
+    --quiet
+  # No retries ON PURPOSE. The sweep is idempotent and self-healing — anything it misses is
+  # picked up by the next firing sixty seconds later — so a retry buys nothing and costs an
+  # overlapping run against the lease.
+
+  echo "  ok — $SWEEP_JOB fires $SWEEP_CRON at $URL/api/tasks/sweep"
+  echo "  watch it:  gcloud scheduler jobs describe $SWEEP_JOB --location $REGION"
+  echo "  run it now: gcloud scheduler jobs run $SWEEP_JOB --location $REGION"
+fi
 
 # The sign-in popup is refused from any origin Identity Platform does not know about, and a
 # Cloud Run hostname is generated rather than chosen — so it cannot be authorised in advance.

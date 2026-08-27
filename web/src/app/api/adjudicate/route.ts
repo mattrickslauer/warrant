@@ -11,6 +11,7 @@
 import { NextResponse } from "next/server";
 import { callerSession } from "@/auth/bearer";
 import { adjudicate } from "@/server/adjudicate/run";
+import { take, MODEL_LIMIT } from "@/server/ratelimit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -66,6 +67,20 @@ export async function POST(request: Request) {
   }
   if (session.tenant.id !== tenantId) {
     return NextResponse.json({ error: "Not authorised." }, { status: 403 });
+  }
+
+  // A CEILING, because this route spends money on behalf of whoever calls it.
+  //
+  // One call runs Model Armor, the screen, the Inspector and often the Skeptic. It was
+  // reachable by any signed-in caller with no limit — and a visitor is signed in ANONYMOUSLY on
+  // first use, so "signed in" is not a meaningful barrier. Keyed on the uid, which is the one
+  // thing about the caller that is verified and not theirs to vary.
+  const spend = take(`adjudicate:${session.uid}`, MODEL_LIMIT);
+  if (!spend.allowed) {
+    return NextResponse.json(
+      { error: "Too many adjudication requests. The sweep will pick up anything missed." },
+      { status: 429, headers: { "retry-after": String(spend.retryAfter) } },
+    );
   }
 
   try {

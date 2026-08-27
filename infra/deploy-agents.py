@@ -227,7 +227,31 @@ def main() -> int:
                                 "GEMINI_LOCATION": os.environ.get("GEMINI_LOCATION", "global"),
                                 "GEMINI_MODEL": os.environ.get("GEMINI_MODEL",
                                                                "gemini-3.5-flash"),
-                                "WARRANT_CASSETTES": "/tmp/warrant-cassettes"})
+                                "WARRANT_CASSETTES": "/tmp/warrant-cassettes",
+                                # THE ENGINE'S LADDER IS NOT THE EVAL SUITE'S.
+                                #
+                                # `model.py` retries a 429 because quota is transient, and
+                                # waits a full minute out — correct for an unattended run of
+                                # seventy scenarios, and wrong here. This process answers a
+                                # request a mechanic is waiting on, behind the 45-second
+                                # timeout in `web/src/server/fleet.ts`. A thirty-second rung
+                                # is not patience at that point, it is sleeping through a
+                                # wait the caller has already abandoned. Three short rungs
+                                # ride out a full minute; past that, `run.ts` holds the step
+                                # and the sweep tries again, which is the designed outcome.
+                                "WARRANT_QUOTA_BACKOFF": "2,4,8",
+                                # And a short cooldown to go with the short ladder.
+                                #
+                                # The gate stops a stampede of parallel calls each paying to
+                                # learn the same ceiling. Its cost is that everything behind
+                                # it fails fast until it re-arms — sixty seconds of held
+                                # steps, which on a recording is a minute of the product
+                                # looking broken after the quota has already come back. The
+                                # ladder here is only fourteen seconds long, so the stampede
+                                # being prevented is cheap and the cooldown should be too:
+                                # roughly one ladder, enough to damp a burst, short enough
+                                # that recovery is not something the camera sees.
+                                "WARRANT_QUOTA_GATE_TTL": "15"})
 
         current = None if args.new else existing(agent_engines, DISPLAY_NAME)
         with contextlib.chdir(staged.parent):

@@ -32,8 +32,27 @@ export interface CaptureInput {
   stepId: string;
   fieldKey: string;
   kind: Capture["kind"];
-  /** Object URL, data URL, or a storage ref once live. Never the bytes themselves. */
+  /**
+   * For `text`, the answer itself. For every other kind, an object URL or data URL — a handle
+   * to bytes that live in this tab and nowhere else, which is exactly why `blob` exists below.
+   */
   mediaRef: string;
+  /**
+   * THE BYTES. Without them the evidence never leaves the browser.
+   *
+   * `mediaRef` used to be the whole story on this surface, and it is an object URL: a handle
+   * only the tab that minted it can resolve. The capture document was written, the fleet
+   * derived the storage path it should be at — `cases.ts` `mediaUri()`, by convention, not by
+   * lookup — and Vertex was asked to read an object nobody had ever uploaded. Every browser
+   * capture came back `404 NOT_FOUND`, which surfaced to the technician as the fleet being
+   * unreachable, for a photograph that had failed to leave the laptop.
+   *
+   * The Android surface already puts the bytes up first and has a comment saying why
+   * (`LiveSource.uploadMedia`). This is the same promise on the web.
+   *
+   * Null for `text`, the one kind with no object behind it.
+   */
+  blob?: Blob | null;
   surface: Capture["capture_surface"];
   /** live = grabbed from an open camera stream here and now. Uploads cannot show liveness. */
   mode: Capture["capture_mode"];
@@ -45,7 +64,6 @@ export interface BlockedInput {
   reasonKind: "voice" | "text";
   transcript: string;
   audioRef?: string | null;
-  by: string;
 }
 
 export interface DataSource {
@@ -68,7 +86,14 @@ export interface DataSource {
    * makes offline capture safe, and it is what "nothing happened until I said so" actually
    * means. The bytes sync; the work does not start.
    */
-  finalize(jobId: string, by: string): Promise<void>;
+  /**
+   * Declare the job ready for the fleet.
+   *
+   * No `by` parameter, deliberately. Who did this is a signature, and a signature a caller
+   * supplies is not one — the implementation reads the signed-in uid, which is the same
+   * identity firestore.rules checks `finalized_by` against.
+   */
+  finalize(jobId: string): Promise<void>;
 
   capture(input: CaptureInput): Promise<Capture>;
   /** The second exit. A step is never silently abandoned. */

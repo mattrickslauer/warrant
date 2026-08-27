@@ -46,10 +46,55 @@ import {
 import type {
   Procedure, Job, StepOutcome, Capture, Decision, SealedRecord, Field,
 } from "@/generated/types";
+import { ref as storageRef, uploadBytes } from "firebase/storage";
 import type { DataSource, JobEvent, CaptureInput, BlockedInput, Tier, Unsubscribe } from "./source";
-import { clientDb } from "@/auth/firebase-client";
+import { clientDb, clientAuth, clientStorage } from "@/auth/firebase-client";
 
 const now = () => new Date().toISOString();
+
+/**
+ * The extension a kind is stored under, or null when the kind has no object behind it.
+ *
+ * It has to be here and it has to agree with `server/adjudicate/cases.ts`, which derives the
+ * same name on the other side and never looks the object up. The fleet reads the media type
+ * off the suffix, so an extensionless object is refused by the agent rather than judged.
+ * Android says all of this in `data/Media.kt`; the two tables are the same table.
+ */
+const EXTENSION: Record<Capture["kind"], string | null> = {
+  photo: "jpg",
+  video: "mp4",
+  scan: "jpg",
+  audio: "m4a",
+  // The one kind with no object. `media_ref` carries the answer itself — see
+  // contract/entities/capture.schema.json, which says so in the field description.
+  text: null,
+};
+
+/**
+ * Where the bytes go, which is the one path `storage.rules` allows a client to create.
+ *
+ * Append-only by rule: a technician cannot replace a photograph that failed inspection with
+ * one that passes.
+ */
+const mediaPath = (tenantId: string, jobId: string, captureId: string, ext: string) =>
+  `tenants/${tenantId}/captures/${jobId}/${captureId}.${ext}`;
+
+/**
+ * Who is writing this, taken from the signed-in user and never from a caller.
+ *
+ * `reason_by` and `finalized_by` are read back by the Seal to name the people on a record, so
+ * they are a signature. This used to be a parameter, and every call site passed a placeholder
+ * — `by: "you"` here, `by = "technician"` on the phone — which meant the member lookup found
+ * nobody and no record ever named anyone. A caller that CAN say who it is will eventually say
+ * something else, so it is no longer asked: firestore.rules refuses either field unless it
+ * equals `request.auth.uid`, and this is that same uid, read from the same client whose token
+ * authorises the write. The value and the permission cannot disagree.
+ */
+function currentUid(): string {
+  const uid = clientAuth().currentUser?.uid;
+  if (!uid) throw new Error("Not signed in; nothing can be written on nobody's behalf.");
+  return uid;
+}
 
 /** `/tenants/{t}/…` — the one path shape docs/data-model.md §4 defines. */
 const tenantCol = (db: Firestore, tenantId: string, name: string) =>
@@ -71,9 +116,42 @@ export class LiveSource implements DataSource {
   readonly fabricated = false;
 
   private db: Firestore;
+  /**
+   * Where the signature comes from. See `currentUid`.
+   *
+   * Injectable for the same reason `db` is: a test drives this class against the emulator with
+   * no Firebase app initialised, and reaching for `clientAuth()` there throws before the write
+   * under test is ever attempted. The DEFAULT is the real signed-in user, so nothing in the
+   * product can quietly supply an identity of its own — the seam exists for the emulator, not
+   * as a way to pass a uid in.
+   */
+  private uid: () => string;
 
-  constructor(db?: Firestore) {
+  /**
+   * How bytes reach Cloud Storage. Injectable for exactly the reason `db` and `uid` are.
+   *
+   * The emulator suite drives this class with no Firebase app initialised, and there is no
+   * Storage emulator in `scripts/smoke.sh` — so a test that had to reach `clientStorage()`
+   * would throw before the Firestore write it is actually asserting on ever happened. The
+   * DEFAULT is the real bucket; the seam exists for the emulator, not as a way for anything
+   * in the product to put evidence somewhere else.
+   */
+  private put: (path: string, blob: Blob) => Promise<void>;
+
+  constructor(
+    db?: Firestore,
+    uid: () => string = currentUid,
+    put: (path: string, blob: Blob) => Promise<void> = async (path, blob) => {
+      await uploadBytes(storageRef(clientStorage(), path), blob, {
+        // storage.rules checks this, and a blob that arrived without a type would be refused
+        // by the rule rather than by anything that could explain itself.
+        contentType: blob.type || "image/jpeg",
+      });
+    },
+  ) {
     this.db = db ?? clientDb();
+    this.uid = uid;
+    this.put = put;
   }
 
   // ---------------------------------------------------------------- reads
@@ -237,13 +315,14 @@ export class LiveSource implements DataSource {
    * Everything before this is a draft: performed against the local cache, syncing when there
    * is signal, and invisible to every agent. This is the moment the work becomes work.
    */
-  async finalize(jobId: string, by: string): Promise<void> {
+  async finalize(jobId: string): Promise<void> {
     const [tenantId, id] = splitScoped(jobId);
     if (!tenantId) throw new Error(`job id is not tenant-scoped: ${jobId}`);
     await updateDoc(doc(this.db, "tenants", tenantId, "jobs", id), {
       status: "open",
       finalized_at: now(),
-      finalized_by: by,
+      // The signature, from the signed-in user. See `signedInUid`.
+      finalized_by: this.uid(),
     });
   }
 
@@ -268,11 +347,21 @@ export class LiveSource implements DataSource {
     const capRef = doc(collection(jobRef, "captures"));
     const fRef = doc(collection(jobRef, "fields"), fieldId(input.stepId, input.fieldKey));
 
+    // THE BYTES GO UP FIRST, and the write below only happens if they landed.
+    //
+    // A capture document pointing at an object that is not there is not a slow capture, it is
+    // a false one: the fleet derives the path by convention and Vertex answers 404, which the
+    // technician reads as "the fleet could not be reached" — a sentence about the network, for
+    // a photograph still sitting in the tab. That was every browser capture this product ever
+    // took. Failing HERE reaches the person while they can still take it again.
+    const stored = await this.upload(tenantId, jobId, capRef.id, input);
+
     const capture: Capture = {
       id: capRef.id,
       field_id: fieldId(input.stepId, input.fieldKey),
       kind: input.kind,
-      media_ref: input.mediaRef,
+      // The stored path, or — for `text`, the only kind with no object — the answer itself.
+      media_ref: stored ?? input.mediaRef,
       capture_mode: input.mode,
       // Reported, not believed. A surface above `browser` is only credited once a server-side
       // attestation accompanies it, and firestore.rules refuses `app_instrument` from any
@@ -326,6 +415,37 @@ export class LiveSource implements DataSource {
     return capture;
   }
 
+  /**
+   * Evidence into Cloud Storage, at the one path `storage.rules` allows, before anything
+   * claims it exists. Returns the stored path, or null for a kind with no object.
+   *
+   * THE THROW IS DELIBERATE. Returning null on a failed upload would hand the caller a
+   * capture document to write about bytes that are not there, which is the exact failure this
+   * exists to end. `LiveSource.uploadMedia` on Android makes the same argument and made the
+   * same correction; a capture that cannot be stored has not happened.
+   */
+  private async upload(
+    tenantId: string, jobId: string, captureId: string, input: CaptureInput,
+  ): Promise<string | null> {
+    const ext = EXTENSION[input.kind];
+    if (!ext) return null;
+    if (!input.blob) {
+      throw new Error(
+        "That capture produced no image, so nothing was recorded. Take it again.",
+      );
+    }
+    const path = mediaPath(tenantId, jobId, captureId, ext);
+    try {
+      await this.put(path, input.blob);
+    } catch (error) {
+      throw new Error(
+        "The photograph could not be uploaded, so nothing was recorded. Check the " +
+          `connection and take it again. (${String(error)})`,
+      );
+    }
+    return path;
+  }
+
   /** The second exit. A step is never silently abandoned — this always records an outcome. */
   async declareBlocked(input: BlockedInput): Promise<StepOutcome> {
     const [tenantId, jobId] = splitScoped(input.jobId);
@@ -344,7 +464,7 @@ export class LiveSource implements DataSource {
       reason_kind: input.reasonKind,
       reason_transcript: input.transcript,
       reason_audio_ref: input.audioRef ?? null,
-      reason_by: input.by,
+      reason_by: this.uid(),
       reason_at: now(),
       provenance_class: "asserted" as const,
     };
@@ -364,9 +484,27 @@ export class LiveSource implements DataSource {
    * Four listeners: the job header, its step outcomes, its fields, and the decision log. All
    * four are what the fixture timeline was imitating.
    *
-   * An ADD FIELD used to be inferred by diffing two snapshots of the steps[] array. With
-   * fields as documents it is simply `change.type === "added"` — the event stops being
-   * derived and starts being observed, which is a smaller and more honest piece of code.
+   * ## What an agent asks for comes off the STEP OUTCOME
+   *
+   * `added_fields`, `escalation_question` and `hold_reason` are written by `applyEffect()` in
+   * server/adjudicate/run.ts, and they are the only place an agent's ask exists. This used to
+   * read none of them. It watched the `fields` collection instead and called every document
+   * that appeared there an `add_field` — but `fields` holds CAPTURED ANSWERS, one per filled
+   * field, written by `capture()` twenty lines up. So the browser had it exactly inverted:
+   * every photograph the technician took came back labelled "the Inspector asked for this",
+   * carrying `{key, kind}` and no prompt, while the field an agent had actually appended never
+   * arrived at all. An escalation never arrived either — nothing read the question.
+   *
+   * The phone had this right the whole time (`LiveSource.kt`), which is why the failure was
+   * invisible in a demo driven from a phone.
+   *
+   * ## Why both `added` and `modified`
+   *
+   * `added` fires for what is already there when the listener opens, which is the reload case:
+   * a person who closes the tab and comes back must find the same question waiting. So both
+   * kinds are read, and each ask is emitted exactly once per job — tracked in `seen` below,
+   * because a snapshot repeats the whole document every time any part of it changes and a
+   * screen that appended on every repeat would grow the same ask forever.
    */
   subscribe(jobId: string, onEvent: (e: JobEvent) => void): Unsubscribe {
     const [tenantId, id] = splitScoped(jobId);
@@ -385,24 +523,61 @@ export class LiveSource implements DataSource {
       previous = job;
     });
 
+    // Every ask already delivered, so a snapshot that repeats one does not deliver it twice.
+    // Keyed by what makes an ask distinct: the step plus the field key, or the step plus the
+    // question itself — a REWORDED escalation is a new question and must arrive as one.
+    const seen = new Set<string>();
+    const once = (key: string, emit: () => void) => {
+      if (seen.has(key)) return;
+      seen.add(key);
+      emit();
+    };
+
     const stopOutcomes = onSnapshot(collection(jobRef, "step_outcomes"), (snap) => {
       for (const change of snap.docChanges()) {
-        if (change.type !== "modified") continue;
+        if (change.type === "removed") continue;
         const outcome = change.doc.data() as StepOutcome;
-        onEvent({ kind: "step_status", stepId: outcome.step_id, status: outcome.status });
+        const stepId = outcome.step_id;
+
+        // The status on `added` too, which is the reload: without it a job reopened in a new
+        // tab knew nothing about which steps were done and presented finished work as untouched.
+        onEvent({ kind: "step_status", stepId, status: outcome.status });
+
+        // The form grows. This is the ask that says "one more photograph", and it carries the
+        // whole FieldDef — prompt, kind, guidance, acceptance rule — because the screen has to
+        // render the ask in the words the agent asked it in.
+        for (const field of outcome.added_fields ?? []) {
+          once(`add:${stepId}:${field.key}`, () => {
+            onEvent({ kind: "add_field", stepId, field });
+          });
+        }
+
+        // A question put to a person. The step stays pending and carries it — an escalation is
+        // a decision awaited, not a status of its own — so nothing but this field says it
+        // happened.
+        const question = outcome.escalation_question?.trim();
+        if (question) {
+          once(`ask:${stepId}:${question}`, () => {
+            onEvent({ kind: "escalated", stepId, question });
+          });
+        }
       }
     });
 
+    // An answer landing, from any surface. The phone folds this into what it considers filled;
+    // the browser uses it to know that a field it is looking at has been satisfied elsewhere.
+    // NOT an add_field, which is what this listener used to report — see the note above.
     const stopFields = onSnapshot(collection(jobRef, "fields"), (snap) => {
       for (const change of snap.docChanges()) {
-        // `added` on first load replays what is already there; the screen treats an add_field
-        // for a field it already knows as a no-op, and metadata-only changes are ignored.
-        if (change.type !== "added" || snap.metadata.hasPendingWrites) continue;
+        if (change.type === "removed" || snap.metadata.hasPendingWrites) continue;
         const field = change.doc.data() as Field;
         onEvent({
-          kind: "add_field",
+          kind: "capture_accepted",
           stepId: field.step_id,
-          field: { key: field.key, kind: field.kind } as never,
+          fieldKey: field.key,
+          // Never absent in practice — capture() stamps it — but the contract allows null,
+          // and an event whose timestamp is `undefined` is worse than one that says now.
+          at: field.captured_at ?? new Date().toISOString(),
         });
       }
     });

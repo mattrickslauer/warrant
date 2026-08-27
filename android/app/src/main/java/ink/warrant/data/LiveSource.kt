@@ -399,19 +399,16 @@ class LiveSource(
      * stamps anything `measured`.
      */
     override suspend fun submitReading(input: ReadingInput): Reading {
-        val (t, _) = split(input.jobId)
         val at = now()
         val ok = api.submitReading(
-            toolKey = instrumentKey,
-            tenantId = t,
+            idToken = session.idToken(),
             jobId = input.jobId,
             stepId = input.stepId,
             fieldKey = input.fieldKey,
             key = input.fieldKey,
             value = input.value,
             unit = input.unit,
-            toolId = input.toolId,
-            at = at,
+            frame = input.frame,
         )
         check(ok) { "The reading did not reach the record." }
         return Reading(
@@ -420,19 +417,34 @@ class LiveSource(
             key = input.fieldKey,
             value = input.value,
             unit = input.unit,
+            // What this handset BELIEVES the tool was, for the screen only. The record's own
+            // tool_id is written server-side from whichever registered secret verified the
+            // frame, and is absent when nothing did — so an unattested reading shows here and
+            // still cannot seal as measured.
             toolId = input.toolId,
             at = at,
         )
     }
-
-    /** Set by the build that pairs instruments. Absent, submitReading fails loudly. */
-    var instrumentKey: String = ""
 
     /**
      * Needed only to ask Play Integrity for a token. Null in tests and in any build without
      * Play Services, where the capture simply records UNATTESTED.
      */
     var appContext: android.content.Context? = null
+
+    /**
+     * Who is writing this, from the signed-in user and never from a caller.
+     *
+     * `reason_by` is a signature: the Seal reads it back to put a person's name, photograph and
+     * role on a sealed record, and `dispose.ts` reads it as the technician a disposition
+     * concerns. It used to be a parameter, and this call site passed the literal "technician" —
+     * so the member lookup found nobody and no record ever named anyone, while an attacker
+     * writing a COLLEAGUE'S uid would have been believed. firestore.rules now refuses the field
+     * unless it equals `request.auth.uid`, and this is that uid, from the same session whose
+     * token authorises the write.
+     */
+    private fun signedInUid(): String =
+        session.uid ?: error("Not signed in; nothing can be written on nobody's behalf.")
 
     override suspend fun declareBlocked(input: BlockedInput): StepOutcome {
         ready()
@@ -443,7 +455,7 @@ class LiveSource(
                 "reason_kind" to input.reasonKind.name.lowercase(),
                 "reason_transcript" to input.transcript,
                 "reason_audio_ref" to input.audioRef,
-                "reason_by" to input.by,
+                "reason_by" to signedInUid(),
                 "reason_at" to now(),
                 // NOT deferred yet. The Instructor reads the reason and the Foreman decides
                 // the disposition; a client that set its own status would be waiving.

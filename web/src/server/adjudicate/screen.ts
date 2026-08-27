@@ -1,6 +1,6 @@
 import "server-only";
 
-// The Gemma screen's policy, in ordinary code.
+// The screen's policy, in ordinary code.
 //
 // `agents/warrant/screen.py` states the same floor and the same actionable set, and the remote
 // returns its own `acts_on` alongside the answer. This file exists anyway, and re-checks it,
@@ -121,7 +121,8 @@ export function inspectorVerdictFromScreen(
  * What the ledger and the record should say about a screened capture.
  *
  * Named rather than inlined because the saving is the product argument and it has to be
- * countable: a decision row carrying `gemma-3-4b` is a Flash call that never had to happen,
+ * countable: a decision row carrying the screening model is a Flash call that never had to
+ * happen,
  * and the operator view totals exactly these.
  */
 export function screenSaving(reply: ScreenReply): { screened: true; defect: string } | null {

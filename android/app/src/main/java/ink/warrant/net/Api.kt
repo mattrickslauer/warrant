@@ -1,6 +1,7 @@
 package ink.warrant.net
 
 import android.util.Log
+import ink.warrant.data.ReadingFrame
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -71,33 +72,50 @@ class Api(private val baseUrl: String) {
      * NOT fire and forget. This one is the difference between a measured value and a typed
      * one, and a technician who is told the reading was taken when it never reached the
      * record has been told something false.
+     *
+     * Authenticated by the TECHNICIAN'S SESSION, like every other call here. It used to carry
+     * `x-warrant-tool-key` — a shared secret shipped inside the APK — while the server took the
+     * tenant from the caller's own job id. Admin credentials bypass firestore.rules, so one
+     * extracted key wrote `measured` readings into any tenant that existed, and a Workspace
+     * tenant id is a domain name. The secret is gone from this app entirely; what proves an
+     * instrument was involved is now [ReadingFrame], which only the instrument can produce.
      */
     suspend fun submitReading(
-        toolKey: String,
-        tenantId: String,
+        idToken: String?,
         jobId: String,
         stepId: String,
         fieldKey: String,
         key: String,
         value: Double,
         unit: String,
-        toolId: String,
-        at: String,
+        frame: ReadingFrame?,
     ): Boolean {
         val body = JSONObject()
-            .put("tenant_id", tenantId)
             .put("job_id", jobId)
             .put("step_id", stepId)
             .put("field_key", fieldKey)
             .put("key", key)
+            // What this handset SAW. Used only when nothing was attested — a device that does
+            // not sign, or the simulator — so the number still reaches the form. When the frame
+            // below verifies, the server ignores this entirely and decodes the value from the
+            // signed bytes, so it cannot carry one figure and report another.
             .put("value", value)
             .put("unit", unit)
-            .put("tool_id", toolId)
-            .put("at", at)
-        return runCatching {
-            post("/api/ingest/reading", body, idToken = null,
-                 headers = mapOf("x-warrant-tool-key" to toolKey))
-        }.isSuccess
+        // NO `tenant_id`, NO `tool_id`, NO `at`. Each was a fact the caller asserted about
+        // itself, and the server derives all three now: the tenant from the session, the tool id
+        // from whichever registered secret verifies the frame, the timestamp from its own clock.
+        // `value` survives only as an unattested claim — it can never carry a tool_id with it,
+        // and a tool_id is the whole difference between `measured` and typed.
+        frame?.let {
+            body.put(
+                "frame",
+                JSONObject()
+                    .put("counter", it.counter)
+                    .put("rawHex", it.rawHex)
+                    .put("signature", it.signature),
+            )
+        }
+        return runCatching { post("/api/ingest/reading", body, idToken) }.isSuccess
     }
 
     /**

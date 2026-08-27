@@ -1,4 +1,4 @@
-// The component library. Fourteen primitives plus the agent stamps.
+// The component library. Seventeen primitives plus the agent stamps.
 //
 // Every screen is these arranged differently. A screen needing something this file does not
 // export comes back to the reference build — agents fanning out on a surface may not invent
@@ -10,7 +10,8 @@ export { StatusPill, type JobStatus } from "./StatusPill";
 export { StepCard } from "./StepCard";
 export { CaptureTile } from "./CaptureTile";
 export { ReasonCapture } from "./ReasonCapture";
-export { SignatureInput } from "./SignatureInput";
+export { Attribution } from "./Attribution";
+export { AnswerInput } from "./AnswerInput";
 export { ReadingBadge } from "./ReadingBadge";
 export { CeilingCard } from "./CeilingCard";
 export { AgentTrace } from "./AgentTrace";

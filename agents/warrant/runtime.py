@@ -27,7 +27,7 @@ DEFAULT_AGENT = "foreman"
 class WarrantFleet:
     """Warrant's seven agents behind one Agent Runtime operation, and one screen in front.
 
-    Three operations, and the third is not a fourth agent: `screen` runs Gemma over a capture
+    Three operations, and the third is not a fourth agent: `screen` runs Flash-Lite over a capture
     to decide whether Flash has to be asked at all. It is outside `REGISTRY` on purpose, so
     `roster()` answers seven — see `screen.py`.
 
@@ -95,13 +95,13 @@ class WarrantFleet:
 
     def screen(self, *, case: dict[str, Any],
                temperature: float = 0.0) -> dict[str, Any]:
-        """Look at one capture cheaply, on Gemma, before the judge is asked.
+        """Look at one capture cheaply, on Flash-Lite, before the judge is asked.
 
         A separate operation rather than an eighth entry in `query`'s registry, because it is
         not an agent and `roster()` must keep saying seven. The reply is shaped exactly like
         `query`'s so the caller reads both the same way — including `model`, which is what
-        makes the saving auditable: a decision row that names `gemma-3-4b` is a Flash call
-        that never had to happen.
+        makes the saving auditable: a decision row that names the screening model is a Flash
+        call that never had to happen.
 
         `acts_on` travels with the answer. Whether a screen is strong enough to stop a capture
         is a policy question in ordinary code, and the caller must not have to re-derive it

@@ -230,23 +230,54 @@ def cmd_check(args: argparse.Namespace) -> int:
     Catches the whole class of mistakes that would otherwise be discovered one model call
     at a time, and costs nothing."""
     cases = load_scenarios(args.agent, args.id)
-    missing: list[str] = []
+
+    # TWO DIFFERENT THINGS, AND THEY USED TO BE ONE.
+    #
+    # A scenario that raises anything other than MediaMissing is BROKEN — an agent name that
+    # is not in the registry, an input the agent cannot read, a contract that moved underneath
+    # it. That is a defect and it must fail.
+    #
+    # A scenario whose photograph is not on disk is not broken. Almost every slot in this
+    # corpus is a picture somebody still has to go and take; `evals/manifest.py` says what each
+    # one is and why it cannot be generated, and `evals media` says which are outstanding.
+    # Failing on those made `./scripts/smoke.sh` — the command the README tells a stranger to
+    # run — exit non-zero at step 6 of 7 and never print its verdict. A verification script that
+    # cannot finish because the corpus is honestly incomplete teaches everyone to stop running
+    # it, which costs far more than the photographs are worth.
+    #
+    # So the outstanding pictures are reported LOUDLY and do not fail the check. `--strict`
+    # demands a complete corpus, which is what a release gate should ask for.
+    unphotographed: list[str] = []
+    broken: list[str] = []
     for case in cases:
         agent = REGISTRY[case["agent"]]()
         try:
             agent.parts(case["input"])
         except MediaMissing as e:
-            missing.append(f"  {case['id']}: {e}")
+            unphotographed.append(f"  {case['id']}: {e}")
         except Exception as e:
-            missing.append(f"  {case['id']}: {type(e).__name__}: {e}")
+            broken.append(f"  {case['id']}: {type(e).__name__}: {e}")
+
     print(f"{len(cases)} scenarios load, "
           f"{len(set(c['agent'] for c in cases))} agents, "
           f"{sum(len(c['expect']) for c in cases)} assertion groups")
-    if missing:
-        print(f"{rep.RED}{len(missing)} cannot be built:{rep.RESET}")
-        print("\n".join(missing))
+
+    if broken:
+        print(f"{rep.RED}{len(broken)} are BROKEN:{rep.RESET}")
+        print("\n".join(broken))
+
+    if unphotographed:
+        print(f"{rep.YELLOW}{len(unphotographed)} awaiting a photograph "
+              f"(not a failure — see `python3 -m evals media`):{rep.RESET}")
+        print("\n".join(unphotographed))
+
+    if broken:
         return 1
-    print(f"{rep.GREEN}every scenario builds a prompt{rep.RESET}")
+    if unphotographed and getattr(args, "strict", False):
+        print(f"{rep.RED}--strict: the corpus is incomplete{rep.RESET}")
+        return 1
+    if not unphotographed:
+        print(f"{rep.GREEN}every scenario builds a prompt{rep.RESET}")
     return 0
 
 
@@ -305,7 +336,12 @@ def main(argv: list[str] | None = None) -> int:
     r.add_argument("--allow-fail", action="store_true", help="exit 0 even with failures")
     r.set_defaults(fn=cmd_run)
 
-    common(sub.add_parser("check", help="load and build every prompt, call nothing")).set_defaults(fn=cmd_check)
+    c = common(sub.add_parser("check", help="load and build every prompt, call nothing"))
+    # A missing photograph is outstanding work, not a broken suite — see cmd_check. This is how
+    # a release gate asks for the complete corpus anyway.
+    c.add_argument("--strict", action="store_true",
+                   help="fail if any scenario is still awaiting its photograph")
+    c.set_defaults(fn=cmd_check)
     common(sub.add_parser("list", help="list scenarios")).set_defaults(fn=cmd_list)
     common(sub.add_parser("media", help="what still needs photographing")).set_defaults(fn=cmd_media)
 

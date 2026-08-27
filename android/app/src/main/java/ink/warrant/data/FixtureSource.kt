@@ -284,7 +284,7 @@ class FixtureSource(
                 reasonKind = input.reasonKind,
                 reasonTranscript = input.transcript,
                 reasonAudioRef = input.audioRef,
-                reasonBy = input.by,
+                reasonBy = "fixture-technician",
                 reasonAt = nowIso(),
                 // A stated reason is always asserted — a named human said it, at this time.
                 provenanceClass = ProvenanceClass.ASSERTED,

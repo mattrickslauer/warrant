@@ -23,6 +23,24 @@ cd "$ROOT"
 
 step() { printf '\n\033[1m%s\033[0m\n' "$*"; }
 
+# HERMETIC, AND IT WAS NOT.
+#
+# This script's whole promise — the one the README repeats — is "no hardware, no Google Cloud
+# project, no credentials, nothing at risk". That held for everything except the two steps
+# that build and drive the web surface, because `.env` and `web/.env.local` both carry
+# `NEXT_PUBLIC_WARRANT_DATA_SOURCE=live` for ordinary development, Next inlines that at BUILD
+# time, and `npm run build` here picked it up. So on any machine set up to develop against the
+# real project, step 4 was not proving the surfaces render from fixtures — it was baking a
+# client bound to LiveSource — and step 7 then drove a real browser against real Firestore and
+# woke the real fleet. It failed as often as not, for reasons that had nothing to do with the
+# code under test, and "nothing is at risk" was simply not true.
+#
+# Set here rather than trusted, because a real environment variable takes precedence over a
+# .env file in Next and this is the only way to say "whatever this machine is configured for,
+# not that". Nothing below may reach a project.
+export NEXT_PUBLIC_WARRANT_DATA_SOURCE=fixture
+export WARRANT_DATA_SOURCE=fixture
+
 step "1/7  contract — schemas resolve and agent schemas are Vertex-safe"
 node contract/check.mjs
 
@@ -48,12 +66,17 @@ node --experimental-strip-types --conditions=react-server --import ./scripts/ts-
   --test scripts/outcome.test.mjs scripts/cases.test.mjs scripts/fleet.test.mjs \
        scripts/armor.test.mjs scripts/attest.test.mjs scripts/trace.test.mjs \
        scripts/nav.test.mjs scripts/compile.test.mjs scripts/screen.test.mjs \
-       scripts/seal.test.mjs 2>&1 \
+       scripts/seal.test.mjs scripts/instruments.test.mjs scripts/members.test.mjs \
+       scripts/attention.test.mjs scripts/mcp.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
 echo "ok — the outcome table, the cases, the fleet client, the armor screen, attestation,"
 echo "     and the Seal's provenance classifier,"
 echo "     the reasoning trace, the Gemma screen's bounded authority and the menu's gating"
-echo "     rules hold"
+echo "     rules hold — and what may call itself measured, and who may change who works here"
+echo "     — and what an agent is asking a person for, which both surfaces now derive the"
+echo "     same way from the step outcomes rather than each inventing an answer,"
+echo "     and the machine-to-machine surface: the seven tools, a real MCP handshake over the"
+echo "     real transport, and the fact that NOT ONE of them can seal, release or waive"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null

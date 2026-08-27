@@ -299,6 +299,95 @@ export async function setRole(tenantId: string, uid: string, role: Role): Promis
   );
 }
 
+/**
+ * Offboarding, and the thing the README already promised.
+ *
+ * `session.ts` passes `checkRevoked` on every request and `bearer.ts` does the same for the
+ * phone, both so that "when an employer disables an account the technician's access ends the
+ * same instant" is true. But `disabled` had NO WRITER — it was set false when a member was
+ * created and never touched again — so the only way to actually end someone's access was to
+ * delete their Firebase user by hand in the console. A flag that nothing can set is not a
+ * control, and `mayWaive` and every standing check read it as though it were one.
+ *
+ * This does not delete the member. A record names the people who signed it and looks them up
+ * years later; removing the document would make an immutable record lose the name on it.
+ */
+export async function setDisabled(tenantId: string, uid: string, disabled: boolean): Promise<void> {
+  await memberRef(tenantId, uid).set(
+    { disabled, schema_version: SCHEMA_VERSION },
+    { merge: true },
+  );
+}
+
+/**
+ * How many people can still administer this tenant.
+ *
+ * Used to refuse the change that leaves nobody able to make another one. A tenant whose last
+ * owner demotes themselves is not recoverable from inside the product — the first-signer rule
+ * in `ensureMember` only fires on an EMPTY member collection, so nobody would ever become owner
+ * again — and the tenant's procedures, standing and waivers would be frozen for good.
+ */
+export async function enabledOwners(tenantId: string): Promise<string[]> {
+  return (await listMembers(tenantId))
+    .filter((m) => m.role === "owner" && !m.disabled)
+    .map((m) => m.uid);
+}
+
+export interface MemberChange {
+  role?: Role;
+  disabled?: boolean;
+}
+
+export type ChangeVerdict = { ok: true } | { ok: false; status: number; error: string };
+
+/**
+ * May this person make this change to that person? No I/O, so the whole rule is testable.
+ *
+ * Separated from the route for the same reason `instruments.ts` separates attestation from the
+ * endpoint: this is the entire access-control decision for the standing model, and a decision
+ * that can only be exercised by standing up a Firestore and an auth session is a decision
+ * nobody writes the awkward tests for.
+ *
+ * `enabledOwnerUids` is passed in rather than read, so the caller decides when to pay for it.
+ */
+export function canChangeMember(
+  actor: Pick<MemberDoc, "uid" | "role" | "disabled"> | null,
+  target: Pick<MemberDoc, "uid" | "role" | "disabled"> | null,
+  change: MemberChange,
+  enabledOwnerUids: string[],
+): ChangeVerdict {
+  // A disabled owner is not an owner. The flag exists so access ends without the document being
+  // deleted; honouring it everywhere except here would make it decorative.
+  if (!actor || actor.disabled || actor.role !== "owner") {
+    return { ok: false, status: 403, error: "Only an owner can change who works here." };
+  }
+  if (!target) {
+    return { ok: false, status: 404, error: "No such member of this tenant." };
+  }
+  if (change.role === undefined && change.disabled === undefined) {
+    return { ok: false, status: 400, error: "Nothing to change." };
+  }
+  // Nobody acts on themselves. Not because self-promotion is reachable — the actor is already
+  // an owner — but because every way this goes wrong goes wrong through their own document.
+  if (actor.uid === target.uid) {
+    return { ok: false, status: 409,
+             error: "Somebody else has to change your own role or standing." };
+  }
+
+  // NEVER THE LAST OWNER. `ensureMember` only makes somebody an owner when the member
+  // collection is EMPTY, so a tenant that loses its last one can never grow another from
+  // inside the product: nothing could be published and no waiver above a technician's standing
+  // could ever be signed again.
+  const losingAnOwner = target.role === "owner" && !target.disabled
+    && ((change.role !== undefined && change.role !== "owner") || change.disabled === true);
+  if (losingAnOwner && enabledOwnerUids.filter((uid) => uid !== target.uid).length === 0) {
+    return { ok: false, status: 409,
+             error: "This is the only owner left. Promote somebody else first, or this tenant "
+                    + "can never be administered again." };
+  }
+  return { ok: true };
+}
+
 /** Read tolerance: a document written before a field existed is still a valid member. */
 function withDefaults(m: MemberDoc): MemberDoc {
   return {

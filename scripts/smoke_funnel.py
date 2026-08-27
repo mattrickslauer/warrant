@@ -6,6 +6,7 @@ claims: the capture is live rather than uploaded, verdicts arrive after the step
 a field appears that the procedure did not contain, and the job seals only once every step
 has an outcome.
 """
+import re
 import sys
 from playwright.sync_api import sync_playwright
 
@@ -34,21 +35,64 @@ def main() -> int:
         assert "w-capture--live" in (pg.get_attribute(".w-capture", "class") or ""), \
             "capture is not a live camera — an upload would prove nothing about liveness"
 
+        # THE SIGNATURE STEP ASKS FOR NOTHING, AND THAT IS THE POINT.
+        #
+        # This loop used to fill a box labelled "Your name" and press "Sign it". That control
+        # is gone on purpose — see `components/Attribution.tsx`: a box asking a person to put
+        # their name to a claim nothing checks IS the tick in the box this product exists to
+        # abolish, and the attribution already exists because they are signed in. The field is
+        # now satisfied from the session and the step advances itself.
+        #
+        # So a step with no control on it is not a stuck step, it is a RESOLVING one, and the
+        # right move is to wait. The old fallback — "nothing to click, so go back to an
+        # outstanding step" — fired on exactly that step and walked the run away from the
+        # signature every time, which is why the job never sealed.
         grew = False
-        for _ in range(10):
+        settled = 0
+        for _ in range(16):
             if "/r/" in pg.url:
                 break
             shutter = pg.locator(".w-capture__shutter")
-            sign = pg.locator(".w-sign__field")
-            back = pg.locator(".w-btn--ghost:has-text('Step ')")
+            # `AnswerInput`: free text takes a box and "Record it"; a choice field draws one
+            # button per stated option. Neither is a signature and neither shares its control.
+            answer = pg.locator(".w-sign__field")
+            choice = pg.locator(".w-sign .w-btn--block:not([disabled])")
+            # An assertion that has already resolved from the session. Nothing to do but wait.
+            resolving = pg.locator(".w-sign--done")
+            # ONLY THE STEP-NAVIGATION BUTTONS.
+            #
+            # `:has-text("Step ")` is a case-insensitive, whitespace-normalised SUBSTRING
+            # match, so it also caught "Redo this step", "Redo that step" and "Go to that
+            # step". Clicking Redo re-captures, which re-runs the fixture's script for that
+            # step, which appends another added field — so the run grew the form faster than
+            # it could satisfy it and never converged. The buttons that MOVE you are the ones
+            # labelled "Step N — ...", and those are the only ones this wants.
+            back = pg.get_by_role("button", name=re.compile(r"^Step \d+\s*—"))
+
             if shutter.count():
                 shutter.first.click()
-            elif sign.count():
-                sign.first.fill("smoke test")
-                pg.get_by_role("button", name="Sign it").click()
+            elif answer.count():
+                answer.first.fill("smoke test")
+                pg.get_by_role("button", name="Record it").click()
+            elif choice.count():
+                choice.first.click()
             elif back.count():
+                # OUTSTANDING WORK OUTRANKS WAITING, and getting that backwards is what wedged
+                # this run. The ADD FIELD path leaves a field on an EARLIER step — the fleet
+                # asked for a wider frame after the technician had moved on — and the ghost
+                # "Step N" button is the way back to it. The signature step meanwhile renders a
+                # permanent `w-sign--done`, so treating that as "resolving, wait" meant the run
+                # sat on the last step for ever while the thing actually holding the job open
+                # was two steps behind it. Nothing is waited on while there is something to do.
                 grew = True
                 back.first.click()
+            elif resolving.count():
+                # Nothing else to do, so this is an assertion settling from the session.
+                settled += 1
+                if settled > 6:
+                    break
+                pg.wait_for_timeout(1200)
+                continue
             else:
                 break
             pg.wait_for_timeout(3300)

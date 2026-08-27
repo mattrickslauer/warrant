@@ -27,12 +27,33 @@ export interface OutcomeInput {
   /** The job's strictness, which sets the confidence a PASS has to clear. Defaults to 1. */
   strictness?: number;
   /**
-   * The field's acceptance rule and, for `matches`, the value the evidence must carry.
+   * The field's acceptance rule and whatever that rule needs to be settled from data:
+   * `target` for `matches`, and the band and its unit for `within`.
    *
    * The Inspector is NOT shown this target — `inspector.py` withholds it deliberately — so
    * the comparison has to happen here. That is not tidiness; it is the only thing that works.
+   *
+   * The band is a different case and a worse one. The Inspector IS shown it, rendered into
+   * the prompt as "accepts 6 to 9 Nm", and until now that was the ONLY place it was ever
+   * read — so whether a measured value satisfied the procedure was settled by a model's
+   * opinion of a number a tool had already answered exactly. See the `within` block below.
    */
-  acceptance?: { rule?: string | null; target?: string | null };
+  acceptance?: {
+    rule?: string | null;
+    target?: string | null;
+    min?: number | null;
+    max?: number | null;
+    unit?: string | null;
+  };
+  /**
+   * What a paired instrument reported for this field, if anything did.
+   *
+   * `source` distinguishes a number that came off a tool from one a person typed; both are
+   * compared against the band, because a typed value outside the procedure's limits is not
+   * made acceptable by having been typed. What the provenance affects is the CLASS the seal
+   * stamps on it, which is `seal.ts`'s job and not this one's.
+   */
+  reading?: { value: number; unit?: string | null; source?: "instrument" | "human" } | null;
   /**
    * The literal answer, when the evidence IS one — a choice tapped, a note typed, a name
    * signed. Null for a photograph.
@@ -68,6 +89,27 @@ export function thresholdFor(strictness: number | undefined): number {
 }
 
 /**
+ * The rules this file settles from data rather than from the Inspector's word.
+ *
+ * `within` is arithmetic against a band a tool answered. `matches` is a string comparison
+ * against a target the Inspector is deliberately blinded to. Everything else — `must_show`,
+ * `per_spec`, `consistent_with`, `signed_by` — is a judgement about the world, which is
+ * exactly the kind of thing a model is FOR, and which leaves nothing behind the model if it
+ * is wrong. That distinction is what `lastOpinionFloor` below turns on.
+ */
+const CODE_VERIFIABLE = new Set(["within", "matches"]);
+
+/**
+ * The bar a PASS must clear when the system has nothing left to ask for.
+ *
+ * The regulated floor, whatever the procedure's own strictness. A step whose ADD FIELD budget
+ * is spent has already been judged insufficient twice; there is no third request available and
+ * no arithmetic behind the verdict, so the last opinion standing has to be the system's most
+ * confident or a person looks at it. A genuine recovery clears this and is unaffected.
+ */
+const LAST_OPINION_FLOOR = THRESHOLD[3];
+
+/**
  * Compare a transcription against what the procedure requires.
  *
  * Case and punctuation are ignored, because a label reading `X004-X2NVXZ` and a spec written
@@ -88,9 +130,27 @@ export type Effect =
   | { kind: "accept_field" }
   | { kind: "add_field"; key: string; fieldKind: string; prompt: string }
   | { kind: "escalate"; question: string }
-  | { kind: "hold"; why: string };
+  | { kind: "hold"; why: string }
+  /**
+   * This capture already reached a verdict, and nothing was re-run.
+   *
+   * Never returned by `decideOutcome` — it is not an outcome of weighing evidence. `adjudicate()`
+   * returns it when the capture is already marked adjudicated, so a replayed request is a cheap
+   * no-op instead of four more model calls. It carries the prior decision ids, so an honest
+   * retry after a dropped response still gets the answer.
+   */
+  | { kind: "already_decided" };
 
-export function decideOutcome(input: OutcomeInput): Effect {
+/**
+ * An effect that came from weighing evidence.
+ *
+ * Everything `decideOutcome` can return. `already_decided` is deliberately outside it: it is
+ * `adjudicate()` declining to re-run, not a conclusion about a capture, and the code that
+ * APPLIES an effect to a step must never be handed one.
+ */
+export type DecidedEffect = Exclude<Effect, { kind: "already_decided" }>;
+
+export function decideOutcome(input: OutcomeInput): DecidedEffect {
   const { inspector, skeptic, addFieldsUsed, maxAddFields, strictness } = input;
 
   // A malformed answer is a finding, not an exception — and it advances nothing. runtime.py
@@ -104,6 +164,11 @@ export function decideOutcome(input: OutcomeInput): Effect {
   }
 
   const verdict = inspector.output.verdict;
+
+  // Read once, up here, because both the last-opinion floor and the two deterministic
+  // comparisons below turn on which rule this field is judged under.
+  const rule = input.acceptance?.rule;
+  const target = input.acceptance?.target;
 
   if (verdict === "ESCALATE") {
     const question = inspector.output.escalation_question;
@@ -161,6 +226,84 @@ export function decideOutcome(input: OutcomeInput): Effect {
     };
   }
 
+  // THE LAST OPINION AVAILABLE.
+  //
+  // `ADD_FIELD` on a spent budget already escalates, a few lines up. `PASS` on one did not,
+  // and on a rule code cannot check that is the more dangerous of the two: the step has been
+  // judged insufficient twice, there is no third request left, and nothing sits behind the
+  // verdict but the model. `within` and `matches` are exempt because they were settled above
+  // by arithmetic and by a string comparison, neither of which cares about the budget.
+  if (!CODE_VERIFIABLE.has(String(rule ?? "")) && addFieldsUsed >= maxAddFields
+      && confidence < LAST_OPINION_FLOOR) {
+    return {
+      kind: "escalate",
+      question:
+        `This step has already asked for more evidence ${maxAddFields} times and has nothing ` +
+        `further it can ask for. The Inspector now passes it at ${confidence.toFixed(2)}, ` +
+        `below the ${LAST_OPINION_FLOOR.toFixed(2)} required of a last opinion with no ` +
+        "measurement behind it. A person has to look at the evidence.",
+    };
+  }
+
+  // `within` IS ARITHMETIC, AND IT WAS NEVER PERFORMED.
+  //
+  // The band lived in the contract and was rendered into the Inspector's prompt, and nothing
+  // in the system ever compared a number to it. A torque of 40 Nm against `within(6, 9)`
+  // reached the record because a model said the photograph looked right — on the one rule
+  // whose entire purpose is that a tool already answered the question exactly.
+  //
+  // "An inferred value may never overwrite a measured one" is the product's claim. This is
+  // the four lines that make it true.
+  if (rule === "within") {
+    const { min, max, unit } = input.acceptance ?? {};
+    const lo = typeof min === "number" && !Number.isNaN(min) ? min : null;
+    const hi = typeof max === "number" && !Number.isNaN(max) ? max : null;
+
+    // A measurement with no limits is not a measurement. Same argument as a `matches` rule
+    // with nothing to match against, and the same conservative answer.
+    if (lo === null && hi === null) {
+      return {
+        kind: "hold",
+        why: "this field's rule is `within` but the procedure names no band to fall inside, " +
+             "so there is no limit the reading could be checked against",
+      };
+    }
+
+    const reading = input.reading;
+    if (!reading || typeof reading.value !== "number" || Number.isNaN(reading.value)) {
+      return {
+        kind: "hold",
+        why: "this field's rule is `within` and no usable reading reached the decision, so " +
+             "there is nothing to compare against the band",
+      };
+    }
+
+    // TWO NUMBERS IN DIFFERENT UNITS ARE NOT COMPARABLE, and converting one here would be
+    // inventing a measurement rather than reading one. Held, so a person sees the mismatch.
+    const want = (unit ?? "").trim().toLowerCase();
+    const got = (reading.unit ?? "").trim().toLowerCase();
+    if (want && got && want !== got) {
+      return {
+        kind: "hold",
+        why: `the reading and the band are in different units — the tool reported ` +
+             `${reading.unit} and the procedure requires ${unit} — so the two are not ` +
+             "comparable, and nothing here will guess a conversion",
+      };
+    }
+
+    if ((lo !== null && reading.value < lo) || (hi !== null && reading.value > hi)) {
+      const band = lo !== null && hi !== null ? `${lo} to ${hi}` : lo !== null ? `at least ${lo}` : `at most ${hi}`;
+      return {
+        kind: "escalate",
+        question:
+          `The instrument read ${reading.value}${unit ? ` ${unit}` : ""}, and the procedure ` +
+          `requires ${band}${unit ? ` ${unit}` : ""}. A tool answered this, so it is not a ` +
+          "question of how the evidence looks — either the work is out of specification or " +
+          "the tool is, and both need a person.",
+      };
+    }
+  }
+
   // A `matches` rule is decided HERE, from what the Inspector transcribed, and never by the
   // Inspector itself.
   //
@@ -170,8 +313,6 @@ export function decideOutcome(input: OutcomeInput): Effect {
   // box. Blinded, on that same photograph, it answered "extremely faint and unreadable" and
   // asked for another; on a clear one it transcribed correctly. So the model reads, and this
   // decides.
-  const rule = input.acceptance?.rule;
-  const target = input.acceptance?.target;
   // A `matches` rule with nothing to match against is a PROCEDURE DEFECT, and it used to pass.
   // `rule === "matches" && target` skipped the whole comparison when the target was empty or
   // absent, so the field advanced on the Inspector's confidence alone — on the one rule whose

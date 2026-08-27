@@ -392,3 +392,144 @@ describe("a matches rule is decided from the transcription, in code", () => {
     });
   }
 });
+
+// --- `within`, which is the rule the whole product rests on -----------------------------
+//
+// THE COMPARISON WAS NEVER MADE. `acceptance_min` and `acceptance_max` existed in the
+// contract, were rendered into the Inspector's prompt as "accepts 6 to 9 Nm", and were read
+// by nothing else in the system — not here, not at ingest, not at the seal. So whether a
+// torque of 40 Nm satisfied `within(6, 9)` was decided by a language model's opinion of a
+// number a tool had already measured exactly.
+//
+// That is the precise inversion of the claim this product makes. `must_show` is a judgement
+// and belongs to a model; `within` is arithmetic and never did. A measured value that a
+// model is allowed to wave through is not measured, it is inferred with extra steps.
+describe("decideOutcome — within() is arithmetic, not an opinion", () => {
+  const band = { rule: "within", min: 6, max: 9, unit: "Nm" };
+  const measured = (value, unit = "Nm") => ({ value, unit, source: "instrument" });
+
+  test("a reading inside the band accepts the field", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: band, reading: measured(7.4),
+    });
+    assert.equal(e.kind, "accept_field");
+  });
+
+  // The one that matters. The Inspector is confident, the Skeptic agrees, and the tool says
+  // the bolt is at four times the torque the procedure allows.
+  for (const [value, where] of [[2.1, "below"], [40, "above"]]) {
+    test(`a confident PASS cannot rescue a reading ${where} the band`, () => {
+      const e = decideOutcome({
+        inspector: { output: { verdict: "PASS", confidence: 0.99, rationale: "Looks right." },
+                     valid: true, schemaErrors: [] },
+        skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+        acceptance: band, reading: measured(value),
+      });
+      assert.equal(e.kind, "escalate",
+        "the tool answered this; the model does not get a vote on it");
+      assert.match(e.question, /6|9|Nm/,
+        "the question has to name the band a person is being asked to look at");
+    });
+  }
+
+  test("an open upper bound still refuses a value under the floor", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: { rule: "within", min: 6, max: null, unit: "Nm" }, reading: measured(3),
+    });
+    assert.equal(e.kind, "escalate");
+  });
+
+  test("an open lower bound still refuses a value over the ceiling", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: { rule: "within", min: null, max: 9, unit: "Nm" }, reading: measured(12),
+    });
+    assert.equal(e.kind, "escalate");
+  });
+
+  // The same argument the `matches`-with-no-target case already makes, one rule over: a
+  // procedure that declares a measurement and names no band has not declared a measurement.
+  test("a within rule with no bounds at all holds rather than passing", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: { rule: "within", min: null, max: null, unit: "Nm" }, reading: measured(7),
+    });
+    assert.equal(e.kind, "hold");
+  });
+
+  test("a within rule with no reading at all holds — there is nothing to compare", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: band, reading: null,
+    });
+    assert.equal(e.kind, "hold");
+  });
+
+  // Comparing 7 lbf-ft against a band written in Nm is how spacecraft are lost. Two numbers
+  // in different units are not comparable, and guessing a conversion here would be inventing
+  // a measurement rather than reading one.
+  test("a reading in the wrong unit holds rather than being compared", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: band, reading: measured(7, "lbf-ft"),
+    });
+    assert.equal(e.kind, "hold");
+    assert.match(e.why, /unit/i);
+  });
+
+  test("a non-numeric reading holds", () => {
+    const e = decideOutcome({
+      inspector: pass, skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2,
+      acceptance: band, reading: { value: Number.NaN, unit: "Nm", source: "instrument" },
+    });
+    assert.equal(e.kind, "hold");
+  });
+});
+
+// --- the last pass, when there is nothing left to ask ------------------------------------
+//
+// `ADD_FIELD` on an exhausted budget already escalates. `PASS` on one did not, and the two
+// are not the same risk: on a rule code can check — `within`, `matches` — a wrong PASS is
+// caught above by arithmetic. On `must_show`, `per_spec` and `consistent_with` there is
+// nothing behind the model at all, so a step that has ALREADY been judged insufficient twice
+// advances on the third opinion, with no remaining mechanism to ask for anything better.
+//
+// The rule is deliberately narrow: the system may still pass such a step, but on its last
+// available opinion it has to be as sure as a regulated procedure demands. A genuine recovery
+// — the technician supplied the retake and it is plainly good — clears 0.90 and is unaffected.
+describe("decideOutcome — a PASS on the last opinion available", () => {
+  const unverifiable = { rule: "must_show", target: null };
+
+  test("a PASS below the regulated floor escalates once the budget is spent", () => {
+    const e = decideOutcome({
+      inspector: { output: { verdict: "PASS", confidence: 0.8, rationale: "Probably fine." },
+                   valid: true, schemaErrors: [] },
+      skeptic: belongs, addFieldsUsed: 2, maxAddFields: 2, strictness: 1,
+      acceptance: unverifiable,
+    });
+    assert.equal(e.kind, "escalate",
+      "nothing further can be asked for, so this is the system's last chance to be right");
+  });
+
+  test("a confident PASS on a spent budget still accepts", () => {
+    const e = decideOutcome({
+      inspector: { output: { verdict: "PASS", confidence: 0.95, rationale: "Clearly seated." },
+                   valid: true, schemaErrors: [] },
+      skeptic: belongs, addFieldsUsed: 2, maxAddFields: 2, strictness: 1,
+      acceptance: unverifiable,
+    });
+    assert.equal(e.kind, "accept_field", "a real recovery must not be punished");
+  });
+
+  test("the same PASS with budget remaining is untouched", () => {
+    const e = decideOutcome({
+      inspector: { output: { verdict: "PASS", confidence: 0.8, rationale: "Probably fine." },
+                   valid: true, schemaErrors: [] },
+      skeptic: belongs, addFieldsUsed: 0, maxAddFields: 2, strictness: 1,
+      acceptance: unverifiable,
+    });
+    assert.equal(e.kind, "accept_field", "the ordinary path must not move");
+  });
+});

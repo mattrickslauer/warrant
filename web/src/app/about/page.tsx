@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Wrap, Rule, EvidenceChip, AgentStamp, type AgentName } from "@/components";
+import { authConfigured } from "@/auth";
 import { AppShell } from "../shell/AppShell";
 
 // The B2B explainer. `/` is the product; this is what the product is for.
@@ -120,7 +121,15 @@ export default function About() {
             check it — not a navigation destination. */}
         <footer className="w-wrap footer">
           <span>Warrant</span>
-          <span>Fixture data — no backend connected yet</span>
+          {/* NOT a constant. This read "Fixture data — no backend connected yet" unconditionally,
+              which was false on every deployed instance — and this page is where a judge reads it.
+              It now reports what the build is actually wired to, on the same signal the drawer
+              uses, so the two surfaces cannot drift into disagreeing about it. */}
+          <span>
+            {authConfigured
+              ? "Connected to a Google Cloud project — sign in for live data"
+              : "Fixture data — no project connected"}
+          </span>
           <Link href="/firmware">Instrument manual — build your own, MIT</Link>
         </footer>
     </AppShell>

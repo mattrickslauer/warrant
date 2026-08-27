@@ -17,12 +17,14 @@
 //   * **The unresolved list.** Empty is the only condition under which the Scoper may compile,
 //     so this list IS the progress bar. Nothing else here is one.
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ref as storageRef, uploadBytes } from "firebase/storage";
 import { Wrap, Rule, ChatTurn, HoldBanner, AgentStamp } from "@/components";
 import { useSession } from "@/auth/session-context";
 import { authConfigured, firebaseWebConfig } from "@/auth/config";
-import { clientStorage } from "@/auth/firebase-client";
+import { clientDb, clientStorage } from "@/auth/firebase-client";
+import { closeDraft, loadOpenDraft, saveDraft } from "@/data/interview-draft";
+import type { DraftState } from "@/data/interview-draft";
 
 /**
  * Mirrors CLASSES in `/api/scoper/turn`. Duplicated deliberately rather than shared: the route
@@ -93,6 +95,24 @@ type Stage = "shop" | "interview" | "published";
 
 interface Published { procedure_id: string; version: number; minimum_tier: string; tenant: string; }
 
+/**
+ * A fresh interview id.
+ *
+ * `crypto.randomUUID` needs a secure context and this screen is also served over plain HTTP in
+ * development, where it is undefined — so there is a fallback, and it does not need to be
+ * cryptographic. This names a draft inside one tenant, nothing more.
+ */
+function newDraftId(): string {
+  const c = globalThis.crypto;
+  if (c && typeof c.randomUUID === "function") return c.randomUUID();
+  return `d${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`;
+}
+
+/** How many of the shop's own answers a transcript holds. The Scoper's questions are not news. */
+function answeredCount(conversation: { who: string }[]): number {
+  return conversation.filter((t) => t.who === "shop").length;
+}
+
 export function Interview() {
   const { session, loading } = useSession();
   const [stage, setStage] = useState<Stage>("shop");
@@ -108,16 +128,58 @@ export function Interview() {
   const [error, setError] = useState<string | null>(null);
   const [detail, setDetail] = useState<string[]>([]);
   const [published, setPublished] = useState<Published | null>(null);
+  // The interview's own id, and whatever unfinished one was found on arrival. `resumable`
+  // holds a draft the shop has NOT yet accepted — offering it is the point, so it must not
+  // load itself over an interview somebody has already started typing into.
+  const draftId = useRef<string>(newDraftId());
+  const [resumable, setResumable] = useState<{ id: string; state: DraftState } | null>(null);
 
   const draft = (turn?.mode === "compile" ? turn.draft : null) as DraftView | null;
+
+  /**
+   * Look, once, for an interview this shop left open.
+   *
+   * Only on the opening screen and only for a signed-in shop: an anonymous visitor has no
+   * tenant worth writing to, and a shop already mid-interview does not want a prompt about an
+   * older one.
+   */
+  useEffect(() => {
+    const tenant = session?.tenant?.id;
+    if (!tenant || session.anonymous || stage !== "shop" || conversation.length > 0) return;
+    let live = true;
+    loadOpenDraft(clientDb(), tenant).then((found) => {
+      if (live && found && found.id !== draftId.current) setResumable(found);
+    });
+    return () => { live = false; };
+  }, [session?.tenant?.id, session?.anonymous, stage, conversation.length]);
+
+  /** Pick an unfinished interview back up where it stopped. */
+  function resume(found: { id: string; state: DraftState }) {
+    draftId.current = found.id;
+    setShop(found.state.shop as unknown as Shop);
+    setExistingForm(found.state.existingForm);
+    setConversation(found.state.conversation as Turn[]);
+    setResumable(null);
+    setStage("interview");
+    // The last thing in a saved transcript is whatever the Scoper last said, so the screen
+    // has a conversation but no live question to answer. Asking with `null` re-poses it
+    // against the transcript rather than making the shop retype their last answer.
+    void ask(null, found.state.conversation as Turn[]);
+  }
 
   /**
    * One turn.
    *
    * The whole transcript goes up every time and nothing is kept on the server between turns —
-   * the interview lives in this component and in nothing else until it compiles. That is not
-   * laziness: a half-finished interview is not a procedure, and a half-finished procedure
-   * sitting in Firestore is something a job could eventually be started against.
+   * the interview lives in this component, and until it compiles it becomes a procedure
+   * nowhere else. That is not laziness: a half-finished interview is not a procedure, and a
+   * half-finished procedure sitting in Firestore is something a job could eventually be
+   * started against.
+   *
+   * It is written down all the same, as a DRAFT, which is a different thing from a procedure
+   * and lives in a different collection. And it is written BEFORE the turn is sent, not after
+   * it succeeds — the failure this protects against is the turn itself dying, so a save that
+   * waited for a reply would only ever run when it was not needed.
    */
   async function ask(said: string | null, base?: Turn[]) {
     setBusy(true);
@@ -126,6 +188,16 @@ export function Interview() {
 
     const from = base ?? conversation;
     const next = said === null ? from : [...from, { who: "shop", said }];
+
+    const tenant = session?.tenant?.id;
+    if (tenant && !session.anonymous) {
+      void saveDraft(clientDb(), tenant, draftId.current, {
+        shop: shop as unknown as Record<string, unknown>,
+        conversation: next,
+        existingForm: existingForm.trim(),
+        formRefs: formDocs.map((d) => d.ref),
+      }, new Date().toISOString());
+    }
 
     try {
       const res = await fetch("/api/scoper/turn", {
@@ -221,6 +293,14 @@ export function Interview() {
       }
       setPublished(body);
       setStage("published");
+      // The interview is over, so the draft stops being something to resume. It is marked
+      // rather than deleted — the rules leave delete ungranted here, and the transcript is
+      // where this procedure's bounds came from, which is worth keeping on principle.
+      const tenant = session?.tenant?.id;
+      if (tenant && !session.anonymous) {
+        void closeDraft(clientDb(), tenant, draftId.current, "published",
+                        new Date().toISOString());
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -253,6 +333,43 @@ export function Interview() {
         {stage === "published" && published ? (
           <Published published={published} title={draft?.title ?? ""} />
         ) : null}
+
+        {/*
+          * An interview that stopped without finishing.
+          *
+          * Offered, never applied on its own. Loading somebody back into an old transcript
+          * they did not ask for is worse than losing it, and the shop is the only one who
+          * knows which of the two this is.
+          */}
+        {stage === "shop" && resumable && (
+          <div className="stack">
+            <HoldBanner kind="waiting" title="You have an unfinished interview">
+              {answeredCount(resumable.state.conversation) === 1
+                ? "One answer was given and never compiled. Nothing was published."
+                : `${answeredCount(resumable.state.conversation)} answers were given and never ` +
+                  "compiled. Nothing was published."}
+            </HoldBanner>
+            <div className="w-step__exits">
+              <button type="button" className="w-btn" onClick={() => resume(resumable)}>
+                Resume that interview
+              </button>
+              <button
+                type="button"
+                className="w-btn w-btn--ghost"
+                onClick={() => {
+                  const tenant = session?.tenant?.id;
+                  if (tenant && !session.anonymous) {
+                    void closeDraft(clientDb(), tenant, resumable.id, "abandoned",
+                                    new Date().toISOString());
+                  }
+                  setResumable(null);
+                }}
+              >
+                Start a new one
+              </button>
+            </div>
+          </div>
+        )}
 
         {stage !== "published" && (
           <>

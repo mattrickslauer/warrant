@@ -50,6 +50,11 @@ const PROCEDURE = {
 let env;
 let db;
 let src;
+/** Every storage path `capture()` put bytes at, in order. */
+const uploaded = [];
+
+/** A stand-in for a frame off the camera. Bytes, with a type, which is all the code reads. */
+const frame = () => new Blob([new Uint8Array([0xff, 0xd8, 0xff])], { type: "image/jpeg" });
 
 before(async () => {
   env = await initializeTestEnvironment({
@@ -66,7 +71,15 @@ before(async () => {
   });
 
   db = env.authenticatedContext("tech-1", TOKEN).firestore();
-  src = new LiveSource(db);
+  // The second argument is the signature. In the product it is the signed-in Firebase
+  // user; firestore.rules refuses `reason_by`/`finalized_by` unless they equal it.
+  //
+  // The third is the object store, recorded rather than performed. There is no Storage
+  // emulator in scripts/smoke.sh and this file is about Firestore, but the upload cannot
+  // simply be skipped either: `capture()` now refuses to write a document describing bytes
+  // that did not land, and that refusal is the fix these tests have to keep honest. So the
+  // paths are collected, and `uploaded` is asserted on directly further down.
+  src = new LiveSource(db, () => "tech-1", async (path) => { uploaded.push(path); });
 });
 
 after(async () => {
@@ -132,6 +145,7 @@ describe("a capture costs the same whether it is the first or the fiftieth", () 
         fieldKey: `photo_${i}`,
         kind: "photo",
         mediaRef: `blob:${i}`,
+        blob: frame(),
         surface: "browser",
         mode: "live",
       });
@@ -155,7 +169,7 @@ describe("a capture costs the same whether it is the first or the fiftieth", () 
     for (const ref of ["blob:first", "blob:second", "blob:third"]) {
       await src.capture({
         jobId: job.id, stepId: "s1", fieldKey: "pad_photo", kind: "photo",
-        mediaRef: ref, surface: "browser", mode: "live",
+        mediaRef: ref, blob: frame(), surface: "browser", mode: "live",
       });
     }
 
@@ -179,7 +193,7 @@ describe("a capture costs the same whether it is the first or the fiftieth", () 
     // succeed — refusing it would strand the technician — while the claim is dropped.
     await src.capture({
       jobId: job.id, stepId: "s1", fieldKey: "pad_torque", kind: "photo",
-      mediaRef: "blob:x", surface: "app_instrument", mode: "live",
+      mediaRef: "blob:x", blob: frame(), surface: "app_instrument", mode: "live",
     });
 
     const field = await getDoc(
@@ -192,13 +206,104 @@ describe("a capture costs the same whether it is the first or the fiftieth", () 
   });
 });
 
+describe("the bytes reach the bucket, or nothing is written", () => {
+  // THE FAILURE THIS PINS.
+  //
+  // The browser wrote a capture document whose `media_ref` was an object URL — a handle only
+  // the tab that minted it can resolve — and never uploaded anything. The adjudication spine
+  // does not look the object up: `server/adjudicate/cases.ts` DERIVES the path by convention,
+  // `gs://{bucket}/tenants/{t}/captures/{job}/{capture}.jpg`. So Vertex was handed a URI for
+  // an object nobody had ever put there and answered 404 NOT_FOUND, every single time, on
+  // every browser capture this product took. The technician was told the fleet could not be
+  // reached, about a photograph that had failed to leave the laptop.
+  //
+  // The two halves must therefore agree on the path, and the write must not happen without
+  // the upload. Both are asserted here.
+  test("a capture stores its bytes at the path the fleet will derive", async () => {
+    const job = await src.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
+    const [, bare] = job.id.split("/");
+
+    const before = uploaded.length;
+    const cap = await src.capture({
+      jobId: job.id, stepId: "s1", fieldKey: "pad_photo", kind: "photo",
+      mediaRef: "blob:local-only", blob: frame(), surface: "browser", mode: "live",
+    });
+
+    assert.deepEqual(
+      uploaded.slice(before),
+      [`tenants/${TENANT}/captures/${bare}/${cap.id}.jpg`],
+      "the bytes did not go to the one path storage.rules allows and cases.ts derives",
+    );
+    assert.equal(
+      cap.media_ref, `tenants/${TENANT}/captures/${bare}/${cap.id}.jpg`,
+      "media_ref still carries the object URL, which resolves in exactly one browser tab",
+    );
+  });
+
+  test("no bytes, no capture document", async () => {
+    const job = await src.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
+    const [, bare] = job.id.split("/");
+
+    await assert.rejects(
+      () => src.capture({
+        jobId: job.id, stepId: "s1", fieldKey: "pad_photo", kind: "photo",
+        mediaRef: "blob:nothing", surface: "browser", mode: "live",
+      }),
+      /nothing was recorded/,
+      "a capture with no bytes behind it was accepted",
+    );
+
+    const captures = await getDocs(collection(db, "tenants", TENANT, "jobs", bare, "captures"));
+    assert.equal(captures.size, 0,
+      "a capture document was written for evidence that does not exist — the fleet will be " +
+      "asked to read an object nobody uploaded");
+  });
+
+  test("a failed upload is not written either, and says so in words a person can act on", async () => {
+    const refusing = new LiveSource(db, () => "tech-1", async () => {
+      throw new Error("network");
+    });
+    const job = await refusing.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
+    const [, bare] = job.id.split("/");
+
+    await assert.rejects(
+      () => refusing.capture({
+        jobId: job.id, stepId: "s1", fieldKey: "pad_photo", kind: "photo",
+        mediaRef: "blob:doomed", blob: frame(), surface: "browser", mode: "live",
+      }),
+      /could not be uploaded/,
+    );
+
+    const captures = await getDocs(collection(db, "tenants", TENANT, "jobs", bare, "captures"));
+    assert.equal(captures.size, 0, "a failed upload still produced a capture document");
+  });
+
+  // `text` is the one kind with no object behind it — contract/entities/capture.schema.json
+  // says `media_ref` carries the answer itself. It must not acquire a path, and it must not
+  // be refused for having no bytes.
+  test("a typed answer stores nothing and keeps the answer in media_ref", async () => {
+    const job = await src.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
+
+    const before = uploaded.length;
+    const cap = await src.capture({
+      jobId: job.id, stepId: "s3", fieldKey: "knife_stored", kind: "text",
+      mediaRef: "Ada Lovelace", blob: null, surface: "browser", mode: "upload",
+    });
+
+    assert.equal(uploaded.length, before, "an answer with no object put something in the bucket");
+    assert.equal(cap.media_ref, "Ada Lovelace");
+    assert.equal(cap.kind, "text",
+      "an answer written as a photograph makes the fleet derive a .jpg path for a name");
+  });
+});
+
 describe("the assembled aggregate is what the seam returns", () => {
   test("getJob puts the steps and their fields back together", async () => {
     const job = await src.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
 
     await src.capture({
       jobId: job.id, stepId: "s2", fieldKey: "pad_photo", kind: "photo",
-      mediaRef: "blob:y", surface: "browser", mode: "live",
+      mediaRef: "blob:y", blob: frame(), surface: "browser", mode: "live",
     });
 
     const assembled = await src.getJob(job.id);
@@ -216,7 +321,7 @@ describe("the assembled aggregate is what the seam returns", () => {
     const job = await src.startJob({ procedureId: "front-brake-service", tenantId: TENANT, tier: "open" });
     assert.equal(job.status, "draft");
 
-    await src.finalize(job.id, "tech-1");
+    await src.finalize(job.id);
 
     const after = await src.getJob(job.id);
     assert.equal(after.status, "open", "finalize did not open the job");

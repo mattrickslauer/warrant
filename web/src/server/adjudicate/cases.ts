@@ -13,7 +13,12 @@ export interface CaseSources {
   job: Record<string, any>;
   strictness: number;
   addFieldsUsed: number;
-  reading: { value: number; unit: string; source: string } | null;
+  /**
+   * `source` is the union rather than `string` because the distinction is the product's whole
+   * argument: a number off a paired tool is `measured`, a number a person typed is a claim.
+   * Typed as `string` it was assignable anywhere, including places that must not conflate them.
+   */
+  reading: { value: number; unit: string; source: "instrument" | "human" } | null;
   answer: string | null;
   mediaUris: string[];
   priorMediaUris: string[];
@@ -109,7 +114,7 @@ export function inspectorCase(a: CaseSources): Record<string, unknown> {
 }
 
 /**
- * The Gemma screen, and it is the narrowest case in this file by a wide margin.
+ * The screen, and it is the narrowest case in this file by a wide margin.
  *
  * The screen is asked one question — is this frame usable as evidence at all — and it is
  * given the absolute minimum needed to answer it: what the technician was asked to capture,

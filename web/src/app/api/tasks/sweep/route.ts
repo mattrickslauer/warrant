@@ -20,9 +20,86 @@ import { audit } from "@/server/adjudicate/audit";
 import { proceduresDueAnAudit } from "@/server/tasks";
 import { pushTask } from "@/server/notify";
 import { upsertEvent, RateLimited } from "@/server/calendar";
+import { adminDb } from "@/auth/admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+/**
+ * The longest this is allowed to take.
+ *
+ * There was no bound at all, which mattered because every leg below is sequential and two of
+ * them call models: fifty undecided captures was fifty serial Vertex round trips in one HTTP
+ * request. Stated here so the sweep is killed by its own budget rather than by whatever the
+ * platform happens to be configured with — and so the number is visible next to the work.
+ */
+export const maxDuration = 300;
+
+/**
+ * How many items of one leg run at once.
+ *
+ * The loops were strictly serial, so the sweep's wall clock was the SUM of every model call it
+ * had to make. Four at a time is chosen against the other end: Cloud Run runs this on 1 CPU and
+ * 512 MiB alongside user traffic (infra/deploy-web.sh), and the work is I/O-bound waiting on
+ * Vertex rather than CPU-bound, so a small pool collapses the wall clock without competing with
+ * the requests a person is waiting on.
+ */
+const LANES = 4;
+
+/**
+ * Run `work` over `items`, `lanes` at a time, and never reject.
+ *
+ * Each item's failure is its own. A pool that rejected on the first error would abandon the
+ * items behind it, which is the opposite of what every leg here wants: a capture that cannot be
+ * adjudicated must stay undecided and be retried, not take the rest of the sweep down with it.
+ */
+async function pool<T>(items: T[], lanes: number, work: (item: T) => Promise<void>): Promise<void> {
+  let next = 0;
+  const lane = async () => {
+    for (;;) {
+      const i = next++;
+      if (i >= items.length) return;
+      try {
+        await work(items[i]);
+      } catch {
+        // Counted by the caller, which knows what the failure means for that leg.
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(lanes, items.length) }, lane));
+}
+
+/** How long one sweep may hold the lease before another is allowed to assume it died. */
+const LEASE_MS = 10 * 60 * 1000;
+
+/**
+ * ONE SWEEP AT A TIME.
+ *
+ * Nothing prevented two from overlapping, and Cloud Scheduler retries on a slow response — so a
+ * sweep that ran long was very likely to be running beside its own retry. Both would read the
+ * same due tasks and push the same notifications, both would try to seal the same jobs, and
+ * `markNotified` runs AFTER the push, so the window for a duplicate is the whole leg.
+ *
+ * A lease rather than a lock: a process that dies holding it must not stop the system for ever,
+ * so it expires. Taken in a transaction because acquiring it is a read-then-write on one key,
+ * which is exactly the race being closed.
+ */
+async function takeLease(db: FirebaseFirestore.Firestore): Promise<boolean> {
+  const ref = db.collection("sweep_cursors").doc("lease");
+  return db.runTransaction(async (tx) => {
+    const held = Number((await tx.get(ref)).data()?.until ?? 0);
+    if (Number.isFinite(held) && held > Date.now()) return false;
+    tx.set(ref, { until: Date.now() + LEASE_MS, at: new Date().toISOString() }, { merge: true });
+    return true;
+  });
+}
+
+/** Hand it back, so a fast sweep does not block the next one for the whole lease. */
+async function releaseLease(db: FirebaseFirestore.Firestore): Promise<void> {
+  await db.collection("sweep_cursors").doc("lease")
+    .set({ until: 0, at: new Date().toISOString() }, { merge: true })
+    .catch(() => {});
+}
 
 /**
  * Cloud Scheduler authenticates with an OIDC token; Cloud Run verifies it before this handler
@@ -48,6 +125,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Not authorised." }, { status: 401 });
   }
 
+  const db = adminDb();
+  if (!(await takeLease(db))) {
+    // 200, not an error. An overlapping sweep is a normal consequence of the previous one
+    // running long, and Cloud Scheduler treats a non-2xx as a failure worth retrying — which
+    // would be another overlapping sweep.
+    return NextResponse.json({ skipped: "another sweep holds the lease" });
+  }
+
+  try {
+    return await sweep();
+  } finally {
+    await releaseLease(db);
+  }
+}
+
+async function sweep() {
   let tasks;
   try {
     tasks = await dueTasks();
@@ -65,9 +158,11 @@ export async function POST(request: Request) {
   let pushed = 0;
   let scheduled = 0;
   let deferred = 0;
+  /** Calendars that refused for a reason that is not rate limiting. Reported, never fatal. */
+  let calendarFailed = 0;
 
-  for (const task of tasks) {
-    if (!task.tenant_id) continue;
+  await pool(tasks, LANES, async (task) => {
+    if (!task.tenant_id) return;
 
     // Push first, and unconditionally. It is the channel that reaches a person, so nothing
     // below is allowed to prevent it.
@@ -101,13 +196,20 @@ export async function POST(request: Request) {
           // Burst at 09:00. The push already went; leave the event for the next sweep.
           deferred += 1;
         } else {
-          throw error;
+          // COUNTED, not rethrown, and not swallowed either.
+          //
+          // This used to `throw`, which took the entire sweep down over one calendar: the
+          // adjudication, disposition and sealing legs below never ran because somebody's OAuth
+          // grant had been revoked. It must not be silent either — a sweep reporting a clean run
+          // while events quietly stopped being written is the failure `sealError` already exists
+          // to prevent — so it is reported in the response instead.
+          calendarFailed += 1;
         }
       }
     }
 
     await markNotified(task.tenant_id, task.id, task.notify_count ?? 0);
-  }
+  });
 
   // Evidence whose client died before it could ask for a verdict. This is what makes it
   // acceptable for a client to trigger adjudication at all: nothing depends on the client
@@ -119,14 +221,14 @@ export async function POST(request: Request) {
   let adjudicated = 0;
   let stillUndecided = 0;
   try {
-    for (const ref of await undecidedCaptures(2 * 60 * 1000)) {
+    await pool(await undecidedCaptures(2 * 60 * 1000), LANES, async (ref) => {
       try {
         await adjudicate(ref);
         adjudicated += 1;
       } catch {
         stillUndecided += 1;
       }
-    }
+    });
   } catch (error) {
     // Almost certainly the missing COLLECTION_GROUP index on `captures`. Say so, rather than
     // reporting a clean sweep that adjudicated nothing because it could not look.
@@ -151,7 +253,7 @@ export async function POST(request: Request) {
   let disposed = 0;
   let stillStalled = 0;
   try {
-    for (const stall of await stalledSteps()) {
+    await pool(await stalledSteps(), LANES, async (stall) => {
       try {
         const out = await dispose(stall);
         if (out.action) disposed += 1;
@@ -159,7 +261,7 @@ export async function POST(request: Request) {
       } catch {
         stillStalled += 1;
       }
-    }
+    });
   } catch (error) {
     return NextResponse.json(
       { due: tasks.length, pushed, scheduled, deferred, adjudicated, stillUndecided,
@@ -180,7 +282,7 @@ export async function POST(request: Request) {
   let sealed = 0;
   let sealError: string | null = null;
   try {
-    for (const job of await sealableJobs()) {
+    await pool(await sealableJobs(), LANES, async (job) => {
       try {
         await sealJobLive(job.tenantId, job.jobId);
         sealed += 1;
@@ -188,7 +290,7 @@ export async function POST(request: Request) {
         // Left unsealed on purpose. Nothing partial was written — the Seal commits in one
         // batch — so there is no half-sealed state to reconcile.
       }
-    }
+    });
   } catch (error) {
     // A missing index on `jobs` must not take the rest of the sweep down with it — but it must
     // not be SILENT either, and it was. `sealableJobs()` runs an equality on a COLLECTION
@@ -228,6 +330,7 @@ export async function POST(request: Request) {
   return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
                              adjudicated, stillUndecided, disposed, stillStalled, sealed,
                              audited, findings: findings.length,
+                             ...(calendarFailed ? { calendarFailed } : {}),
                              ...(sealError ? { sealError } : {}) });
 }
 

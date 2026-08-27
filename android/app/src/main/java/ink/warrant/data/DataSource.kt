@@ -212,6 +212,25 @@ data class ReadingInput(
     val unit: String,
     /** Device identity. Without this the value is typed, not measured. */
     val toolId: String,
+    /**
+     * What the instrument SIGNED, relayed unchanged.
+     *
+     * Null when the device does not sign, and for the simulator. The server writes a reading
+     * either way — but only a verified frame earns a `tool_id`, and `tool_id` is the entire
+     * difference between `measured` and typed. So this is the field that decides it.
+     *
+     * The app cannot produce one: the signing key lives on the instrument and never reaches
+     * the handset. That is the point — the phone used to hold a shared password and vouch for
+     * the number, which is a weaker claim than the record was making.
+     */
+    val frame: ReadingFrame? = null,
+)
+
+/** The instrument's signature over its own bytes. See [ReadingInput.frame]. */
+data class ReadingFrame(
+    val counter: Long,
+    val rawHex: String,
+    val signature: String,
 )
 
 data class BlockedInput(
@@ -220,7 +239,6 @@ data class BlockedInput(
     val reasonKind: ReasonKind,
     val transcript: String,
     val audioRef: String? = null,
-    val by: String,
 )
 
 /** An answer to a question an agent asked. See [DataSource.respond]. */

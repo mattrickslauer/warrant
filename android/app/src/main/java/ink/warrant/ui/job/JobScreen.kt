@@ -150,6 +150,10 @@ fun JobScreen(
     // That is how a caliper step used to come back in newton-metres. Keyed on the field, so
     // moving between fields re-reads exactly as picking the tool back up would, and no-op unless
     // the link is simulated — a paired instrument is never touched by this.
+    // Nothing is ever asked for a signature. See [JobViewModel.attributeSignatures] for why a
+    // name box and a "Sign" button were the tick in the box this product exists to replace.
+    LaunchedEffect(step.id, fields) { vm.attributeSignatures(step.id, fields) }
+
     LaunchedEffect(step.id, active?.key, instrument.simulated) {
         if (instrument.simulated && active?.kind == FieldKind.MEASUREMENT) vm.aimInstrument(active)
     }
@@ -165,19 +169,50 @@ fun JobScreen(
     // between "Capture" and "Retake"; a resting frame must not make a finished step look busy.
     val reviewing = if (active != null) framedFile else null
 
-    // Redo. Offered whenever a frame from this step is on screen — including after the step has
-    // gone quiet, which is the case the bar cannot reach, because by then it says "Next step".
+    // Redo, at the scope of one capture. Offered only while a field is still outstanding, which
+    // is to say while there is a frame on screen you have not decided about yet.
     //
     // Scoped to one slot: this field, this step. It drops the frame, points the page back at
     // that field so the lens reopens, and clears the redaction line that described the frame
     // being thrown away. Everything else on the job is untouched, and the capture already sent
     // is not retracted — the next one lands beside it and the record keeps both.
-    val onRedo: (() -> Unit)? = framedField?.let { field ->
-        {
-            captured.remove("${step.id}:${field.key}")
-            redactNote = null
-            selected = field.key
+    val onRedo: (() -> Unit)? = if (active == null) {
+        null
+    } else {
+        framedField?.let { field ->
+            {
+                captured.remove("${step.id}:${field.key}")
+                redactNote = null
+                selected = field.key
+            }
         }
+    }
+
+    /** Empty this step's frames from the review, wherever the redo was tapped from. */
+    fun dropFrames(stepId: String) {
+        captured.keys.filter { it.startsWith("$stepId:") }.toList().forEach { captured.remove(it) }
+    }
+
+    // Redo, at the scope of the whole step. THE CASE THE BAR CANNOT REACH.
+    //
+    // A step with every field filled points at nothing, so the bar says "Next step" and the
+    // field strip — the only other way back to a field — is not drawn at all when the step has
+    // one field. That is exactly the state an agent's rejection leaves you in: the fleet has
+    // said the evidence will not do, the notice says so, and there is nothing on the page to
+    // tap. So the pill that was showing the resting frame's retake becomes the way to do the
+    // step again, and it is offered whether or not the step involved a camera.
+    //
+    // Only when something IS filled. On a step nobody has answered yet there is no work to
+    // throw away, and a redo control over an empty step is a button that does nothing.
+    val onRedoStep: (() -> Unit)? = when {
+        active != null -> null
+        fields.none { state.isFilled(step.id, it.key) } -> null
+        else -> ({
+            dropFrames(step.id)
+            redactNote = null
+            selected = null
+            vm.redoStep(step.id)
+        })
     }
 
     var typed by remember(step.id, active?.key) { mutableStateOf("") }
@@ -226,7 +261,11 @@ fun JobScreen(
         evidence = active?.declaredClass
             ?: fields.firstOrNull()?.declaredClass
             ?: ProvenanceClass.ASSERTED,
-        notices = noticesFor(state, vm),
+        notices = noticesFor(state, vm) { stepId ->
+            dropFrames(stepId)
+            redactNote = null
+            selected = null
+        },
         primary = action,
         onPrimary = {
             when (action.kind) {
@@ -312,6 +351,7 @@ fun JobScreen(
         activePipKey = active?.key,
         onPip = { key -> selected = key; redactNote = null },
         onRedo = onRedo,
+        onRedoStep = onRedoStep,
         backdrop = {
             when {
                 framedFile != null -> ReviewFrame(framedFile, active?.prompt ?: step.title)
@@ -387,8 +427,22 @@ fun JobScreen(
  *
  * These land on the JOB, not on the step — which is what makes a late verdict fixable from
  * three steps away instead of a modal interrupting a torque.
+ *
+ * Each one carries BOTH ways of acting on it, because a verdict does not say which is right and
+ * the person does. "Go to that step" is for an ask that adds — one more photograph beside the
+ * ones already taken. "Redo that step" is for an ask that rejects, and it is the difference
+ * between an alert that can be acted on and an alert that only informs: without it, tapping
+ * through to a step whose fields are all filled lands on "Next step" and nothing else.
+ *
+ * [onBeforeRedo] lets the caller drop the frames it is holding for that step before the state
+ * changes underneath them. The view model does not know about them — a frame under review is a
+ * property of the screen, not of the record.
  */
-private fun noticesFor(state: JobViewModel.UiState, vm: JobViewModel): List<Notice> = buildList {
+private fun noticesFor(
+    state: JobViewModel.UiState,
+    vm: JobViewModel,
+    onBeforeRedo: (String) -> Unit,
+): List<Notice> = buildList {
     state.heldReason?.let {
         add(
             Notice(
@@ -408,6 +462,10 @@ private fun noticesFor(state: JobViewModel.UiState, vm: JobViewModel): List<Noti
                 blocking = alert.blocking,
                 goToLabel = "Go to that step",
                 onGoTo = { vm.goToStepId(alert.stepId) },
+                onRedoStep = {
+                    onBeforeRedo(alert.stepId)
+                    vm.redoStep(alert.stepId)
+                },
                 onDismiss = { vm.dismissAlert(alert) },
             ),
         )
@@ -525,10 +583,15 @@ private fun BoxScope.StepCenter(
 
             field.usesCamera() -> Unit
 
-            field.kind == FieldKind.SIGNATURE -> OverlayInput(
-                value = typed,
-                onValueChange = onTyped,
-                placeholder = "Your name",
+            // STATED, NOT COLLECTED. The field is already satisfied from the signed-in
+            // account by the effect above; there is nothing here for anybody to do, and a box
+            // asking for a name would be collecting a second copy of something the record
+            // already carries as the caller's own uid.
+            field.kind == FieldKind.SIGNATURE -> OverlayNote(
+                "Attributed to you because you are signed in. Nothing was asked and nothing " +
+                    "was checked — the record says so, and its ceiling says what that leaves " +
+                    "unproved.",
+                colors.asserted,
             )
 
             // The answers the procedure actually offers, drawn as answers. `typed` still

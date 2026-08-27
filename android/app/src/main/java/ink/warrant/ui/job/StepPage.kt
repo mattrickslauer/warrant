@@ -61,6 +61,16 @@ data class Notice(
     val blocking: Boolean = false,
     val goToLabel: String? = null,
     val onGoTo: (() -> Unit)? = null,
+    /**
+     * Go to that step AND empty it, for the notice that is asking for the work to be done again.
+     *
+     * Beside [onGoTo] rather than instead of it, because they are different answers to a verdict
+     * and only the person can pick. "Go to that step" is for an ask that ADDS — one more
+     * photograph, alongside the four already taken. This one is for an ask that REJECTS, where
+     * arriving at a step whose fields are all filled leaves the bar reading "Next step" and
+     * nothing to tap.
+     */
+    val onRedoStep: (() -> Unit)? = null,
     val onDismiss: (() -> Unit)? = null,
 )
 
@@ -87,10 +97,13 @@ data class FieldPip(
  *  3. **Both exits stay on the surface.** Satisfy the step with the bar, or say why you cannot
  *     with the ⚠ beside it. There is still no third way out and no skip.
  *
- * [onRedo] is the one control that appears and disappears: it is offered only while a frame
- * from this step is on the backdrop, and it throws that frame away so the lens can be pointed
- * at the same field again. It sits above the bar rather than in it, so nothing the thumb has
- * already learned moves when it arrives.
+ * The redo pill is the one control that appears and disappears, and it is never two controls:
+ * [onRedo] throws away the frame under review so the lens can be pointed at the same field
+ * again, and [onRedoStep] — which takes its place once nothing on the step is outstanding —
+ * empties the step so the whole of it can be done again. Without the second one a step the
+ * fleet has just rejected is unreachable: every field is filled, so the page points at nothing
+ * and the bar reads "Next step". Both sit above the bar rather than in it, so nothing the thumb
+ * has already learned moves when they arrive.
  */
 @Composable
 fun StepPage(
@@ -110,6 +123,7 @@ fun StepPage(
     onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
     onRedo: (() -> Unit)? = null,
+    onRedoStep: (() -> Unit)? = null,
     pips: List<FieldPip> = emptyList(),
     activePipKey: String? = null,
     onPip: (String) -> Unit = {},
@@ -157,6 +171,7 @@ fun StepPage(
                 onTrace = onTrace,
                 onBack = onBack,
                 onRedo = onRedo,
+                onRedoStep = onRedoStep,
                 pips = pips,
                 activePipKey = activePipKey,
                 onPip = onPip,
@@ -320,10 +335,13 @@ private fun NoticePill(notice: Notice) {
                 notice.detail,
                 style = WarrantTheme.type.bodySmall.copy(color = Color.White.copy(alpha = 0.85f)),
             )
-            if (notice.onGoTo != null || notice.onDismiss != null) {
+            if (notice.onGoTo != null || notice.onRedoStep != null || notice.onDismiss != null) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     notice.onGoTo?.let { go ->
                         PillAction(notice.goToLabel ?: "Go there", accent, go)
+                    }
+                    notice.onRedoStep?.let { redo ->
+                        PillAction("Redo that step", accent, redo)
                     }
                     notice.onDismiss?.let { later ->
                         PillAction("Later", Color.White.copy(alpha = 0.7f), later)
@@ -356,6 +374,7 @@ private fun BottomChrome(
     onTrace: () -> Unit,
     onBack: (() -> Unit)?,
     onRedo: (() -> Unit)?,
+    onRedoStep: (() -> Unit)?,
     pips: List<FieldPip>,
     activePipKey: String?,
     onPip: (String) -> Unit,
@@ -375,7 +394,14 @@ private fun BottomChrome(
 
         if (pips.size > 1) FieldStrip(pips, activePipKey, onPip)
 
-        onRedo?.let { RedoPill(it) }
+        // Exactly one of these, ever. They answer different questions and stacking them would
+        // put two destructive controls in a row above a bar the thumb has learned the position
+        // of: "throw this frame away" while a frame is under review, and "do this whole step
+        // again" once the step has gone quiet and the bar has become the way out of it.
+        when {
+            onRedo != null -> RedoPill("Redo this capture", onRedo)
+            onRedoStep != null -> RedoPill("Redo this step", onRedoStep)
+        }
 
         Row(
             Modifier.fillMaxWidth(),
@@ -403,20 +429,23 @@ private fun BottomChrome(
 }
 
 /**
- * Throw this frame away and look again.
+ * Throw work away and look again. One shape, two scopes — see the `when` that draws it.
  *
- * Only ever offered when there is a frame from this step on screen, and it discards exactly
- * that one — the field it belongs to, on the step in front of you. Nothing else on the job is
- * touched, and the record already holding an earlier frame is not rewritten: a capture that
- * happened is a thing that happened. What Redo does is put the lens back so a better one can
- * be taken beside it.
+ * "Redo this capture" is offered while there is a frame from this step under review, and it
+ * discards exactly that one — the field it belongs to, on the step in front of you. "Redo this
+ * step" takes its place once the step has nothing outstanding, and empties the step's answers so
+ * the page points at its first field again.
+ *
+ * Neither rewrites anything: the record already holding an earlier frame is untouched, because a
+ * capture that happened is a thing that happened. What Redo does is put the lens back so a
+ * better one can be taken beside it.
  *
  * Deliberately not the big bar. The bar's job is to move you forward; a control that destroys
  * work should be a separate, smaller, differently-shaped decision — while still landing on the
  * 44dp target a gloved thumb can hit.
  */
 @Composable
-private fun RedoPill(onClick: () -> Unit) {
+private fun RedoPill(label: String, onClick: () -> Unit) {
     Row(
         Modifier
             .heightIn(min = 44.dp)
@@ -434,7 +463,7 @@ private fun RedoPill(onClick: () -> Unit) {
             modifier = Modifier.size(18.dp),
         )
         Text(
-            "Redo this capture",
+            label,
             style = WarrantTheme.type.label.copy(color = Color.White),
             maxLines = 1,
         )

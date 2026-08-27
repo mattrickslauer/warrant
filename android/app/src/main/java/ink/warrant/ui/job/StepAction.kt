@@ -248,7 +248,17 @@ fun primaryActionFor(
             )
         }
 
-        FieldKind.SIGNATURE -> PrimaryAction("Sign", ActionKind.SIGN, enabled = inputReady)
+        // NOT A "Sign" BUTTON, and not gated on anybody typing a name. A signature is
+        // satisfied from the signed-in account the moment the step is shown — see
+        // [JobViewModel.attributeSignatures] — so this branch is only reached in the instant
+        // before that write lands, or if nothing is signed in at all. Demanding a keystroke
+        // there would put the tick back in the box; moving on is the honest bar.
+        FieldKind.SIGNATURE ->
+            if (lastStep) {
+                PrimaryAction("Finish", ActionKind.FINISH, enabled = true)
+            } else {
+                PrimaryAction("Next step", ActionKind.ADVANCE, enabled = true)
+            }
 
         else -> PrimaryAction(
             label = if (fieldFilled) "Change it" else "Record",

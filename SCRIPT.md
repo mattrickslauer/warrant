@@ -2,7 +2,9 @@
 
 **4:00 hard cap.** Order below is the last assembled order, not a fixed one — reorder freely.
 
-Cells marked **TBD** are John's. They stay empty until the 25 Aug interview is transcribed.
+**The interview is transcribed.** `demo-video/bank/03-john/interview__transcript.md` (78:57) and
+`authoring__transcript.md` (22:47). Every John cell below now quotes him with a timecode into
+`interview__cam.mp4`. **Read §10 before you plan the edit — the authoring session has no picture.**
 
 ## The pitch — enterprise, not the corner shop
 
@@ -184,6 +186,79 @@ refusal, or cut §4 without shot 17.
 - On compile: *"Nothing left unresolved — every step has a reason, every field has a rule ... and
   **every bound came from you**."* That is `traceable` rendered on screen in the product's own words.
 
+### Banked — John Tedesco, 25 Aug
+
+Three recordings, all one Google Meet call, all in `demo-video/bank/03-john/`. Transcribed with
+Gemini from the *picture* — audio-only diarisation put both voices on one speaker.
+
+| File | Length | What it is |
+|---|---|---|
+| `interview__cam-00-open.mp4` | 2:00 | Mic and camera setup. One usable beat: *"Is your app done?"* |
+| `interview__cam.mp4` | **78:57** | **The interview.** Transcript: `interview__transcript.md` |
+| `authoring__cam.mp4` | 22:47 | He signs in and is interviewed by the Scoper. **Audio only — see below** |
+
+**⚠ THE AUTHORING SESSION HAS NO PICTURE.** Every frame of all 22:47 shows the shared screen frozen
+on the public **Pick a task** page. He is answering the Scoper the whole time and none of it is on
+screen. Sampled at one frame per minute across the whole recording: it never changes. Past **21:20**
+the recording shows the desktop — OBS, a file manager, an email address — **do not cut anything after
+21:20.**
+
+**And it never compiled.** `tenants/u:SXZHwifY4Bak6LE1Oz1UDzO40t23` was created at 03:39:32Z and holds
+`members` and nothing else — no `procedures`, no `procedure_versions`. Ten answers from a
+thirty-year technician, and the Scoper timed out repeatedly (`The Scoper could not be reached`, the
+503 from `/api/scoper/turn`) until the session was abandoned. **`/api/scoper/turn` persists nothing
+between turns** — the browser carries the transcript — so the interview did not survive.
+
+**What that costs the film: all of §10, 2:31–2:52.** Shots 35, 36 and 37 as written cannot be cut.
+Two ways out, and the first is better:
+
+1. **Reshoot 35–37 as a screen recording, with his audio.** Raise `WARRANT_FLEET_TIMEOUT_MS` off its
+   45 s default first, author his breaker procedure in his tenant, and cut his real answers over it.
+   His voice is the asset; the picture was always going to be a screen recording anyway.
+2. **Cut §10 to shot 34 alone** and fold the multi-tenancy claim into §13, where the Console is
+   already on screen. Costs the "different trade, different shape" argument.
+
+#### Clips worth cutting, by timecode into `interview__cam.mp4`
+
+**Every timecode below was pinned against the audio, not read off the transcript, and every row is
+already cut with handles into `bank/03-john/clips/`** under the `shot-NN__take-N__slug.mp4` rule.
+Two rows are named `shot-NEW` because the script has no shot for them yet — see the turnover note
+at the foot of this section.
+
+| At | Length | Him | Where it goes |
+|---|---|---|---|
+| **20:51** | ~14s | *"You did not memorise anything in the Air Force … do not memorise anything, you do what the book says."* | **Shot 11.** The scripted need, met exactly |
+| **21:21** | ~10s | *"It's impossible to get in trouble when you follow the job guide. **That's your insurance policy.**"* | **Shot 11 alt, and the best line in 79 minutes.** The record protects the *technician* |
+| **23:11** | ~26s | The **red ball** — the name, the generals in the back, the chafed wire | **Shot 34** |
+| **17:39** | ~14s | Peacetime vs wartime: *"In a time of war it is not necessary for the landing gear to go back down. They only have to go up."* | **§6 or a new strictness beat.** He describes the strictness dial without being given the word |
+| **19:13** | ~18s | The **green page** — a revision pulls the old page and inserts a green one, so a change is visible on sight | **Shot 39**, under the re-version to v4 |
+| **60:34** | ~8s | *"A turnover is priceless."* | **New beat — see below** |
+| **64:02** | ~14s | *"I've got to double check, because I'm the one that's signing the task off — because I'm the one that will be completing it."* The next shift redoes the work | **New beat.** This is the sharpest waste story he tells |
+| **51:47** | ~20s | **Lock-out tag-out** — a physical red handle, and *"you have the key"* | **Shot 42**, under the key safe. The gate's trade ancestor |
+| **56:51** | ~9s | *"A pilot needs to trust his instrumentation, period. That will crash a plane."* | **Shot 30 or 32** |
+| **58:26** | ~14s | A bad sensor reads 12,000° and you catch it; it reads 103 when it's 100 and you don't | **Shot 32.** Exactly why Wright's `tracks` gate exists |
+| **28:31** | ~8s | He says **"pencil whipping"** unprompted | **Shot 9.** The industry's own word, from the industry |
+| **44:58** | ~7s | *"A temporary solution is a permanent mistake."* | §12, or the close |
+| **75:14** | ~7s | *"No maintenance guy is going to follow a manager who's never done the job."* | §14, or the buyer beat |
+| **77:14** | ~50s | **Reliability, sustainability, liability** — his own closing three | **Shot 51 or the end card.** A technician-turned-owner naming the buyer's frame |
+
+Two more, from `authoring__cam.mp4`, audio only:
+
+| At | Him | Where |
+|---|---|---|
+| **19:07** | *"I see what you're trying to do here. You're taking a logical step through a process. Like, oh, I didn't think of this, I didn't think of that."* | **Shot 18 or 35.** The product's value, in the user's mouth |
+| **1:25** | *"That's all I use is Google."* | **Shot 36** |
+
+#### One beat the script does not have, and should
+
+**Turnover.** He raises it unprompted twice, and it is the only place he says the product would have
+helped him — not safety, not compliance. **Turnover.** At the railroad the next shift re-does the
+work because the only way to sign it off is to have seen it: *"he kind of has to start all over
+again … because I'm the one that's signing the task off."* A sealed record is exactly the thing that
+lets the second shift sign without repeating the first shift's work. **That is a second value
+proposition, it is quantifiable in labour hours, and there is no shot for it.** If §11 can give up
+four seconds, put it there — the records list is already on screen.
+
 ### ⚠ Two defects in the procedure it compiled — read before running jobs against it
 
 `Segway Xyber Brake Pad Replacement — v1` · `standard` · **`attested`** · three steps: *Remove and
@@ -221,14 +296,27 @@ Everything here is you at a machine. **Roll on real work, including the dull par
 | 50 | The exact frame from shot 6, five phones, labels fading in |
 | 51 | The workshop door closing, a phone lighting up through the window |
 
-### Session 3 — tomorrow night, John
+### Session 3 — DONE, 25 Aug. What it got and what it did not
 
-| Shot | What |
+| Shot | Status |
 |---|---|
-| 11, 34 | The two sync clips. Same lens, same mark, same background — they cut as one conversation |
-| 35, 36, 37 | Over his shoulder: he authors his own procedure, signs in to his own tenant, and the two procedures side by side |
+| 11, 34 | **Got.** Timecodes in *Banked — John Tedesco* above. It was a **Google Meet call, not an interview setup** — so there is no plain background, no matched lens, no matched mark. 11 and 34 will not cut as one in-person conversation; treat them as a remote contributor and be consistent about it |
+| 35, 36, 37 | **Not got.** The screen share was frozen for all 22:47 and the procedure never compiled. See the ⚠ above |
 
-**Interview questions are at the foot of this file.** Consent on camera first, plain background, separate audio recorder, 30 seconds of room tone at the end.
+**What the four rules cost.** *"Don't feed him the answer"* held and it paid — **pencil whipping**,
+**red ball**, and the whole strictness argument are his words, unprompted. *"Whole sentences"* half
+held; he re-takes when asked. **The rule that broke is *"save the app for the end"*** — he had
+already been told what it was the night before, so from 68:00 on he is pitching it back rather than
+describing his trade.
+
+**Questions 56–83 and 91–105 were never asked.** Parts, tools and calibration, and the entire
+*show him the app* section — including shot 22, the same photograph judged twice — did not happen.
+**If there is a second call, ask 95, 102, 103 and 104 first.** Who signs the cheque is still unknown
+and it is the one thing the pitch cannot answer from this footage.
+
+**One correction he will want.** He says *"almost 30 years"* at 75:34; 1999 to 2026 is 27. His own
+claim, on camera — leave it in his mouth, but **do not repeat it as a fact in the VO or the lower
+third.** Shot 34's lower third currently reads `30 years`. Either quote him or say `since 1999`.
 
 ---
 
@@ -256,7 +344,7 @@ Everything here is you at a machine. **Roll on real work, including the dull par
 | 8 | §2 | the problem | 0:10 | Macro push on a paper service sheet. A biro tick goes in a box. | VO: *"A refinery has five hundred people in those departments. It still comes down to this."* |
 | 9 | §2 | the problem | 0:13 | Same sheet, pull back — a whole column of identical ticks. | VO: *"There's a name for it when the box gets ticked and the work didn't happen. Pencil whipping. Regulators call it falsification and pull your licence for it."* |
 | 10 | §2 | the problem | 0:15 | Customer rides away — **or, better for the new line: an industrial plate.** A pump skid, a locomotive truck, an airframe on jacks. One clean shot, no montage. The VO names three machines; the picture should be one of them, not a bicycle | VO: *"It happens anyway, because paper can't tell the difference. And downstream of that tick is a pump, a locomotive, an aircraft."* |
-| 11 | §3 | the two frames | 0:18 | **John, to camera.** Interview setup, seated, plain background. Cut on the sentence, no preamble. Lower third: `John Tedesco · USAF aircraft · locomotives · county electrical` | **SYNC — TBD, from the interview.** Need: aviation ran on a written procedure that got signed, and experience did not excuse you from reading it. **His words, recorded 25 Aug. Nothing goes in this cell until it is transcribed.** |
+| 11 | §3 | the two frames | 0:18 | **John, to camera.** Interview setup, seated, plain background. Cut on the sentence, no preamble. Lower third: `John Tedesco · USAF aircraft · locomotives · county electrical` | **SYNC — `interview__cam.mp4` @ 20:33.** *"It was very frowned upon — you did not memorise anything in the Air Force. The torque values are very specific to that very spot on the aircraft. So that's why they say: do not memorise anything. You do what the book says."* **Alt, and the better line if §3 can carry two seconds more — @ 21:20:** *"It's impossible to get in trouble when you follow the job guide. That's your insurance policy."* |
 | 12 | §3 | the two frames | 0:21 | Cut hard to your biro tick. Same framing as shot 8. | VO: *"It works. It also costs more than most machines are worth."* |
 | 13 | §3 | the two frames | 0:23 | **Split screen.** Left: a stylised courier flow, steps appearing one at a time. Right: your paper sheet, unchanged. | VO: *"Meanwhile a courier proves a parcel arrived. Four seconds, a few pennies."* |
 | 14 | §3 | the two frames | 0:25 | Left side keeps advancing. Right side stays a tick. | VO: *"Aviation set the standard. Delivery worked out the price. Nobody's built the middle."* |
@@ -279,10 +367,10 @@ Everything here is you at a machine. **Roll on real work, including the dull par
 | 31 | §8 | Wright | 1:30 | A different, unfamiliar BLE device on the bench. Screen: Wright enumerating its services and characteristics, then writing Kotlin. It compiles. | VO: *"It had never seen this tool. It read the device, worked out how it talks, and wrote the driver itself."* |
 | 32 | §8 | Wright | 1:34 | **The gate panel, held long enough to read every row.** `compiles ✓` · `decodes ✓ all 8 frames` · `plausible ✓ 44.28` · `unit named ✓ %RH` · **`tracks ✗ — 44.28 to 44.28, the quantity was moved up`**. Beat. Then attempt 2, and the numbers move: `44 → 86, rising`. | VO: *"Four of the five checks passed. It compiled, every frame decoded, forty-four percent humidity is a believable number, and the unit is real. It was measuring nothing. Only the check that touches the physical world caught it."* |
 | 33 | §9 | the chain — unedited | 1:44 | **UNEDITED. ONE TAKE. NO CUTS. 40 seconds.** Final step passes → the gate resolves → the record seals → the technician defers a step with a spoken reason → the sweep finds it → the **Instructor** structures the blocker → the **Foreman** reads the shelf (`on_hand 0 · on_order 10 · expected Friday`) → and **chases rather than reorders** → the task lands with a named role → the calendar writes the next service → the phone that needs to know gets told → the ledger meters the spend → a decision row lands for every agent that touched it. | VO for the first 18s, then **let it run silent.** |
-| 34 | §10 | a second company | 2:24 | **John, interview setup.** Same lens and mark as shot 11 so the two read as one conversation. Lower third: `John Tedesco · 30 years · aircraft · locomotives · county electrical` | **SYNC — TBD, from the interview.** Need: an urgent repair in his own words — the situation, what it is called if it has a name, and what he reaches for first. **Transcribe before writing this cell.** |
-| 35 | §10 | a second company | 2:31 | **John authoring his own procedure, on his own machine, from his own trade.** The Scoper interviews him. It compiles: `<key> · strictness N · tier <tier>`. Hold on the compiled steps and the disqualifiers. | VO: *"So he described a job he's done a thousand times. Same agents, different trade — and a different shape of procedure, not the same one with the nouns swapped."* |
-| 36 | §10 | a second company | 2:40 | He signs in with an ordinary Google account. Lands in his own tenant. His procedures. Not mine. The same seven agents on the roster beside them. Overlay: `tenant u:… · solo` | VO: *"He signed in with an ordinary Google account. No admin, no domain, no IT. His procedures aren't in my tenant and mine aren't in his, and that boundary isn't a promise — it's the rule that separates two Fortune 500s."* |
-| 37 | §10 | a second company | 2:47 | **The two procedures side by side.** Left: the brake service — a measured field, a paired instrument, tier `instrumented`. Right: his. Same seven agents named down the side of both. | VO: *"One ends in a reading off an instrument. The other ends in a photograph of a tag, because that's what the job is."* |
+| 34 | §10 | a second company | 2:24 | **John, interview setup.** Same lens and mark as shot 11 so the two read as one conversation. Lower third: `John Tedesco · 30 years · aircraft · locomotives · county electrical` | **SYNC — `interview__cam.mp4` @ 23:14, the red ball.** *"I get called out on a red ball. They call red balls when it's broke."* Then @ 23:30: *"Sitting in the seats just so happened to be six or seven generals … and they're all looking at me."* **He names it himself — do not gloss it.** The 30-year figure is his own, @ 75:34: *"it's been about 30 years now."* |
+| 35 | §10 | a second company | 2:31 | **⚠ NO FOOTAGE — RESHOOT REQUIRED. See §10 below.** As scripted: John authoring his own procedure, the Scoper interviewing him, and it compiling. The 25 Aug session has his **audio** doing exactly this and **no picture of the app** — and it never compiled. | VO unchanged, *if* the shot is reshot: *"So he described a job he's done a thousand times. Same agents, different trade — and a different shape of procedure, not the same one with the nouns swapped."* **His audio is usable on its own — `authoring__cam.mp4` @ 19:07:** *"I see what you're trying to do here. You're taking a logical step through a process. Like, oh, I didn't think of this, I didn't think of that."* |
+| 36 | §10 | a second company | 2:40 | **⚠ NO FOOTAGE of John's sign-in.** It happened — `authoring__cam.mp4` @ 1:18–1:38, and it made `tenants/u:SXZHwifY4Bak6LE1Oz1UDzO40t23`, `kind: solo`, claimed 03:39:32Z — but the screen share was frozen, so there is no picture of it. `bank/01-screens/shot-36__take-1__google-signin.mp4` is **your** sign-in, not his. | **His line survives and it is better than the VO — `authoring__cam.mp4` @ 1:25:** *"That's all I use is Google."* Then the VO: *"He signed in with an ordinary Google account. No admin, no domain, no IT. His procedures aren't in my tenant and mine aren't in his, and that boundary isn't a promise — it's the rule that separates two Fortune 500s."* |
+| 37 | §10 | a second company | 2:47 | **⚠ UNSHOOTABLE FROM THIS FOOTAGE.** The two procedures side by side needs a second compiled procedure and **John's never compiled** — his tenant holds `members` and nothing else, no `procedures`, no `procedure_versions`. Either reshoot 35–37, or cut §10 to shot 34 + his audio over a re-recorded authoring screen. | VO: *"One ends in a reading off an instrument. The other ends in a photograph of a tag, because that's what the job is."* |
 | 38 | §11 | weeks | 2:52 | The records list, scrolled fast. Real dates spanning the whole run. Burn the range in the corner: `NN days · NN sealed records`. Then the Auditor's finding, verbatim from `/findings`, with `needs_the_shop` on it: *"'close enough to judge whether any usable thickness remains' describes the photograph, not the pad — a picture of ruined pads satisfies it. NN of 20 records."* | VO: *"Nobody re-reads a month of service records. Every seven days this does — and it doesn't find a bad technician. It finds a badly written step."* |
 | 39 | §11 | weeks | 3:00 | The finding is a **task to the owner**, not a rewrite. It opens as a Scoper interview question. One answer from the shop. The procedure re-versions to `v4` and the stamp on a live job updates. | VO: *"And it doesn't write the fix. It says which step a person has to go and talk about. That's version four, and every job from here is checked against what the last twenty taught it."* |
 | 40 | §11 | weeks | 3:05 | The runtime session on screen, deliberately empty. Beside it, a sealed record with everything in it. | VO: *"Nothing holds a job in memory for six weeks. The record is the continuity — because a record is the thing you can audit, and a session isn't."* |

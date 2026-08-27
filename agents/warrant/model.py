@@ -21,6 +21,7 @@ import hashlib
 import json
 import os
 import subprocess
+import threading
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -45,6 +46,16 @@ MODEL_LOCATION = os.environ.get("GEMINI_LOCATION", "global")
 
 class ModelUnavailable(RuntimeError):
     """No cassette and no live access. Distinct from a model that answered badly."""
+
+
+class QuotaExhausted(ModelUnavailable):
+    """Vertex said RESOURCE_EXHAUSTED, and kept saying it.
+
+    A subclass, so every `except ModelUnavailable` already written still catches it and the
+    run still ends the way it did before. What it changes is what the operator is told: a
+    quota ceiling and a bad credential both surface as "the model is unavailable", and only
+    one of them is fixed by looking at the code. This one says which.
+    """
 
 
 @dataclass
@@ -147,7 +158,85 @@ def _credentials() -> Any:
 CALL_TIMEOUT = int(os.environ.get("WARRANT_TIMEOUT", "45"))
 ATTEMPTS = 5
 
+#: A 429 is the one 4xx that is not an opinion about the request.
+#:
+#: Vertex publishes quota per MINUTE, so the window that refused this call reopens inside a
+#: minute whether or not anything is changed. The transport ladder — 1.5s, 3s, 4.5s — is the
+#: right shape for a stalled socket and exactly the wrong shape for that: it spends every
+#: attempt inside the same closed window and calls the run dead fifteen seconds in, having
+#: never once waited long enough to find out. Quota gets its own ladder, whose later rungs
+#: land in a minute the first attempt did not.
+QUOTA_BACKOFF = (8.0, 15.0, 30.0, 60.0)
+
+
+def _quota_ladder() -> tuple[float, ...]:
+    """The ladder, which is not the same shape in both places this code runs.
+
+    An eval run is unattended and should wait a full minute out rather than throw away
+    seventy scenarios. The SAME MODULE also runs inside the deployed engine, serving a
+    request a mechanic is waiting on behind `fleet.ts`'s 45-second timeout — there, a
+    thirty-second rung is not patience, it is a request that has already been abandoned by
+    the caller. `infra/deploy-agents.py` sets a short ladder for that side.
+    """
+    raw = os.environ.get("WARRANT_QUOTA_BACKOFF")
+    if not raw:
+        return QUOTA_BACKOFF
+    try:
+        rungs = tuple(float(x) for x in raw.split(",") if x.strip())
+    except ValueError:
+        # A malformed override must not decide that quota is now fatal. Fall back loudly in
+        # the only way a library can: use the default and let the run continue.
+        return QUOTA_BACKOFF
+    return rungs or QUOTA_BACKOFF
+
+#: The ceiling on a wait, including one the server asked for. A quota refusal occasionally
+#: carries a RetryInfo measured in hours — accurate, and useless to a run that is being
+#: watched. Past this, failing with an explanation beats sleeping through the demo.
+QUOTA_MAX_WAIT = 60.0
+
 _client: Any = None
+
+#: THE RUN LEARNS THE CEILING ONCE, AND FORGETS IT AGAIN.
+#:
+#: `evals/runner.py` fans the corpus across a thread pool, which is exactly the shape that
+#: exhausts a per-minute quota — and if every one of seventy scenarios then independently
+#: waits out the full ladder before reporting the same refusal, a run that is already doomed
+#: takes forty minutes to say so, with the answer buried on every row.
+#:
+#: So the latch trips only after some call has spent the WHOLE ladder and still been refused.
+#: That is not a burst; a burst clears on the first rung. It means the ceiling is below what
+#: this run needs, and the other sixty-nine calls will not discover otherwise. They fail
+#: immediately, with the reason the first one paid to find out.
+#:
+#: IT EXPIRES, and that is not a detail. This module also runs inside the deployed engine,
+#: which is a container that lives for days across thousands of requests. A latch that never
+#: re-armed would mean one bad minute on Tuesday poisoned every adjudication after it, and
+#: the fleet would answer "out of quota" long after the quota came back — a far worse failure
+#: than the one this exists to prevent. It is a cooldown, not a verdict.
+QUOTA_GATE_TTL = float(os.environ.get("WARRANT_QUOTA_GATE_TTL", "60"))
+
+_starved: tuple[float, str] | None = None
+_starved_lock = threading.Lock()
+
+
+def reset_quota_gate() -> None:
+    """Re-arm the latch. Test seam, and for a caller that has waited the window out itself."""
+    global _starved
+    with _starved_lock:
+        _starved = None
+
+
+def _gate_closed() -> str | None:
+    """The reason to refuse immediately, or None if the cooldown has passed."""
+    global _starved
+    with _starved_lock:
+        if _starved is None:
+            return None
+        until, why = _starved
+        if time.monotonic() >= until:
+            _starved = None
+            return None
+        return why
 
 
 def client() -> Any:
@@ -166,18 +255,72 @@ def client() -> Any:
     return _client
 
 
+def _is_quota(error: Any) -> bool:
+    """Whether a 4xx is the transient one.
+
+    Both fields are read because they come from different places: `code` is the HTTP status
+    the transport saw, `status` is the canonical name in the body. A quota refusal that
+    arrives through a proxy has been seen carrying one without the other.
+    """
+    return (getattr(error, "code", None) == 429
+            or getattr(error, "status", None) == "RESOURCE_EXHAUSTED")
+
+
+def _retry_after(error: Any) -> float | None:
+    """The server's own RetryInfo, in seconds, if it sent one.
+
+    Vertex attaches `google.rpc.RetryInfo` to a quota refusal, saying when to come back.
+    Guessing when it has already told us is how every client that got refused in the same
+    second comes back in the same second — so its number wins over the ladder whenever it
+    is there, and the ladder is only the fallback for when it is not.
+    """
+    details = getattr(error, "details", None)
+    if not isinstance(details, dict):
+        return None
+    # `details` is the response body, which is `{"error": {...}}` on some paths and the bare
+    # error object on others. Accept both rather than depend on which one this was.
+    body = details.get("error", details)
+    if not isinstance(body, dict):
+        return None
+    for item in body.get("details") or []:
+        if not isinstance(item, dict):
+            continue
+        if not str(item.get("@type", "")).endswith("google.rpc.RetryInfo"):
+            continue
+        delay = item.get("retryDelay")
+        # A protobuf Duration serialises as seconds with an `s` suffix — "31s", "0.5s".
+        if isinstance(delay, str) and delay.endswith("s"):
+            try:
+                return float(delay[:-1])
+            except ValueError:
+                return None
+        if isinstance(delay, (int, float)) and not isinstance(delay, bool):
+            return float(delay)
+    return None
+
+
 def _generate(instruction: str, parts: list[Part], schema: dict[str, Any],
               model: str, temperature: float) -> Any:
-    """One structured call, retried on transport faults but never on a verdict.
+    """One structured call, retried on transport faults and on quota, never on a verdict.
 
     The endpoint 502s and stalls intermittently under load. Neither is a model verdict, so
     both are retried: a call that timed out mid-read tells you nothing about the answer, and
     letting it through would record "the agent failed" for a scenario the agent was never
-    actually asked. A 4xx is the opposite — it will say the same thing five times — so it
-    surfaces immediately.
+    actually asked. Most of the 4xx range is the opposite — it will say the same thing five
+    times — so it surfaces immediately.
+
+    429 is the one that sits on the wrong side of that line. It is a 4xx, and it is not a
+    statement about the request at all: the minute was full. Retried, on its own ladder,
+    because the alternative is recording "the agent failed" for an agent that was never
+    asked — the exact outcome the paragraph above exists to prevent.
     """
+    global _starved
     from google.genai import types
     from google.genai import errors as genai_errors
+
+    closed = _gate_closed()
+    if closed:
+        raise QuotaExhausted(closed)
 
     config = types.GenerateContentConfig(
         system_instruction=instruction,
@@ -191,13 +334,26 @@ def _generate(instruction: str, parts: list[Part], schema: dict[str, Any],
     )
     contents = [types.Content(role="user", parts=[p.to_sdk() for p in parts])]
 
+    ladder = _quota_ladder()
     last: Exception | None = None
+    starved = False
     for attempt in range(ATTEMPTS):
+        wait = 1.5 * (attempt + 1)
         try:
             return client().models.generate_content(
                 model=model, contents=contents, config=config)
-        except genai_errors.ClientError as e:            # 4xx — a real, repeatable refusal
-            raise ModelUnavailable(f"{e}"[:400]) from e
+        except genai_errors.ClientError as e:            # 4xx
+            if not _is_quota(e):
+                # The rest of the range is a real, repeatable refusal — a schema the service
+                # will not accept, a model name that does not exist, a principal that may not
+                # call this one. It will say the same thing five times, so it surfaces now.
+                raise ModelUnavailable(f"{e}"[:400]) from e
+            # 429 is the exception, and treating it like the others is why a run of seventy
+            # scenarios used to die on the eleventh: nothing about the request was wrong, the
+            # minute was just full. Wait for a new one.
+            last, starved = e, True
+            wait = min(_retry_after(e) or ladder[min(attempt, len(ladder) - 1)],
+                       QUOTA_MAX_WAIT)
         except genai_errors.ServerError as e:            # 5xx — transient
             last = e
         except ModelUnavailable:
@@ -208,7 +364,19 @@ def _generate(instruction: str, parts: list[Part], schema: dict[str, Any],
             last = e
         except Exception as e:                           # transport-level stalls and resets
             last = e
-        time.sleep(1.5 * (attempt + 1))
+        # Not after the last one. Sleeping a minute to then give up regardless is a minute
+        # spent making the failure slower, and on the quota ladder that minute is the longest
+        # rung on it.
+        if attempt < ATTEMPTS - 1:
+            time.sleep(wait)
+    if starved:
+        why = (f"out of Vertex quota for {model} in {PROJECT} — {ATTEMPTS} attempts, backing "
+               f"off, still refused. Nothing here is misconfigured: raise the quota for "
+               f"aiplatform.googleapis.com, drop --jobs, or re-run without --live to replay "
+               f"the recorded cassettes. Last: {last}")[:600]
+        with _starved_lock:
+            _starved = _starved or (time.monotonic() + QUOTA_GATE_TTL, why)
+        raise QuotaExhausted(why)
     raise ModelUnavailable(f"gave up after {ATTEMPTS} attempts: {last}")
 
 

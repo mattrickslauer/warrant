@@ -18,6 +18,7 @@ import ink.warrant.data.BlockedInput
 import ink.warrant.data.CaptureInput
 import ink.warrant.data.DataSource
 import ink.warrant.data.JobEvent
+import ink.warrant.data.ReadingFrame
 import ink.warrant.data.ReadingInput
 import ink.warrant.instrument.InstrumentSession
 import ink.warrant.ui.components.FlashMode
@@ -38,6 +39,14 @@ import java.io.File
 class JobViewModel(
     private val source: DataSource,
     private val instruments: InstrumentSession,
+    /**
+     * The signed-in person's name, or null when nothing is signed in.
+     *
+     * A function rather than a value because the identity outlives no particular job and may
+     * arrive after this view model does — reading it at the moment a signature is attributed
+     * is the only way the two cannot disagree.
+     */
+    private val signer: () -> String? = { null },
 ) : ViewModel() {
 
     /**
@@ -120,6 +129,42 @@ class JobViewModel(
          */
         fun withFlashCycled(stepId: String): UiState =
             copy(flash = flash + (stepId to flashFor(stepId).next()))
+
+        /**
+         * This step, put back in front of the hands, and no other step touched.
+         *
+         * What a redo actually is on this surface: the page's memory of what this step already
+         * produced is dropped, so [activeFieldFor] points at its first field again and the bar
+         * offers Capture rather than "Next step". That is the whole of it, and the smallness is
+         * deliberate — a redo must not be able to unmake anything.
+         *
+         * Nothing is retracted. Every capture already sent is still in `captures`, which
+         * storage.rules makes append-only, and every verdict is still in `decisions`. The next
+         * capture REPLACES the current answer for that field — `fieldId()` is derived from the
+         * step and key, so re-capturing overwrites the answer and never appends a second one —
+         * and the fleet rules on it again. A person cannot delete evidence by tapping redo; they
+         * can only add better evidence beside it.
+         *
+         * `reasoned` goes with it. Exit two was taken on the OLD attempt: somebody said why they
+         * could not do this step, and coming back to do it properly means that sentence no longer
+         * describes where the step stands. Leaving it would retire the step's own fields — see
+         * [FieldDef.holdsStep] — so the page would point at nothing and the bar would read
+         * "Next step" on a step that had just been emptied.
+         *
+         * A SETTLED status is dropped from the local map and a live one is left alone. The
+         * difference is what [outstanding] does with it: `deferred`, `waived` and `impossible`
+         * are the fleet saying the hands are finished here, and a step carrying one is filtered
+         * out of everything a technician is shown — so redoing it would put them on a step that
+         * no list admits exists. Dropping it locally is this screen saying "a person is doing
+         * this again", which is now true. It is not a claim about the server and cannot be one:
+         * firestore.rules refuses all three statuses from every client, and the next snapshot
+         * carries whatever the fleet still says.
+         */
+        fun withStepRedone(stepId: String): UiState = copy(
+            filled = filled.filterNotTo(mutableSetOf()) { it.startsWith("$stepId:") },
+            reasoned = reasoned - stepId,
+            statuses = if (stepSettled(stepId)) statuses - stepId else statuses,
+        )
 
         /** A step is complete when every field required at this strictness has been filled. */
         fun stepComplete(stepId: String): Boolean {
@@ -248,8 +293,19 @@ class JobViewModel(
      * It lands on the first step that still owes something rather than on step one. Walking a
      * technician back through four completed steps to reach the one that needs a photograph is
      * how a resume feature stops being used.
+     *
+     * [at] overrides that landing with a step somebody pointed at. The records surface is where
+     * this matters: an agent asks for one more photograph on step two, the job record screen
+     * draws that ask, and the button under it has to arrive AT STEP TWO. It used to open the job
+     * and land on the first outstanding step, which is very often a different one — so the ask
+     * you tapped was nowhere on the screen you arrived at, and the button read as broken.
+     *
+     * [redo] additionally empties that step — see [UiState.withStepRedone]. It is how "the fleet
+     * wants this done again" becomes a screen pointed at the first field of that step with a
+     * shutter under it, rather than a finished step with "Next step" on the bar and no way back
+     * into the work.
      */
-    fun resume(jobId: String) {
+    fun resume(jobId: String, at: String? = null, redo: Boolean = false) {
         viewModelScope.launch {
             val job = source.getJob(jobId)
             if (job == null) {
@@ -285,11 +341,24 @@ class JobViewModel(
                     .map { it.stepId }
                     .toSet(),
             )
+            // A step id somebody named, resolved against THIS procedure and never trusted. An
+            // id that is not in it is ignored rather than obeyed: the fallback is always a step
+            // that exists, because the alternative is a blank screen on a job that is fine.
+            val asked = at
+                ?.let { id -> procedure.steps.indexOfFirst { step -> step.id == id } }
+                ?.takeIf { it >= 0 }
+
             // Computed off `base` rather than off the job, because "still owes something" is
             // decided by the strictness rule in UiState and not by the step's status.
             val landing = base.outstanding.firstOrNull()
-            _state.value = base.copy(
-                stepIndex = procedure.steps.indexOfFirst { it.id == landing?.id }.coerceAtLeast(0),
+            val opened = if (redo && asked != null) {
+                base.withStepRedone(procedure.steps[asked].id)
+            } else {
+                base
+            }
+            _state.value = opened.copy(
+                stepIndex = asked
+                    ?: procedure.steps.indexOfFirst { it.id == landing?.id }.coerceAtLeast(0),
             )
             observe(job.id)
         }
@@ -392,6 +461,33 @@ class JobViewModel(
         }
     }
 
+    /**
+     * SATISFY EVERY SIGNATURE ON THIS STEP FROM THE SESSION, ASKING NOBODY ANYTHING.
+     *
+     * A signature field used to put a name box and a "Sign" button in front of the technician,
+     * and that is the tick in the box this product exists to replace — reproduced inside it. It
+     * proved nothing: nothing checks the claim, and the person who would tick it on paper ticks
+     * it here. It was redundant as well, because the attribution already existed — every write
+     * this app makes is under the signed-in account, and `firestore.rules` refuses `reason_by`
+     * and `finalized_by` unless they equal the caller's own uid.
+     *
+     * So it is recorded from the identity, as an ASSERTION, which is the one class it can ever
+     * hold. The record's ceiling then states what that leaves unproved, rather than a green
+     * step implying somebody checked.
+     *
+     * Idempotent by [UiState.isFilled]: walking back onto a step must not write it twice.
+     */
+    fun attributeSignatures(stepId: String, fields: List<FieldDef>) {
+        val state = _state.value
+        if (state.job == null) return
+        val who = signer() ?: "unattributed"
+        for (field in fields) {
+            if (field.kind != FieldKind.SIGNATURE) continue
+            if (state.isFilled(stepId, field.key)) continue
+            fillByHand(stepId, field, who)
+        }
+    }
+
     /** A typed or chosen value. Never a measurement — those have no keyboard path. */
     fun fillByHand(stepId: String, field: FieldDef, value: String) {
         val jobId = _state.value.job?.id ?: return
@@ -430,6 +526,16 @@ class JobViewModel(
                     ReadingInput(
                         jobId = jobId, stepId = stepId, fieldKey = field.key,
                         value = latest.value, unit = latest.unit, toolId = latest.toolId,
+                        // Relayed exactly as the instrument signed it. Null for a device that
+                        // does not sign, and for the simulator — in which case the server
+                        // records the number honestly and it cannot become `measured`.
+                        frame = latest.frame?.let {
+                            ReadingFrame(
+                                counter = it.counter,
+                                rawHex = it.rawHex,
+                                signature = it.signature,
+                            )
+                        },
                     ),
                 )
             }.onFailure { e -> _state.value = _state.value.copy(error = e.message) }
@@ -460,7 +566,6 @@ class JobViewModel(
                     BlockedInput(
                         jobId = jobId, stepId = stepId, reasonKind = kind,
                         transcript = transcript, audioRef = audio?.absolutePath,
-                        by = "technician",
                     ),
                 )
             }.onFailure { e -> _state.value = _state.value.copy(error = e.message) }
@@ -501,6 +606,24 @@ class JobViewModel(
     /** Back into the work from the handover, pointed at the step that is still owed. */
     fun reopen(stepId: String) {
         _state.value = _state.value.copy(handedOver = false)
+        goToStepId(stepId)
+    }
+
+    /**
+     * Do this step again, and stand on it.
+     *
+     * The move an agent's verdict asks for and the screen had no way to offer. A step whose
+     * fields are all filled points at nothing, so the bar reads "Next step" and the only control
+     * that could have gone back — the field strip — is not drawn at all when the step has a
+     * single field. The person is looking at a step the fleet has just rejected with no way to
+     * touch it, on a page that is otherwise entirely about what to do next.
+     *
+     * The state change is [UiState.withStepRedone] and nothing else; the note there says what a
+     * redo is and, more importantly, what it is not. `handedOver` is cleared because this can be
+     * reached from the handover, and arriving at a step you cannot see is not arriving.
+     */
+    fun redoStep(stepId: String) {
+        _state.value = _state.value.withStepRedone(stepId).copy(handedOver = false)
         goToStepId(stepId)
     }
 

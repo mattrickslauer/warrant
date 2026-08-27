@@ -14,8 +14,11 @@ export type DemoBeat =
 /** stepId -> attempt index -> beats */
 export type DemoScript = Record<string, DemoBeat[][]>;
 
-const gemma = (verdict: string, rationale: string, at: number): DemoBeat =>
-  ({ at, kind: "decision", agent: "inspector", verdict, rationale, model: "gemma-3-4b", cost: 0.00002 });
+// The screen, in front of the judge. Flash-Lite, NOT Gemma: this project cannot reach a Gemma
+// publisher model on Vertex at all, and a demo trace that names one is a claim we cannot back.
+// See agents/warrant/screen.py for the 404 that settled it.
+const screen = (verdict: string, rationale: string, at: number): DemoBeat =>
+  ({ at, kind: "decision", agent: "inspector", verdict, rationale, model: "gemini-3.5-flash-lite", cost: 0.00002 });
 const flash = (verdict: string, rationale: string, at: number): DemoBeat =>
   ({ at, kind: "decision", agent: "inspector", verdict, rationale, model: "gemini-3.5-flash", cost: 0.00081 });
 const skeptic = (verdict: string, rationale: string, at: number): DemoBeat =>
@@ -36,19 +39,19 @@ const reframe: FieldDef = {
 export const scripts: Record<string, DemoScript> = {
   proc_banana_v1: {
     s1: [[
-      gemma("PASS", "One unpeeled banana, whole and in frame.", 700),
+      screen("PASS", "One unpeeled banana, whole and in frame.", 700),
       { at: 1500, kind: "status", status: "performed" },
     ]],
     // The interesting one: the first capture is not good enough, and the form GROWS a field
     // the procedure did not contain when the job started.
     s2: [
       [
-        gemma("ESCALATE", "Slices partly out of frame; cannot confirm the cuts run through. Deferring to Flash.", 800),
+        screen("ESCALATE", "Slices partly out of frame; cannot confirm the cuts run through. Deferring to Flash.", 800),
         flash("ADD_FIELD", "Two slices are cropped at the edge of the frame. Asking for a wider capture.", 2600),
         { at: 2700, kind: "add_field", field: reframe },
       ],
       [
-        gemma("PASS", "All slices visible, cuts running fully through.", 900),
+        screen("PASS", "All slices visible, cuts running fully through.", 900),
         { at: 1900, kind: "status", status: "performed" },
       ],
     ],
@@ -62,13 +65,13 @@ export const scripts: Record<string, DemoScript> = {
   // carries the drama, this one carries the floor.
   proc_pickup_v1: {
     p1: [[
-      gemma("PASS", "One object at rest on a surface, no hand on it.", 600),
+      screen("PASS", "One object at rest on a surface, no hand on it.", 600),
       { at: 1400, kind: "status", status: "performed" },
     ]],
     // The Inspector can only say something is being held. Whether it is the SAME something is
     // a different question, and a different agent answers it.
     p2: [[
-      gemma("PASS", "Object clear of the surface and held.", 800),
+      screen("PASS", "Object clear of the surface and held.", 800),
       skeptic("BELONGS", "Same object as the opening capture — its markings and the surface behind it both carry over.", 1600),
       { at: 2200, kind: "status", status: "performed" },
     ]],
@@ -76,7 +79,7 @@ export const scripts: Record<string, DemoScript> = {
 
   proc_front_brake_v3: {
     b1: [[
-      gemma("PASS", "Wheel removed, caliper and disc both visible.", 900),
+      screen("PASS", "Wheel removed, caliper and disc both visible.", 900),
       { at: 1800, kind: "status", status: "performed" },
     ]],
     b2: [[

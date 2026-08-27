@@ -223,13 +223,25 @@ echo "  decisions.at (COLLECTION_GROUP desc) — requested"
 #
 # The COLLECTION entries are restated deliberately: this write REPLACES indexConfig, so leaving
 # them out deletes the automatic ones.
+# BOTH DIRECTIONS AT GROUP SCOPE, and the reason is a bug this exact line caused.
+#
+# It requested COLLECTION_GROUP **descending** only, which was right when `stalledSteps()`
+# served the newest stall first. That ordering was later corrected to ASCENDING — "a queue is
+# fair from the front", because the technician who has waited longest was the one never being
+# ruled on — and this script was not changed with it. An ascending query against a descending
+# index is FAILED_PRECONDITION, so from that commit onward EVERY firing of the sweep 500'd on
+# this leg, and the legs after it (sealable jobs, the Auditor) were never reached at all.
+#
+# Both are declared now so that flipping the order in the query cannot silently break the
+# sweep again. A single-field index is cheap; a safety net nobody can turn on is not.
 FIELD="https://firestore.googleapis.com/v1/projects/$PROJECT/databases/(default)/collectionGroups/step_outcomes/fields/reason_at"
 curl -sS -X PATCH "$FIELD?updateMask=indexConfig" "${API[@]}" -d '{"indexConfig":{"indexes":[
   {"fields":[{"fieldPath":"reason_at","order":"ASCENDING"}],"queryScope":"COLLECTION"},
   {"fields":[{"fieldPath":"reason_at","order":"DESCENDING"}],"queryScope":"COLLECTION"},
+  {"fields":[{"fieldPath":"reason_at","order":"ASCENDING"}],"queryScope":"COLLECTION_GROUP"},
   {"fields":[{"fieldPath":"reason_at","order":"DESCENDING"}],"queryScope":"COLLECTION_GROUP"}
 ]}}' >/dev/null
-echo "  step_outcomes.reason_at (COLLECTION_GROUP desc) — requested"
+echo "  step_outcomes.reason_at (COLLECTION_GROUP asc + desc) — requested"
 
 # The sweep's Auditor leg: every sealed job in every tenant, to find which procedures have
 # enough finished work behind them to be worth reading. proceduresDueAnAudit() queries

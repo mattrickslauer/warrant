@@ -29,6 +29,15 @@ object Esp32ReferenceDriver : Driver {
     val SERVICE: UUID = UUID.fromString("6e1a0001-b5a3-f393-e0a9-e50e24dcca9e")
     val CHARACTERISTIC: UUID = UUID.fromString("6e1a0002-b5a3-f393-e0a9-e50e24dcca9e")
 
+    /**
+     * Where the device publishes what it SIGNED, beside the plain value.
+     *
+     * 40 bytes: counter u32 LE, the 4 value bytes, then a 32-byte HMAC. Optional by design — a
+     * device that does not expose it still pairs and still reads; its numbers simply cannot be
+     * called `measured`, because nothing but the instrument's own key can make that claim.
+     */
+    val ATTESTATION: UUID = UUID.fromString("6e1a0003-b5a3-f393-e0a9-e50e24dcca9e")
+
     override val id = "warrant-esp32-ref@1"
     override val label = "Warrant reference instrument"
 

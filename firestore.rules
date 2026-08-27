@@ -139,7 +139,8 @@ service cloud.firestore {
           // sealed RECORD was never at risk — but a finished job being rewritable at all is not
           // a property worth arguing about, and this is one clause.
           && !(resource != null && resource.data.get('status', '') == 'sealed')
-          && clientMayNotSettleAStep();
+          && clientMayNotSettleAStep()
+          && clientSignsOnlyForItself();
     }
 
     // Did this write change a field, as opposed to leaving what was already there?
@@ -182,6 +183,39 @@ service cloud.firestore {
           && !changing('waived_by')
           && !changing('disposition_action')
           && !changing('accepted_fields');
+    }
+
+    // A CLIENT MAY NOT SIGN SOMEBODY ELSE'S NAME.
+    //
+    // `reason_by` names the person who said a step could not be done, and the Seal reads it
+    // straight into the sealed record's `actors` — display name, photograph and role, looked up
+    // from `members` (seal.ts, publish.ts). `dispose.ts` reads the same field as the technician
+    // a Foreman's disposition concerns, and routes the follow-up task to them.
+    //
+    // Nothing refused it. `waived_by` on the line above is refused outright, `reason_by` sat
+    // beside it unguarded, and an ordinary tenant member could therefore write a COLLEAGUE'S
+    // uid and put that colleague's face on an immutable public record beside a sentence they
+    // never said. That is the same forgery `waived_by` exists to prevent, on the field next to
+    // it.
+    //
+    // The honest path was broken in the mirror image of the same gap: neither client ever sent
+    // a uid at all — the web sent the literal "you" and the phone "technician" — so the member
+    // lookup found nobody and every record's `actors` came out empty. Attribution was
+    // simultaneously forgeable and absent.
+    //
+    // So the rule is not "never", which would keep it absent. It is "only for yourself", which
+    // is a question rules can answer exactly: `request.auth.uid` is the one identity a client
+    // cannot lie about, and it is the same identity the write is already authorised under. The
+    // clients now read it from the signed-in user rather than accepting it from a caller, so
+    // the value and the permission come from one place and cannot disagree.
+    //
+    // `finalized_by` is the same field one level up — who declared a job ready for the fleet —
+    // and gets the same treatment for the same reason, before something starts reading it.
+    function clientSignsOnlyForItself() {
+      return (!changing('reason_by')
+              || request.resource.data.get('reason_by', null) == request.auth.uid)
+          && (!changing('finalized_by')
+              || request.resource.data.get('finalized_by', null) == request.auth.uid);
     }
 
     // --- Type space --------------------------------------------------------------------
@@ -271,6 +305,33 @@ service cloud.firestore {
     // recursive read below would hand every colleague the token.
 
     match /user_secrets/{uid} {
+      allow read, write: if false;
+    }
+
+    // --- Instrument replay state ---------------------------------------------------------
+    //
+    // The last counter each paired instrument spent. A signed reading frame is worth exactly
+    // one write, and this is what spends it — without it, a frame observed on the air (BLE is
+    // broadcast) could be replayed onto a different job for as long as the device lived.
+    //
+    // A top-level root, NOT /tenants/{t}/…, for the same reason `user_secrets` is one: the
+    // recursive read below would otherwise hand every colleague the current counter of every
+    // instrument in the shop, and the next counter is precisely the input a forger is missing.
+    // Nobody reads or writes it from a client at all; `/api/ingest/reading` holds it under
+    // Admin credentials, in a transaction, because "has this frame been used" is a
+    // read-then-write on a contended key.
+
+    match /instrument_counters/{id} {
+      allow read, write: if false;
+    }
+
+    // --- Sweep bookmarks -----------------------------------------------------------------
+    //
+    // Where each rotating scan in server/tasks.ts got to. Not tenant data — a cursor is a
+    // document path in somebody's tenant, so this is precisely the kind of root that must not
+    // be readable by a client, and it is server-only machinery besides.
+
+    match /sweep_cursors/{id} {
       allow read, write: if false;
     }
 

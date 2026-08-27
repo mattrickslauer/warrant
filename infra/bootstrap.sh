@@ -28,6 +28,7 @@ gcloud services enable \
   identitytoolkit.googleapis.com \
   firebase.googleapis.com \
   firebaserules.googleapis.com \
+  cloudscheduler.googleapis.com \
   --project="$PROJECT"
 
 echo

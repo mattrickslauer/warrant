@@ -4,6 +4,7 @@ import {
   type AgentName,
 } from "@/components";
 import { AppShell } from "../shell/AppShell";
+import { AttributionSpecimen, AnswerInputSpecimen, ReasonCaptureSpecimen } from "./Interactive";
 
 // Every primitive, on both grounds, at whatever width you are holding.
 // This page is the reference build's contract with the agents fanning out on the surfaces:
@@ -13,7 +14,7 @@ const AGENTS: AgentName[] = ["scoper", "foreman", "inspector", "skeptic", "audit
 
 const DECISIONS = [
   { id: "d1", job_id: "j", step_id: "s2", agent: "inspector" as const, agent_version: "inspector@1.4.0",
-    model: "gemma-3-4b", verdict: "ESCALATE", cost_usd: 0.00002, at: "2026-08-18T14:32:01Z",
+    model: "gemini-3.5-flash-lite", verdict: "ESCALATE", cost_usd: 0.00002, at: "2026-08-18T14:32:01Z",
     rationale: "Slices partly out of frame; cannot confirm the cuts run through. Deferring to Flash." },
   { id: "d2", job_id: "j", step_id: "s2", agent: "skeptic" as const, agent_version: "skeptic@1.1.0",
     model: "multimodalembedding", verdict: "BELONGS", cost_usd: 0.00011, at: "2026-08-18T14:32:04Z",
@@ -127,6 +128,28 @@ function Specimens() {
         </div>
       </Block>
 
+      {/* The two halves of the deleted signature control, and the reason both exist. Neither
+          was on this page while the surfaces were already using them. */}
+      <Block label="Attribution — stated from the session, never collected">
+        <AttributionSpecimen />
+      </Block>
+
+      <Block label="AnswerInput — typed, offered as choices, and answered">
+        <AnswerInputSpecimen />
+      </Block>
+
+      <Block label="ReasonCapture — the second exit: explain rather than abandon">
+        <ReasonCaptureSpecimen />
+      </Block>
+
+      <Block label="CaptureTile — the one primitive not drawn here">
+        <p className="w-def__note">
+          It opens a live camera on mount, and a reference page that asks for the camera the
+          moment you land on it would be its own kind of dishonesty. It is the primary exit on
+          every step; read it in <code>src/components/CaptureTile.tsx</code>.
+        </p>
+      </Block>
+
       <Block label="ChatTurn">
         <div>
           <ChatTurn who="Scoper">What has to be measured on this job, and what is the tolerance?</ChatTurn>
@@ -162,7 +185,7 @@ export default function LibraryPage() {
               <div className="stack stack--lg">
                 <div className="stack">
                   <p className="eyebrow" style={{ color: "var(--measured)" }}>The paper ground</p>
-                  <h1 className="hero">The same fourteen</h1>
+                  <h1 className="hero">The same seventeen</h1>
                   <p className="lede">
                     Dark is the workshop, where work happens. Light is the record, which is what
                     survives it. A screen is one or the other and never both.

@@ -5,6 +5,7 @@ import ink.warrant.contract.FieldDef
 import ink.warrant.contract.FieldKind
 import ink.warrant.contract.FieldSource
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -137,11 +138,37 @@ class StepActionTest {
 
     // ----------------------------------------------------------------- typed and signed work
 
+    // THE TICK IN THE BOX, REMOVED.
+    //
+    // This used to assert the opposite: the bar stayed grey until a name had been typed, and
+    // then read "Sign". That is the practice this product exists to replace, reproduced inside
+    // it — nothing checks the claim, so the keystroke proved nothing, and the attribution it
+    // collected already existed as the caller's own uid on every write.
+    //
+    // A signature is now satisfied from the signed-in account the moment the step is shown
+    // (JobViewModel.attributeSignatures), so the bar must never demand a keystroke for one.
     @Test
-    fun `a signature stays dead until a name is there`() {
-        assertFalse(action(signature, inputReady = false).enabled)
-        assertTrue(action(signature, inputReady = true).enabled)
-        assertEquals(ActionKind.SIGN, action(signature, inputReady = true).kind)
+    fun `a signature never demands a keystroke, whatever has been typed`() {
+        val untouched = action(signature, inputReady = false)
+        assertTrue(
+            "the bar is grey on a signature, so the only way on is to type a name",
+            untouched.enabled,
+        )
+        assertNotEquals(
+            "the bar still asks the technician to sign",
+            ActionKind.SIGN,
+            untouched.kind,
+        )
+        assertEquals(ActionKind.ADVANCE, untouched.kind)
+        // And it is the same bar whether or not anything happens to be in the text field.
+        assertEquals(untouched.kind, action(signature, inputReady = true).kind)
+    }
+
+    @Test
+    fun `a signature on the last step finishes rather than advancing`() {
+        val a = action(signature, inputReady = false, lastStep = true)
+        assertEquals(ActionKind.FINISH, a.kind)
+        assertTrue(a.enabled)
     }
 
     @Test

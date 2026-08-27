@@ -234,3 +234,51 @@ describe("F. public record sharing", () => {
     await assertFails(getDocs(collection(SOLO("stranger"), "records")));
   });
 });
+
+// D3. ATTRIBUTION — can a technician sign somebody else's name?
+//
+// `waived_by` was refused from the start. `reason_by` sat beside it, unguarded, and it is read
+// straight into a sealed record's `actors`: display name, photograph and role, looked up from
+// `members` (seal.ts, publish.ts). `dispose.ts` reads the same field as the technician a
+// disposition concerns. So an ordinary tenant member could put a colleague's face on an
+// immutable public record beside a sentence that colleague never said.
+//
+// The honest path was broken the other way round: neither client ever sent a uid — the web sent
+// "you", the phone "technician" — so the lookup found nobody and every record's `actors` came
+// out empty. The fix is not "never write it", which keeps it empty; it is "only for yourself",
+// which is what `request.auth.uid` can answer exactly.
+describe("D3. ATTRIBUTION — a signature is only your own", () => {
+  test("a member cannot stamp a COLLEAGUE's uid as who gave the reason", async () => {
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), "tenants/acme.com/jobs/job_att"), { id: "job_att", status: "open" });
+      await setDoc(doc(ctx.firestore(), "tenants/acme.com/jobs/job_att/step_outcomes/s1"), { status: "pending" });
+    });
+    await assertFails(setDoc(
+      doc(WS("mallory", "acme.com"), "tenants/acme.com/jobs/job_att/step_outcomes/s1"),
+      { reason_kind: "text", reason_transcript: "Seized, cannot turn it.", reason_by: "alice" },
+      { merge: true }));
+  });
+
+  test("but they CAN sign their own — attribution has to still work", async () => {
+    await assertSucceeds(setDoc(
+      doc(WS("mallory", "acme.com"), "tenants/acme.com/jobs/job_att/step_outcomes/s1"),
+      { reason_kind: "text", reason_transcript: "Seized, cannot turn it.", reason_by: "mallory" },
+      { merge: true }));
+  });
+
+  test("re-writing the step without touching the signature is still allowed", async () => {
+    // The merge case `changing()` exists for: the whole post-merge document is presented, so a
+    // naive check would refuse a technician amending their own reason.
+    await assertSucceeds(setDoc(
+      doc(WS("mallory", "acme.com"), "tenants/acme.com/jobs/job_att/step_outcomes/s1"),
+      { reason_transcript: "Seized. Penetrating oil applied, will retry.", reason_by: "mallory" },
+      { merge: true }));
+  });
+
+  test("nor can they claim to have finalised a job on somebody else's behalf", async () => {
+    await assertFails(setDoc(doc(WS("mallory", "acme.com"), "tenants/acme.com/jobs/job_att"),
+      { status: "open", finalized_by: "alice" }, { merge: true }));
+    await assertSucceeds(setDoc(doc(WS("mallory", "acme.com"), "tenants/acme.com/jobs/job_att"),
+      { status: "open", finalized_by: "mallory" }, { merge: true }));
+  });
+});

@@ -196,6 +196,20 @@
       ]
     },
     {
+      "collectionGroup": "interview_drafts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "updated_at",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "//": "The people view.",
       "collectionGroup": "members",
       "queryScope": "COLLECTION",
@@ -225,5 +239,48 @@
       ]
     }
   ],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "//": "COLLECTION_GROUP on `step_outcomes.reason_at`, and without it the sweep 500s. `stalledSteps()` in web/src/server/tasks.ts is a COLLECTION GROUP query ordered by this field, and its comment reasoned that 'one orderBy on one field, so the automatic single-field index serves it'. That is true of a COLLECTION-scoped query and false of a collection-group one: Firestore creates single-field indexes automatically at COLLECTION scope ONLY, so the group-scoped ordering has to be declared. Until it was, every firing of the sweep failed FAILED_PRECONDITION at this leg \u2014 which meant no step a technician walked away from ever reached the Foreman, and the sweep's later legs were never reached at all. The COLLECTION entries below restore what the automatic index was already doing.",
+      "collectionGroup": "step_outcomes",
+      "fieldPath": "reason_at",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "//": "COLLECTION_GROUP on `jobs.status`, for the same reason one level up. `sealableJobs()` and `proceduresDueAnAudit()` are collection-group queries filtering on status and ordered by document id \u2014 the rotating-window scan described under 'Fair scanning'. The existing COLLECTION-scoped (status, started_at) composite does not serve a group-scoped query, and these two legs would have failed the same way the moment the sweep got past the one above it.",
+      "collectionGroup": "jobs",
+      "fieldPath": "status",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
 }

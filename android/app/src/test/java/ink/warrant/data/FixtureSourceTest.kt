@@ -166,7 +166,6 @@ class FixtureSourceTest {
             BlockedInput(
                 jobId = job.id, stepId = "s2", reasonKind = ReasonKind.VOICE,
                 transcript = "The knife is locked in the other workshop and nobody has the key.",
-                by = "tech_01",
             ),
         )
         advanceUntilIdle()

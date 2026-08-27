@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 const CONTENTS = [
   ["what", "What you are flashing"],
   ["contract", "The wire contract"],
+  ["attest", "Proving the number is yours"],
   ["flash", "Flashing it"],
   ["sensor", "Putting your own sensor behind it"],
   ["declare", "Declaring your own unit"],
@@ -92,8 +93,9 @@ export default function FirmwareManual() {
                   A value is <strong>measured</strong> when it reached the record from a paired
                   device without passing through a human. Nothing in that sentence says what the
                   device cost, who made it, or what it measures. This page is the whole of the
-                  hardware side: a 112-line sketch, four lines of wire contract, and the three
-                  ways the client will read a device that has never heard of us.
+                  hardware side: one sketch you can read in a sitting, five lines of wire
+                  contract, and the three ways the client will read a device that has never
+                  heard of us.
                 </p>
               </div>
 
@@ -129,7 +131,7 @@ export default function FirmwareManual() {
 
               <Section id="contract" title="The wire contract">
                 <p>
-                  Four facts, and they must agree with{" "}
+                  Five facts, and they must agree with{" "}
                   <M>Esp32ReferenceDriver</M> in the Android client. Change them in one place and
                   you must change them in the other — or change nothing and fall back to the
                   generic path, which reads the device but marks the reading as unvetted.
@@ -153,6 +155,13 @@ export default function FirmwareManual() {
                         <td><code>4 bytes</code>, little-endian IEEE-754 float</td>
                       </tr>
                       <tr>
+                        <td>Attestation UUID</td>
+                        <td>
+                          <code>6e1a0003-b5a3-f393-e0a9-e50e24dcca9e</code> — read, optional.{" "}
+                          <a href="#attest">What it is for</a>
+                        </td>
+                      </tr>
+                      <tr>
                         <td>Device name</td>
                         <td><code>Warrant Ref 01</code> — the driver also matches the <code>Warrant</code> name prefix</td>
                       </tr>
@@ -174,6 +183,63 @@ export default function FirmwareManual() {
               </Section>
 
               <Rule />
+
+              <Section id="attest" title="Proving the number is yours">
+                <p>
+                  Everything above gets a number onto the screen. It does not yet get one onto a
+                  record, and the gap between those two things is the reason this section exists.
+                  A plain characteristic is a broadcast: anything within radio range can advertise
+                  the same service and the same four bytes, and the handset carrying them cannot
+                  tell the difference. A reading that arrives that way is real enough to show and
+                  is not evidence of anything.
+                </p>
+                <p>
+                  So the sketch publishes a second characteristic beside the plain one, carrying
+                  what the device <em>signed</em>. It is the whole of the distance between{" "}
+                  <M>measured</M> and <M>unvetted-</M>. Reading it is optional by design — a
+                  device that does not expose it still pairs and still reads, and its numbers
+                  simply cannot be called measured, because nothing but the instrument&rsquo;s own
+                  key can make that claim.
+                </p>
+                <Code caption="The signed frame, and the message underneath it.">
+{`frame   40 bytes:  counter u32 LE | value 4 bytes | HMAC-SHA256 32 bytes
+
+HMAC-SHA256(TOOL_KEY, "warrant-reading-v1|" TOOL_ID "|" counter "|" <the 4 raw bytes>)`}
+                </Code>
+                <p>
+                  The leading <M>warrant-reading-v1</M> is a domain separator, and it is not
+                  decoration: signed material without one can be lifted whole and replayed into
+                  any other protocol that happens to share the key. It matches{" "}
+                  <M>READING_SIGNATURE_V1</M> in <M>web/src/server/instruments.ts</M>, which is
+                  the code that checks it. The four bytes signed are the same four bytes the
+                  plain characteristic serves — the signature covers the reading itself, not a
+                  re-encoding of it.
+                </p>
+                <p>
+                  The counter is persisted to NVS and strictly increases, and it survives a
+                  reboot on purpose. BLE is a broadcast, so a frame can simply be recorded off
+                  the air and played back later; the server spends each counter once and refuses
+                  one it has already seen. A counter that restarted at zero on every power cycle
+                  would make every frame the device ever sent replayable again.
+                </p>
+                <div className="manual__note">
+                  <b>Change TOOL_KEY before you flash it. It ships as <M>change-me-before-flashing</M>.</b>
+                  <p>
+                    The key is the entire identity of the instrument — a board flashed with the
+                    published default can be impersonated by anyone who has read this page, which
+                    is everyone. Change <M>TOOL_ID</M> too, because that is the name the record
+                    will carry. Neither may ever appear in the Android app: the point of signing
+                    on the device is that the handset cannot forge a frame it is merely carrying,
+                    and a key shipped inside the client gives that away completely.
+                  </p>
+                </div>
+                <p>
+                  A browser will not do this. The web client is capped at the <M>open</M> tier and
+                  never reads the attestation characteristic, because attestation is what the
+                  installed app adds — which is why the same procedure that goes green on a phone
+                  refuses on a laptop rather than quietly settling for a weaker number.
+                </p>
+              </Section>
 
               <Section id="flash" title="Flashing it">
                 <h3>PlatformIO, no IDE</h3>

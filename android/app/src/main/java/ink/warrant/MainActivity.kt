@@ -80,7 +80,18 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
     val jobVm: JobViewModel = viewModel(
         factory = remember {
             viewModelFactory {
-                initializer { JobViewModel(container.source, container.instruments) }
+                initializer {
+                    JobViewModel(
+                        container.source,
+                        container.instruments,
+                        // Read at the moment a signature is attributed, never captured here:
+                        // the technician may sign in after this factory has already run.
+                        signer = {
+                            (container.auth.state.value as? AuthState.SignedIn)
+                                ?.identity?.displayName
+                        },
+                    )
+                }
             }
         },
     )
@@ -152,7 +163,17 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
                     // Picking a job back up puts it in the hands of the live job screen, which
                     // owns the camera. `resume`, never `start`: starting would write a SECOND
                     // job against the same machine and split the record in two.
-                    onResume = { id -> jobVm.resume(id); nav.navigate(JOB) },
+                    onResume = { id, stepId ->
+                        jobVm.resume(id, at = stepId)
+                        nav.navigate(JOB)
+                    },
+                    // Same route, one flag apart. The step is emptied as the job is rebuilt
+                    // rather than after arriving, so the page never draws the finished step
+                    // for a frame on its way to drawing the empty one.
+                    onRedoStep = { id, stepId ->
+                        jobVm.resume(id, at = stepId, redo = true)
+                        nav.navigate(JOB)
+                    },
                     onOpenRecord = { id -> nav.navigate("record/${Uri.encode(id)}") },
                 )
             }

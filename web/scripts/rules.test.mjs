@@ -224,6 +224,80 @@ describe("server-written collections are readable but not writable", () => {
   });
 });
 
+describe("an interview draft is the shop's own, and only the shop's", () => {
+  // The draft exists because a 22-minute Scoper interview was lost when the turn timed out.
+  // It is written by the BROWSER — a server-side write would share fate with the request that
+  // fails — so these are the rules that have to hold for that to be safe.
+  const sam = IDENTITIES[0];
+  const colleague = IDENTITIES[1];   // same Workspace domain, so the same tenant
+  const rival = IDENTITIES[2];       // a different domain, so a different enterprise
+  const draft = {
+    shop: { trade: "Residential electrical" },
+    conversation: [{ who: "shop", said: "This is a replacement." }],
+    status: "open",
+    updated_at: "2026-08-26T04:00:00.000Z",
+  };
+
+  test("a member may write their own interview draft", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(
+      setDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d1"), draft));
+  });
+
+  test("and may update it as the interview goes on", async () => {
+    const db = asUser(sam);
+    await assertSucceeds(setDoc(
+      doc(db, "tenants", sam.tenant, "interview_drafts", "d1"),
+      { ...draft, conversation: [...draft.conversation, { who: "shop", said: "20 inch-pounds." }] },
+    ));
+  });
+
+  test("a colleague in the same shop CAN pick it up", async () => {
+    // Deliberate, and worth stating rather than leaving to be discovered. The boundary in
+    // this product is the TENANT, not the person: a procedure belongs to the shop, so a
+    // half-written one does too. If the technician who started the interview is off shift,
+    // the next one can finish it rather than start again — which is the whole complaint the
+    // draft exists to answer.
+    const db = asUser(colleague);
+    await assertSucceeds(getDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d1")));
+  });
+
+  test("a rival enterprise cannot read it", async () => {
+    // A half-finished procedure is commercially sensitive in exactly the way a finished one
+    // is: it is how this shop does the job.
+    const db = asUser(rival);
+    await assertFails(getDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d1")));
+  });
+
+  test("a rival enterprise cannot write one into somebody else's shop", async () => {
+    const db = asUser(rival);
+    await assertFails(
+      setDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d2"), draft));
+  });
+
+  test("a signed-out browser cannot touch it", async () => {
+    const db = env.unauthenticatedContext().firestore();
+    await assertFails(getDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d1")));
+    await assertFails(
+      setDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d3"), draft));
+  });
+
+  test("a draft may not call itself sealed", async () => {
+    // clientMayNotClaim(). `interview-draft.ts` writes 'open' | 'published' | 'abandoned' and
+    // never this word — the test is here so that stays true.
+    const db = asUser(sam);
+    await assertFails(setDoc(
+      doc(db, "tenants", sam.tenant, "interview_drafts", "d4"), { ...draft, status: "sealed" }));
+  });
+
+  test("it is not deletable, which is why it is marked instead", async () => {
+    // The client has no delete grant outside an unsealed job, so `closeDraft()` updates a
+    // status rather than removing the document. This is the rule that forces that design.
+    const db = asUser(sam);
+    await assertFails(deleteDoc(doc(db, "tenants", sam.tenant, "interview_drafts", "d1")));
+  });
+});
+
 describe("a client cannot assert the conclusion the system exists to reach", () => {
   const sam = IDENTITIES[0];
 

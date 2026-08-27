@@ -9,6 +9,7 @@
     "check": "node ../contract/check.mjs && tsc --noEmit"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "firebase": "^12.18.0",
     "firebase-admin": "^14.3.0",
     "google-auth-library": "^11.0.2",

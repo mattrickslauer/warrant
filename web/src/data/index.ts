@@ -39,3 +39,4 @@ export * from "./source";
 export { FixtureSource } from "./fixture-source";
 export { LiveSource, scoped, splitScoped } from "./live-source";
 export * from "./seal";
+export * from "./attention";

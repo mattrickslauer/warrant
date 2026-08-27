@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Rule, AgentStamp, type AgentName } from "@/components";
 import { AppShell } from "../shell/AppShell";
-import { AGENTS, grouped, run, totals } from "@/server/evals";
+import { AGENTS, grouped, notAskedSentence, run, totals } from "@/server/evals";
 import { StatusChip } from "./parts";
 import "./model-tests.css";
 
@@ -79,10 +79,19 @@ export default function ModelTests() {
             Those four are deliberately not three. <b>Off-contract</b> means the answer broke its
             own schema, so nothing about its content is judged — assertions about a field the
             model never returned would bury the one failure that matters. <b>Never asked</b> means
-            the agent was not properly put to the question, almost always a photograph the corpus
-            is still waiting on. It is scored as neither a pass nor a fail, because an Inspector
-            asked to judge a photograph it was never shown will confidently return something.
+            the agent was not properly put to the question. It is scored as neither a pass nor a
+            fail, because an Inspector asked to judge a photograph it was never shown will
+            confidently return something.
           </p>
+
+          {/* Read off the run, not remembered. This used to assert that a never-asked scenario
+              was "almost always a photograph the corpus is still waiting on", which was wrong by
+              two to one on the very run displayed underneath it. */}
+          {t.error > 0 && (
+            <p className="mt-head__lede">
+              On this run, of the {t.error} never asked: {notAskedSentence()}.
+            </p>
+          )}
 
           <div className="mt-runmeta">
             <span>recorded <b>{run.at}</b></span>
