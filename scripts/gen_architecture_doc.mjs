@@ -53,7 +53,7 @@ const THESIS = {
   "The fleet — deployed on Vertex AI Agent Engine":
     "Seven agents behind one engine, which answers for its own roster over the API — so the claim is checkable from outside.",
   "Scheduled work — one cron for the whole system":
-    "One cron re-reads the world every five minutes. It is currently failing, and nothing downstream of it has ever run.",
+    "One cron re-reads the world every minute, so nothing is lost when a deploy lands mid-flight. It failed for a day and was fixed in revision 00014.",
   "Instruments — a reading nobody typed":
     "A signed frame from an instrument is the difference between a measurement and a number somebody typed.",
 };

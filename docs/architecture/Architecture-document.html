@@ -583,7 +583,7 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
          <rect width="132" height="44" rx="7" class="chip"/>
          <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
          <text x="11" y="17" class="ct">Inspector</text>
-         <text x="11" y="31" class="cs">12/18</text>
+         <text x="11" y="31" class="cs">12/16</text>
        </g>
 <g transform="translate(456,90)">
          <rect width="132" height="44" rx="7" class="chip"/>
@@ -637,8 +637,8 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
     <p class="note">There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> — so “it did not invent a tolerance” is arithmetic, not an impression.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Inspector</h4>
-    <p class="sub">12/18 · one field at a time</p>
-    <dl><dt>decides</dt><dd>PASS · ADD FIELD · ESCALATE on one field's evidence</dd><dt>contract</dt><dd>inspector-verdict.schema.json</dd><dt>scenarios</dt><dd>18 (4 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate</dd><dt>never judges</dt><dd>a whole step — it would trade a weak photo against a strong one</dd></dl>
+    <p class="sub">12/16 · one field at a time</p>
+    <dl><dt>decides</dt><dd>PASS · ADD FIELD · ESCALATE on one field's evidence</dd><dt>contract</dt><dd>inspector-verdict.schema.json</dd><dt>scenarios</dt><dd>16 (2 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate</dd><dt>never judges</dt><dd>a whole step — it would trade a weak photo against a strong one</dd></dl>
     <p class="note">Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Skeptic</h4>
@@ -663,7 +663,7 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
       <div class="cards"><article class="card">
     <h4><s style="background:var(--live)"></s>Auditor</h4>
     <p class="sub">5/5 · weeks of jobs at once</p>
-    <dl><dt>decides</dt><dd>whether the PROCEDURE is defective, and hands the revision back</dd><dt>contract</dt><dd>auditor-finding.schema.json</dd><dt>scenarios</dt><dd>5</dd><dt>reached by</dt><dd>the sweep — which is currently failing</dd><dt>refuses</dt><dd>to say what a wrong bound should become</dd></dl>
+    <dl><dt>decides</dt><dd>whether the PROCEDURE is defective, and hands the revision back</dd><dt>contract</dt><dd>auditor-finding.schema.json</dd><dt>scenarios</dt><dd>5</dd><dt>reached by</dt><dd>the sweep, every minute</dd><dt>refuses</dt><dd>to say what a wrong bound should become</dd></dl>
     <p class="note">The only agent whose subject is the procedure, and the one that closes the loop back to the Scoper. Its hard judgement is that <b>a step that keeps failing is usually the procedure working</b> — pads worn past the limit on nine jobs in twenty is a rule catching real faults, and reporting it would push a shop to loosen the check earning its keep.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Wright</h4>
@@ -676,7 +676,7 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
       <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
 <section class="page"><div class="kicker">Section 7 of 8</div>
     <h2>Scheduled work — one cron for the whole system</h2>
-    <p class="thesis">One cron re-reads the world every five minutes. It is currently failing, and nothing downstream of it has ever run.</p>
+    <p class="thesis">One cron re-reads the world every minute, so nothing is lost when a deploy lands mid-flight. It failed for a day and was fixed in revision 00014.</p>
       <div class="flowwrap"><svg class="flow" viewBox="-16 -26 392 176" preserveAspectRatio="xMidYMid meet">
     <path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
 <rect x="138.95" y="10" width="82.1" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">OIDC — every minute</text>

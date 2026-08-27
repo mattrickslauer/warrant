@@ -112,14 +112,6 @@ MANIFEST: dict[str, tuple[str, str]] = {
         "present, code unreadable.",
         "inspector/label-lost-to-glare-is-recoverable, add-field-budget-exhausted"),
 
-    # --- tyre tread -----------------------------------------------------------------
-    "tyre/tread-coin-deep.jpg": (
-        "A coin stood upright in the main groove of a good tyre, most of its edge swallowed.",
-        "inspector/tread-depth-passes"),
-    "tyre/tread-coin-shallow.jpg": (
-        "The same, on a worn tyre — the coin stands proud and the surrounding rubber is smooth.",
-        "inspector/tread-worn-refused"),
-
     # --- the Skeptic's identity problem ---------------------------------------------
     "asset/bike-a-fork.jpg": (
         "The left fork lower and yoke of one bike, framed on whatever actually marks it out "

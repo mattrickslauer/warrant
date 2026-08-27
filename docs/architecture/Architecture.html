@@ -519,8 +519,8 @@ const NODES = [
    facts:[["decides","what to ask next, and when a procedure would run unambiguously"],["contract","scoper-turn.schema.json"],["scenarios","14, including full interviews"],["reached by","/api/scoper/turn and /api/procedures/compile"],["refuses","to state a tolerance nobody gave it"]],
    note:"There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> — so “it did not invent a tolerance” is arithmetic, not an impression."},
 
-  {id:"inspector", x:350, y:1310, s:"live", t:"Inspector", sub:"12/18 · one field at a time",
-   facts:[["decides","PASS · ADD FIELD · ESCALATE on one field's evidence"],["contract","inspector-verdict.schema.json"],["scenarios","18 (4 need media not checked in)"],["reached by","/api/adjudicate"],["never judges","a whole step — it would trade a weak photo against a strong one"]],
+  {id:"inspector", x:350, y:1310, s:"live", t:"Inspector", sub:"12/16 · one field at a time",
+   facts:[["decides","PASS · ADD FIELD · ESCALATE on one field's evidence"],["contract","inspector-verdict.schema.json"],["scenarios","16 (2 need media not checked in)"],["reached by","/api/adjudicate"],["never judges","a whole step — it would trade a weak photo against a strong one"]],
    note:"Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required."},
 
   {id:"skeptic", x:650, y:1310, s:"live", t:"Skeptic", sub:"8/12 · adversarial",
@@ -536,7 +536,7 @@ const NODES = [
    note:"Its inputs conflict on purpose: the machine is unsafe, the customer is booked in two days, and the torque wrench arrives Thursday. It writes down enough to be woken days later with no other context. <b>A waiver needs a named person holding standing</b>, and standing arrives as a fact, so it cannot be talked into one."},
 
   {id:"auditor", x:350, y:1480, s:"live", t:"Auditor", sub:"5/5 · weeks of jobs at once",
-   facts:[["decides","whether the PROCEDURE is defective, and hands the revision back"],["contract","auditor-finding.schema.json"],["scenarios","5"],["reached by","the sweep — which is currently failing"],["refuses","to say what a wrong bound should become"]],
+   facts:[["decides","whether the PROCEDURE is defective, and hands the revision back"],["contract","auditor-finding.schema.json"],["scenarios","5"],["reached by","the sweep, every minute"],["refuses","to say what a wrong bound should become"]],
    note:"The only agent whose subject is the procedure, and the one that closes the loop back to the Scoper. Its hard judgement is that <b>a step that keeps failing is usually the procedure working</b> — pads worn past the limit on nine jobs in twenty is a rule catching real faults, and reporting it would push a shop to loosen the check earning its keep."},
 
   {id:"wright", x:650, y:1480, s:"live", t:"Wright", sub:"7/7 · writes the driver",

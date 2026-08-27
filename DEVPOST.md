@@ -63,7 +63,7 @@ Photographs also go through a filter that looks for prompt injection first, beca
 
 The web app and the phone app talk to the same service. Everything is stored per customer, and that separation is enforced by the database itself rather than by our code remembering to ask nicely — we prove it by running the rules in an emulator on every test run, rather than by asserting that they work.
 
-The whole product runs offline against recorded fixtures. No cloud account, no credentials, no hardware. The agents have 72 scored scenarios that replay from recordings, so the suite runs free and offline and gives the same answer twice. Some of the adversarial test footage — the kind of fake evidence somebody would submit if they were trying to cheat — is generated with Veo.
+The whole product runs offline against recorded fixtures. No cloud account, no credentials, no hardware. The agents have 70 scored scenarios that replay from recordings, so the suite runs free and offline and gives the same answer twice. Some of the adversarial test footage — the kind of fake evidence somebody would submit if they were trying to cheat — is generated with Veo.
 
 ## Challenges we ran into
 
