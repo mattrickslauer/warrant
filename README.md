@@ -241,6 +241,29 @@ has ground truth for free.
 
 ## Architecture
 
+**The fleet is deployed on Vertex AI Agent Engine and will answer for itself.** Nothing in this
+section has to be taken on trust — ask the running service what it is:
+
+```console
+$ ./infra/deploy-agents.py --list
+warrant-fleet
+  projects/1020487917587/locations/us-central1/reasoningEngines/5032906174249304064
+
+$ ./infra/deploy-agents.py --smoke
+roster  {'agents': [{'contract': 'auditor-finding',              'name': 'auditor'},
+                    {'contract': 'foreman-disposition',          'name': 'foreman'},
+                    {'contract': 'inspector-verdict',            'name': 'inspector'},
+                    {'contract': 'instructor-recommendation',    'name': 'instructor'},
+                    {'contract': 'scoper-turn',                  'name': 'scoper'},
+                    {'contract': 'skeptic-verdict',              'name': 'skeptic'},
+                    {'contract': 'wright-turn',                  'name': 'wright'}],
+         'default': 'foreman'}
+```
+
+Seven agents, each named with the contract it answers under, returned by the deployed engine
+rather than by this document. The web and Android surfaces both reach it through Cloud Run at
+`https://warrant-zq2l2kwg3q-uc.a.run.app`.
+
 Every row below is either running or says plainly that it is not. A table claiming a service
 this system does not actually call would be a tick in a box, in the README of a product whose
 entire argument is that a tick in a box is not evidence.
@@ -257,13 +280,32 @@ entire argument is that a tick in a box is not evidence.
 | Per-agent least privilege | service-account impersonation | running — `warrant-web` may not call Vertex; see `server/fleet.ts` |
 | Machine-to-machine | **MCP server**, Streamable HTTP | running — `POST /api/mcp` on Cloud Run, seven tools, official `@modelcontextprotocol/sdk`; the handshake is exercised in `web/scripts/mcp.test.mjs` on every `smoke.sh` |
 | Asset history across weeks | the `readings` series in Firestore, **not Memory Bank** | **deliberately not adopted** — see below |
-| Agent discovery | the fleet's own `roster()`, **not Agent Registry** | **not adopted** — it would publish agents, and procedures are what need versioning |
+| Agent discovery | the fleet's own `roster()`, **not Agent Registry** | **not adopted** — checked against the live API, not assumed; see below |
+
+### The four components we did not adopt, and why
+
+Named here rather than left as a gap in the table. Each was read, tried against the actual
+problem, and declined for a reason — which is a different thing from not having got to them.
 
 **Memory Bank is the one absence worth reading.** Memory Bank consolidation is LLM-judged and
 treats two readings of one field as a contradiction to reconcile — which destroys exactly the
 series a wear rate is computed from. `consistent_with` resolves against the `readings` series
 instead, and `docs/architecture.md` §4 sets out the argument. Adopting a memory product to have
 one in this table would contradict the best architectural decision in the repository.
+
+**Agent Registry was not declined on taste — it was called.** `AgentService` is absent from
+every regional endpoint we could have used (`us-central1`, `us-east4`, `us-west1`,
+`europe-west4` all answer `AgentService not supported in this location`) and present only at
+`global`, where it lists cleanly and returns an empty set. So it is reachable. The reason it
+holds nothing is one field: `Agent.base_agent` is required and immutable, and the only value it
+accepts is `antigravity-preview-05-2026`. The registry models Antigravity agents. Warrant's
+seven are `google-genai` Python agents on Agent Engine, and the closest thing to honest
+registration available would be seven Antigravity records that are not the agents actually
+serving traffic — a published roster that disagrees with the deployed one.
+
+`./infra/deploy-agents.py --smoke` answers with the seven that are really there, each with the
+contract it is held to. That is the same claim Agent Registry would make, made by the thing
+making it.
 
 **Agent Gateway and Agent Identity are not in here either**, because nothing in this system
 calls them. Routing is one client (`server/fleet.ts`) against one engine, and identity is
@@ -383,6 +425,29 @@ fleet has made about evidence somebody captured, readable without an account. Th
 on that page and the `Agent decisions on the record` row above are the same number read
 from the same collection, so the table is checkable against the log rather than asserted
 alongside it.
+
+---
+
+## Where things are
+
+| Directory | What is in it |
+|---|---|
+| `agents/` | The fleet. Seven agents in `agents/warrant/`, one file each, plus `evals/` — 70 scored scenarios, the recorded cassettes they replay from, and the media corpus they judge. Most of the file count is cassettes |
+| `contract/` | The single authored statement of what each agent may answer. JSON Schema, read by both Python and TypeScript so the two surfaces cannot drift |
+| `web/` | Next.js App Router on Cloud Run — the desk, the public library, `/model-tests`, and the MCP server at `POST /api/mcp` |
+| `android/` | The technician's client. Native Kotlin, CameraX, platform BLE, offline queue, on-device redaction |
+| `firmware/` | The reference instrument — an ESP32 that signs its own readings over GATT |
+| `anvil/` | A sandbox that compiles and runs the Kotlin drivers Wright writes, so generated code is judged by execution rather than by reading it |
+| `infra/` | Deployment. `deploy-agents.py` puts the fleet on Agent Engine; `Dockerfile.web` builds the Cloud Run image |
+| `docs/` | `architecture.md` is the full design. `docs/rules/` is the verbatim contest rules archive; `docs/winners/` is the prior-hackathon analysis |
+| `scripts/` | `smoke.sh` is the one that matters — it runs everything |
+| `seed/` | Downloaded public catalogues for type space. Not tenant data, and not ours; each keeps its own licence |
+| `specs/`, `design/` | Design documents, and the design tokens the web surface is built from |
+| `demo-video/` | Shot script, the take harness, and the Veo generation scripts |
+
+The two files to read first are [`docs/architecture.md`](docs/architecture.md) and
+[`agents/warrant/screen.py`](agents/warrant/screen.py) — the second is a small file that
+contains the whole argument about where a cheap model is safe to put.
 
 ---
 

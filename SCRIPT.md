@@ -2,6 +2,34 @@
 
 **4:00 hard cap.** Order below is the last assembled order, not a fixed one — reorder freely.
 
+## What the judges said they want, in their words
+
+From the Devpost/Google Cloud live judging Q&A, 26 Aug (*How to Win the All Things Agentic
+Hackathon*, `youtu.be/DCXjvKmUIGY`). These are the panel's own sentences, not our reading of
+the rules.
+
+- **Nothing past 4:00 is watched.** *"We will only watch four minutes of it… everything that you
+  put after four minutes, we will not watch."* The cap is enforced, not advisory.
+- **The first thirty seconds decide whether the rest gets read.** *"Wowing them in the first like
+  maybe 30 seconds will be very important."* The demo video is the first artifact a judge opens;
+  the README is only reached if the video earns it.
+- **Google Cloud has to be visible on screen.** The rules require the video demonstrate the
+  backend running on Google Cloud — Console, Cloud Run dashboard, Vertex logs, or a `.run` URL.
+  Asked whether a live UI plus the Cloud Run dashboard counts as proof, the answer was a flat
+  *"Yes."* Shots 36 and 47 carry this; do not cut both.
+- **Use your own voice.** *"Don't use AI voices. It feels less genuine to me."* Said unprompted
+  by the judge who scores presentation. Every VO line below is yours to read.
+- **Show the hardest path, not the happy one.** *"A happy path is great but probably not going to
+  get you a lot of points — choose the one that's going to wow the judges."* That is shots 20-22
+  and the gate, not the smooth capture.
+- **Multimodal is explicitly encouraged.** *"We encourage you to look at multimodal as well…
+  we're thinking about live streamings, pictures, sounds — don't limit yourself on just text."*
+  Nobody else in that Q&A had a camera, an instrument, or a physical machine. This is the single
+  most differentiated thing in the film — lead with it.
+- **They will run the repository.** *"We'll have a tool that runs it for you… look into how well
+  it work and will it work."* And judging is by several people, escalating: *"your project won't
+  be judged by just one single person."*
+
 **The interview is transcribed.** `demo-video/bank/03-john/interview__transcript.md` (78:57) and
 `authoring__transcript.md` (22:47). Every John cell below now quotes him with a timecode into
 `interview__cam.mp4`. **Read §10 before you plan the edit — the authoring session has no picture.**

@@ -63,7 +63,7 @@ Photographs also go through a filter that looks for prompt injection first, beca
 
 The web app and the phone app talk to the same service. Everything is stored per customer, and that separation is enforced by the database itself rather than by our code remembering to ask nicely — we prove it by running the rules in an emulator on every test run, rather than by asserting that they work.
 
-The whole product runs offline against recorded fixtures. No cloud account, no credentials, no hardware. The agents have 70 scored scenarios that replay from recordings, so the suite runs free and offline and gives the same answer twice. Some of the adversarial test footage — the kind of fake evidence somebody would submit if they were trying to cheat — is generated with Veo.
+The whole product runs offline against recorded fixtures. No cloud account, no credentials, no hardware. The agents have 69 scored scenarios that replay from recordings, so the suite runs free and offline and gives the same answer twice. Some of the adversarial test footage — the kind of fake evidence somebody would submit if they were trying to cheat — is generated with Veo.
 
 ## Challenges we ran into
 
@@ -94,6 +94,8 @@ Put the cheap model where being wrong is survivable. Everyone wants to save mone
 Do not let a model do arithmetic. Whether a torque reading falls between two numbers is a job for four lines of code. The model is only there for the part that genuinely needs eyes.
 
 The unglamorous work is where the real risk lives. A security rule that was never switched on, a service running as an administrator, a missing entry in a list of four. None of it is clever. All of it mattered more than any prompt we wrote.
+
+Call the API before you write down why you didn't use it. We had a paragraph explaining why Agent Registry was not the right home for our agents. It was a good paragraph and it was not evidence, so we called the thing. `AgentService` turns out not to be served from any regional endpoint we could use, only from `global` — where it works, lists cleanly, and accepts exactly one value for `base_agent`: `antigravity-preview-05-2026`. It registers Antigravity agents. Ours are Python agents on Agent Engine, so registering them would publish a roster that was not the fleet actually serving traffic. The decision did not change. The reason went from taste to a status code, which is the only kind of reason this project is allowed to give.
 
 Ask someone who has done the job. Almost nobody building software for maintenance has ever done maintenance. An afternoon of listening changed what we built, who we think it is for, and how we talk about it.
 
@@ -139,7 +141,8 @@ No cloud account or hardware — it runs on recorded fixtures. cd web && npm i &
 | Hosted project URL | https://warrant-zq2l2kwg3q-uc.a.run.app |
 | Which Google SDK | Google GenAI SDK (google-genai) only. **Not ADK** — it appears solely in research notes, never as a dependency |
 | Google Cloud services | Cloud Run, Firestore. **Not Pub/Sub** — enabled but zero topics and nothing calls it |
-| Architecture diagram | `docs/architecture/Warrant-architecture.pdf` (12 pages) |
+| Gallery thumbnail | `demo-video/deck/out/thumb-project.png` — 1200 × 800, the 3:2 Devpost asks for; re-render from `demo-video/deck/thumb.html?t=project` |
+| Architecture diagram | **Submit `docs/architecture/Warrant-architecture-canvas.png`** — one page, 50 nodes and 62 links read live from `warrent-505918`, with a state legend (live / on the bench / provisioned / drift / dormant). The judging Q&A was explicit that the diagram must be readable at a glance: *"out of that one glance I know where are you deploying into, how are the components connected together… I've seen somebody whose architecture diagram is basically an essay. Try not to do that."* The 12-page `Warrant-architecture.pdf` is the essay — keep it in the repo as the long form, link it from the README, but do **not** make it the diagram field |
 | Sponsor / special prizes | Leave unchecked — Startup Excellence needs an incorporated organization |
 | Startup prize fields | Blank |
 
@@ -153,13 +156,19 @@ Cold start on the hosted URL is about 6 seconds; load every page once before jud
 
 Include the hashtag or the bonus does not count. The post must be public.
 
+**Devpost spells the hashtag two different ways on its own pages** — `rules.md:157` has
+`#AllThingsAgentic Hackathon` (with a space, which renders as the tag `#AllThingsAgentic`
+followed by a loose word), while `rules.md:221`, `overview.md:106` and the live rules page all
+have `#AllThingsAgenticHackathon`. Post both. Two tags cost nothing and either spelling of the
+grep then finds us.
+
 > Most people building software for maintenance have never done maintenance.
 >
 > So I interviewed someone who has. 30 years: Air Force avionics, then locomotives, then county electrical.
 >
 > On checklists, downtime, and why "pencil whipping" is the trade's own word for it.
 >
-> #AllThingsAgentic Hackathon
+> #AllThingsAgenticHackathon #AllThingsAgentic
 > [youtube link]
 
 ## Content link (bonus points)
