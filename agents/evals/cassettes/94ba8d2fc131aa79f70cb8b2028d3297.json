@@ -15,18 +15,18 @@
   ],
   "output": {
     "verdict": "PASS",
-    "confidence": 0.95,
-    "rationale": "The photograph clearly shows both new brake pads seated inside the red caliper, with thick, unworn friction material visible between them.",
+    "confidence": 0.9,
+    "rationale": "The photograph clearly shows both new brake pads correctly seated inside the red caliper, with the thick, unworn friction material fully visible.",
     "add_field_key": null,
     "add_field_kind": "photo",
     "add_field_prompt": null,
     "escalation_question": null,
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"PASS\",\n  \"confidence\": 0.95,\n  \"rationale\": \"The photograph clearly shows both new brake pads seated inside the red caliper, with thick, unworn friction material visible between them.\",\n  \"add_field_key\": null,\n  \"add_field_kind\":  \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": null,\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"PASS\",\n  \"confidence\": 0.9,\n  \"rationale\": \"The photograph clearly shows both new brake pads correctly seated inside the red caliper, with the thick, unworn friction material fully visible.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": null,\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 2894,
-    "candidatesTokenCount": 106,
-    "totalTokenCount": 3779
+    "candidatesTokenCount": 105,
+    "totalTokenCount": 3581
   }
 }

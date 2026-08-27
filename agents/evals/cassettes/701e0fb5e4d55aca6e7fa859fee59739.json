@@ -1,0 +1,170 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:fbe2725d02b9af5d"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "unresolved": [],
+    "understanding": "The user is replacing the front brake pads on a Segway Xyber e-bike at home. Because no service manual is available, all security, clearance, and lever checks are performed by feel and visual comparison before a final bedding-in test ride.",
+    "draft": {
+      "key": "segway-xyber-front-brake-pad-swap",
+      "title": "Segway Xyber Front Brake Pad Replacement",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Caliper bolts feel loose after tightening",
+        "Brake lever feels soft or pulls to the handlebar",
+        "Wheel does not spin freely or rubs significantly"
+      ],
+      "releases": [
+        "Safe to ride on city streets and gravel trails"
+      ],
+      "steps": [
+        {
+          "title": "Compare New Pads",
+          "explanation": "Ensures the new pads match the physical dimensions of the old ones to prevent fitment issues in the caliper.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_comparison",
+              "kind": "choice",
+              "prompt": "Compare the new brake pads visually to the old ones. Do they match exactly in shape and size?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, they match exactly",
+                "No, they are different"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, they match exactly",
+              "guidance": "The backing plate shape, friction material area, and mounting holes must align perfectly with the old pads."
+            }
+          ]
+        },
+        {
+          "title": "Clean Caliper",
+          "explanation": "Removes brake dust and road grime to prevent the new pads from binding or wearing unevenly.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_cleaned",
+              "kind": "photo",
+              "prompt": "Take a photo of the cleaned caliper interior before installing the new pads.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The interior of the brake caliper, free of heavy brake dust and debris.",
+              "guidance": "Ensure the piston area is clean and free of accumulated grime."
+            }
+          ]
+        },
+        {
+          "title": "Install Pads and Caliper",
+          "explanation": "Secures the new pads and mounts the caliper back onto the fork so the brakes can function.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "caliper_tightness",
+              "kind": "choice",
+              "prompt": "Tighten the caliper mounting bolts firm by feel. Does the caliper feel completely secure with no play?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, secure with no play",
+                "No, feels loose or stripped"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, secure with no play",
+              "guidance": "The caliper must not wiggle or have any movement relative to the fork mount when shaken by hand."
+            }
+          ]
+        },
+        {
+          "title": "Check Wheel Spin and Lever Feel",
+          "explanation": "Verifies that the wheel spins freely without excessive drag and that the brake lever has a firm, responsive feel before riding.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "wheel_spin",
+              "kind": "choice",
+              "prompt": "Spin the front wheel. Does it spin freely without rubbing?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, spins freely",
+                "No, pads are rubbing significantly"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, spins freely",
+              "guidance": "A slight, quiet whisper of contact is normal, but the wheel must spin multiple rotations without binding."
+            },
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Squeeze the front brake lever. Does it feel firm and stop well before reaching the handlebar?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, feels firm",
+                "No, feels spongy or pulls to the grip"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, feels firm",
+              "guidance": "The lever should meet solid resistance and not feel mushy or bottom out."
+            }
+          ]
+        },
+        {
+          "title": "Bed In Pads",
+          "explanation": "Transfers a layer of pad material to the rotor to ensure full braking power and prevent squealing.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_stops",
+              "kind": "choice",
+              "prompt": "Perform approximately 12 gentle stops from moderate speed down the road. Did the braking power improve and stabilize?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, brakes are performing well",
+                "No, brakes feel weak or noisy"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, brakes are performing well",
+              "guidance": "Braking force should increase and become smooth and consistent after several gentle stops."
+            }
+          ]
+        },
+        {
+          "title": "Final Sign-off",
+          "explanation": "The rider's personal confirmation that the bike is safe to ride in traffic.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "rider_signature",
+              "kind": "signature",
+              "prompt": "Sign to confirm you have completed the pad swap and verified the front brake is safe for road use.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "signed_by",
+              "guidance": "Your signature confirms you accept the risk of riding this bike and are satisfied with the brake feel."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"unresolved\": [],\n  \"understanding\": \"The user is replacing the front brake pads on a Segway Xyber e-bike at home. Because no service manual is available, all security, clearance, and lever checks are performed by feel and visual comparison before a final bedding-in test ride.\",\n  \"draft\": {\n    \"key\": \"segway-xyber-front-brake-pad-swap\",\n    \"title\": \"Segway Xyber Front Brake Pad Replacement\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Caliper bolts feel loose after tightening\",\n      \"Brake lever feels soft or pulls to the handlebar\",\n      \"Wheel does not spin freely or rubs significantly\"\n    ],\n    \"releases\": [\n      \"Safe to ride on city streets and gravel trails\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Compare New Pads\",\n        \"explanation\": \"Ensures the new pads match the physical dimensions of the old ones to prevent fitment issues in the caliper.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_comparison\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Compare the new brake pads visually to the old ones. Do they match exactly in shape and size?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, they match exactly\",\n              \"No, they are different\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, they match exactly\",\n            \"guidance\": \"The backing plate shape, friction material area, and mounting holes must align perfectly with the old pads.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Clean Caliper\",\n        \"explanation\": \"Removes brake dust and road grime to prevent the new pads from binding or wearing unevenly.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"caliper_cleaned\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the cleaned caliper interior before installing the new pads.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The interior of the brake caliper, free of heavy brake dust and debris.\",\n            \"guidance\": \"Ensure the piston area is clean and free of accumulated grime.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Install Pads and Caliper\",\n        \"explanation\": \"Secures the new pads and mounts the caliper back onto the fork so the brakes can function.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"caliper_tightness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Tighten the caliper mounting bolts firm by feel. Does the caliper feel completely secure with no play?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, secure with no play\",\n              \"No, feels loose or stripped\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, secure with no play\",\n            \"guidance\": \"The caliper must not wiggle or have any movement relative to the fork mount when shaken by hand.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Check Wheel Spin and Lever Feel\",\n        \"explanation\": \"Verifies that the wheel spins freely without excessive drag and that the brake lever has a firm, responsive feel before riding.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"wheel_spin\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Spin the front wheel. Does it spin freely without rubbing?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, spins freely\",\n              \"No, pads are rubbing significantly\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, spins freely\",\n            \"guidance\": \"A slight, quiet whisper of contact is normal, but the wheel must spin multiple rotations without binding.\"\n          },\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Squeeze the front brake lever. Does it feel firm and stop well before reaching the handlebar?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, feels firm\",\n              \"No, feels spongy or pulls to the grip\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, feels firm\",\n            \"guidance\": \"The lever should meet solid resistance and not feel mushy or bottom out.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed In Pads\",\n        \"explanation\": \"Transfers a layer of pad material to the rotor to ensure full braking power and prevent squealing.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bedding_stops\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform approximately 12 gentle stops from moderate speed down the road. Did the braking power improve and stabilize?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, brakes are performing well\",\n              \"No, brakes feel weak or noisy\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, brakes are performing well\",\n            \"guidance\": \"Braking force should increase and become smooth and consistent after several gentle stops.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Final Sign-off\",\n        \"explanation\": \"The rider's personal confirmation that the bike is safe to ride in traffic.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"rider_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm you have completed the pad swap and verified the front brake is safe for road use.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"signed_by\",\n            \"guidance\": \"Your signature confirms you accept the risk of riding this bike and are satisfied with the brake feel.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3259,
+    "candidatesTokenCount": 1572,
+    "totalTokenCount": 10262
+  }
+}

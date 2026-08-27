@@ -2,7 +2,7 @@
 // this and nothing else. Two implementations exist: FixtureSource and (later) LiveSource.
 // Screens depend on this interface only, so phase 3 swaps a binding, never a screen.
 import type {
-  Procedure, Job, StepOutcome, Capture, Decision, SealedRecord, FieldDef,
+  Procedure, Job, StepOutcome, Capture, Decision, SealedRecord, FieldDef, Field,
 } from "@/generated/types";
 
 export type Tier = "open" | "attested" | "instrumented";
@@ -110,6 +110,27 @@ export interface DataSource {
    */
   listRecords(tenantId: string): Promise<SealedRecord[]>;
   listDecisions(tenantId: string): Promise<Decision[]>;
+
+  /**
+   * Something the browser can render this capture from, or null when there is nothing to.
+   *
+   * Takes the CAPTURE ID — which is what a field's `media_ref` holds — plus the job it belongs
+   * to and the field's kind, because that is what a storage path is derived from. It is
+   * deliberately not given a path: a field's `media_ref` and a capture's `media_ref` are
+   * different things wearing the same name, and handing the first to storage as if it were the
+   * second is a bug the phone shipped and had to be told about in a paragraph (see
+   * `EvidenceThumb` in android/…/ui/components/Evidence.kt).
+   *
+   * The Kotlin twin is `DataSource.mediaUrl`. It exists on the web because the handover now
+   * shows the evidence rather than a summary of it, and before this there was NO way for a
+   * browser to read back a capture it had itself uploaded — the only media route in the
+   * product serves PUBLISHED records through Cloud Run, and a job that has not sealed has no
+   * published record to be served from.
+   *
+   * A kind with no object behind it — text, a choice, a number — resolves to null rather than
+   * building a storage path out of somebody's sentence.
+   */
+  mediaUrl(jobId: string, captureId: string, kind: Field["kind"]): Promise<string | null>;
 
   subscribe(jobId: string, onEvent: (e: JobEvent) => void): Unsubscribe;
 }

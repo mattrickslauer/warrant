@@ -31,6 +31,15 @@ export class FixtureSource implements DataSource {
   private records = new Map<string, SealedRecord>();
   private decisions: Decision[] = [];
   private listeners = new Map<string, Set<(e: JobEvent) => void>>();
+  /**
+   * Capture id -> something the browser can render it from.
+   *
+   * The fixture layer has no bucket, so what it holds is the object URL the capture arrived
+   * with — the one `CameraLayer` minted from the blob it just grabbed. That URL is alive for
+   * as long as the tab is, which is exactly as long as the rest of this store, so the two
+   * cannot outlive each other.
+   */
+  private media = new Map<string, string>();
   private attempts = new Map<string, number>();
   private timers = new Set<ReturnType<typeof setTimeout>>();
   private speed: number;
@@ -150,12 +159,31 @@ export class FixtureSource implements DataSource {
         // The class is stamped by the Seal, never here, and never by a model.
         provenance_class: input.surface === "app_instrument" ? "measured" : "inferred",
       };
-      outcome.fields.push(f);
+      // REPLACES rather than appends, because that is what the live source does: `fieldId` in
+      // live-source.ts derives the document id from the step and the key, so a retake writes
+      // over the answer instead of adding a second one. This pushed unconditionally, which
+      // meant a retaken field left TWO entries with the same key — invisible while nothing
+      // rendered fields, and two pages of the same slot the moment the handover carousel did.
+      // The capture itself is not retracted either way: every attempt is still in `media`, and
+      // on the live source every object is still in the bucket.
+      const at = outcome.fields.findIndex((x) => x.key === input.fieldKey);
+      if (at >= 0) outcome.fields[at] = f; else outcome.fields.push(f);
     }
+
+    // Keyed by the CAPTURE id, because that is what the field points at and therefore what a
+    // reader will ask for. `media_ref` on the capture is the object URL; `media_ref` on the
+    // field is this id. Two different things, same name — see `mediaUrl` on the seam.
+    if (input.mediaRef && input.kind !== "text") this.media.set(cap.id, input.mediaRef);
 
     this.emit(job.id, { kind: "capture_accepted", stepId: input.stepId, fieldKey: input.fieldKey, at: cap.created_at });
     this.play(job, input.stepId);
     return cap;
+  }
+
+  /** What the capture arrived with, or null for a kind that has no object behind it. */
+  async mediaUrl(_jobId: string, captureId: string, kind: Field["kind"]): Promise<string | null> {
+    if (kind !== "photo" && kind !== "video" && kind !== "scan") return null;
+    return this.media.get(captureId) ?? null;
   }
 
   /** The second exit. There is no skip — this always produces a recorded outcome. */

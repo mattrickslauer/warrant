@@ -16,14 +16,14 @@
   "output": {
     "belongs": false,
     "confidence": 1.0,
-    "rationale": "No evidence was attached to the submission. It is impossible to establish identity or verify the asset, job, or moment from an absence of data.",
+    "rationale": "No image or evidence was attached to the submission. It is impossible to establish identity or verify the asset, job, or moment from an absence of evidence.",
     "mismatch_kind": "none",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"No evidence was attached to the submission. It is impossible to establish identity or verify the asset, job, or moment from an absence of data.\",\n  \"mismatch_kind\": \"none\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"No image or evidence was attached to the submission. It is impossible to establish identity or verify the asset, job, or moment from an absence of evidence.\",\n  \"mismatch_kind\": \"none\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 977,
-    "candidatesTokenCount": 77,
-    "totalTokenCount": 1291
+    "candidatesTokenCount": 79,
+    "totalTokenCount": 1480
   }
 }

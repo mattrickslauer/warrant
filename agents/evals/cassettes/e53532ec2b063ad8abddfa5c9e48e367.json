@@ -16,14 +16,14 @@
   "output": {
     "belongs": false,
     "confidence": 0.95,
-    "rationale": "The machine has no recorded distinguishing marks, and the shop operates multiple identical Segway Xyber units. Without any unique identifiers on the bike or a prior capture to compare against, it is impossible to verify that this specific unit is XYBER-07.",
+    "rationale": "The e-bike in the photo matches the Segway Xyber model, but the shop operates multiple identical units of this model and color. Since there are no recorded distinguishing marks for XYBER-07 and no prior reference captures to compare against, it is impossible to verify that this specific photo depicts asset XYBER-07 rather than another identical unit.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The machine has no recorded distinguishing marks, and the shop operates multiple identical Segway Xyber units. Without any unique identifiers on the bike or a prior capture to compare against, it is impossible to verify that this specific unit is XYBER-07.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The e-bike in the photo matches the Segway Xyber model, but the shop operates multiple identical units of this model and color. Since there are no recorded distinguishing marks for XYBER-07 and no prior reference captures to compare against, it is impossible to verify that this specific photo depicts asset XYBER-07 rather than another identical unit.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 2007,
-    "candidatesTokenCount": 102,
-    "totalTokenCount": 2664
+    "candidatesTokenCount": 122,
+    "totalTokenCount": 2774
   }
 }

@@ -98,10 +98,6 @@ MANIFEST: dict[str, tuple[str, str]] = {
         "The REAR caliper, sharp and well lit, with the swingarm or chain in frame so it is "
         "unmistakably the rear.",
         "inspector/wrong-component-photographed"),
-    "brake/disc-contaminated-fluid.jpg": (
-        "A wet run of fluid down a disc face. A scrap disc and a squirt of brake fluid or "
-        "degreaser on the bench is fine — this is a condition, not a reading.",
-        "inspector/contaminated-disc-is-a-disqualifier"),
 
     # --- part labels ----------------------------------------------------------------
     "label/part-number-legible.jpg": (

@@ -20,14 +20,14 @@
   "output": {
     "belongs": false,
     "confidence": 0.95,
-    "rationale": "The distinguishing marks of XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare, as seen in the reference photo. The submitted image shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit from the shop's fleet.",
+    "rationale": "The distinguishing marks for XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare, which is clearly visible in the reference photo. However, the submitted photo shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit of the same model from the shop's fleet.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The distinguishing marks of XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare, as seen in the reference photo. The submitted image shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit from the shop's fleet.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The distinguishing marks for XYBER-07 specify a single spiral cable wrap on the right fork leg with the left leg bare, which is clearly visible in the reference photo. However, the submitted photo shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit of the same model from the shop's fleet.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 3212,
-    "candidatesTokenCount": 111,
-    "totalTokenCount": 4469
+    "candidatesTokenCount": 119,
+    "totalTokenCount": 4577
   }
 }

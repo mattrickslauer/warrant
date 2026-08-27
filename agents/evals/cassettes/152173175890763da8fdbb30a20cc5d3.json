@@ -14,17 +14,17 @@
   "output": {
     "verdict": "PASS",
     "confidence": 1.0,
-    "rationale": "The recorded torque measurement of 7.4 Nm is within the acceptable range of 6 to 9 Nm.",
+    "rationale": "The paired instrument recorded a torque value of 7.4 Nm, which is within the required range of 6 to 9 Nm.",
     "add_field_key": null,
     "add_field_kind": "measurement",
     "add_field_prompt": null,
     "escalation_question": null,
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"PASS\",\n  \"confidence\": 1.0,\n  \"rationale\": \"The recorded torque measurement of 7.4 Nm is within the acceptable range of 6 to 9 Nm.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"measurement\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": null,\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"PASS\",\n  \"confidence\": 1.0,\n  \"rationale\": \"The paired instrument recorded a torque value of 7.4 Nm, which is within the required range of 6 to 9 Nm.\",\n  \"add_field_key\": null,\n  \"add_field_kind\": \"measurement\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": null,\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 1830,
-    "candidatesTokenCount": 102,
-    "totalTokenCount": 2230
+    "candidatesTokenCount": 107,
+    "totalTokenCount": 2293
   }
 }

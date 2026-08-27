@@ -5,6 +5,12 @@ Uses a synthetic camera, so it needs no hardware. Asserts the things the product
 claims: the capture is live rather than uploaded, verdicts arrive after the step advances,
 a field appears that the procedure did not contain, and the job seals only once every step
 has an outcome.
+
+The page it drives is `StepPage` — one screen, no scrolling, one bar at the bottom whose
+LABEL says what the step is asking for. That is what makes this script short: there is no
+hunting for the right control, because there is only ever one primary control. Read the bar,
+give it what it wants, tap it. The same loop drives a photograph, a typed answer, a stated
+choice and the way out of the last step.
 """
 import re
 import sys
@@ -28,77 +34,100 @@ def main() -> int:
         # way the second never is — and a fixed sleep here reported that as "did not open a
         # job", which is a very misleading way to describe waiting.
         pg.wait_for_url("**/job/**", timeout=60_000)
-        # The job page resolves the job and its pinned procedure before it can draw a step,
-        # and the camera stream attaches after the tile renders — so wait for the LIVE class
-        # rather than for the tile and then asserting on a class that has not arrived yet.
-        pg.wait_for_selector(".w-capture--live", timeout=60_000)
-        assert "w-capture--live" in (pg.get_attribute(".w-capture", "class") or ""), \
-            "capture is not a live camera — an upload would prove nothing about liveness"
+        # The job page resolves the job and its pinned procedure before it can draw a step, and
+        # the camera stream attaches after the lens renders — so wait for the LIVE class rather
+        # than for the element and then asserting on a class that has not arrived yet.
+        pg.wait_for_selector(".w-lens--live", timeout=60_000)
+        assert pg.locator(".w-lensmark").count(), \
+            "the frame is not marked live — an upload would prove nothing about liveness"
 
         # THE SIGNATURE STEP ASKS FOR NOTHING, AND THAT IS THE POINT.
         #
-        # This loop used to fill a box labelled "Your name" and press "Sign it". That control
-        # is gone on purpose — see `components/Attribution.tsx`: a box asking a person to put
-        # their name to a claim nothing checks IS the tick in the box this product exists to
-        # abolish, and the attribution already exists because they are signed in. The field is
-        # now satisfied from the session and the step advances itself.
-        #
-        # So a step with no control on it is not a stuck step, it is a RESOLVING one, and the
-        # right move is to wait. The old fallback — "nothing to click, so go back to an
-        # outstanding step" — fired on exactly that step and walked the run away from the
-        # signature every time, which is why the job never sealed.
+        # There is no name box and no "Sign it" button — see `components/Attribution.tsx`: a
+        # box asking a person to put their name to a claim nothing checks IS the tick in the
+        # box this product exists to abolish, and the attribution already exists because they
+        # are signed in. The field is satisfied from the session, and the bar simply reads
+        # "Next step" over it. No special case is needed here; the bar handles it.
         grew = False
-        settled = 0
-        for _ in range(16):
-            if "/r/" in pg.url:
+        shutters = 0
+        detours = 0
+        for _ in range(28):
+            if pg.locator(".handover").count():
                 break
-            shutter = pg.locator(".w-capture__shutter")
-            # `AnswerInput`: free text takes a box and "Record it"; a choice field draws one
-            # button per stated option. Neither is a signature and neither shares its control.
-            answer = pg.locator(".w-sign__field")
-            choice = pg.locator(".w-sign .w-btn--block:not([disabled])")
-            # An assertion that has already resolved from the session. Nothing to do but wait.
-            resolving = pg.locator(".w-sign--done")
-            # ONLY THE STEP-NAVIGATION BUTTONS.
-            #
-            # `:has-text("Step ")` is a case-insensitive, whitespace-normalised SUBSTRING
-            # match, so it also caught "Redo this step", "Redo that step" and "Go to that
-            # step". Clicking Redo re-captures, which re-runs the fixture's script for that
-            # step, which appends another added field — so the run grew the form faster than
-            # it could satisfy it and never converged. The buttons that MOVE you are the ones
-            # labelled "Step N — ...", and those are the only ones this wants.
-            back = pg.get_by_role("button", name=re.compile(r"^Step \d+\s*—"))
 
-            if shutter.count():
-                shutter.first.click()
-            elif answer.count():
-                answer.first.fill("smoke test")
-                pg.get_by_role("button", name="Record it").click()
-            elif choice.count():
-                choice.first.click()
-            elif back.count():
-                # OUTSTANDING WORK OUTRANKS WAITING, and getting that backwards is what wedged
-                # this run. The ADD FIELD path leaves a field on an EARLIER step — the fleet
-                # asked for a wider frame after the technician had moved on — and the ghost
-                # "Step N" button is the way back to it. The signature step meanwhile renders a
-                # permanent `w-sign--done`, so treating that as "resolving, wait" meant the run
-                # sat on the last step for ever while the thing actually holding the job open
-                # was two steps behind it. Nothing is waited on while there is something to do.
+            # The form GREW: an agent appended a field the procedure did not contain. The page
+            # says so three ways at once — the strip above the bar gains a pip, a notice names
+            # the ask, and the middle of the frame carries "Added just now". Any of them is the
+            # ADD FIELD path having run.
+            if (pg.locator(".w-center__note--inferred").count()
+                    or pg.locator(".w-pips__pip").count() > 1):
                 grew = True
-                back.first.click()
-            elif resolving.count():
-                # Nothing else to do, so this is an assertion settling from the session.
-                settled += 1
-                if settled > 6:
-                    break
-                pg.wait_for_timeout(1200)
-                continue
-            else:
+
+            bar = pg.locator(".w-primary")
+            if not bar.count():
                 break
+            label = (bar.inner_text() or "").strip()
+
+            if bar.is_disabled():
+                # Disabled and IDLE means the bar is waiting on an input, not on the network:
+                # "Record" over an empty box is the one such state a browser-tier procedure
+                # reaches. Disabled and WORKING is a capture being written — wait it out. The
+                # two look identical and mean opposite things, which is why `PrimaryAction`
+                # carries `busy` separately from `enabled`.
+                if pg.locator(".w-center__choice").count():
+                    pg.locator(".w-center__choice").first.click()
+                elif pg.locator(".w-center__input").count():
+                    pg.locator(".w-center__input").first.fill("smoke test")
+                else:
+                    pg.wait_for_timeout(1200)
+                continue
+
+            # The bar is asking for something on the step in hand. Give it that first: work in
+            # front of the hands outranks a notice about work behind them.
+            if label.startswith(("Capture", "Retake", "Record")):
+                if not label.startswith("Record"):
+                    shutters += 1
+                bar.click()
+                # Long enough for the scripted verdict AND the ADD FIELD that follows it — the
+                # fixture appends at 2700ms, and a shorter wait walks straight past the growth
+                # this run exists to prove.
+                pg.wait_for_timeout(3300)
+                continue
+
+            # Nothing outstanding here, so the bar has become the way out of the step. Before
+            # taking it, deal with anything the fleet raised on a step already walked past —
+            # that is the claim being tested: a late verdict is fixable from three steps later.
+            # A notice collapses to one line until it is opened, which is what keeps this page
+            # from filling with banners, so the pill has to be expanded to reach its actions.
+            for head in pg.locator(".w-notice__head").all():
+                try:
+                    head.click()
+                except Exception:
+                    pass
+            go_there = pg.get_by_role("button", name=re.compile(r"^Go to (that|step)"))
+            # Bounded. A question an agent put to a person cannot be answered from this page at
+            # all, and walking back to it forever would hang the run rather than report it.
+            if go_there.count() and detours < 4:
+                detours += 1
+                grew = True
+                go_there.first.click()
+                pg.wait_for_timeout(1500)
+                continue
+
+            bar.click()
             pg.wait_for_timeout(3300)
 
-        assert "/r/" in pg.url, f"the job never sealed: {pg.url}"
-        assert grew, "no step was left outstanding — the ADD FIELD path did not run"
+        assert pg.locator(".handover").count(), "the run never reached the handover"
+        assert grew, "no field was appended — the ADD FIELD path did not run"
+        assert shutters >= 3, \
+            f"only {shutters} captures: the appended field was never actually photographed"
+
+        # FINISH IS NOT THE SEAL, and this is where that distinction is worth having. The
+        # handover names which of the three true things is true and only offers the record once
+        # there IS one — so waiting for the link is waiting for the fleet, not for a redirect.
+        pg.wait_for_selector("a:has-text('Open the record')", timeout=60_000)
+        pg.click("a:has-text('Open the record')")
+        pg.wait_for_url("**/r/**", timeout=60_000)
         pg.wait_for_timeout(700)
 
         heading = pg.inner_text("h1.hero")
@@ -110,7 +139,7 @@ def main() -> int:
         assert decisions >= 4, f"only {decisions} agent decisions on the record"
 
         print(f"ok — {heading.lower()} at '{ceiling}', {decisions} decisions, "
-              f"{struck} class(es) shown as out of reach")
+              f"{struck} class(es) shown as out of reach, form grew mid-run")
         b.close()
     return 0
 

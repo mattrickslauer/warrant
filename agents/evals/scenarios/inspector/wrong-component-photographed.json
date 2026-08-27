@@ -1,7 +1,7 @@
 {
   "agent": "inspector",
   "title": "wrong component photographed",
-  "why": "A perfectly sharp, perfectly exposed photograph of the REAR caliper. Nothing is wrong with the evidence except that it is not evidence of this step.",
+  "why": "A perfectly sharp, perfectly exposed photograph of the REAR caliper. Nothing is wrong with the evidence except that it is not evidence of this step.\n\nOBSERVED, 27 Aug — same shape as photo-of-a-screen-refused. The Inspector returns ADD_FIELD at 0.3, so the step does not advance and nothing false is recorded. Its rationale is that the caliper sits over the disc and obscures the pad faces, which is a true statement about the photograph and not the reason it is wrong. It does not identify the component as the REAR caliper. Front and rear calipers on this machine are visually near-identical in isolation, so this is a limit of judging a component from one frame with no surrounding context, not a prompt that can be sharpened into it.",
   "input": {
     "step": {
       "title": "Fit the new pads and torque the caliper bolts",

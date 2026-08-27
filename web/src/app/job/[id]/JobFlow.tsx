@@ -1,18 +1,44 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  StepCard, CaptureTile, ReasonCapture, Attribution, AnswerInput, AgentTrace, HoldBanner,
-  StatusPill, Rule, Wrap, EvidenceChip, type JobStatus,
+  AgentTrace, Attribution, EvidenceChip, HoldBanner, StatusPill,
+  StepPage, type Notice, type FieldPip,
+  CameraLayer, LampControl, LensControl, LiveMark, useCameraHandle, flip, type Lens,
+  StepBriefSheet, BlockedSheet, TraceSheet, EvidenceCarousel, LiveProgress,
+  type JobStatus, type ProvenanceClass,
 } from "@/components";
+import { AppShell } from "../../shell/AppShell";
 import { useSession } from "@/auth/session-context";
 import {
   getDataSource, scoped, surfaceCanRun, openItems, firstOwed,
   type JobEvent, type OpenItem,
 } from "@/data";
+import {
+  activeFieldFor, framedFieldFor, primaryActionFor, requiredAt, unanswerable,
+  usesCamera, usesKeyboard, working,
+} from "@/data/step-action";
+import {
+  handoverFrames, handoverHeadline, handoverStateFor, verificationProgress,
+} from "@/data/handover";
 import type { Decision, Field, FieldDef, Job, Procedure, StepOutcome } from "@/generated/types";
 
-type Exit = "capture" | "reason";
+/**
+ * Doing a procedure, in a browser, on the layout the phone has had since its first commit.
+ *
+ * This screen used to be a scrolling stack of cards — a step card with a 4:3 camera tile inside
+ * it, then a waiting panel, then an every-step list, then the trace — which meant the shutter's
+ * position depended on how long the step's explanation was, and there was no single control
+ * that said what the step was actually asking for. The phone answered the same questions with
+ * one non-scrolling page, one bar whose label is computed, and everything else one tap away in
+ * a sheet. This is that page, ported: `StepPage` is the layout, `step-action.ts` is the rule
+ * the bar reads, and both have Kotlin twins that must keep agreeing.
+ *
+ * What did NOT change is everything below the seam: the data source, the subscribe, the
+ * append-only capture, the rule that a signature is satisfied from the session and never asked
+ * for, and `attention.ts` deciding what an agent is waiting on. Those were already right.
+ */
 
 export function JobFlow({ jobId }: { jobId: string }) {
   const router = useRouter();
@@ -20,10 +46,8 @@ export function JobFlow({ jobId }: { jobId: string }) {
   // Who the record attributes assertions to. Never typed — see the effect below.
   const { session } = useSession();
   const [job, setJob] = useState<Job | null>(null);
-  const [finalising, setFinalising] = useState(false);
   const [proc, setProc] = useState<Procedure | null>(null);
   const [cursor, setCursor] = useState(0);
-  const [exit, setExit] = useState<Exit>("capture");
   const [decisions, setDecisions] = useState<Decision[]>([]);
   const [added, setAdded] = useState<Record<string, FieldDef[]>>({});
   const [statuses, setStatuses] = useState<Record<string, string>>({});
@@ -32,7 +56,6 @@ export function JobFlow({ jobId }: { jobId: string }) {
   /** Why a step did not advance, per step. An agent answered and could not be acted on. */
   const [holds, setHolds] = useState<Record<string, string>>({});
   const [held, setHeld] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
   const [missing, setMissing] = useState(false);
   /**
    * What each field has been answered with, keyed `{stepId}:{fieldKey}`.
@@ -43,10 +66,52 @@ export function JobFlow({ jobId }: { jobId: string }) {
    * which step's answer was being thrown away.
    */
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  /** Steps where exit two has been taken. The one thing that retires an unanswerable field. */
+  const [reasoned, setReasoned] = useState<Record<string, boolean>>({});
   const [furthest, setFurthest] = useState(0);
-  const advanced = useRef<Set<string>>(new Set());
-  /** Signature fields already satisfied from the session, so this happens once each. */
   const attributed = useRef<Set<string>>(new Set());
+
+  // ------------------------------------------------------------------ the screen's own state
+
+  /**
+   * Frames taken in this tab, keyed by step and field.
+   *
+   * Held here rather than in the record because they are a property of the REVIEW — the
+   * picture you are looking at before you decide about it — not of the job, which already has
+   * the capture. Retake drops one; nothing is retracted from the record by doing so.
+   */
+  const [frames, setFrames] = useState<Record<string, string>>({});
+  /** The technician's override of which field the page is pointed at. Cleared per step. */
+  const [selected, setSelected] = useState<string | null>(null);
+  const [typed, setTyped] = useState("");
+  /** Which lens each step is using, and whether its lamp is lit. The technician's choice. */
+  const [lenses, setLenses] = useState<Record<string, Lens>>({});
+  const [lamps, setLamps] = useState<Record<string, boolean>>({});
+  const [brief, setBrief] = useState(false);
+  const [blocked, setBlocked] = useState(false);
+  const [trace, setTrace] = useState(false);
+  const [busy, setBusy] = useState(false);
+  /** What this browser is doing between a tap and the work landing. Null when idle. */
+  const [work, setWork] = useState<string | null>(null);
+  /** Finish has been tapped. The end of a job is its own screen, not a step. */
+  const [handedOver, setHandedOver] = useState(false);
+  const [sealedRecordId, setSealedRecordId] = useState<string | null>(null);
+  /** Dismissed notices, so "Later" means something for the rest of this sitting. */
+  const [dismissed, setDismissed] = useState<Record<string, boolean>>({});
+  /** Which page of the handover's evidence carousel is in view. */
+  const [framedAt, setFramedAt] = useState(0);
+  /**
+   * Bumped whenever an event changes what the JOB holds, so the handover can re-read it.
+   *
+   * The step page never needed this: it folds every event into its own state and renders from
+   * that. The handover does, because it renders the evidence — and a photograph is fetched
+   * with a capture id that lives on the step outcome's field, which no event carries. A cheap
+   * re-read beats keeping a second copy of the outcomes here and having the two disagree about
+   * what was captured.
+   */
+  const [revision, setRevision] = useState(0);
+
+  const camera = useCameraHandle();
 
   useEffect(() => {
     let alive = true;
@@ -57,19 +122,15 @@ export function JobFlow({ jobId }: { jobId: string }) {
       setJob(j);
       // A job stores its procedure id BARE, and a procedure is addressed
       // `{tenant}/{procedure}`. Handing the bare id straight over resolved to null against
-      // Firestore and left the screen on "Opening…" forever, with the job loaded and
-      // nothing to render it against.
+      // Firestore and left the screen on "Opening…" forever.
       const p = await src.getProcedure(scoped(j.tenant_id, j.procedure_id));
       if (!alive) return;
       setProc(p);
 
       // EVERYTHING THE JOB ALREADY KNOWS, BEFORE THE FIRST EVENT ARRIVES.
       //
-      // This screen used to start blank whatever the job had done: no statuses, no appended
-      // fields, no questions, and the cursor on step one. So a job reopened in a new tab — or
-      // simply reloaded — presented four finished steps as untouched work, and the panel that
-      // lists what is still waiting listed nothing, because it is fed by state that only
-      // arrives over `subscribe`. The phone has rebuilt itself from the job like this since
+      // A job reopened in a new tab — or simply reloaded — used to present four finished steps
+      // as untouched work. The phone has rebuilt itself from the job like this since
       // `JobViewModel.resume` was written; this is the browser doing the same.
       setStatuses(Object.fromEntries((j.steps ?? []).map((o) => [o.step_id, o.status])));
       setAdded(Object.fromEntries(
@@ -87,6 +148,14 @@ export function JobFlow({ jobId }: { jobId: string }) {
           .filter((o) => o.hold_reason?.trim())
           .map((o) => [o.step_id, o.hold_reason as string]),
       ));
+      // A step somebody already explained must not be asked again on the next visit — that is
+      // the whole point of `reasoned`, and reading it off the outcome is what makes it survive
+      // a reload rather than living only for as long as the tab is open.
+      setReasoned(Object.fromEntries(
+        (j.steps ?? [])
+          .filter((o) => o.reason_transcript?.trim())
+          .map((o) => [o.step_id, true]),
+      ));
       setAnswers(Object.fromEntries(
         (j.steps ?? []).flatMap((o) =>
           (o.fields ?? []).map((f) => [
@@ -95,8 +164,8 @@ export function JobFlow({ jobId }: { jobId: string }) {
           ] as [string, string])),
       ));
 
-      // Land on the first step that still owes something, never on step one. The same rule
-      // the phone lands by, imported rather than rewritten — see data/attention.ts.
+      // Land on the first step that still owes something, never on step one. The same rule the
+      // phone lands by, imported rather than rewritten — see data/attention.ts.
       if (p) {
         const at = firstOwed(j, p.steps);
         setCursor(at);
@@ -109,10 +178,27 @@ export function JobFlow({ jobId }: { jobId: string }) {
   // Everything below arrives AFTER the person moved on. This is the whole point.
   useEffect(() => { setFurthest((f) => Math.max(f, cursor)); }, [cursor]);
 
+  // Arriving on a step starts at its first outstanding field, with an empty keyboard.
+  useEffect(() => { setSelected(null); setTyped(""); }, [cursor]);
+
+  // KEYED ON THE JOB ID, NOT THE JOB.
+  //
+  // `onSnapshot` reports every existing document as `added` on its first snapshot, so
+  // re-attaching this listener replays the whole decision history. While `job` was the
+  // dependency that happened on every re-read — and the handover re-reads the job each time
+  // something lands — so a job with nine verdicts grew to eighteen, then twenty-seven, and the
+  // handover rendered the same rationale over and over down a page thousands of pixels long.
+  // The id is a string and does not change, so the listener is attached once per job.
+  const jobKey = job?.id ?? null;
   useEffect(() => {
-    if (!job) return;
-    return src.subscribe(job.id, (e: JobEvent) => {
-      if (e.kind === "decision") setDecisions((d) => [...d, e.decision]);
+    if (!jobKey) return;
+    return src.subscribe(jobKey, (e: JobEvent) => {
+      // By id as well, because a re-attach is legitimate — a dropped connection reconnecting
+      // does exactly what the bug above did on purpose. Belt and braces here is cheap and the
+      // failure it prevents is silent.
+      if (e.kind === "decision") {
+        setDecisions((d) => (d.some((x) => x.id === e.decision.id) ? d : [...d, e.decision]));
+      }
       if (e.kind === "add_field") {
         // By key, because the seed above already holds whatever the job was carrying when it
         // opened and the listener replays it. Appending blind grew one ask into two.
@@ -122,41 +208,60 @@ export function JobFlow({ jobId }: { jobId: string }) {
           return { ...a, [e.stepId]: [...here, e.field] };
         });
       }
-      // A question put to a person. Nothing on this screen used to read it, so an Inspector
-      // that escalated reached the browser and stopped there — the step went back to pending
-      // and the question was never drawn.
       if (e.kind === "escalated") setEscalations((q) => ({ ...q, [e.stepId]: e.question }));
       if (e.kind === "step_status") {
         setStatuses((s) => ({ ...s, [e.stepId]: e.status }));
-        // A step that has since passed is not holding anything. Leaving the hold up would
-        // nag about a step the fleet has already let through.
-        if (e.status === "performed") {
-          setHolds(({ [e.stepId]: _gone, ...rest }) => rest);
-        }
+        // A step that has since passed is not holding anything. Leaving the hold up would nag
+        // about a step the fleet has already let through.
+        if (e.status === "performed") setHolds(({ [e.stepId]: _gone, ...rest }) => rest);
       }
-      // An answer landing, from this tab or another surface. Marks the field satisfied so the
-      // step stops appearing as one that owes it.
       if (e.kind === "capture_accepted") {
         setAnswers((a) =>
           a[`${e.stepId}:${e.fieldKey}`] ? a : { ...a, [`${e.stepId}:${e.fieldKey}`]: "captured" });
       }
       if (e.kind === "held") setHeld(e.reason);
-      if (e.kind === "sealed") router.push(`/r/${encodeURIComponent(e.recordId)}`);
+      // Anything that changes what the job document holds. See `revision`.
+      if (e.kind === "capture_accepted" || e.kind === "step_status" || e.kind === "sealed") {
+        setRevision((r) => r + 1);
+      }
+      // NOT a redirect any more. Finish is not the same event as the seal, and a browser that
+      // jumped to the record the instant one arrived took the decision away from a person who
+      // might still have had a step to reopen. The handover page names the seal and offers to
+      // open it — see `handoverStateFor`.
+      if (e.kind === "sealed") setSealedRecordId(e.recordId);
     });
-  }, [src, job, router]);
+  }, [src, jobKey]);
+
+  /**
+   * Keep the handover looking at the real job.
+   *
+   * Only while it is open: re-reading on every capture during the run would be a request per
+   * shutter press for a screen nobody is looking at. The moment the hands stop, though, this
+   * page IS the thing being looked at, and it has to show what actually landed rather than
+   * what this tab happened to see.
+   */
+  useEffect(() => {
+    if (!handedOver) return;
+    let alive = true;
+    void (async () => {
+      const fresh = await src.getJob(jobId);
+      // Copied, not stored as returned. The fixture source hands back the SAME object it
+      // mutates in place, so `setJob(fresh)` is identity-equal to what is already in state and
+      // React skips the render — the page would then only refresh when something else happened
+      // to re-render it, which is true often enough to hide the bug and not always enough to
+      // avoid it. Against Firestore the read is already a new object and this costs nothing.
+      if (alive && fresh) setJob({ ...fresh });
+    })();
+    return () => { alive = false; };
+  }, [handedOver, revision, src, jobId]);
 
   // A SIGNATURE IS SATISFIED BY BEING SIGNED IN, AND IS NEVER ASKED FOR.
   //
-  // The full argument is in `Attribution`. In short: a box asking a person to put their name
-  // to a claim nothing checks is the tick in the box this product exists to replace, it proved
+  // The full argument is in `Attribution`. In short: a box asking a person to put their name to
+  // a claim nothing checks is the tick in the box this product exists to replace, it proved
   // nothing when it was a typed name and it proved nothing when it was one tap, and the
   // attribution it collected already existed — the session's uid is on every write, and
   // firestore.rules refuses `reason_by`/`finalized_by` unless they equal `request.auth.uid`.
-  //
-  // So the field is satisfied here, from the session, with no act required of anybody. It is
-  // still recorded as an ASSERTION and can never be promoted past one; the record's ceiling
-  // states what that leaves unproved, which is the honest handling of a claim no machine can
-  // check.
   useEffect(() => {
     if (!job || !proc) return;
     const s = proc.steps[cursor];
@@ -164,42 +269,33 @@ export function JobFlow({ jobId }: { jobId: string }) {
     const here: FieldDef[] = [...s.fields, ...(added[s.id] ?? [])];
     const sigs = here.filter((f) => f.kind === "signature");
     if (sigs.length === 0) return;
-
-    // Advancing is only right when there is nothing else on this step. A step that also wants
-    // a photograph must not be walked past because the assertion on it resolved instantly.
-    const onlySignatures = here.length === sigs.length;
     const who = session?.name ?? session?.email ?? session?.uid ?? null;
 
     void (async () => {
-      let wrote = false;
       for (const f of sigs) {
         const key = `${s.id}:${f.key}`;
         if (attributed.current.has(key)) continue;
         attributed.current.add(key);
-        setAnswers((prev) => ({ ...prev, [`${s.id}:${f.key}`]: who ?? "unattributed" }));
+        setAnswers((prev) => ({ ...prev, [key]: who ?? "unattributed" }));
         await src.capture({
           jobId: job.id, stepId: s.id, fieldKey: f.key,
           // `text` is the one capture kind with no object behind it, and `media_ref` carries
-          // the claim itself. Never `photo` — that would have the fleet derive a .jpg path
-          // for somebody's name and then fail to read it.
+          // the claim itself. Never `photo` — that would have the fleet derive a .jpg path for
+          // somebody's name and then fail to read it.
           kind: "text", mediaRef: who ?? "unattributed", blob: null,
           surface: "browser", mode: "upload",
         });
-        wrote = true;
-      }
-      if (wrote && onlySignatures) {
-        setTimeout(() => {
-          setCursor((c) => (c === cursor ? Math.min(c + 1, proc.steps.length - 1) : c));
-        }, 900);
       }
     })();
   }, [src, job, proc, cursor, added, session]);
 
-  // Fixtures live in memory, so a hard reload has nothing to open. Say that plainly rather
-  // than spinning — an honest empty state is an invitation to act, not a mood.
+  // ------------------------------------------------------------------------- the empty states
+
+  // Fixtures live in memory, so a hard reload has nothing to open. Say that plainly rather than
+  // spinning — an honest empty state is an invitation to act, not a mood.
   if (missing) {
     return (
-      <Wrap>
+      <AppShell tone="work">
         <div className="stack stack--lg">
           <HoldBanner kind="fixture" title="This job is not in memory">
             Jobs live in the fixture layer until Firestore is connected, so reloading loses them.
@@ -207,16 +303,18 @@ export function JobFlow({ jobId }: { jobId: string }) {
           </HoldBanner>
           <a className="w-btn" href="/">Start a task</a>
         </div>
-      </Wrap>
+      </AppShell>
     );
   }
-  if (!job || !proc) return <Wrap><p className="lede">Opening…</p></Wrap>;
+  if (!job || !proc) {
+    return <AppShell tone="work"><p className="lede">Opening…</p></AppShell>;
+  }
 
-  // A procedure demanding a class this surface cannot reach is refused BEFORE it starts.
-  // Never downgraded, never substituted. This screen is the argument, not an error.
+  // A procedure demanding a class this surface cannot reach is refused BEFORE it starts. Never
+  // downgraded, never substituted. This screen is the argument, not an error.
   if (!surfaceCanRun(proc, job.tier as "open" | "attested" | "instrumented")) {
     return (
-      <Wrap>
+      <AppShell tone="work">
         <div className="stack stack--lg">
           <HoldBanner title="This surface cannot run this procedure">
             {proc.title} requires a measured value from a paired instrument. A browser has no
@@ -237,35 +335,74 @@ export function JobFlow({ jobId }: { jobId: string }) {
             </div>
           </div>
         </div>
-      </Wrap>
+      </AppShell>
     );
   }
+
+  // ---------------------------------------------------------------------- the step in front
 
   const step = proc.steps[cursor];
   const extra = added[step.id] ?? [];
   const fields: FieldDef[] = [...step.fields, ...extra];
-  const done = statuses[step.id] === "performed";
+  const strictness = job.strictness;
+  const lastStep = cursor === proc.steps.length - 1;
+
+  const isFilled = (stepId: string, key: string) => Boolean(answers[`${stepId}:${key}`]);
+  const frameFor = (stepId: string, key: string) => frames[`${stepId}:${key}`] ?? null;
+
+  const stepReasoned = Boolean(reasoned[step.id]);
+  const active = activeFieldFor(fields, strictness, selected, stepReasoned, (k) =>
+    isFilled(step.id, k));
+
+  // The frame on the backdrop, and which field it belongs to. Two cases, one answer: the
+  // picture under review while that field is still the one in front of you, or the step's last
+  // frame resting behind "Next step" once nothing is outstanding.
+  const framedField = framedFieldFor(fields, active, (k) => Boolean(frameFor(step.id, k)));
+  const framedUrl = framedField ? frameFor(step.id, framedField.key) : null;
+  // Under review only while the field is still open. A resting frame must not make a finished
+  // step look busy.
+  const reviewing = active ? framedUrl : null;
+
+  // For a camera field "filled" means there is a frame under review right now — not that the
+  // record has one. Retake clears the review and puts the lens back, and the bar has to follow
+  // that rather than the record, which can never go back to empty.
+  const activeFilled = !active ? false
+    : usesCamera(active) ? reviewing !== null
+      : isFilled(step.id, active.key);
+
+  const action = working(
+    primaryActionFor({
+      field: active,
+      fieldFilled: activeFilled,
+      lastStep,
+      // A browser has no pairing and no device attestation, so it can never hold an
+      // instrument. Stated as a constant rather than wired to a session that does not exist:
+      // the bar then offers "Pair an instrument", which is the honest move — it is the app
+      // and a tool that can answer this, and saying so beats a dead control. A procedure that
+      // REQUIRES a measurement never reaches here at all; `surfaceCanRun` refused it above.
+      instrumentConnected: false,
+      instrumentHasReading: false,
+      inputReady: typed.trim().length > 0,
+    }),
+    work,
+  );
+
+  const lens: Lens = lenses[step.id] ?? "environment";
+  const lamp = Boolean(lamps[step.id]);
 
   // What this job does not actually need.
   //
   // A procedure may declare a step or a capture optional — `required_at_strictness: 4`, the
-  // level strictness cannot reach — and the seal honours it. Saying so HERE is what makes it
-  // real for the person standing at the machine: an optional capture the screen presented
-  // exactly like a required one would be taken every time, which is the same as not having
-  // marked it optional at all. Judged against the job's own strictness, because a capture
-  // required at 3 is mandatory on a regulated job and optional on a standard one.
-  const optionalField = (f: FieldDef) => f.required_at_strictness > job.strictness;
+  // level strictness cannot reach — and the seal honours it. Judged against the job's own
+  // strictness, because a capture required at 3 is mandatory on a regulated job and optional
+  // on a standard one.
   const optionalStep = (s: Procedure["steps"][number]) =>
-    (s.required_at_strictness ?? 0) > job.strictness;
+    (s.required_at_strictness ?? 0) > strictness;
 
   // The job as this screen currently understands it: what the server last said, with every
-  // event that has landed since folded on top.
-  //
-  // Assembled rather than kept as a second copy, so `openItems` can be asked directly — the
-  // rule that decides what is waiting on a person is IMPORTED from data/attention.ts and not
-  // rewritten here. The phone answers that question with the same function, and two surfaces
-  // disagreeing about what an agent is asking for is exactly the drift that file exists to
-  // prevent.
+  // event that has landed since folded on top. Assembled rather than kept as a second copy, so
+  // `openItems` can be asked directly — the rule that decides what is waiting on a person is
+  // IMPORTED from data/attention.ts and not rewritten here.
   const liveJob: Job = {
     ...job,
     steps: proc.steps.map((st) => {
@@ -282,9 +419,6 @@ export function JobFlow({ jobId }: { jobId: string }) {
         added_fields: added[st.id] ?? [],
         escalation_question: escalations[st.id] ?? null,
         hold_reason: holds[st.id] ?? null,
-        // Only the KEYS matter to `openItems`, which asks whether an appended field has been
-        // answered yet. Synthesised from what this screen has seen answered — which includes
-        // answers that landed on another device, since `capture_accepted` feeds the same map.
         fields: answeredHere.map((key) => ({
           id: `${st.id}:${key}`,
           step_id: st.id,
@@ -298,13 +432,34 @@ export function JobFlow({ jobId }: { jobId: string }) {
   /** What an agent is asking a person for, right now, anywhere on this job. */
   const waiting: OpenItem[] = openItems(liveJob);
 
+  // Only steps already walked past, or that grew a field while you were away. Listing steps
+  // you simply have not reached yet would be noise dressed as an alert.
+  const outstanding = proc.steps
+    .map((s, i) => ({ step: s, i, status: statuses[s.id] ?? "pending" }))
+    .filter((x) =>
+      x.status === "pending" &&
+      x.i !== cursor &&
+      !optionalStep(x.step) &&
+      (x.i < furthest || (added[x.step.id]?.length ?? 0) > 0));
+
+  // -------------------------------------------------------------------------------- the moves
+
+  /** Land on a step somebody pointed at, without touching what it has. */
+  function goToStep(stepId: string) {
+    const i = proc!.steps.findIndex((s) => s.id === stepId);
+    if (i < 0) return;
+    setCursor(i);
+    setSelected(null);
+  }
+
+  /** Empty this step's frames from the review, wherever the redo was tapped from. */
+  function dropFrames(stepId: string) {
+    setFrames((f) => Object.fromEntries(
+      Object.entries(f).filter(([k]) => !k.startsWith(`${stepId}:`))));
+  }
+
   /**
    * Do this step again, and stand on it.
-   *
-   * The move an agent's rejection asks for and this screen had no way to offer. A step whose
-   * fields are all answered shows a filled-in form and a "Next step" button; nothing on the
-   * page could put the question back. So a verdict saying "this photograph will not do"
-   * arrived, and the only way to act on it was to start the job over.
    *
    * It clears what this SCREEN remembers about the step and nothing else. No capture is
    * retracted — captures are append-only by storage rule, every verdict stays in `decisions`,
@@ -325,99 +480,15 @@ export function JobFlow({ jobId }: { jobId: string }) {
       for (const k of keys) delete next[`${stepId}:${k}`];
       return next;
     });
-    // Otherwise the first capture of the redo does not advance: the guard below fires once per
-    // field for the whole life of the screen, and this field has already spent its turn.
-    for (const k of keys) advanced.current.delete(`${stepId}:${k}`);
+    dropFrames(stepId);
     setStatuses((st) => ({ ...st, [stepId]: "pending" }));
     setHolds(({ [stepId]: _gone, ...rest }) => rest);
     setCursor(i);
-    setExit("capture");
+    setSelected(null);
+    setTyped("");
   }
 
-  /** Land on a step somebody pointed at, without touching what it has. */
-  function goToStep(stepId: string) {
-    const i = proc!.steps.findIndex((s) => s.id === stepId);
-    if (i < 0) return;
-    setCursor(i);
-    setExit("capture");
-  }
-
-  // Capture never waits, so you WILL walk away from a step before its verdict lands — and
-  // sometimes the verdict grows a field that was not there when you passed through. Those
-  // steps stay open and the job cannot seal until they are resolved. This is the mechanism
-  // the README already promises: fixable from wherever you are, including three steps later.
-  // Only steps you have already walked past, or that grew a field while you were away.
-  // Listing steps you simply have not reached yet would be noise dressed as an alert.
-  const outstanding = proc.steps
-    .map((s, i) => ({ step: s, i, status: statuses[s.id] ?? "pending" }))
-    .filter((x) =>
-      x.status === "pending" &&
-      x.i !== cursor &&
-      // An optional step left undone is not outstanding — the job seals without it, and
-      // listing it under "cannot seal until every step passes" would be false.
-      !optionalStep(x.step) &&
-      (x.i < furthest || (added[x.step.id]?.length ?? 0) > 0)
-    );
-
-  // Field.kind is the discriminator, so the UI dispatches on it. A signature is not a
-  // photograph and must never be collected as one.
-  //
-  // `text` and `choice` are not signatures and must not share a control with one: a text
-  // answer is a claim, a choice is one of a fixed set the procedure already wrote down, and a
-  // signature is not collected at all any more. They used to share one box and a camera, so
-  // "How do the brakes perform?" opened a viewfinder and "What did you set them to?" asked for
-  // a name. See `AnswerInput`, and `Attribution` for why the third asks for nothing.
-  /** The name the record attributes an assertion to. Never typed, never asked for. */
-  function signerName(): string | null {
-    return session?.name ?? session?.email ?? session?.uid ?? null;
-  }
-
-  function controlFor(f: FieldDef) {
-    // NOTHING IS ASKED FOR A SIGNATURE. See `Attribution`, which carries the argument: the
-    // person is signed in, the record already attributes every write to their uid, and a box
-    // asking them to put their name to an unverifiable claim is the tick in the box this
-    // product exists to abolish. It is satisfied from the session by the effect above.
-    if (f.kind === "signature") {
-      return <Attribution prompt={f.prompt} who={signerName()} />;
-    }
-    if (f.kind === "text" || f.kind === "choice") {
-      return (
-        <AnswerInput
-          prompt={f.prompt}
-          choices={f.kind === "choice" ? (f.choices ?? []) : undefined}
-          answered={answers[`${step.id}:${f.key}`] ?? null}
-          onAnswer={(value) => {
-            setAnswers((a) => ({ ...a, [`${step.id}:${f.key}`]: value }));
-            onAnswer(f.key, value);
-          }}
-        />
-      );
-    }
-    return (
-      <CaptureTile
-        hint={f.prompt}
-        provenance={f.source === "instrument" ? "measured" : f.source === "human" ? "asserted" : "inferred"}
-        // The blob travels. Without it the capture document points at an object nobody
-        // uploaded — see `CaptureInput.blob`, which is where that failure is written down.
-        onCapture={(blob, url) => onCapture(f.key, url, blob, f.kind === "video" ? "video" : "photo")}
-      />
-    );
-  }
-
-  /**
-   * An answer, which is a capture of kind `text` and has no object anywhere.
-   *
-   * `media_ref` carries the answer itself — the contract says so, and the adjudication spine
-   * already reads it that way: `run.ts` sets `sources.answer` from it, screens the text
-   * instead of an image, and tells the Skeptic that belonging is not applicable. This used to
-   * be written as `kind: "photo"` with `media_ref: "signature:Name"`, so the fleet derived a
-   * `.jpg` path for it and Vertex was asked to read a photograph of somebody's name.
-   */
-  function onAnswer(fieldKey: string, value: string) {
-    return onCapture(fieldKey, value, null, "text", "upload");
-  }
-
-  async function onCapture(
+  async function record(
     fieldKey: string,
     mediaRef: string,
     blob: Blob | null,
@@ -430,19 +501,44 @@ export function JobFlow({ jobId }: { jobId: string }) {
       jobId: job!.id, stepId: step.id, fieldKey,
       kind, mediaRef, blob, surface: "browser", mode,
     });
-    const key = `${step.id}:${fieldKey}`;
-    if (!advanced.current.has(key)) {
-      advanced.current.add(key);
-      const from = cursor;
-      setTimeout(() => {
-        // Do not walk past a step that has grown a field in the meantime — the ask is right
-        // here, and jumping away from it is how a person loses it.
-        setAdded((a) => {
-          const grew = (a[proc!.steps[from].id]?.length ?? 0) > 0;
-          if (!grew) setCursor((c) => (c === from ? Math.min(c + 1, proc!.steps.length - 1) : c));
-          return a;
-        });
-      }, 900);
+    setAnswers((a) => ({ ...a, [`${step.id}:${fieldKey}`]: mediaRef || "captured" }));
+  }
+
+  async function onShutter(field: FieldDef) {
+    const slot = `${step.id}:${field.key}`;
+    if (frames[slot]) {
+      // Retake is two taps on purpose: drop the frame, look again, then decide. A single tap
+      // that both discarded and re-fired would make the discard invisible.
+      setFrames(({ [slot]: _gone, ...rest }) => rest);
+      setAnswers(({ [slot]: _also, ...rest }) => rest);
+      setSelected(field.key);
+      return;
+    }
+    setWork("Capturing…");
+    const shot = await camera.capture();
+    if (!shot) { setWork(null); return; }
+    setFrames((f) => ({ ...f, [slot]: shot.url }));
+    setWork("Saving this capture…");
+    try {
+      await record(field.key, shot.url, shot.blob, field.kind === "video" ? "video" : "photo");
+      setSelected(null);
+    } finally {
+      // Cleared even when the write throws. A bar stuck reading "Saving…" over a capture that
+      // failed is a worse lie than the silence this replaced.
+      setWork(null);
+    }
+  }
+
+  async function onRecordTyped(field: FieldDef) {
+    const value = typed.trim();
+    if (!value) return;
+    setWork("Recording…");
+    try {
+      await record(field.key, value, null, "text", "upload");
+      setTyped("");
+      setSelected(null);
+    } finally {
+      setWork(null);
     }
   }
 
@@ -453,245 +549,459 @@ export function JobFlow({ jobId }: { jobId: string }) {
       reasonKind: r.kind, transcript: r.transcript,
     });
     setBusy(false);
-    setExit("capture");
-    setTimeout(() => setCursor((c) => Math.min(c + 1, proc!.steps.length - 1)), 900);
+    setReasoned((x) => ({ ...x, [step.id]: true }));
+    // And then move. Stating a reason used to leave the technician exactly where they were —
+    // same step, same grey bar, the sheet closing onto the question they had just finished
+    // explaining they could not answer.
+    //
+    // What moves is the SCREEN, not the step's status. The outcome is still `pending` and the
+    // fleet still has to rule on the reason; the record can still seal deficient because of
+    // it. Nothing here forgives the step. It just stops standing in front of the next one.
+    if (lastStep) void onFinish(); else setCursor((c) => Math.min(c + 1, proc!.steps.length - 1));
   }
 
-  return (
-    <Wrap>
-      <div className="stack stack--lg">
-        {held && (
-          <HoldBanner title="Machine held">
-            {held}. It will not be released until the record holds up.
-          </HoldBanner>
-        )}
+  /**
+   * The end of the technician's work, which is NOT the seal.
+   *
+   * Finalising is what hands the job to the fleet — before it, nothing has been adjudicated and
+   * a workshop with no signal works exactly the same. After it the handover page says which of
+   * the three true things is true. See data/handover.ts.
+   */
+  async function onFinish() {
+    if (job!.status === "draft") {
+      setWork("Handing this to the fleet…");
+      try {
+        await src.finalize(job!.id);
+        const fresh = await src.getJob(jobId);
+        if (fresh) setJob(fresh);
+      } finally {
+        setWork(null);
+      }
+    }
+    setHandedOver(true);
+  }
 
-        <StepCard
+  function onPrimary() {
+    switch (action.kind) {
+      case "capture": if (active) void onShutter(active); break;
+      case "record": if (active) void onRecordTyped(active); break;
+      case "pair": router.push("/instruments"); break;
+      // The bar's own way out, for a question that has no answers. Same sheet the ⚠ opens —
+      // there is still exactly one second exit, and this is a second door onto it rather than
+      // a third way out of the step.
+      case "declare": setBlocked(true); break;
+      case "advance": setCursor((c) => Math.min(c + 1, proc!.steps.length - 1)); break;
+      // Deliberately not "advance". There is no step after the last one, so advancing past it
+      // changes nothing and the button reads as dead — which is exactly what it was.
+      case "finish": void onFinish(); break;
+      default: break;
+    }
+  }
+
+  // ------------------------------------------------------------------------------ the notices
+
+  const notices: Notice[] = [];
+  if (held) {
+    notices.push({
+      headline: "Machine held",
+      detail: `${held}. It will not be released until the record holds up.`,
+      blocking: true,
+    });
+  }
+  for (const item of waiting) {
+    const at = proc.steps.find((s) => s.id === item.stepId);
+    const key = `${item.stepId}:${item.kind}`;
+    if (dismissed[key]) continue;
+    notices.push({
+      headline:
+        item.kind === "question" ? "The fleet asked you something"
+          : item.kind === "hold" ? "Stuck, and waiting on a person"
+            : "One more thing needed",
+      detail:
+        `${item.ask}` +
+        (at ? ` — step ${at.index}, ${at.title}.` : "") +
+        // An answer that was already given stays on screen: the fleet has still to rule on it,
+        // and clearing it the moment somebody spoke would claim a settlement that has not
+        // happened.
+        (!item.outstanding && item.answer
+          ? ` You said: “${item.answer}” — ${item.answeredBy ?? "answered"}.`
+          : ""),
+      blocking: item.kind === "hold",
+      goToLabel: "Go to that step",
+      onGoTo: () => goToStep(item.stepId),
+      // Both, because the ask does not say which is right and the person does. An appended
+      // field is more evidence BESIDE what is there; a hold is usually the evidence itself
+      // being wrong.
+      onRedoStep: () => redoStep(item.stepId),
+      onDismiss: () => setDismissed((d) => ({ ...d, [key]: true })),
+    });
+  }
+  if (outstanding.length > 0 && !dismissed.outstanding) {
+    const first = outstanding[0];
+    notices.push({
+      headline: `${outstanding.length} step${outstanding.length > 1 ? "s" : ""} still waiting`,
+      detail:
+        "This job cannot seal until every step has an outcome. Nothing here is lost — go back " +
+        `and finish it whenever you like. The first is step ${first.step.index}, ${first.step.title}.`,
+      goToLabel: `Go to step ${first.step.index}`,
+      onGoTo: () => goToStep(first.step.id),
+      onDismiss: () => setDismissed((d) => ({ ...d, outstanding: true })),
+    });
+  }
+
+  // ----------------------------------------------------------------------------- the handover
+
+  if (handedOver) {
+    const owed = proc.steps.filter((s) =>
+      (statuses[s.id] ?? "pending") === "pending" && !optionalStep(s) && !reasoned[s.id]).length;
+    const explained = Object.keys(reasoned).length;
+    const state = handoverStateFor(owed, sealedRecordId);
+    const { headline, detail } = handoverHeadline(state, owed, explained);
+    // Built from the JOB rather than from `liveJob`. The screen's assembled copy synthesises
+    // its fields from the answers it has seen, which is enough to ask `openItems` what is
+    // outstanding and nowhere near enough to fetch a photograph: those fields carry no
+    // `media_ref` because this screen never had one to put there. The real outcomes do, and
+    // the effect above re-reads them every time something lands.
+    const frames = handoverFrames(job, proc, decisions);
+    const framed = frames[Math.min(framedAt, Math.max(0, frames.length - 1))] ?? null;
+    const progress = verificationProgress(job, proc);
+    const owedSteps = proc.steps.filter((s) =>
+      (statuses[s.id] ?? "pending") === "pending" && !optionalStep(s) && !reasoned[s.id]);
+
+    return (
+      <AppShell tone="work">
+        {/* `handover` is a hook for scripts/smoke_funnel.py, which drives this flow in a real
+            browser and needs to know it has left the steps. */}
+        <div className="stack stack--lg handover">
+          <div className="w-trace__head">
+            <span className="w-trace__agent">{headline}</span>
+            <StatusPill status={(sealedRecordId ? "sealed" : job.status) as JobStatus} />
+          </div>
+          {/* Announced, not just drawn. This is the one region of the page that changes while
+              nobody is touching it, so a reader who cannot see it has to be told. */}
+          <p className="lede" role="status" aria-live="polite">{detail}</p>
+
+          {/* WHAT IS HAPPENING RIGHT NOW.
+              The old page was a snapshot: it said "verification runs behind you" and then sat
+              perfectly still whether the fleet was working, finished, or unreachable. Those
+              three look identical, and the first is the only one where waiting is the right
+              thing to do. */}
+          <LiveProgress
+            ruled={progress.ruled}
+            total={progress.total}
+            sealed={Boolean(sealedRecordId)}
+            spending={work}
+          />
+
+          {held && (
+            <HoldBanner title="Machine held">
+              {held}. It will not be released until the record holds up.
+            </HoldBanner>
+          )}
+
+          {/* THE EVIDENCE, not a summary of it. Flipping a frame lights the decisions it
+              belongs to in the trace below — see `framedDecisions`. */}
+          <div className="stack">
+            <p className="eyebrow">What you recorded</p>
+            <EvidenceCarousel
+              frames={frames}
+              src={src}
+              at={Math.min(framedAt, Math.max(0, frames.length - 1))}
+              onFramed={setFramedAt}
+              // Never over a sealed record: it is what SURVIVES the workshop, and offering to
+              // redo a step of it would be offering to change the one artifact whose whole
+              // value is that it cannot be changed afterwards.
+              onRedo={sealedRecordId ? null : (stepId) => {
+                setHandedOver(false);
+                redoStep(stepId);
+              }}
+            />
+          </div>
+
+          {owedSteps.length > 0 && (
+            <div className="stack">
+              <p className="eyebrow">Still owed</p>
+              {owedSteps.map((s) => (
+                <button
+                  key={s.id}
+                  className="w-btn w-btn--ghost w-btn--block"
+                  onClick={() => { setHandedOver(false); goToStep(s.id); }}
+                >
+                  Step {s.index} — {s.title}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="w-step__exits">
+            {sealedRecordId && (
+              // A Link, NOT an anchor. On the fixture source the records live in this tab's
+              // memory, so a full document load arrives at /r/{id} with an empty store and
+              // reports the record as missing — which is exactly what the old redirect avoided
+              // by being a client-side push. The distinction is invisible against Firestore and
+              // fatal against fixtures, which is the harder of the two to notice.
+              <Link className="w-btn" href={`/r/${encodeURIComponent(sealedRecordId)}`}>
+                Open the record
+              </Link>
+            )}
+            {owed === 0 && (
+              <button
+                className="w-btn w-btn--ghost"
+                onClick={() => { setHandedOver(false); setCursor(0); }}
+              >
+                Back to the steps
+              </button>
+            )}
+            <a className="w-btn w-btn--ghost" href="/">Start another task</a>
+          </div>
+
+          <div className="stack">
+            <p className="eyebrow">What the fleet decided</p>
+            <p className="w-trace__why">
+              Capture never waits. These land behind you, and you can leave — it will not stop.
+              {framed && frames.length > 1 && " Highlighted: the verdicts on the capture above."}
+            </p>
+            {src.fabricated && (
+              // Same rule as every other surface that shows a verdict: a build serving the
+              // scripted timeline says so.
+              <HoldBanner kind="waiting" title="Fixture data">
+                This build runs the scripted demo timeline, not a live backend. The verdicts
+                and costs below are fabricated.
+              </HoldBanner>
+            )}
+            <AgentTrace
+              decisions={decisions}
+              highlight={framed ? new Set(framed.decisions.map((d) => d.id)) : undefined}
+              max={14}
+            />
+          </div>
+        </div>
+      </AppShell>
+    );
+  }
+  // ---------------------------------------------------------------------------- the step page
+
+  const pips: FieldPip[] = fields.map((f) => ({
+    key: f.key,
+    label: f.key.replace(/_/g, " "),
+    filled: isFilled(step.id, f.key),
+    required: requiredAt(f, strictness),
+  }));
+
+  const evidence: ProvenanceClass = declaredClass(active ?? fields[0]);
+  const cameraLive = Boolean(active && usesCamera(active) && reviewing === null);
+
+  return (
+    <>
+      <StepPage
+        stepIndex={cursor}
+        stepCount={proc.steps.length}
+        title={step.title}
+        prompt={active?.prompt}
+        guidance={active?.guidance}
+        evidence={evidence}
+        notices={notices}
+        primary={action}
+        onPrimary={onPrimary}
+        onExit={() => router.push("/")}
+        onBrief={() => setBrief(true)}
+        onBlocked={() => setBlocked(true)}
+        onTrace={() => setTrace(true)}
+        onBack={cursor > 0 ? () => setCursor(cursor - 1) : null}
+        onRedo={
+          // Redo, at the scope of one capture. Offered only while a field is still outstanding,
+          // which is to say while there is a frame on screen you have not decided about yet.
+          active && framedField
+            ? () => {
+              const slot = `${step.id}:${framedField.key}`;
+              setFrames(({ [slot]: _gone, ...rest }) => rest);
+              setAnswers(({ [slot]: _also, ...rest }) => rest);
+              setSelected(framedField.key);
+            }
+            : null
+        }
+        onRedoStep={
+          // Redo, at the scope of the whole step. THE CASE THE BAR CANNOT REACH: a step with
+          // every field filled points at nothing, so the bar says "Next step" and there is
+          // nothing else to tap. That is exactly the state an agent's rejection leaves you in.
+          !active && fields.some((f) => isFilled(step.id, f.key))
+            ? () => redoStep(step.id)
+            : null
+        }
+        pips={pips}
+        activePipKey={active?.key ?? null}
+        onPip={(key) => setSelected(key)}
+        backdrop={
+          framedUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="w-steppage__frame" src={framedUrl} alt={active?.prompt ?? step.title} />
+          ) : active && usesCamera(active) ? (
+            <CameraLayer handle={camera} lens={lens} lamp={lamp} />
+          ) : null
+        }
+        center={
+          <StepCenter
+            field={active}
+            stepComplete={!active}
+            live={cameraLive}
+            canFlip={camera.canFlip}
+            canLamp={camera.canLamp}
+            lens={lens}
+            lamp={lamp}
+            onFlip={() => setLenses((l) => ({ ...l, [step.id]: flip(lens) }))}
+            onLamp={() => setLamps((l) => ({ ...l, [step.id]: !lamp }))}
+            typed={typed}
+            onTyped={setTyped}
+            signer={session?.name ?? session?.email ?? session?.uid ?? null}
+            optional={active ? !requiredAt(active, strictness) : false}
+            appended={Boolean(active && extra.some((f) => f.key === active.key))}
+          />
+        }
+      />
+
+      {brief && (
+        <StepBriefSheet
           step={step}
           total={proc.steps.length}
-          guidance={fields[0]?.guidance}
-          exits={
-            exit === "capture" ? (
-              <>
-                <button className="w-btn w-btn--ghost w-btn--block" onClick={() => setExit("reason")}>
-                  I can&rsquo;t do this
-                </button>
-                {/* Do this one again. Offered once the step has something to throw away —
-                    over an untouched step it is a button that does nothing — and this is the
-                    control an agent's rejection needs: without it a finished step shows a
-                    filled-in form and no way back into it. */}
-                {fields.some((f) => answers[`${step.id}:${f.key}`]) && (
-                  <button
-                    className="w-btn w-btn--ghost w-btn--block"
-                    onClick={() => redoStep(step.id)}
-                  >
-                    Redo this step
-                  </button>
-                )}
-                {done && cursor < proc.steps.length - 1 && (
-                  <button className="w-btn w-btn--block" onClick={() => setCursor(cursor + 1)}>
-                    Next step
-                  </button>
-                )}
-              </>
-            ) : (
-              <button className="w-btn w-btn--ghost w-btn--block" onClick={() => setExit("capture")}>
-                Back to capturing
-              </button>
-            )
-          }
-        >
-          {exit === "capture" ? (
-            <div className="stack">
-              {optionalStep(step) && (
-                <p className="w-step__num">
-                  Optional on this job — do it if it is worth doing. The job seals without it.
-                </p>
-              )}
-              {fields.map((f) => (
-                <div className="stack" key={f.key}>
-                  {extra.includes(f) && (
-                    <p className="w-step__num" style={{ color: "var(--inferred-lift)" }}>
-                      Added just now — the Inspector asked for this
-                    </p>
-                  )}
-                  {/* An added field is never optional: an agent does not ask for evidence it
-                      is willing to do without. So this can only mark a declared one. */}
-                  {!extra.includes(f) && optionalField(f) && (
-                    <p className="w-step__num">Optional — the step does not wait for this</p>
-                  )}
-                  {controlFor(f)}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <ReasonCapture onSubmit={onReason} busy={busy} />
-          )}
-        </StepCard>
+          guidance={active?.guidance ?? fields[0]?.guidance}
+          onDismiss={() => setBrief(false)}
+        />
+      )}
+      {blocked && (
+        <BlockedSheet
+          busy={busy}
+          onSubmit={(r) => void onReason(r)}
+          onDismiss={() => setBlocked(false)}
+        />
+      )}
+      {trace && (
+        <TraceSheet
+          decisions={decisions}
+          sealedRecordId={sealedRecordId}
+          fabricated={src.fabricated}
+          onDismiss={() => setTrace(false)}
+        />
+      )}
+    </>
+  );
+}
 
-        {/* WHAT AN AGENT IS ASKING FOR, IN THE WORDS IT ASKED.
-            The panel below this one lists steps that will hold the seal open; this one lists
-            questions. They are different things and the browser used to show only the first,
-            which meant an Inspector appending a field or escalating to a person reached the
-            app and stopped there — the step went back to pending and nothing said why. */}
-        {waiting.length > 0 && (
-          <div className="stack">
-            <p className="eyebrow">Waiting on you</p>
-            {waiting.map((item, n) => {
-              const title = proc.steps.find((s) => s.id === item.stepId)?.title ?? item.stepId;
-              const index = proc.steps.find((s) => s.id === item.stepId)?.index;
-              return (
-                <div className="stack" key={`${item.stepId}:${item.kind}:${n}`}>
-                  <HoldBanner
-                    kind={item.kind === "hold" ? "held" : "waiting"}
-                    title={
-                      item.kind === "question" ? "The fleet asked you something"
-                        : item.kind === "hold" ? "Stuck, and waiting on a person"
-                          : "One more thing needed"
-                    }
-                  >
-                    {item.ask}
-                  </HoldBanner>
-                  <p className="w-timeline__when">Step {index ?? "?"} — {title}</p>
-                  {/* An answer that was already given stays on screen: the fleet has still to
-                      rule on it, and clearing it the moment somebody spoke would claim a
-                      settlement that has not happened. */}
-                  {!item.outstanding && item.answer && (
-                    <p className="w-step__why">
-                      &ldquo;{item.answer}&rdquo; — {item.answeredBy ?? "answered"}
-                    </p>
-                  )}
-                  <div className="w-step__exits">
-                    <button className="w-btn w-btn--ghost" onClick={() => goToStep(item.stepId)}>
-                      Go to that step
-                    </button>
-                    {/* Both, because the ask does not say which is right and the person does.
-                        An appended field is more evidence BESIDE what is there; a hold is
-                        usually the evidence itself being wrong. */}
-                    <button className="w-btn w-btn--ghost" onClick={() => redoStep(item.stepId)}>
-                      Redo that step
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+/** What a field can reach at best, which is what the chip over the frame states. */
+function declaredClass(f: FieldDef | null | undefined): ProvenanceClass {
+  if (!f) return "asserted";
+  if (f.source === "instrument") return "measured";
+  if (f.source === "human") return "asserted";
+  return "inferred";
+}
 
-        {outstanding.length > 0 && (
-          <div className="stack">
-            <HoldBanner kind="waiting" title={`${outstanding.length} step${outstanding.length > 1 ? "s" : ""} still waiting`}>
-              This job cannot seal until every step passes. Nothing here is lost — go back and
-              finish it whenever you like.
-            </HoldBanner>
-            <div className="stack">
-              {outstanding.map((o) => (
-                <button
-                  key={o.step.id}
-                  className="w-btn w-btn--ghost w-btn--block"
-                  onClick={() => goToStep(o.step.id)}
-                >
-                  Step {o.step.index} — {o.step.title}
-                  {(added[o.step.id]?.length ?? 0) > 0 ? " · needs another capture" : ""}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* EVERY STEP OF AN UNSEALED JOB, AND THE WAY BACK INTO ANY OF THEM.
-            This is the browser's version of the phone's job-record screen: a job that has not
-            sealed is still moving and can still be argued with, so what it has captured is
-            listed and each step can be done again. It is deliberately absent once the job
-            seals — a sealed record is what SURVIVES the workshop, and offering to redo a step
-            of it would be offering to change the one artifact whose whole value is that it
-            cannot be changed afterwards. The record at /r/{id} is read-only for the same
-            reason. */}
-        {job.status !== "sealed" && (
-          <div className="stack">
-            <p className="eyebrow">Every step</p>
-            <p className="w-trace__why">
-              Where each one stands, and the way back into it. Nothing here deletes evidence:
-              a capture that happened stays on the record, and doing a step again puts a better
-              answer in front of the fleet beside the one it already has.
-            </p>
-            <div className="w-ceiling__rows">
-              {proc.steps.map((st, i) => {
-                const status = statuses[st.id] ?? "pending";
-                const answered = [...st.fields, ...(added[st.id] ?? [])]
-                  .some((f) => answers[`${st.id}:${f.key}`]);
-                return (
-                  <div className="w-ceiling__row" key={st.id}>
-                    <span className="w-ceiling__reason" style={{ flex: 1 }}>
-                      <span className="w-timeline__when">Step {st.index}</span> {st.title}
-                      {" · "}
-                      {status === "performed" ? "performed"
-                        : optionalStep(st) ? "optional on this job"
-                          : status}
-                    </span>
-                    <div className="w-step__exits">
-                      <button
-                        className="w-btn w-btn--ghost"
-                        disabled={i === cursor}
-                        onClick={() => goToStep(st.id)}
-                      >
-                        {i === cursor ? "You are here" : "Go to it"}
-                      </button>
-                      {answered && (
-                        <button className="w-btn w-btn--ghost" onClick={() => redoStep(st.id)}>
-                          Redo this step
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        <Rule />
-
-        {job.status === "draft" && (
-          <div className="stack">
-            <div className="w-trace__head">
-              <span className="w-trace__agent">Not started</span>
-              <StatusPill status="draft" />
-            </div>
-            <p className="w-trace__why">
-              Captured and saved. No agent has looked at it, nothing is sealed, and the machine
-              is not released — a workshop with no signal works exactly the same. Finalising is
-              what hands it to the fleet.
-            </p>
-            <button
-              className="w-btn"
-              disabled={finalising}
-              onClick={async () => {
-                setFinalising(true);
-                try {
-                  await src.finalize(job.id);
-                  setJob(await src.getJob(jobId));
-                } finally {
-                  setFinalising(false);
-                }
-              }}
-            >
-              {finalising ? "Finalising…" : "Finalise — hand this to the fleet"}
-            </button>
-          </div>
-        )}
-
-        <div className="stack">
-          <div className="w-trace__head">
-            <span className="w-trace__agent">Verification</span>
-            <StatusPill status={job.status as JobStatus} />
-          </div>
-          <p className="w-trace__why">
-            Capture never waits. These land behind you, and you can keep going.
+/**
+ * Everything the field itself needs, drawn over the middle of the frame.
+ *
+ * A port of `StepCenter` in android/…/ui/job/JobScreen.kt. A camera field draws NOTHING here
+ * on purpose — the lens is the backdrop and the prompt is already printed over it, so anything
+ * in the middle would be furniture between the technician and the thing they are pointing at.
+ */
+function StepCenter({
+  field, stepComplete, live, canFlip, canLamp, lens, lamp, onFlip, onLamp,
+  typed, onTyped, signer, optional, appended,
+}: {
+  field: FieldDef | null;
+  stepComplete: boolean;
+  live: boolean;
+  canFlip: boolean;
+  canLamp: boolean;
+  lens: Lens;
+  lamp: boolean;
+  onFlip: () => void;
+  onLamp: () => void;
+  typed: string;
+  onTyped: (v: string) => void;
+  signer: string | null;
+  optional: boolean;
+  appended: boolean;
+}) {
+  const fault = field ? unanswerable(field) : null;
+  return (
+    <>
+      <div className="w-center">
+        {appended && (
+          <p className="w-center__note w-center__note--inferred">
+            Added just now — the Inspector asked for this
           </p>
-          <AgentTrace decisions={decisions} />
-        </div>
+        )}
+        {/* An added field is never optional: an agent does not ask for evidence it is willing
+            to do without. So this can only mark a declared one. */}
+        {!appended && optional && field && (
+          <p className="w-center__note">Optional on this job — the step does not wait for this</p>
+        )}
+
+        {stepComplete ? (
+          <p className="w-center__note w-center__note--measured">
+            Everything this step needs is recorded. Verification is running behind you.
+          </p>
+        ) : !field ? null : fault ? (
+          // Before every kind branch, because none of them can draw this honestly. Saying only
+          // what is wrong is what wedged a job: the sentence was there, correct, and left the
+          // technician looking at a grey bar with no reason to think the run could continue.
+          <p className="w-center__note w-center__note--held">
+            {fault} Say so with the bar below and carry on — the reason goes on the record and
+            the fleet rules on it.
+          </p>
+        ) : field.kind === "measurement" ? (
+          // There is no text input on this branch, at all, on purpose. If a person can type the
+          // number, the number is asserted, and calling it measured afterwards would be a lie
+          // told by the user interface. The bar below offers pairing instead.
+          <p className="w-center__note w-center__note--measured">
+            This value has to arrive from a paired instrument, and a browser has no pairing.
+            Nothing here will accept a typed number wearing the measured chip.
+          </p>
+        ) : usesCamera(field) ? null : field.kind === "signature" ? (
+          // STATED, NOT COLLECTED. The field is already satisfied from the signed-in account;
+          // there is nothing here for anybody to do, and a box asking for a name would be
+          // collecting a second copy of something the record already carries as the caller's
+          // own uid.
+          <Attribution prompt={field.prompt} who={signer} />
+        ) : field.kind === "choice" ? (
+          // The answers the procedure actually offers, drawn as answers. `typed` still carries
+          // the pending value, so the bar below is untouched — the only thing that changes is
+          // where the value comes from: a tap on a stated option rather than anything at all a
+          // keyboard could produce.
+          <div className="w-center__choices">
+            {(field.choices ?? []).map((c) => (
+              <button
+                key={c}
+                type="button"
+                className={`w-center__choice${typed === c ? " w-center__choice--on" : ""}`}
+                onClick={() => onTyped(c)}
+                aria-pressed={typed === c}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        ) : usesKeyboard(field) ? (
+          <input
+            className="w-center__input"
+            value={typed}
+            onChange={(e) => onTyped(e.target.value)}
+            placeholder="Type the value"
+            aria-label={field.prompt}
+          />
+        ) : null}
       </div>
-    </Wrap>
+
+      {/* Both only while the lens is actually open. `live` is already false while a frame is
+          under review, which is what we want: the lamp cannot be changed for a photograph that
+          has already been taken. Redo reopens the lens and the chips come back with it. */}
+      {live && (
+        <div className="w-lensbar">
+          <LiveMark />
+          <span className="w-lensbar__right">
+            {canLamp && <LampControl on={lamp} onToggle={onLamp} />}
+            {canFlip && <LensControl lens={lens} onFlip={onFlip} />}
+          </span>
+        </div>
+      )}
+    </>
   );
 }

@@ -1,0 +1,126 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:50ddcb7c6920d638"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is to bleed the front and rear brakes on the e-bike or bicycles to ensure reliable stopping power in traffic. We verify success by checking that the correct fluid is used, the lever feels rock solid without touching the handlebar, and there are no fluid leaks.",
+    "draft": {
+      "key": "brake-bleed-and-safety-check",
+      "title": "Brake Bleeding and Safety Verification",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Fluid weeping from any hose or fitting after bleeding",
+        "Brake lever feels spongy after two bleeding attempts"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Identify and Verify Fluid Type",
+          "explanation": "Mixing mineral oil and DOT fluid destroys the brake seals, leading to complete brake failure within a week.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "fluid-stamp-photo",
+              "kind": "photo",
+              "prompt": "Take a clear photo of the fluid type stamp on the lever body or reservoir cap.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The stamp indicating the required fluid type (Mineral Oil or DOT).",
+              "guidance": "Ensure the text on the reservoir cap or lever body is legible in the photo."
+            },
+            {
+              "key": "fluid-type-match",
+              "kind": "choice",
+              "prompt": "Select the fluid type used, matching the stamp on the lever.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Matches the stamp on the lever",
+                "Does not match the stamp on the lever"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Matches the stamp on the lever",
+              "guidance": "Only use the exact fluid type specified on the brake hardware."
+            }
+          ]
+        },
+        {
+          "title": "Bleed Brakes and Document Fluid",
+          "explanation": "Replacing old, contaminated fluid and purging air bubbles is required to restore full braking force.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "fluid-comparison-photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the old drained fluid next to the new fluid container.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The old fluid and new fluid container side-by-side.",
+              "guidance": "This documents that a complete fluid exchange was performed."
+            }
+          ]
+        },
+        {
+          "title": "Verify Lever Feel and System Integrity",
+          "explanation": "A spongy lever or weeping fluid indicates air or leaks, which will cause the brakes to fail under hard stopping conditions.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "lever-feel",
+              "kind": "choice",
+              "prompt": "Squeeze the brake lever hard. How does it feel?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Rock solid (does not pull back to the bar)",
+                "Spongy (or pulls all the way to the bar)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Rock solid (does not pull back to the bar)",
+              "guidance": "The lever must feel completely firm and have a clear stop before reaching the grip."
+            },
+            {
+              "key": "leak-check",
+              "kind": "choice",
+              "prompt": "Inspect all hoses, fittings, and bleed ports for any signs of fluid.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "No leaks (all fittings and hoses are completely dry)",
+                "Fluid weeping from a hose, fitting, or bleed port"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No leaks (all fittings and hoses are completely dry)",
+              "guidance": "Wipe everything down and squeeze the lever hard several times to check for any fresh weeping."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to bleed the front and rear brakes on the e-bike or bicycles to ensure reliable stopping power in traffic. We verify success by checking that the correct fluid is used, the lever feels rock solid without touching the handlebar, and there are no fluid leaks.\",\n  \"draft\": {\n    \"key\": \"brake-bleed-and-safety-check\",\n    \"title\": \"Brake Bleeding and Safety Verification\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Fluid weeping from any hose or fitting after bleeding\",\n      \"Brake lever feels spongy after two bleeding attempts\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Identify and Verify Fluid Type\",\n        \"explanation\": \"Mixing mineral oil and DOT fluid destroys the brake seals, leading to complete brake failure within a week.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"fluid-stamp-photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a clear photo of the fluid type stamp on the lever body or reservoir cap.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The stamp indicating the required fluid type (Mineral Oil or DOT).\",\n            \"guidance\": \"Ensure the text on the reservoir cap or lever body is legible in the photo.\"\n          },\n          {\n            \"key\": \"fluid-type-match\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Select the fluid type used, matching the stamp on the lever.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Matches the stamp on the lever\",\n              \"Does not match the stamp on the lever\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Matches the stamp on the lever\",\n            \"guidance\": \"Only use the exact fluid type specified on the brake hardware.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bleed Brakes and Document Fluid\",\n        \"explanation\": \"Replacing old, contaminated fluid and purging air bubbles is required to restore full braking force.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"fluid-comparison-photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the old drained fluid next to the new fluid container.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The old fluid and new fluid container side-by-side.\",\n            \"guidance\": \"This documents that a complete fluid exchange was performed.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verify Lever Feel and System Integrity\",\n        \"explanation\": \"A spongy lever or weeping fluid indicates air or leaks, which will cause the brakes to fail under hard stopping conditions.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"lever-feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Squeeze the brake lever hard. How does it feel?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Rock solid (does not pull back to the bar)\",\n              \"Spongy (or pulls all the way to the bar)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Rock solid (does not pull back to the bar)\",\n            \"guidance\": \"The lever must feel completely firm and have a clear stop before reaching the grip.\"\n          },\n          {\n            \"key\": \"leak-check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect all hoses, fittings, and bleed ports for any signs of fluid.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"No leaks (all fittings and hoses are completely dry)\",\n              \"Fluid weeping from a hose, fitting, or bleed port\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No leaks (all fittings and hoses are completely dry)\",\n            \"guidance\": \"Wipe everything down and squeeze the lever hard several times to check for any fresh weeping.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3526,
+    "candidatesTokenCount": 1157,
+    "totalTokenCount": 8688
+  }
+}

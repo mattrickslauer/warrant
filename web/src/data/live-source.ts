@@ -46,7 +46,7 @@ import {
 import type {
   Procedure, Job, StepOutcome, Capture, Decision, SealedRecord, Field,
 } from "@/generated/types";
-import { ref as storageRef, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref as storageRef, uploadBytes } from "firebase/storage";
 import type { DataSource, JobEvent, CaptureInput, BlockedInput, Tier, Unsubscribe } from "./source";
 import { clientDb, clientAuth, clientStorage } from "@/auth/firebase-client";
 
@@ -68,6 +68,25 @@ const EXTENSION: Record<Capture["kind"], string | null> = {
   // The one kind with no object. `media_ref` carries the answer itself — see
   // contract/entities/capture.schema.json, which says so in the field description.
   text: null,
+};
+
+/**
+ * The same question asked of a FIELD kind, which is the wider enum — a handover renders
+ * fields, and most field kinds are values rather than objects.
+ *
+ * Exhaustive rather than a default, so a kind added to the contract later has to be classified
+ * here by somebody instead of quietly acquiring an extension and a path pointing at nothing.
+ * `Media.extension(FieldKind)` on the phone is the same table.
+ */
+const FIELD_EXTENSION: Record<Field["kind"], string | null> = {
+  photo: "jpg",
+  scan: "jpg",
+  video: "mp4",
+  measurement: null,
+  choice: null,
+  text: null,
+  signature: null,
+  location: null,
 };
 
 /**
@@ -444,6 +463,35 @@ export class LiveSource implements DataSource {
       );
     }
     return path;
+  }
+
+  /**
+   * Read one capture back, as a URL an <img> can point at.
+   *
+   * `storage.rules` allows a read under `tenants/{t}/captures/{jobId}/` to anybody whose token
+   * resolves to that tenant, which is the same check that let the bytes be written in the
+   * first place — so this needs no server route and no signed URL minted by hand. The
+   * PUBLISHED path is different on purpose and stays different: those bytes are proxied
+   * through Cloud Run so that unsharing genuinely revokes, and a download URL would outlive
+   * the unshare.
+   *
+   * Null rather than a throw when the object is not there. "The image could not be fetched"
+   * and "there was never an image" are different claims about a job, and a caller that got an
+   * exception for both would have to render them identically.
+   */
+  async mediaUrl(jobId: string, captureId: string, kind: Field["kind"]): Promise<string | null> {
+    if (!jobId || !captureId) return null;
+    const ext = FIELD_EXTENSION[kind];
+    if (!ext) return null;
+    const [tenantId, bareJob] = splitScoped(jobId);
+    if (!tenantId) return null;
+    try {
+      return await getDownloadURL(
+        storageRef(clientStorage(), mediaPath(tenantId, bareJob, captureId, ext)),
+      );
+    } catch {
+      return null;
+    }
   }
 
   /** The second exit. A step is never silently abandoned — this always records an outcome. */

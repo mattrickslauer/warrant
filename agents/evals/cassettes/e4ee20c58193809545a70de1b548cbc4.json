@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:c22ecd869d562205"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "How do you test the patch or plug to make sure it's holding air before you mount the wheel back on the bike?",
+    "asks_about": "evidence",
+    "unresolved": [
+      "How the patch or plug is tested for leaks before mounting",
+      "The target inflation pressure and how it is measured",
+      "Any specific tools or materials required for the patch/plug to be considered safe",
+      "Disqualifying criteria for a damaged tyre or tube that cannot be safely patched"
+    ],
+    "understanding": "The job is repairing a punctured tyre on either a Segway Xyber e-bike or a standard bicycle to ensure it is safe for city traffic and gravel. The critical safety concern is preventing a sudden deflation at speed, which could lead to a severe accident.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"How do you test the patch or plug to make sure it's holding air before you mount the wheel back on the bike?\",\n  \"asks_about\": \"evidence\",\n  \"unresolved\": [\n    \"How the patch or plug is tested for leaks before mounting\",\n    \"The target inflation pressure and how it is measured\",\n    \"Any specific tools or materials required for the patch/plug to be considered safe\",\n    \"Disqualifying criteria for a damaged tyre or tube that cannot be safely patched\"\n  ],\n  \"understanding\": \"The job is repairing a punctured tyre on either a Segway Xyber e-bike or a standard bicycle to ensure it is safe for city traffic and gravel. The critical safety concern is preventing a sudden deflation at speed, which could lead to a severe accident.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 2683,
+    "candidatesTokenCount": 195,
+    "totalTokenCount": 3231
+  }
+}

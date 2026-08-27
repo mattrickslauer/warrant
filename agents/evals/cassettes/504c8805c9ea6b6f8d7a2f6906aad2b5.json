@@ -1,0 +1,185 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:c8aecaed71dc13c4"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job involves re-rolling stainless steel foil from large parent coils into retail rolls and boxing them. To prevent catastrophic grade mix-ups between identical-looking 321 and 309 alloys, the operator verifies the mill tag against the order, wears cut gloves, and takes photos of both the mill tag with the roll and the final box label before sealing.",
+    "draft": {
+      "key": "stainless-foil-rerolling",
+      "title": "Stainless Steel Foil Re-rolling and Boxing",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Mill tag does not match the customer order",
+        "Oil or grease detected on the foil"
+      ],
+      "releases": [
+        "Retail roll approved for packaging and shipment"
+      ],
+      "steps": [
+        {
+          "title": "Safety Preparation",
+          "explanation": "Foil edges are extremely sharp and will cut hands open if handled without protection.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "cut_gloves_worn",
+              "kind": "choice",
+              "prompt": "Are you wearing cut-resistant gloves?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, gloves are on",
+                "No"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, gloves are on",
+              "acceptance_description": null,
+              "guidance": "Cut gloves must be worn for absolutely anything that touches the foil."
+            }
+          ]
+        },
+        {
+          "title": "Verify Grade Against Order",
+          "explanation": "321 and 309 grades look identical but have different temperature ratings; shipping the wrong grade ruins the customer's workpiece.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "grade_match_check",
+              "kind": "choice",
+              "prompt": "Does the mill tag on the parent coil match the grade specified on the customer order?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Yes, mill tag matches order",
+                "No, there is a mismatch"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Yes, mill tag matches order",
+              "acceptance_description": null,
+              "guidance": "Compare the mill tag on the parent coil directly to the customer order. If they do not match, stop the job immediately."
+            }
+          ]
+        },
+        {
+          "title": "Re-roll and Inspect Foil",
+          "explanation": "Foil must be free of oil/grease which bakes into workpieces, and visually free of major tears or wrinkles.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "foil_cleanliness",
+              "kind": "choice",
+              "prompt": "Is the foil free of any oil or grease?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Clean and oil-free",
+                "Oil or grease detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Clean and oil-free",
+              "acceptance_description": null,
+              "guidance": "Any oil or grease means that length of foil is scrap."
+            },
+            {
+              "key": "visual_inspection",
+              "kind": "choice",
+              "prompt": "Does the foil pass visual inspection for tears and wrinkles?",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Passes visual check",
+                "Fails (excessive tears/wrinkles)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Passes visual check",
+              "acceptance_description": null,
+              "guidance": "Inspect by eye to ensure no major tears or wrinkles are present."
+            }
+          ]
+        },
+        {
+          "title": "Document Parent Coil and Roll",
+          "explanation": "We must prove which parent coil this specific roll was cut from to prevent grade mix-ups.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "mill_tag_photo",
+              "kind": "photo",
+              "prompt": "Take a photo showing the parent coil's mill tag and the re-rolled foil together in the same shot.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The mill tag and the roll in the same shot, with the grade on the tag clearly legible.",
+              "guidance": "Ensure both the mill tag and the roll are clearly visible in a single photograph."
+            }
+          ]
+        },
+        {
+          "title": "Box and Label Photo",
+          "explanation": "We must verify that the label on the finished box matches the grade of the coil before sealing.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "box_label_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the finished box showing the applied label clearly before taping it up.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The complete label on the box, with the grade clearly readable.",
+              "guidance": "The entire label must be clear and readable in the photo before taping the box."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job involves re-rolling stainless steel foil from large parent coils into retail rolls and boxing them. To prevent catastrophic grade mix-ups between identical-looking 321 and 309 alloys, the operator verifies the mill tag against the order, wears cut gloves, and takes photos of both the mill tag with the roll and the final box label before sealing.\",\n  \"draft\": {\n    \"key\": \"stainless-foil-rerolling\",\n    \"title\": \"Stainless Steel Foil Re-rolling and Boxing\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Mill tag does not match the customer order\",\n      \"Oil or grease detected on the foil\"\n    ],\n    \"releases\": [\n      \"Retail roll approved for packaging and shipment\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Safety Preparation\",\n        \"explanation\": \"Foil edges are extremely sharp and will cut hands open if handled without protection.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"cut_gloves_worn\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Are you wearing cut-resistant gloves?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, gloves are on\",\n              \"No\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, gloves are on\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Cut gloves must be worn for absolutely anything that touches the foil.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verify Grade Against Order\",\n        \"explanation\": \"321 and 309 grades look identical but have different temperature ratings; shipping the wrong grade ruins the customer's workpiece.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"grade_match_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Does the mill tag on the parent coil match the grade specified on the customer order?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Yes, mill tag matches order\",\n              \"No, there is a mismatch\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Yes, mill tag matches order\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Compare the mill tag on the parent coil directly to the customer order. If they do not match, stop the job immediately.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Re-roll and Inspect Foil\",\n        \"explanation\": \"Foil must be free of oil/grease which bakes into workpieces, and visually free of major tears or wrinkles.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"foil_cleanliness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is the foil free of any oil or grease?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Clean and oil-free\",\n              \"Oil or grease detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Clean and oil-free\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Any oil or grease means that length of foil is scrap.\"\n          },\n          {\n            \"key\": \"visual_inspection\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Does the foil pass visual inspection for tears and wrinkles?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Passes visual check\",\n              \"Fails (excessive tears/wrinkles)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Passes visual check\",\n            \"acceptance_description\": null,\n            \"guidance\": \"Inspect by eye to ensure no major tears or wrinkles are present.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Document Parent Coil and Roll\",\n        \"explanation\": \"We must prove which parent coil this specific roll was cut from to prevent grade mix-ups.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"mill_tag_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo showing the parent coil's mill tag and the re-rolled foil together in the same shot.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The mill tag and the roll in the same shot, with the grade on the tag clearly legible.\",\n            \"guidance\": \"Ensure both the mill tag and the roll are clearly visible in a single photograph.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Box and Label Photo\",\n        \"explanation\": \"We must verify that the label on the finished box matches the grade of the coil before sealing.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"box_label_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the finished box showing the applied label clearly before taping it up.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The complete label on the box, with the grade clearly readable.\",\n            \"guidance\": \"The entire label must be clear and readable in the photo before taping the box.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3448,
+    "candidatesTokenCount": 1699,
+    "totalTokenCount": 10912
+  }
+}

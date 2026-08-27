@@ -46,6 +46,8 @@ import ink.warrant.ui.components.BusyRing
 import ink.warrant.ui.components.CameraLayer
 import ink.warrant.ui.components.FlashChip
 import ink.warrant.ui.components.FlashMode
+import ink.warrant.ui.components.Lens
+import ink.warrant.ui.components.LensChip
 import ink.warrant.ui.components.LiveMark
 import ink.warrant.ui.components.ReadingBadge
 import ink.warrant.ui.components.rememberCameraHandle
@@ -78,6 +80,7 @@ import java.io.File
 @Composable
 fun JobScreen(
     vm: JobViewModel,
+    source: ink.warrant.data.DataSource,
     onOpenPairing: () -> Unit,
     onOpenRecord: (String) -> Unit,
     onExit: () -> Unit,
@@ -92,6 +95,9 @@ fun JobScreen(
     // loud rather than papered over.
     if (state.handedOver) {
         HandoverPage(
+            source = source,
+            job = state.job,
+            procedure = state.procedure,
             outstanding = state.outstanding,
             explained = state.explained,
             sealedRecordId = state.sealedRecordId,
@@ -99,6 +105,10 @@ fun JobScreen(
             decisions = state.decisions,
             fabricated = state.fabricated,
             onReopen = { stepId -> vm.reopen(stepId) },
+            // Reopening ADDS to a step; this empties it first. A verdict does not say which is
+            // right and only the person can pick — see the note on `Notice.onRedoStep`.
+            onRedoStep = { stepId -> vm.reopen(stepId); vm.redoStep(stepId) },
+            onRefresh = { vm.refreshJob() },
             onOpenRecord = onOpenRecord,
             onAgain = { vm.again() },
             onDone = onExit,
@@ -356,7 +366,12 @@ fun JobScreen(
             when {
                 framedFile != null -> ReviewFrame(framedFile, active?.prompt ?: step.title)
                 active != null && active.usesCamera() ->
-                    CameraLayer(camera, state.flashFor(step.id), Modifier.fillMaxSize())
+                    CameraLayer(
+                        handle = camera,
+                        flash = state.flashFor(step.id),
+                        lens = state.lensFor(step.id),
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 else -> Unit
             }
         },
@@ -376,6 +391,8 @@ fun JobScreen(
                 redactNote = redactNote,
                 flash = state.flashFor(step.id),
                 onCycleFlash = { vm.cycleFlash(step.id) },
+                lens = state.lensFor(step.id),
+                onFlipLens = { vm.flipLens(step.id) },
             )
         },
     )
@@ -543,6 +560,8 @@ private fun BoxScope.StepCenter(
     redactNote: String?,
     flash: FlashMode,
     onCycleFlash: () -> Unit,
+    lens: Lens,
+    onFlipLens: () -> Unit,
 ) {
     val colors = WarrantTheme.colors
 
@@ -629,11 +648,14 @@ private fun BoxScope.StepCenter(
     // has already been taken. Redo reopens the lens and the chip comes back with it.
     if (live) {
         LiveMark(Modifier.align(Alignment.BottomStart).padding(bottom = 4.dp))
-        FlashChip(
-            mode = flash,
-            onCycle = onCycleFlash,
-            modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 4.dp),
-        )
+        Row(
+            Modifier.align(Alignment.BottomEnd).padding(bottom = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            FlashChip(mode = flash, onCycle = onCycleFlash)
+            LensChip(lens = lens, onFlip = onFlipLens)
+        }
     }
 }
 

@@ -237,6 +237,7 @@ private fun WarrantNav(nav: NavHostController, container: WarrantApplication.Con
         composable(JOB) {
             JobScreen(
                 vm = jobVm,
+                source = container.source,
                 onOpenPairing = { nav.navigate(Dest.INSTRUMENTS.route) },
                 // The job is over by the time this is reachable, so it is left behind rather
                 // than stacked under the record: back from a record goes to the records list,

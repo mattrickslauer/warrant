@@ -1,0 +1,137 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:72c43d68a35df114"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "unresolved": [],
+    "understanding": "This procedure covers repairing a punctured tyre or tube on a bicycle or e-bike at home. The repair is verified by checking that the tyre remains firm to the touch one hour after inflation to the pressure specified on the sidewall.",
+    "draft": {
+      "key": "tyre-puncture-repair",
+      "title": "Tyre Puncture Repair and Verification",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Sidewall damage detected on the tyre casing",
+        "Split tread detected on the tyre casing"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Tyre Casing",
+          "explanation": "A tyre with sidewall damage or a split tread is structurally compromised and will blow out under pressure, risking a serious accident in traffic.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "casing_condition",
+              "kind": "choice",
+              "prompt": "Inspect the tyre casing for sidewall damage or split tread.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Casing is intact and safe to reuse",
+                "Sidewall damage detected",
+                "Split tread detected"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Casing is intact and safe to reuse",
+              "guidance": "Look closely at the sidewalls for any cuts, bulges, or exposed cords, and check the tread area for splits rather than simple punctures."
+            }
+          ]
+        },
+        {
+          "title": "Remove Puncture Cause",
+          "explanation": "Any thorn, glass, or wire left inside the tyre casing will immediately puncture the tube or patch again once reassembled.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "puncture_cause_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the thorn, glass, or wire that caused the puncture after removing it.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The debris or object that caused the puncture, removed from the tyre.",
+              "guidance": "Carefully feel the inside of the tyre casing by hand to locate and remove the object, then photograph it."
+            }
+          ]
+        },
+        {
+          "title": "Apply Patch or Plug",
+          "explanation": "The patch or plug must be applied correctly to seal the hole before the tyre is reassembled.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "applied_repair_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the applied patch on the tube or the plug in the tubeless tyre.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The completed patch pressed flat on the tube, or the plug fully inserted into the tubeless tyre.",
+              "guidance": "Ensure the patch is pressed down hard with no lifting edges, or that the plug is securely seated."
+            }
+          ]
+        },
+        {
+          "title": "Inflate to Specification",
+          "explanation": "Correct inflation ensures the tyre beads seat properly on the rim and prevents pinch flats.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "inflation_pressure",
+              "kind": "measurement",
+              "prompt": "Inflate the tyre to the target pressure printed on the tyre sidewall.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "tyre sidewall",
+              "guidance": "Read the recommended pressure range printed on the tyre sidewall and inflate the tyre to match it."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Firmness Check",
+          "explanation": "A slow leak might not be noticeable immediately but will cause the tyre to go flat during a ride, putting you in danger in traffic.",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "firmness_verification",
+              "kind": "choice",
+              "prompt": "Check the tyre firmness by hand after letting it sit for one hour.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Tyre is still holding firm",
+                "Tyre has gone soft or lost pressure"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Tyre is still holding firm",
+              "guidance": "Leave the tyre for a full hour, then squeeze it firmly to verify that it has not lost any air."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"unresolved\": [],\n  \"understanding\": \"This procedure covers repairing a punctured tyre or tube on a bicycle or e-bike at home. The repair is verified by checking that the tyre remains firm to the touch one hour after inflation to the pressure specified on the sidewall.\",\n  \"draft\": {\n    \"key\": \"tyre-puncture-repair\",\n    \"title\": \"Tyre Puncture Repair and Verification\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Sidewall damage detected on the tyre casing\",\n      \"Split tread detected on the tyre casing\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Tyre Casing\",\n        \"explanation\": \"A tyre with sidewall damage or a split tread is structurally compromised and will blow out under pressure, risking a serious accident in traffic.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"casing_condition\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the tyre casing for sidewall damage or split tread.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Casing is intact and safe to reuse\",\n              \"Sidewall damage detected\",\n              \"Split tread detected\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Casing is intact and safe to reuse\",\n            \"guidance\": \"Look closely at the sidewalls for any cuts, bulges, or exposed cords, and check the tread area for splits rather than simple punctures.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Remove Puncture Cause\",\n        \"explanation\": \"Any thorn, glass, or wire left inside the tyre casing will immediately puncture the tube or patch again once reassembled.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"puncture_cause_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the thorn, glass, or wire that caused the puncture after removing it.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The debris or object that caused the puncture, removed from the tyre.\",\n            \"guidance\": \"Carefully feel the inside of the tyre casing by hand to locate and remove the object, then photograph it.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Apply Patch or Plug\",\n        \"explanation\": \"The patch or plug must be applied correctly to seal the hole before the tyre is reassembled.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"applied_repair_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the applied patch on the tube or the plug in the tubeless tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The completed patch pressed flat on the tube, or the plug fully inserted into the tubeless tyre.\",\n            \"guidance\": \"Ensure the patch is pressed down hard with no lifting edges, or that the plug is securely seated.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inflate to Specification\",\n        \"explanation\": \"Correct inflation ensures the tyre beads seat properly on the rim and prevents pinch flats.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"inflation_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Inflate the tyre to the target pressure printed on the tyre sidewall.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"tyre sidewall\",\n            \"guidance\": \"Read the recommended pressure range printed on the tyre sidewall and inflate the tyre to match it.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Firmness Check\",\n        \"explanation\": \"A slow leak might not be noticeable immediately but will cause the tyre to go flat during a ride, putting you in danger in traffic.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"firmness_verification\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Check the tyre firmness by hand after letting it sit for one hour.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Tyre is still holding firm\",\n              \"Tyre has gone soft or lost pressure\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Tyre is still holding firm\",\n            \"guidance\": \"Leave the tyre for a full hour, then squeeze it firmly to verify that it has not lost any air.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3385,
+    "candidatesTokenCount": 1298,
+    "totalTokenCount": 6301
+  }
+}

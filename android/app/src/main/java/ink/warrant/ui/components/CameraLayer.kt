@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Cameraswitch
 import androidx.compose.material.icons.rounded.FlashAuto
 import androidx.compose.material.icons.rounded.FlashOff
 import androidx.compose.material.icons.rounded.FlashOn
@@ -102,14 +103,17 @@ fun rememberCameraHandle(): CameraHandle {
  * The preview is only bound while [handle] says Live, and it is unbound the moment this leaves
  * the composition. A step that does not need the lens does not open it.
  *
- * [flash] is the technician's choice for the step in hand, owned by the job's state and passed
- * down rather than held here — see [ink.warrant.ui.job.JobViewModel.UiState.flash]. One owner
- * means the chip and the lamp cannot disagree, which is the whole failure worth preventing.
+ * [flash] and [lens] are the technician's choices for the step in hand, owned by the job's
+ * state and passed down rather than held here — see
+ * [ink.warrant.ui.job.JobViewModel.UiState.flash] and [ink.warrant.ui.job.JobViewModel.UiState.lens].
+ * One owner means the chip and the hardware cannot disagree, which is the whole failure worth
+ * preventing.
  */
 @Composable
 fun CameraLayer(
     handle: CameraHandle,
     flash: FlashMode = FlashMode.Default,
+    lens: Lens = Lens.Default,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -127,9 +131,18 @@ fun CameraLayer(
 
     val controller = remember {
         LifecycleCameraController(context).apply {
-            cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            cameraSelector = Lens.Default.cameraSelector
             setEnabledUseCases(LifecycleCameraController.IMAGE_CAPTURE)
         }
+    }
+
+    // Set on the controller for the same reason the lamp is, and separately from it: CameraX
+    // rebinds the preview when the selector changes, so writing it here rather than at the
+    // moment of capture is what makes the viewfinder actually turn around. Pinned at
+    // construction — which is what this was — meant the front camera could not be reached at
+    // all, and `proc_smile_v1` asks for exactly that.
+    LaunchedEffect(controller, lens) {
+        controller.cameraSelector = lens.cameraSelector
     }
 
     // Set on the controller rather than passed at the moment of capture: the lamp is part of
@@ -241,6 +254,42 @@ fun FlashChip(mode: FlashMode, onCycle: () -> Unit, modifier: Modifier = Modifie
         // twice is worse than not at all.
         Icon(icon, contentDescription = null, tint = tint, modifier = Modifier.size(16.dp))
         Text(mode.label, style = WarrantTheme.type.label.copy(color = tint))
+    }
+}
+
+/**
+ * Turn the camera around.
+ *
+ * The same shape as [FlashChip] and for the same reasons — a 44dp target, a label spelled out
+ * beside the glyph, and a tap that toggles rather than a menu that opens. Both are statements
+ * about the lens rather than about the work, and both come and go with it.
+ *
+ * Drawn unconditionally rather than gated on the device actually having two cameras. Every
+ * Android handset this app targets has both, and probing `CameraProvider.hasCamera` to hide a
+ * chip would trade a real line of code for a case that does not occur. The browser twin DOES
+ * gate on it, because a laptop with one webcam is an ordinary thing — see `LensControl` in
+ * web/src/components/CameraLayer.tsx.
+ */
+@Composable
+fun LensChip(lens: Lens, onFlip: () -> Unit, modifier: Modifier = Modifier) {
+    Row(
+        modifier
+            .heightIn(min = 44.dp)
+            .background(Color(0xB8202124), CircleShape)
+            .clickable(onClickLabel = "Turn the camera around", onClick = onFlip)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(7.dp),
+    ) {
+        // Null: the label beside it already says the state, and a screen reader announcing it
+        // twice is worse than not at all.
+        Icon(
+            Icons.Rounded.Cameraswitch,
+            contentDescription = null,
+            tint = Color.White,
+            modifier = Modifier.size(16.dp),
+        )
+        Text(lens.label, style = WarrantTheme.type.label.copy(color = Color.White))
     }
 }
 
