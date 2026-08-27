@@ -19,15 +19,15 @@
   ],
   "output": {
     "belongs": false,
-    "confidence": 1.0,
-    "rationale": "The submitted image is identical to a prior capture (cap-2026-05-02-fork) with an embedding distance of 0.004, indicating image reuse.",
+    "confidence": 0.99,
+    "rationale": "The submitted image is identical to the prior capture 'cap-2026-05-02-fork' with an embedding distance of 0.004, indicating that an old photo from May 2026 has been reused for this current job.",
     "mismatch_kind": "reuse",
     "prior_capture_ref": "cap-2026-05-02-fork"
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"The submitted image is identical to a prior capture (cap-2026-05-02-fork) with an embedding distance of 0.004, indicating image reuse.\",\n  \"mismatch_kind\": \"reuse\",\n  \"prior_capture_ref\": \"cap-2026-05-02-fork\"\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.99,\n  \"rationale\": \"The submitted image is identical to the prior capture 'cap-2026-05-02-fork' with an embedding distance of 0.004, indicating that an old photo from May 2026 has been reused for this current job.\",\n  \"mismatch_kind\": \"reuse\",\n  \"prior_capture_ref\": \"cap-2026-05-02-fork\"\n}",
   "usage": {
     "promptTokenCount": 3213,
-    "candidatesTokenCount": 104,
-    "totalTokenCount": 3750
+    "candidatesTokenCount": 121,
+    "totalTokenCount": 3794
   }
 }

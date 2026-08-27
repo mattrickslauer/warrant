@@ -4,26 +4,30 @@
   "location": "global",
   "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
   "parts": [
-    "t:a6fb2f0d80e8d246",
+    "t:dc5e3b5b315e6830",
+    "t:16d45d110dda2d4d",
+    "m:image/jpeg:9d1b10202f1354dd",
     "t:0f3fa5ac560e28f7",
-    "m:image/jpeg:afaa5abc5248644f"
+    "m:image/jpeg:391dbf5d57cbfdae"
   ],
   "labels": [
     "",
     "",
-    "scene/workshop-interior.jpg"
+    "prior:asset/bike-a-fork.jpg",
+    "",
+    "asset/bike-a-fork-later.jpg"
   ],
   "output": {
     "belongs": false,
     "confidence": 0.95,
-    "rationale": "The e-bike in the photo matches the Segway Xyber model, but the shop operates multiple identical units of this model and color. Since there are no recorded distinguishing marks for XYBER-07 and no prior reference captures to compare against, it is impossible to verify that this specific photo depicts asset XYBER-07 rather than another identical unit.",
+    "rationale": "The distinguishing mark of XYBER-07 is a single spiral cable wrap on the right fork leg with the left leg remaining bare, as confirmed in the reference photo. However, the submitted photo shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit of the same model from the workshop's fleet.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The e-bike in the photo matches the Segway Xyber model, but the shop operates multiple identical units of this model and color. Since there are no recorded distinguishing marks for XYBER-07 and no prior reference captures to compare against, it is impossible to verify that this specific photo depicts asset XYBER-07 rather than another identical unit.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The distinguishing mark of XYBER-07 is a single spiral cable wrap on the right fork leg with the left leg remaining bare, as confirmed in the reference photo. However, the submitted photo shows spiral cable wraps on both the left and right fork legs, indicating this is a different unit of the same model from the workshop's fleet.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
-    "promptTokenCount": 2007,
-    "candidatesTokenCount": 122,
-    "totalTokenCount": 2774
+    "promptTokenCount": 3212,
+    "candidatesTokenCount": 118,
+    "totalTokenCount": 4396
   }
 }

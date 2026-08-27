@@ -21,15 +21,15 @@
   ],
   "output": {
     "belongs": false,
-    "confidence": 0.95,
-    "rationale": "The submitted video shows a dark grey/black brake caliper being serviced, whereas the prior evidence on file for the asset XYBER-07 clearly shows it is equipped with distinctive red brake calipers. This indicates the video is of a different vehicle.",
+    "confidence": 0.98,
+    "rationale": "The prior evidence on file for the Segway Xyber (XYBER-07) clearly shows it is equipped with distinctive red brake calipers. The submitted video shows a technician working on a dark grey/black brake caliper of a completely different design, indicating this is a different vehicle/asset.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The submitted video shows a dark grey/black brake caliper being serviced, whereas the prior evidence on file for the asset XYBER-07 clearly shows it is equipped with distinctive red brake calipers. This indicates the video is of a different vehicle.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.98,\n  \"rationale\": \"The prior evidence on file for the Segway Xyber (XYBER-07) clearly shows it is equipped with distinctive red brake calipers. The submitted video shows a technician working on a dark grey/black brake caliper of a completely different design, indicating this is a different vehicle/asset.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 3681,
-    "candidatesTokenCount": 98,
-    "totalTokenCount": 4572
+    "candidatesTokenCount": 109,
+    "totalTokenCount": 4318
   }
 }

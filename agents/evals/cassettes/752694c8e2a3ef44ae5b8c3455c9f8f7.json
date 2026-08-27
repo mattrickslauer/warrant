@@ -14,19 +14,19 @@
     "torque/wrench-setting-wrong-scale.jpg"
   ],
   "output": {
-    "verdict": "ESCALATE",
-    "confidence": 0.95,
-    "rationale": "The torque wrench is set to approximately 30 in-lb (about 3.4 Nm), which is significantly below the required range of 6-9 Nm.",
-    "add_field_key": null,
+    "verdict": "ADD_FIELD",
+    "confidence": 0.1,
+    "rationale": "The torque wrench is currently showing the imperial scale (in-lb) set below 30, rather than the required Nm scale set between 6-9 Nm.",
+    "add_field_key": "torque_wrench_nm_scale_photo",
     "add_field_kind": "photo",
-    "add_field_prompt": null,
-    "escalation_question": "The torque wrench is set to approximately 30 in-lb (3.4 Nm), which is well below the required 6-9 Nm range. Can you confirm if the caliper bolts were under-torqued?",
+    "add_field_prompt": "Please rotate the torque wrench to show the Nm scale, set it to a value between 6 and 9 Nm, and take a clear, square-on photo of the barrel and collar.",
+    "escalation_question": null,
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"ESCALATE\",\n  \"confidence\": 0.95,\n  \"rationale\": \"The torque wrench is set to approximately 30 in-lb (about 3.4 Nm), which is significantly below the required range of 6-9 Nm.\",\n  \"add_field_key\": null,\n  \"add_field_kind\":  \"photo\",\n  \"add_field_prompt\": null,\n  \"escalation_question\": \"The torque wrench is set to approximately 30 in-lb (3.4 Nm), which is well below the required 6-9 Nm range. Can you confirm if the caliper bolts were under-torqued?\",\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.1,\n  \"rationale\": \"The torque wrench is currently showing the imperial scale (in-lb) set below 30, rather than the required Nm scale set between 6-9 Nm.\",\n  \"add_field_key\": \"torque_wrench_nm_scale_photo\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"Please rotate the torque wrench to show the Nm scale, set it to a value between 6 and 9 Nm, and take a clear, square-on photo of the barrel and collar.\",\n  \"escalation_question\": null,\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 2951,
-    "candidatesTokenCount": 163,
-    "totalTokenCount": 4594
+    "candidatesTokenCount": 162,
+    "totalTokenCount": 4519
   }
 }

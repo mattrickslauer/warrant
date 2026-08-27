@@ -15,18 +15,18 @@
   ],
   "output": {
     "verdict": "ADD_FIELD",
-    "confidence": 0.3,
-    "rationale": "The brake caliper is positioned over the disc, which completely obscures the pad faces and makes it impossible to verify the thickness and condition of the friction material.",
-    "add_field_key": "pads_visible_before_assembly",
+    "confidence": 0.0,
+    "rationale": "The photograph shows the caliper and the backing plates of the pads, but the friction material itself is not visible to verify that it is thick and unworn.",
+    "add_field_key": "pads_friction_material_photo",
     "add_field_kind": "photo",
-    "add_field_prompt": "The brake disc obscures the pad faces. Please take a close-up photograph of the new pads seated inside the caliper before it is mounted over the disc, ensuring the thickness of the friction material is clearly visible.",
+    "add_field_prompt": "Please take a close-up photograph of the caliper showing the thickness and faces of the new brake pad friction material before it is mounted over the disc.",
     "escalation_question": null,
     "observed": null
   },
-  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.3,\n  \"rationale\": \"The brake caliper is positioned over the disc, which completely obscures the pad faces and makes it impossible to verify the thickness and condition of the friction material.\",\n  \"add_field_key\": \"pads_visible_before_assembly\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"The brake disc obscures the pad faces. Please take a close-up photograph of the new pads seated inside the caliper before it is mounted over the disc, ensuring the thickness of the friction material is clearly visible.\",\n  \"escalation_question\": null,\n  \"observed\": null\n}",
+  "raw": "{\n  \"verdict\": \"ADD_FIELD\",\n  \"confidence\": 0.0,\n  \"rationale\": \"The photograph shows the caliper and the backing plates of the pads, but the friction material itself is not visible to verify that it is thick and unworn.\",\n  \"add_field_key\": \"pads_friction_material_photo\",\n  \"add_field_kind\": \"photo\",\n  \"add_field_prompt\": \"Please take a close-up photograph of the caliper showing the thickness and faces of the new brake pad friction material before it is mounted over the disc.\",\n  \"escalation_question\": null,\n  \"observed\": null\n}",
   "usage": {
     "promptTokenCount": 2894,
-    "candidatesTokenCount": 160,
-    "totalTokenCount": 3829
+    "candidatesTokenCount": 148,
+    "totalTokenCount": 3926
   }
 }

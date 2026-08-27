@@ -20,14 +20,14 @@
   "output": {
     "belongs": false,
     "confidence": 1.0,
-    "rationale": "The submitted video shows a classic internal combustion engine motorcycle on stands in a workshop, which is a completely different vehicle type and model compared to the Segway Xyber e-bike (XYBER-07) specified for this job.",
+    "rationale": "The submitted video shows a classic motorcycle on stands in a workshop, whereas the asset is a Segway Xyber e-bike. This is a completely different vehicle type.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"The submitted video shows a classic internal combustion engine motorcycle on stands in a workshop, which is a completely different vehicle type and model compared to the Segway Xyber e-bike (XYBER-07) specified for this job.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"The submitted video shows a classic motorcycle on stands in a workshop, whereas the asset is a Segway Xyber e-bike. This is a completely different vehicle type.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 2617,
-    "candidatesTokenCount": 97,
-    "totalTokenCount": 3260
+    "candidatesTokenCount": 83,
+    "totalTokenCount": 3039
   }
 }

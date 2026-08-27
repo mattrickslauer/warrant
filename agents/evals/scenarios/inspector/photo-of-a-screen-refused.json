@@ -1,7 +1,7 @@
 {
   "agent": "inspector",
   "title": "photo of a screen refused",
-  "why": "A photograph of a monitor showing a photograph of a reading. The number may even be right. This is the cheapest fraud available and it must never reach the record as a measurement.",
+  "why": "A photograph of a monitor showing a photograph of a reading. The number may even be right. This is the cheapest fraud available and it must never reach the record as a measurement.\n\nOBSERVED, 27 Aug — the refusal happens, the reason does not. Gemini 3.5 Flash returns ESCALATE at confidence 0.0, so the capture never reaches the record and the gate holds. But its rationale is about the wrong defect: it objects that a mechanical click-type wrench is not the paired digital instrument the step called for, and says nothing about the photograph being of a display. The pixel grid and the letterboxing are plainly there in the frame and the model did not name them.\n\nLeft red on purpose. The outcome is safe and the finding is not: 'it escalated anyway' would be the wrong lesson to take, because the escalation here is luck — the same fraud shot off a screen with the CORRECT instrument in frame has nothing left to object to. Detecting re-photography is a provenance question, which is the Skeptic's job and not the Inspector's, and that is a change to the fleet rather than to this prompt.",
   "input": {
     "step": {
       "title": "Fit the new pads and torque the caliper bolts",

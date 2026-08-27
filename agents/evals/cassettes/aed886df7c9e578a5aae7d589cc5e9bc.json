@@ -19,15 +19,15 @@
   ],
   "output": {
     "belongs": false,
-    "confidence": 0.95,
-    "rationale": "The submitted photo shows only a brake caliper and rotor in isolation. It does not show the e-bike itself, preventing verification of the distinguishing marks (the single spiral cable wrap on the right fork leg and the unpainted light grey front mudguard) required to identify asset XYBER-07.",
+    "confidence": 0.98,
+    "rationale": "The submitted photo shows only a brake caliper and rotor on a flat surface. It does not show the e-bike itself, making it impossible to verify the distinguishing marks of XYBER-07, such as the single spiral cable wrap on the right fork leg or the unpainted light grey front mudguard.",
     "mismatch_kind": "asset",
     "prior_capture_ref": null
   },
-  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.95,\n  \"rationale\": \"The submitted photo shows only a brake caliper and rotor in isolation. It does not show the e-bike itself, preventing verification of the distinguishing marks (the single spiral cable wrap on the right fork leg and the unpainted light grey front mudguard) required to identify asset XYBER-07.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 0.98,\n  \"rationale\": \"The submitted photo shows only a brake caliper and rotor on a flat surface. It does not show the e-bike itself, making it impossible to verify the distinguishing marks of XYBER-07, such as the single spiral cable wrap on the right fork leg or the unpainted light grey front mudguard.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
   "usage": {
     "promptTokenCount": 3160,
-    "candidatesTokenCount": 109,
-    "totalTokenCount": 3719
+    "candidatesTokenCount": 111,
+    "totalTokenCount": 3818
   }
 }
