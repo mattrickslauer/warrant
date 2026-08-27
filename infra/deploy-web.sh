@@ -106,6 +106,29 @@ $ENG push "$IMAGE" >/dev/null
 #
 # WHAT IS NOT SET, SAID OUT LOUD. Each of these fails silently and identically — the feature
 # simply never happens — and the deployed build ran for weeks with the first two absent.
+# Every variable below is passed to `gcloud run deploy` unconditionally, so one that is unset
+# HERE is not merely skipped — it is written as empty over whatever the running service has.
+# That is how a deploy silently downgrades production: the build is fine, the revision is
+# healthy, and a capability just stops existing. `WARRANT_INSTRUMENT_KEYS` is the one that
+# matters most, because without it no reading can be attested and the central claim of the
+# product quietly becomes untrue on the live site.
+#
+# So: read what the service currently has, and refuse to blank it. Same posture as the sweep
+# schedule below — refused rather than deployed broken. `KEEP_MISSING_ENV=1` overrides, for
+# the deliberate case where a capability is genuinely being turned off.
+# Names only, and only those that actually carry a value — a variable can be declared on the
+# revision and be empty, which is not something worth protecting. No value is ever printed.
+DEPLOYED_ENV="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" \
+  --format=json 2>/dev/null | python3 -c '
+import sys, json
+try:
+    d = json.load(sys.stdin)
+except Exception:
+    sys.exit(0)                      # no service yet: nothing to protect, first deploy
+env = d.get("spec", {}).get("template", {}).get("spec", {}).get("containers", [{}])[0].get("env", [])
+print(";".join(e["name"] for e in env if e.get("value") or e.get("valueFrom")))
+' 2>/dev/null || true)"
+WOULD_BLANK=""
 for v in MODEL_ARMOR_LOCATION MODEL_ARMOR_TEMPLATE WARRANT_INSTRUMENT_KEYS \
          GOOGLE_OAUTH_CLIENT_SECRET WARRANT_SWEEP_SECRET; do
   if [ -z "${!v:-}" ]; then
@@ -115,8 +138,19 @@ for v in MODEL_ARMOR_LOCATION MODEL_ARMOR_TEMPLATE WARRANT_INSTRUMENT_KEYS \
       GOOGLE_OAUTH_CLIENT_SECRET) echo "note: $v unset — linking a calendar will return 503." ;;
       WARRANT_SWEEP_SECRET) echo "note: $v unset — every sweep will 401 and nothing scheduled will run." ;;
     esac
+    case ";${DEPLOYED_ENV};" in *";$v;"*) WOULD_BLANK="$WOULD_BLANK $v" ;; esac
   fi
 done
+if [ -n "$WOULD_BLANK" ] && [ -z "${KEEP_MISSING_ENV:-}" ]; then
+  echo >&2
+  echo "error: these are set on the running service and empty here, so this deploy would" >&2
+  echo "       erase them from $SERVICE:" >&2
+  for v in $WOULD_BLANK; do echo "         $v" >&2; done
+  echo >&2
+  echo "       Put them back in .env and re-run. To turn a capability off on purpose:" >&2
+  echo "         KEEP_MISSING_ENV=1 ./infra/deploy-web.sh" >&2
+  exit 1
+fi
 
 # Scale to zero: no request, no container, no charge.
 gcloud run deploy "$SERVICE" \
