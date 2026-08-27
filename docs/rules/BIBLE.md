@@ -11,6 +11,7 @@ below is traceable to a quoted line in `rules.md` or `overview.md`.
 | [`resources.md`](resources.md) | Resources tab — credits, workshops, guides |
 | [`updates.md`](updates.md) | Organiser announcements |
 | `raw/*.html` | Byte-for-byte source, in case an extraction dropped something |
+| [`judging-qa.md`](judging-qa.md) | The live judging Q&A of 26 Aug — what a judge said out loud about scoring, and what changed here because of it. Not binding; the rules above are. But it is the only place the panel says which of two compliant submissions they would rather pick |
 
 Archived **2026-08-17** from `allthingsagentichackathon.devpost.com`. Re-fetch with
 `./scripts/fetch_rules.sh` and diff before submission — the sponsor may change the rules.
