@@ -46,6 +46,8 @@ import ink.warrant.ui.components.BusyRing
 import ink.warrant.ui.components.CameraLayer
 import ink.warrant.ui.components.FlashChip
 import ink.warrant.ui.components.FlashMode
+import ink.warrant.ui.components.Lens
+import ink.warrant.ui.components.LensChip
 import ink.warrant.ui.components.LiveMark
 import ink.warrant.ui.components.ReadingBadge
 import ink.warrant.ui.components.rememberCameraHandle
@@ -356,7 +358,12 @@ fun JobScreen(
             when {
                 framedFile != null -> ReviewFrame(framedFile, active?.prompt ?: step.title)
                 active != null && active.usesCamera() ->
-                    CameraLayer(camera, state.flashFor(step.id), Modifier.fillMaxSize())
+                    CameraLayer(
+                        handle = camera,
+                        flash = state.flashFor(step.id),
+                        lens = state.lensFor(step.id),
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 else -> Unit
             }
         },
@@ -376,6 +383,8 @@ fun JobScreen(
                 redactNote = redactNote,
                 flash = state.flashFor(step.id),
                 onCycleFlash = { vm.cycleFlash(step.id) },
+                lens = state.lensFor(step.id),
+                onFlipLens = { vm.flipLens(step.id) },
             )
         },
     )
@@ -543,6 +552,8 @@ private fun BoxScope.StepCenter(
     redactNote: String?,
     flash: FlashMode,
     onCycleFlash: () -> Unit,
+    lens: Lens,
+    onFlipLens: () -> Unit,
 ) {
     val colors = WarrantTheme.colors
 
@@ -629,11 +640,14 @@ private fun BoxScope.StepCenter(
     // has already been taken. Redo reopens the lens and the chip comes back with it.
     if (live) {
         LiveMark(Modifier.align(Alignment.BottomStart).padding(bottom = 4.dp))
-        FlashChip(
-            mode = flash,
-            onCycle = onCycleFlash,
-            modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 4.dp),
-        )
+        Row(
+            Modifier.align(Alignment.BottomEnd).padding(bottom = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            FlashChip(mode = flash, onCycle = onCycleFlash)
+            LensChip(lens = lens, onFlip = onFlipLens)
+        }
     }
 }
 

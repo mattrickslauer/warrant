@@ -22,6 +22,7 @@ import ink.warrant.data.ReadingFrame
 import ink.warrant.data.ReadingInput
 import ink.warrant.instrument.InstrumentSession
 import ink.warrant.ui.components.FlashMode
+import ink.warrant.ui.components.Lens
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -106,6 +107,16 @@ class JobViewModel(
          * carry it.
          */
         val flash: Map<String, FlashMode> = emptyMap(),
+        /**
+         * Which way the camera is pointed, per step. Absent means [Lens.Default].
+         *
+         * Keyed by step id for the same reason [flash] is: one step's subject is the machine
+         * in front of you and another's is your own face, and a job that asked for both would
+         * otherwise make you turn the camera around twice on every pass. Screen state — how
+         * the lens was set is not part of what the step produced, and the record does not
+         * carry it.
+         */
+        val lens: Map<String, Lens> = emptyMap(),
         val error: String? = null,
         val fabricated: Boolean = true,
     ) {
@@ -121,6 +132,9 @@ class JobViewModel(
         /** How the lamp is set for this step. Untouched steps are [FlashMode.Default]. */
         fun flashFor(stepId: String): FlashMode = flash[stepId] ?: FlashMode.Default
 
+        /** Which way this step points the camera. Untouched steps are [Lens.Default]. */
+        fun lensFor(stepId: String): Lens = lens[stepId] ?: Lens.Default
+
         /**
          * This step's lamp moved one place on, and every other step's left exactly alone.
          *
@@ -129,6 +143,10 @@ class JobViewModel(
          */
         fun withFlashCycled(stepId: String): UiState =
             copy(flash = flash + (stepId to flashFor(stepId).next()))
+
+        /** This step's camera turned around, and every other step's left exactly alone. */
+        fun withLensFlipped(stepId: String): UiState =
+            copy(lens = lens + (stepId to lensFor(stepId).next()))
 
         /**
          * This step, put back in front of the hands, and no other step touched.
@@ -592,6 +610,11 @@ class JobViewModel(
         _state.value = _state.value.withFlashCycled(stepId)
     }
 
+    /** Turn this step's camera around. Scoped to the step, like the lamp beside it. */
+    fun flipLens(stepId: String) {
+        _state.value = _state.value.withLensFlipped(stepId)
+    }
+
     /**
      * The end of the last step.
      *
@@ -666,8 +689,10 @@ fun newJobState(
     sealedRecordId = null,
     handedOver = false,
     // Named rather than left to the default, for the same reason as the three above: a lamp
-    // belongs to the job that chose it, and this list is the audit of what does not survive.
+    // and a lens belong to the job that chose them, and this list is the audit of what does
+    // not survive.
     flash = emptyMap(),
+    lens = emptyMap(),
     error = null,
     fabricated = fabricated,
 )

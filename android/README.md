@@ -119,6 +119,32 @@ Carried over verbatim from `web/src/components/library.css`:
 
 Provenance is legible in the typeface before you reach the colour chip. Do not mix them.
 
+### The step page has a browser twin
+
+`ui/job/StepPage.kt` was android-only for most of this build, and the browser ran a scrolling
+stack of cards instead — which meant the shutter's position depended on how long a step's
+explanation was. It does not any more. `web/src/components/StepPage.tsx` is a port of this
+file, keeping all three rules (it never scrolls, the primary bar never moves, both exits stay
+on the surface), and the two now share their reasoning the way `Attention.kt` and
+`attention.ts` already did:
+
+| Rule | Kotlin | TypeScript |
+|---|---|---|
+| What the one big button means | `ui/job/StepAction.kt` | `web/src/data/step-action.ts` |
+| Where a job stands at Finish | `ui/job/Handover.kt` | `web/src/data/handover.ts` |
+| What an agent is waiting on | `data/Attention.kt` | `web/src/data/attention.ts` |
+
+Each pair has a test on both sides (`StepActionTest.kt` / `scripts/step-action.test.mjs`), and
+they must keep agreeing: a bar reading "Next step" on a step that is not finished is a lie a
+screenshot would not catch, and two surfaces telling different lies is worse than one.
+
+The lens and the lamp are the technician's choice on both, per step, and neither is on the
+contract — a `FieldDef` says what a step must *produce*, never which piece of glass produces
+it. The browser gets two lamp states where this gets three, because `getUserMedia` exposes a
+`torch` capability (a lamp you switch on) and has no shutter-synchronised flash to hand an
+"auto" decision to. Drawing a third state the platform cannot honour would be a control that
+lies about what it does.
+
 ---
 
 ## The instrument
