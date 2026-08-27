@@ -290,7 +290,7 @@ button{font:inherit;color:inherit}
 <div class="chrome">
   <div class="brand">
     <h1><i></i>Warrant — deployed architecture</h1>
-    <p id="stamp">project warrent-505918 · us-central1 · verified 2026-08-19</p>
+    <p id="stamp">project warrent-505918 · us-central1 · verified 2026-08-26</p>
   </div>
   <div class="tally" id="tally"></div>
   <div class="tools">
@@ -338,7 +338,7 @@ button{font:inherit;color:inherit}
 
 /* =========================================================================
    The data. Every value below was read out of project warrent-505918 with
-   gcloud or the REST APIs on 2026-08-19, or by requesting the live service.
+   gcloud or the REST APIs on 2026-08-26, or by requesting the live service.
    Nothing here is inferred from the repository — where the repository and the
    project disagree, the project wins and the node is marked `drift`.
    ========================================================================= */
@@ -350,16 +350,18 @@ const STATE = {
   dorm:  {c:"var(--dorm)",  l:"var(--dorm-lift)",  label:"Dormant",     blurb:"API enabled, zero resources. Nothing to call."},
   hub:   {c:"var(--primary)",l:"var(--primary-lift)",label:"Project",   blurb:"The project envelope itself."},
   bench: {c:"var(--asserted)",l:"var(--asserted-lift)",label:"On the bench",
-          blurb:"Real code making real calls into this project, and answering a recorded suite \u2014 but run from a developer machine, not from anything deployed here."},
+          blurb:"Real code making real calls into this project — but built and run from a developer machine, not from anything deployed here."},
 };
 
 const BANDS = [
-  {t:"Supply chain — how the image got there",              ids:["laptop","ar","gcs","imgweb","imgsite"]},
-  {t:"Identity — provisioned, never exercised",             ids:["idp","webapp","google","anon","domains"]},
-  {t:"Request path — what a visitor actually touches",      ids:["browser","gfe","run","invoker","rev","runsa","next","src","routes","apiauth"]},
-  {t:"Platform services — enabled, unused",                 ids:["armor","vertex","apis","pubsub","obs","secrets"]},
-  {t:"Data — provisioned, empty",                           ids:["fs","idx","rules","sawe","saadm"]},
-  {t:"The agent fleet — seven, on the bench",                ids:["scoper","inspector","skeptic","instructor","foreman","auditor","wright"]},
+  {t:"Supply chain — how the image got there",              ids:["laptop","ar","imgweb","gcs"]},
+  {t:"Identity — Google sign-in, wired to the live origin", ids:["idp","webapp","google","anon","domains"]},
+  {t:"Request path — what a visitor actually touches",      ids:["browser","android","gfe","run","invoker","rev","runsa","next","src","routes","apiauth"]},
+  {t:"Platform services",                                   ids:["armor","vertex","apis","pubsub","obs","secrets"]},
+  {t:"Data — carrying real records",                        ids:["fs","idx","rules","evid","sawe","saadj","saadm"]},
+  {t:"The fleet — deployed on Vertex AI Agent Engine",      ids:["engine","screen","agentpkg","scoper","inspector","skeptic","instructor","foreman","auditor","wright"]},
+  {t:"Scheduled work — one cron for the whole system",      ids:["sched","sweep","tasksc","cal"]},
+  {t:"Instruments — a reading nobody typed",                ids:["firmware","ble","ingest"]},
 ];
 
 const NODES = [
@@ -369,231 +371,285 @@ const NODES = [
    note:"The build host is outside Google Cloud entirely. <b>Cloud Build is enabled but never runs</b> — the image is built locally and pushed straight to Artifact Registry."},
 
   {id:"ar", x:350, y:80, s:"live", t:"Artifact Registry", sub:"warrant · Docker · us-central1",
-   facts:[["repository","warrant"],["format","DOCKER"],["location","us-central1"],["size","98.2 MB"],["images","2 (web, site)"]],
-   note:"Holds every image the project has ever run. Cloud Run pulls from here at cold start."},
+   facts:[["repository","warrant"],["format","DOCKER"],["location","us-central1"],["images","web — 8 pushes, 3 tagged"],["most recent push","2026-08-26 19:37 UTC"]],
+   note:"Every deploy this week came through here. Untagged layers accumulate because <code>deploy-web.sh</code> tags by timestamp and never prunes."},
 
-  {id:"imgweb", x:650, y:80, s:"live", t:"web:20260819-234815", sub:"the image now serving",
-   facts:[["pushed","2026-08-19 16:48:59 -0700"],["base","node:22-alpine"],["build","Next.js output: standalone"],["digest tag","20260819-234815"]],
-   note:"A two-stage build: the runtime layer carries the standalone server and its reachable node_modules only — no toolchain, no dev dependencies."},
+  {id:"imgweb", x:650, y:80, s:"live", t:"web:20260826-193655", sub:"the image now serving",
+   facts:[["pushed","2026-08-26 19:37 UTC"],["base","node:22-alpine"],["build","Next.js output: standalone"],["serving as","revision warrant-00013-nlw"]],
+   note:"Built and deployed <b>today</b>. The tag is the build timestamp, so the image name is also the answer to “which commit is live”."},
 
-  {id:"imgsite", x:650, y:230, s:"prov", t:"site:20260818-192615", sub:"superseded static site",
-   facts:[["pushed","2026-08-18 12:26:32"],["traffic","none"],["replaced by","web:20260819-234815"]],
-   note:"The static site this app replaced in commit <b>161bdfa</b>. Still in the registry, no longer referenced by any revision."},
-
-  {id:"gcs", x:350, y:230, s:"dorm", t:"Cloud Storage", sub:"warrent-505918_cloudbuild · US",
+  {id:"gcs", x:350, y:230, s:"dorm", t:"Cloud Storage — build staging", sub:"warrent-505918_cloudbuild · US",
    facts:[["bucket","warrent-505918_cloudbuild"],["location","US multi-region"],["created by","Cloud Build API enablement"],["used by","nothing"]],
-   note:"Auto-created when the Cloud Build API was enabled. <b>No build has ever staged through it</b>, because the image is built on the laptop."},
+   note:"Made by enabling an API that never ran. Left in place because deleting it is the sort of tidying that breaks a deploy at midnight."},
 
   /* ---------------------------------------------------- request path */
   {id:"browser", x:50, y:430, s:"live", t:"Browser", sub:"any device · no account, no install",
-   facts:[["auth","none required"],["entry","GET /"],["response","200 in ~0.37 s cold"]],
-   note:"The deployed build asks nobody to sign in. Every screen renders for an anonymous visitor."},
+   facts:[["auth","Google sign-in, or none for public records"],["entry","GET /"],["response","200 in 0.41 s warm"]],
+   note:"The technician surface is a web page on purpose. <b>A shop cannot be asked to install anything</b> before it will try this."},
+
+  {id:"android", x:50, y:580, s:"bench", t:"Android app", sub:"ink.warrant · Compose · debug build",
+   facts:[["talks to","the same Cloud Run routes as the browser"],["adds","BLE instrument drivers the web cannot reach"],["distribution","sideloaded — no Play listing"],["source","android/app/src/main/java/ink/warrant"]],
+   note:"The second surface exists for one reason: <b>Web Bluetooth cannot be trusted to hold a GATT connection while a camera is open</b>. Everything else it does, the web does."},
 
   {id:"gfe", x:350, y:430, s:"live", t:"Google Front End", sub:"TLS termination · global anycast",
    facts:[["ingress","all"],["hostnames","warrant-zq2l2kwg3q-uc.a.run.app · warrant-1020487917587.us-central1.run.app"],["to container","plain HTTP :8080"]],
-   note:"TLS stops here. The container never sees a certificate — which is why the Dockerfile only ever binds plain HTTP."},
+   note:"Nothing was configured here. Cloud Run brings its own certificate and its own edge."},
 
   {id:"run", x:650, y:430, s:"live", t:"Cloud Run service", sub:"warrant · us-central1 · managed",
-   facts:[["generation","1"],["concurrency","80"],["scale","min 0 · max 4"],["timeout","300 s"],["startup CPU boost","on"],["created","2026-08-19 23:49:04 UTC"],["creator","anthonybtedesco@gmail.com"]],
-   note:"Scales to zero. No request means no container and no charge — a cold start costs about a second."},
+   facts:[["concurrency","80"],["scale","min 0 · max 4"],["timeout","300 s"],["startup CPU boost","on"],["revisions","13, all ready"],["creator","anthonybtedesco@gmail.com"]],
+   note:"Scale-to-zero is why the first request of the morning is slow and every one after it is not. <b>Max 4 instances is a cost ceiling</b>, not a capacity estimate."},
 
   {id:"invoker", x:650, y:580, s:"live", t:"IAM — run.invoker", sub:"allUsers",
    facts:[["role","roles/run.invoker"],["member","allUsers"],["effect","the service is open to the public internet"]],
-   note:"Deliberate: the demo has to be openable from a link. <b>There is no authentication in front of this service.</b>"},
+   note:"Public by design: a sealed record has to be readable by someone with the link and no account. <b>Authorisation happens above this line</b>, in the routes and in firestore.rules."},
 
-  {id:"rev", x:950, y:430, s:"live", t:"Revision warrant-00001-rsd", sub:"100% traffic · the only revision",
-   facts:[["cpu / memory","1 vCPU · 512 MiB"],["port","8080 (http1)"],["env vars","none set"],["ready","true"],["traffic","100%, latestRevision"]],
-   note:"<b>No runtime environment variables are set on this revision.</b> The deploy script sets GCP_PROJECT, WARRANT_REGION and GOOGLE_OAUTH_CLIENT_ID — this revision predates that change."},
+  {id:"rev", x:950, y:430, s:"live", t:"Revision warrant-00013-nlw", sub:"100% traffic · 13th revision",
+   facts:[["created","2026-08-26 19:37:54 UTC"],["traffic","100%, latestRevision"],["cpu / memory","1 vCPU · 512 MiB"],["port","8080 (http1)"],["ready","true"]],
+   note:"Thirteen revisions in seven days. Traffic always follows latest — there is no canary here, and a bad deploy is fixed by deploying again."},
 
-  {id:"runsa", x:950, y:580, s:"drift", t:"Runtime identity", sub:"1020487917587-compute@developer",
-   facts:[["attached SA","default compute service account"],["its role","roles/editor"],["script intends","warrant-web@warrent-505918.iam"],["credentials","metadata server, short-lived"]],
-   note:"<b>Drift.</b> infra/deploy-web.sh passes <code>--service-account warrant-web@…</code>, but the running revision uses the default compute account, which holds <b>roles/editor</b> over the whole project — far more than the least-privilege pair the script was written to attach."},
+  {id:"runsa", x:950, y:580, s:"live", t:"Runtime identity", sub:"warrant-web@warrent-505918.iam",
+   facts:[["attached SA","warrant-web@warrent-505918.iam.gserviceaccount.com"],["was","the default compute SA with roles/editor, until 2026-08-21"],["credentials","metadata server, short-lived"],["reaches Vertex by","impersonating warrant-adjudicator@"]],
+   note:"<b>Fixed since the last reading of this diagram.</b> The service ran as the default compute account — project editor — for its first two revisions. It now runs as a purpose-made account that cannot administer the project it lives in."},
 
   {id:"next", x:1250, y:430, s:"live", t:"Next.js standalone server", sub:"node:22-alpine · server.js on :8080",
-   facts:[["mode","output: standalone"],["process","node server.js, PID 1"],["static","/_next/static served in-process"],["images","Next image optimiser, on-box"]],
-   note:"One process. No sidecar, no reverse proxy, no CDN in front of it beyond the Google Front End."},
+   facts:[["mode","output: standalone"],["process","node server.js, PID 1"],["static","/_next/static served in-process"],["routes","22 API routes · 17 pages"]],
+   note:"One container serves the pages, the API and the images. There is no separate backend, and <b>every agent call in this system is made from server code</b>, never from the browser."},
 
-  {id:"src", x:1250, y:580, s:"prov", t:"FixtureSource", sub:"in-process fixtures · fabricated = true",
-   facts:[["binding","getDataSource() → FixtureSource"],["reason","no NEXT_PUBLIC_FIREBASE_* baked into the image"],["verified","no AIzaSy key appears in any served chunk"],["surfaces say so","yes — /about names it"]],
-   note:"The deployed image carries <b>no Firebase web config</b>, so the browser binding falls back to fixtures. Every screen works end to end — on fabricated data, and it admits it."},
+  {id:"src", x:1250, y:580, s:"live", t:"LiveSource", sub:"Firestore-backed · fabricated = false",
+   facts:[["binding","getDataSource() → LiveSource"],["reason","GCP_PROJECT and the Firebase env are baked into the image"],["was","FixtureSource, until the env was set on 2026-08-21"],["fallback","FixtureSource still runs the whole product offline"]],
+   note:"<b>Fixed since the last reading.</b> The deployed image used to fall back to fixtures because no configuration reached it, and the site said so out loud. It now reads and writes the real database."},
 
-  {id:"routes", x:1550, y:430, s:"live", t:"Public routes", sub:"all verified 200",
-   list:["GET /  — task picker","GET /about","GET /library","GET /job/[id]","GET /r/[id] — sealed record"],
-   listTitle:"Responding 200 right now",
-   facts:[["checked","2026-08-19, live service"],["renderer","React Server Components + client islands"]],
-   note:"The whole product loop is reachable without an account: pick a task, work it, land on a sealed record."},
+  {id:"routes", x:1550, y:430, s:"live", t:"Public routes", sub:"7 checked, all 200",
+   facts:[["checked","2026-08-26, live service"],["200","/ · /library · /model-tests · /about · /author · /fleet · /records"],["renderer","React Server Components + client islands"],["slowest","/fleet, 1.87 s — it queries the engine"]],
+   note:"Every page a judge is asked to open was requested from the public internet on the day this diagram was made."},
 
-  {id:"apiauth", x:1550, y:580, s:"drift", t:"/api/auth/*", sub:"session · claim · dev-hd — all 404",
-   facts:[["/api/auth/session","404"],["/api/auth/claim","404"],["/api/auth/dev-hd","404"],["in repository","yes, uncommitted at deploy time"]],
-   note:"<b>Drift.</b> The sign-in work landed in commit <b>a7c6f6a</b> at 23:02, but the image now serving was built at <b>16:48</b>. These routes exist in the tree and not in the container. Sign-in cannot complete on the deployed URL."},
+  {id:"apiauth", x:1550, y:580, s:"live", t:"/api/auth/*", sub:"session · claim · calendar",
+   facts:[["/api/auth/session","200"],["/api/auth/claim","405 — POST only, as written"],["was","all 404 — absent from the image on 2026-08-19"],["also","/api/auth/calendar for the OAuth grant"]],
+   note:"<b>Fixed since the last reading.</b> These routes existed only in the working tree at the time of the last deploy, so sign-in could not complete against the live service."},
 
   /* ---------------------------------------------------- identity */
-  {id:"idp", x:1250, y:80, s:"prov", t:"Identity Platform", sub:"projects/1020487917587/config",
-   facts:[["service","identitytoolkit.googleapis.com"],["providers","google.com, anonymous"],["callback","warrent-505918.firebaseapp.com/__/auth/action"],["users","none created by the live app"]],
-   note:"Fully configured and completely unexercised: nothing in the deployed image ever calls it."},
+  {id:"idp", x:1250, y:80, s:"live", t:"Identity Platform", sub:"projects/1020487917587/config",
+   facts:[["service","identitytoolkit.googleapis.com"],["providers","google.com, anonymous"],["callback","warrent-505918.firebaseapp.com/__/auth/action"],["session","minted server-side into an HttpOnly cookie"]],
+   note:"The browser never holds a long-lived credential. The client SDK gets an ID token, <code>/api/auth/session</code> exchanges it, and everything after that is a cookie the page cannot read."},
 
-  {id:"google", x:1550, y:80, s:"prov", t:"Google sign-in", sub:"enabled · OAuth client present",
+  {id:"google", x:1550, y:80, s:"live", t:"Google sign-in", sub:"enabled · OAuth client present",
    facts:[["provider","google.com"],["enabled","true"],["client id","1020487917587-9s2mklllnpcarhdu4c9uecn3s7rosfks"],["why manual","no public API creates an OAuth client"]],
-   note:"The one step of this whole setup that had to be done in the console. Enabling the provider there is what mints the OAuth client the popup needs."},
+   note:"The one piece of this project that cannot be created by a script. It was clicked once, by hand, in the console."},
 
   {id:"anon", x:1550, y:230, s:"prov", t:"Anonymous sign-in", sub:"enabled",
-   facts:[["provider","anonymous"],["enabled","true"],["used by","nothing deployed"]],
-   note:"Enabled over the API during bootstrap. Available for a tenant-of-one path that the deployed image does not take."},
+   facts:[["enabled","true"],["used by","nothing yet"],["intended for","a technician who joins a job by link"]],
+   note:"Enabled ahead of the flow that needs it. Nothing in the deployed app calls it."},
 
   {id:"webapp", x:1250, y:230, s:"prov", t:"Firebase Web App", sub:"Warrant Web · ACTIVE",
-   facts:[["appId","1:1020487917587:web:1c96918535356db8465fe6"],["apiKey","AIzaSyAi_gaph… (public by design)"],["state","ACTIVE"],["baked into image","no"]],
-   note:"Registered and active. Its config is public on purpose — the key is an identifier, and <b>firestore.rules is what protects the data</b>. That makes the unreleased ruleset below the thing that matters."},
+   facts:[["state","ACTIVE"],["supplies","the apiKey and authDomain the client SDK needs"],["storage bucket","warrent-505918-evidence"]],
+   note:"A registration, not a service. It exists so the browser SDK has something to point at."},
 
-  {id:"domains", x:1850, y:155, s:"drift", t:"Authorized domains", sub:"3 listed — the Run host is not one",
-   list:["localhost","warrent-505918.firebaseapp.com","warrent-505918.web.app"],
-   listTitle:"Currently authorized",
-   facts:[["missing","warrant-zq2l2kwg3q-uc.a.run.app"],["consequence","sign-in popup refused from the live origin"],["fixed by","infra/deploy-web.sh tail (not yet run)"]],
-   note:"<b>Drift.</b> A Cloud Run hostname is generated, not chosen, so it cannot be authorized in advance. The deploy script now patches it in after deploying — that step has not run against this revision."},
-
-  /* ---------------------------------------------------- data */
-  {id:"fs", x:1250, y:790, s:"prov", t:"Firestore (default)", sub:"nam5 · Native · pessimistic",
-   facts:[["database","(default)"],["location","nam5 (US multi-region)"],["type","FIRESTORE_NATIVE"],["concurrency","PESSIMISTIC"],["PITR","disabled"],["collections","0"]],
-   note:"The database exists, is indexed, and is <b>completely empty</b>. Not one document has been written by anything."},
-
-  {id:"idx", x:1550, y:790, s:"prov", t:"7 composite indexes", sub:"all READY",
-   list:["spec_chunks — node_urns CONTAINS + embedding VECTOR(1536, flat)","spec_nodes — path CONTAINS + iso14224_level ASC","nodes — path CONTAINS + iso14224_level ASC","readings — key ASC + at DESC","readings (collection group) — key ASC + at DESC","placements (collection group) — position_urn ASC + to ASC","jobs — status ASC + started_at DESC"],
-   listTitle:"Built and ready",
-   facts:[["state","7 × READY"],["build time","instant — the collections are empty"],["source of truth","firestore.indexes.json"]],
-   note:"Including a <b>1536-dimension vector index</b> for spec retrieval. Indexes on an empty database build instantly, which is why a fresh project is cheap to stand up."},
-
-  {id:"rules", x:1550, y:940, s:"drift", t:"Security rules", sub:"2 rulesets uploaded · none released",
-   facts:[["rulesets","2 (04:01 and 04:10 UTC)"],["releases/cloud.firestore","404 NOT_FOUND"],["effective rules","none"],["client SDK access","would be denied"]],
-   note:"<b>Drift, and the sharpest one.</b> deploy-rules.sh PATCHes the release — but PATCH does not create a release that has never existed. The rulesets are uploaded and <b>not one of them is live</b>. Tenancy is enforced by rules by design, so until this is released, LiveSource cannot read anything."},
-
-  {id:"sawe", x:1850, y:790, s:"prov", t:"warrant-web@ service account", sub:"least privilege · not attached",
-   facts:[["roles","roles/datastore.user, roles/firebaseauth.admin"],["attached to","nothing"],["intended for","the Cloud Run revision"]],
-   note:"Created with exactly the two roles the app needs, then left unattached. <b>The privileges are right; the wiring is not.</b>"},
-
-  {id:"saadm", x:1850, y:940, s:"prov", t:"firebase-adminsdk-fbsvc@", sub:"Firebase-managed agent",
-   facts:[["roles","roles/firebase.sdkAdminServiceAgent, roles/iam.serviceAccountTokenCreator"],["created by","addFirebase"],["used by","nothing deployed"]],
-   note:"Provisioned automatically when Firebase was added to the project. It signs session cookies — a job the deployed image never asks anyone to do."},
+  {id:"domains", x:1850, y:155, s:"live", t:"Authorized domains", sub:"4 listed — including the Run host",
+   facts:[["listed","localhost · warrent-505918.firebaseapp.com · warrent-505918.web.app · warrant-zq2l2kwg3q-uc.a.run.app"],["was","3 — the Run host was missing"],["symptom when missing","the sign-in popup is refused from the live origin"]],
+   note:"<b>Fixed since the last reading.</b> Sign-in worked on localhost and failed on the deployed site, which is the most expensive class of bug to find on the morning of a demo."},
 
   /* ---------------------------------------------------- platform */
-  {id:"apis", x:350, y:790, s:"hub", t:"46 APIs enabled", sub:"warrent-505918",
-   facts:[["enabled","46 services"],["bootstrap enables","15 explicitly"],["rest","pulled in by Firebase and App Engine defaults"]],
-   note:"Enabling an API costs nothing until a resource exists under it. Most of these have no resources at all."},
+  {id:"apis", x:350, y:790, s:"hub", t:"51 APIs enabled", sub:"warrent-505918",
+   facts:[["enabled","51"],["was","46 on 2026-08-19"],["enabled by","infra/bootstrap.sh, once"]],
+   note:"Most of these are transitive — enabling Firebase pulls in a dozen. The ones this system actually calls are drawn."},
 
-  {id:"armor", x:50, y:790, s:"dorm", t:"Model Armor", sub:"injection-image · locations/us",
-   facts:[["template","projects/warrent-505918/locations/us/templates/injection-image"],["created","2026-08-18 18:18 UTC"],["location","us MULTI-region — required for image modality"],["callers","none"]],
-   note:"The template is real and correctly placed — a template in us-central1 fails silently for image modality. <b>Nothing deployed calls it</b>, because no agent runs in this project yet."},
+  {id:"armor", x:50, y:790, s:"live", t:"Model Armor", sub:"injection-image · locations/us",
+   facts:[["template","projects/warrent-505918/locations/us/templates/injection-image"],["created","2026-08-18"],["filters","prompt injection · jailbreak · RAI DANGEROUS at LOW_AND_ABOVE"],["wired by","MODEL_ARMOR_LOCATION + MODEL_ARMOR_TEMPLATE on the revision"]],
+   note:"<b>Now in the request path.</b> Every capture is screened before a judgement model is asked about it, because <b>a photograph is untrusted input</b> and a sticker with words on it is a prompt."},
 
-  {id:"vertex", x:50, y:940, s:"bench", t:"Vertex AI", sub:"gemini-3.5-flash · global endpoint",
-   facts:[["aiplatform.googleapis.com","enabled"],["endpoints (us-central1)","0"],["deployed models","0"],["model called","gemini-3.5-flash, publisher model"],["location","global \u2014 the Gemini 3 family is not served regionally"],["called by","the agent fleet, from a developer machine"],["called by the deployed app","never"]],
-   note:"Still <b>no endpoint and no deployed model</b> \u2014 nothing is hosted here. What changed on 2026-08-21 is that the publisher model is genuinely being called: the eval suite recorded every one of its answers through this API. <b>A regional URL returns a flat 404 for the Gemini 3 family</b>, which reads exactly like a model that does not exist and cost this project a day; the calls go to the global endpoint."},
+  {id:"vertex", x:50, y:940, s:"live", t:"Vertex AI", sub:"gemini-3.5-flash · global endpoint",
+   facts:[["judgement model","gemini-3.5-flash"],["screening model","gemini-3.5-flash-lite"],["engine-side","gemini-3.5-flash-lite, observed serving 2026-08-26"],["location","global — the model is not where the rest of this runs"],["temperature","0.0"]],
+   note:"Two tiers, chosen by <b>what it costs to be wrong</b>: Flash-Lite refuses an unusable photo, Flash judges the evidence, and nothing cheap can pass a step. <b>The screen is not Gemma</b> — Gemma is not a publisher model on Vertex and every spelling of it 404s, so running it would mean paying for a GPU endpoint that has to still be up when a judge watches the film."},
 
   {id:"pubsub", x:350, y:940, s:"dorm", t:"Pub/Sub", sub:"0 topics",
-   facts:[["pubsub.googleapis.com","enabled"],["topics","0"],["subscriptions","0"]],
-   note:"The agent fleet is designed to grade captures asynchronously over Pub/Sub. <b>None of that is deployed</b> — no topic exists."},
+   facts:[["topics","0"],["subscriptions","0"],["enabled by","bootstrap.sh"]],
+   note:"Enabled and never used. The sweep is a cron, not a queue — see the scheduled band."},
 
   {id:"secrets", x:650, y:940, s:"dorm", t:"Secret Manager", sub:"0 secrets",
-   facts:[["secretmanager.googleapis.com","enabled"],["secrets","0"]],
-   note:"Nothing needs one. The runtime identity comes from the metadata server and the Firebase web config is public — so <b>there is no long-lived credential anywhere in this deployment</b>."},
-
-
-  /* ---------------------------------------------------- the agent fleet
-   * Read from agents/ on 2026-08-21 by running the suite: seven agents, 62 scenarios,
-   * every recording made against gemini-3.5-flash through the GenAI SDK on the global
-   * endpoint. Pass counts below exclude scenarios scored `error` — an agent that was never
-   * properly asked is neither a pass nor a fail, and folding those in would flatter it.
-   */
-  {id:"scoper", x:50, y:1140, s:"bench", t:"Scoper", sub:"8/8 · interviews, then compiles",
-   facts:[["decides","what to ask next, and when a procedure would run unambiguously"],["contract","scoper-turn.schema.json"],["scenarios","8, including 2 full interviews"],["refuses","to state a tolerance nobody gave it"]],
-   note:"There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> \u2014 so \u201cit did not invent a tolerance\u201d is arithmetic, not an impression."},
-
-  {id:"inspector", x:350, y:1140, s:"bench", t:"Inspector", sub:"5/10 scored · one field at a time",
-   facts:[["decides","PASS · ADD FIELD · ESCALATE on one field's evidence"],["contract","inspector-verdict.schema.json"],["scenarios","18, of which 8 await photographs"],["never judges","a whole step \u2014 it would trade a weak photo against a strong one"]],
-   note:"Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required."},
-
-  {id:"skeptic", x:650, y:1140, s:"bench", t:"Skeptic", sub:"2/3 scored · adversarial",
-   facts:[["decides","does this evidence belong to this job, this machine, this moment"],["contract","skeptic-verdict.schema.json"],["scenarios","8, of which 5 await photographs"],["never sees","the Inspector's verdict \u2014 its prompt does not mention an Inspector exists"]],
-   note:"Given the perceptual embedding distance as an <i>input</i>: code computes the distance, the model decides what it means against the machine's recorded damage and history. Twelve identical bikes in a row and only a scuff on one fork tells them apart. <b>A distance is not a decision.</b>"},
-
-  {id:"instructor", x:50, y:1310, s:"bench", t:"Instructor", sub:"6/8 · unbounded speech in",
-   facts:[["decides","the blocker class, the next action, and the safety flag"],["contract","instructor-recommendation.schema.json"],["scenarios","8"],["sees","the technician's words verbatim, untidied"]],
-   note:"\u201cI haven't got the right socket\u201d and \u201cthe socket won't bite, it's rounded\u201d share a vocabulary and mean <b>tool_missing</b> versus <b>seized_or_damaged</b> \u2014 which decides whether the next visit needs an extractor or just more time. Its safety flag must fire on \u201cit's a bit wobbly on the jack\u201d while the speaker is willing to carry on."},
-
-  {id:"foreman", x:350, y:1310, s:"bench", t:"Foreman", sub:"7/8 · owns the job for its life",
-   facts:[["decides","status, action, and whether to recommend holding the machine"],["contract","foreman-disposition.schema.json"],["scenarios","8"],["cannot","hold anything itself \u2014 the Gate does, deterministically"]],
-   note:"Its inputs conflict on purpose: the machine is unsafe, the customer is booked in two days, and the torque wrench arrives Thursday. It writes down enough to be woken days later with no other context. <b>A waiver needs a named person holding standing</b>, and standing arrives as a fact, so it cannot be talked into one."},
-
-  {id:"auditor", x:650, y:1310, s:"bench", t:"Auditor", sub:"5/5 · weeks of jobs at once",
-   facts:[["decides","whether the PROCEDURE is defective, and hands the revision back"],["contract","auditor-finding.schema.json"],["scenarios","5"],["refuses","to say what a wrong bound should become"]],
-   note:"The only agent whose subject is the procedure, and the one that closes the loop back to the Scoper. Its hard judgement is that <b>a step that keeps failing is usually the procedure working</b> \u2014 pads worn past the limit on nine jobs in twenty is a rule catching real faults, and reporting it would push a shop to loosen the check earning its keep."},
-
-  {id:"wright", x:350, y:1480, s:"bench", t:"Wright", sub:"7/7 · writes the driver",
-   facts:[["decides","which characteristic carries a reading, and how it is encoded"],["contract","wright-turn.schema.json"],["scenarios","7, all offline from recorded GATT trees"],["refuses","a number whose unit it cannot name"]],
-   note:"The only agent that emits an artefact rather than a verdict, which is why it is held hardest. A wrong verdict is on the record to argue with; <b>a wrong driver mints wrong measurements unattended</b>, each filed as <i>measured</i>. So it must never pick battery level \u2014 which reads first and decodes to a believable 87 \u2014 and must abandon rather than emit a number with no unit."},
+   facts:[["secrets","0"],["where the secrets are instead","plain env vars on the revision"],["at risk","the sweep secret, the OAuth client secret, the instrument keys"]],
+   note:"<b>The honest weak point of this deployment.</b> Cloud Run env vars are visible to anyone with describe on the service. For a hackathon build that is a considered trade; for a real fleet it is the first thing to move."},
 
   {id:"obs", x:650, y:790, s:"live", t:"Logging · Trace · Monitoring", sub:"receiving Cloud Run telemetry",
-   facts:[["logging","request and stdout logs"],["trace","cloudtrace.googleapis.com enabled"],["monitoring","Run built-in metrics"],["configured by","nobody — this is automatic"]],
-   note:"The only platform service that is genuinely live, and nobody wired it. Cloud Run emits into it by default."},
+   facts:[["logging","request and stdout logs"],["trace","spans named agent.inspector, agent.skeptic, screen — the screen runs Flash-Lite"],["monitoring","Run built-in metrics"],["gap","the app logs no stack on a 500"]],
+   note:"The agent calls are traced by hand, so a slow adjudication can be read span by span. <b>Application errors are not logged</b>, which is how the broken sweep stayed quiet."},
+
+  /* ---------------------------------------------------- data */
+  {id:"fs", x:1250, y:790, s:"live", t:"Firestore (default)", sub:"nam5 · Native · pessimistic",
+   facts:[["tenants","22"],["jobs","35"],["procedures","56 (+1 published publicly)"],["sealed records","2"],["members","21"],["parts","7"],["readings · findings · audits · tasks","0"]],
+   note:"<b>No longer empty.</b> Everything is under <code>tenants/{t}/…</code> so a query that forgets its tenant returns nothing rather than everything. The two sealed records are the ones the demo was cut from."},
+
+  {id:"evid", x:1250, y:940, s:"live", t:"Evidence bucket", sub:"warrent-505918-evidence · 52 objects",
+   facts:[["objects","52"],["location","US-CENTRAL1"],["holds","capture media, avatars, uploaded paper forms"],["rules","released 2026-08-25"]],
+   note:"The photographs themselves. <b>There was no storage rule at all until 2026-08-20</b>, while the bucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded."},
+
+  {id:"idx", x:1550, y:790, s:"live", t:"15 composite indexes", sub:"all READY",
+   facts:[["composite indexes","15"],["was","7 on 2026-08-19"],["deployed by","infra/deploy-rules.sh"]],
+   note:"Every one of these exists because a query failed once. Firestore names the index it wants in the error, which makes this the least interesting file in the repository and the most annoying to omit."},
+
+  {id:"rules", x:1550, y:940, s:"live", t:"Security rules", sub:"2 releases live",
+   facts:[["cloud.firestore","released 2026-08-25 14:11 UTC"],["warrent-505918-evidence","released 2026-08-25 14:11 UTC"],["was","2 rulesets uploaded, neither released"],["proved by","the emulator, in scripts/smoke.sh"]],
+   note:"<b>Fixed since the last reading.</b> Rules that are uploaded but never released do nothing at all, and the console shows them as if they were live. Tenancy is now enforced by the database, and smoke.sh proves it by running the rules rather than asserting them."},
+
+  {id:"sawe", x:1850, y:790, s:"live", t:"warrant-web@ service account", sub:"the runtime identity",
+   facts:[["attached to","the Cloud Run revision"],["holds","datastore.user · firebaseauth.admin · storage object admin on the evidence bucket"],["does not hold","project editor"],["can","impersonate warrant-adjudicator@"]],
+   note:"Least privilege, and now actually in use. It cannot administer the project, cannot create service accounts, and cannot read another project's data."},
+
+  {id:"saadj", x:1850, y:940, s:"live", t:"warrant-adjudicator@", sub:"impersonated to reach the fleet",
+   facts:[["role","aiplatform.user, and nothing else"],["reached by","warrant-web@ minting a short-lived token"],["why split","the web identity should not hold a standing key to the model"]],
+   note:"The split exists so that <b>the credential that can call a judgement model is not the credential serving web pages</b>. It is issued for minutes at a time and never written down."},
+
+  {id:"saadm", x:2150, y:790, s:"prov", t:"firebase-adminsdk-fbsvc@", sub:"Firebase-managed agent",
+   facts:[["created by","Firebase, automatically"],["used by","nothing in this deployment"]],
+   note:"Comes with the Firebase registration. Left alone."},
+
+  /* ---------------------------------------------------- the fleet */
+  {id:"engine", x:50, y:1140, s:"live", t:"Vertex AI Agent Engine", sub:"warrant-fleet · reasoningEngines/5032906174249304064",
+   facts:[["display name","warrant-fleet"],["created","2026-08-21 22:16 UTC"],["last updated","2026-08-25 16:03 UTC"],["methods","query · roster · screen"],["roster answers","seven agents, each with its contract"],["observed","serving model calls at 20:09 UTC on 2026-08-26"]],
+   note:"<b>The fleet is deployed, not on a laptop.</b> Asked for its roster over the API it names all seven agents and the contract each one answers under — so the claim on this diagram is checkable from outside by anyone with the endpoint."},
+
+  {id:"screen", x:350, y:1140, s:"live", t:"The cheap screen", sub:"gemini-3.5-flash-lite · not an eighth agent",
+   facts:[["answers","UNUSABLE or NEEDS_JUDGEMENT — there is no PASS"],["costs when wrong","one retake"],["not in","REGISTRY — roster() says seven"],["why not Gemma","not a publisher model on Vertex — every spelling returns 404"],["traced as","screen"]],
+   note:"The cheap model sits only on the side where being wrong is recoverable. <b>It has no PASS in its enum</b>, so the strongest answer it can give still ends with the judge or the technician being asked. That is a shape, not a prompt instruction a model might ignore."},
+
+  {id:"agentpkg", x:650, y:1140, s:"live", t:"Agent package bucket", sub:"warrent-505918-agents · 13 objects",
+   facts:[["objects","13"],["holds","the packaged fleet the engine runs"],["written by","infra/deploy-agents.py"]],
+   note:"How the code in <code>agents/</code> gets to Vertex. The engine pulls from here at deploy, not at request time."},
+
+  {id:"scoper", x:50, y:1310, s:"live", t:"Scoper", sub:"11/14 · interviews, then compiles",
+   facts:[["decides","what to ask next, and when a procedure would run unambiguously"],["contract","scoper-turn.schema.json"],["scenarios","14, including full interviews"],["reached by","/api/scoper/turn and /api/procedures/compile"],["refuses","to state a tolerance nobody gave it"]],
+   note:"There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> — so “it did not invent a tolerance” is arithmetic, not an impression."},
+
+  {id:"inspector", x:350, y:1310, s:"live", t:"Inspector", sub:"12/18 · one field at a time",
+   facts:[["decides","PASS · ADD FIELD · ESCALATE on one field's evidence"],["contract","inspector-verdict.schema.json"],["scenarios","18 (4 need media not checked in)"],["reached by","/api/adjudicate"],["never judges","a whole step — it would trade a weak photo against a strong one"]],
+   note:"Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required."},
+
+  {id:"skeptic", x:650, y:1310, s:"live", t:"Skeptic", sub:"8/12 · adversarial",
+   facts:[["decides","does this evidence belong to this job, this machine, this moment"],["contract","skeptic-verdict.schema.json"],["scenarios","12 (3 need media not checked in)"],["reached by","/api/adjudicate, beside the Inspector"],["never sees","the Inspector's verdict — its prompt does not mention an Inspector exists"]],
+   note:"Given the perceptual embedding distance as an <i>input</i>: code computes the distance, the model decides what it means against the machine's recorded damage and history. Twelve identical bikes in a row and only a scuff on one fork tells them apart. <b>A distance is not a decision.</b>"},
+
+  {id:"instructor", x:950, y:1310, s:"live", t:"Instructor", sub:"6/8 · unbounded speech in",
+   facts:[["decides","the blocker class, the next action, and the safety flag"],["contract","instructor-recommendation.schema.json"],["scenarios","8"],["reached by","the disposition path, when a step stalls"],["sees","the technician's words verbatim, untidied"]],
+   note:"“I haven't got the right socket” and “the socket won't bite, it's rounded” share a vocabulary and mean <b>tool_missing</b> versus <b>seized_or_damaged</b> — which decides whether the next visit needs an extractor or just more time. Its safety flag must fire on “it's a bit wobbly on the jack” while the speaker is willing to carry on."},
+
+  {id:"foreman", x:50, y:1480, s:"live", t:"Foreman", sub:"8/8 · owns the job for its life",
+   facts:[["decides","status, action, and whether to recommend holding the machine"],["contract","foreman-disposition.schema.json"],["scenarios","8"],["reached by","the disposition path and the sweep"],["cannot","hold anything itself — the Gate does, deterministically"]],
+   note:"Its inputs conflict on purpose: the machine is unsafe, the customer is booked in two days, and the torque wrench arrives Thursday. It writes down enough to be woken days later with no other context. <b>A waiver needs a named person holding standing</b>, and standing arrives as a fact, so it cannot be talked into one."},
+
+  {id:"auditor", x:350, y:1480, s:"live", t:"Auditor", sub:"5/5 · weeks of jobs at once",
+   facts:[["decides","whether the PROCEDURE is defective, and hands the revision back"],["contract","auditor-finding.schema.json"],["scenarios","5"],["reached by","the sweep — which is currently failing"],["refuses","to say what a wrong bound should become"]],
+   note:"The only agent whose subject is the procedure, and the one that closes the loop back to the Scoper. Its hard judgement is that <b>a step that keeps failing is usually the procedure working</b> — pads worn past the limit on nine jobs in twenty is a rule catching real faults, and reporting it would push a shop to loosen the check earning its keep."},
+
+  {id:"wright", x:650, y:1480, s:"live", t:"Wright", sub:"7/7 · writes the driver",
+   facts:[["decides","which characteristic carries a reading, and how it is encoded"],["contract","wright-turn.schema.json"],["scenarios","7, all offline from recorded GATT trees"],["refuses","a number whose unit it cannot name"]],
+   note:"The only agent that emits an artefact rather than a verdict, which is why it is held hardest. A wrong verdict is on the record to argue with; <b>a wrong driver mints wrong measurements unattended</b>, each filed as <i>measured</i>. So it must never pick battery level — which reads first and decodes to a believable 87 — and must abandon rather than emit a number with no unit."},
+
+  /* ---------------------------------------------------- scheduled work */
+  {id:"sched", x:1250, y:1140, s:"live", t:"Cloud Scheduler", sub:"warrant-sweep · * * * * *",
+   facts:[["schedule","* * * * * — every minute"],["was","*/5, until deploy-web.sh reset it"],["state","ENABLED"],["target","POST /api/tasks/sweep"],["auth","OIDC token"]],
+   note:"One cron for the whole system. Cloud Tasks would be more precise; a cron that re-reads the world cannot lose work when a deploy lands mid-flight."},
+
+  {id:"sweep", x:1550, y:1140, s:"live", t:"/api/tasks/sweep", sub:"200 · 3–11 s",
+   facts:[["status","200 on 2026-08-27, revision 00014"],["was","500 on every run for a day, across revisions 00012 and 00013"],["runtime","10.6 s cold, 3.0 s warm"],["unauthenticated","401, correctly"],["holds","a lease, so a long run is not overtaken by its own retry"]],
+   note:"<b>This was the one red node on this diagram, and it is fixed.</b> For a day the cron authenticated, threw early and returned 500 in under a second — before any model call, on two revisions, so no single deploy caused it. Revision 00014 answers 200 and completes in seconds. Two consecutive runs observed; the collections it writes are still empty, which is a separate question from whether it runs."},
+
+  {id:"tasksc", x:1550, y:1290, s:"prov", t:"Tasks", sub:"0 raised",
+   facts:[["tasks","0"],["raised by","the Foreman and the Auditor, through the sweep"],["note","the sweep now completes, so an empty table is a real answer"]],
+   note:"Still empty — but the sweep above now runs, so this is no longer explained by a broken cron. Two sealed records is a thin window for an Auditor whose subject is a procedure across weeks of jobs; there is genuinely little for it to find yet."},
+
+  {id:"cal", x:1250, y:1290, s:"prov", t:"Google Calendar", sub:"OAuth grant · /api/auth/calendar",
+   facts:[["scope","calendar events"],["written by","the sweep"],["events created","none"]],
+   note:"A held machine that needs a part on Thursday should put Thursday in somebody's calendar. Wired, granted, never exercised."},
+
+  /* ---------------------------------------------------- instruments */
+  {id:"firmware", x:1850, y:1480, s:"bench", t:"Reference instrument", sub:"ESP32 · BLE · signed frames",
+   facts:[["transport","BLE GATT notify"],["signs","every frame, with a counter persisted in NVS"],["why a counter","BLE is a broadcast — without it a frame can be replayed"],["source","firmware/warrant_reference_instrument.ino"]],
+   note:"Real hardware on a bench, not a simulation. It exists to prove the shape: <b>a torque wrench that signs its readings</b> means the number on the record was measured rather than typed."},
+
+  {id:"ble", x:1550, y:1480, s:"bench", t:"Driver on the phone", sub:"written by the Wright",
+   facts:[["reads","the GATT tree, then the characteristic the Wright chose"],["runs on","the Android surface only"],["falls back to","a typed value, recorded as unattested"]],
+   note:"The phone is the bridge. An instrument that cannot be read is not a blocker — the reading is simply recorded as one a person typed, and the record says so."},
+
+  {id:"ingest", x:1250, y:1480, s:"prov", t:"/api/ingest/reading", sub:"the only writer of readings",
+   facts:[["readings written","0 in production"],["rules","refuse `readings` from every client"],["unsigned reading","accepted, but recorded with no tool_id"],["keys","WARRANT_INSTRUMENT_KEYS, compared in constant time"]],
+   note:"<b>The only writer of <code>readings</code></b>, and that is the point of the endpoint. No client may write a measurement directly, so “measured” means a signed frame reached this route — and an unsigned one still gets recorded, just without the claim."},
 ];
 
 const EDGES = [
   ["laptop","ar","live","docker push"],
   ["ar","imgweb","live","tag deployed"],
-  ["ar","imgsite","prov","superseded"],
   ["ar","gcs","dorm","staging bucket — unused"],
   ["imgweb","rev","live","pulled at cold start"],
 
   ["browser","gfe","live","HTTPS"],
+  ["android","gfe","bench","same routes, from a sideloaded build"],
   ["gfe","run","live","ingress: all"],
   ["run","invoker","live","open to allUsers"],
   ["run","rev","live","100% traffic"],
-  ["rev","runsa","drift","runs as the wrong SA"],
+  ["rev","runsa","live","runs as warrant-web@"],
   ["rev","next","live","node server.js"],
   ["next","src","live","binds"],
   ["next","routes","live","200"],
-  ["next","apiauth","drift","404 — absent from this image"],
+  ["next","apiauth","live","session · claim · calendar"],
   ["rev","obs","live","logs · traces · metrics"],
 
-  ["src","fs","prov","LiveSource never reached — no config in image"],
-  ["apiauth","idp","drift","session route missing"],
-  ["domains","gfe","drift","live origin not authorized"],
-  ["domains","idp","prov","3 domains listed"],
+  ["src","fs","live","reads and writes the real database"],
+  ["apiauth","idp","live","exchanges the ID token for a cookie"],
+  ["domains","gfe","live","the live origin is authorized"],
+  ["domains","idp","live","4 domains listed"],
   ["webapp","idp","prov","registered"],
-  ["google","idp","prov","provider enabled"],
+  ["google","idp","live","provider enabled"],
   ["anon","idp","prov","provider enabled"],
-  ["idx","fs","prov","7 READY"],
-  ["rules","fs","drift","uploaded, never released"],
-  ["sawe","fs","prov","datastore.user — unused"],
-  ["sawe","idp","prov","firebaseauth.admin — unused"],
+  ["idx","fs","live","15 READY"],
+  ["rules","fs","live","released — tenancy enforced"],
+  ["rules","evid","live","released 2026-08-25"],
+  ["sawe","fs","live","datastore.user"],
+  ["sawe","evid","live","object admin"],
+  ["sawe","idp","live","firebaseauth.admin — mints the session"],
+  ["sawe","saadj","live","impersonates, minutes at a time"],
   ["saadm","idp","prov","admin SDK agent"],
-  ["runsa","fs","drift","roles/editor could reach it; never does"],
 
   /* ---------------------------------------------------- the fleet
-   * Every agent -> vertex edge is real traffic: 62 scenarios recorded through this API.
-   * The agent -> agent edges are the designed flow and are NOT yet wired, so they are drawn
-   * in the dormant colour rather than implied to be running.
+   * Every agent -> engine edge is real traffic through reasoningEngines:query.
    *
    * There is deliberately no Inspector <-> Skeptic edge. The Skeptic never sees the
    * Inspector's verdict and its prompt does not mention an Inspector exists, because two
    * agents shown each other's conclusions agree, and the second opinion stops being one.
    * An edge here would draw a channel whose absence is the whole design.
    */
-  ["scoper","vertex","bench","gemini-3.5-flash"],
-  ["inspector","vertex","bench","gemini-3.5-flash + image bytes"],
-  ["skeptic","vertex","bench","gemini-3.5-flash + image bytes"],
-  ["instructor","vertex","bench","gemini-3.5-flash"],
-  ["foreman","vertex","bench","gemini-3.5-flash"],
-  ["auditor","vertex","bench","gemini-3.5-flash"],
-  ["wright","vertex","bench","gemini-3.5-flash"],
+  ["saadj","engine","live","reasoningEngines:query"],
+  ["agentpkg","engine","live","the packaged fleet"],
+  ["engine","scoper","live",""],
+  ["engine","inspector","live",""],
+  ["engine","skeptic","live",""],
+  ["engine","instructor","live",""],
+  ["engine","foreman","live",""],
+  ["engine","auditor","live",""],
+  ["engine","wright","live",""],
+  ["engine","screen","live","a method, not an agent"],
+  ["engine","vertex","live","gemini-3.5-flash · flash-lite"],
+  ["screen","vertex","live","gemini-3.5-flash-lite"],
+  ["armor","engine","live","every capture, before the judge"],
 
-  ["scoper","inspector","dorm","compiles the rules it applies"],
-  ["scoper","instructor","dorm","the procedure it answers against"],
-  ["instructor","foreman","dorm","structured blocker"],
-  ["auditor","scoper","dorm","defect → a new version"],
-  ["foreman","fs","dorm","disposition → the record"],
-  ["wright","fs","dorm","driver → tenants/{t}/drivers/{sha}"],
+  ["routes","engine","live","/api/adjudicate · /api/scoper/turn"],
+  ["scoper","inspector","live","compiles the rules it applies"],
+  ["scoper","instructor","live","the procedure it answers against"],
+  ["instructor","foreman","live","structured blocker"],
+  ["auditor","scoper","live","defect → a new version"],
+  ["foreman","fs","live","disposition → the record"],
+  ["wright","ble","bench","driver → the phone"],
+
+  ["sched","sweep","live","OIDC — every minute"],
+  ["sweep","auditor","live","weeks of jobs at once"],
+  ["sweep","tasksc","prov","raises a task when one is due"],
+  ["sweep","cal","prov","moves the follow-up date"],
+
+  ["firmware","ble","bench","BLE notify, signed"],
+  ["ble","ingest","bench","POST a signed frame"],
+  ["ingest","fs","prov","the only writer of readings"],
 
   ["run","apis","hub","same project"],
-  ["apis","armor","dorm",""],
-  ["apis","vertex","dorm",""],
+  ["apis","armor","live",""],
+  ["apis","vertex","live",""],
   ["apis","pubsub","dorm",""],
   ["apis","secrets","dorm",""],
 ];
@@ -946,8 +1002,8 @@ document.getElementById("legend").innerHTML = ["live","bench","prov","drift","do
 
 document.getElementById("legFoot").innerHTML =
   `${NODES.length} nodes · ${EDGES.length} links<br>` +
-  `infrastructure read from warrent-505918 on 2026-08-19<br>` +
-  `the fleet read from agents/ on 2026-08-21 by running its suite`;
+  `infrastructure read live from warrent-505918 on 2026-08-26<br>` +
+  `the fleet answered for its own roster over the Agent Engine API`;
 
 document.querySelectorAll(".leg li").forEach(li => {
   const toggle = () => {

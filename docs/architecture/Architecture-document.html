@@ -1,0 +1,830 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Warrant — deployed architecture</title><style>
+:root{
+  --work:#131314; --work-2:#1E1F20; --work-3:#282A2C; --rule-dark:#3C4043;
+  --fg:#E3E3E3; --fg-2:#C4C7C5; --fg-3:#9AA0A6;
+  --live:#5BB974; --prov:#FBBC04; --drift:#F28B82; --dorm:#80868B;
+  --hub:#8AB4F8; --bench:#C58AF9; --primary:#8AB4F8;
+  --mono:"Liberation Mono",ui-monospace,monospace;
+  --sans:"Noto Sans","Liberation Sans",system-ui,sans-serif;
+}
+@page{ size:11in 8.5in; margin:0 }
+*{box-sizing:border-box}
+body{margin:0;background:var(--work);color:var(--fg);font-family:var(--sans);
+     -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:11in;height:8.5in;padding:.5in .55in .42in;page-break-after:always;
+      position:relative;overflow:hidden;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.kicker{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;
+        color:var(--fg-3)}
+h1{font-size:34px;font-weight:500;letter-spacing:-.02em;margin:.18in 0 .06in}
+h2{font-size:21px;font-weight:500;letter-spacing:-.012em;margin:4px 0 3px}
+.thesis{font-size:12.5px;line-height:1.5;color:var(--fg-2);max-width:8.4in;margin:0 0 10px}
+.rule{height:1px;background:var(--rule-dark);margin:9px 0 12px}
+.flowwrap{background:var(--work-2);border:1px solid var(--rule-dark);border-radius:10px;
+          padding:14px 12px;margin-bottom:11px;display:flex;align-items:center;justify-content:center;
+          min-height:1.5in}
+.flowwrap.tall{min-height:1.5in}
+svg.flow{width:100%;height:100%;flex:1}
+svg.flow .ebg{fill:var(--work-2);opacity:.92}
+svg.flow .chip{fill:var(--work-3);stroke:var(--rule-dark);stroke-width:1}
+svg.flow .ct{font-family:var(--sans);font-size:9.5px;fill:var(--fg)}
+svg.flow .cs{font-family:var(--mono);font-size:7.2px;fill:var(--fg-3)}
+svg.flow .ot{font-family:var(--sans);font-size:11px;fill:var(--fg)}
+svg.flow .os{font-family:var(--mono);font-size:8px;fill:var(--fg-3)}
+svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anchor:middle}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;flex:1;align-content:start}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--work-2);border:1px solid var(--rule-dark);border-radius:9px;
+      padding:9px 10px;overflow:hidden;max-height:2.05in}
+.card h4{margin:0 0 2px;font-size:11.5px;font-weight:500;display:flex;align-items:center;gap:6px}
+.card h4 s{width:6px;height:6px;border-radius:99px;flex:none;text-decoration:none}
+.card .sub{margin:0 0 6px;font-family:var(--mono);font-size:7.6px;color:var(--fg-3);line-height:1.4}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:1px 7px}
+.card dt{font-family:var(--mono);font-size:7px;color:var(--fg-3);text-transform:uppercase;
+         letter-spacing:.06em;white-space:nowrap}
+.card dd{margin:0;font-family:var(--mono);font-size:7.4px;color:var(--fg-2);line-height:1.35}
+.card .note{margin:6px 0 0;font-size:8.4px;line-height:1.45;color:var(--fg-3);
+            border-top:1px solid var(--rule-dark);padding-top:5px;
+            display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.card .note b{color:var(--fg-2);font-weight:600}
+.card .note code{font-family:var(--mono);font-size:7.6px}
+.foot{position:absolute;left:.55in;right:.55in;bottom:.2in;display:flex;justify-content:space-between;
+      font-family:var(--mono);font-size:7.4px;color:var(--fg-3);border-top:1px solid var(--rule-dark);
+      padding-top:5px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 0}
+.legend div{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--fg-2)}
+.legend s{width:8px;height:8px;border-radius:99px;text-decoration:none}
+.legend em{font-style:normal;font-family:var(--mono);font-size:8.6px;color:var(--fg-3)}
+.toc{display:grid;grid-template-columns:repeat(2,1fr);gap:5px 26px;margin-top:12px}
+.toc div{display:flex;gap:9px;font-size:10.5px;color:var(--fg-2);
+         border-bottom:1px dotted var(--rule-dark);padding-bottom:3px}
+.toc b{font-family:var(--mono);font-size:9px;color:var(--fg-3);font-weight:400;min-width:16px}
+.cross{display:grid;grid-template-columns:repeat(2,1fr);gap:5px 22px;margin-top:2px}
+.cross div{font-family:var(--mono);font-size:8px;color:var(--fg-3);line-height:1.5}
+.cross b{color:var(--fg-2);font-weight:400}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(2,1fr);gap:7px 22px;margin-top:2px}
+.step{display:flex;gap:10px}
+.step i{counter-increment:s;font-style:normal;font-family:var(--mono);font-size:9px;
+        color:var(--work);background:var(--primary);border-radius:99px;width:17px;height:17px;
+        display:grid;place-items:center;flex:none;margin-top:1px}
+.step i::before{content:counter(s)}
+.step p{margin:0;font-size:10px;line-height:1.5;color:var(--fg-2)}
+.step p b{color:var(--fg)}
+.step p code{font-family:var(--mono);font-size:8.6px;color:var(--fg-3)}
+.warn{border-left:3px solid var(--drift);background:var(--work-2);padding:8px 12px;border-radius:0 8px 8px 0;
+      margin-top:8px;font-size:9.4px;line-height:1.45;color:var(--fg-2)}
+.warn b{color:var(--drift)}
+</style></head>
+<body><section class="page">
+    <div class="kicker">Deployed architecture</div>
+    <h1>Warrant</h1>
+    <p class="thesis" style="font-size:13.5px;max-width:7.6in">Maintenance records that are evidence, not paperwork. This document describes the system
+      as it is actually deployed, one section at a time. Every value was read out of the live
+      project with gcloud or the REST APIs, or by requesting the running service — not from the
+      repository. Where the two disagree, the project wins and the node is marked drift.</p>
+    <div class="legend"><div><s style="background:var(--live)"></s>Live <em>· 37</em></div><div><s style="background:var(--prov)"></s>Provisioned <em>· 6</em></div><div><s style="background:var(--dorm)"></s>Dormant <em>· 3</em></div><div><s style="background:var(--hub)"></s>Project <em>· 1</em></div><div><s style="background:var(--bench)"></s>On the bench <em>· 3</em></div></div>
+    <div class="rule" style="margin-top:16px"></div>
+    <div class="kicker">Contents</div>
+    <div class="toc"><div><b>2</b><span>Supply chain — how the image got there</span></div><div><b>3</b><span>Identity — Google sign-in, wired to the live origin</span></div><div><b>4</b><span>Request path — what a visitor actually touches</span></div><div><b>6</b><span>Platform services</span></div><div><b>7</b><span>Data — carrying real records</span></div><div><b>8</b><span>The fleet — deployed on Vertex AI Agent Engine</span></div><div><b>10</b><span>Scheduled work — one cron for the whole system</span></div><div><b>11</b><span>Instruments — a reading nobody typed</span></div><div><b>12</b><span>How they come together — one capture, end to end</span></div></div>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span>50 nodes · 62 links</span></div></section>
+<section class="page"><div class="kicker">Section 1 of 8</div>
+    <h2>Supply chain — how the image got there</h2>
+    <p class="thesis">The image is built on a laptop and pushed straight to Artifact Registry. Cloud Build is enabled and never runs.</p>
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 620 176" preserveAspectRatio="xMidYMid meet">
+    <path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="154.55" y="10" width="50.9" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">docker push</text>
+<path d="M360 22 L456 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="380.6" y="10" width="54.8" height="11" rx="3" class="ebg"/><text x="408" y="18.4" class="elab">tag deployed</text>
+<path d="M294 44 L294 90" fill="none" stroke="var(--dorm)" stroke-width="1.4" opacity=".8" stroke-dasharray="5 4"/><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Developer laptop</text>
+         <text x="11" y="31" class="cs">podman/docker build</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Artifact Registry</text>
+         <text x="11" y="31" class="cs">warrant</text>
+       </g>
+<g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">web:20260826-193655</text>
+         <text x="11" y="31" class="cs">the image now serving</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--dorm)"/>
+         <text x="11" y="17" class="ct">Cloud Storage — build staging</text>
+         <text x="11" y="31" class="cs">warrent-505918_cloudbuild</text>
+       </g></svg></div>
+      <div class="cards three"><article class="card">
+    <h4><s style="background:var(--live)"></s>Developer laptop</h4>
+    <p class="sub">podman/docker build · linux/amd64</p>
+    <dl><dt>role</dt><dd>builds and pushes the image</dd><dt>why not Cloud Build</dt><dd>new projects have no Cloud Build SA; `builds submit` fails PERMISSION_DENIED</dd><dt>source</dt><dd>infra/deploy-web.sh</dd></dl>
+    <p class="note">The build host is outside Google Cloud entirely. <b>Cloud Build is enabled but never runs</b> — the image is built locally and pushed straight to Artifact Registry.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Artifact Registry</h4>
+    <p class="sub">warrant · Docker · us-central1</p>
+    <dl><dt>repository</dt><dd>warrant</dd><dt>format</dt><dd>DOCKER</dd><dt>location</dt><dd>us-central1</dd><dt>images</dt><dd>web — 8 pushes, 3 tagged</dd><dt>most recent push</dt><dd>2026-08-26 19:37 UTC</dd></dl>
+    <p class="note">Every deploy this week came through here. Untagged layers accumulate because <code>deploy-web.sh</code> tags by timestamp and never prunes.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>web:20260826-193655</h4>
+    <p class="sub">the image now serving</p>
+    <dl><dt>pushed</dt><dd>2026-08-26 19:37 UTC</dd><dt>base</dt><dd>node:22-alpine</dd><dt>build</dt><dd>Next.js output: standalone</dd><dt>serving as</dt><dd>revision warrant-00013-nlw</dd></dl>
+    <p class="note">Built and deployed <b>today</b>. The tag is the build timestamp, so the image name is also the answer to “which commit is live”.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--dorm)"></s>Cloud Storage — build staging</h4>
+    <p class="sub">warrent-505918_cloudbuild · US</p>
+    <dl><dt>bucket</dt><dd>warrent-505918_cloudbuild</dd><dt>location</dt><dd>US multi-region</dd><dt>created by</dt><dd>Cloud Build API enablement</dd><dt>used by</dt><dd>nothing</dd></dl>
+    <p class="note">Made by enabling an API that never ran. Left in place because deleting it is the sort of tidying that breaks a deploy at midnight.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>web:20260826-193655</b> → Revision warrant-00013-nlw <span style="opacity:.7">(Request path)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 2 of 8</div>
+    <h2>Identity — Google sign-in, wired to the live origin</h2>
+    <p class="thesis">The browser never holds a long-lived credential: an ID token is exchanged server-side for an HttpOnly cookie.</p>
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 620 266" preserveAspectRatio="xMidYMid meet">
+    <path d="M456 112 C294 112 294 22 132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="258.8" y="55" width="70.4" height="11" rx="3" class="ebg"/><text x="294" y="63.4" class="elab">4 domains listed</text>
+<path d="M66 180 L66 44" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<path d="M228 22 L132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="144.8" y="10" width="70.4" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">provider enabled</text>
+<path d="M228 202 C180 202 180 22 132 22" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<rect x="144.8" y="100" width="70.4" height="11" rx="3" class="ebg"/><text x="180" y="108.4" class="elab">provider enabled</text><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Identity Platform</text>
+         <text x="11" y="31" class="cs">projects/1020487917587/config</text>
+       </g>
+<g transform="translate(0,180)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Firebase Web App</text>
+         <text x="11" y="31" class="cs">Warrant Web</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Google sign-in</text>
+         <text x="11" y="31" class="cs">enabled</text>
+       </g>
+<g transform="translate(228,180)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Anonymous sign-in</text>
+         <text x="11" y="31" class="cs">enabled</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Authorized domains</text>
+         <text x="11" y="31" class="cs">4 listed — including the Run host</text>
+       </g></svg></div>
+      <div class="cards three"><article class="card">
+    <h4><s style="background:var(--live)"></s>Identity Platform</h4>
+    <p class="sub">projects/1020487917587/config</p>
+    <dl><dt>service</dt><dd>identitytoolkit.googleapis.com</dd><dt>providers</dt><dd>google.com, anonymous</dd><dt>callback</dt><dd>warrent-505918.firebaseapp.com/__/auth/action</dd><dt>session</dt><dd>minted server-side into an HttpOnly cookie</dd></dl>
+    <p class="note">The browser never holds a long-lived credential. The client SDK gets an ID token, <code>/api/auth/session</code> exchanges it, and everything after that is a cookie the page cannot read.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Firebase Web App</h4>
+    <p class="sub">Warrant Web · ACTIVE</p>
+    <dl><dt>state</dt><dd>ACTIVE</dd><dt>supplies</dt><dd>the apiKey and authDomain the client SDK needs</dd><dt>storage bucket</dt><dd>warrent-505918-evidence</dd></dl>
+    <p class="note">A registration, not a service. It exists so the browser SDK has something to point at.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Google sign-in</h4>
+    <p class="sub">enabled · OAuth client present</p>
+    <dl><dt>provider</dt><dd>google.com</dd><dt>enabled</dt><dd>true</dd><dt>client id</dt><dd>1020487917587-9s2mklllnpcarhdu4c9uecn3s7rosfks</dd><dt>why manual</dt><dd>no public API creates an OAuth client</dd></dl>
+    <p class="note">The one piece of this project that cannot be created by a script. It was clicked once, by hand, in the console.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Anonymous sign-in</h4>
+    <p class="sub">enabled</p>
+    <dl><dt>enabled</dt><dd>true</dd><dt>used by</dt><dd>nothing yet</dd><dt>intended for</dt><dd>a technician who joins a job by link</dd></dl>
+    <p class="note">Enabled ahead of the flow that needs it. Nothing in the deployed app calls it.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Authorized domains</h4>
+    <p class="sub">4 listed — including the Run host</p>
+    <dl><dt>listed</dt><dd>localhost · warrent-505918.firebaseapp.com · warrent-505918.web.app · warrant-zq2l2kwg3q-uc.a.run.app</dd><dt>was</dt><dd>3 — the Run host was missing</dd><dt>symptom when missing</dt><dd>the sign-in popup is refused from the live origin</dd></dl>
+    <p class="note"><b>Fixed since the last reading.</b> Sign-in worked on localhost and failed on the deployed site, which is the most expensive class of bug to find on the morning of a demo.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>Identity Platform</b> ← /api/auth/* <span style="opacity:.7">(Request path)</span></div><div><b>Authorized domains</b> → Google Front End <span style="opacity:.7">(Request path)</span></div><div><b>Identity Platform</b> ← warrant-web@ service account <span style="opacity:.7">(Data)</span></div><div><b>Identity Platform</b> ← firebase-adminsdk-fbsvc@ <span style="opacity:.7">(Data)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 3 of 8</div>
+    <h2>Request path — what a visitor actually touches</h2>
+    <p class="thesis">One container serves the pages, the API and the images. Every agent call is made from server code, never from the browser.</p>
+    <div class="flowwrap tall"><svg class="flow" viewBox="-16 -26 1304 176" preserveAspectRatio="xMidYMid meet">
+    <path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="166.25" y="10" width="27.5" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">HTTPS</text>
+<path d="M132 112 C180 112 180 22 228 22" fill="none" stroke="var(--bench)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="63.4" class="elab">same routes, from a s…</text>
+<path d="M360 22 L456 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="380.6" y="10" width="54.8" height="11" rx="3" class="ebg"/><text x="408" y="18.4" class="elab">ingress: all</text>
+<path d="M522 44 L522 90" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M588 22 L684 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="608.6" y="10" width="54.8" height="11" rx="3" class="ebg"/><text x="636" y="18.4" class="elab">100% traffic</text>
+<path d="M750 44 L750 90" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M816 22 L912 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="832.7" y="10" width="62.6" height="11" rx="3" class="ebg"/><text x="864" y="18.4" class="elab">node server.js</text>
+<path d="M978 44 L978 90" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M1044 22 L1140 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="1082.15" y="10" width="19.7" height="11" rx="3" class="ebg"/><text x="1092" y="18.4" class="elab">200</text>
+<path d="M1044 22 C1092 22 1092 112 1140 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="1045.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="1092" y="63.4" class="elab">session · claim · cal…</text><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Browser</text>
+         <text x="11" y="31" class="cs">any device</text>
+       </g>
+<g transform="translate(0,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--bench)"/>
+         <text x="11" y="17" class="ct">Android app</text>
+         <text x="11" y="31" class="cs">ink.warrant</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Google Front End</text>
+         <text x="11" y="31" class="cs">TLS termination</text>
+       </g>
+<g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Cloud Run service</text>
+         <text x="11" y="31" class="cs">warrant</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">IAM — run.invoker</text>
+         <text x="11" y="31" class="cs">allUsers</text>
+       </g>
+<g transform="translate(684,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Revision warrant-00013-nlw</text>
+         <text x="11" y="31" class="cs">100% traffic</text>
+       </g>
+<g transform="translate(684,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Runtime identity</text>
+         <text x="11" y="31" class="cs">warrant-web@warrent-505918.iam</text>
+       </g>
+<g transform="translate(912,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Next.js standalone server</text>
+         <text x="11" y="31" class="cs">node:22-alpine</text>
+       </g>
+<g transform="translate(912,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">LiveSource</text>
+         <text x="11" y="31" class="cs">Firestore-backed</text>
+       </g>
+<g transform="translate(1140,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Public routes</text>
+         <text x="11" y="31" class="cs">7 checked, all 200</text>
+       </g>
+<g transform="translate(1140,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">/api/auth/*</text>
+         <text x="11" y="31" class="cs">session</text>
+       </g></svg></div>
+    <div class="cards"><article class="card">
+    <h4><s style="background:var(--live)"></s>Browser</h4>
+    <p class="sub">any device · no account, no install</p>
+    <dl><dt>auth</dt><dd>Google sign-in, or none for public records</dd><dt>entry</dt><dd>GET /</dd><dt>response</dt><dd>200 in 0.41 s warm</dd></dl>
+    <p class="note">The technician surface is a web page on purpose. <b>A shop cannot be asked to install anything</b> before it will try this.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--bench)"></s>Android app</h4>
+    <p class="sub">ink.warrant · Compose · debug build</p>
+    <dl><dt>talks to</dt><dd>the same Cloud Run routes as the browser</dd><dt>adds</dt><dd>BLE instrument drivers the web cannot reach</dd><dt>distribution</dt><dd>sideloaded — no Play listing</dd><dt>source</dt><dd>android/app/src/main/java/ink/warrant</dd></dl>
+    <p class="note">The second surface exists for one reason: <b>Web Bluetooth cannot be trusted to hold a GATT connection while a camera is open</b>. Everything else it does, the web does.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Google Front End</h4>
+    <p class="sub">TLS termination · global anycast</p>
+    <dl><dt>ingress</dt><dd>all</dd><dt>hostnames</dt><dd>warrant-zq2l2kwg3q-uc.a.run.app · warrant-1020487917587.us-central1.run.app</dd><dt>to container</dt><dd>plain HTTP :8080</dd></dl>
+    <p class="note">Nothing was configured here. Cloud Run brings its own certificate and its own edge.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Cloud Run service</h4>
+    <p class="sub">warrant · us-central1 · managed</p>
+    <dl><dt>concurrency</dt><dd>80</dd><dt>scale</dt><dd>min 0 · max 4</dd><dt>timeout</dt><dd>300 s</dd><dt>startup CPU boost</dt><dd>on</dd><dt>revisions</dt><dd>13, all ready</dd></dl>
+    <p class="note">Scale-to-zero is why the first request of the morning is slow and every one after it is not. <b>Max 4 instances is a cost ceiling</b>, not a capacity estimate.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>IAM — run.invoker</h4>
+    <p class="sub">allUsers</p>
+    <dl><dt>role</dt><dd>roles/run.invoker</dd><dt>member</dt><dd>allUsers</dd><dt>effect</dt><dd>the service is open to the public internet</dd></dl>
+    <p class="note">Public by design: a sealed record has to be readable by someone with the link and no account. <b>Authorisation happens above this line</b>, in the routes and in firestore.rules.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Revision warrant-00013-nlw</h4>
+    <p class="sub">100% traffic · 13th revision</p>
+    <dl><dt>created</dt><dd>2026-08-26 19:37:54 UTC</dd><dt>traffic</dt><dd>100%, latestRevision</dd><dt>cpu / memory</dt><dd>1 vCPU · 512 MiB</dd><dt>port</dt><dd>8080 (http1)</dd><dt>ready</dt><dd>true</dd></dl>
+    <p class="note">Thirteen revisions in seven days. Traffic always follows latest — there is no canary here, and a bad deploy is fixed by deploying again.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Runtime identity</h4>
+    <p class="sub">warrant-web@warrent-505918.iam</p>
+    <dl><dt>attached SA</dt><dd>warrant-web@warrent-505918.iam.gserviceaccount.com</dd><dt>was</dt><dd>the default compute SA with roles/editor, until 2026-08-21</dd><dt>credentials</dt><dd>metadata server, short-lived</dd><dt>reaches Vertex by</dt><dd>impersonating warrant-adjudicator@</dd></dl>
+    <p class="note"><b>Fixed since the last reading of this diagram.</b> The service ran as the default compute account — project editor — for its first two revisions. It now runs as a purpose-made account that cannot administer the project it lives in.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Next.js standalone server</h4>
+    <p class="sub">node:22-alpine · server.js on :8080</p>
+    <dl><dt>mode</dt><dd>output: standalone</dd><dt>process</dt><dd>node server.js, PID 1</dd><dt>static</dt><dd>/_next/static served in-process</dd><dt>routes</dt><dd>22 API routes · 17 pages</dd></dl>
+    <p class="note">One container serves the pages, the API and the images. There is no separate backend, and <b>every agent call in this system is made from server code</b>, never from the browser.</p>
+  </article></div>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page">
+      <div class="kicker">Request path — what a visitor actually touches — continued</div>
+      <div class="rule"></div>
+      <div class="cards"><article class="card">
+    <h4><s style="background:var(--live)"></s>LiveSource</h4>
+    <p class="sub">Firestore-backed · fabricated = false</p>
+    <dl><dt>binding</dt><dd>getDataSource() → LiveSource</dd><dt>reason</dt><dd>GCP_PROJECT and the Firebase env are baked into the image</dd><dt>was</dt><dd>FixtureSource, until the env was set on 2026-08-21</dd><dt>fallback</dt><dd>FixtureSource still runs the whole product offline</dd></dl>
+    <p class="note"><b>Fixed since the last reading.</b> The deployed image used to fall back to fixtures because no configuration reached it, and the site said so out loud. It now reads and writes the real database.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Public routes</h4>
+    <p class="sub">7 checked, all 200</p>
+    <dl><dt>checked</dt><dd>2026-08-26, live service</dd><dt>200</dt><dd>/ · /library · /model-tests · /about · /author · /fleet · /records</dd><dt>renderer</dt><dd>React Server Components + client islands</dd><dt>slowest</dt><dd>/fleet, 1.87 s — it queries the engine</dd></dl>
+    <p class="note">Every page a judge is asked to open was requested from the public internet on the day this diagram was made.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>/api/auth/*</h4>
+    <p class="sub">session · claim · calendar</p>
+    <dl><dt>/api/auth/session</dt><dd>200</dd><dt>/api/auth/claim</dt><dd>405 — POST only, as written</dd><dt>was</dt><dd>all 404 — absent from the image on 2026-08-19</dd><dt>also</dt><dd>/api/auth/calendar for the OAuth grant</dd></dl>
+    <p class="note"><b>Fixed since the last reading.</b> These routes existed only in the working tree at the time of the last deploy, so sign-in could not complete against the live service.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>Revision warrant-00013-nlw</b> ← web:20260826-193655 <span style="opacity:.7">(Supply chain)</span></div><div><b>Revision warrant-00013-nlw</b> → Logging · Trace · Monitoring <span style="opacity:.7">(Platform services)</span></div><div><b>LiveSource</b> → Firestore (default) <span style="opacity:.7">(Data)</span></div><div><b>/api/auth/*</b> → Identity Platform <span style="opacity:.7">(Identity)</span></div><div><b>Google Front End</b> ← Authorized domains <span style="opacity:.7">(Identity)</span></div><div><b>Public routes</b> → Vertex AI Agent Engine <span style="opacity:.7">(The fleet)</span></div><div><b>Cloud Run service</b> → 51 APIs enabled <span style="opacity:.7">(Platform services)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 4 of 8</div>
+    <h2>Platform services</h2>
+    <p class="thesis">What the project actually calls, and what was enabled and left alone. Both are drawn, because an unused service is still a fact about the build.</p>
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 620 176" preserveAspectRatio="xMidYMid meet">
+    <path d="M228 22 L132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M228 22 C180 22 180 112 132 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M294 44 L294 90" fill="none" stroke="var(--dorm)" stroke-width="1.4" opacity=".8" stroke-dasharray="5 4"/>
+<path d="M360 22 C408 22 408 112 456 112" fill="none" stroke="var(--dorm)" stroke-width="1.4" opacity=".8" stroke-dasharray="5 4"/><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Model Armor</text>
+         <text x="11" y="31" class="cs">injection-image</text>
+       </g>
+<g transform="translate(0,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Vertex AI</text>
+         <text x="11" y="31" class="cs">gemini-3.5-flash</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--hub)"/>
+         <text x="11" y="17" class="ct">51 APIs enabled</text>
+         <text x="11" y="31" class="cs">warrent-505918</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--dorm)"/>
+         <text x="11" y="17" class="ct">Pub/Sub</text>
+         <text x="11" y="31" class="cs">0 topics</text>
+       </g>
+<g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Logging · Trace · Monitoring</text>
+         <text x="11" y="31" class="cs">receiving Cloud Run telemetry</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--dorm)"/>
+         <text x="11" y="17" class="ct">Secret Manager</text>
+         <text x="11" y="31" class="cs">0 secrets</text>
+       </g></svg></div>
+      <div class="cards three"><article class="card">
+    <h4><s style="background:var(--live)"></s>Model Armor</h4>
+    <p class="sub">injection-image · locations/us</p>
+    <dl><dt>template</dt><dd>projects/warrent-505918/locations/us/templates/injection-image</dd><dt>created</dt><dd>2026-08-18</dd><dt>filters</dt><dd>prompt injection · jailbreak · RAI DANGEROUS at LOW_AND_ABOVE</dd><dt>wired by</dt><dd>MODEL_ARMOR_LOCATION + MODEL_ARMOR_TEMPLATE on the revision</dd></dl>
+    <p class="note"><b>Now in the request path.</b> Every capture is screened before a judgement model is asked about it, because <b>a photograph is untrusted input</b> and a sticker with words on it is a prompt.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Vertex AI</h4>
+    <p class="sub">gemini-3.5-flash · global endpoint</p>
+    <dl><dt>judgement model</dt><dd>gemini-3.5-flash</dd><dt>screening model</dt><dd>gemini-3.5-flash-lite</dd><dt>engine-side</dt><dd>gemini-3.5-flash-lite, observed serving 2026-08-26</dd><dt>location</dt><dd>global — the model is not where the rest of this runs</dd><dt>temperature</dt><dd>0.0</dd></dl>
+    <p class="note">Two tiers, chosen by <b>what it costs to be wrong</b>: Flash-Lite refuses an unusable photo, Flash judges the evidence, and nothing cheap can pass a step. <b>The screen is not Gemma</b> — Gemma is not a publisher model on Vertex and every spelling of it 404s, so running it would mean paying for a GPU endpoint that has to still be up when a judge watches the film.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--hub)"></s>51 APIs enabled</h4>
+    <p class="sub">warrent-505918</p>
+    <dl><dt>enabled</dt><dd>51</dd><dt>was</dt><dd>46 on 2026-08-19</dd><dt>enabled by</dt><dd>infra/bootstrap.sh, once</dd></dl>
+    <p class="note">Most of these are transitive — enabling Firebase pulls in a dozen. The ones this system actually calls are drawn.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--dorm)"></s>Pub/Sub</h4>
+    <p class="sub">0 topics</p>
+    <dl><dt>topics</dt><dd>0</dd><dt>subscriptions</dt><dd>0</dd><dt>enabled by</dt><dd>bootstrap.sh</dd></dl>
+    <p class="note">Enabled and never used. The sweep is a cron, not a queue — see the scheduled band.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Logging · Trace · Monitoring</h4>
+    <p class="sub">receiving Cloud Run telemetry</p>
+    <dl><dt>logging</dt><dd>request and stdout logs</dd><dt>trace</dt><dd>spans named agent.inspector, agent.skeptic, screen — the screen runs Flash-Lite</dd><dt>monitoring</dt><dd>Run built-in metrics</dd><dt>gap</dt><dd>the app logs no stack on a 500</dd></dl>
+    <p class="note">The agent calls are traced by hand, so a slow adjudication can be read span by span. <b>Application errors are not logged</b>, which is how the broken sweep stayed quiet.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--dorm)"></s>Secret Manager</h4>
+    <p class="sub">0 secrets</p>
+    <dl><dt>secrets</dt><dd>0</dd><dt>where the secrets are instead</dt><dd>plain env vars on the revision</dd><dt>at risk</dt><dd>the sweep secret, the OAuth client secret, the instrument keys</dd></dl>
+    <p class="note"><b>The honest weak point of this deployment.</b> Cloud Run env vars are visible to anyone with describe on the service. For a hackathon build that is a considered trade; for a real fleet it is the first thing to move.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>Logging · Trace · Monitoring</b> ← Revision warrant-00013-nlw <span style="opacity:.7">(Request path)</span></div><div><b>Vertex AI</b> ← Vertex AI Agent Engine <span style="opacity:.7">(The fleet)</span></div><div><b>Vertex AI</b> ← The cheap screen <span style="opacity:.7">(The fleet)</span></div><div><b>Model Armor</b> → Vertex AI Agent Engine <span style="opacity:.7">(The fleet)</span></div><div><b>51 APIs enabled</b> ← Cloud Run service <span style="opacity:.7">(Request path)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 5 of 8</div>
+    <h2>Data — carrying real records</h2>
+    <p class="thesis">Everything lives under tenants/{t}/…, so a query that forgets its tenant returns nothing rather than everything.</p>
+    <div class="flowwrap tall"><svg class="flow" viewBox="-16 -26 848 176" preserveAspectRatio="xMidYMid meet">
+    <path d="M228 22 L132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="160.4" y="10" width="39.2" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">15 READY</text>
+<path d="M228 112 C180 112 180 22 132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="63.4" class="elab">released — tenancy en…</text>
+<path d="M228 112 L132 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="138.95" y="100" width="82.1" height="11" rx="3" class="ebg"/><text x="180" y="108.4" class="elab">released 2026-08-25</text>
+<path d="M456 22 L132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="262.7" y="10" width="62.6" height="11" rx="3" class="ebg"/><text x="294" y="18.4" class="elab">datastore.user</text>
+<path d="M456 22 C294 22 294 112 132 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="266.6" y="55" width="54.8" height="11" rx="3" class="ebg"/><text x="294" y="63.4" class="elab">object admin</text>
+<path d="M522 44 L522 90" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Firestore (default)</text>
+         <text x="11" y="31" class="cs">nam5</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">15 composite indexes</text>
+         <text x="11" y="31" class="cs">all READY</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Security rules</text>
+         <text x="11" y="31" class="cs">2 releases live</text>
+       </g>
+<g transform="translate(0,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Evidence bucket</text>
+         <text x="11" y="31" class="cs">warrent-505918-evidence</text>
+       </g>
+<g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">warrant-web@ service account</text>
+         <text x="11" y="31" class="cs">the runtime identity</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">warrant-adjudicator@</text>
+         <text x="11" y="31" class="cs">impersonated to reach the fleet</text>
+       </g>
+<g transform="translate(684,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">firebase-adminsdk-fbsvc@</text>
+         <text x="11" y="31" class="cs">Firebase-managed agent</text>
+       </g></svg></div>
+    <div class="cards"><article class="card">
+    <h4><s style="background:var(--live)"></s>Firestore (default)</h4>
+    <p class="sub">nam5 · Native · pessimistic</p>
+    <dl><dt>tenants</dt><dd>22</dd><dt>jobs</dt><dd>35</dd><dt>procedures</dt><dd>56 (+1 published publicly)</dd><dt>sealed records</dt><dd>2</dd><dt>members</dt><dd>21</dd></dl>
+    <p class="note"><b>No longer empty.</b> Everything is under <code>tenants/{t}/…</code> so a query that forgets its tenant returns nothing rather than everything. The two sealed records are the ones the demo was cut from.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>15 composite indexes</h4>
+    <p class="sub">all READY</p>
+    <dl><dt>composite indexes</dt><dd>15</dd><dt>was</dt><dd>7 on 2026-08-19</dd><dt>deployed by</dt><dd>infra/deploy-rules.sh</dd></dl>
+    <p class="note">Every one of these exists because a query failed once. Firestore names the index it wants in the error, which makes this the least interesting file in the repository and the most annoying to omit.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Security rules</h4>
+    <p class="sub">2 releases live</p>
+    <dl><dt>cloud.firestore</dt><dd>released 2026-08-25 14:11 UTC</dd><dt>warrent-505918-evidence</dt><dd>released 2026-08-25 14:11 UTC</dd><dt>was</dt><dd>2 rulesets uploaded, neither released</dd><dt>proved by</dt><dd>the emulator, in scripts/smoke.sh</dd></dl>
+    <p class="note"><b>Fixed since the last reading.</b> Rules that are uploaded but never released do nothing at all, and the console shows them as if they were live. Tenancy is now enforced by the database, and smoke.sh proves it by running the rules rather than asserting them.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Evidence bucket</h4>
+    <p class="sub">warrent-505918-evidence · 52 objects</p>
+    <dl><dt>objects</dt><dd>52</dd><dt>location</dt><dd>US-CENTRAL1</dd><dt>holds</dt><dd>capture media, avatars, uploaded paper forms</dd><dt>rules</dt><dd>released 2026-08-25</dd></dl>
+    <p class="note">The photographs themselves. <b>There was no storage rule at all until 2026-08-20</b>, while the bucket was already configured — the default posture must not be discovered on the day the first photograph is uploaded.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>warrant-web@ service account</h4>
+    <p class="sub">the runtime identity</p>
+    <dl><dt>attached to</dt><dd>the Cloud Run revision</dd><dt>holds</dt><dd>datastore.user · firebaseauth.admin · storage object admin on the evidence bucket</dd><dt>does not hold</dt><dd>project editor</dd><dt>can</dt><dd>impersonate warrant-adjudicator@</dd></dl>
+    <p class="note">Least privilege, and now actually in use. It cannot administer the project, cannot create service accounts, and cannot read another project's data.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>warrant-adjudicator@</h4>
+    <p class="sub">impersonated to reach the fleet</p>
+    <dl><dt>role</dt><dd>aiplatform.user, and nothing else</dd><dt>reached by</dt><dd>warrant-web@ minting a short-lived token</dd><dt>why split</dt><dd>the web identity should not hold a standing key to the model</dd></dl>
+    <p class="note">The split exists so that <b>the credential that can call a judgement model is not the credential serving web pages</b>. It is issued for minutes at a time and never written down.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>firebase-adminsdk-fbsvc@</h4>
+    <p class="sub">Firebase-managed agent</p>
+    <dl><dt>created by</dt><dd>Firebase, automatically</dd><dt>used by</dt><dd>nothing in this deployment</dd></dl>
+    <p class="note">Comes with the Firebase registration. Left alone.</p>
+  </article></div>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 6 of 8</div>
+    <h2>The fleet — deployed on Vertex AI Agent Engine</h2>
+    <p class="thesis">Seven agents behind one engine, which answers for its own roster over the API — so the claim is checkable from outside.</p>
+    <div class="flowwrap tall"><svg class="flow" viewBox="-16 -26 848 266" preserveAspectRatio="xMidYMid meet">
+    <path d="M456 22 L132 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="254.9" y="10" width="78.2" height="11" rx="3" class="ebg"/><text x="294" y="18.4" class="elab">the packaged fleet</text>
+<path d="M66 44 L66 90" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 C180 22 180 112 228 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 C294 22 294 112 456 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 C408 22 408 112 684 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M66 44 L66 180" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 C180 22 180 202 228 202" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 C294 22 294 202 456 202" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="10" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">a method, not an agent</text>
+<path d="M132 112 L228 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="100" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="108.4" class="elab">compiles the rules it…</text>
+<path d="M132 112 L684 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="361.1" y="100" width="93.8" height="11" rx="3" class="ebg"/><text x="408" y="108.4" class="elab">the procedure it answ…</text>
+<path d="M684 112 C408 112 408 202 132 202" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="368.9" y="145" width="78.2" height="11" rx="3" class="ebg"/><text x="408" y="153.4" class="elab">structured blocker</text>
+<path d="M228 202 C180 202 180 112 132 112" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="145" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="153.4" class="elab">defect → a new version</text><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Vertex AI Agent Engine</text>
+         <text x="11" y="31" class="cs">warrant-fleet</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">The cheap screen</text>
+         <text x="11" y="31" class="cs">gemini-3.5-flash-lite</text>
+       </g>
+<g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Agent package bucket</text>
+         <text x="11" y="31" class="cs">warrent-505918-agents</text>
+       </g>
+<g transform="translate(0,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Scoper</text>
+         <text x="11" y="31" class="cs">11/14</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Inspector</text>
+         <text x="11" y="31" class="cs">12/18</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Skeptic</text>
+         <text x="11" y="31" class="cs">8/12</text>
+       </g>
+<g transform="translate(684,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Instructor</text>
+         <text x="11" y="31" class="cs">6/8</text>
+       </g>
+<g transform="translate(0,180)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Foreman</text>
+         <text x="11" y="31" class="cs">8/8</text>
+       </g>
+<g transform="translate(228,180)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Auditor</text>
+         <text x="11" y="31" class="cs">5/5</text>
+       </g>
+<g transform="translate(456,180)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Wright</text>
+         <text x="11" y="31" class="cs">7/7</text>
+       </g></svg></div>
+    <div class="cards"><article class="card">
+    <h4><s style="background:var(--live)"></s>Vertex AI Agent Engine</h4>
+    <p class="sub">warrant-fleet · reasoningEngines/5032906174249304064</p>
+    <dl><dt>display name</dt><dd>warrant-fleet</dd><dt>created</dt><dd>2026-08-21 22:16 UTC</dd><dt>last updated</dt><dd>2026-08-25 16:03 UTC</dd><dt>methods</dt><dd>query · roster · screen</dd><dt>roster answers</dt><dd>seven agents, each with its contract</dd></dl>
+    <p class="note"><b>The fleet is deployed, not on a laptop.</b> Asked for its roster over the API it names all seven agents and the contract each one answers under — so the claim on this diagram is checkable from outside by anyone with the endpoint.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>The cheap screen</h4>
+    <p class="sub">gemini-3.5-flash-lite · not an eighth agent</p>
+    <dl><dt>answers</dt><dd>UNUSABLE or NEEDS_JUDGEMENT — there is no PASS</dd><dt>costs when wrong</dt><dd>one retake</dd><dt>not in</dt><dd>REGISTRY — roster() says seven</dd><dt>why not Gemma</dt><dd>not a publisher model on Vertex — every spelling returns 404</dd><dt>traced as</dt><dd>screen</dd></dl>
+    <p class="note">The cheap model sits only on the side where being wrong is recoverable. <b>It has no PASS in its enum</b>, so the strongest answer it can give still ends with the judge or the technician being asked. That is a shape, not a prompt instruction a model might ignore.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Agent package bucket</h4>
+    <p class="sub">warrent-505918-agents · 13 objects</p>
+    <dl><dt>objects</dt><dd>13</dd><dt>holds</dt><dd>the packaged fleet the engine runs</dd><dt>written by</dt><dd>infra/deploy-agents.py</dd></dl>
+    <p class="note">How the code in <code>agents/</code> gets to Vertex. The engine pulls from here at deploy, not at request time.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Scoper</h4>
+    <p class="sub">11/14 · interviews, then compiles</p>
+    <dl><dt>decides</dt><dd>what to ask next, and when a procedure would run unambiguously</dd><dt>contract</dt><dd>scoper-turn.schema.json</dd><dt>scenarios</dt><dd>14, including full interviews</dd><dt>reached by</dt><dd>/api/scoper/turn and /api/procedures/compile</dd><dt>refuses</dt><dd>to state a tolerance nobody gave it</dd></dl>
+    <p class="note">There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> — so “it did not invent a tolerance” is arithmetic, not an impression.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Inspector</h4>
+    <p class="sub">12/18 · one field at a time</p>
+    <dl><dt>decides</dt><dd>PASS · ADD FIELD · ESCALATE on one field's evidence</dd><dt>contract</dt><dd>inspector-verdict.schema.json</dd><dt>scenarios</dt><dd>18 (4 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate</dd><dt>never judges</dt><dd>a whole step — it would trade a weak photo against a strong one</dd></dl>
+    <p class="note">Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Skeptic</h4>
+    <p class="sub">8/12 · adversarial</p>
+    <dl><dt>decides</dt><dd>does this evidence belong to this job, this machine, this moment</dd><dt>contract</dt><dd>skeptic-verdict.schema.json</dd><dt>scenarios</dt><dd>12 (3 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate, beside the Inspector</dd><dt>never sees</dt><dd>the Inspector's verdict — its prompt does not mention an Inspector exists</dd></dl>
+    <p class="note">Given the perceptual embedding distance as an <i>input</i>: code computes the distance, the model decides what it means against the machine's recorded damage and history. Twelve identical bikes in a row and only a scuff on one fork tells them apart. <b>A distance is not a decision.</b></p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Instructor</h4>
+    <p class="sub">6/8 · unbounded speech in</p>
+    <dl><dt>decides</dt><dd>the blocker class, the next action, and the safety flag</dd><dt>contract</dt><dd>instructor-recommendation.schema.json</dd><dt>scenarios</dt><dd>8</dd><dt>reached by</dt><dd>the disposition path, when a step stalls</dd><dt>sees</dt><dd>the technician's words verbatim, untidied</dd></dl>
+    <p class="note">“I haven't got the right socket” and “the socket won't bite, it's rounded” share a vocabulary and mean <b>tool_missing</b> versus <b>seized_or_damaged</b> — which decides whether the next visit needs an extractor or just more time. Its safety flag must fire on “it's a bit wobbly on the jack” while the speaker is willing to carry on.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Foreman</h4>
+    <p class="sub">8/8 · owns the job for its life</p>
+    <dl><dt>decides</dt><dd>status, action, and whether to recommend holding the machine</dd><dt>contract</dt><dd>foreman-disposition.schema.json</dd><dt>scenarios</dt><dd>8</dd><dt>reached by</dt><dd>the disposition path and the sweep</dd><dt>cannot</dt><dd>hold anything itself — the Gate does, deterministically</dd></dl>
+    <p class="note">Its inputs conflict on purpose: the machine is unsafe, the customer is booked in two days, and the torque wrench arrives Thursday. It writes down enough to be woken days later with no other context. <b>A waiver needs a named person holding standing</b>, and standing arrives as a fact, so it cannot be talked into one.</p>
+  </article></div>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page">
+      <div class="kicker">The fleet — deployed on Vertex AI Agent Engine — continued</div>
+      <div class="rule"></div>
+      <div class="cards"><article class="card">
+    <h4><s style="background:var(--live)"></s>Auditor</h4>
+    <p class="sub">5/5 · weeks of jobs at once</p>
+    <dl><dt>decides</dt><dd>whether the PROCEDURE is defective, and hands the revision back</dd><dt>contract</dt><dd>auditor-finding.schema.json</dd><dt>scenarios</dt><dd>5</dd><dt>reached by</dt><dd>the sweep — which is currently failing</dd><dt>refuses</dt><dd>to say what a wrong bound should become</dd></dl>
+    <p class="note">The only agent whose subject is the procedure, and the one that closes the loop back to the Scoper. Its hard judgement is that <b>a step that keeps failing is usually the procedure working</b> — pads worn past the limit on nine jobs in twenty is a rule catching real faults, and reporting it would push a shop to loosen the check earning its keep.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>Wright</h4>
+    <p class="sub">7/7 · writes the driver</p>
+    <dl><dt>decides</dt><dd>which characteristic carries a reading, and how it is encoded</dd><dt>contract</dt><dd>wright-turn.schema.json</dd><dt>scenarios</dt><dd>7, all offline from recorded GATT trees</dd><dt>refuses</dt><dd>a number whose unit it cannot name</dd></dl>
+    <p class="note">The only agent that emits an artefact rather than a verdict, which is why it is held hardest. A wrong verdict is on the record to argue with; <b>a wrong driver mints wrong measurements unattended</b>, each filed as <i>measured</i>. So it must never pick battery level — which reads first and decodes to a believable 87 — and must abandon rather than emit a number with no unit.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>Vertex AI Agent Engine</b> ← warrant-adjudicator@ <span style="opacity:.7">(Data)</span></div><div><b>Vertex AI Agent Engine</b> → Vertex AI <span style="opacity:.7">(Platform services)</span></div><div><b>The cheap screen</b> → Vertex AI <span style="opacity:.7">(Platform services)</span></div><div><b>Vertex AI Agent Engine</b> ← Model Armor <span style="opacity:.7">(Platform services)</span></div><div><b>Vertex AI Agent Engine</b> ← Public routes <span style="opacity:.7">(Request path)</span></div><div><b>Foreman</b> → Firestore (default) <span style="opacity:.7">(Data)</span></div><div><b>Wright</b> → Driver on the phone <span style="opacity:.7">(Instruments)</span></div><div><b>Auditor</b> ← /api/tasks/sweep <span style="opacity:.7">(Scheduled work)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 7 of 8</div>
+    <h2>Scheduled work — one cron for the whole system</h2>
+    <p class="thesis">One cron re-reads the world every five minutes. It is currently failing, and nothing downstream of it has ever run.</p>
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 392 176" preserveAspectRatio="xMidYMid meet">
+    <path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
+<rect x="138.95" y="10" width="82.1" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">OIDC — every minute</text>
+<path d="M294 44 L294 90" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<path d="M228 22 C180 22 180 112 132 112" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<rect x="133.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="63.4" class="elab">moves the follow-up d…</text><g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">Cloud Scheduler</text>
+         <text x="11" y="31" class="cs">warrant-sweep</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
+         <text x="11" y="17" class="ct">/api/tasks/sweep</text>
+         <text x="11" y="31" class="cs">200</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Tasks</text>
+         <text x="11" y="31" class="cs">0 raised</text>
+       </g>
+<g transform="translate(0,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Google Calendar</text>
+         <text x="11" y="31" class="cs">OAuth grant</text>
+       </g></svg></div>
+      <div class="cards three"><article class="card">
+    <h4><s style="background:var(--live)"></s>Cloud Scheduler</h4>
+    <p class="sub">warrant-sweep · * * * * *</p>
+    <dl><dt>schedule</dt><dd>* * * * * — every minute</dd><dt>was</dt><dd>*/5, until deploy-web.sh reset it</dd><dt>state</dt><dd>ENABLED</dd><dt>target</dt><dd>POST /api/tasks/sweep</dd><dt>auth</dt><dd>OIDC token</dd></dl>
+    <p class="note">One cron for the whole system. Cloud Tasks would be more precise; a cron that re-reads the world cannot lose work when a deploy lands mid-flight.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--live)"></s>/api/tasks/sweep</h4>
+    <p class="sub">200 · 3–11 s</p>
+    <dl><dt>status</dt><dd>200 on 2026-08-27, revision 00014</dd><dt>was</dt><dd>500 on every run for a day, across revisions 00012 and 00013</dd><dt>runtime</dt><dd>10.6 s cold, 3.0 s warm</dd><dt>unauthenticated</dt><dd>401, correctly</dd><dt>holds</dt><dd>a lease, so a long run is not overtaken by its own retry</dd></dl>
+    <p class="note"><b>This was the one red node on this diagram, and it is fixed.</b> For a day the cron authenticated, threw early and returned 500 in under a second — before any model call, on two revisions, so no single deploy caused it. Revision 00014 answers 200 and completes in seconds. Two consecutive runs observed; the collections it writes are still empty, which is a separate question from whether it runs.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Tasks</h4>
+    <p class="sub">0 raised</p>
+    <dl><dt>tasks</dt><dd>0</dd><dt>raised by</dt><dd>the Foreman and the Auditor, through the sweep</dd><dt>note</dt><dd>the sweep now completes, so an empty table is a real answer</dd></dl>
+    <p class="note">Still empty — but the sweep above now runs, so this is no longer explained by a broken cron. Two sealed records is a thin window for an Auditor whose subject is a procedure across weeks of jobs; there is genuinely little for it to find yet.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Google Calendar</h4>
+    <p class="sub">OAuth grant · /api/auth/calendar</p>
+    <dl><dt>scope</dt><dd>calendar events</dd><dt>written by</dt><dd>the sweep</dd><dt>events created</dt><dd>none</dd></dl>
+    <p class="note">A held machine that needs a part on Thursday should put Thursday in somebody's calendar. Wired, granted, never exercised.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>/api/tasks/sweep</b> → Auditor <span style="opacity:.7">(The fleet)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page"><div class="kicker">Section 8 of 8</div>
+    <h2>Instruments — a reading nobody typed</h2>
+    <p class="thesis">A signed frame from an instrument is the difference between a measurement and a number somebody typed.</p>
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 620 86" preserveAspectRatio="xMidYMid meet">
+    <path d="M456 22 L360 22" fill="none" stroke="var(--bench)" stroke-width="1.4" opacity=".8"/>
+<rect x="368.9" y="10" width="78.2" height="11" rx="3" class="ebg"/><text x="408" y="18.4" class="elab">BLE notify, signed</text>
+<path d="M228 22 L132 22" fill="none" stroke="var(--bench)" stroke-width="1.4" opacity=".8"/>
+<rect x="138.95" y="10" width="82.1" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">POST a signed frame</text><g transform="translate(456,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--bench)"/>
+         <text x="11" y="17" class="ct">Reference instrument</text>
+         <text x="11" y="31" class="cs">ESP32</text>
+       </g>
+<g transform="translate(228,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--bench)"/>
+         <text x="11" y="17" class="ct">Driver on the phone</text>
+         <text x="11" y="31" class="cs">written by the Wright</text>
+       </g>
+<g transform="translate(0,0)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">/api/ingest/reading</text>
+         <text x="11" y="31" class="cs">the only writer of readings</text>
+       </g></svg></div>
+      <div class="cards three"><article class="card">
+    <h4><s style="background:var(--bench)"></s>Reference instrument</h4>
+    <p class="sub">ESP32 · BLE · signed frames</p>
+    <dl><dt>transport</dt><dd>BLE GATT notify</dd><dt>signs</dt><dd>every frame, with a counter persisted in NVS</dd><dt>why a counter</dt><dd>BLE is a broadcast — without it a frame can be replayed</dd><dt>source</dt><dd>firmware/warrant_reference_instrument.ino</dd></dl>
+    <p class="note">Real hardware on a bench, not a simulation. It exists to prove the shape: <b>a torque wrench that signs its readings</b> means the number on the record was measured rather than typed.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--bench)"></s>Driver on the phone</h4>
+    <p class="sub">written by the Wright</p>
+    <dl><dt>reads</dt><dd>the GATT tree, then the characteristic the Wright chose</dd><dt>runs on</dt><dd>the Android surface only</dd><dt>falls back to</dt><dd>a typed value, recorded as unattested</dd></dl>
+    <p class="note">The phone is the bridge. An instrument that cannot be read is not a blocker — the reading is simply recorded as one a person typed, and the record says so.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>/api/ingest/reading</h4>
+    <p class="sub">the only writer of readings</p>
+    <dl><dt>readings written</dt><dd>0 in production</dd><dt>rules</dt><dd>refuse `readings` from every client</dd><dt>unsigned reading</dt><dd>accepted, but recorded with no tool_id</dd><dt>keys</dt><dd>WARRANT_INSTRUMENT_KEYS, compared in constant time</dd></dl>
+    <p class="note"><b>The only writer of <code>readings</code></b>, and that is the point of the endpoint. No client may write a measurement directly, so “measured” means a signed frame reached this route — and an unsigned one still gets recorded, just without the claim.</p>
+  </article></div>
+      <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
+    <div class="cross"><div><b>Driver on the phone</b> ← Wright <span style="opacity:.7">(The fleet)</span></div><div><b>/api/ingest/reading</b> → Firestore (default) <span style="opacity:.7">(Data)</span></div></div>
+      <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span></span></div></section>
+<section class="page">
+    <div class="kicker">How they come together</div>
+    <h2>One capture, end to end</h2>
+    <p class="thesis">The sections above are the parts. This is the path a single photograph takes through all of them, in order, on the deployed system.</p>
+    <div class="steps"><div class="step"><i></i><p>A technician opens the job on the web or the Android app. There is nothing to install, and a sealed record is readable by anyone with the link — which is why the service is public to <code>allUsers</code>.</p></div><div class="step"><i></i><p>Google Front End terminates TLS and hands plain HTTP to the Cloud Run service <code>warrant</code>, one container serving the pages, the API and the images.</p></div><div class="step"><i></i><p>The revision runs as <code>warrant-web@</code> — not the default compute account it used to run as — so the identity serving web pages cannot administer the project.</p></div><div class="step"><i></i><p>The capture is written to the evidence bucket and the job to Firestore, both under <code>tenants/{t}/…</code>, with released rules refusing anything that reaches across a tenant.</p></div><div class="step"><i></i><p><b>Model Armor screens the photograph first.</b> A photograph is untrusted input, and a sticker with words on it is a prompt.</p></div><div class="step"><i></i><p>The cheap screen (Flash-Lite) asks one question: is this frame so unusable that spending the judge on it is waste? It has no PASS in its enum, so it can cost a retake and nothing more.</p></div><div class="step"><i></i><p><code>warrant-web@</code> mints a short-lived token for <code>warrant-adjudicator@</code> and calls <code>reasoningEngines:query</code>. The credential that can reach a judgement model is never the one serving pages.</p></div><div class="step"><i></i><p>The Inspector judges the evidence against the written rule; the Skeptic asks whether it belongs to this job at all. <b>Neither sees the other's verdict</b> — two agents shown each other's conclusions agree, and the second opinion stops being one.</p></div><div class="step"><i></i><p>The verdict lands on the record with the model and the version that produced it. The Gate — deterministic code, not an agent — decides whether the step passes and whether the machine is held.</p></div><div class="step"><i></i><p>Every five minutes Cloud Scheduler calls the sweep, which is where the Auditor reads weeks of jobs at once and hands a procedure defect back to the Scoper.</p></div></div>
+    <div class="rule" style="margin:12px 0 8px"></div>
+    <div class="kicker" style="margin-bottom:5px">The eight sections, and the traffic between them</div>
+    <div class="flowwrap" style="min-height:0;flex:1;margin-bottom:6px"><svg class="flow" viewBox="-10 -14 936 192" preserveAspectRatio="xMidYMid meet">
+    <path d="M196 26 L240 26" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M338 52 C338 52 338 114 338 114" fill="none" stroke="var(--live)" stroke-width="2"
+      opacity=".55"/><path d="M436 26 L720 26" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M338 52 C218 52 218 114 98 114" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M98 114 C218 114 218 52 338 52" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M818 52 C458 52 458 114 98 114" fill="none" stroke="var(--live)" stroke-width="2"
+      opacity=".55"/><path d="M720 26 L676 26" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M578 52 C458 52 458 114 338 114" fill="none" stroke="var(--live)" stroke-width="2"
+      opacity=".55"/><path d="M338 114 C458 114 458 52 578 52" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M436 26 L480 26" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M676 26 L720 26" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M578 52 C698 52 698 114 818 114" fill="none" stroke="var(--bench)" stroke-width="1.5"
+      opacity=".55"/><path d="M578 114 C578 114 578 52 578 52" fill="none" stroke="var(--live)" stroke-width="1.5"
+      opacity=".55"/><path d="M818 114 C818 114 818 52 818 52" fill="none" stroke="var(--prov)" stroke-width="1.5"
+      opacity=".55"/><g transform="translate(0,0)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Supply chain</text>
+      <text x="13" y="37" class="os">4 nodes · 3 live</text></g><g transform="translate(240,0)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Request path</text>
+      <text x="13" y="37" class="os">11 nodes · 10 live</text></g><g transform="translate(480,0)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">The fleet</text>
+      <text x="13" y="37" class="os">10 nodes · 10 live</text></g><g transform="translate(720,0)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Data</text>
+      <text x="13" y="37" class="os">7 nodes · 6 live</text></g><g transform="translate(0,114)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Identity</text>
+      <text x="13" y="37" class="os">5 nodes · 3 live</text></g><g transform="translate(240,114)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Platform services</text>
+      <text x="13" y="37" class="os">6 nodes · 3 live</text></g><g transform="translate(480,114)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Scheduled work</text>
+      <text x="13" y="37" class="os">4 nodes · 2 live</text></g><g transform="translate(720,114)">
+      <rect width="196" height="52" rx="8" class="chip"/>
+      <text x="13" y="21" class="ot">Instruments</text>
+      <text x="13" y="37" class="os">3 nodes · 0 live</text></g></svg></div>
+    <div class="warn" style="border-left-color:var(--live)"><b style="color:var(--live)">Step 10 was broken for a day, and is not any more.</b>
+      The sweep returned 500 on every run across two revisions, failing in under a second — before
+      any model call — so no audit ran against real data. Revision 00014 answers 200 and completes
+      in three to eleven seconds. <code>tasks</code>, <code>findings</code> and <code>audits</code>
+      are still empty, which is now a thinness-of-data question rather than a broken one: two sealed
+      records is a narrow window for an Auditor whose subject is a procedure across weeks of jobs.</div>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span>end of document</span></div></section></body></html>

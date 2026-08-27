@@ -4,3 +4,9 @@
 !.gitignore
 !*/
 !*/.gitkeep
+
+# But a transcript is text, and it is the thing the script is written FROM. 03-john/.gitkeep
+# has named `interview__transcript` as an expected artifact since the folder was made; without
+# this line the transcript of a 79-minute interview that cannot be recorded twice was ignored
+# alongside the 3.6 GB it came out of.
+!*/*.md
