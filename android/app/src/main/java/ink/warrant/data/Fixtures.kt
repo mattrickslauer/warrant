@@ -331,9 +331,9 @@ sealed interface DemoBeat {
     data class Escalate(override val at: Long, val question: String) : DemoBeat
 }
 
-private fun gemma(verdict: String, rationale: String, at: Long) = DemoBeat.Decide(
+private fun lite(verdict: String, rationale: String, at: Long) = DemoBeat.Decide(
     at = at, agent = ink.warrant.contract.Agent.INSPECTOR, verdict = verdict,
-    rationale = rationale, model = "gemma-3-4b", cost = 0.00002,
+    rationale = rationale, model = "gemini-3.5-flash-lite", cost = 0.00002,
 )
 
 private fun flash(verdict: String, rationale: String, at: Long) = DemoBeat.Decide(
@@ -364,7 +364,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
     "proc_banana_v1" to mapOf(
         "s1" to listOf(
             listOf(
-                gemma("PASS", "One unpeeled banana, whole and in frame.", 700),
+                lite("PASS", "One unpeeled banana, whole and in frame.", 700),
                 DemoBeat.Status(1500, StepStatus.PERFORMED),
             ),
         ),
@@ -372,7 +372,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
         // field the procedure did not contain when the job started.
         "s2" to listOf(
             listOf(
-                gemma(
+                lite(
                     "ESCALATE",
                     "Slices partly out of frame; cannot confirm the cuts run through. Deferring to Flash.",
                     800,
@@ -385,7 +385,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
                 DemoBeat.AddField(2700, reframe),
             ),
             listOf(
-                gemma("PASS", "All slices visible, cuts running fully through.", 900),
+                lite("PASS", "All slices visible, cuts running fully through.", 900),
                 DemoBeat.Status(1900, StepStatus.PERFORMED),
             ),
         ),
@@ -406,13 +406,13 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
     "proc_smile_v1" to mapOf(
         "m1" to listOf(
             listOf(
-                gemma("PASS", "One face square to the lens, mouth closed.", 650),
+                lite("PASS", "One face square to the lens, mouth closed.", 650),
                 DemoBeat.Status(1400, StepStatus.PERFORMED),
             ),
         ),
         "m2" to listOf(
             listOf(
-                gemma(
+                lite(
                     "PASS",
                     "Mouth clearly upturned. A smile is what is visible; nothing about intent is claimed.",
                     750,
@@ -431,7 +431,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
     "proc_pickup_v1" to mapOf(
         "p1" to listOf(
             listOf(
-                gemma("PASS", "One object at rest on a surface, no hand on it.", 600),
+                lite("PASS", "One object at rest on a surface, no hand on it.", 600),
                 DemoBeat.Status(1400, StepStatus.PERFORMED),
             ),
         ),
@@ -439,7 +439,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
         // is a different question, and a different agent answers it.
         "p2" to listOf(
             listOf(
-                gemma("PASS", "Object clear of the surface and held.", 800),
+                lite("PASS", "Object clear of the surface and held.", 800),
                 skeptic(
                     "BELONGS",
                     "Same object as the opening capture — its markings and the surface behind " +
@@ -453,7 +453,7 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
     "proc_front_brake_v3" to mapOf(
         "b1" to listOf(
             listOf(
-                gemma("PASS", "Wheel removed, caliper and disc both visible.", 900),
+                lite("PASS", "Wheel removed, caliper and disc both visible.", 900),
                 DemoBeat.Status(1800, StepStatus.PERFORMED),
             ),
         ),
