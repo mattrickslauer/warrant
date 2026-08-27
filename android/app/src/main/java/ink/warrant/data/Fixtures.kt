@@ -86,7 +86,71 @@ val cutABanana = Procedure(
 )
 
 /**
- * The floor. Two photographs, no props, no assertion — the shortest path there is from
+ * The only task whose subject is the person running it. Two photographs, no props at all —
+ * not even a mug — so it runs anywhere a camera does.
+ *
+ * The point it carries is that a change can be entirely in the subject. Nothing in the room
+ * moves between the two captures, so neither frame can be judged on the room: the first
+ * establishes a face that was not smiling, and without it a photograph of a grin proves
+ * somebody is happy, not that anybody changed.
+ */
+val smile = Procedure(
+    id = "proc_smile_v1",
+    tenantId = "anon",
+    key = "smile",
+    title = "Smile",
+    version = 1,
+    strictness = 1,
+    minimumTier = Tier.OPEN,
+    disqualifiers = listOf(
+        "no face visible in the opening capture",
+        "the face in the second capture is not the one in the first",
+    ),
+    releases = listOf("nothing — this is a demonstration procedure"),
+    createdAt = "2026-08-27T09:00:00Z",
+    steps = listOf(
+        Step(
+            id = "m1", index = 1, title = "Straight face", condition = null,
+            explanation = "A smile only means anything measured against a face that was not " +
+                "smiling. This is the before, and it is the harder of the two to fake " +
+                "precisely because it asks you to do nothing.",
+            maxAddFields = 2,
+            fields = listOf(
+                FieldDef(
+                    key = "face_neutral", kind = FieldKind.PHOTO,
+                    prompt = "Photograph your face, not smiling",
+                    source = FieldSource.CAMERA, requiredAtStrictness = 0,
+                    acceptanceRule = AcceptanceRule.MUST_SHOW,
+                    acceptanceDescription = "a single face square to the lens, mouth closed and not smiling",
+                    guidance = "Front camera, face filling most of the frame. Neutral mouth — " +
+                        "no grin, no teeth.",
+                ),
+            ),
+        ),
+        Step(
+            id = "m2", index = 2, title = "Now smile", condition = null,
+            explanation = "A model can see an upturned mouth. It cannot see that you meant " +
+                "it, and it is not asked to — the record claims the expression, never the " +
+                "feeling behind it. Whether this is the same face as the opening capture is a " +
+                "different question again, and the Skeptic answers that one.",
+            maxAddFields = 2,
+            fields = listOf(
+                FieldDef(
+                    key = "face_smiling", kind = FieldKind.PHOTO,
+                    prompt = "Photograph your face, smiling",
+                    source = FieldSource.CAMERA, requiredAtStrictness = 0,
+                    acceptanceRule = AcceptanceRule.MUST_SHOW,
+                    acceptanceDescription = "the same face, mouth clearly upturned into a smile",
+                    guidance = "Same distance, same light. The check is that the mouth changed, " +
+                        "not that the photograph is flattering.",
+                ),
+            ),
+        ),
+    ),
+)
+
+/**
+ * The floor. Two photographs, no props, no assertion — the as short a path as there is from
  * nothing to a sealed record, so a judge with an empty desk can still run one end to end.
  *
  * It is also the only fixture that uses `consistent_with`. Photograph a mug, then photograph
@@ -236,7 +300,7 @@ val frontBrakeService = Procedure(
     ),
 )
 
-val procedures: List<Procedure> = listOf(cutABanana, pickUpAnObject, frontBrakeService)
+val procedures: List<Procedure> = listOf(cutABanana, smile, pickUpAnObject, frontBrakeService)
 
 // ----------------------------------------------------------------- the timeline
 
@@ -333,6 +397,32 @@ val scripts: Map<String, Map<String, List<List<DemoBeat>>>> = mapOf(
                     model = null, cost = 0.0,
                 ),
                 DemoBeat.Status(1100, StepStatus.PERFORMED),
+            ),
+        ),
+    ),
+    // Nothing in the room changes between the two captures, so the Inspector has only the
+    // face to go on and the Skeptic has only the room. Both are asked, and they answer
+    // different questions — which is the whole reason there are two of them.
+    "proc_smile_v1" to mapOf(
+        "m1" to listOf(
+            listOf(
+                gemma("PASS", "One face square to the lens, mouth closed.", 650),
+                DemoBeat.Status(1400, StepStatus.PERFORMED),
+            ),
+        ),
+        "m2" to listOf(
+            listOf(
+                gemma(
+                    "PASS",
+                    "Mouth clearly upturned. A smile is what is visible; nothing about intent is claimed.",
+                    750,
+                ),
+                skeptic(
+                    "BELONGS",
+                    "Same face as the opening capture — same room, same light, same collar.",
+                    1500,
+                ),
+                DemoBeat.Status(2100, StepStatus.PERFORMED),
             ),
         ),
     ),

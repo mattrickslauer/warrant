@@ -111,7 +111,7 @@ private fun YourProcedures(
         // Against LiveSource this read goes through firestore.rules. A refusal must SHOW
         // rather than spin forever on an empty list that looks like "you have written nothing".
         runCatching { source.listProcedures("*") }
-            // The bundled three are copied into every tenant by the seed, so they sit in this
+            // The bundled catalogue is copied into every tenant by the seed, so those sit in this
             // collection looking exactly like authored work. Subtracting them is what makes
             // this screen answer "what have I written?" rather than "what is in my tenant?".
             .onSuccess { procedures = it.filterNot { p -> isBundled(p.id) } }

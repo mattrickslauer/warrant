@@ -15,7 +15,7 @@ import org.junit.Test
 class CatalogueTest {
 
     @Test
-    fun `the bundled three are not yours`() {
+    fun `the bundled catalogue is not yours`() {
         PUBLIC_CATALOGUE_IDS.forEach {
             assertTrue("$it is seeded into every tenant", isBundled(it))
         }

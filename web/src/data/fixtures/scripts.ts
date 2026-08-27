@@ -61,6 +61,21 @@ export const scripts: Record<string, DemoScript> = {
     ]],
   },
 
+  // Nothing in the room changes between the two captures, so the Inspector has only the face
+  // to go on and the Skeptic has only the room. Both are asked, and they answer different
+  // questions — which is the whole reason there are two of them.
+  proc_smile_v1: {
+    m1: [[
+      screen("PASS", "One face square to the lens, mouth closed.", 650),
+      { at: 1400, kind: "status", status: "performed" },
+    ]],
+    m2: [[
+      screen("PASS", "Mouth clearly upturned. A smile is what is visible; nothing about intent is claimed.", 750),
+      skeptic("BELONGS", "Same face as the opening capture — same room, same light, same collar.", 1500),
+      { at: 2100, kind: "status", status: "performed" },
+    ]],
+  },
+
   // No escalation, no added field, no signature. Two captures and it is sealed — the banana
   // carries the drama, this one carries the floor.
   proc_pickup_v1: {

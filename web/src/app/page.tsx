@@ -16,6 +16,16 @@ const TASKS: Task[] = [
     available: true,
   },
   {
+    procedureId: "proc_smile_v1",
+    name: "Smile",
+    image: "/tasks/smile.webp",
+    steps: 2,
+    note: "Two photographs, and the only prop is your own face.",
+    classes: ["inferred"],
+    unreachable: ["measured"],
+    available: true,
+  },
+  {
     procedureId: "proc_pickup_v1",
     name: "Pick up an object",
     image: "/tasks/pickup.webp",

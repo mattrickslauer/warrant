@@ -86,7 +86,78 @@ export const cutABanana: Procedure = {
 };
 
 /**
- * The floor. Two photographs, no props, no assertion — the shortest path there is from
+ * The only task whose subject is the person running it. Two photographs, no props at all —
+ * not even a mug — so it runs anywhere a camera does.
+ *
+ * The point it carries is that a change can be entirely in the subject. Nothing in the room
+ * moves between the two captures, so neither frame can be judged on the room: the first
+ * establishes a face that was not smiling, and without it a photograph of a grin proves
+ * somebody is happy, not that anybody changed.
+ */
+export const smile: Procedure = {
+  id: "proc_smile_v1",
+  tenant_id: "anon",
+  key: "smile",
+  title: "Smile",
+  version: 1,
+  strictness: 1,
+  minimum_tier: "open",
+  disqualifiers: [
+    "no face visible in the opening capture",
+    "the face in the second capture is not the one in the first",
+  ],
+  releases: ["nothing — this is a demonstration procedure"],
+  created_at: "2026-08-27T09:00:00Z",
+  steps: [
+    {
+      id: "m1",
+      index: 1,
+      title: "Straight face",
+      condition: null,
+      explanation:
+        "A smile only means anything measured against a face that was not smiling. This is the before, and it is the harder of the two to fake precisely because it asks you to do nothing.",
+      max_add_fields: 2,
+      fields: [
+        {
+          key: "face_neutral",
+          kind: "photo",
+          prompt: "Photograph your face, not smiling",
+          source: "camera",
+          required_at_strictness: 0,
+          acceptance_rule: "must_show",
+          acceptance_description: "a single face square to the lens, mouth closed and not smiling",
+          acceptance_min: null, acceptance_max: null, acceptance_unit: null, acceptance_target: null,
+          guidance: "Front camera, face filling most of the frame. Neutral mouth — no grin, no teeth.",
+        },
+      ],
+    },
+    {
+      id: "m2",
+      index: 2,
+      title: "Now smile",
+      condition: null,
+      explanation:
+        "A model can see an upturned mouth. It cannot see that you meant it, and it is not asked to — the record claims the expression, never the feeling behind it. Whether this is the same face as the opening capture is a different question again, and the Skeptic answers that one.",
+      max_add_fields: 2,
+      fields: [
+        {
+          key: "face_smiling",
+          kind: "photo",
+          prompt: "Photograph your face, smiling",
+          source: "camera",
+          required_at_strictness: 0,
+          acceptance_rule: "must_show",
+          acceptance_description: "the same face, mouth clearly upturned into a smile",
+          acceptance_min: null, acceptance_max: null, acceptance_unit: null, acceptance_target: null,
+          guidance: "Same distance, same light. The check is that the mouth changed, not that the photograph is flattering.",
+        },
+      ],
+    },
+  ],
+};
+
+/**
+ * The floor. Two photographs, no props, no assertion — as short a path as there is from
  * nothing to a sealed record, so a judge with an empty desk can still run one end to end.
  *
  * It is also the only fixture that uses `consistent_with`. Photograph a mug, then photograph
@@ -228,4 +299,4 @@ export const frontBrakeService: Procedure = {
   ],
 };
 
-export const procedures: Procedure[] = [cutABanana, pickUpAnObject, frontBrakeService];
+export const procedures: Procedure[] = [cutABanana, smile, pickUpAnObject, frontBrakeService];

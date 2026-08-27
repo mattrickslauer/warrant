@@ -45,7 +45,7 @@ export function YourProcedures() {
       setRefused(null);
       try {
         const p = await src.listProcedures(tenantId);
-        // The bundled three are copied into every tenant by `/api/procedures/seed`, so they
+        // The bundled catalogue is copied into every tenant by `/api/procedures/seed`, so those
         // sit in this collection looking exactly like authored work. Subtracting them is what
         // makes this page answer "what have I written?" rather than "what is in my tenant?".
         if (alive) setProcedures(p.filter((row) => !isBundled(row.id)));
@@ -190,7 +190,7 @@ export function YourProcedures() {
         <div className="stack">
           <p className="records__empty">
             {procedures.length === 0
-              ? "Nothing yet. Two roads in: an interview, which is right when you do not yet know what your procedure should say, or a blank one you fill in yourself. The three bundled tasks in the picker are not counted here, because you did not write them."
+              ? "Nothing yet. Two roads in: an interview, which is right when you do not yet know what your procedure should say, or a blank one you fill in yourself. The bundled tasks in the picker are not counted here, because you did not write them."
               : "Everything you have written is out of service. Show the archived ones to bring one back."}
           </p>
         </div>

@@ -51,7 +51,7 @@ const Ctx = createContext<SessionState | null>(null);
  * So the catalogue has to be written server-side, once, before a fresh tenant has anything
  * to run.
  *
- * Without this the picker offers five tasks and every one of them fails with
+ * Without this the picker offers six tasks and every one of them fails with
  * `no such procedure` — which is what "Do it now. No account, no install." was doing.
  */
 async function seedPublicCatalogue(): Promise<void> {

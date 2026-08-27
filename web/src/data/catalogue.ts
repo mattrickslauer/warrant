@@ -1,4 +1,4 @@
-// The three tasks that are bundled into every tenant, and are nobody's own work.
+// The four tasks that are bundled into every tenant, and are nobody's own work.
 //
 // `/api/procedures/seed` copies these into whichever tenant is asking, so that a stranger can
 // run one without an account. That copy is what makes them indistinguishable from authored
@@ -7,19 +7,20 @@
 // remembers that.
 //
 // So `Your procedures` subtracts this set. Without it the page answers "what have I written?"
-// with three tasks the product wrote, which is how a shop that authored something real
+// with four tasks the product wrote, which is how a shop that authored something real
 // concluded the authoring had failed.
 //
 // The Kotlin twin is `PUBLIC_CATALOGUE_IDS` in android/…/data/Catalogue.kt. Two surfaces, one
 // list, and a procedure that is bundled on one and personal on the other would be worse than
 // either answer alone.
 
-import { cutABanana, pickUpAnObject, frontBrakeService } from "@/data/fixtures/procedures";
+import { cutABanana, smile, pickUpAnObject, frontBrakeService } from "@/data/fixtures/procedures";
 import type { Procedure } from "@/generated/types";
 
 /** The catalogue, by the document id the seed writes it to. Nothing else may be seeded. */
 export const PUBLIC_CATALOGUE: Record<string, Procedure> = {
   proc_banana_v1: cutABanana,
+  proc_smile_v1: smile,
   proc_pickup_v1: pickUpAnObject,
   proc_front_brake_v3: frontBrakeService,
 };
@@ -27,7 +28,7 @@ export const PUBLIC_CATALOGUE: Record<string, Procedure> = {
 export const PUBLIC_CATALOGUE_IDS: ReadonlySet<string> = new Set(Object.keys(PUBLIC_CATALOGUE));
 
 /**
- * Whether this document is one of the bundled three rather than something this tenant made.
+ * Whether this document is one of the bundled four rather than something this tenant made.
  *
  * Compares on the bare document id, because a scoped id is `tenant/doc` and the tenant half is
  * exactly the part that differs between two copies of the same bundled task.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the task images for the carousel with Gemini image generation on Vertex AI.
 
-One art direction, four subjects, so the set reads as one thing. Re-runnable: it skips
+One art direction, one set of subjects, so the whole carousel reads as one thing. Re-runnable: it skips
 anything already on disk. Deliberately no logos, no branding and no faces — the hosted page
 is the submission and the contest rules bar third-party trademarks and publicity rights.
 
@@ -28,6 +28,7 @@ TASKS = {
     "lightbulb": "A single clear glass incandescent light bulb lying on the surface, filament visible.",
     "tyre": "A close crop of a worn rubber tyre tread with a plain unmarked coin inserted upright into one groove.",
     "pickup": "A single plain unglazed ceramic mug, empty and unmarked, standing alone on the surface.",
+    "smile": "A small round hand mirror with a plain unadorned metal rim, lying face-up on the surface, its glass reflecting only empty ceiling.",
 }
 
 

@@ -1,7 +1,7 @@
 package ink.warrant.data
 
 /**
- * The three tasks that are bundled into every tenant, and are nobody's own work.
+ * The four tasks that are bundled into every tenant, and are nobody's own work.
  *
  * `/api/procedures/seed` copies these into whichever tenant is asking, so a stranger can run
  * one without an account. That copy is what makes them indistinguishable from authored
@@ -10,7 +10,7 @@ package ink.warrant.data
  * remembers that.
  *
  * So `Your procedures` subtracts this set. Without it the screen answers "what have I
- * written?" with three tasks the product wrote, which is how a shop that authored something
+ * written?" with four tasks the product wrote, which is how a shop that authored something
  * real concluded the authoring had failed.
  *
  * The TypeScript twin is `PUBLIC_CATALOGUE` in `web/src/data/catalogue.ts`, and the ids must
@@ -20,12 +20,13 @@ package ink.warrant.data
  */
 val PUBLIC_CATALOGUE_IDS: Set<String> = setOf(
     "proc_banana_v1",
+    "proc_smile_v1",
     "proc_pickup_v1",
     "proc_front_brake_v3",
 )
 
 /**
- * Whether this document is one of the bundled three rather than something this tenant made.
+ * Whether this document is one of the bundled four rather than something this tenant made.
  *
  * Compares on the bare document id, because a scoped id is `tenant/doc` and the tenant half is
  * exactly the part that differs between two copies of the same bundled task.
