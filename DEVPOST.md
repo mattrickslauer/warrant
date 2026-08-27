@@ -14,7 +14,7 @@ Alternates, by what they lean on:
 | Title | Leans on |
 |---|---|
 | Warrant — agents that make maintenance prove itself | the "All Things Agentic" theme |
-| Warrant — the evidence layer under your work-order system | the enterprise framing |
+| Warrant — the agent that writes the maintenance record for you | the Taskmaster track: the chore nobody wants |
 | Warrant — the end of pencil whipping | the trade's own word; highest punch, lowest clarity to an outsider |
 
 ## Elevator pitch — 174 characters
@@ -37,6 +37,10 @@ Aviation set the standard for what a maintenance record should be. Parcel delive
 
 ## What it does
 
+Nobody has ever wanted to write the maintenance record. It is the part of the job that happens after the machine is closed up, from memory or off a clipboard, when the work is done and the technician wants to go home. It is also the part somebody's life depends on being true.
+
+So Warrant writes it. Not afterwards from a summary — during, at the machine, one step at a time, and it will not write down anything it has not been shown.
+
 Warrant turns a maintenance record from a claim into evidence.
 
 You describe a job in plain language. An agent interviews you about it — what counts as done, what disqualifies it, what has to be measured, what the technician is allowed to decide alone — and turns your answers into a versioned procedure a machine can check.
@@ -50,6 +54,18 @@ Numbers can come from the tools themselves. We built a small instrument that sig
 At the end you get a sealed record: what was done, by whom, against which version of which procedure, with the evidence attached and the decisions written down. Readable months later by someone who was not there.
 
 It is not a replacement for the system a company already runs. It is the layer underneath it, so what reaches that system is evidence rather than assertion.
+
+### What runs long
+
+Very little of this happens inside one sitting, which is the whole reason it needs agents rather than a form.
+
+A job opens when the machine arrives and seals when the evidence is complete, and those are often different days — a step can be answered honestly with *the part is wrong* or *the bolt is rounded*, and then the job waits on a part with a lead time nobody controls. The Foreman owns the job across that whole span and raises the order without being asked.
+
+The Auditor works on a longer clock still. It reads sealed jobs against the procedure they were performed under, and it will not offer an opinion until at least three jobs have run on the same version — so its unit of work is weeks of shop history, not one capture. When it finds that a bound is wrong, what it produces is a revision handed back to a person.
+
+None of it needs anyone watching: a scheduler wakes the deployed service every minute and nothing about that is manual.
+
+It has not been clean the whole time, and the log is the honest version. On 26 Aug the sweep answered 500 on 344 of its firings against 42 that succeeded — a scheduler that looks like it is working, firing into an endpoint that was not. It has answered 200 on every firing since, 611 of them on the 27th with no failures. The architecture canvas carried that endpoint as **drift** in red for as long as it was true, and carries it as live now that it is. That is the same rule the product applies to a technician: the record says what happened, including the part nobody would have volunteered.
 
 ## How we built it
 
@@ -133,7 +149,7 @@ No cloud account or hardware — it runs on recorded fixtures. cd web && npm i &
 |---|---|
 | Submitter type | Individuals |
 | Country | United States |
-| Category | Fortified Enterprise Fleet |
+| Category | **The Taskmaster** — see the note below |
 | Organization | n/a |
 | Date started | 08-17-26 (first commit 2026-08-17) |
 | Code repo | https://github.com/mattrickslauer/warrant — public, no need to share with testing@devpost.com |
@@ -145,6 +161,34 @@ No cloud account or hardware — it runs on recorded fixtures. cd web && npm i &
 | Architecture diagram | **Submit `docs/architecture/Warrant-architecture-canvas.png`** — one page, 50 nodes and 62 links read live from `warrent-505918`, with a state legend (live / on the bench / provisioned / drift / dormant). The judging Q&A was explicit that the diagram must be readable at a glance: *"out of that one glance I know where are you deploying into, how are the components connected together… I've seen somebody whose architecture diagram is basically an essay. Try not to do that."* The 12-page `Warrant-architecture.pdf` is the essay — keep it in the repo as the long form, link it from the README, but do **not** make it the diagram field |
 | Sponsor / special prizes | Leave unchecked — Startup Excellence needs an incorporated organization |
 | Startup prize fields | Blank |
+
+### Why The Taskmaster and not Fortified Enterprise Fleet
+
+This was Fortified Enterprise Fleet until 27 Aug, and the security and tenancy work that
+suited it is all still here and still true. Three things moved it.
+
+**The panel said the quiet part out loud.** Asked about a project that had built its own
+agent registry rather than adopting the platform's, the answer was: *"if we are picking the
+winner we'll prefer somebody that has implemented with the agent registry inside our agent
+platform."* Agent Registry, Memory Bank, Gateway and Identity are Fortified Enterprise
+Fleet's own recommended stack. We adopt none of the four, on reasons we can evidence — see
+the Architecture section of the README — but in that track those reasons are argued against
+competitors who simply adopted them.
+
+**That track is where everyone went.** Most of the projects that got airtime on the call
+were Fortified Enterprise Fleet. Of Taskmaster, the judge said, unprompted: *"we're not
+getting a lot of the questions from the taskmaster, surprisingly."*
+
+**And the work fits.** Taskmaster is for agents that take on what a person does not want to
+do, and that keep going over hours, weeks or months. Writing the maintenance record is
+exactly the chore nobody wants, and the job outlives the visit — see *What runs long*.
+
+The downside is bounded. Rules §121: *"The Sponsor and Administrator reserve the right to
+reassign a Submission from one category to another if applicable."* If the panel reads this
+as an enterprise fleet, they can move it, which is what happened in the Q&A to a project
+described in almost these words. Rules §107 permits more than one Submission only where each
+is *"unique and substantially different"*, so entering the same build in both tracks is not
+available and was not attempted.
 
 Cold start on the hosted URL is about 6 seconds; load every page once before judging opens.
 

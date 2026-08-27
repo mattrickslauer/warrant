@@ -114,11 +114,34 @@ supplier-release fleet with replayable evidence — several of them using the pl
 this project declined. One of the closest analogues to Warrant's description was told *"it
 sounds more like a taskmaster to me."*
 
-**What we did.** Nothing yet, deliberately. Fortified Enterprise Fleet stays the category: its
-*Unlikely Hero* sub-criterion is explicitly scored and the technician who cannot prove their own
-work is exactly that, and Taskmaster gives no credit for the security and audit half of the
-build. But the category prize is a harder field than `STRATEGY.md` assumed, and the grand prize
-is scored across all categories anyway.
+**What we did — and this reversed on 27 Aug.** The first answer was to stay in Fortified
+Enterprise Fleet: its *Unlikely Hero* sub-criterion is explicitly scored, the technician who
+cannot prove his own work is exactly that, and Taskmaster gives no credit for the security and
+audit half of the build. That answer was wrong, on one argument that had been under-weighted.
+
+Agent Registry, Memory Bank, Gateway and Identity are **Fortified Enterprise Fleet's own
+recommended stack**. This project adopts none of the four, for reasons it can now evidence — but
+the disadvantage of arguing that is *track-specific*. In Fortified Enterprise Fleet we are
+scored beside entrants who simply adopted them, against a panel that said out loud it prefers
+those entrants. In Taskmaster nobody asks where the registry is, and `google-genai` on Agent
+Engine over Cloud Run and Firestore is unremarkable and fully compliant.
+
+Add the crowding — most of the call's questions were Fortified Enterprise Fleet, and Taskmaster
+was quiet by the judge's own admission — and the category moved to **The Taskmaster**. Writing
+the maintenance record is the chore nobody wants, which is Taskmaster's brief in one sentence,
+and the job outlives the visit: a part on order, an Auditor whose unit of work is weeks of shop
+history, a sweep every minute.
+
+What is given up is real and is not pretended away: *Unlikely Hero* is a Fortified Enterprise
+Fleet line and we no longer get scored on it. The claim survives as a sentence about who this
+protects, which is where it was always strongest.
+
+The downside is bounded, which is why this was worth doing rather than agonising over. Rules
+§121 — the Sponsor may *"reassign a Submission from one category to another"*, and on this very
+call a project described in almost our words was told it sounded like Taskmaster. Rules §107
+allows more than one Submission only where each is *"unique and substantially different"*, so
+entering one build in both tracks is not available; it was considered and rejected on the rule,
+not on nerve.
 
 ## Smaller answers that settled questions
 
