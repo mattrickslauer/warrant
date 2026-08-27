@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:d6601d78f513a324"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "Who in the shop is authorized to sign off on this brake inspection and release the bike for rental to a tourist?",
+    "asks_about": "authority",
+    "unresolved": [
+      "How to measure brake pad thickness (shop uses eye/feel, no tool)",
+      "Brake lever clearance limit (shop uses feel, spec is in manual)",
+      "Proof of leak fix and disc cleanliness (shop has no formal procedure, just sign-off)",
+      "Pre-ride safety check before bedding in (shop uses feel)",
+      "Replacement pad part numbers/brands (shop uses manual specs)",
+      "Who has the authority to sign off on the brake prep and release the bike for rental"
+    ],
+    "understanding": "We understand that you perform a brake prep on Segway rental bikes by checking for pad wear (minimum 2mm by eye) and fluid leaks, torquing caliper bolts to 7.5 Nm, and bedding them in. If any fluid is found on the disc, the bike is grounded immediately.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"Who in the shop is authorized to sign off on this brake inspection and release the bike for rental to a tourist?\",\n  \"asks_about\": \"authority\",\n  \"unresolved\": [\n    \"How to measure brake pad thickness (shop uses eye/feel, no tool)\",\n    \"Brake lever clearance limit (shop uses feel, spec is in manual)\",\n    \"Proof of leak fix and disc cleanliness (shop has no formal procedure, just sign-off)\",\n    \"Pre-ride safety check before bedding in (shop uses feel)\",\n    \"Replacement pad part numbers/brands (shop uses manual specs)\",\n    \"Who has the authority to sign off on the brake prep and release the bike for rental\"\n  ],\n  \"understanding\": \"We understand that you perform a brake prep on Segway rental bikes by checking for pad wear (minimum 2mm by eye) and fluid leaks, torquing caliper bolts to 7.5 Nm, and bedding them in. If any fluid is found on the disc, the bike is grounded immediately.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 3208,
+    "candidatesTokenCount": 245,
+    "totalTokenCount": 4594
+  }
+}

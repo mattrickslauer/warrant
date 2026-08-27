@@ -577,13 +577,13 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
          <rect width="132" height="44" rx="7" class="chip"/>
          <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
          <text x="11" y="17" class="ct">Scoper</text>
-         <text x="11" y="31" class="cs">11/14</text>
+         <text x="11" y="31" class="cs">13/14</text>
        </g>
 <g transform="translate(228,90)">
          <rect width="132" height="44" rx="7" class="chip"/>
          <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
          <text x="11" y="17" class="ct">Inspector</text>
-         <text x="11" y="31" class="cs">12/16</text>
+         <text x="11" y="31" class="cs">12/15</text>
        </g>
 <g transform="translate(456,90)">
          <rect width="132" height="44" rx="7" class="chip"/>
@@ -632,18 +632,18 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
     <p class="note">How the code in <code>agents/</code> gets to Vertex. The engine pulls from here at deploy, not at request time.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Scoper</h4>
-    <p class="sub">11/14 · interviews, then compiles</p>
-    <dl><dt>decides</dt><dd>what to ask next, and when a procedure would run unambiguously</dd><dt>contract</dt><dd>scoper-turn.schema.json</dd><dt>scenarios</dt><dd>14, including full interviews</dd><dt>reached by</dt><dd>/api/scoper/turn and /api/procedures/compile</dd><dt>refuses</dt><dd>to state a tolerance nobody gave it</dd></dl>
+    <p class="sub">13/14 · interviews, then compiles</p>
+    <dl><dt>decides</dt><dd>what to ask next, and when a procedure would run unambiguously</dd><dt>contract</dt><dd>scoper-turn.schema.json</dd><dt>scenarios</dt><dd>14, including full interviews — all recorded</dd><dt>reached by</dt><dd>/api/scoper/turn and /api/procedures/compile</dd><dt>refuses</dt><dd>to state a tolerance nobody gave it</dd></dl>
     <p class="note">There is no form builder in this product and this agent is the reason. Its hardest scenario runs a whole interview against a shop played by a second model, then checks <b>every bound in the compiled procedure against the numbers the shop actually said out loud</b> — so “it did not invent a tolerance” is arithmetic, not an impression.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Inspector</h4>
-    <p class="sub">12/16 · one field at a time</p>
-    <dl><dt>decides</dt><dd>PASS · ADD FIELD · ESCALATE on one field's evidence</dd><dt>contract</dt><dd>inspector-verdict.schema.json</dd><dt>scenarios</dt><dd>16 (2 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate</dd><dt>never judges</dt><dd>a whole step — it would trade a weak photo against a strong one</dd></dl>
+    <p class="sub">12/15 · one field at a time</p>
+    <dl><dt>decides</dt><dd>PASS · ADD FIELD · ESCALATE on one field's evidence</dd><dt>contract</dt><dd>inspector-verdict.schema.json</dd><dt>scenarios</dt><dd>15 (1 needs a photograph not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate</dd><dt>never judges</dt><dd>a whole step — it would trade a weak photo against a strong one</dd></dl>
     <p class="note">Reads the photograph against the written acceptance rule, and where it falls short <b>composes the specific next request</b> rather than asking for a generic retry. Numeric bounds are not its job: <code>within(min,max)</code> is deterministic code, and the model is used only where perception is required.</p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Skeptic</h4>
     <p class="sub">8/12 · adversarial</p>
-    <dl><dt>decides</dt><dd>does this evidence belong to this job, this machine, this moment</dd><dt>contract</dt><dd>skeptic-verdict.schema.json</dd><dt>scenarios</dt><dd>12 (3 need media not checked in)</dd><dt>reached by</dt><dd>/api/adjudicate, beside the Inspector</dd><dt>never sees</dt><dd>the Inspector's verdict — its prompt does not mention an Inspector exists</dd></dl>
+    <dl><dt>decides</dt><dd>does this evidence belong to this job, this machine, this moment</dd><dt>contract</dt><dd>skeptic-verdict.schema.json</dd><dt>scenarios</dt><dd>12 (1 needs a photograph, 2 need a cassette)</dd><dt>reached by</dt><dd>/api/adjudicate, beside the Inspector</dd><dt>never sees</dt><dd>the Inspector's verdict — its prompt does not mention an Inspector exists</dd></dl>
     <p class="note">Given the perceptual embedding distance as an <i>input</i>: code computes the distance, the model decides what it means against the machine's recorded damage and history. Twelve identical bikes in a row and only a scuff on one fork tells them apart. <b>A distance is not a decision.</b></p>
   </article><article class="card">
     <h4><s style="background:var(--live)"></s>Instructor</h4>

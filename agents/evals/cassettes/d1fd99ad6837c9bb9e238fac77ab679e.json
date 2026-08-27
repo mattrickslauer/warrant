@@ -1,0 +1,152 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:52fa6c832cb350e3"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is repairing a punctured bicycle or e-bike tyre by patching the tube or plugging the tubeless tyre. The critical safety checks are ensuring no debris remains in the casing, verifying the patch holds firm after a one-hour test, and inflating to the pressure specified on the tyre sidewall.",
+    "draft": {
+      "key": "tyre-puncture-repair",
+      "title": "Tyre Puncture Repair and Inspection",
+      "strictness": 1,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Hole in the tyre sidewall",
+        "Split tyre tread"
+      ],
+      "releases": [
+        "Safe to ride in city traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Tyre Casing",
+          "explanation": "A tyre with a damaged sidewall or split tread cannot safely hold a patch or plug under riding pressure and must be scrapped to prevent a blowout.",
+          "max_add_fields": 2,
+          "required_at_strictness": 1,
+          "fields": [
+            {
+              "key": "casing_condition",
+              "kind": "choice",
+              "prompt": "Inspect the tyre sidewall and tread. Is the casing free of splits or sidewall holes?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Casing is intact and safe to repair",
+                "Casing has sidewall damage or split tread (Scrap Tyre)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Casing is intact and safe to repair",
+              "guidance": "Look closely for any cuts in the sidewall or deep splits in the tread. If found, the tyre is scrap."
+            }
+          ]
+        },
+        {
+          "title": "Extract Debris",
+          "explanation": "Any sharp object left in the tyre casing will immediately puncture the repaired tube or tyre again once ridden.",
+          "max_add_fields": 2,
+          "required_at_strictness": 1,
+          "fields": [
+            {
+              "key": "debris_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the thorn, glass, or nail you extracted from the tyre.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The extracted puncturing object (thorn, glass, nail, etc.)",
+              "guidance": "Carefully feel the inside of the tyre casing by hand to ensure no other sharp objects remain."
+            }
+          ]
+        },
+        {
+          "title": "Apply Patch or Plug",
+          "explanation": "The patch or plug must be correctly applied to seal the air chamber before reassembly.",
+          "max_add_fields": 2,
+          "required_at_strictness": 1,
+          "fields": [
+            {
+              "key": "patch_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the applied patch on the tube or the plug in the tubeless tyre.",
+              "source": "camera",
+              "required_at_strictness": 1,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The completed patch on the tube or plug in the tyre",
+              "guidance": "Ensure the patch is fully adhered with no lifting edges, or the plug is securely seated."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Leak Test",
+          "explanation": "Leaving the inflated tube or tyre for an hour ensures the patch holds under pressure before the wheel is reinstalled.",
+          "max_add_fields": 2,
+          "required_at_strictness": 1,
+          "fields": [
+            {
+              "key": "leak_test_result",
+              "kind": "choice",
+              "prompt": "Pump up the tube or tyre, wait one hour, and check it by feel. Is it still holding firm?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Holds firm with no give",
+                "Soft or has give (Patch failed)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Holds firm with no give",
+              "guidance": "Squeeze the tyre or tube firmly after one hour. If there is any give, the patch is failing and you must start over."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall and Inflate",
+          "explanation": "The wheel must be securely fastened to prevent it coming loose in traffic, and inflated to the manufacturer's specification printed on the tyre.",
+          "max_add_fields": 2,
+          "required_at_strictness": 1,
+          "fields": [
+            {
+              "key": "axle_tightness",
+              "kind": "choice",
+              "prompt": "Tighten the axle nuts or quick-release. Are they snug and secure by feel?",
+              "source": "human",
+              "required_at_strictness": 1,
+              "choices": [
+                "Snug and secure",
+                "Loose or unsafe"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Snug and secure",
+              "guidance": "Tighten firmly by feel so the wheel cannot migrate or wobble in the dropouts."
+            },
+            {
+              "key": "tyre_pressure",
+              "kind": "measurement",
+              "prompt": "Read the required pressure printed on the tyre sidewall and inflate to that level. Enter the final pressure:",
+              "source": "human",
+              "required_at_strictness": 1,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "Tyre sidewall marking",
+              "guidance": "Check the side of the tyre for the recommended PSI or Bar range and inflate accordingly."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is repairing a punctured bicycle or e-bike tyre by patching the tube or plugging the tubeless tyre. The critical safety checks are ensuring no debris remains in the casing, verifying the patch holds firm after a one-hour test, and inflating to the pressure specified on the tyre sidewall.\",\n  \"draft\": {\n    \"key\": \"tyre-puncture-repair\",\n    \"title\": \"Tyre Puncture Repair and Inspection\",\n    \"strictness\": 1,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Hole in the tyre sidewall\",\n      \"Split tyre tread\"\n    ],\n    \"releases\": [\n      \"Safe to ride in city traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Tyre Casing\",\n        \"explanation\": \"A tyre with a damaged sidewall or split tread cannot safely hold a patch or plug under riding pressure and must be scrapped to prevent a blowout.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 1,\n        \"fields\": [\n          {\n            \"key\": \"casing_condition\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Inspect the tyre sidewall and tread. Is the casing free of splits or sidewall holes?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Casing is intact and safe to repair\",\n              \"Casing has sidewall damage or split tread (Scrap Tyre)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Casing is intact and safe to repair\",\n            \"guidance\": \"Look closely for any cuts in the sidewall or deep splits in the tread. If found, the tyre is scrap.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Extract Debris\",\n        \"explanation\": \"Any sharp object left in the tyre casing will immediately puncture the repaired tube or tyre again once ridden.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 1,\n        \"fields\": [\n          {\n            \"key\": \"debris_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the thorn, glass, or nail you extracted from the tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The extracted puncturing object (thorn, glass, nail, etc.)\",\n            \"guidance\": \"Carefully feel the inside of the tyre casing by hand to ensure no other sharp objects remain.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Apply Patch or Plug\",\n        \"explanation\": \"The patch or plug must be correctly applied to seal the air chamber before reassembly.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 1,\n        \"fields\": [\n          {\n            \"key\": \"patch_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the applied patch on the tube or the plug in the tubeless tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The completed patch on the tube or plug in the tyre\",\n            \"guidance\": \"Ensure the patch is fully adhered with no lifting edges, or the plug is securely seated.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Leak Test\",\n        \"explanation\": \"Leaving the inflated tube or tyre for an hour ensures the patch holds under pressure before the wheel is reinstalled.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 1,\n        \"fields\": [\n          {\n            \"key\": \"leak_test_result\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pump up the tube or tyre, wait one hour, and check it by feel. Is it still holding firm?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Holds firm with no give\",\n              \"Soft or has give (Patch failed)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Holds firm with no give\",\n            \"guidance\": \"Squeeze the tyre or tube firmly after one hour. If there is any give, the patch is failing and you must start over.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall and Inflate\",\n        \"explanation\": \"The wheel must be securely fastened to prevent it coming loose in traffic, and inflated to the manufacturer's specification printed on the tyre.\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 1,\n        \"fields\": [\n          {\n            \"key\": \"axle_tightness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Tighten the axle nuts or quick-release. Are they snug and secure by feel?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"choices\": [\n              \"Snug and secure\",\n              \"Loose or unsafe\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Snug and secure\",\n            \"guidance\": \"Tighten firmly by feel so the wheel cannot migrate or wobble in the dropouts.\"\n          },\n          {\n            \"key\": \"tyre_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Read the required pressure printed on the tyre sidewall and inflate to that level. Enter the final pressure:\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 1,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"Tyre sidewall marking\",\n            \"guidance\": \"Check the side of the tyre for the recommended PSI or Bar range and inflate accordingly.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3352,
+    "candidatesTokenCount": 1470,
+    "totalTokenCount": 5960
+  }
+}

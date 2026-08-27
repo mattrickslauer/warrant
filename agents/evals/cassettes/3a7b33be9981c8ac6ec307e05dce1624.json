@@ -1,0 +1,151 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:3031fd719850af38"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We inspect the brake discs for oil contamination and replace the brake pads if their friction material is under 2 mm. Caliper bolts are torqued to 7.5 Nm, a photo of the installed pads is taken, and the brakes are bedded in with 20 stops to ensure a firm lever feel.",
+    "draft": {
+      "key": "segway-brake-service",
+      "title": "Segway E-Bike Brake Inspection and Service",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Fork oil or brake fluid on the brake disc"
+      ],
+      "releases": [
+        "Bike is safe and ready for rental"
+      ],
+      "steps": [
+        {
+          "title": "Disc Contamination Check",
+          "explanation": "Any oil or fluid on the disc will contaminate the pads and cause brake failure.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "disc_contamination",
+              "kind": "choice",
+              "prompt": "Check the brake disc for any signs of fork oil or brake fluid.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "No contamination detected",
+                "Oil or fluid detected (FAIL)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No contamination detected",
+              "guidance": "The disc must be completely dry and free of any oil or fluid."
+            }
+          ]
+        },
+        {
+          "title": "Pad Thickness Inspection",
+          "explanation": "Pads with less than 2 mm of friction material must be replaced to prevent metal-on-metal contact and brake failure.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pad_thickness",
+              "kind": "measurement",
+              "prompt": "Measure the thickness of the pad friction material.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "within",
+              "acceptance_min": 2,
+              "acceptance_unit": "mm",
+              "guidance": "Replace the pads if the friction material is less than 2 mm."
+            }
+          ]
+        },
+        {
+          "title": "Caliper Installation",
+          "explanation": "Caliper bolts must be torqued to exactly 7.5 Nm to prevent them from coming loose during operation.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bolt_torque",
+              "kind": "choice",
+              "prompt": "Torque the caliper bolts to 7.5 Nm.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Torqued to 7.5 Nm",
+                "Incorrect torque (FAIL)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Torqued to 7.5 Nm",
+              "guidance": "Use a calibrated torque wrench set to 7.5 Nm."
+            }
+          ]
+        },
+        {
+          "title": "Verification Photo",
+          "explanation": "A photo of the pads in the caliper proves they were correctly installed before the wheel was mounted.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "pads_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the pads sitting in the caliper before the wheel goes back on.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The brake pads correctly seated inside the caliper housing.",
+              "guidance": "Ensure the photo is clear and shows both pads properly aligned in the caliper."
+            }
+          ]
+        },
+        {
+          "title": "Bedding In and Lever Feel",
+          "explanation": "Bedding in the pads ensures full contact and stopping power, while the lever feel confirms there is no air in the hydraulic lines.",
+          "max_add_fields": 2,
+          "fields": [
+            {
+              "key": "bedding_stops",
+              "kind": "choice",
+              "prompt": "Perform 20 gentle stops down the lane to bed in the pads.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "20 gentle stops completed",
+                "Not completed (FAIL)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "20 gentle stops completed",
+              "guidance": "Do not slam on the brakes; perform gradual, controlled stops."
+            },
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Test the feel of the brake lever.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Firm feel",
+                "Spongy feel (FAIL)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Firm feel",
+              "guidance": "The lever must feel firm and not pull all the way to the grip."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"We inspect the brake discs for oil contamination and replace the brake pads if their friction material is under 2 mm. Caliper bolts are torqued to 7.5 Nm, a photo of the installed pads is taken, and the brakes are bedded in with 20 stops to ensure a firm lever feel.\",\n  \"draft\": {\n    \"key\": \"segway-brake-service\",\n    \"title\": \"Segway E-Bike Brake Inspection and Service\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Fork oil or brake fluid on the brake disc\"\n    ],\n    \"releases\": [\n      \"Bike is safe and ready for rental\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Disc Contamination Check\",\n        \"explanation\": \"Any oil or fluid on the disc will contaminate the pads and cause brake failure.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"disc_contamination\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Check the brake disc for any signs of fork oil or brake fluid.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"No contamination detected\",\n              \"Oil or fluid detected (FAIL)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No contamination detected\",\n            \"guidance\": \"The disc must be completely dry and free of any oil or fluid.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Pad Thickness Inspection\",\n        \"explanation\": \"Pads with less than 2 mm of friction material must be replaced to prevent metal-on-metal contact and brake failure.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pad_thickness\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Measure the thickness of the pad friction material.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 2,\n            \"acceptance_unit\": \"mm\",\n            \"guidance\": \"Replace the pads if the friction material is less than 2 mm.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Caliper Installation\",\n        \"explanation\": \"Caliper bolts must be torqued to exactly 7.5 Nm to prevent them from coming loose during operation.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bolt_torque\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Torque the caliper bolts to 7.5 Nm.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Torqued to 7.5 Nm\",\n              \"Incorrect torque (FAIL)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Torqued to 7.5 Nm\",\n            \"guidance\": \"Use a calibrated torque wrench set to 7.5 Nm.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Verification Photo\",\n        \"explanation\": \"A photo of the pads in the caliper proves they were correctly installed before the wheel was mounted.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"pads_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the pads sitting in the caliper before the wheel goes back on.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The brake pads correctly seated inside the caliper housing.\",\n            \"guidance\": \"Ensure the photo is clear and shows both pads properly aligned in the caliper.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bedding In and Lever Feel\",\n        \"explanation\": \"Bedding in the pads ensures full contact and stopping power, while the lever feel confirms there is no air in the hydraulic lines.\",\n        \"max_add_fields\": 2,\n        \"fields\": [\n          {\n            \"key\": \"bedding_stops\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform 20 gentle stops down the lane to bed in the pads.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"20 gentle stops completed\",\n              \"Not completed (FAIL)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"20 gentle stops completed\",\n            \"guidance\": \"Do not slam on the brakes; perform gradual, controlled stops.\"\n          },\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Test the feel of the brake lever.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Firm feel\",\n              \"Spongy feel (FAIL)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Firm feel\",\n            \"guidance\": \"The lever must feel firm and not pull all the way to the grip.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3273,
+    "candidatesTokenCount": 1319,
+    "totalTokenCount": 9377
+  }
+}

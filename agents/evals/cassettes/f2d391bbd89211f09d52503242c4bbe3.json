@@ -1,0 +1,185 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:1c63b84aeb4829bf"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "The job is to inspect and service the brakes on Segway rental bikes to ensure they are safe for tourists riding on gravel passes. Technicians verify pad thickness, check for fluid contamination, torque caliper bolts to 7.5 Nm, and perform a pre-ride lever check and bedding-in run before signing off.",
+    "draft": {
+      "key": "segway-rental-brake-prep",
+      "title": "Segway Rental Brake Prep and Inspection",
+      "strictness": 2,
+      "minimum_tier": "open",
+      "disqualifiers": [
+        "Fork oil or brake fluid detected on the brake disc",
+        "Brake pads under 2 mm and replacements unavailable"
+      ],
+      "releases": [
+        "Rental to tourists for riding on gravel passes"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Pads and Disc",
+          "explanation": "To ensure at least 2 mm of friction material remains and the disc is free of contaminating fluids like fork oil or brake fluid, which would cause brake failure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "pad_thickness_check",
+              "kind": "choice",
+              "prompt": "Are the brake pads at least 2 mm thick?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, pads are 2 mm or thicker",
+                "No, pads are under 2 mm (must replace)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, pads are 2 mm or thicker",
+              "guidance": "Visually inspect the pads to ensure at least 2 mm of friction material remains."
+            },
+            {
+              "key": "disc_contamination",
+              "kind": "choice",
+              "prompt": "Is there any fork oil or brake fluid on the disc?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "No, disc is clean and dry",
+                "Yes, fluid detected (ground bike immediately)"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "No, disc is clean and dry",
+              "guidance": "Check the disc thoroughly for any signs of oil or brake fluid contamination."
+            }
+          ]
+        },
+        {
+          "title": "Replace Brake Pads",
+          "explanation": "Worn pads must be replaced with new ones matching manual specifications to maintain stopping power.",
+          "condition": "pad_thickness_check == 'No, pads are under 2 mm (must replace)'",
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "replacement_part",
+              "kind": "choice",
+              "prompt": "Are the replacement pads sourced according to the manual specifications?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, pads match manual specs",
+                "No, non-spec pads used"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, pads match manual specs",
+              "guidance": "Ensure replacement pads are grabbed from the manual specs."
+            }
+          ]
+        },
+        {
+          "title": "Reassemble and Torque Caliper Bolts",
+          "explanation": "Caliper bolts must be torqued to exactly 7.5 Nm to prevent them from backing out during operation.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "caliper_torque",
+              "kind": "measurement",
+              "prompt": "Torque the caliper bolts and record the final torque value.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "within",
+              "acceptance_min": 7.5,
+              "acceptance_max": 7.5,
+              "acceptance_unit": "Nm",
+              "guidance": "Torque caliper bolts to exactly 7.5 Nm using a calibrated torque wrench."
+            }
+          ]
+        },
+        {
+          "title": "Pre-Ride Lever Feel Check",
+          "explanation": "Verify the brake lever feels firm before riding down the lane to prevent a runaway or crash.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "lever_feel",
+              "kind": "choice",
+              "prompt": "Pull the brake lever. Does it feel firm?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, lever is firm",
+                "No, lever is spongy or pulls to the grip"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, lever is firm",
+              "guidance": "Pull the lever to ensure there is firm resistance and it does not feel spongy."
+            }
+          ]
+        },
+        {
+          "title": "Bed In Brakes",
+          "explanation": "Bed the brakes in down the lane to ensure full stopping power is established before renting the bike.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "bedding_in_verification",
+              "kind": "choice",
+              "prompt": "Perform test stops down the lane. Are the brakes fully bedded in and performing correctly?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Yes, brakes are bedded in and stopping power is verified",
+                "No, brakes are not performing correctly"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Yes, brakes are bedded in and stopping power is verified",
+              "guidance": "Ride down the lane and perform several controlled stops to bed in the pads and verify stopping power."
+            }
+          ]
+        },
+        {
+          "title": "Sign-off and Release",
+          "explanation": "Authorized technician sign-off to release the bike for rental.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "technician_signature",
+              "kind": "signature",
+              "prompt": "Sign to certify that the brakes are safe and ready for rental.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "signed_by",
+              "guidance": "Either authorized technician may sign off."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is to inspect and service the brakes on Segway rental bikes to ensure they are safe for tourists riding on gravel passes. Technicians verify pad thickness, check for fluid contamination, torque caliper bolts to 7.5 Nm, and perform a pre-ride lever check and bedding-in run before signing off.\",\n  \"draft\": {\n    \"key\": \"segway-rental-brake-prep\",\n    \"title\": \"Segway Rental Brake Prep and Inspection\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"open\",\n    \"disqualifiers\": [\n      \"Fork oil or brake fluid detected on the brake disc\",\n      \"Brake pads under 2 mm and replacements unavailable\"\n    ],\n    \"releases\": [\n      \"Rental to tourists for riding on gravel passes\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Pads and Disc\",\n        \"explanation\": \"To ensure at least 2 mm of friction material remains and the disc is free of contaminating fluids like fork oil or brake fluid, which would cause brake failure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"pad_thickness_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Are the brake pads at least 2 mm thick?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, pads are 2 mm or thicker\",\n              \"No, pads are under 2 mm (must replace)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, pads are 2 mm or thicker\",\n            \"guidance\": \"Visually inspect the pads to ensure at least 2 mm of friction material remains.\"\n          },\n          {\n            \"key\": \"disc_contamination\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Is there any fork oil or brake fluid on the disc?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"No, disc is clean and dry\",\n              \"Yes, fluid detected (ground bike immediately)\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"No, disc is clean and dry\",\n            \"guidance\": \"Check the disc thoroughly for any signs of oil or brake fluid contamination.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Replace Brake Pads\",\n        \"explanation\": \"Worn pads must be replaced with new ones matching manual specifications to maintain stopping power.\",\n        \"condition\": \"pad_thickness_check == 'No, pads are under 2 mm (must replace)'\",\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"replacement_part\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Are the replacement pads sourced according to the manual specifications?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, pads match manual specs\",\n              \"No, non-spec pads used\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, pads match manual specs\",\n            \"guidance\": \"Ensure replacement pads are grabbed from the manual specs.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reassemble and Torque Caliper Bolts\",\n        \"explanation\": \"Caliper bolts must be torqued to exactly 7.5 Nm to prevent them from backing out during operation.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"caliper_torque\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Torque the caliper bolts and record the final torque value.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"within\",\n            \"acceptance_min\": 7.5,\n            \"acceptance_max\": 7.5,\n            \"acceptance_unit\": \"Nm\",\n            \"guidance\": \"Torque caliper bolts to exactly 7.5 Nm using a calibrated torque wrench.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Pre-Ride Lever Feel Check\",\n        \"explanation\": \"Verify the brake lever feels firm before riding down the lane to prevent a runaway or crash.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"lever_feel\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Pull the brake lever. Does it feel firm?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, lever is firm\",\n              \"No, lever is spongy or pulls to the grip\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, lever is firm\",\n            \"guidance\": \"Pull the lever to ensure there is firm resistance and it does not feel spongy.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Bed In Brakes\",\n        \"explanation\": \"Bed the brakes in down the lane to ensure full stopping power is established before renting the bike.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"bedding_in_verification\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Perform test stops down the lane. Are the brakes fully bedded in and performing correctly?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Yes, brakes are bedded in and stopping power is verified\",\n              \"No, brakes are not performing correctly\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Yes, brakes are bedded in and stopping power is verified\",\n            \"guidance\": \"Ride down the lane and perform several controlled stops to bed in the pads and verify stopping power.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Sign-off and Release\",\n        \"explanation\": \"Authorized technician sign-off to release the bike for rental.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"technician_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to certify that the brakes are safe and ready for rental.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"signed_by\",\n            \"guidance\": \"Either authorized technician may sign off.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3274,
+    "candidatesTokenCount": 1720,
+    "totalTokenCount": 9409
+  }
+}

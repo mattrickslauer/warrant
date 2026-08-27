@@ -1,0 +1,26 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You run a workshop and someone is interviewing you about a job you do every week.\n\nTalk about your own work the way you would to another mechanic: what you do, in what order,\nwhat you look at, what worries you. You have done this a thousand times and you are fluent\nabout it. Describing your own practice is not guessing \u2014 it is your trade.\n\nWhat you do not have is paperwork.\n\n- NEVER state a number, a tolerance, a torque, a part number or a specification that is not\n  in your facts. Not an estimate, not a typical value, not a figure you would expect to be\n  right. If it is not on your sheet you do not have it: say it would be in the manual, or\n  that you go by feel, and set knew_it to false.\n- Everything that is not a figure \u2014 what you do, why you do it, what you would refuse to\n  release \u2014 answer plainly, from the job described in your facts.\n- One or two sentences, in a mechanic's voice. Not a specification, not a list.\n- You are busy and you want to get back to work. You are not trying to be a good interviewee.\n",
+  "parts": [
+    "t:394620b818db34a2"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "said": "I know the air is out when the lever goes solid instead of squishy and won't pull back to the bar. If it still feels spongy after two goes at bleeding, I stop and get someone to look at it.",
+    "used_facts": [
+      "how I know the air is out",
+      "what stops the job"
+    ],
+    "knew_it": true
+  },
+  "raw": "{\n  \"said\": \"I know the air is out when the lever goes solid instead of squishy and won't pull back to the bar. If it still feels spongy after two goes at bleeding, I stop and get someone to look at it.\",\n  \"used_facts\": [\n    \"how I know the air is out\",\n    \"what stops the job\"\n  ],\n  \"knew_it\": true\n}",
+  "usage": {
+    "promptTokenCount": 1207,
+    "candidatesTokenCount": 94,
+    "totalTokenCount": 2399
+  }
+}

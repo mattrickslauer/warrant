@@ -1,0 +1,217 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:4f98eee321de4845"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is repairing a flat tyre on a bicycle or Segway Xyber e-bike by patching the tube or plugging the tyre. It requires checking for casing debris, verifying the repair holds after one hour, and safely reinstalling the wheel according to manual specifications.",
+    "draft": {
+      "key": "tyre-puncture-repair",
+      "title": "Tyre Puncture Repair and Wheel Reinstallation",
+      "strictness": 1,
+      "minimum_tier": "instrumented",
+      "disqualifiers": [
+        "Puncture or damage is located on the tyre sidewall",
+        "Tyre tread is split open"
+      ],
+      "releases": [
+        "Safe to ride on city traffic and gravel surfaces"
+      ],
+      "steps": [
+        {
+          "title": "Inspect Damage and Discard Criteria",
+          "explanation": "A tyre with a sidewall puncture or split tread is structurally compromised and will blow out at speed.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "damage_location_and_type",
+              "kind": "choice",
+              "prompt": "Identify the location and type of tyre damage.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Puncture in tread area only",
+                "Puncture in sidewall",
+                "Split tread"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Puncture in tread area only",
+              "guidance": "Only punctures in the tread area can be safely patched or plugged. Sidewall damage or split treads mean the tyre must be scrapped."
+            }
+          ]
+        },
+        {
+          "title": "Power Down and Disconnect Motor Cable",
+          "explanation": "Failing to power down or disconnect the motor cable correctly on the Segway Xyber risks frying the electronics.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "power_down_status",
+              "kind": "choice",
+              "prompt": "Confirm the bike is powered down and the motor cable is disconnected per manual instructions.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Completed per manual instructions",
+                "Not completed / Not done per manual"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Completed per manual instructions",
+              "guidance": "Refer to the Segway Xyber online manual for the proper power-down and cable disconnection sequence."
+            }
+          ]
+        },
+        {
+          "title": "Remove Debris and Inspect Casing",
+          "explanation": "Any sharp object left in the tyre casing will immediately puncture the repaired tube or plug.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "removed_debris_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the thorn, glass, or wire removed from the tyre.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_description": "The photo must clearly show the foreign object (thorn, glass, wire, etc.) that caused the puncture after it has been extracted.",
+              "guidance": "Carefully sweep the inside of the tyre casing by feel to locate and remove the puncturing object, then photograph it."
+            }
+          ]
+        },
+        {
+          "title": "Apply Patch or Plug",
+          "explanation": "The repair must be applied to a prepped surface to ensure it holds under pressure.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "repair_status",
+              "kind": "choice",
+              "prompt": "Confirm the patch or plug has been applied successfully.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Repair applied successfully",
+                "Repair failed or could not be completed"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Repair applied successfully",
+              "guidance": "Ensure the tube is patched or the tyre is plugged according to standard prep and application procedures."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Leak Check",
+          "explanation": "A slow leak might not be felt immediately; waiting one hour ensures the repair is stable before reassembly.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "leak_check_result",
+              "kind": "choice",
+              "prompt": "Check the tyre pressure by feel after letting it sit for one hour.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Tyre is still firm and holding air",
+                "Tyre has lost pressure / soft"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Tyre is still firm and holding air",
+              "guidance": "Pump the tyre up and leave it alone for one hour. It must remain firm to the touch."
+            }
+          ]
+        },
+        {
+          "title": "Reinstall Wheel and Tighten Axle",
+          "explanation": "An improperly tightened wheel can come loose in traffic, leading to a catastrophic crash.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "axle_tightness",
+              "kind": "choice",
+              "prompt": "Confirm the axle nuts or quick-release are tightened securely.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Wheel is locked in tight and won't budge",
+                "Wheel is loose or has play"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Wheel is locked in tight and won't budge",
+              "guidance": "Refer to the Segway Xyber manual or bicycle manual for the correct torque specification to ensure the wheel is locked in tight."
+            }
+          ]
+        },
+        {
+          "title": "Inflate to Target Pressure",
+          "explanation": "Riding on under-inflated or over-inflated tyres compromises handling and safety.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "tyre_pressure",
+              "kind": "measurement",
+              "prompt": "Measure and record the final tyre pressure.",
+              "source": "instrument",
+              "required_at_strictness": 0,
+              "acceptance_rule": "per_spec",
+              "acceptance_target": "Tyre Sidewall",
+              "guidance": "Inflate the tyre to the exact pressure printed on the tyre sidewall."
+            }
+          ]
+        },
+        {
+          "title": "Post-Assembly Functional Test",
+          "explanation": "Verifying that the brakes and motor function correctly before riding prevents accidents in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "brake_and_motor_test",
+              "kind": "choice",
+              "prompt": "Test the brakes and motor operation.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Brakes stop the wheel and motor engages correctly",
+                "Brakes or motor malfunctioning"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_target": "Brakes stop the wheel and motor engages correctly",
+              "guidance": "Spin the wheel to ensure it rotates freely, test that the brakes stop the wheel immediately, and verify the motor engages properly."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\":  \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is repairing a flat tyre on a bicycle or Segway Xyber e-bike by patching the tube or plugging the tyre. It requires checking for casing debris, verifying the repair holds after one hour, and safely reinstalling the wheel according to manual specifications.\",\n  \"draft\": {\n    \"key\": \"tyre-puncture-repair\",\n    \"title\": \"Tyre Puncture Repair and Wheel Reinstallation\",\n    \"strictness\": 1,\n    \"minimum_tier\": \"instrumented\",\n    \"disqualifiers\": [\n      \"Puncture or damage is located on the tyre sidewall\",\n      \"Tyre tread is split open\"\n    ],\n    \"releases\": [\n      \"Safe to ride on city traffic and gravel surfaces\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect Damage and Discard Criteria\",\n        \"explanation\": \"A tyre with a sidewall puncture or split tread is structurally compromised and will blow out at speed.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"damage_location_and_type\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Identify the location and type of tyre damage.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Puncture in tread area only\",\n              \"Puncture in sidewall\",\n              \"Split tread\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Puncture in tread area only\",\n            \"guidance\": \"Only punctures in the tread area can be safely patched or plugged. Sidewall damage or split treads mean the tyre must be scrapped.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Power Down and Disconnect Motor Cable\",\n        \"explanation\": \"Failing to power down or disconnect the motor cable correctly on the Segway Xyber risks frying the electronics.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"power_down_status\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm the bike is powered down and the motor cable is disconnected per manual instructions.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Completed per manual instructions\",\n              \"Not completed / Not done per manual\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Completed per manual instructions\",\n            \"guidance\": \"Refer to the Segway Xyber online manual for the proper power-down and cable disconnection sequence.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Remove Debris and Inspect Casing\",\n        \"explanation\": \"Any sharp object left in the tyre casing will immediately puncture the repaired tube or plug.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"removed_debris_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the thorn, glass, or wire removed from the tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_description\": \"The photo must clearly show the foreign object (thorn, glass, wire, etc.) that caused the puncture after it has been extracted.\",\n            \"guidance\": \"Carefully sweep the inside of the tyre casing by feel to locate and remove the puncturing object, then photograph it.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Apply Patch or Plug\",\n        \"explanation\": \"The repair must be applied to a prepped surface to ensure it holds under pressure.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"repair_status\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm the patch or plug has been applied successfully.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Repair applied successfully\",\n              \"Repair failed or could not be completed\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Repair applied successfully\",\n            \"guidance\": \"Ensure the tube is patched or the tyre is plugged according to standard prep and application procedures.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Leak Check\",\n        \"explanation\": \"A slow leak might not be felt immediately; waiting one hour ensures the repair is stable before reassembly.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"leak_check_result\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Check the tyre pressure by feel after letting it sit for one hour.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Tyre is still firm and holding air\",\n              \"Tyre has lost pressure / soft\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Tyre is still firm and holding air\",\n            \"guidance\": \"Pump the tyre up and leave it alone for one hour. It must remain firm to the touch.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Reinstall Wheel and Tighten Axle\",\n        \"explanation\": \"An improperly tightened wheel can come loose in traffic, leading to a catastrophic crash.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"axle_tightness\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Confirm the axle nuts or quick-release are tightened securely.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Wheel is locked in tight and won't budge\",\n              \"Wheel is loose or has play\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Wheel is locked in tight and won't budge\",\n            \"guidance\": \"Refer to the Segway Xyber manual or bicycle manual for the correct torque specification to ensure the wheel is locked in tight.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inflate to Target Pressure\",\n        \"explanation\": \"Riding on under-inflated or over-inflated tyres compromises handling and safety.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"tyre_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Measure and record the final tyre pressure.\",\n            \"source\": \"instrument\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_target\": \"Tyre Sidewall\",\n            \"guidance\": \"Inflate the tyre to the exact pressure printed on the tyre sidewall.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Post-Assembly Functional Test\",\n        \"explanation\": \"Verifying that the brakes and motor function correctly before riding prevents accidents in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"brake_and_motor_test\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Test the brakes and motor operation.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Brakes stop the wheel and motor engages correctly\",\n              \"Brakes or motor malfunctioning\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_target\": \"Brakes stop the wheel and motor engages correctly\",\n            \"guidance\": \"Spin the wheel to ensure it rotates freely, test that the brakes stop the wheel immediately, and verify the motor engages properly.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3582,
+    "candidatesTokenCount": 2058,
+    "totalTokenCount": 10243
+  }
+}

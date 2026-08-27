@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:bcd97c30de4b7d54"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "ask",
+    "question": "When you pump the tyre to the max pressure on the sidewall, is there a small range below that number that is still safe to ride, or does it have to be exactly that number?",
+    "asks_about": "tolerance",
+    "unresolved": [
+      "Action to take when glass or thorns are found in the tread",
+      "Method for securing or powering down the bike safely before inspection"
+    ],
+    "understanding": "You want to inspect and inflate both tyres to the maximum pressure printed on their sidewalls before every ride to prevent a dangerous blowout. You will inspect for cracks and splits first, then inflate and take photos of the gauge and sidewall to verify the pressure.",
+    "draft": null
+  },
+  "raw": "{\n  \"mode\": \"ask\",\n  \"question\": \"When you pump the tyre to the max pressure on the sidewall, is there a small range below that number that is still safe to ride, or does it have to be exactly that number?\",\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [\n    \"Action to take when glass or thorns are found in the tread\",\n    \"Method for securing or powering down the bike safely before inspection\"\n  ],\n  \"understanding\": \"You want to inspect and inflate both tyres to the maximum pressure printed on their sidewalls before every ride to prevent a dangerous blowout. You will inspect for cracks and splits first, then inflate and take photos of the gauge and sidewall to verify the pressure.\",\n  \"draft\": null\n}",
+  "usage": {
+    "promptTokenCount": 3219,
+    "candidatesTokenCount": 170,
+    "totalTokenCount": 5174
+  }
+}

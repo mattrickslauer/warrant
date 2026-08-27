@@ -1,0 +1,158 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:19b5ed597d57d61e"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "tolerance",
+    "unresolved": [],
+    "understanding": "The job is a pre-ride inspection and inflation of both tyres on a Segway Xyber e-bike or bicycle to the maximum pressure printed on the sidewall. The rider inspects for cracks, splits, and debris before inflating, verifies the pressure with a photo of the gauge next to the sidewall, and signs off.",
+    "draft": {
+      "key": "pre-ride-tyre-check",
+      "title": "Pre-Ride Tyre Inspection and Inflation",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Cracked tyre",
+        "Split sidewall"
+      ],
+      "releases": [
+        "Ready for road and gravel riding"
+      ],
+      "steps": [
+        {
+          "title": "Pre-Inflation Inspection",
+          "explanation": "Checking for cracks, splits, or embedded debris prevents inflating a compromised tyre which could blow out at speed.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "front_tyre_status",
+              "kind": "choice",
+              "prompt": "Select the condition of the front tyre.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Good",
+                "Cracked",
+                "Split sidewall",
+                "Glass or thorns embedded"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Good",
+              "acceptance_description": "The front tyre must be free of cracks, splits, and embedded debris.",
+              "guidance": "The tyre must be free of cracks, splits, and embedded debris."
+            },
+            {
+              "key": "rear_tyre_status",
+              "kind": "choice",
+              "prompt": "Select the condition of the rear tyre.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "choices": [
+                "Good",
+                "Cracked",
+                "Split sidewall",
+                "Glass or thorns embedded"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Good",
+              "acceptance_description": "The rear tyre must be free of cracks, splits, and embedded debris.",
+              "guidance": "The tyre must be free of cracks, splits, and embedded debris."
+            }
+          ]
+        },
+        {
+          "title": "Front Tyre Inflation",
+          "explanation": "Inflating the front tyre to the exact specification on the sidewall ensures proper traction and prevents pinch flats or bead unseating.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "front_pressure_verification",
+              "kind": "photo",
+              "prompt": "Take a photo of the pressure gauge next to the tyre sidewall showing the final pressure.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "per_spec",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": "psi",
+              "acceptance_target": "tyre sidewall",
+              "acceptance_description": "The gauge reading must match the maximum pressure printed on the tyre sidewall.",
+              "guidance": "The pressure gauge must read exactly the maximum pressure printed on the tyre sidewall."
+            }
+          ]
+        },
+        {
+          "title": "Rear Tyre Inflation",
+          "explanation": "Inflating the rear tyre to the exact specification on the sidewall ensures stability under load and prevents flats.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "rear_pressure_verification",
+              "kind": "photo",
+              "prompt": "Take a photo of the pressure gauge next to the tyre sidewall showing the final pressure.",
+              "source": "camera",
+              "required_at_strictness": 2,
+              "acceptance_rule": "per_spec",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": "psi",
+              "acceptance_target": "tyre sidewall",
+              "acceptance_description": "The gauge reading must match the maximum pressure printed on the tyre sidewall.",
+              "guidance": "The pressure gauge must read exactly the maximum pressure printed on the tyre sidewall."
+            }
+          ]
+        },
+        {
+          "title": "Ride Sign-Off",
+          "explanation": "Signing off ensures accountability that the safety checks were performed before heading into traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "rider_signature",
+              "kind": "signature",
+              "prompt": "Sign to confirm both tyres are inspected, inflated to spec, and safe to ride.",
+              "source": "human",
+              "required_at_strictness": 2,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Rider signature is required to complete the pre-ride check.",
+              "guidance": "Your signature confirms you have verified both tyres are safe."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"tolerance\",\n  \"unresolved\": [],\n  \"understanding\": \"The job is a pre-ride inspection and inflation of both tyres on a Segway Xyber e-bike or bicycle to the maximum pressure printed on the sidewall. The rider inspects for cracks, splits, and debris before inflating, verifies the pressure with a photo of the gauge next to the sidewall, and signs off.\",\n  \"draft\": {\n    \"key\": \"pre-ride-tyre-check\",\n    \"title\": \"Pre-Ride Tyre Inspection and Inflation\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Cracked tyre\",\n      \"Split sidewall\"\n    ],\n    \"releases\": [\n      \"Ready for road and gravel riding\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Pre-Inflation Inspection\",\n        \"explanation\": \"Checking for cracks, splits, or embedded debris prevents inflating a compromised tyre which could blow out at speed.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"front_tyre_status\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Select the condition of the front tyre.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Good\",\n              \"Cracked\",\n              \"Split sidewall\",\n              \"Glass or thorns embedded\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Good\",\n            \"acceptance_description\": \"The front tyre must be free of cracks, splits, and embedded debris.\",\n            \"guidance\": \"The tyre must be free of cracks, splits, and embedded debris.\"\n          },\n          {\n            \"key\": \"rear_tyre_status\",\n            \"kind\": \"choice\",\n            \"prompt\": \"Select the condition of the rear tyre.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"choices\": [\n              \"Good\",\n              \"Cracked\",\n              \"Split sidewall\",\n              \"Glass or thorns embedded\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Good\",\n            \"acceptance_description\": \"The rear tyre must be free of cracks, splits, and embedded debris.\",\n            \"guidance\": \"The tyre must be free of cracks, splits, and embedded debris.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Front Tyre Inflation\",\n        \"explanation\": \"Inflating the front tyre to the exact specification on the sidewall ensures proper traction and prevents pinch flats or bead unseating.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"front_pressure_verification\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the pressure gauge next to the tyre sidewall showing the final pressure.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"psi\",\n            \"acceptance_target\": \"tyre sidewall\",\n            \"acceptance_description\": \"The gauge reading must match the maximum pressure printed on the tyre sidewall.\",\n            \"guidance\": \"The pressure gauge must read exactly the maximum pressure printed on the tyre sidewall.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Rear Tyre Inflation\",\n        \"explanation\": \"Inflating the rear tyre to the exact specification on the sidewall ensures stability under load and prevents flats.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"rear_pressure_verification\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the pressure gauge next to the tyre sidewall showing the final pressure.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"psi\",\n            \"acceptance_target\": \"tyre sidewall\",\n            \"acceptance_description\": \"The gauge reading must match the maximum pressure printed on the tyre sidewall.\",\n            \"guidance\": \"The pressure gauge must read exactly the maximum pressure printed on the tyre sidewall.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Ride Sign-Off\",\n        \"explanation\": \"Signing off ensures accountability that the safety checks were performed before heading into traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"rider_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm both tyres are inspected, inflated to spec, and safe to ride.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 2,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Rider signature is required to complete the pre-ride check.\",\n            \"guidance\": \"Your signature confirms you have verified both tyres are safe.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3293,
+    "candidatesTokenCount": 1428,
+    "totalTokenCount": 8891
+  }
+}

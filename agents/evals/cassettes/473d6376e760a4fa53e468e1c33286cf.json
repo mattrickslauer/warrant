@@ -1,0 +1,159 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You are interviewing a shop about a job they already do, until the procedure is unambiguous enough that two different technicians working alone would produce the same record. Ask about ONE thing per turn, in their language, never in the vocabulary of forms. Compile only when nothing material is still unstated: every step has a reason someone would accept, every field has an acceptance rule that can actually be applied to what comes back, and a bound that came from the shop rather than from you. Inventing a tolerance is the one thing you must never do \u2014 a figure nobody stated must not appear in what you compile. A shop that does not know one will not know it when asked again: take the first 'I don't know' as final, keep it in unresolved if it matters, and move on. Your turns are few. Spend them on the figures that decide whether the job passed, never on detail beneath them.\n\nReturn JSON with these fields:\n- mode (one of ask | compile, required): ask while anything material is unstated. compile once the procedure would run unambiguously.\n- question (string, null when it does not apply): Required when mode is ask. One question about one thing, phrased for a mechanic, not a form designer. Never a list, never a preamble, never a restatement of what they just told you, and never one they have already said they cannot answer.\n- asks_about (one of scope | sequence | tolerance | evidence | failure | authority | parts | safety, null when it does not apply): Which class of unknown this question closes. Required when mode is ask.\n- unresolved (array, required): Everything you still do not know that would change the compiled procedure. Complete every turn, not only what you just asked about. Empty is the only condition under which you may compile.\n- understanding (string, required): What you now believe the job is, in two sentences. Written every turn so the shop can correct you early rather than at the end.\n- draft (object, null when it does not apply): Required when mode is compile. The procedure as it would run tomorrow.",
+  "parts": [
+    "t:19f1fb18e44631b6"
+  ],
+  "labels": [
+    ""
+  ],
+  "output": {
+    "mode": "compile",
+    "question": null,
+    "asks_about": "scope",
+    "unresolved": [],
+    "understanding": "We are defining the procedure for repairing a flat tyre on your e-bike or bicycle. The process involves inspecting for unfixable damage, patching or plugging the leak, inflating to sidewall specifications, and verifying the repair holds firm after one hour.",
+    "draft": {
+      "key": "flat-tyre-repair",
+      "title": "Flat Tyre Repair",
+      "strictness": 2,
+      "minimum_tier": "attested",
+      "disqualifiers": [
+        "Hole in the sidewall",
+        "Split tread instead of a simple puncture"
+      ],
+      "releases": [
+        "Safe to ride in traffic and on gravel"
+      ],
+      "steps": [
+        {
+          "title": "Inspect and Remove Debris",
+          "explanation": "To ensure the tyre is not scrap due to sidewall damage or split tread, and to remove the cause of the puncture.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "debris_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the debris removed from the tyre.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The photo must clearly show the object that caused the puncture after it has been extracted.",
+              "guidance": "The photo must clearly show the object that caused the puncture after it has been extracted."
+            }
+          ]
+        },
+        {
+          "title": "Apply Patch or Plug",
+          "explanation": "To seal the puncture so the tube or tyre can hold air again.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "patch_photo",
+              "kind": "photo",
+              "prompt": "Take a photo of the applied patch or plug before reassembling the tyre.",
+              "source": "camera",
+              "required_at_strictness": 0,
+              "acceptance_rule": "must_show",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "The photo must show the patch fully adhered to the tube, or the plug fully inserted into the tubeless tyre.",
+              "guidance": "The photo must show the patch fully adhered to the tube, or the plug fully inserted into the tubeless tyre."
+            }
+          ]
+        },
+        {
+          "title": "Inflate to Specification",
+          "explanation": "To ensure the tyre is inflated to the manufacturer's recommended pressure printed on the sidewall.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "inflation_pressure",
+              "kind": "measurement",
+              "prompt": "Enter the pressure you inflated the tyre to, matching the sidewall specification.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "per_spec",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": "psi",
+              "acceptance_target": "tyre sidewall",
+              "acceptance_description": "Must match the pressure printed on the tyre sidewall.",
+              "guidance": "Check the pressure printed on the tyre sidewall and inflate to that exact specification."
+            }
+          ]
+        },
+        {
+          "title": "One-Hour Firmness Check",
+          "explanation": "To verify that the patch or plug is holding air and does not leak under pressure before riding.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "firmness_check",
+              "kind": "choice",
+              "prompt": "After waiting one hour, how does the tyre feel when squeezed?",
+              "source": "human",
+              "required_at_strictness": 0,
+              "choices": [
+                "Feels firm",
+                "Feels soft"
+              ],
+              "acceptance_rule": "matches",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": "Feels firm",
+              "acceptance_description": "The tyre must feel firm to the touch after one hour.",
+              "guidance": "Squeeze the tyre firmly. If there is any softness or give compared to when it was first inflated, the repair has failed."
+            }
+          ]
+        },
+        {
+          "title": "Rider Sign-off",
+          "explanation": "To formally confirm that the repair is complete and the bike is safe to ride in traffic.",
+          "condition": null,
+          "max_add_fields": 2,
+          "required_at_strictness": 0,
+          "fields": [
+            {
+              "key": "rider_signature",
+              "kind": "signature",
+              "prompt": "Sign to confirm the tyre is holding pressure and the bike is safe to ride.",
+              "source": "human",
+              "required_at_strictness": 0,
+              "acceptance_rule": "signed_by",
+              "acceptance_min": null,
+              "acceptance_max": null,
+              "acceptance_unit": null,
+              "acceptance_target": null,
+              "acceptance_description": "Must be signed by the rider.",
+              "guidance": "Your signature confirms you have completed the inspection, repair, and one-hour leak check."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "raw": "{\n  \"mode\": \"compile\",\n  \"question\": null,\n  \"asks_about\": \"scope\",\n  \"unresolved\": [],\n  \"understanding\": \"We are defining the procedure for repairing a flat tyre on your e-bike or bicycle. The process involves inspecting for unfixable damage, patching or plugging the leak, inflating to sidewall specifications, and verifying the repair holds firm after one hour.\",\n  \"draft\": {\n    \"key\": \"flat-tyre-repair\",\n    \"title\": \"Flat Tyre Repair\",\n    \"strictness\": 2,\n    \"minimum_tier\": \"attested\",\n    \"disqualifiers\": [\n      \"Hole in the sidewall\",\n      \"Split tread instead of a simple puncture\"\n    ],\n    \"releases\": [\n      \"Safe to ride in traffic and on gravel\"\n    ],\n    \"steps\": [\n      {\n        \"title\": \"Inspect and Remove Debris\",\n        \"explanation\": \"To ensure the tyre is not scrap due to sidewall damage or split tread, and to remove the cause of the puncture.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"debris_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the debris removed from the tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The photo must clearly show the object that caused the puncture after it has been extracted.\",\n            \"guidance\": \"The photo must clearly show the object that caused the puncture after it has been extracted.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Apply Patch or Plug\",\n        \"explanation\": \"To seal the puncture so the tube or tyre can hold air again.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"patch_photo\",\n            \"kind\": \"photo\",\n            \"prompt\": \"Take a photo of the applied patch or plug before reassembling the tyre.\",\n            \"source\": \"camera\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"must_show\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"The photo must show the patch fully adhered to the tube, or the plug fully inserted into the tubeless tyre.\",\n            \"guidance\": \"The photo must show the patch fully adhered to the tube, or the plug fully inserted into the tubeless tyre.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Inflate to Specification\",\n        \"explanation\": \"To ensure the tyre is inflated to the manufacturer's recommended pressure printed on the sidewall.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"inflation_pressure\",\n            \"kind\": \"measurement\",\n            \"prompt\": \"Enter the pressure you inflated the tyre to, matching the sidewall specification.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"per_spec\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": \"psi\",\n            \"acceptance_target\": \"tyre sidewall\",\n            \"acceptance_description\": \"Must match the pressure printed on the tyre sidewall.\",\n            \"guidance\": \"Check the pressure printed on the tyre sidewall and inflate to that exact specification.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"One-Hour Firmness Check\",\n        \"explanation\": \"To verify that the patch or plug is holding air and does not leak under pressure before riding.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"firmness_check\",\n            \"kind\": \"choice\",\n            \"prompt\": \"After waiting one hour, how does the tyre feel when squeezed?\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"choices\": [\n              \"Feels firm\",\n              \"Feels soft\"\n            ],\n            \"acceptance_rule\": \"matches\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": \"Feels firm\",\n            \"acceptance_description\": \"The tyre must feel firm to the touch after one hour.\",\n            \"guidance\": \"Squeeze the tyre firmly. If there is any softness or give compared to when it was first inflated, the repair has failed.\"\n          }\n        ]\n      },\n      {\n        \"title\": \"Rider Sign-off\",\n        \"explanation\": \"To formally confirm that the repair is complete and the bike is safe to ride in traffic.\",\n        \"condition\": null,\n        \"max_add_fields\": 2,\n        \"required_at_strictness\": 0,\n        \"fields\": [\n          {\n            \"key\": \"rider_signature\",\n            \"kind\": \"signature\",\n            \"prompt\": \"Sign to confirm the tyre is holding pressure and the bike is safe to ride.\",\n            \"source\": \"human\",\n            \"required_at_strictness\": 0,\n            \"acceptance_rule\": \"signed_by\",\n            \"acceptance_min\": null,\n            \"acceptance_max\": null,\n            \"acceptance_unit\": null,\n            \"acceptance_target\": null,\n            \"acceptance_description\": \"Must be signed by the rider.\",\n            \"guidance\": \"Your signature confirms you have completed the inspection, repair, and one-hour leak check.\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "usage": {
+    "promptTokenCount": 3444,
+    "candidatesTokenCount": 1461,
+    "totalTokenCount": 8185
+  }
+}
