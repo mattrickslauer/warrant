@@ -132,11 +132,19 @@ on the surface), and the two now share their reasoning the way `Attention.kt` an
 |---|---|---|
 | What the one big button means | `ui/job/StepAction.kt` | `web/src/data/step-action.ts` |
 | Where a job stands at Finish | `ui/job/Handover.kt` | `web/src/data/handover.ts` |
+| Which verdict belongs under which photograph | `ui/job/Handover.kt` | `web/src/data/handover.ts` |
 | What an agent is waiting on | `data/Attention.kt` | `web/src/data/attention.ts` |
 
 Each pair has a test on both sides (`StepActionTest.kt` / `scripts/step-action.test.mjs`), and
 they must keep agreeing: a bar reading "Next step" on a step that is not finished is a lie a
 screenshot would not catch, and two surfaces telling different lies is worse than one.
+
+The last row is the newest and the easiest to get quietly wrong. The handover shows the
+evidence now — the captures, one page at a time, with the fleet's decisions printed on the
+frame they belong to — and a frame carrying the wrong step's verdicts shows a technician a
+rejection of one photograph underneath a different one. The page looks perfectly correct
+either way, which is exactly why `handoverFrames` is a pure function with a suite on both
+sides rather than a loop inside a composable.
 
 The lens and the lamp are the technician's choice on both, per step, and neither is on the
 contract — a `FieldDef` says what a step must *produce*, never which piece of glass produces

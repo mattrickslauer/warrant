@@ -17,6 +17,9 @@ export {
   type Lens, type CameraHandle, type CameraStatus, type Shot,
 } from "./CameraLayer";
 export { StepBriefSheet, BlockedSheet, TraceSheet } from "./StepSheets";
+// The handover: the evidence itself, and what the fleet is doing to it while you watch.
+export { EvidenceCarousel } from "./EvidenceCarousel";
+export { LiveProgress } from "./LiveProgress";
 export { ReasonCapture } from "./ReasonCapture";
 export { Attribution } from "./Attribution";
 export { AnswerInput } from "./AnswerInput";

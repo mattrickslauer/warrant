@@ -878,3 +878,172 @@ body { --surface: var(--work-2); --surface-high: var(--work-3); --surface-highes
   .w-sheet__body { border-radius: var(--r-xl); border: 1px solid var(--rule-dark); }
   .w-sheet__grab { display: none; }
 }
+
+/* ================================================================= the handover
+   The evidence, one page at a time, and what the fleet is doing to it while you watch.
+
+   Two rules hold this together. The rail is a real scroll container with snap points rather
+   than a transform driven by pointer maths — a thumb-drag, a trackpad, shift-wheel and the
+   arrow buttons then all move the same element and cannot disagree about where it is. And a
+   frame is a fixed shape whatever it holds, so flipping between a photograph, a typed answer
+   and a step that produced nothing does not make the page jump under the reader's hand. */
+
+.w-carousel { display: flex; flex-direction: column; gap: 10px; }
+.w-carousel__rail {
+  display: flex; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  border-radius: var(--r-lg);
+  /* The scrollbar is chrome on a control that already has dots and arrows. */
+  scrollbar-width: none;
+}
+.w-carousel__rail::-webkit-scrollbar { display: none; }
+.w-carousel__rail:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+.w-frame {
+  flex: 0 0 100%; width: 100%; margin: 0; scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--surface); border: 1px solid var(--outline); border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.w-frame__head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border-bottom: 1px solid var(--outline);
+}
+.w-frame__title {
+  flex: 1; font-weight: 500; font-size: var(--t-label-lg);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.w-frame__status {
+  font-family: var(--mono); font-size: var(--t-label); letter-spacing: .02em;
+  padding: 3px 9px; border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--on-surface-3) 20%, transparent); color: var(--on-surface-2);
+}
+.w-frame__status--performed {
+  background: color-mix(in srgb, var(--c-measured) 20%, transparent); color: var(--c-measured);
+}
+.w-frame__status--deferred, .w-frame__status--impossible {
+  background: color-mix(in srgb, var(--c-held) 20%, transparent); color: var(--c-held);
+}
+.w-frame__status--waived {
+  background: color-mix(in srgb, var(--c-asserted) 20%, transparent); color: var(--c-asserted);
+}
+
+/* Fixed shape whatever is inside it, so flipping never reflows the page. */
+.w-frame__shot {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  background: var(--surface-high);
+}
+.w-frame__shot--empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 20px; text-align: center;
+}
+.w-frame__value { font-family: var(--mono); font-size: var(--t-title); color: var(--on-surface); }
+.w-frame__gap { font-size: var(--t-body-sm); color: var(--on-surface-3); max-width: 34ch; }
+.w-frame__spinner {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--outline); border-top-color: var(--action);
+  animation: w-turn .9s linear infinite;
+}
+
+.w-frame__body { display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; }
+.w-frame__meta { display: flex; align-items: center; gap: 10px; }
+.w-frame__key { font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-2); }
+.w-frame__reason {
+  font-size: var(--t-body-sm); line-height: 1.5; color: var(--on-surface-2);
+  border-left: 2px solid var(--c-asserted); padding-left: 10px;
+}
+/* The highlight: what the fleet said, on the thing it said it about. */
+.w-frame__verdicts { display: flex; flex-direction: column; gap: 10px; }
+.w-frame__verdict { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.w-frame__pending {
+  display: flex; align-items: center; gap: 9px;
+  font-size: var(--t-body-sm); color: var(--on-surface-3);
+}
+.w-frame__pulse {
+  width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--waiting);
+  animation: w-beat 1.6s var(--ease) infinite;
+}
+.w-frame__issue {
+  font-size: var(--t-body-sm); line-height: 1.5; color: var(--on-surface);
+  background: color-mix(in srgb, var(--c-inferred) 14%, transparent);
+  border-radius: var(--r-sm); padding: 10px 12px;
+}
+.w-frame__issue b { color: var(--c-inferred); }
+
+.w-carousel__bar { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.w-carousel__arrow {
+  width: 40px; height: 40px; flex: none; cursor: pointer;
+  display: inline-grid; place-items: center;
+  background: transparent; color: var(--on-surface-2);
+  border: 1px solid var(--outline); border-radius: 50%;
+}
+.w-carousel__arrow:hover:not(:disabled) { color: var(--on-surface); border-color: var(--action); }
+.w-carousel__arrow:disabled { opacity: .35; cursor: not-allowed; }
+.w-carousel__dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.w-carousel__dot {
+  width: 9px; height: 9px; padding: 0; cursor: pointer; border-radius: 50%;
+  background: transparent; border: 1px solid var(--on-surface-3);
+}
+.w-carousel__dot--on { background: var(--on-surface); border-color: var(--on-surface); }
+/* A frame with something still waiting on a person is findable without flipping to it. */
+.w-carousel__dot--issue { border-color: var(--c-inferred); background: var(--c-inferred); }
+.w-carousel__dot--issue.w-carousel__dot--on { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-inferred) 35%, transparent); }
+
+/* Lit, never filtered. A trace that dropped the rows you were not looking at would be a trace
+   you cannot check. */
+.w-trace__row--lit {
+  background: color-mix(in srgb, var(--action) 12%, transparent);
+  box-shadow: inset 2px 0 0 var(--action);
+  border-radius: var(--r-sm);
+}
+
+/* ------------------------------------------------------------------ the live bar */
+
+.w-live { display: flex; flex-direction: column; gap: 8px; }
+.w-live__track {
+  position: relative; width: 100%; height: 6px; border-radius: var(--r-full);
+  background: var(--surface-high); overflow: hidden;
+}
+.w-live__fill {
+  display: block; height: 100%; border-radius: var(--r-full);
+  background: var(--action);
+  transition: width var(--slow) var(--ease);
+}
+.w-live--sealed .w-live__fill, .w-live--settled .w-live__fill { background: var(--c-measured); }
+/* Still running reads as a DIFFERENT SHAPE, not a different colour: a travelling sheen over
+   the part that is done. A bar that has stopped and a bar that is waiting must not look alike. */
+.w-live--running .w-live__track::after {
+  content: ""; position: absolute; inset: 0; width: 38%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--action) 55%, transparent), transparent);
+  animation: w-sweep 1.9s var(--ease) infinite;
+}
+@keyframes w-sweep { from { transform: translateX(-100%) } to { transform: translateX(320%) } }
+@media (prefers-reduced-motion: reduce) {
+  .w-live--running .w-live__track::after { animation: none; }
+  .w-frame__pulse { animation: none; }
+}
+.w-live__say { font-size: var(--t-body-sm); color: var(--on-surface-2); }
+.w-live--sealed .w-live__say { color: var(--c-measured); }
+.w-live__spending {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--t-body-sm); color: var(--on-surface-3);
+}
+.w-live__spinner {
+  width: 14px; height: 14px; border-radius: 50%; flex: none;
+  border: 2px solid var(--outline); border-top-color: var(--action);
+  animation: w-turn .9s linear infinite;
+}
+
+@media (min-width: 720px) {
+  .w-frame__shot { aspect-ratio: 16 / 10; }
+}
+
+/* Bounded, and it says so. Never a silent truncation — a trace that quietly stops is
+   indistinguishable from a fleet that quietly stopped. */
+.w-trace__more {
+  align-self: flex-start; cursor: pointer;
+  background: none; border: 0; padding: 8px 0;
+  font-family: var(--mono); font-size: var(--t-label); color: var(--action);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.w-frame__earlier { font-family: var(--mono); font-size: var(--t-label); color: var(--on-surface-3); }

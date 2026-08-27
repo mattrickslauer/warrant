@@ -6,7 +6,7 @@ import {
   AgentTrace, Attribution, EvidenceChip, HoldBanner, StatusPill,
   StepPage, type Notice, type FieldPip,
   CameraLayer, LampControl, LensControl, LiveMark, useCameraHandle, flip, type Lens,
-  StepBriefSheet, BlockedSheet, TraceSheet,
+  StepBriefSheet, BlockedSheet, TraceSheet, EvidenceCarousel, LiveProgress,
   type JobStatus, type ProvenanceClass,
 } from "@/components";
 import { AppShell } from "../../shell/AppShell";
@@ -19,7 +19,9 @@ import {
   activeFieldFor, framedFieldFor, primaryActionFor, requiredAt, unanswerable,
   usesCamera, usesKeyboard, working,
 } from "@/data/step-action";
-import { handoverHeadline, handoverStateFor } from "@/data/handover";
+import {
+  handoverFrames, handoverHeadline, handoverStateFor, verificationProgress,
+} from "@/data/handover";
 import type { Decision, Field, FieldDef, Job, Procedure, StepOutcome } from "@/generated/types";
 
 /**
@@ -96,6 +98,18 @@ export function JobFlow({ jobId }: { jobId: string }) {
   const [sealedRecordId, setSealedRecordId] = useState<string | null>(null);
   /** Dismissed notices, so "Later" means something for the rest of this sitting. */
   const [dismissed, setDismissed] = useState<Record<string, boolean>>({});
+  /** Which page of the handover's evidence carousel is in view. */
+  const [framedAt, setFramedAt] = useState(0);
+  /**
+   * Bumped whenever an event changes what the JOB holds, so the handover can re-read it.
+   *
+   * The step page never needed this: it folds every event into its own state and renders from
+   * that. The handover does, because it renders the evidence — and a photograph is fetched
+   * with a capture id that lives on the step outcome's field, which no event carries. A cheap
+   * re-read beats keeping a second copy of the outcomes here and having the two disagree about
+   * what was captured.
+   */
+  const [revision, setRevision] = useState(0);
 
   const camera = useCameraHandle();
 
@@ -167,10 +181,24 @@ export function JobFlow({ jobId }: { jobId: string }) {
   // Arriving on a step starts at its first outstanding field, with an empty keyboard.
   useEffect(() => { setSelected(null); setTyped(""); }, [cursor]);
 
+  // KEYED ON THE JOB ID, NOT THE JOB.
+  //
+  // `onSnapshot` reports every existing document as `added` on its first snapshot, so
+  // re-attaching this listener replays the whole decision history. While `job` was the
+  // dependency that happened on every re-read — and the handover re-reads the job each time
+  // something lands — so a job with nine verdicts grew to eighteen, then twenty-seven, and the
+  // handover rendered the same rationale over and over down a page thousands of pixels long.
+  // The id is a string and does not change, so the listener is attached once per job.
+  const jobKey = job?.id ?? null;
   useEffect(() => {
-    if (!job) return;
-    return src.subscribe(job.id, (e: JobEvent) => {
-      if (e.kind === "decision") setDecisions((d) => [...d, e.decision]);
+    if (!jobKey) return;
+    return src.subscribe(jobKey, (e: JobEvent) => {
+      // By id as well, because a re-attach is legitimate — a dropped connection reconnecting
+      // does exactly what the bug above did on purpose. Belt and braces here is cheap and the
+      // failure it prevents is silent.
+      if (e.kind === "decision") {
+        setDecisions((d) => (d.some((x) => x.id === e.decision.id) ? d : [...d, e.decision]));
+      }
       if (e.kind === "add_field") {
         // By key, because the seed above already holds whatever the job was carrying when it
         // opened and the listener replays it. Appending blind grew one ask into two.
@@ -192,13 +220,40 @@ export function JobFlow({ jobId }: { jobId: string }) {
           a[`${e.stepId}:${e.fieldKey}`] ? a : { ...a, [`${e.stepId}:${e.fieldKey}`]: "captured" });
       }
       if (e.kind === "held") setHeld(e.reason);
+      // Anything that changes what the job document holds. See `revision`.
+      if (e.kind === "capture_accepted" || e.kind === "step_status" || e.kind === "sealed") {
+        setRevision((r) => r + 1);
+      }
       // NOT a redirect any more. Finish is not the same event as the seal, and a browser that
       // jumped to the record the instant one arrived took the decision away from a person who
       // might still have had a step to reopen. The handover page names the seal and offers to
       // open it — see `handoverStateFor`.
       if (e.kind === "sealed") setSealedRecordId(e.recordId);
     });
-  }, [src, job, router]);
+  }, [src, jobKey]);
+
+  /**
+   * Keep the handover looking at the real job.
+   *
+   * Only while it is open: re-reading on every capture during the run would be a request per
+   * shutter press for a screen nobody is looking at. The moment the hands stop, though, this
+   * page IS the thing being looked at, and it has to show what actually landed rather than
+   * what this tab happened to see.
+   */
+  useEffect(() => {
+    if (!handedOver) return;
+    let alive = true;
+    void (async () => {
+      const fresh = await src.getJob(jobId);
+      // Copied, not stored as returned. The fixture source hands back the SAME object it
+      // mutates in place, so `setJob(fresh)` is identity-equal to what is already in state and
+      // React skips the render — the page would then only refresh when something else happened
+      // to re-render it, which is true often enough to hide the bug and not always enough to
+      // avoid it. Against Firestore the read is already a new object and this costs nothing.
+      if (alive && fresh) setJob({ ...fresh });
+    })();
+    return () => { alive = false; };
+  }, [handedOver, revision, src, jobId]);
 
   // A SIGNATURE IS SATISFIED BY BEING SIGNED IN, AND IS NEVER ASKED FOR.
   //
@@ -602,6 +657,17 @@ export function JobFlow({ jobId }: { jobId: string }) {
     const explained = Object.keys(reasoned).length;
     const state = handoverStateFor(owed, sealedRecordId);
     const { headline, detail } = handoverHeadline(state, owed, explained);
+    // Built from the JOB rather than from `liveJob`. The screen's assembled copy synthesises
+    // its fields from the answers it has seen, which is enough to ask `openItems` what is
+    // outstanding and nowhere near enough to fetch a photograph: those fields carry no
+    // `media_ref` because this screen never had one to put there. The real outcomes do, and
+    // the effect above re-reads them every time something lands.
+    const frames = handoverFrames(job, proc, decisions);
+    const framed = frames[Math.min(framedAt, Math.max(0, frames.length - 1))] ?? null;
+    const progress = verificationProgress(job, proc);
+    const owedSteps = proc.steps.filter((s) =>
+      (statuses[s.id] ?? "pending") === "pending" && !optionalStep(s) && !reasoned[s.id]);
+
     return (
       <AppShell tone="work">
         {/* `handover` is a hook for scripts/smoke_funnel.py, which drives this flow in a real
@@ -611,22 +677,59 @@ export function JobFlow({ jobId }: { jobId: string }) {
             <span className="w-trace__agent">{headline}</span>
             <StatusPill status={(sealedRecordId ? "sealed" : job.status) as JobStatus} />
           </div>
-          <p className="lede">{detail}</p>
+          {/* Announced, not just drawn. This is the one region of the page that changes while
+              nobody is touching it, so a reader who cannot see it has to be told. */}
+          <p className="lede" role="status" aria-live="polite">{detail}</p>
 
-          {owed > 0 && (
+          {/* WHAT IS HAPPENING RIGHT NOW.
+              The old page was a snapshot: it said "verification runs behind you" and then sat
+              perfectly still whether the fleet was working, finished, or unreachable. Those
+              three look identical, and the first is the only one where waiting is the right
+              thing to do. */}
+          <LiveProgress
+            ruled={progress.ruled}
+            total={progress.total}
+            sealed={Boolean(sealedRecordId)}
+            spending={work}
+          />
+
+          {held && (
+            <HoldBanner title="Machine held">
+              {held}. It will not be released until the record holds up.
+            </HoldBanner>
+          )}
+
+          {/* THE EVIDENCE, not a summary of it. Flipping a frame lights the decisions it
+              belongs to in the trace below — see `framedDecisions`. */}
+          <div className="stack">
+            <p className="eyebrow">What you recorded</p>
+            <EvidenceCarousel
+              frames={frames}
+              src={src}
+              at={Math.min(framedAt, Math.max(0, frames.length - 1))}
+              onFramed={setFramedAt}
+              // Never over a sealed record: it is what SURVIVES the workshop, and offering to
+              // redo a step of it would be offering to change the one artifact whose whole
+              // value is that it cannot be changed afterwards.
+              onRedo={sealedRecordId ? null : (stepId) => {
+                setHandedOver(false);
+                redoStep(stepId);
+              }}
+            />
+          </div>
+
+          {owedSteps.length > 0 && (
             <div className="stack">
-              {proc.steps
-                .filter((s) => (statuses[s.id] ?? "pending") === "pending"
-                  && !optionalStep(s) && !reasoned[s.id])
-                .map((s) => (
-                  <button
-                    key={s.id}
-                    className="w-btn w-btn--ghost w-btn--block"
-                    onClick={() => { setHandedOver(false); goToStep(s.id); }}
-                  >
-                    Step {s.index} — {s.title}
-                  </button>
-                ))}
+              <p className="eyebrow">Still owed</p>
+              {owedSteps.map((s) => (
+                <button
+                  key={s.id}
+                  className="w-btn w-btn--ghost w-btn--block"
+                  onClick={() => { setHandedOver(false); goToStep(s.id); }}
+                >
+                  Step {s.index} — {s.title}
+                </button>
+              ))}
             </div>
           )}
 
@@ -656,14 +759,26 @@ export function JobFlow({ jobId }: { jobId: string }) {
             <p className="eyebrow">What the fleet decided</p>
             <p className="w-trace__why">
               Capture never waits. These land behind you, and you can leave — it will not stop.
+              {framed && frames.length > 1 && " Highlighted: the verdicts on the capture above."}
             </p>
-            <AgentTrace decisions={decisions} />
+            {src.fabricated && (
+              // Same rule as every other surface that shows a verdict: a build serving the
+              // scripted timeline says so.
+              <HoldBanner kind="waiting" title="Fixture data">
+                This build runs the scripted demo timeline, not a live backend. The verdicts
+                and costs below are fabricated.
+              </HoldBanner>
+            )}
+            <AgentTrace
+              decisions={decisions}
+              highlight={framed ? new Set(framed.decisions.map((d) => d.id)) : undefined}
+              max={14}
+            />
           </div>
         </div>
       </AppShell>
     );
   }
-
   // ---------------------------------------------------------------------------- the step page
 
   const pips: FieldPip[] = fields.map((f) => ({

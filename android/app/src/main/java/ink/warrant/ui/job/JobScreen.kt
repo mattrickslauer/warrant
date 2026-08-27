@@ -80,6 +80,7 @@ import java.io.File
 @Composable
 fun JobScreen(
     vm: JobViewModel,
+    source: ink.warrant.data.DataSource,
     onOpenPairing: () -> Unit,
     onOpenRecord: (String) -> Unit,
     onExit: () -> Unit,
@@ -94,6 +95,9 @@ fun JobScreen(
     // loud rather than papered over.
     if (state.handedOver) {
         HandoverPage(
+            source = source,
+            job = state.job,
+            procedure = state.procedure,
             outstanding = state.outstanding,
             explained = state.explained,
             sealedRecordId = state.sealedRecordId,
@@ -101,6 +105,10 @@ fun JobScreen(
             decisions = state.decisions,
             fabricated = state.fabricated,
             onReopen = { stepId -> vm.reopen(stepId) },
+            // Reopening ADDS to a step; this empties it first. A verdict does not say which is
+            // right and only the person can pick — see the note on `Notice.onRedoStep`.
+            onRedoStep = { stepId -> vm.reopen(stepId); vm.redoStep(stepId) },
+            onRefresh = { vm.refreshJob() },
             onOpenRecord = onOpenRecord,
             onAgain = { vm.again() },
             onDone = onExit,

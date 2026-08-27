@@ -626,6 +626,28 @@ class JobViewModel(
         _state.value = _state.value.copy(handedOver = true)
     }
 
+    /**
+     * Re-read the job, because the events do not carry what the handover needs to render.
+     *
+     * [fold] keeps `filled`, `statuses`, `decisions` and `addedFields` up to date and never
+     * touches `job` — which is right for the step page, since it renders from those. The
+     * handover renders the EVIDENCE, and a photograph is fetched with a capture id that lives
+     * on the step outcome's field. No event carries one. A cheap re-read beats keeping a second
+     * copy of the outcomes here and having the two disagree about what was captured.
+     *
+     * Failure is silent on purpose: the page already has a job to draw, and replacing it with
+     * an error because a refresh did not land would throw away the evidence over a network
+     * blip.
+     */
+    fun refreshJob() {
+        val id = _state.value.job?.id ?: return
+        viewModelScope.launch {
+            runCatching { source.getJob(id) }.getOrNull()?.let { fresh ->
+                _state.value = _state.value.copy(job = fresh)
+            }
+        }
+    }
+
     /** Back into the work from the handover, pointed at the step that is still owed. */
     fun reopen(stepId: String) {
         _state.value = _state.value.copy(handedOver = false)

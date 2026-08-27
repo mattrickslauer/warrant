@@ -67,7 +67,8 @@ node --experimental-strip-types --conditions=react-server --import ./scripts/ts-
        scripts/armor.test.mjs scripts/attest.test.mjs scripts/trace.test.mjs \
        scripts/nav.test.mjs scripts/compile.test.mjs scripts/screen.test.mjs \
        scripts/seal.test.mjs scripts/instruments.test.mjs scripts/members.test.mjs \
-       scripts/attention.test.mjs scripts/mcp.test.mjs scripts/step-action.test.mjs 2>&1 \
+       scripts/attention.test.mjs scripts/mcp.test.mjs scripts/step-action.test.mjs \
+       scripts/handover.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
 echo "ok — the outcome table, the cases, the fleet client, the armor screen, attestation,"
 echo "     and the Seal's provenance classifier,"
@@ -77,6 +78,8 @@ echo "     — and what an agent is asking a person for, which both surfaces now
 echo "     same way from the step outcomes rather than each inventing an answer,"
 echo "     and what the one big button on a step MEANS — the other rule both surfaces read"
 echo "     out of one file, and the twin of android's StepActionTest,"
+echo "     and where a job stands when the hands stop, plus which verdict belongs under"
+echo "     which photograph on the handover's carousel,"
 echo "     and the machine-to-machine surface: the seven tools, a real MCP handshake over the"
 echo "     real transport, and the fact that NOT ONE of them can seal, release or waive"
 
