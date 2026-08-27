@@ -204,7 +204,7 @@ halves fold into the Foreman. The count is seven because seven things need a mod
 | **The seal** | Closes a record once every step passes, and stamps each field's provenance class |
 | **The gate** | Holds the machine out of service until the job seals |
 | **The ledger** | Meters spend against a hard ceiling, and writes every decision to the public log |
-| **Stock and ordering** | Parts, shortages, and drafted purchase orders — exposed to the agents as MCP tools |
+| **Stock and ordering** | Parts, shortages, and drafted purchase orders. Shown to the Foreman as context, and exposed to other systems as the `inventory` and `raise_po` MCP tools |
 
 **Why the core is not agents, and why that is the point.** The three things this system does
 that actually protect somebody — sealing a record, refusing to release a machine, refusing to
@@ -248,13 +248,14 @@ entire argument is that a tick in a box is not evidence.
 | Layer | Service | State |
 |---|---|---|
 | Reasoning | **Gemini 3.5 Flash** via Vertex AI | running — `agents/warrant/model.py`, the one call site |
-| Screening every capture | **Gemma** (`gemma-3-4b`) | running — `agents/warrant/screen.py`, in front of the judge |
+| Screening every capture | **Gemini 3.5 Flash-Lite**, in front of the judge | running — `agents/warrant/screen.py`. It has no PASS in its enum, so the cheap model can ask for a retake and nothing more. `SCREENING_MODEL` takes an endpoint resource name, so the model can be changed without touching the code |
 | Framework | **Google GenAI SDK** (`google-genai`) | running — the live path in `model.py` |
 | Long-running jobs spanning days | **Agent Runtime** (Vertex AI Agent Engine) | running — `infra/deploy-agents.py`, three operations |
 | Guardrails on model input and output | **Model Armor** | running — image and text, `us` multi-region |
 | Traces and reasoning chains | **OpenTelemetry** → Cloud Logging / Cloud Trace | running — `web/src/server/trace.ts` |
 | Adversarial corpus | **Veo** | offline — `agents/evals/gen_fraud.py`, generates the fraud the Skeptic is tested against |
 | Per-agent least privilege | service-account impersonation | running — `warrant-web` may not call Vertex; see `server/fleet.ts` |
+| Machine-to-machine | **MCP server**, Streamable HTTP | running — `POST /api/mcp` on Cloud Run, seven tools, official `@modelcontextprotocol/sdk`; the handshake is exercised in `web/scripts/mcp.test.mjs` on every `smoke.sh` |
 | Asset history across weeks | the `readings` series in Firestore, **not Memory Bank** | **deliberately not adopted** — see below |
 | Agent discovery | the fleet's own `roster()`, **not Agent Registry** | **not adopted** — it would publish agents, and procedures are what need versioning |
 
@@ -269,7 +270,7 @@ calls them. Routing is one client (`server/fleet.ts`) against one engine, and id
 Google Sign-In plus service-account impersonation. Both are named in the track's recommended
 stack; neither is load-bearing here, and inventing a use for them would cost more than the row
 is worth.
-| Services and transport | **Cloud Run**, **Pub/Sub** |
+| Services and transport | **Cloud Run** |
 | Source of truth | **Firestore** |
 | Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |
 | Machine-to-machine | **MCP server** on Cloud Run |
@@ -300,9 +301,30 @@ raise_po           draft a purchase order against a shortage
 request            send a task to another department, and track the reply
 ```
 
-**Our own dashboard is an MCP client** — it reads and acts through the same surface any
-external caller uses, so this is load-bearing rather than aspirational. The best version of
-this product is one nobody has to open.
+It is a real MCP server — `POST /api/mcp`, Streamable HTTP, the official
+`@modelcontextprotocol/sdk`, deployed with the rest of the app on Cloud Run. It authenticates
+exactly like every other write surface: a Firebase ID token as a bearer, verified with
+`checkRevoked`, tenant taken from the claims and never from an argument. **There is no API key
+and no service token**, because a long-lived key issued to a "system" would be an account no
+directory can disable — and this product's promise is that when an employer disables somebody,
+access ends the same instant.
+
+**What it refuses to expose is the point.** An MCP server over a system that holds machines out
+of service is an invitation to grow a bypass one convenient tool at a time, and the convenient
+tool is always the one that seals or releases something. So nothing here can seal a record,
+release a machine, waive a step or adjudicate evidence. Of the seven, four only read, and the
+three that write all write things a **person** still has to act on:
+
+- `open_job` starts a job as a **draft**. No agent runs on a draft, and `finalize()` — the human
+  act — is not on this surface. An external system may queue work. It may not decide work began.
+- `raise_po` **drafts** a purchase order and raises it for approval. Nothing is ordered.
+- `request` raises a task against a **role**, which is a question put to a department rather
+  than an instruction executed on one.
+
+`web/scripts/mcp.test.mjs` drives the surface end to end against fixtures on every
+`./scripts/smoke.sh` — the seven tools, a real `initialize`/`tools/list`/`tools/call` handshake
+through the real transport, tenant isolation, and a test that fails if an eighth tool ever
+appears. The best version of this product is one nobody has to open.
 
 ---
 
@@ -331,22 +353,36 @@ records are currently a tick in a box.
 
 Every number here is produced by the running system and checkable against the public log.
 
-<!-- FILL FROM THE RUNNING SYSTEM BEFORE SUBMISSION -->
+<!-- EVIDENCE:START -->
 | | |
 |---|---|
-| Procedures published | _pending_ |
-| Jobs performed | _pending_ |
-| Steps verified | _pending_ |
-| Steps that asked for more evidence | _pending_ |
-| Steps refused | _pending_ |
-| **Instrument readings captured** | _pending_ |
-| **Machines held out of service** | _pending_ |
-| Purchase orders drafted | _pending_ |
-| Days run unattended | _pending_ |
-| Cost per job, by strictness | _pending_ |
-| **Total spend** | _pending_ |
+| Procedures published | 5 distinct (98 documents — the catalogue is seeded into every tenant) |
+| of those, authored by talking to the Scoper | 2 |
+| Jobs performed | 2 |
+| Steps verified | 16 |
+| Steps that asked for more evidence | 23 |
+| Steps refused | 38 |
+| **Instrument readings captured** | 0 |
+| **Machines held out of service** | 0 |
+| Purchase orders drafted | 0 |
+| Days run unattended | 4.9 |
+| Cost per job, by strictness | standard $0.0036 |
+| **Total spend** | $0.1446 |
+| Agent decisions on the record | 200 |
+| Decisions that could not reach the fleet | 3443 — 3423 of them on 2026-08-25, none since 2026-08-25 |
 
-Public decision log: <!-- URL --> _pending_
+_Read from `warrent-505918` by `web/scripts/evidence.mjs` at 2026-08-26T21:50:19.394Z._
+<!-- EVIDENCE:END -->
+
+Regenerated by `cd web && node scripts/evidence.mjs --write`, which reads the live
+project and is the only thing that writes the table above. Typing a number in by hand
+would be a claim by an interested party, stored in a system designed to accept it.
+
+Public decision log: **https://warrant-zq2l2kwg3q-uc.a.run.app/fleet** — every decision the
+fleet has made about evidence somebody captured, readable without an account. The count
+on that page and the `Agent decisions on the record` row above are the same number read
+from the same collection, so the table is checkable against the log rather than asserted
+alongside it.
 
 ---
 
