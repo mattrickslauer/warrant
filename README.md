@@ -478,7 +478,7 @@ alongside it.
 | `firmware/` | The reference instrument — an ESP32 that signs its own readings over GATT |
 | `anvil/` | A sandbox that compiles and runs the Kotlin drivers Wright writes, so generated code is judged by execution rather than by reading it |
 | `infra/` | Deployment. `deploy-agents.py` puts the fleet on Agent Engine; `Dockerfile.web` builds the Cloud Run image |
-| `docs/` | `architecture.md` is the full design. `docs/rules/` is the verbatim contest rules archive; `docs/winners/` is the prior-hackathon analysis |
+| `docs/` | `architecture.md` is the full design. `docs/rules/` is the verbatim contest rules archive. `specs/` holds the dated design records — where they disagree with `architecture.md` or the code, the code wins |
 | `scripts/` | `smoke.sh` is the one that matters — it runs everything |
 | `seed/` | Downloaded public catalogues for type space. Not tenant data, and not ours; each keeps its own licence |
 | `specs/`, `design/` | Design documents, and the design tokens the web surface is built from |

@@ -161,8 +161,15 @@ The media should stay out, but the scripts should not. Back the directory up ton
 - **`releases` no longer advertises `consume 1x pad set · reorder below 2`** in either fixture.
   Nothing consumes stock; it was never true.
 - **The drafted letter to Segway is deleted.** The answer to a figure nobody published is to
-  interview the person who does the job, not to write to a manufacturer. References in
-  `docs/MORNING.md` and the `catalogue-figure-may-be-looked-up` scenario cleaned up.
+  interview the person who does the job, not to write to a manufacturer. The reference in the
+  `catalogue-figure-may-be-looked-up` scenario is cleaned up.
+
+### The read — applies to every voiceover take
+
+- **Flat delivery. Do not sell.** The material is strong enough; performing it makes it sound like it isn't. In doubt, read it slower and quieter.
+- **One take per section, not one pass.** Leave two seconds of silence at the head and tail of every take so the edit has handles.
+- **Shoot a spare, slower take of §6 — the refusals.** It is the section that decides the film and the one you will wish you had more of.
+- **NEVER stage a reading.** Do not type a number and film it as `measured`. Movie magic is for framing and lighting, never for the number. It is the one move that could actually disqualify a project whose whole thesis is that records should be evidence. Shot 30 carries the same warning for the same reason.
 
 ### The look — applies to every screen recording
 

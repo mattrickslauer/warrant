@@ -1,14 +1,22 @@
 # Warrant — Development Lifecycle Design
 
+**Status:** implemented — this is a dated design record, not the current statement of the
+system. **Where it disagrees with the shipped code, `README.md` or `docs/architecture.md`, they
+win.** It is kept because other files cite it, and a citation whose source cannot be re-read is
+not a citation. Paths it names that were never built or have since moved: `site/index.html`,
+`scripts/bootstrap.sh` and `scripts/deploy.sh` (the last two are now `infra/bootstrap.sh` and
+`infra/deploy-web.sh`).
 **Date:** 2026-08-18 · **Deadline:** 31 Aug 2026, 17:00 PT · **Days remaining:** 13
 
 The build is presentation-first: the product's surfaces are designed and made clickable
 against fixture data before any backend exists, then services are hooked in behind a single
 seam. Parallel agents do the fan-out; the reference surfaces are hand-built.
 
-**This document supersedes `README.md`, `docs/architecture.md`, `docs/data-model.md`,
-`SCRIPT.md` and `site/index.html` wherever they disagree with it.** §11 lists every edit those
-documents need. §13 records the corrections applied to this spec on 18 Aug and why.
+When written, this document superseded `README.md`, `docs/architecture.md`, `docs/data-model.md`,
+`SCRIPT.md` and `site/index.html` wherever they disagreed with it, and §11 listed every edit
+those documents needed. **That direction is now reversed** — those edits were made and the build
+moved on, so read §11 as a record of what changed rather than as work outstanding. §13 records
+the corrections applied to this spec on 18 Aug and why.
 
 ---
 

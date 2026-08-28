@@ -1,5 +1,9 @@
 # Warrant — Wright Design
 
+**Status:** implemented — this is a dated design record, not the current statement of the
+system. **Where it disagrees with the shipped code, `README.md` or `docs/architecture.md`, they
+win.** It is kept because other files cite it. One path it names was never built: `BleProxy.kt`;
+the proxy work landed inside `InstrumentClient.kt` instead.
 **Date:** 2026-08-19 · **Deadline:** 31 Aug 2026, 17:00 PT · **Days remaining:** 12
 
 Wright is the sixth agent to be built and the seventh in the canonical fleet
@@ -7,9 +11,10 @@ Wright is the sixth agent to be built and the seventh in the canonical fleet
 nobody wrote a driver for, works out how it encodes its readings, **writes real Kotlin, compiles
 it, and runs it against the live device** before any number it produces is allowed near a record.
 
-This document supersedes `docs/architecture.md` §5 and §12, `README.md` "Why Wright exists", and
-`firmware/README.md`'s closing paragraph wherever they disagree with it. §12 lists every edit
-those documents need.
+When written, this document superseded `docs/architecture.md` §5 and §12, `README.md` "Why Wright
+exists", and `firmware/README.md`'s closing paragraph wherever they disagreed with it, and §12
+listed every edit those documents needed. **That direction is now reversed** — read §12 as a
+record of what changed rather than as work outstanding.
 
 ---
 

@@ -587,7 +587,7 @@ table would be the one mistake this project cannot afford to make in writing.
 | Notification email | **Gmail API** as the tenant's notifier mailbox, via domain-wide delegation, keyless through **IAM Credentials `signJwt`**. Never out of a technician's mailbox | dark until a Workspace admin authorises the SA; `canSendMail()` reports it (§14) |
 | Identity and tenancy | **Google Sign-In** — `hd` claim decides the tenant shape | running |
 | Operator-facing surfaces | **Google Workspace** — a published projection, never authoritative | running — one consent from `/settings` covers all four APIs |
-| Machine-to-machine | **MCP server** on Cloud Run, consumed by our own dashboard | running — a real handshake over the real transport, `scripts/mcp.test.mjs` |
+| Machine-to-machine | **MCP server** on Cloud Run, consumed by our own dashboard | running — a real handshake over the real transport, `web/scripts/mcp.test.mjs` |
 
 **Purchase orders are drafted, never sent, and that is a property of the GRANT.** An agent
 prepares, a human approves; autonomy stops where money leaves the business. The scope Warrant

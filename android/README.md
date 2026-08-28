@@ -100,7 +100,8 @@ arrives; these could not have been.
 
 ### One token source
 
-`design/tokens.json` at the repo root generates `design/Tokens.kt` **into this source tree**:
+`design/tokens.json` at the repo root generates
+`android/app/src/main/java/ink/warrant/design/Tokens.kt` **into this source tree**:
 
 ```bash
 node design/build-tokens.mjs      # writes tokens.css (web) and Tokens.kt (here)
@@ -135,7 +136,7 @@ on the surface), and the two now share their reasoning the way `Attention.kt` an
 | Which verdict belongs under which photograph | `ui/job/Handover.kt` | `web/src/data/handover.ts` |
 | What an agent is waiting on | `data/Attention.kt` | `web/src/data/attention.ts` |
 
-Each pair has a test on both sides (`StepActionTest.kt` / `scripts/step-action.test.mjs`), and
+Each pair has a test on both sides (`StepActionTest.kt` / `web/scripts/step-action.test.mjs`), and
 they must keep agreeing: a bar reading "Next step" on a step that is not finished is a lie a
 screenshot would not catch, and two surfaces telling different lies is worse than one.
 
