@@ -209,8 +209,8 @@ halves fold into the Foreman. The count is seven because seven things need a mod
 **Why the core is not agents, and why that is the point.** The three things this system does
 that actually protect somebody — sealing a record, refusing to release a machine, refusing to
 overspend — are deterministic. A gate you can argue with is not a gate. Nobody should trust a
-language model to hold a key safe shut, and we do not ask them to: the Gate is a
-condition on `job.sealed`, and it is four lines long. Provenance classes are likewise a
+language model to decide whether a machine is safe to hand back, and we do not ask one to:
+the Gate is a condition on `job.sealed`, and it is four lines long. Provenance classes are likewise a
 property of the acceptance *rule*, not of any model's confidence, so classification is a
 lookup rather than a judgement.
 
