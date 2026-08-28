@@ -1,0 +1,55 @@
+Nobody has ever wanted to write the maintenance record. It's the part of the
+job you do afterwards.
+
+From memory, off a clipboard, once the machine is closed up and you want to go
+home. So sometimes the box gets ticked and the work didn't happen. The trade
+has a name for it. Pencil whipping. Aviation regulators call it falsification
+and pull your licence for it.
+
+It happens anyway, because paper can't tell the difference. And downstream of
+that tick is a pump, a locomotive, an aircraft.
+
+Aviation already solved this. A logbook, a licensed signature, a procedure. It
+works, and it costs more than most machines are worth. Meanwhile a courier
+proves a parcel arrived in four seconds, for pennies. Nobody built the middle.
+
+So this writes the record for you. You describe the job the way you'd describe
+it to somebody on their first day, and an agent interviews you until there's
+nothing left to interpret.
+
+Even the agent that wrote it doesn't get the last word. Ordinary code reads
+what it produced and hands it back. What comes out is a procedure a machine
+can check.
+
+Hands-on-the-machine time is already only a quarter to a third of a shift, so
+this doesn't ask for any of it back. One step. Capture. Next. Nothing gets
+typed in.
+
+That pad is worn to the metal. It doesn't get a warning — it gets a refusal,
+and the step doesn't advance.
+
+A second agent only ever doubts. It never sees what the first one decided.
+
+And when we told the first one what the part number was supposed to be, it
+reported reading a label it couldn't actually see. It quoted the answer back
+at us. So now it isn't told. It transcribes what's in front of it, and
+ordinary code does the comparing.
+
+Seven agents, each with one job and one contract it answers under. They run on
+Vertex AI Agent Engine, so they're deployed rather than sitting on my laptop —
+ask the running service for its roster and it lists all seven. Every judgement
+is Gemini 3.5 Flash, temperature zero, constrained to a fixed answer shape.
+
+A cheaper model screens every photograph before the expensive one is asked, and
+it has no way to say "pass". The strongest thing it can do is ask for a retake.
+Put the cheap model where being wrong costs somebody twenty seconds.
+
+Most of this doesn't happen in one sitting. A job stays open while a part is on
+order. And the Auditor reads back across sealed jobs — it doesn't find a bad
+technician, it finds a badly written step.
+
+Somebody ticked the box. No tool ever reported a number, so the drawer stays
+shut. No agent can release a machine. The gate is ordinary code, and a waiver
+needs a person's standing behind it. A model can recommend. It can't sign.
+
+I'm still the only person here. I'm just not the only one working.
