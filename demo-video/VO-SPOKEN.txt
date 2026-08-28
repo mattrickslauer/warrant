@@ -1,69 +1,76 @@
-I rent out twelve bikes. I'm the mechanic, the scheduler, and the person who
-signs the work off. So I know which part of that job nobody wants.
+I rent out twelve bikes. I'm the mechanic. I'm the scheduler. I'm the one who
+signs the work off.
 
-Nobody has ever wanted to write the maintenance record. It's the part you do
-afterwards — from memory, off a clipboard, once the machine is closed up and
-you want to go home.
+So I know which part of the job nobody wants.
+
+Nobody wants to write the maintenance record. You do it afterwards. From
+memory. Off a clipboard. After the machine is shut and you want to go home.
 
 So sometimes the box gets ticked and the work didn't happen. The trade has a
-name for it. Pencil whipping. Aviation regulators call it falsification and
-pull your licence for it. It happens anyway, because paper can't tell the
-difference. And downstream of that tick is a pump, a locomotive, an aircraft.
+name for that. Pencil whipping. Regulators call it falsification and pull your
+licence.
 
-Aviation solved this with a logbook and a licensed signature, and it costs more
-than most machines are worth. A courier proves a parcel arrived for pennies.
-Nobody built the middle.
+It happens anyway. Paper can't tell the difference. And downstream of that tick
+is a pump. A locomotive. An aircraft.
 
-So this writes the record for me. I describe the job the way I'd describe it to
-somebody on their first day, and an agent asks questions until there's nothing
-left to interpret.
+Aviation fixed this. A logbook, and a licensed signature. It works, and it
+costs more than most machines are worth. A courier proves a parcel arrived for
+pennies. Nobody built the middle.
 
-Then ordinary code reads what that agent wrote, and hands it back. A tick box
-with only one option can't record the job going wrong — so it isn't allowed to
+So this writes the record for me.
+
+I describe the job the way I'd describe it to someone on their first day. An
+agent asks questions until nothing is left to interpret.
+
+Then ordinary code reads what the agent wrote, and hands it back. A tick box
+with one option can't record the job going wrong. So it isn't allowed to
 compile. Even the agent that wrote the procedure doesn't get the last word.
 
-What the technician gets is one step at a time. Capture. Next. Nothing is typed
-in.
+The technician gets one step at a time. Capture. Next. Nothing is typed.
 
-And when a step honestly can't be done — the part is wrong, the bolt is
-rounded, the machine is still hot — that is an answer this accepts and writes
-down. Not a failure to explain away.
+And when a step honestly can't be done, that's an answer. The part is wrong.
+The bolt is rounded. The machine is still hot. It gets written down. It isn't a
+failure to explain away.
 
-That pad is worn to the metal. It doesn't get a warning. It gets a refusal, and
-the step doesn't advance.
+That pad is worn to the metal. It doesn't get a warning. It gets a refusal. The
+step doesn't advance.
 
-A second agent only ever doubts. It never sees what the first one decided — its
+A second agent only doubts. It never sees what the first one decided. Its
 instructions don't mention the first one exists. Show two people each other's
-answers and they agree, and the second opinion stops being one.
+answers and they agree. Then the second opinion isn't one.
 
-We used to tell the first agent what the part number should be. So it reported
-reading a label it couldn't actually see — it quoted the answer back at us. Now
-it isn't told. It writes down what is in front of it, and ordinary code does
-the comparing.
+We used to tell that first agent what the part number should be. So it reported
+reading a label it couldn't see. It quoted our own answer back at us. Now we
+don't tell it. It writes down what's in front of it. Ordinary code does the
+comparing.
 
-Every photograph here comes from the person being checked. So I tried the
-obvious thing.
+Every photograph comes from the person being checked. So I tried the obvious
+thing.
 
-A photograph is untrusted input, and a sticker with words on it is an
-instruction. That one never reached a model that could act on it.
+A photograph is untrusted input. A sticker with words on it is an instruction.
+That one never reached a model that could act on it.
 
 A photograph tells you the job was done. An instrument tells you it was done
-right. This reading came off the tool itself, with the tool's identity on it,
-and passed through nobody's hands. Nothing about it was typed, so nothing about
-it can be remembered wrong.
+right. This reading came off the tool. It carries the tool's identity. It
+passed through nobody's hands. Nothing was typed, so nothing can be remembered
+wrong.
 
-And most of the work happens while nobody is watching. Every minute, a
-scheduler wakes the fleet. It seals the jobs that are finished, chases the
-steps that stalled, puts the next service in my calendar, and tells the Auditor
-when a procedure has enough history to be worth reading back. I don't start any
-of it, and I'm not there when it runs.
+And most of the work happens while nobody is watching.
 
-Seven agents, each with one job and one contract it answers under, on the
-Google GenAI SDK and deployed to Vertex AI Agent Engine. Ask the running
-service for its roster and it lists all seven.
+Every minute, a scheduler wakes the fleet. It seals the jobs that are finished.
+It chases the steps that stalled. It puts the next service in my calendar. It
+tells the Auditor when a procedure has enough history to be worth reading back.
 
-Somebody ticked the box. No tool ever reported a number. So the record does not
-say this machine was released — it says it wasn't, and which step is missing. A
-waiver takes a person's name. A model can recommend. It can't sign.
+I don't start any of it. I'm not there when it runs.
+
+Seven agents. Each with one job, and one contract it answers under. On the
+Google GenAI SDK, deployed to Vertex AI Agent Engine. Ask the running service
+for its roster and it lists all seven.
+
+Somebody ticked the box. No tool ever reported a number. So the record doesn't
+say this machine was released. It says it wasn't. And it says which step is
+missing.
+
+A waiver takes a person's name. A model can recommend. It can't sign.
 
 I'm still the only person here. I'm just not the only one working.
