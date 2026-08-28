@@ -567,6 +567,15 @@ later do. **Tenancy is enforced by Firestore itself** — `firestore.rules` is e
 the real rules engine on every `./scripts/smoke.sh`, so the isolation claim is a test rather
 than a paragraph.
 
+**Connecting Workspace is one button and no console work.** The same OAuth client that enables
+Google sign-in is the one the Workspace grant uses; set `GOOGLE_OAUTH_CLIENT_SECRET`, then
+press *Connect Workspace* on `/settings`. Calendar events, the Drive record, the ledger and the
+drafted purchase order all work from that alone. Notification **email** is the one part that
+does not: sending as the shop rather than out of a technician's mailbox needs a Workspace
+administrator to authorise `WARRANT_NOTIFIER_SA` for `gmail.send` domain-wide. Unset, the sweep
+reports that the channel is dark rather than pretending it sent something — push and the
+calendar already reach a person, and that is why the mail is allowed to be optional.
+
 The Android client is **native Kotlin and Jetpack Compose** — CameraX and the platform BLE
 stack, no bridge — and it is where the instrument path lives. It consumes the same generated
 contract as the web surfaces.

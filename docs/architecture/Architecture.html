@@ -360,7 +360,7 @@ const BANDS = [
   {t:"Platform services",                                   ids:["armor","vertex","apis","pubsub","obs","secrets"]},
   {t:"Data — carrying real records",                        ids:["fs","idx","rules","evid","sawe","saadj","saadm"]},
   {t:"The fleet — deployed on Vertex AI Agent Engine",      ids:["engine","screen","agentpkg","scoper","inspector","skeptic","instructor","foreman","auditor","wright"]},
-  {t:"Scheduled work — one cron for the whole system",      ids:["sched","sweep","tasksc","cal"]},
+  {t:"Scheduled work — one cron for the whole system",      ids:["sched","sweep","tasksc","cal","drive","gmail"]},
   {t:"Instruments — a reading nobody typed",                ids:["firmware","ble","ingest"]},
 ];
 
@@ -552,13 +552,21 @@ const NODES = [
    facts:[["status","200 on 2026-08-27, revision 00014"],["was","500 on every run for a day, across revisions 00012 and 00013"],["runtime","10.6 s cold, 3.0 s warm"],["unauthenticated","401, correctly"],["holds","a lease, so a long run is not overtaken by its own retry"]],
    note:"<b>This was the one red node on this diagram, and it is fixed.</b> For a day the cron authenticated, threw early and returned 500 in under a second — before any model call, on two revisions, so no single deploy caused it. Revision 00014 answers 200 and completes in seconds. Two consecutive runs observed; the collections it writes are still empty, which is a separate question from whether it runs."},
 
-  {id:"tasksc", x:1550, y:1290, s:"prov", t:"Tasks", sub:"0 raised",
+  {id:"tasksc", x:1850, y:1140, s:"prov", t:"Tasks", sub:"0 raised",
    facts:[["tasks","0"],["raised by","the Foreman and the Auditor, through the sweep"],["note","the sweep now completes, so an empty table is a real answer"]],
    note:"Still empty — but the sweep above now runs, so this is no longer explained by a broken cron. Two sealed records is a thin window for an Auditor whose subject is a procedure across weeks of jobs; there is genuinely little for it to find yet."},
 
-  {id:"cal", x:1250, y:1290, s:"prov", t:"Google Calendar", sub:"OAuth grant · /api/auth/calendar",
-   facts:[["scope","calendar events"],["written by","the sweep"],["events created","none"]],
-   note:"A held machine that needs a part on Thursday should put Thursday in somebody's calendar. Wired, granted, never exercised."},
+  {id:"cal", x:1250, y:1290, s:"prov", t:"Google Calendar", sub:"OAuth grant · /api/auth/workspace",
+   facts:[["scope","calendar.events — write only"],["written by","the sweep"],["idempotency","extendedProperties.warrant_task_id, so a re-run updates rather than duplicates"],["events created","none against real Google"]],
+   note:"A held machine that needs a part on Thursday should put Thursday in somebody's calendar. One of three APIs behind a single Workspace grant. Wired and granted; not yet exercised against Google."},
+
+  {id:"drive", x:1550, y:1290, s:"prov", t:"Google Drive + Sheets", sub:"the records and the ledger",
+   facts:[["scope","drive.file — per-file access to files THIS APP created"],["per seal","one Doc in the shop's folder, one row in their ledger"],["ledger","a Sheet, on the same scope — Sheets accepts drive.file for a sheet the app made"],["ids at","/tenants/{t}/integrations/workspace, server-written"],["found by","an unfiltered rotating window over records — no index needed"]],
+   note:"<b>The record leaves the building.</b> A maintenance record is worth something years later, often to somebody who never had a login here — so the seal is projected into the shop's own Drive. Warrant is still the source of truth and this is a copy: nothing reads it back, and a shop that deletes the folder loses a convenience, not a record."},
+
+  {id:"gmail", x:1850, y:1290, s:"prov", t:"Gmail", sub:"the drafted purchase order",
+   facts:[["scope","gmail.compose — creates a draft, CANNOT send, cannot read the mailbox"],["written by","the Foreman, through dispose()"],["lands in","a foreman's drafts, never the technician's"],["idempotency","the draft id on the task, not a header search — Gmail's q does not index X- headers"],["notification mail","a separate identity: the tenant's notifier mailbox, keyless via IAM signJwt"]],
+   note:"<b>Autonomy stops where money leaves the business, and the credential is what stops it.</b> An agent that decided to order forty thousand pounds of steel could not transmit the order — the scope cannot send. 'Drafted, never sent' is a property of the grant rather than an instruction a model was asked to follow."},
 
   /* ---------------------------------------------------- instruments */
   {id:"firmware", x:1850, y:1480, s:"bench", t:"Reference instrument", sub:"ESP32 · BLE · signed frames",
@@ -642,6 +650,8 @@ const EDGES = [
   ["sweep","auditor","live","weeks of jobs at once"],
   ["sweep","tasksc","prov","raises a task when one is due"],
   ["sweep","cal","prov","moves the follow-up date"],
+  ["sweep","drive","prov","projects the sealed record"],
+  ["sweep","gmail","prov","drafts the order, cannot send it"],
 
   ["firmware","ble","bench","BLE notify, signed"],
   ["ble","ingest","bench","POST a signed frame"],

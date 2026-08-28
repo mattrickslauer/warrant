@@ -271,7 +271,11 @@ a role becomes a queue. Ids are derived from the cause, so a replayed dispositio
 task instead of creating a second.
 
 A task assigned to a **role** has no owner and therefore no calendar event; claiming it is what
-creates one. `notify_after` is a single computed clock — it starts at `due_at` and moves to
+creates one. An `approve_order` task additionally carries `gmail_draft_id` and
+`gmail_draft_url` — the purchase order the Foreman raised, drafted into a foreman's own
+mailbox. The id is read back on a retry rather than searched for: Gmail's `q` does not reliably
+index a custom `X-Warrant-Task-Id` header, so a search-based check would find nothing every
+time and leave a second order for the same part on every sweep. `notify_after` is a single computed clock — it starts at `due_at` and moves to
 now + 24h after each notification — so the cross-tenant sweep is one equality and one
 inequality on one field.
 
@@ -286,9 +290,40 @@ and because media is proxied rather than signed, every image URL dies with it.
 
 Reachable by nobody, including the user whose token it is. Top-level rather than under the
 tenant, because the recursive tenant read would hand every colleague a token that writes to
-this person's calendar.
+this person's calendar, drafts mail from their account, and creates files in their Drive.
+
+One document per person holds one grant covering all of Workspace. `scope` is stored **as
+Google returned it**, never as what was asked for: a person may untick a permission on the
+consent screen, and an account linked before Drive and Gmail were asked for holds a token that
+cannot write a record. Every caller checks `hasScope()` before it acts, so a partial grant
+degrades one feature instead of producing three confusing failures.
+
+### `/tenants/{t}/integrations/workspace` — where the shop's Drive files live
+
+The Drive folder id and the ledger spreadsheet id, plus the uid whose grant created them. On
+the **server-written** list in `firestore.rules`: a member who could rewrite these would point
+the whole shop's records at a file of their choosing. The `drive.file` scope means such a write
+would fail against a file Warrant did not create, so the attack is a denial of service rather
+than a theft — and it is still not a thing a colleague gets to do to a shop's ledger.
+
+Tenant-scoped rather than per-member on purpose. The files belong to the shop, so a record
+sealed by whoever is on shift lands in the same folder and appends to the same ledger as every
+record before it.
 
 ### `/tenants/{t}/records/{jobId}` — written once by the seal, never updated
+
+The one exception is the Drive projection, which appends `workspace_exported_at`,
+`workspace_document_url` and `workspace_ledger_id` after the fact. Nothing the record *claims*
+is touched — these say where a copy of it went, which the record cannot know at the moment it
+is sealed because nobody may have connected Workspace yet.
+
+Their absence is also the query. The sweep scans `records` on a rotating window with **no
+`where` clause** and filters in memory for a missing `workspace_exported_at`: a filtered
+collection-group query would need an index on a field that is absent from every record written
+before the feature existed, and Firestore does not return documents missing the field being
+ordered on. Unindexed and eventually complete beats indexed and silently partial, and nothing
+here is urgent — the record is already sealed, durable and authoritative, and Drive is a
+projection of it.
 
 ---
 

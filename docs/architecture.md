@@ -575,19 +575,34 @@ table would be the one mistake this project cannot afford to make in writing.
 | Asset history across weeks | the `readings` series, **not Memory Bank** | deliberately not adopted — §4 |
 | Agent discovery | the fleet's own `roster()`, **not Agent Registry** | not adopted — it publishes agents, and procedures are what need versioning |
 | Routing and policy | one client, one engine — **no Agent Gateway** | not adopted — nothing here routes between engines |
-| Traces and audit logs | **Agent Observability** |
-| Services and transport | **Cloud Run**, **Pub/Sub** |
-| Source of truth | **Firestore** — tenancy enforced by rules, not by application code (§8) |
-| Evidence media, avatars, uploaded paper forms | **Cloud Storage** — `storage.rules`; captures are append-only, and a form is not a capture |
-| Task alerts on a schedule | **Cloud Scheduler** → Cloud Run `/api/tasks/sweep`, one cron for every tenant |
-| Push to a person in a workshop | **Firebase Cloud Messaging** |
-| Dated work on a technician's calendar | **Google Calendar API** — `calendar.events`, write only |
-| Identity and tenancy | **Google Sign-In** — `hd` claim decides the tenant shape |
-| Operator-facing surfaces | **Google Workspace** — a published projection, never authoritative |
-| Machine-to-machine | **MCP server** on Cloud Run, consumed by our own dashboard |
+| Traces and audit logs | **Agent Observability** | not adopted — the OpenTelemetry row above is the path actually in use; this one is unprobed |
+| Services and transport | **Cloud Run**, **Pub/Sub** | Cloud Run running; **Pub/Sub enabled with zero topics** and nothing calls it |
+| Source of truth | **Firestore** — tenancy enforced by rules, not by application code (§8) | running — the rules execute against the real engine on every `./scripts/smoke.sh` |
+| Evidence media, avatars, uploaded paper forms | **Cloud Storage** — `storage.rules`; captures are append-only, and a form is not a capture | running |
+| Task alerts on a schedule | **Cloud Scheduler** → Cloud Run `/api/tasks/sweep`, one cron for every tenant | running — `* * * * *`, 200 on every firing since revision 00014 |
+| Push to a person in a workshop | **Firebase Cloud Messaging** | wired — no surface requests a token yet, so delivery is unproven (§14) |
+| Dated work on a technician's calendar | **Google Calendar API** — `calendar.events`, write only | granted, not yet exercised against Google (§14) |
+| The sealed record and the shop's ledger | **Google Drive + Sheets** — `drive.file`, which is per-file access to files this app created. One document per seal, one ledger row per seal | written and unit-tested offline; not yet exercised against Google (§14) |
+| The Foreman's purchase order | **Gmail API** — `gmail.compose`, which creates a draft and **cannot send one**. See below | written and unit-tested offline; needs no admin setup |
+| Notification email | **Gmail API** as the tenant's notifier mailbox, via domain-wide delegation, keyless through **IAM Credentials `signJwt`**. Never out of a technician's mailbox | dark until a Workspace admin authorises the SA; `canSendMail()` reports it (§14) |
+| Identity and tenancy | **Google Sign-In** — `hd` claim decides the tenant shape | running |
+| Operator-facing surfaces | **Google Workspace** — a published projection, never authoritative | running — one consent from `/settings` covers all four APIs |
+| Machine-to-machine | **MCP server** on Cloud Run, consumed by our own dashboard | running — a real handshake over the real transport, `scripts/mcp.test.mjs` |
 
-**Purchase orders are drafted, never sent.** An agent prepares, a human approves. Autonomy
-stops where money leaves the business.
+**Purchase orders are drafted, never sent, and that is a property of the GRANT.** An agent
+prepares, a human approves; autonomy stops where money leaves the business. The scope Warrant
+holds is `gmail.compose`, which can create a draft and cannot send one and cannot read the
+mailbox — so an agent that decided to order forty thousand pounds of steel could not transmit
+it if it wanted to. The rule is enforced by the credential rather than by a prompt, which is
+the only version of it worth writing down: `web/src/server/gmail.ts`.
+
+**One consent covers all four APIs**, taken from `/settings` rather than at sign-in, so the
+sign-in screen stays one clean identity prompt and the Workspace grant is asked for by
+somebody who went looking for it. Every scope in the set is a WRITE scope for a resource
+Warrant creates; there is no read scope anywhere in it. The refresh token lives at
+`/user_secrets/{uid}`, a top-level root with `allow read, write: if false` — never under
+`/tenants/{t}/**`, where the recursive read would hand every colleague a token that writes to
+this person's calendar and drafts mail from their account.
 
 ---
 
@@ -630,17 +645,33 @@ The product survives losing the dashboard. It does not survive having no capture
 
 Newly outstanding, from the storage and notification work:
 
-- **The Seal does not yet recompute provenance from `readings`.** §8 names this as the primary
-  control and it is the largest gap in the system: the rules currently carry weight the design
-  intends them to share. Everything else here is smaller than this one.
-- **Nothing bridges a Foreman disposition into a task.** `raiseTask` and the cross-tenant sweep
-  work; the Pub/Sub subscriber that calls them from the agent runtime does not exist, so the
-  storage is correct and the fleet is not yet writing into it.
+- ~~**The Seal does not yet recompute provenance from `readings`.**~~ **Closed.**
+  `server/seal.ts` reads the server-written `readings` collection for the job and derives every
+  field's class from it — `classify()` returns `measured` only where a reading for that field
+  carries a `tool_id`, and `earnedTier()` computes the ceiling the same way. What arrived on the
+  field document is deliberately ignored, which is what §8 asked for.
+- ~~**Nothing bridges a Foreman disposition into a task.**~~ **Closed, and not by Pub/Sub.**
+  The sweep calls `dispose()` over `stalledSteps()`, and `dispose()` calls
+  `taskFromDisposition()`. The subscriber described here was never built because the path that
+  replaced it needs no broker: one cron, one handler, and a lease that stops it overlapping
+  itself. Pub/Sub stays enabled with zero topics, which is recorded rather than tidied away.
 - **On-device redaction does not set `capture.redacted`.** Publishing *refuses* an unredacted
   capture, so this fails closed — but no record can reach a capability URL until ML Kit
   redaction runs.
-- **Calendar consent has not been run against real Google.** The incremental flow, the
-  `access_type=offline` + `prompt=consent` pairing that is required for a refresh token, and
-  the `extendedProperties` idempotency are all implemented and none are proven end to end.
+- **The Workspace grant has not been run against real Google.** This is the one that widened
+  rather than closed. The incremental flow, the `access_type=offline` + `prompt=consent`
+  pairing that is required for a refresh token, the `extendedProperties` idempotency on
+  calendar events, the multipart HTML upload that Drive converts into a Doc, the Sheets append,
+  and the Gmail draft are all implemented, unit-tested where they are decidable offline, and
+  **none are proven end to end against Google**. What IS tested offline is the part that could
+  hurt somebody: a part number carrying CRLF cannot inject a `Bcc` into a purchase order, a
+  ledger row cannot drift out of step with its header, and the record document cannot claim
+  more than the record does — `web/scripts/workspace.test.mjs`.
+- **Notification email needs an act by a Workspace administrator.** `WARRANT_NOTIFIER_SA` has
+  to be authorised for `gmail.send` domain-wide before a single notification can go out, which
+  is deliberate — Warrant will not mail a foreman out of a mechanic's account — but it means
+  the email channel is dark on any deployment that has not done it. `canSendMail()` reports
+  that state and the sweep counts it; nothing pretends. **The drafted purchase order needs none
+  of this**, because it is written into a foreman's own drafts with their own grant.
 - **FCM delivery is unproven.** No surface requests a token yet, so `/api/devices` has never
   been called by a real client.

@@ -370,7 +370,17 @@ third.** Shot 34's lower third currently reads `30 years`. Either quote him or s
   every minute, sealing and chasing and writing the calendar while nobody watches. This is the
   first half of the 40% sub-criterion and the film had no beat for it until 27 Aug
 - **"Sends the right info to the right places"** — the track brief's own words. The calendar entry
-  and the task landing with a named role, in shots 33 and 38
+  and the task landing with a named role, in shots 33 and 38.
+
+  **This got literal on 27 Aug and the cut should use it.** The sweep now writes to FOUR places
+  and none of them is inside Warrant: a calendar event, the sealed record as a document in the
+  shop's own Google Drive, a row in their ledger spreadsheet, and the Foreman's reorder drafted
+  as a purchase order in Gmail. **The strongest single shot available is the Gmail draft** — the
+  part number, the grade, the machine and the Foreman's reasoning, sitting in Drafts, unsent.
+  Say the line over it: *the scope Warrant holds cannot send mail.* An agent that decided to
+  order forty thousand pounds of steel could not transmit it. That is autonomy stopping at the
+  credential rather than at a prompt, which is the thing every other entry will claim and not
+  be able to show. The B-roll is free — it is a Gmail window and a Drive folder
 - **Action, not chat.** The compiler refusing its own agent, the Inspector refusing the pad, the
   gate refusing the release
 

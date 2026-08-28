@@ -55,6 +55,10 @@ At the end you get a sealed record: what was done, by whom, against which versio
 
 It is not a replacement for the system a company already runs. It is the layer underneath it, so what reaches that system is evidence rather than assertion.
 
+And the answers come out where the shop already works, not only inside our app. Nobody adopts a system by logging into it. A dated task becomes a calendar event. A sealed record lands in the company's own Google Drive as a document, next to a ledger that gains a row every time a job seals — sealed at, procedure, version, machine, technician, evidence tier, whether the machine was released, how many deficiencies, and the links. That ledger is theirs. A maintenance record is worth something years later, often to somebody who never had a login here, and a record that only exists inside a vendor's database has a dependency on that vendor still being in business.
+
+And when the Foreman decides a part has to be reordered, the purchase order is drafted in Gmail — part number, grade, quantity, the machine it is for, and the Foreman's own reasoning — addressed to the supplier and not sent. Somebody with the standing to spend the money opens it, reads it, and presses send.
+
 ### What runs long
 
 Very little of this happens inside one sitting, which is the whole reason it needs agents rather than a form.
@@ -81,6 +85,8 @@ The web app and the phone app talk to the same service. Everything is stored per
 
 The whole product runs offline against recorded fixtures. No cloud account, no credentials, no hardware. The agents have 69 scored scenarios that replay from recordings, so the suite runs free and offline and gives the same answer twice. Some of the adversarial test footage — the kind of fake evidence somebody would submit if they were trying to cheat — is generated with Veo.
 
+The Workspace side is one consent covering Calendar, Gmail and Drive, and every scope in it is a **write** scope for something Warrant creates: `calendar.events`, `gmail.compose`, `drive.file`. Warrant cannot read a calendar, cannot read a mailbox, and cannot see a file it did not make — `drive.file` is per-file access to the app's own files, so the folder and the ledger are reachable and the rest of somebody's Drive is not. That is also why the ledger costs no extra permission: the Sheets API accepts the same scope for a spreadsheet the app created.
+
 ## Challenges we ran into
 
 The hardest problem was not technical. It was that the obvious version of this product is one that maintenance technicians would hate.
@@ -100,6 +106,8 @@ The fleet is deployed and will answer for itself. Ask the live service what agen
 Two agents look at the same photograph and neither can see the other's conclusion — the second one's prompt does not even mention that the first exists. That is deliberate. Two people shown each other's answers agree, and the second opinion stops being one.
 
 No agent can release a machine. The gate that decides whether a step passes is ordinary code, and a waiver requires a named person with the standing to give it. A model can recommend. It cannot sign.
+
+No agent can spend money either, and that one is enforced by the credential rather than by the prompt. The purchase order the Foreman raises is written with `gmail.compose`, a scope that can create a draft and cannot send one. An agent that decided to order forty thousand pounds of steel could not transmit it if it wanted to. "Drafted, never sent" is not an instruction we gave a model and hope it follows — it is a property of the token, and the authority to spend stays with the human because the API key does not carry it.
 
 And anyone can clone the repository and run the entire product, end to end, with no account and nothing at risk.
 
@@ -156,7 +164,8 @@ No cloud account or hardware — it runs on recorded fixtures. cd web && npm i &
 | Reproducible testing instructions in README? | Yes |
 | Hosted project URL | https://warrant-zq2l2kwg3q-uc.a.run.app |
 | Which Google SDK | Google GenAI SDK (google-genai) only. **Not ADK** — it appears solely in research notes, never as a dependency |
-| Google Cloud services | Cloud Run, Firestore. **Not Pub/Sub** — enabled but zero topics and nothing calls it |
+| Google Cloud services | Cloud Run, Firestore, Cloud Scheduler, Cloud Storage, Secret Manager, IAM Credentials. **Not Pub/Sub** — enabled but zero topics and nothing calls it |
+| Google Workspace APIs | Calendar (`calendar.events`), Gmail (`gmail.compose`), Drive (`drive.file`) and Sheets — one incremental consent, every scope write-only for resources Warrant itself creates. It cannot read a calendar, a mailbox, or a file it did not make |
 | Gallery thumbnail | `demo-video/deck/out/thumb-project.png` — 1200 × 800, the 3:2 Devpost asks for; re-render from `demo-video/deck/thumb.html?t=project` |
 | Architecture diagram | **Submit `docs/architecture/Warrant-architecture-canvas.png`** — one page, 50 nodes and 62 links read live from `warrent-505918`, with a state legend (live / on the bench / provisioned / drift / dormant). The judging Q&A was explicit that the diagram must be readable at a glance: *"out of that one glance I know where are you deploying into, how are the components connected together… I've seen somebody whose architecture diagram is basically an essay. Try not to do that."* The 12-page `Warrant-architecture.pdf` is the essay — keep it in the repo as the long form, link it from the README, but do **not** make it the diagram field |
 | Sponsor / special prizes | Leave unchecked — Startup Excellence needs an incorporated organization |
@@ -182,6 +191,14 @@ getting a lot of the questions from the taskmaster, surprisingly."*
 **And the work fits.** Taskmaster is for agents that take on what a person does not want to
 do, and that keep going over hours, weeks or months. Writing the maintenance record is
 exactly the chore nobody wants, and the job outlives the visit — see *What runs long*.
+
+The track brief asks for an agent that *"sends the right info to the right places"*, and that
+is now literal rather than a reading. A scheduler wakes the fleet every minute; it seals the
+jobs that finished, chases the steps that stalled, puts the next service in a calendar,
+projects each sealed record into the shop's own Drive with a row in their ledger, and drafts
+the purchase order for a part the Foreman called for — into a foreman's Gmail, with a scope
+that cannot send it. Four destinations, no human in the loop until the one place where a
+human has to be: the moment money leaves the business.
 
 The downside is bounded. Rules §121: *"The Sponsor and Administrator reserve the right to
 reassign a Submission from one category to another if applicable."* If the panel reads this

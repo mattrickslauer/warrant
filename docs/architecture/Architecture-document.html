@@ -83,11 +83,11 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
       as it is actually deployed, one section at a time. Every value was read out of the live
       project with gcloud or the REST APIs, or by requesting the running service — not from the
       repository. Where the two disagree, the project wins and the node is marked drift.</p>
-    <div class="legend"><div><s style="background:var(--live)"></s>Live <em>· 37</em></div><div><s style="background:var(--prov)"></s>Provisioned <em>· 6</em></div><div><s style="background:var(--dorm)"></s>Dormant <em>· 3</em></div><div><s style="background:var(--hub)"></s>Project <em>· 1</em></div><div><s style="background:var(--bench)"></s>On the bench <em>· 3</em></div></div>
+    <div class="legend"><div><s style="background:var(--live)"></s>Live <em>· 37</em></div><div><s style="background:var(--prov)"></s>Provisioned <em>· 8</em></div><div><s style="background:var(--dorm)"></s>Dormant <em>· 3</em></div><div><s style="background:var(--hub)"></s>Project <em>· 1</em></div><div><s style="background:var(--bench)"></s>On the bench <em>· 3</em></div></div>
     <div class="rule" style="margin-top:16px"></div>
     <div class="kicker">Contents</div>
     <div class="toc"><div><b>2</b><span>Supply chain — how the image got there</span></div><div><b>3</b><span>Identity — Google sign-in, wired to the live origin</span></div><div><b>4</b><span>Request path — what a visitor actually touches</span></div><div><b>6</b><span>Platform services</span></div><div><b>7</b><span>Data — carrying real records</span></div><div><b>8</b><span>The fleet — deployed on Vertex AI Agent Engine</span></div><div><b>10</b><span>Scheduled work — one cron for the whole system</span></div><div><b>11</b><span>Instruments — a reading nobody typed</span></div><div><b>12</b><span>How they come together — one capture, end to end</span></div></div>
-    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span>50 nodes · 62 links</span></div></section>
+    <div class="foot"><span>warrent-505918 · us-central1 · verified 2026-08-26</span><span>52 nodes · 64 links</span></div></section>
 <section class="page"><div class="kicker">Section 1 of 8</div>
     <h2>Supply chain — how the image got there</h2>
     <p class="thesis">The image is built on a laptop and pushed straight to Artifact Registry. Cloud Build is enabled and never runs.</p>
@@ -677,12 +677,16 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
 <section class="page"><div class="kicker">Section 7 of 8</div>
     <h2>Scheduled work — one cron for the whole system</h2>
     <p class="thesis">One cron re-reads the world every minute, so nothing is lost when a deploy lands mid-flight. It failed for a day and was fixed in revision 00014.</p>
-      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 392 176" preserveAspectRatio="xMidYMid meet">
+      <div class="flowwrap"><svg class="flow" viewBox="-16 -26 620 176" preserveAspectRatio="xMidYMid meet">
     <path d="M132 22 L228 22" fill="none" stroke="var(--live)" stroke-width="1.4" opacity=".8"/>
 <rect x="138.95" y="10" width="82.1" height="11" rx="3" class="ebg"/><text x="180" y="18.4" class="elab">OIDC — every minute</text>
-<path d="M294 44 L294 90" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<path d="M360 22 L456 22" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<rect x="361.1" y="10" width="93.8" height="11" rx="3" class="ebg"/><text x="408" y="18.4" class="elab">raises a task when on…</text>
 <path d="M228 22 C180 22 180 112 132 112" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
-<rect x="133.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="63.4" class="elab">moves the follow-up d…</text><g transform="translate(0,0)">
+<rect x="133.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="180" y="63.4" class="elab">moves the follow-up d…</text>
+<path d="M294 44 L294 90" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<path d="M360 22 C408 22 408 112 456 112" fill="none" stroke="var(--prov)" stroke-width="1.4" opacity=".8"/>
+<rect x="361.1" y="55" width="93.8" height="11" rx="3" class="ebg"/><text x="408" y="63.4" class="elab">drafts the order, can…</text><g transform="translate(0,0)">
          <rect width="132" height="44" rx="7" class="chip"/>
          <rect width="3" height="44" rx="1.5" fill="var(--live)"/>
          <text x="11" y="17" class="ct">Cloud Scheduler</text>
@@ -694,7 +698,7 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
          <text x="11" y="17" class="ct">/api/tasks/sweep</text>
          <text x="11" y="31" class="cs">200</text>
        </g>
-<g transform="translate(228,90)">
+<g transform="translate(456,0)">
          <rect width="132" height="44" rx="7" class="chip"/>
          <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
          <text x="11" y="17" class="ct">Tasks</text>
@@ -705,6 +709,18 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
          <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
          <text x="11" y="17" class="ct">Google Calendar</text>
          <text x="11" y="31" class="cs">OAuth grant</text>
+       </g>
+<g transform="translate(228,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Google Drive + Sheets</text>
+         <text x="11" y="31" class="cs">the records and the ledger</text>
+       </g>
+<g transform="translate(456,90)">
+         <rect width="132" height="44" rx="7" class="chip"/>
+         <rect width="3" height="44" rx="1.5" fill="var(--prov)"/>
+         <text x="11" y="17" class="ct">Gmail</text>
+         <text x="11" y="31" class="cs">the drafted purchase order</text>
        </g></svg></div>
       <div class="cards three"><article class="card">
     <h4><s style="background:var(--live)"></s>Cloud Scheduler</h4>
@@ -723,9 +739,19 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
     <p class="note">Still empty — but the sweep above now runs, so this is no longer explained by a broken cron. Two sealed records is a thin window for an Auditor whose subject is a procedure across weeks of jobs; there is genuinely little for it to find yet.</p>
   </article><article class="card">
     <h4><s style="background:var(--prov)"></s>Google Calendar</h4>
-    <p class="sub">OAuth grant · /api/auth/calendar</p>
-    <dl><dt>scope</dt><dd>calendar events</dd><dt>written by</dt><dd>the sweep</dd><dt>events created</dt><dd>none</dd></dl>
-    <p class="note">A held machine that needs a part on Thursday should put Thursday in somebody's calendar. Wired, granted, never exercised.</p>
+    <p class="sub">OAuth grant · /api/auth/workspace</p>
+    <dl><dt>scope</dt><dd>calendar.events — write only</dd><dt>written by</dt><dd>the sweep</dd><dt>idempotency</dt><dd>extendedProperties.warrant_task_id, so a re-run updates rather than duplicates</dd><dt>events created</dt><dd>none against real Google</dd></dl>
+    <p class="note">A held machine that needs a part on Thursday should put Thursday in somebody's calendar. One of three APIs behind a single Workspace grant. Wired and granted; not yet exercised against Google.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Google Drive + Sheets</h4>
+    <p class="sub">the records and the ledger</p>
+    <dl><dt>scope</dt><dd>drive.file — per-file access to files THIS APP created</dd><dt>per seal</dt><dd>one Doc in the shop's folder, one row in their ledger</dd><dt>ledger</dt><dd>a Sheet, on the same scope — Sheets accepts drive.file for a sheet the app made</dd><dt>ids at</dt><dd>/tenants/{t}/integrations/workspace, server-written</dd><dt>found by</dt><dd>an unfiltered rotating window over records — no index needed</dd></dl>
+    <p class="note"><b>The record leaves the building.</b> A maintenance record is worth something years later, often to somebody who never had a login here — so the seal is projected into the shop's own Drive. Warrant is still the source of truth and this is a copy: nothing reads it back, and a shop that deletes the folder loses a convenience, not a record.</p>
+  </article><article class="card">
+    <h4><s style="background:var(--prov)"></s>Gmail</h4>
+    <p class="sub">the drafted purchase order</p>
+    <dl><dt>scope</dt><dd>gmail.compose — creates a draft, CANNOT send, cannot read the mailbox</dd><dt>written by</dt><dd>the Foreman, through dispose()</dd><dt>lands in</dt><dd>a foreman's drafts, never the technician's</dd><dt>idempotency</dt><dd>the draft id on the task, not a header search — Gmail's q does not index X- headers</dd><dt>notification mail</dt><dd>a separate identity: the tenant's notifier mailbox, keyless via IAM signJwt</dd></dl>
+    <p class="note"><b>Autonomy stops where money leaves the business, and the credential is what stops it.</b> An agent that decided to order forty thousand pounds of steel could not transmit the order — the scope cannot send. 'Drafted, never sent' is a property of the grant rather than an instruction a model was asked to follow.</p>
   </article></div>
       <div class="kicker" style="margin-bottom:4px">What this section reaches outside itself</div>
     <div class="cross"><div><b>/api/tasks/sweep</b> → Auditor <span style="opacity:.7">(The fleet)</span></div></div>
@@ -817,7 +843,7 @@ svg.flow .elab{font-family:var(--mono);font-size:6.6px;fill:var(--fg-3);text-anc
       <text x="13" y="37" class="os">6 nodes · 3 live</text></g><g transform="translate(480,114)">
       <rect width="196" height="52" rx="8" class="chip"/>
       <text x="13" y="21" class="ot">Scheduled work</text>
-      <text x="13" y="37" class="os">4 nodes · 2 live</text></g><g transform="translate(720,114)">
+      <text x="13" y="37" class="os">6 nodes · 2 live</text></g><g transform="translate(720,114)">
       <rect width="196" height="52" rx="8" class="chip"/>
       <text x="13" y="21" class="ot">Instruments</text>
       <text x="13" y="37" class="os">3 nodes · 0 live</text></g></svg></div>
