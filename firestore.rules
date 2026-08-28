@@ -79,8 +79,14 @@ service cloud.firestore {
       // `findings` and `audits` join the list for the same reason `decisions` is on it: they
       // are what an agent concluded, and a conclusion the subject of it can edit is not a
       // finding. A shop that could delete "this step is ambiguous" would delete it.
+      //
+      // `integrations` holds the Drive folder and ledger the seal projects into. A member who
+      // could rewrite those ids would redirect the whole shop's records into a file of their
+      // choosing — the `drive.file` scope means the write would fail against a file Warrant
+      // did not create, so the attack is a denial of service rather than a theft, and it is
+      // still not a thing a colleague gets to do to a shop's ledger.
       return collection in ['members', 'records', 'decisions', 'readings', 'procedure_versions',
-                            'findings', 'audits'];
+                            'findings', 'audits', 'integrations'];
     }
 
     // Claims a client may never make for itself, at any depth in the tenant subtree.

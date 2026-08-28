@@ -106,6 +106,36 @@ below its floor. The work order advances. The asset's history updates.
 
 And when the last step passes, the machine is released. **Until then, it isn't.**
 
+### 5. The answers turn up where the shop already works
+
+Nobody adopts a system by logging into it. So Warrant writes into the Workspace the shop
+already has, and reads nothing back out of it.
+
+- **A dated task becomes a calendar event**, with the job one tap away.
+- **A sealed record lands in the shop's Drive** as a document, beside a **ledger** that gains a
+  row per seal — sealed at, procedure, version, asset, technician, evidence tier, whether the
+  machine was released, how many deficiencies, and the links. Sortable, filterable, and
+  *theirs*: a maintenance record is worth something years later, often to someone who never had
+  a login here, and a record that exists only inside a vendor's database has a dependency on
+  that vendor still being in business.
+- **A part the Foreman calls for is drafted as a purchase order in Gmail** — part number, grade,
+  quantity, the machine, and the Foreman's own reasoning — addressed to the supplier and **not
+  sent**. A foreman opens it, reads it, presses send.
+
+That last one is the important one, and it is worth being precise about why.
+
+**"Drafted, never sent" is a property of the grant, not a promise in a comment.** The scope
+Warrant asks for is `gmail.compose`, which can create a draft and *cannot send one* and cannot
+read the mailbox. An agent that decided to order forty thousand pounds of steel could not
+transmit it if it wanted to. **The authority to spend money stays with the human because the
+API token does not carry it** — which is a considerably stronger statement than an agent that
+has been instructed to ask first.
+
+The same shape holds across all three. Every scope is a **write** scope for a thing Warrant
+creates: `calendar.events`, `gmail.compose`, and `drive.file` — which is per-file access to
+files *this app made*. Warrant cannot see a document it did not create, cannot read a calendar,
+and cannot read mail. One consent, from Settings, at the moment somebody wants it.
+
 ---
 
 ## Who uses it, and how they get in
@@ -323,7 +353,7 @@ stack; neither is load-bearing here, and inventing a use for them would cost mor
 is worth.
 | Services and transport | **Cloud Run** |
 | Source of truth | **Firestore** |
-| Where the answers appear | **Google Workspace** — the ledger, the records, the drafted orders |
+| Where the answers appear | **Google Workspace** — Drive holds the records and the ledger, Gmail holds the drafted orders, Calendar holds the dated tasks. Write-only, on three per-resource scopes |
 | Machine-to-machine | **MCP server** on Cloud Run |
 | The technician's client | **Android, native** — Kotlin, CameraX, platform BLE, offline queue, on-device redaction |
 | Identity and tenancy | **Google Sign-In** — a Workspace domain is an enterprise |

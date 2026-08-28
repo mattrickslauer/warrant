@@ -95,7 +95,7 @@ $ENG push "$IMAGE" >/dev/null
 # web/src/server/instruments.ts. Absent, no reading can ever be attested and `measured` is
 # unreachable; that is an honest state rather than a broken one, but it should be a CHOSEN state.
 #
-# GOOGLE_OAUTH_CLIENT_SECRET is what the calendar callback exchanges the code with. Without it
+# GOOGLE_OAUTH_CLIENT_SECRET is what the Workspace callback exchanges the code with. Without it
 # /api/auth/calendar/callback returns 503 and linking a calendar silently cannot work.
 #
 # A CUSTOM DELIMITER, and it is not decoration. `--set-env-vars` splits on commas, and
@@ -135,7 +135,8 @@ for v in MODEL_ARMOR_LOCATION MODEL_ARMOR_TEMPLATE WARRANT_INSTRUMENT_KEYS \
     case "$v" in
       MODEL_ARMOR_*)  echo "note: $v unset — evidence records NOT_SCREENED, so no field can reach 'inferred'." ;;
       WARRANT_INSTRUMENT_KEYS) echo "note: $v unset — no reading can be attested, so no field can reach 'measured'." ;;
-      GOOGLE_OAUTH_CLIENT_SECRET) echo "note: $v unset — linking a calendar will return 503." ;;
+      GOOGLE_OAUTH_CLIENT_SECRET) echo "note: $v unset — linking Workspace will return 503, so no
+                                  calendar events, no Drive records and no drafted orders." ;;
       WARRANT_SWEEP_SECRET) echo "note: $v unset — every sweep will 401 and nothing scheduled will run." ;;
     esac
     case ";${DEPLOYED_ENV};" in *";$v;"*) WOULD_BLANK="$WOULD_BLANK $v" ;; esac
@@ -166,7 +167,7 @@ gcloud run deploy "$SERVICE" \
   --cpu 1 \
   --memory 512Mi \
   --service-account "$RUN_SA" \
-  --set-env-vars "^;;^GCP_PROJECT=${PROJECT};;WARRANT_REGION=${WARRANT_REGION:-us};;GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-};;GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET:-};;WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-};;WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com};;NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-};;WARRANT_SWEEP_SECRET=${WARRANT_SWEEP_SECRET:-};;MODEL_ARMOR_LOCATION=${MODEL_ARMOR_LOCATION:-};;MODEL_ARMOR_TEMPLATE=${MODEL_ARMOR_TEMPLATE:-};;WARRANT_INSTRUMENT_KEYS=${WARRANT_INSTRUMENT_KEYS:-}" \
+  --set-env-vars "^;;^GCP_PROJECT=${PROJECT};;WARRANT_REGION=${WARRANT_REGION:-us};;GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID:-};;GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET:-};;WARRANT_FLEET_ENGINE=${WARRANT_FLEET_ENGINE:-};;WARRANT_ADJUDICATOR_SA=${WARRANT_ADJUDICATOR_SA:-warrant-adjudicator@${PROJECT}.iam.gserviceaccount.com};;NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:-};;WARRANT_SWEEP_SECRET=${WARRANT_SWEEP_SECRET:-};;MODEL_ARMOR_LOCATION=${MODEL_ARMOR_LOCATION:-};;MODEL_ARMOR_TEMPLATE=${MODEL_ARMOR_TEMPLATE:-};;WARRANT_INSTRUMENT_KEYS=${WARRANT_INSTRUMENT_KEYS:-};;WARRANT_NOTIFIER_MAILBOX=${WARRANT_NOTIFIER_MAILBOX:-};;WARRANT_NOTIFIER_SA=${WARRANT_NOTIFIER_SA:-}" \
   --quiet
 
 URL="$(gcloud run services describe "$SERVICE" --region "$REGION" --project "$PROJECT" --format='value(status.url)')"

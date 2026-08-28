@@ -68,7 +68,7 @@ node --experimental-strip-types --conditions=react-server --import ./scripts/ts-
        scripts/nav.test.mjs scripts/compile.test.mjs scripts/screen.test.mjs \
        scripts/seal.test.mjs scripts/instruments.test.mjs scripts/members.test.mjs \
        scripts/attention.test.mjs scripts/mcp.test.mjs scripts/step-action.test.mjs \
-       scripts/handover.test.mjs 2>&1 \
+       scripts/handover.test.mjs scripts/workspace.test.mjs 2>&1 \
   | grep -E '^# (tests|pass|fail)'
 echo "ok — the outcome table, the cases, the fleet client, the armor screen, attestation,"
 echo "     and the Seal's provenance classifier,"
@@ -82,6 +82,9 @@ echo "     and where a job stands when the hands stop, plus which verdict belong
 echo "     which photograph on the handover's carousel,"
 echo "     and the machine-to-machine surface: the seven tools, a real MCP handshake over the"
 echo "     real transport, and the fact that NOT ONE of them can seal, release or waive"
+echo "     — and what a drafted purchase order may contain, which is the one place a string an"
+echo "     agent read off a photograph reaches a mail header, plus the ledger's column order and"
+echo "     what the record projected into Drive is allowed to claim"
 
 step "4/7  every surface renders from fixtures with no backend"
 npm run build >/dev/null

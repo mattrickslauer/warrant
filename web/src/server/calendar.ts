@@ -7,118 +7,18 @@ import "server-only";
 // resolution, and buys nothing the task list does not already know. Warrant is the source of
 // truth; the calendar is a projection of it.
 //
-// THE TOKEN. A refresh token cannot live under /tenants/{t}/** — the recursive read in
-// firestore.rules would hand it to every colleague in the tenant. It lives at
-// /user_secrets/{uid}, a top-level root with `allow read, write: if false`, reachable only by
-// the Admin SDK. The browser never needs it, because events are written here.
-//
-// See specs/2026-08-20-firestore-design.md §8.4.
+// The token, the consent flow and the scope set live in `workspace.ts` — three Google APIs now
+// share one grant, and the token stopped belonging to whichever of them was written first.
 
-import { adminDb } from "@/auth/admin";
+import { accessTokenFor, googleFetch, hasScope, CALENDAR_SCOPE } from "@/server/workspace";
 
-/** Write-only needs no read scope, and asking for one we do not use is a worse consent screen. */
-export const CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar.events";
+export { CALENDAR_SCOPE, RateLimited } from "@/server/workspace";
 
-/** The single-use CSRF nonce for the consent round trip. httpOnly, so only this browser has it. */
-export const CALENDAR_STATE_COOKIE = "warrant_calendar_state";
-
-const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const EVENTS_URL = (calendarId: string) =>
   `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events`;
 
 /** Half an hour is a placeholder for "a slot", not an estimate of the work. */
 const EVENT_MINUTES = 30;
-
-export interface UserSecret {
-  uid: string;
-  refresh_token: string;
-  scope: string;
-  linked_at: string;
-}
-
-const secretRef = (uid: string) => adminDb().collection("user_secrets").doc(uid);
-
-/**
- * Store the refresh token from an incremental consent.
- *
- * Incremental, not at sign-in: signing in stays one clean consent screen, and a technician is
- * asked for their calendar the first time they actually receive a dated task. Consent asked
- * for at the moment it is needed is consent that means something.
- */
-export async function storeRefreshToken(uid: string, refreshToken: string, scope: string): Promise<void> {
-  await secretRef(uid).set(
-    { uid, refresh_token: refreshToken, scope, linked_at: new Date().toISOString() } satisfies UserSecret,
-    { merge: true },
-  );
-}
-
-export async function hasCalendarLink(uid: string): Promise<boolean> {
-  return (await secretRef(uid).get()).exists;
-}
-
-export async function forgetRefreshToken(uid: string): Promise<void> {
-  await secretRef(uid).delete();
-}
-
-/**
- * Clear the member document's record that a calendar is linked.
- *
- * Separate from the token because they live in different places for a good reason — the token
- * is at /user_secrets/{uid} where no colleague can reach it, the flag is on the member where
- * the UI can — and because the two drift the moment one is cleared without the other. Never
- * throws: a member row that is briefly out of date is a cosmetic problem, and an unlink that
- * failed because a document was missing would leave the token behind, which is not.
- */
-export async function unlinkMember(tenantId: string, uid: string): Promise<void> {
-  try {
-    await adminDb()
-      .collection("tenants").doc(tenantId).collection("members").doc(uid)
-      .set({ calendar: { linked: false, linked_at: null, calendar_id: "primary" } },
-           { merge: true });
-  } catch {
-    // Nothing to do. The token is what grants access, and it is already gone.
-  }
-}
-
-/** Raised when Calendar says slow down. The caller leaves the task for the next sweep. */
-export class RateLimited extends Error {
-  constructor(public retryAfterMs: number) {
-    super("Calendar rate limit");
-  }
-}
-
-async function accessTokenFor(uid: string): Promise<string | null> {
-  const snap = await secretRef(uid).get();
-  if (!snap.exists) return null;
-  const secret = snap.data() as UserSecret;
-
-  const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
-  const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
-  if (!clientId || !clientSecret) return null;
-
-  const response = await fetch(TOKEN_URL, {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      client_id: clientId,
-      client_secret: clientSecret,
-      refresh_token: secret.refresh_token,
-      grant_type: "refresh_token",
-    }),
-    signal: AbortSignal.timeout(10_000),
-  });
-
-  if (response.status === 400 || response.status === 401) {
-    // The user revoked access in their Google account. Forget the token rather than retrying
-    // it every minute forever — and let the task keep pushing, which still reaches them.
-    await forgetRefreshToken(uid);
-    return null;
-  }
-  if (!response.ok) return null;
-
-  const body = (await response.json()) as { access_token?: string };
-  return body.access_token ?? null;
-}
 
 export interface EventInput {
   uid: string;
@@ -141,6 +41,7 @@ export interface EventInput {
  */
 export async function upsertEvent(input: EventInput): Promise<string | null> {
   const calendarId = input.calendarId ?? "primary";
+  if (!(await hasScope(input.uid, CALENDAR_SCOPE))) return null;
   const token = await accessTokenFor(input.uid);
   if (!token) return null;
 
@@ -163,28 +64,17 @@ export async function upsertEvent(input: EventInput): Promise<string | null> {
     },
   };
 
-  const headers = {
-    authorization: `Bearer ${token}`,
-    "content-type": "application/json",
-  };
-
   const existingId = await findEventByTaskId(token, calendarId, input.taskId);
 
+  // A 403 or 429 from here throws RateLimited out of googleFetch. That is caught in the sweep,
+  // which leaves the event for the next pass — the push notification has already gone, and
+  // that is the channel that reaches a person. A missed calendar event must never suppress it.
   const response = existingId
-    ? await fetch(`${EVENTS_URL(calendarId)}/${encodeURIComponent(existingId)}`, {
-        method: "PATCH", headers, body: JSON.stringify(body), signal: AbortSignal.timeout(10_000),
-      })
-    : await fetch(EVENTS_URL(calendarId), {
-        method: "POST", headers, body: JSON.stringify(body), signal: AbortSignal.timeout(10_000),
-      });
+    ? await googleFetch(`${EVENTS_URL(calendarId)}/${encodeURIComponent(existingId)}`, token,
+                        { method: "PATCH", body: JSON.stringify(body) })
+    : await googleFetch(EVENTS_URL(calendarId), token,
+                        { method: "POST", body: JSON.stringify(body) });
 
-  if (response.status === 403 || response.status === 429) {
-    // A fleet of tasks all due at 09:00 arrives as a burst. Leave this one for the next
-    // sweep — the push notification has already gone, and that is the channel that reaches a
-    // person. A missed calendar event must never suppress it.
-    const retry = Number(response.headers.get("retry-after") ?? "60");
-    throw new RateLimited(Number.isFinite(retry) ? retry * 1000 : 60_000);
-  }
   if (!response.ok) return null;
 
   const created = (await response.json()) as { id?: string };
@@ -199,10 +89,7 @@ async function findEventByTaskId(
   url.searchParams.set("maxResults", "1");
   url.searchParams.set("showDeleted", "false");
 
-  const response = await fetch(url, {
-    headers: { authorization: `Bearer ${token}` },
-    signal: AbortSignal.timeout(10_000),
-  });
+  const response = await googleFetch(url.toString(), token);
   if (!response.ok) return null;
 
   const body = (await response.json()) as { items?: Array<{ id?: string }> };
@@ -224,9 +111,6 @@ export async function deleteEventForTask(
   const eventId = await findEventByTaskId(token, calendarId, taskId);
   if (!eventId) return;
 
-  await fetch(`${EVENTS_URL(calendarId)}/${encodeURIComponent(eventId)}`, {
-    method: "DELETE",
-    headers: { authorization: `Bearer ${token}` },
-    signal: AbortSignal.timeout(10_000),
-  });
+  await googleFetch(`${EVENTS_URL(calendarId)}/${encodeURIComponent(eventId)}`, token,
+                    { method: "DELETE" });
 }

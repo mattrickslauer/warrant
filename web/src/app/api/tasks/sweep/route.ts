@@ -1,6 +1,8 @@
 // The sweep. One cron for the whole system.
 //
-//   Cloud Scheduler --(OIDC)--> POST /api/tasks/sweep --> push + calendar + adjudication
+//   Cloud Scheduler --(OIDC)--> POST /api/tasks/sweep --> push + email + calendar
+//                                                        + adjudication + disposition + seal
+//                                                        + the Drive projection + the audit
 //
 // Chosen over per-task Cloud Tasks because it is one job rather than thousands of scheduled
 // callbacks, it is visible in the Console, and it self-heals: if a due time passes while
@@ -12,14 +14,16 @@
 import { NextResponse } from "next/server";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { dueTasks, markNotified, attachCalendarEvent, undecidedCaptures,
-         stalledSteps, sealableJobs } from "@/server/tasks";
+         stalledSteps, sealableJobs, unexportedRecords } from "@/server/tasks";
 import { sealJobLive } from "@/server/seal";
 import { adjudicate } from "@/server/adjudicate/run";
 import { dispose } from "@/server/adjudicate/dispose";
 import { audit } from "@/server/adjudicate/audit";
 import { proceduresDueAnAudit } from "@/server/tasks";
 import { pushTask } from "@/server/notify";
-import { upsertEvent, RateLimited } from "@/server/calendar";
+import { upsertEvent } from "@/server/calendar";
+import { RateLimited } from "@/server/workspace";
+import { emailTask, projectRecord } from "@/server/workspace-sync";
 import { adminDb } from "@/auth/admin";
 
 export const runtime = "nodejs";
@@ -156,6 +160,7 @@ async function sweep() {
   }
 
   let pushed = 0;
+  let emailed = 0;
   let scheduled = 0;
   let deferred = 0;
   /** Calendars that refused for a reason that is not rate limiting. Reported, never fatal. */
@@ -174,6 +179,29 @@ async function sweep() {
       assigneeUid: task.assignee_uid,
       assigneeRole: task.assignee_role,
     });
+
+    // EMAIL, the third channel, and the one that reaches a foreman who is not carrying the
+    // phone the push went to. After the push and before the calendar because it is the same
+    // kind of thing as the push — a message to a person — and like the push it must not be
+    // able to stop anything below it. It goes out from the shop's own notifier mailbox, never
+    // from a technician's account; on a deployment with no notifier configured it returns 0
+    // and says nothing, which is why `canSendMail` exists rather than a thrown error.
+    try {
+      emailed += await emailTask({
+        tenantId: task.tenant_id,
+        taskId: task.id,
+        kind: task.kind,
+        title: task.title,
+        detail: task.detail,
+        assigneeUid: task.assignee_uid,
+        assigneeRole: task.assignee_role,
+        dueAt: task.due_at,
+        jobId: task.source.job_id ?? null,
+      });
+    } catch {
+      // Counted by its absence. A mail server having a bad afternoon is not a reason to leave
+      // a task un-notified on the two channels that already worked.
+    }
 
     // A calendar event exists if and only if the task has an OWNER. A role is a queue: three
     // foremen would get three events and claiming would become a distributed delete.
@@ -302,6 +330,40 @@ async function sweep() {
                 "`jobs.status` deployed? Run infra/deploy-rules.sh. Detail: " + String(error);
   }
 
+  // Sealed records that have not reached the shop's own Drive.
+  //
+  // AFTER the seal leg, so a job sealed a moment ago is projected in the same pass rather than
+  // waiting for the next one. Last among the notification legs and first among nothing, because
+  // it is the only work here that is purely a copy: the record is already sealed, durable and
+  // authoritative in Firestore, and the Gate reads THAT. Everything below and above matters
+  // more, and a Drive outage is allowed to cost only this counter.
+  //
+  // Five at a time rather than the window's two hundred. Each one is a document upload plus a
+  // spreadsheet append against a per-user quota, and a backlog is not urgent — the record has
+  // already been earned, and it will still be there next sweep.
+  let exported = 0;
+  let exportDeferred = 0;
+  let exportFailed = 0;
+  try {
+    await pool(await unexportedRecords(5), LANES, async (rec) => {
+      try {
+        const out = await projectRecord(rec.tenantId, rec.recordId);
+        if (out.exported) exported += 1;
+        else exportFailed += 1;
+      } catch (error) {
+        // A burst of seals hits the same Drive quota the same way a fleet of tasks hits the
+        // calendar at 09:00. Left for the next sweep, which is what the rotating window is for.
+        if (error instanceof RateLimited) exportDeferred += 1;
+        else exportFailed += 1;
+      }
+    });
+  } catch {
+    // The scan itself failed. Unlike every other leg here this one needs NO index — it is an
+    // unfiltered rotating window over `records` — so reaching this is a database that is down,
+    // and the legs above have already run.
+    exportFailed += 1;
+  }
+
   // The procedure itself, read across weeks of finished jobs.
   //
   // The longest horizon in the system, and the only agent whose subject is the document every
@@ -327,9 +389,11 @@ async function sweep() {
     // calendar legs above have already run, and they are what reaches a person today.
   }
 
-  return NextResponse.json({ due: tasks.length, pushed, scheduled, deferred,
+  return NextResponse.json({ due: tasks.length, pushed, emailed, scheduled, deferred,
                              adjudicated, stillUndecided, disposed, stillStalled, sealed,
-                             audited, findings: findings.length,
+                             exported, audited, findings: findings.length,
+                             ...(exportDeferred ? { exportDeferred } : {}),
+                             ...(exportFailed ? { exportFailed } : {}),
                              ...(calendarFailed ? { calendarFailed } : {}),
                              ...(sealError ? { sealError } : {}) });
 }

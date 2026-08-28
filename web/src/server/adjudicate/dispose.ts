@@ -297,6 +297,37 @@ export async function dispose(ref: StallRef, deps: DisposeDeps = {}): Promise<Di
     technicianUid: outcome.reason_by ?? null,
   });
 
+  // THE ORDER ITSELF, not just a task asking somebody to approve one.
+  //
+  // `taskFromDisposition` has always raised "Approve the drafted order" on a reorder, and for
+  // as long as it did there was no drafted order — the task named a document that did not
+  // exist. That is precisely the tick-in-a-box this product is an argument against, committed
+  // by the product. The draft now lands in a foreman's Gmail with the part, the grade and the
+  // Foreman's own rationale in it, and `gmail.compose` cannot send it, so the authority to
+  // spend money stays with the person who opens it.
+  //
+  // Best effort and awaited: awaited because a task pointing at a draft that has not been
+  // written yet is the same lie in a smaller window, and best effort because a purchase order
+  // that could not be drafted must not undo a disposition that is already on the record.
+  if (task && effectiveAction === "reorder" && out.reorder_part) {
+    try {
+      const { draftOrderForTask } = await import("@/server/workspace-sync");
+      const jobSnap = await db.collection("tenants").doc(ref.tenantId)
+        .collection("jobs").doc(ref.jobId).get();
+      await draftOrderForTask({
+        tenantId: ref.tenantId,
+        taskId: task.id,
+        partNumber: String(out.reorder_part),
+        rationale: String(out.rationale ?? "The Foreman called for this part to be reordered."),
+        jobId: ref.jobId,
+        assetLabel: jobSnap.data()?.asset_label ? String(jobSnap.data()?.asset_label) : null,
+      });
+    } catch {
+      // Nobody has linked Workspace, or Gmail is having an afternoon. The task still says what
+      // to approve and the part is still named on it.
+    }
+  }
+
   // The step is settled — `deferred` or `impossible`, never pending — so this may have been
   // the last one open. A job that finishes on a DEFICIENCY seals exactly like one that
   // finishes clean; the difference is that the record names what was not done and the Gate

@@ -614,3 +614,78 @@ export async function sealableJobs(limit = 10): Promise<SealableJob[]> {
   }
   return out;
 }
+
+/**
+ * Sealed records that have not yet been projected into the shop's Drive.
+ *
+ * A ROTATING WINDOW WITH NO `where`, unlike every other scan here, and the omission is the
+ * point: records never drain — a sealed record is immutable and stays for ever — so a filtered
+ * query would need a COLLECTION_GROUP index on a field that is absent on every document
+ * written before this feature existed, and Firestore does not return documents missing the
+ * field being ordered on. The filter is therefore in memory over a window that rotates, which
+ * needs no index at all and reaches every record eventually. Nothing here is urgent: the record
+ * is already sealed and durable, and Drive is a projection of it.
+ *
+ * Deliberately the same shape as `sealableJobs`, for the same reason.
+ */
+export interface UnexportedRecord {
+  tenantId: string;
+  recordId: string;
+}
+
+export async function unexportedRecords(limit = 5): Promise<UnexportedRecord[]> {
+  const docs = await rotatingWindow(
+    "unexported_records",
+    (start) => {
+      const q = adminDb().collectionGroup("records").orderBy(FieldPath.documentId());
+      return start ? q.startAfter(start) : q;
+    },
+    200,
+  );
+
+  const out: UnexportedRecord[] = [];
+  for (const doc of docs) {
+    // tenants/{t}/records/{r}
+    const parts = doc.ref.path.split("/");
+    if (parts.length !== 4) continue;
+    // Absent means never attempted. A record that failed is retried on a later turn of the
+    // window rather than being marked done to tidy the query — the same posture as an
+    // undecided capture, and for the same reason.
+    if (doc.data().workspace_exported_at) continue;
+    out.push({ tenantId: parts[1], recordId: parts[3] });
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+/**
+ * Remember that a record reached Drive, and where it landed.
+ *
+ * Written onto the record rather than into a side collection so that the "has this been
+ * projected" question is answered by the document the answer is about. `null` for the document
+ * URL is a legitimate outcome — the ledger row can land when the document upload does not —
+ * and it still counts as exported, because retrying would append a second row.
+ */
+export async function attachDriveExport(
+  tenantId: string, recordId: string, documentUrl: string | null, ledgerId: string,
+): Promise<void> {
+  await adminDb()
+    .collection("tenants").doc(tenantId).collection("records").doc(recordId)
+    .set({
+      workspace_exported_at: new Date().toISOString(),
+      workspace_document_url: documentUrl,
+      workspace_ledger_id: ledgerId,
+    }, { merge: true });
+}
+
+/** Remember the Gmail draft raised for an order, so the surface can link straight to it. */
+export async function attachOrderDraft(
+  tenantId: string, taskId: string, draftId: string,
+): Promise<void> {
+  await adminDb()
+    .collection("tenants").doc(tenantId).collection("tasks").doc(taskId)
+    .set({
+      gmail_draft_id: draftId,
+      gmail_draft_url: `https://mail.google.com/mail/u/0/#drafts?compose=${draftId}`,
+    }, { merge: true });
+}

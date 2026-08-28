@@ -43,6 +43,16 @@ export interface MemberDoc {
   last_seen_at: string;
   disabled: boolean;
   calendar: { linked: boolean; linked_at: string | null; calendar_id: string } | null;
+  /**
+   * The Workspace grant, as the surfaces see it. Never the token, which lives at
+   * /user_secrets/{uid} where no colleague can reach it.
+   *
+   * `scopes` rather than a bare boolean because a grant is not all-or-nothing: a person may
+   * untick Drive on the consent screen, and an account linked back when the calendar was the
+   * only scope has a token that cannot write a record. A surface that reads `linked` alone
+   * offers features that will fail at the moment they are used.
+   */
+  workspace: { linked: boolean; linked_at: string | null; scopes: string[] } | null;
 }
 
 export const SCHEMA_VERSION = 1;
@@ -203,6 +213,7 @@ export async function ensureMember(tenant: TenantRef, identity: IdentityInput): 
       last_seen_at: now,
       disabled: false,
       calendar: null,
+      workspace: null,
     };
     tx.set(ref, { ...fresh, created_at: FieldValue.serverTimestamp() }, { merge: true });
     return fresh;
@@ -396,5 +407,6 @@ function withDefaults(m: MemberDoc): MemberDoc {
     standing: m.standing ?? standingFor(m.role ?? "technician"),
     disabled: m.disabled ?? false,
     calendar: m.calendar ?? null,
+    workspace: m.workspace ?? null,
   };
 }
