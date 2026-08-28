@@ -227,9 +227,18 @@ own incentive, and no sight of the Inspector's conclusion.
 is out of focus, photograph it again."* Every step caps how often it may do this; on exhausting
 that budget it escalates to a person with the specific unresolved question, never silently.
 
-**Why the gate is the point.** Every agent above produces a record. The gate stops
-a machine going out to somebody — and its hold is physical, not a notification. The keys are
-in a safe the relay controls. A held machine is a drawer that does not open.
+**Why the gate is the point.** Every agent above produces a record; the gate is what a record
+is *for*. `machineReleased()` in `data/seal.ts` is four lines of ordinary code: every binding
+step must be `performed`, or `waived` by a named person. Fail that and the sealed record
+carries `machine_released: false` along with exactly which step is missing, and no model
+anywhere in the fleet can change it — the strongest thing an agent can do is recommend.
+
+**It is a claim on the record, not a lock on the machine.** Nothing in this system opens a
+drawer, throws a relay or holds a key, and an earlier draft of this section said otherwise.
+The hold is that the document a company relies on says, permanently and specifically, that
+this machine was not released and why. That is the whole product: what reaches the system of
+record is evidence rather than assertion. Wiring that verdict to something physical is
+somebody's integration, and it is not written here.
 
 **Why Wright exists.** Every instrument speaks its own dialect, and writing a driver per tool
 is the long-tail work that stops a platform like this from generalising. Wright enumerates an

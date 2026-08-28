@@ -118,8 +118,8 @@ function Specimens() {
       <Block label="HoldBanner — two uses, one shape">
         <div className="stack">
           <HoldBanner title="Machine held">
-            Step 4 has no instrument reading. The drawer does not open, and this is not a warning
-            anyone can dismiss.
+            Step 4 has no instrument reading. This job cannot seal as released, and that is not a
+            warning anyone can dismiss.
           </HoldBanner>
           <HoldBanner kind="fixture" title="Fixture data — live source unavailable">
             The surface is serving fabricated data. A demo must never show an error screen; it
