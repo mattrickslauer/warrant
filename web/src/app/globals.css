@@ -234,13 +234,33 @@ h1.hero {
 
 /* ---- the rail ---- */
 .rail {
+  /* The width of one card, named once. The rail's trailing room is computed FROM it below,
+     and the two drifting apart is the whole bug this variable exists to prevent. */
+  --card-w: min(84vw, 400px);
+
   display: flex; gap: 16px;
   overflow-x: auto; overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 8px var(--gutter) 12px;
   scroll-padding-inline: var(--gutter);
+
+  /* The trailing gutter is not a gutter. It is the room the LAST card needs in order to
+     reach the leading edge.
+     
+     Cards snap to the start and `active` is the card sitting at that start, so a card that
+     cannot be scrolled to the leading edge can never be the active one. A scroll container
+     stops at `scrollWidth - clientWidth`, so with an ordinary gutter at the end the final
+     cards run out of travel: at 1440px three of the seven — including "Everything else" —
+     were unreachable, and clicking one called scrollIntoView, hit the end of the rail, left
+     `active` behind and did visibly nothing. Click it again and it did nothing again. The
+     sticky action was left reading "Not ready yet", disabled, for a card nobody had chosen.
+     
+     `100% - card - leading gutter` is exactly the travel the last card is short of, so every
+     card can now sit at the leading edge and every dot points at a scroll position that
+     exists. `max()` keeps it a plain gutter if a card ever grows wider than the rail. */
+  padding-block: 8px 12px;
+  padding-inline: var(--gutter) max(var(--gutter), calc(100% - var(--card-w) - var(--gutter)));
 }
 .rail::-webkit-scrollbar { display: none; }
 
@@ -248,7 +268,7 @@ h1.hero {
    arrives on interaction rather than sitting there by default. */
 .card {
   scroll-snap-align: start;
-  flex: 0 0 min(84vw, 400px);
+  flex: 0 0 var(--card-w);
   display: flex; flex-direction: column;
   background: var(--surface);
   border: 1px solid transparent;
@@ -372,7 +392,8 @@ h1.hero {
 
 @media (min-width: 760px) {
   .picker { gap: 20px; }
-  .card { flex: 0 0 380px; }
+  /* Set on the rail, not the card: the rail's trailing room is derived from this. */
+  .rail { --card-w: 380px; }
   .cta { align-items: center; padding-block: 16px; }
   .cta__go { min-width: 360px; }
 }

@@ -45,9 +45,9 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
   const [busy, setBusy] = useState(false);
   const [, setReport] = useState<DeviceReport | null>(null);
 
-  // Which card is centred. Native scroll-snap does the movement; this only reads it.
-  // Nearest-to-centre rather than "is intersecting" — on a wide screen several cards are
-  // visible at once and intersection order would pick an arbitrary one.
+  // Which card is chosen. Native scroll-snap does the movement; this only reads it.
+  // Nearest-to-the-snap-line rather than "is intersecting" — on a wide screen several cards
+  // are visible at once and intersection order would pick an arbitrary one.
   useEffect(() => {
     const el = rail.current;
     if (!el) return;
@@ -57,10 +57,24 @@ export function TaskCarousel({ tasks, children }: { tasks: Task[]; children?: Re
       // Leading-edge, not centre. Cards snap to the start, so the active one is the
       // leftmost still in view — which is the same card at 390px (one fills the rail) and
       // at 1440px (three are visible and the first is the one you are choosing).
+      //
+      // Measured off getBoundingClientRect, NOT offsetLeft. offsetLeft is relative to the
+      // nearest POSITIONED ancestor, and nothing between a card and the document is
+      // positioned — so it carried the rail's leading gutter, which `--gutter` grows to
+      // (100vw - --maxw) / 2. Past 1576px that gutter exceeds half a card's pitch and the
+      // nearest-card sum lands a whole card early: every card read as the one before it,
+      // `i === active` was never true, and clicking a card scrolled it into place and then
+      // refused to open it. On a 1920px monitor that is the entire carousel, unselectable.
+      //
+      // Rects put the cards and the rail in one coordinate space, so the comparison holds at
+      // every width without knowing anything about who is positioned.
+      const box = el.getBoundingClientRect();
+      const lead = parseFloat(getComputedStyle(el).paddingInlineStart) || 0;
+      const origin = box.left + el.clientLeft + lead;
       let best = 0;
       let bestDist = Infinity;
       el.querySelectorAll<HTMLElement>(".card").forEach((c, i) => {
-        const d = Math.abs(c.offsetLeft - el.scrollLeft - el.clientLeft);
+        const d = Math.abs(c.getBoundingClientRect().left - origin);
         if (d < bestDist - 1) { bestDist = d; best = i; }
       });
       setActive(best);
