@@ -4,6 +4,18 @@
 
 > **Working name.** A warrant is a guarantee that a thing is as represented.
 
+| | |
+|---|---|
+| **Live** | <https://warrant.tools> — also <https://warrant-zq2l2kwg3q-uc.a.run.app>. Sign in with Google, or read [the public library](https://warrant.tools/library) and [the decision log](https://warrant.tools/fleet) without an account. Cold start is about six seconds |
+| **Demo** | **<https://youtu.be/i7RFqMTELgA>** — 3:51 |
+| **Built for** | The All Things Agentic Hackathon, category **The Taskmaster**. Written between 17 and 31 August 2026; see [Disclosure](#disclosure) |
+| **Reasoning** | **Gemini 3.5 Flash** for all seven agents, **Gemini 3.5 Flash-Lite** for the screen in front of them — [`agents/warrant/model.py`](agents/warrant/model.py), [`screen.py`](agents/warrant/screen.py) |
+| **Framework** | **Google GenAI SDK** (`google-genai`), deployed to **Vertex AI Agent Engine** — [`infra/deploy-agents.py`](infra/deploy-agents.py) |
+| **Infrastructure** | **Cloud Run**, **Firestore**, **Cloud Scheduler**, Cloud Storage, Secret Manager, IAM Credentials, Model Armor, Cloud Trace |
+| **Also** | **Veo 3.1** generates the fraud the Skeptic is tested against; **Gemini 2.5 Flash Image** draws the task art |
+| **Diagram** | [One page, read live from the project](#architecture) · long form in [`Warrant-architecture.pdf`](docs/architecture/Warrant-architecture.pdf) |
+| **Run it** | No Google Cloud account, no credentials, no hardware — [Running it](#running-it) |
+
 ---
 
 ## The tick in the box
@@ -279,6 +291,14 @@ has ground truth for free.
 ---
 
 ## Architecture
+
+[![Warrant — deployed architecture](docs/architecture/Warrant-architecture-canvas.png)](docs/architecture/Warrant-architecture-canvas.png)
+
+*52 nodes and 64 links, **read live from `warrent-505918` on 2026-08-26** rather than drawn by
+hand — which is why every node carries the state it was actually found in: live, on the bench,
+provisioned, drift, dormant. Three dormant nodes and eight merely provisioned ones are on the
+picture because leaving them off would make the diagram a nicer claim than the system.
+The long form is [`Warrant-architecture.pdf`](docs/architecture/Warrant-architecture.pdf).*
 
 **The fleet is deployed on Vertex AI Agent Engine and will answer for itself.** Nothing in this
 section has to be taken on trust — ask the running service what it is:
