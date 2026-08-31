@@ -209,6 +209,23 @@ available and was not attempted.
 
 Cold start on the hosted URL is about 6 seconds; load every page once before judging opens.
 
+### It has to stay up until 1 October
+
+Rules §101: the Project must be available *"free of charge and without any restriction, for
+testing, evaluation and use by the Sponsor, Administrator and Judges **until the Judging Period
+ends**"* — and the Judging Period runs 1 September to 1 October 2026. The submission is not the
+finish line for the infrastructure.
+
+So, after 31 August: leave billing on `warrent-505918`, leave the Cloud Run service and the
+Firestore database alone, keep the `warrant.tools` registration and its DNS current, and leave
+`youtu.be/i7RFqMTELgA` public. `warrant.tools` and `www.warrant.tools` are both authorised
+sign-in domains — verified against the Identity Toolkit, not assumed — and pulling either one
+breaks Google sign-in for a judge who typed the URL the film ends on.
+
+The organisers' 24 August update puts the same point the other way round: *"once the deadline
+passes, everything locks — don't touch your repo, video, or linked materials until after winners
+are announced."*
+
 ---
 
 # Social
@@ -235,6 +252,38 @@ grep then finds us.
 ## Content link (bonus points)
 
 The interview, once uploaded: it must be **public, not unlisted**, and the description must say it was created for this hackathon. That line is already in `demo-video/bank/03-john/out/youtube-upload.md`.
+
+---
+
+# The demo video's own description
+
+`https://youtu.be/i7RFqMTELgA` is public and 3:51, and **its description is empty.** A judge who
+opens it on YouTube rather than inside Devpost is handed no repository, no live URL and no stack.
+Editing the description does not touch the file, so the video keeps its URL and nothing has to be
+re-uploaded. Paste this in:
+
+> Warrant turns a maintenance record from a claim into evidence. A technician is asked for the
+> specific proof each step needs, at the machine, while the work is happening — and the proof is a
+> gate, not a form field at the end. The record will not say a machine was released unless the
+> evidence says so.
+>
+> Built for the All Things Agentic Hackathon, category The Taskmaster.
+>
+> Live: https://warrant.tools
+> Code: https://github.com/mattrickslauer/warrant
+> Cloud Run: https://warrant-zq2l2kwg3q-uc.a.run.app
+>
+> Seven agents on Gemini 3.5 Flash via the Google GenAI SDK, deployed to Vertex AI Agent Engine,
+> over Cloud Run and Firestore. Gemini 3.5 Flash-Lite screens every capture. Veo 3.1 generates the
+> adversarial footage the Skeptic is tested against.
+>
+> The interview at 0:41 and 2:36 is John Tedesco — thirty years of maintenance across Air Force
+> aircraft, locomotives, and county electrical work.
+>
+> #AllThingsAgenticHackathon #AllThingsAgentic
+
+Not a bonus item — the published-content bonus is the interview, above. This is free ground on the
+artifact the judges are most likely to open first.
 
 ---
 
