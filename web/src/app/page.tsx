@@ -4,17 +4,14 @@ import { TaskCarousel, type Task } from "./TaskCarousel";
 
 // No hero, no marketing. The page is the picker — the whole surface is one decision.
 // The explanation lives at /about, one tap away, for anyone who wants it after.
+//
+// Smile leads. Every other task asks you to go and find something — a banana, a cup, a
+// wrench — and the first card is the one a visitor judges the whole product on. This one
+// needs nothing but the face already pointed at the camera, so it is the shortest path from
+// landing on the page to holding a sealed record.
+//
+// android/…/ui/PublicTasks.kt mirrors this list and must be reordered with it.
 const TASKS: Task[] = [
-  {
-    procedureId: "proc_banana_v1",
-    name: "Cut a banana",
-    image: "/tasks/banana.webp",
-    steps: 3,
-    note: "Two photographs and one thing only you can say.",
-    classes: ["inferred", "asserted"],
-    unreachable: ["measured"],
-    available: true,
-  },
   {
     procedureId: "proc_smile_v1",
     name: "Smile",
@@ -22,6 +19,16 @@ const TASKS: Task[] = [
     steps: 2,
     note: "Two photographs, and the only prop is your own face.",
     classes: ["inferred"],
+    unreachable: ["measured"],
+    available: true,
+  },
+  {
+    procedureId: "proc_banana_v1",
+    name: "Cut a banana",
+    image: "/tasks/banana.webp",
+    steps: 3,
+    note: "Two photographs and one thing only you can say.",
+    classes: ["inferred", "asserted"],
     unreachable: ["measured"],
     available: true,
   },

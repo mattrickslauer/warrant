@@ -28,22 +28,22 @@ data class PublicTask(
 
 val publicTasks: List<PublicTask> = listOf(
     PublicTask(
-        procedureId = "proc_banana_v1",
-        name = "Cut a banana",
-        image = R.drawable.task_banana,
-        steps = 3,
-        note = "Two photographs and one thing only you can say.",
-        classes = listOf(ProvenanceClass.INFERRED, ProvenanceClass.ASSERTED),
-        unreachable = listOf(ProvenanceClass.MEASURED),
-        available = true,
-    ),
-    PublicTask(
         procedureId = "proc_smile_v1",
         name = "Smile",
         image = R.drawable.task_smile,
         steps = 2,
         note = "Two photographs, and the only prop is your own face.",
         classes = listOf(ProvenanceClass.INFERRED),
+        unreachable = listOf(ProvenanceClass.MEASURED),
+        available = true,
+    ),
+    PublicTask(
+        procedureId = "proc_banana_v1",
+        name = "Cut a banana",
+        image = R.drawable.task_banana,
+        steps = 3,
+        note = "Two photographs and one thing only you can say.",
+        classes = listOf(ProvenanceClass.INFERRED, ProvenanceClass.ASSERTED),
         unreachable = listOf(ProvenanceClass.MEASURED),
         available = true,
     ),
