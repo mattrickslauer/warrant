@@ -168,6 +168,7 @@ describe("screenCase withholds what the judge is given", () => {
     },
     capture: {}, job: {}, strictness: 3, addFieldsUsed: 0,
     reading: { value: 28.4, unit: "Nm", source: "instrument" },
+    stepCount: 1,
     answer: null, mediaUris: ["gs://b/c.jpg"], priorMediaUris: [], referenceUris: [],
     asset: null,
   };

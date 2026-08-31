@@ -118,6 +118,39 @@ class TestSkeptic:
         case["capture"]["capture_mode"] = "upload"
         assert "unverified" in self.a.parts(case)[0].text
 
+    def test_the_step_is_named_so_a_before_frame_is_not_read_as_a_wrong_scene(self):
+        # `proc_smile_v1` step 1 asks for a face that is NOT smiling. Told only
+        # "procedure: proc_smile_v1", the Skeptic read the requirement out of the slug, saw a
+        # neutral face and dissented `scene` on evidence the technician had produced exactly as
+        # asked. Every before/after procedure here opens on a frame that contradicts its own
+        # title, so the step is what makes the scene question answerable at all.
+        text = self.a.parts(_skeptic_case())[0].text
+        assert "The step this capture answers" in text
+        assert "Check pad wear" in text
+        assert "3 of 4" in text
+        assert "BEFORE state" in text
+
+    def test_a_step_with_no_position_claims_none(self):
+        # "None of None" would be worse than silence: it reads as a step standing outside the
+        # procedure it belongs to. The key goes missing rather than null.
+        case = _skeptic_case()
+        case["step"] = {"title": "Check pad wear"}
+        text = self.a.parts(case)[0].text
+        assert "Check pad wear" in text
+        assert "position" not in text
+
+    def test_the_step_never_carries_what_would_satisfy_it(self):
+        # Which step this is places the evidence. What a correct frame looks like grades it, and
+        # grading belongs to an agent this one must not be able to echo. The case builder sends
+        # title and position only; this asserts the prompt cannot render more even if it did.
+        case = _skeptic_case()
+        case["step"] = {"title": "Straight face", "index": 1, "of": 2,
+                        "explanation": "measured against a face that was not smiling",
+                        "acceptance_description": "mouth closed and not smiling"}
+        text = self.a.parts(case)[0].text
+        assert "measured against" not in text
+        assert "mouth closed" not in text
+
     def test_a_job_with_no_asset_is_not_asked_to_identify_a_machine(self):
         # "Pick up an object" names no asset, and nothing in the app ever writes one. Asked
         # "is this THE machine" with every asset field null, the only honest answer under
@@ -228,6 +261,7 @@ def _inspector_case(strictness=2, used=0, source="instrument"):
 
 def _skeptic_case():
     return {"asset": {"id": "A-1"}, "job": {"id": "J-1"},
+            "step": {"title": "Check pad wear", "index": 3, "of": 4},
             "capture": {"capture_mode": "live", "capture_surface": "app"},
             "media": [], "prior_media": []}
 
@@ -235,6 +269,7 @@ def _skeptic_case():
 def _assetless_case():
     """A public procedure. No tenant, no fleet, no registered asset — anything on a desk."""
     return {"asset": None, "job": {"id": "anon/J-1", "procedure": "proc_pickup_v1"},
+            "step": {"title": "Show it where it lies", "index": 1, "of": 2},
             "capture": {"capture_mode": "live", "capture_surface": "app"},
             "media": [], "prior_media": []}
 

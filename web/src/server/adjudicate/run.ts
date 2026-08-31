@@ -215,6 +215,10 @@ export async function adjudicate(
   }
   const sources: CaseSources = {
     step,
+    // Off the PINNED version, not the live procedure. "Step 1 of 2" has to mean the job this
+    // technician is actually running; a step count read from a procedure that has since grown
+    // a step would misplace every frame in every job still on the old version.
+    stepCount: (version.steps ?? []).length,
     fieldDef,
     capture,
     job: { ...job, id: scopedJobId, procedure: job.procedure_id },

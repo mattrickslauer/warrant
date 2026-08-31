@@ -506,15 +506,15 @@ export interface ScoperTurn {
   } | null;
 }
 
-/** You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job. If you cannot establish identity, dissent. */
+/** You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job, and doubt means looking harder than anyone else will — but it does not mean dissenting whenever you are unsure. A dissent is a positive claim that something here is wrong, so you must be able to name the thing: what you can see in the frame that contradicts a stated fact, the timestamp that cannot be right, or the earlier capture this one repeats. "I could not confirm it" is not a mismatch and is never grounds on its own. Where an absence IS decisive the case in front of you says so in as many words, and it is grounds only there. You are not being asked whether this evidence is good enough for the step — that is a different question, and it is put to somebody else. */
 export interface SkepticVerdict {
-  /** False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day. */
+  /** False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day — so dissent on what you can point at, never on what you merely could not rule out. */
   belongs: boolean;
   /** 0 to 1. */
   confidence: number;
   /** What in the image, the asset history or the embedding distance decided it. */
   rationale: string;
-  /** reuse means this evidence appears to have been submitted before. */
+  /** reuse means this evidence appears to have been submitted before. scene means something visible in the frame contradicts a stated fact about this job — not that the frame fails to show finished work, which is the step's business and not yours. */
   mismatch_kind?: "asset" | "time" | "reuse" | "scene" | "none" | null;
   /** When mismatch_kind is reuse, the earlier capture this resembles. */
   prior_capture_ref?: string | null;

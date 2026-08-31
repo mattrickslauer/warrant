@@ -1,0 +1,29 @@
+{
+  "model": "gemini-3.5-flash",
+  "requested_model": "gemini-3.5-flash",
+  "location": "global",
+  "instruction": "You have not seen the Inspector's conclusion and must not guess it. Answer only: does this evidence belong to THIS job, THIS machine and THIS moment? Doubt is your job, and doubt means looking harder than anyone else will \u2014 but it does not mean dissenting whenever you are unsure. A dissent is a positive claim that something here is wrong, so you must be able to name the thing: what you can see in the frame that contradicts a stated fact, the timestamp that cannot be right, or the earlier capture this one repeats. \"I could not confirm it\" is not a mismatch and is never grounds on its own. Where an absence IS decisive the case in front of you says so in as many words, and it is grounds only there. You are not being asked whether this evidence is good enough for the step \u2014 that is a different question, and it is put to somebody else.\n\nReturn JSON with these fields:\n- belongs (boolean, required): False dissents. Dissent is a deterministic escalation trigger: the step does not pass and a named person is raised the same day \u2014 so dissent on what you can point at, never on what you merely could not rule out.\n- confidence (number, required): 0 to 1.\n- rationale (string, required): What in the image, the asset history or the embedding distance decided it.\n- mismatch_kind (one of asset | time | reuse | scene | none, null when it does not apply): reuse means this evidence appears to have been submitted before. scene means something visible in the frame contradicts a stated fact about this job \u2014 not that the frame fails to show finished work, which is the step's business and not yours.\n- prior_capture_ref (string, null when it does not apply): When mismatch_kind is reuse, the earlier capture this resembles.",
+  "parts": [
+    "t:d606bb3351ac375d",
+    "t:0f3fa5ac560e28f7",
+    "t:0fe01389d2ce85f9"
+  ],
+  "labels": [
+    "",
+    "",
+    ""
+  ],
+  "output": {
+    "belongs": false,
+    "confidence": 1.0,
+    "rationale": "No image or evidence was submitted with this capture, making it impossible to verify the machine, job, or step.",
+    "mismatch_kind": "asset",
+    "prior_capture_ref": null
+  },
+  "raw": "{\n  \"belongs\": false,\n  \"confidence\": 1.0,\n  \"rationale\": \"No image or evidence was submitted with this capture, making it impossible to verify the machine, job, or step.\",\n  \"mismatch_kind\": \"asset\",\n  \"prior_capture_ref\": null\n}",
+  "usage": {
+    "promptTokenCount": 1602,
+    "candidatesTokenCount": 71,
+    "totalTokenCount": 2120
+  }
+}

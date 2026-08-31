@@ -18,9 +18,14 @@
     },
     "job": {
       "id": "J-4471",
-      "procedure": "Front brake service \u2014 Segway Xyber v3",
+      "procedure": "Front brake service — Segway Xyber v3",
       "opened_at": "2026-08-19T09:00:00Z",
-      "location": "Workshop, El Chalt\u00e9n"
+      "location": "Workshop, El Chaltén"
+    },
+    "step": {
+      "title": "Remove the caliper",
+      "index": 1,
+      "of": 4
     },
     "capture": {
       "kind": "photo",

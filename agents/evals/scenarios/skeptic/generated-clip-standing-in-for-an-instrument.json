@@ -23,6 +23,11 @@
       "opened_at": "2026-08-19T09:00:00Z",
       "location": "Workshop, El Chaltén"
     },
+    "step": {
+      "title": "Fit and torque",
+      "index": 3,
+      "of": 4
+    },
     "capture": {
       "kind": "video",
       "capture_mode": "upload",

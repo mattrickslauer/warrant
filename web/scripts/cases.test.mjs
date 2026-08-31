@@ -13,8 +13,9 @@ import assert from "node:assert/strict";
 import { inspectorCase, skepticCase, mediaUri, referenceFieldId } from "../src/server/adjudicate/cases.ts";
 
 const SOURCES = {
-  step: { id: "s3", title: "Check pad wear", explanation: "Worn pads stop it less well.",
+  step: { id: "s3", title: "Check pad wear", index: 3, explanation: "Worn pads stop it less well.",
           max_add_fields: 2 },
+  stepCount: 4,
   fieldDef: { key: "pad_photo", kind: "photo", prompt: "Photograph the pad edge",
               source: "camera", acceptance_rule: "must_show",
               acceptance_description: "friction material thickness visible" },
@@ -124,6 +125,36 @@ describe("skepticCase", () => {
   test("an asset the job does name still travels", () => {
     const c = skepticCase({ ...SOURCES, asset: null });
     assert.deepEqual(c.asset, { id: "bike-04" });
+  });
+
+  test("carries the step, so a before/after frame can be placed in the job", () => {
+    // Without this the only thing the Skeptic knew about the job was the procedure id, and
+    // "does the scene fit" could only be answered against the job as a whole. On
+    // `proc_smile_v1` step 1 — a face deliberately NOT smiling — it read "smile" out of the
+    // slug and dissented `scene` on the correct evidence. Every before/after procedure here
+    // has the same shape: the opening frame contradicts the procedure title by design.
+    const c = skepticCase(SOURCES);
+    assert.equal(c.step.title, "Check pad wear");
+    assert.equal(c.step.index, 3);
+    assert.equal(c.step.of, 4);
+  });
+
+  test("a step with no index says so rather than inventing a position", () => {
+    // skeptic.py renders "3 of 4" only when both halves are present. A missing index must not
+    // become 0, which would read as a step before the first one.
+    const c = skepticCase({ ...SOURCES, step: { id: "s3", title: "Check pad wear" } });
+    assert.equal(c.step.index, null);
+  });
+
+  test("the step travels by name and position, never by what would satisfy it", () => {
+    // The line the whole case is drawn on. Which step this is places the evidence; what a
+    // correct frame LOOKS like grades it, and grading is the Inspector's question. A Skeptic
+    // holding the acceptance description is an echo of a verdict it was never shown.
+    const c = skepticCase({ ...SOURCES,
+      step: { id: "m1", title: "Straight face", index: 1,
+              explanation: "A smile only means anything measured against a face that was not smiling." } });
+    assert.deepEqual(Object.keys(c.step).sort(), ["index", "of", "title"]);
+    assert.ok(!JSON.stringify(c).includes("measured against"), JSON.stringify(c));
   });
 
   test("prior media travels so reuse is detectable", () => {

@@ -7,7 +7,14 @@
 // reaches for, and the Python is the authority whenever the two disagree.
 
 export interface CaseSources {
-  step: { id: string; title: string; explanation?: string; max_add_fields?: number };
+  step: { id: string; title: string; index?: number; explanation?: string; max_add_fields?: number };
+  /**
+   * How many steps the pinned version has.
+   *
+   * Orientation for the Skeptic, which is asked whether a frame fits the job and until now had
+   * no way of knowing which part of the job it was being shown. See `skepticCase`.
+   */
+  stepCount: number;
   fieldDef: Record<string, any>;
   capture: Record<string, any>;
   job: Record<string, any>;
@@ -148,6 +155,29 @@ export function screenCase(a: CaseSources): Record<string, unknown> {
  */
 export function skepticCase(a: CaseSources): Record<string, unknown> {
   return {
+    // WHICH STEP THIS IS, and it closes a whole class of false dissent.
+    //
+    // The Skeptic is asked whether the scene fits the job, and `scene` is one of the mismatches
+    // it may name. Until now the only thing it knew about the job was the procedure id — so on
+    // `proc_smile_v1` step 1, which asks for a face that is deliberately NOT smiling, it read
+    // "smile" out of the slug, saw a neutral face and dissented. Given what it had been handed
+    // that was the honest answer: it was told the job was a smile and shown someone not smiling.
+    //
+    // Nor is that a quirk of one procedure. Every before/after procedure here opens on a frame
+    // that contradicts its own title by design — "Cut a banana" step 1 is a whole banana, "Pick
+    // up an object" step 1 is an object nobody has picked up — and that opening frame is the one
+    // the entire comparison rests on. The step title is what separates "this came from another
+    // job" from "this is the before".
+    //
+    // TITLE AND POSITION ONLY. Not the explanation, not the field prompt, and above all not the
+    // acceptance description: each of those says what a CORRECT frame looks like, and a Skeptic
+    // that knows them is grading the evidence rather than placing it. Grading is the Inspector's
+    // question, and an echo of it is exactly what this case exists to prevent.
+    step: {
+      title: a.step.title,
+      index: a.step.index ?? null,
+      of: a.stepCount,
+    },
     // Null when the job names no asset, and never `{ id: null }`. The public procedures
     // never name one — the subject is whatever was on the desk — and skeptic.py branches on
     // absence to withdraw the asset question entirely. An empty shell would instead read as
