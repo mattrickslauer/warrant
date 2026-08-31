@@ -13,7 +13,7 @@
 
 export type DestId =
   | "procedures" | "publicProcedures" | "yourProcedures" | "records" | "create" | "instruments"
-  | "fleet" | "account" | "settings" | "about" | "library" | "modelTests" | "manual";
+  | "fleet" | "account" | "settings" | "about" | "library" | "modelTests" | "manual" | "install";
 
 export interface Dest {
   readonly id: DestId;
@@ -42,6 +42,9 @@ export const DEST: Record<DestId, Dest> = {
     id: "publicProcedures", route: "/procedures/public", label: "Published procedures",
   },
   records: { id: "records", route: "/records", label: "Records" },
+  // Web-only, and one of the few rows android has no counterpart for ON PURPOSE: a menu item
+  // offering to install the app you are already holding is a joke at the reader's expense.
+  install: { id: "install", route: "/download", label: "Get the Android app" },
   create: { id: "create", route: "/author", label: "Create a procedure" },
   instruments: { id: "instruments", route: "/instruments", label: "Instruments" },
   fleet: { id: "fleet", route: "/fleet", label: "Fleet view" },
@@ -108,6 +111,10 @@ export function menu(signedIn: boolean): MenuSection[] {
         // what somebody else chose to broadcast would be a lock on an open door.
         { dest: DEST.publicProcedures, reach: "open" },
         { dest: DEST.records, reach: "open" },
+        // Not gated. The download is a file on a public release page; asking for an account
+        // first would be a lock on a door that is already open, and everybody would simply
+        // walk around it to GitHub.
+        { dest: DEST.install, reach: "open" },
       ],
     },
     {
@@ -182,6 +189,12 @@ export function quickActions(signedIn: boolean): QuickAction[] {
       hint: "Every job you have sealed.",
       // Not gated, deliberately. A stranger who ran a public procedure made a real record;
       // being unable to read their own evidence would contradict the product.
+      reach: "open",
+    },
+    {
+      dest: DEST.install,
+      label: "Install it on your phone",
+      hint: "The camera, the redaction and the instrument read live there.",
       reach: "open",
     },
     {

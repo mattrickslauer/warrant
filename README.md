@@ -473,7 +473,7 @@ alongside it.
 |---|---|
 | `agents/` | The fleet. Seven agents in `agents/warrant/`, one file each, plus `evals/` — 70 scored scenarios, the recorded cassettes they replay from, and the media corpus they judge. Most of the file count is cassettes |
 | `contract/` | The single authored statement of what each agent may answer. JSON Schema, read by both Python and TypeScript so the two surfaces cannot drift |
-| `web/` | Next.js App Router on Cloud Run — the desk, the public library, `/model-tests`, and the MCP server at `POST /api/mcp` |
+| `web/` | Next.js App Router on Cloud Run — the desk, the public library, `/model-tests`, `/download` (the current Android build, read from the GitHub release), and the MCP server at `POST /api/mcp` |
 | `android/` | The technician's client. Native Kotlin, CameraX, platform BLE, offline queue, on-device redaction |
 | `firmware/` | The reference instrument — an ESP32 that signs its own readings over GATT |
 | `anvil/` | A sandbox that compiles and runs the Kotlin drivers Wright writes, so generated code is judged by execution rather than by reading it |
@@ -506,6 +506,23 @@ cd web && npm install && npm run dev      # http://localhost:3000
 Pick a task, work through it, and you land on a sealed record. Requires **Node 20+** and a
 camera — capture is a live camera view, never a file picker, because an uploaded image says
 nothing about when or where it was made.
+
+### Put the app on a phone
+
+The web surface reads records; the Android client is what *makes* them — the camera, the
+on-device redaction and the Bluetooth instrument read all live there. There is no Play
+listing, so it is installed from a file:
+
+```
+/download        the page — what the build needs, how to install it, how to check the file
+/download/apk    a stable redirect to the newest .apk on the releases page
+```
+
+`/download/apk` resolves at click time, so a QR code or a printed link never names a version.
+Both read the [releases](https://github.com/mattrickslauer/warrant/releases) list directly —
+publish a release with an `.apk` attached and the page shows it within five minutes, with no
+redeploy. When nothing is published the page says so and hands over
+`./gradlew assembleDebug` instead of pretending.
 
 ### Verify
 

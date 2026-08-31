@@ -16,6 +16,10 @@ cd android
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
+Anyone who is not building it gets the same app from **`/download`** on the web surface, which
+serves the newest `.apk` attached to a GitHub release and explains the sideload prompts before
+Android shows them. `/download/apk` is the stable redirect behind the button.
+
 Requires JDK 17 and an Android SDK with platform 35. `local.properties` points at the SDK and
 is not committed.
 
