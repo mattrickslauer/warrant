@@ -1,4 +1,4 @@
-> **Archived from Devpost 2026-08-17.** Source: https://allthingsagentichackathon.devpost.com/rules
+> **Archived from Devpost 2026-08-31.** Source: https://allthingsagentichackathon.devpost.com/rules
 > Verbatim extraction of the page's main content. Raw HTML: `raw/rules.html`.
 > This is the authority. If anything in our own docs disagrees with this file, this file wins.
 

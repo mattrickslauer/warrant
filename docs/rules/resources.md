@@ -1,4 +1,4 @@
-> **Archived from Devpost 2026-08-17.** Source: https://allthingsagentichackathon.devpost.com/resources
+> **Archived from Devpost 2026-08-31.** Source: https://allthingsagentichackathon.devpost.com/resources
 > Verbatim extraction of the page's main content. Raw HTML: `raw/resources.html`.
 > This is the authority. If anything in our own docs disagrees with this file, this file wins.
 
@@ -41,6 +41,7 @@ Aug 20, 2026
   * 9:00 PM - 10:30 PM PT
 
 |  [Build a Self-Evolving Agent: Autonomous Self-Improvement](https://cloudonair.withgoogle.com/events/build-self-evolving-agent-autonomous-self-improvement) _Watch it rewrite its own instructions and climb the score, then catch it gaming the metric._
+August 25th |  [Devpost Build Session Q&A with Google Cloud](https://youtu.be/DCXjvKmUIGY?si=2cIUetzcYdEnUFJe)
 Aug 27, 2026
 
   * 9:00 AM - 10:30 AM PT
