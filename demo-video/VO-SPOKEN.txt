@@ -67,9 +67,9 @@ Seven agents. Each with one job, and one contract it answers under. On the
 Google GenAI SDK, deployed to Vertex AI Agent Engine. Ask the running service
 for its roster and it lists all seven.
 
-Somebody ticked the box. No tool ever reported a number. So the record doesn't
-say this machine was released. It says it wasn't. And it says which step is
-missing.
+Somebody ticked the box. No tool ever reported a number. So the record won't
+say the work was done. It names the step that's missing, and it leaves the
+decision to me.
 
 A waiver takes a person's name. A model can recommend. It can't sign.
 
